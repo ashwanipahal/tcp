@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { isClient, getLocator } from '@tcp/core/src/utils';
+import { isClient, getLocator, getVideoUrl } from '@tcp/core/src/utils';
 import { getProductListToPath } from '../utils/productsCommonUtils';
 // import cssClassName from '../utils/cssClassName';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
@@ -250,32 +250,46 @@ class ProductAltImages extends React.PureComponent {
       alt: productName,
       url: imageUrls[currentIndex],
     };
+    const isVideoUrl = getVideoUrl(imageUrls[currentIndex]);
     return imageUrls.length < 2 ? (
       <figure
-        className="product-image-container full-height"
+        className="product-image-container"
         itemScope
         itemType="http://schema.org/ImageObject"
       >
-        <Anchor
-          handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
-          to={pdpToPath}
-          asPath={pdpUrl}
-          title={productName}
-          unbxdattr="product"
-          unbxdparam_sku={unbxdData && unbxdData.pId}
-          unbxdparam_prank={unbxdData && unbxdData.prank}
-          inheritedStyles={imageAnchorInheritedStyles}
-          className="full-height"
-        >
-          <DamImage
-            className="loadImage"
-            dataLocator={getLocator('global_productimg_imagelink')}
-            imgData={imgData}
-            isProductImage
-            lazyLoad={false}
-          />
-          {this.renderSoldOutSection()}
-        </Anchor>
+        {isVideoUrl ? (
+          <div className="video-container">
+            <DamImage
+              className="loadImage"
+              dataLocator={getLocator('global_productimg_imagelink')}
+              imgData={imgData}
+              isProductImage
+              lazyLoad={false}
+            />
+            {this.renderSoldOutSection()}
+          </div>
+        ) : (
+          <Anchor
+            handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+            to={pdpToPath}
+            asPath={pdpUrl}
+            title={productName}
+            unbxdattr="product"
+            unbxdparam_sku={unbxdData && unbxdData.pId}
+            unbxdparam_prank={unbxdData && unbxdData.prank}
+            inheritedStyles={imageAnchorInheritedStyles}
+            noLink
+          >
+            <DamImage
+              className="loadImage"
+              dataLocator={getLocator('global_productimg_imagelink')}
+              imgData={imgData}
+              isProductImage
+              lazyLoad={false}
+            />
+            {this.renderSoldOutSection()}
+          </Anchor>
+        )}
       </figure>
     ) : (
       <figure
@@ -293,26 +307,39 @@ class ProductAltImages extends React.PureComponent {
         >
           prev
         </button>
+        {isVideoUrl ? (
+          <div className="video-container">
+            <DamImage
+              className="loadImage"
+              dataLocator={getLocator('global_productimg_imagelink')}
+              imgData={imgData}
+              isProductImage
+              lazyLoad={false}
+            />
+            {this.renderSoldOutSection()}
+          </div>
+        ) : (
+          <Anchor
+            handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+            to={pdpToPath}
+            asPath={pdpUrl}
+            title={productName}
+            unbxdattr="product"
+            unbxdparam_sku={unbxdData && unbxdData.pId}
+            unbxdparam_prank={unbxdData && unbxdData.prank}
+            inheritedStyles={imageAnchorInheritedStyles}
+          >
+            <DamImage
+              className="loadImage"
+              dataLocator={getLocator('global_productimg_imagelink')}
+              imgData={imgData}
+              isProductImage
+              lazyLoad={false}
+            />
+            {this.renderSoldOutSection()}
+          </Anchor>
+        )}
 
-        <Anchor
-          handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
-          to={pdpToPath}
-          asPath={pdpUrl}
-          title={productName}
-          unbxdattr="product"
-          unbxdparam_sku={unbxdData && unbxdData.pId}
-          unbxdparam_prank={unbxdData && unbxdData.prank}
-          inheritedStyles={imageAnchorInheritedStyles}
-        >
-          <DamImage
-            className="loadImage"
-            dataLocator={getLocator('global_productimg_imagelink')}
-            imgData={imgData}
-            isProductImage
-            lazyLoad={false}
-          />
-          {this.renderSoldOutSection()}
-        </Anchor>
         <button
           data-locator={getLocator('global_imagecursors_arrows')}
           type="button"

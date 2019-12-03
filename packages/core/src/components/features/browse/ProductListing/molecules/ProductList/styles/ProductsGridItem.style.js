@@ -208,13 +208,23 @@ const styles = css`
   }
 
   /* stylelint-disable-next-line*/
-  _:-ms-fullscreen,
-  .product-image-container {
+  _:-ms-fullscreen {
     max-height: 320px;
   }
 
   .product-image-container {
     position: relative;
+    max-height: 320px;
+  }
+
+  .video-container {
+    position: absolute;
+    top: 0;
+    -ms-transform: translateY(-25%);
+    transform: translateY(25%);
+    margin: 0;
+    bottom: 0;
+    width: 100%;
   }
 
   .extended-sizes-text {

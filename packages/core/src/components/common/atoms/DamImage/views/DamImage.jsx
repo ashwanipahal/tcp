@@ -178,11 +178,11 @@ const DamImage = props => {
 
   if (imgData && imgData.url && getVideoUrl(imgData.url) && isProductImage) {
     const videoDataOptions = {
-      autoplay: false,
-      controls: true,
-      loop: false,
-      muted: true,
-      inline: true,
+      // autoplay: false,
+      // controls: true,
+      // loop: false,
+      // muted: true,
+      // inline: true,
       url: getBreakpointImgUrl('lg', imgProps),
     };
     return <RenderVideo video={videoDataOptions} dataLocator={dataLocator} />;
