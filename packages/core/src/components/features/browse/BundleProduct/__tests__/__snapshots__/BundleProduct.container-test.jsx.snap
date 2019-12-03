@@ -70,6 +70,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
     removeAddToFavoritesErrorMsg={[MockFunction]}
     selectedColorProductId=""
     shortDescription=""
+    topPromos={null}
   />
 </Fragment>
 `;

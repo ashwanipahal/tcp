@@ -3,7 +3,9 @@
 exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
 <Styled(View)>
   <View>
-    <ScrollViewMock>
+    <ScrollViewMock
+      keyboardShouldPersistTaps="handled"
+    >
       <View>
         <Styled(View)>
           <Text
