@@ -46,7 +46,6 @@ import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
-import { PLPSkeleton } from '../../../../common/atoms/index.native';
 import { getProductsWithPromo } from '../../ProductListing/container/ProductListing.util';
 
 class SearchDetailContainer extends React.PureComponent {
@@ -160,54 +159,50 @@ class SearchDetailContainer extends React.PureComponent {
 
     return (
       <React.Fragment>
-        {isSearchResultsAvailable || isLoadingMore ? (
-          <View>
-            {(this.searchQuery && (products && products.length > 0)) ||
-            (filtersLength && Object.keys(filtersLength).length > 0) ? (
-              <SearchDetail
-                margins="0 12px 0 12px"
-                filters={filters}
-                formValues={formValues}
-                filtersLength={filtersLength}
-                getProducts={getProducts}
-                isLoadingMore={isLoadingMore}
-                initialValues={initialValues}
-                onSubmit={this.onSubmitFilters}
-                products={products}
-                totalProductsCount={totalProductsCount}
-                labels={labels}
-                labelsFilter={labelsFilter}
-                slpLabels={slpLabels}
-                searchedText={searchedText}
-                sortLabels={sortLabels}
-                searchResultSuggestions={searchResultSuggestions}
-                onGoToPDPPage={this.onGoToPDPPage}
-                onLoadMoreProducts={this.onLoadMoreProducts}
-                onAddItemToFavorites={onAddItemToFavorites}
-                isLoggedIn={isLoggedIn}
-                labelsLogin={labelsLogin}
-                navigation={navigation}
-                pdpLabels={pdpLabels}
-                isKeepModalOpen={isKeepModalOpen}
-                {...otherProps}
-              />
-            ) : (
-              <NoResponseSearchDetail
-                totalProductsCount={totalProductsCount}
-                labels={labels}
-                slpLabels={slpLabels}
-                searchedText={this.searchQuery}
-                sortLabels={sortLabels}
-                searchResultSuggestions={searchResultSuggestions}
-                navigation={navigation}
-                pdpLabels={pdpLabels}
-                {...otherProps}
-              />
-            )}
-          </View>
-        ) : (
-          <PLPSkeleton col={20} />
-        )}
+        <View>
+          {(this.searchQuery && (products && products.length > 0)) ||
+          (filtersLength && Object.keys(filtersLength).length > 0) ? (
+            <SearchDetail
+              margins="0 12px 0 12px"
+              filters={filters}
+              formValues={formValues}
+              filtersLength={filtersLength}
+              getProducts={getProducts}
+              isLoadingMore={isLoadingMore}
+              initialValues={initialValues}
+              onSubmit={this.onSubmitFilters}
+              products={products}
+              totalProductsCount={totalProductsCount}
+              labels={labels}
+              labelsFilter={labelsFilter}
+              slpLabels={slpLabels}
+              searchedText={searchedText}
+              sortLabels={sortLabels}
+              searchResultSuggestions={searchResultSuggestions}
+              onGoToPDPPage={this.onGoToPDPPage}
+              onLoadMoreProducts={this.onLoadMoreProducts}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              labelsLogin={labelsLogin}
+              navigation={navigation}
+              pdpLabels={pdpLabels}
+              isKeepModalOpen={isKeepModalOpen}
+              {...otherProps}
+            />
+          ) : (
+            <NoResponseSearchDetail
+              totalProductsCount={totalProductsCount}
+              labels={labels}
+              slpLabels={slpLabels}
+              searchedText={this.searchQuery}
+              sortLabels={sortLabels}
+              searchResultSuggestions={searchResultSuggestions}
+              navigation={navigation}
+              pdpLabels={pdpLabels}
+              {...otherProps}
+            />
+          )}
+        </View>
       </React.Fragment>
     );
   }

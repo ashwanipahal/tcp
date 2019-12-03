@@ -13,6 +13,8 @@ import {
   EmptyView,
   RowContainer,
   ItemCountContainer,
+  DisplaySkeleton,
+  DisplayPlp,
 } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
@@ -212,29 +214,34 @@ const ProductListView = ({
       {renderPromModules(isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn)}
       <PageContainer margins={margins} paddings={paddings}>
         <FilterContainer>{onRenderHeader(headerData)}</FilterContainer>
-        {!isLoadingMore && (
-          <ProductList
-            getProducts={getProducts}
-            navigation={navigation}
-            products={products}
-            title={title}
-            scrollToTop={scrollToTop}
-            totalProductsCount={totalProductsCount}
-            isFavorite={isFavorite}
-            onAddItemToFavorites={onAddItemToFavorites}
-            isLoggedIn={isLoggedIn}
-            labelsLogin={labelsLogin}
-            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-            isSearchListing={isSearchListing}
-            renderMoveToList={renderMoveToList}
-            updateAppTypeHandler={updateAppTypeHandler}
-            {...otherProps}
-          />
-        )}
+        <>
+          <DisplayPlp renderskeleton={!isLoadingMore} renderplp={isLoadingMore}>
+            <ProductList
+              getProducts={getProducts}
+              navigation={navigation}
+              products={products}
+              title={title}
+              scrollToTop={scrollToTop}
+              totalProductsCount={totalProductsCount}
+              isFavorite={isFavorite}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              labelsLogin={labelsLogin}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              isSearchListing={isSearchListing}
+              renderMoveToList={renderMoveToList}
+              updateAppTypeHandler={updateAppTypeHandler}
+              {...otherProps}
+            />
+          </DisplayPlp>
+
+          <DisplaySkeleton renderskeleton={isLoadingMore} renderplp={!isLoadingMore}>
+            <PLPSkeleton col={20} />
+          </DisplaySkeleton>
+        </>
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
-      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
     </ScrollView>
   );
 };
