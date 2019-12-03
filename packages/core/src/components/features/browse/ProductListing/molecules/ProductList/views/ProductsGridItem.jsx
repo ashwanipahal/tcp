@@ -593,14 +593,15 @@ class ProductsGridItem extends React.PureComponent {
 
   errorMsgDisplay = () => {
     const {
+      errorMessages,
       AddToFavoriteErrorMsg,
       item: {
         productInfo: { generalProductId },
       },
     } = this.props;
-    const { errorProductId } = this.state;
+    const errorMsg = errorMessages && errorMessages[generalProductId];
 
-    return errorProductId === generalProductId && AddToFavoriteErrorMsg ? (
+    return errorMsg && errorMsg.itemId === generalProductId && AddToFavoriteErrorMsg ? (
       <Notification
         status="error"
         colSize={{ large: 12, medium: 8, small: 6 }}

@@ -252,6 +252,8 @@ class GuestBillingForm extends React.Component {
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit(onSubmit)}
           onVenmoError={onVenmoError}
+          pageName="checkout"
+          pageSection="billing"
         />
       </>
     );

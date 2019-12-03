@@ -344,6 +344,26 @@
     {
       "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
       "value": "true"
+    },
+    {
+      "name": " RWD_APP_BV_API_KEY_TCP",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_GYM",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_URL",
+      "value": "https://stg.api.bazaarvoice.com"
+    },
+    {
+      "name": "RWD_APP_BV_WEB_VIEW_URL",
+      "value": "https://test5.childrensplace.com/static/bazaarVoice/index.html"
+    },
+    {
+      "name": "RWD_APP_BV_SHARED_KEY",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,

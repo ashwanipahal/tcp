@@ -89,7 +89,12 @@ export function* applyCoupon({ payload }) {
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
       yield put(setClickAnalyticsData(getTrackingObj(formData, productsData, coupon)));
-      yield put(trackClick('coupon applied success'));
+      yield put(
+        trackClick({
+          name: 'coupon_success',
+          module: 'checkout',
+        })
+      );
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
       yield call(getCartDataSaga, {
         payload: {
@@ -109,11 +114,16 @@ export function* applyCoupon({ payload }) {
           eventName: 'invalid coupon code used',
         })
       );
-      yield put(trackClick('invalid coupon applied'));
+      yield put(
+        trackClick({
+          name: 'coupon_fails',
+          module: 'checkout',
+        })
+      );
       yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
       yield put(setLoaderState(false));
       yield put(hideLoader());
-      if (source !== 'form') {
+      if (source !== 'form' && e.errors) {
         // eslint-disable-next-line
         yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
       }
@@ -126,7 +136,12 @@ export function* applyCoupon({ payload }) {
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
       yield put(setClickAnalyticsData(getTrackingObj(formData, productsData)));
-      yield put(trackClick('coupon applied successfully'));
+      yield put(
+        trackClick({
+          name: 'coupon_success',
+          module: 'checkout',
+        })
+      );
       yield call(getCartDataSaga, {
         payload: {
           recalcRewards: true,
@@ -146,7 +161,12 @@ export function* applyCoupon({ payload }) {
           eventName: 'invalid coupon code used',
         })
       );
-      yield put(trackClick('invalid coupon unsuccessfully'));
+      yield put(
+        trackClick({
+          name: 'coupon_fails',
+          module: 'checkout',
+        })
+      );
       yield put(hideLoader());
       reject(e);
     }

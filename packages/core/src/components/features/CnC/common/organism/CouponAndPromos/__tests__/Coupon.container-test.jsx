@@ -57,4 +57,31 @@ describe('Coupon Container', () => {
     dispatchProps.handleApplyCouponFromList();
     expect(dispatch.mock.calls).toHaveLength(0);
   });
+
+  it('test getPageDataObject func', () => {
+    const pageName = 'checkout';
+    const pageSection = 'shipping';
+    const tree = shallow(
+      <CouponContainer
+        labels={{}}
+        isFetching={false}
+        handleApplyCoupon={jest.fn()}
+        handleApplyCouponFromList={jest.fn()}
+        handleRemoveCoupon={jest.fn()}
+        appliedCouponList={[]}
+        availableCouponList={[]}
+        isCarouselView
+        pageName="checkout"
+        pageSection="shipping"
+      />
+    );
+    const returnData = tree.instance().getPageDataObject();
+    expect(returnData).toEqual({
+      pageName: `${pageName}:${pageSection}`,
+      pageSection: pageName,
+      pageSubSection: pageName,
+      pageType: pageName,
+      pageShortName: `${pageName}:${pageSection}`,
+    });
+  });
 });

@@ -86,6 +86,10 @@ const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
 
+const getOrderSubTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
+};
+
 const getIsPayPalEnabled = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isPayPalEnabled']) || false;
 };
@@ -261,10 +265,6 @@ const getIfEmailSignUpDone = state => {
     emailSignUpTCP: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpTCP']),
     emailSignUpGYM: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpGYM']),
   };
-};
-
-const getOrderSubTotal = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
 };
 
 export default {

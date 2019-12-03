@@ -478,9 +478,9 @@ class FavoritesView extends React.PureComponent {
 
     const recommendationAttributes = {
       variations: 'moduleO',
-      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.NO_FAVORITES,
       showLoyaltyPromotionMessage: false,
-      headerAlignment: 'left',
+      isFavoriteRecommendation: true,
     };
 
     const filteredItemsList = this.getFilteredItemsList();
