@@ -204,8 +204,6 @@
       "**/date-fns/**",
       "**/@react-native-community/async-storage",
       "**/@react-native-community/async-storage/**",
-      "**/@react-native-community/netinfo",
-      "**/@react-native-community/netinfo/**",
       "**/react-native-keychain",
       "**/react-native-keychain/**",
       "**/react-native-touch-id",

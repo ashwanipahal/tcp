@@ -21,6 +21,14 @@ import { PropTypes } from 'prop-types';
 
 export const NetworkContext = React.createContext({ isConnected: true });
 
+export function useNetworkState() {
+  const context = React.useContext(NetworkContext);
+  if (context === undefined) {
+    throw new Error('useLocationState must be used within a LocationProvider');
+  }
+  return context;
+}
+
 export default class NetworkProvider extends React.PureComponent {
   // eslint-disable-next-line react/no-unused-state
   state = { isConnected: true };

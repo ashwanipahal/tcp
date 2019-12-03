@@ -1,5 +1,8 @@
 import React from 'react';
 import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
+import NetworkProvider, {
+  useNetworkState,
+} from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
 import { Box } from '@fabulas/astly';
 import codePush from 'react-native-code-push';
 import CookieManager from 'react-native-cookies';
@@ -159,7 +162,7 @@ export class App extends React.PureComponent {
 
   render() {
     const { appType, context } = this.props;
-    const { device, platform, location } = context;
+    const { device, platform, location, network } = context;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
     return (
       <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
@@ -182,6 +185,7 @@ export class App extends React.PureComponent {
             screenProps={{
               toggleBrandAction: this.toggleBrandAction,
               apiConfig,
+              network,
             }}
           />
           {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
@@ -211,11 +215,13 @@ function RenderApp(props) {
   const { permissions, request, ...rest } = usePermissionState();
   const location = useLocationState();
   const error = useErrorReporter();
+  const network = useNetworkState();
   const context = {
     ...info,
     permissions: { ...rest },
     location,
     error,
+    network,
   };
   const { device } = context;
   const { appName } = device;
@@ -227,7 +233,9 @@ function RenderApp(props) {
 export default props => {
   return (
     <AppProvider>
-      <RenderApp {...props} />
+      <NetworkProvider>
+        <RenderApp {...props} />
+      </NetworkProvider>
     </AppProvider>
   );
 };

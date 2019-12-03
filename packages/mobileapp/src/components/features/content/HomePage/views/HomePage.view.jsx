@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
+import { StackActions, NavigationActions } from 'react-navigation';
 // import { Box, Text } from '@fabulas/astly';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
 
@@ -102,6 +103,22 @@ class HomePageView extends React.PureComponent {
     this.setState({ handeOpenURLRegister: false });
   }
 
+  static getDerivedStateFromProps(props) {
+    const {
+      navigation,
+      screenProps: {
+        network: { isConnected },
+      },
+    } = props;
+    if (navigation && !isConnected) {
+      const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: 'NoInternet' })],
+      });
+      navigation.dispatch(resetAction);
+    }
+  }
+
   /**
    * @function loadBootstrapData
    * Loads bootstrap data
@@ -184,6 +201,7 @@ class HomePageView extends React.PureComponent {
       promoHtmlBannerCarousel,
     } = this.props;
     const { value } = this.state;
+
     return (
       <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <HeaderPromoContainer>
