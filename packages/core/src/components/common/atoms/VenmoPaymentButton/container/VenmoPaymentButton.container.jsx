@@ -8,6 +8,7 @@ import {
   getVenmoClientToken,
   setVenmoData,
   setVenmoPaymentInProgress,
+  setVenmoInstalled,
 } from '../../../../features/CnC/Checkout/container/Checkout.action';
 import { getCartOrderId } from '../../../../features/CnC/CartItemTile/container/CartItemTile.selectors';
 import logger from '../../../../../utils/loggerInstance';
@@ -94,6 +95,7 @@ export const mapDispatchToProps = dispatch => ({
   setVenmoProgress: data => dispatch(setVenmoPaymentInProgress(data)),
   getVenmoPaymentTokenAction: data => dispatch(getVenmoClientToken(data)),
   setVenmoDataAction: data => dispatch(setVenmoData(data)),
+  setVenmoInstalledAction: data => dispatch(setVenmoInstalled(data)),
 });
 
 export default connect(
