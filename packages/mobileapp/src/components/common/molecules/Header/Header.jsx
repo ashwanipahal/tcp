@@ -108,9 +108,9 @@ class Header extends React.PureComponent {
    * This function validate the iconView.
    */
   validateIcon = () => {
-    const { navigation, labels, clearSuggestedStores } = this.props;
+    const { navigation, labels, resetSuggestedStores } = this.props;
     const { isDownIcon } = this.state;
-    clearSuggestedStores([]);
+    resetSuggestedStores([]);
     navigation.navigate({
       routeName: 'StoreLanding',
       params: {
@@ -352,7 +352,7 @@ Header.propTypes = {
   slpLabels: PropTypes.shape({}),
   userName: PropTypes.string,
   headertype: PropTypes.string,
-  clearSuggestedStores: PropTypes.func,
+  resetSuggestedStores: PropTypes.func,
 };
 
 Header.defaultProps = {
@@ -368,7 +368,7 @@ Header.defaultProps = {
   slpLabels: {},
   userName: '',
   headertype: '',
-  clearSuggestedStores: () => {},
+  resetSuggestedStores: () => {},
 };
 
 const mapStateToProps = state => {
@@ -392,7 +392,7 @@ const mapDispatchToProps = dispatch => {
     updateCartManuallyAction: payload => {
       dispatch(updateCartManually(payload));
     },
-    clearSuggestedStores: payload => dispatch(setStoresByCoordinates(payload)),
+    resetSuggestedStores: payload => dispatch(setStoresByCoordinates(payload)),
   };
 };
 
