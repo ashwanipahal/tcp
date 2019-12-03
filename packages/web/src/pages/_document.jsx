@@ -56,7 +56,7 @@ class MyDocument extends Document {
     return (
       <Html lang={langMap[language] || 'en'}>
         <Head>
-          <meta name="viewport" content="initial-scale=1" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link rel="icon" href={getStaticFilePath(process.env.RWD_WEB_FAVICON_URL)} />
           <link href={getStaticFilePath('app.css')} rel="stylesheet" />
           <link href={getStaticFilePath('cld-video-player.min.css')} rel="stylesheet" />
