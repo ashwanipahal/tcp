@@ -98,6 +98,7 @@ export class BillingSection extends PureComponent {
       labels,
       venmoPayment,
       venmoPayment: { userName },
+      isGuest,
     } = this.props;
     const { saveVenmoPayment } = this.state;
     return (
@@ -115,21 +116,22 @@ export class BillingSection extends PureComponent {
             </SubHeading>
             <CardImage card={venmoPayment} cardNumber={userName} />
           </PaymentMethod>
-          <BillingAddress>
-            <SaveVenmoDetails>
-              <InputCheckbox
-                execOnChangeByDefault={false}
-                isChecked
-                input={{ value: saveVenmoPayment, onChange: this.handleVenmoPaymentSaveChange }}
-              />
-              <BodyCopy
-                fontSize="fs14"
-                color="gray.900"
-                mobileFontFamily="secondary"
-                text={labels.lbl_review_save_venmo}
-              />
-            </SaveVenmoDetails>
-          </BillingAddress>
+          {!isGuest && (
+            <BillingAddress>
+              <SaveVenmoDetails>
+                <InputCheckbox
+                  execOnChangeByDefault={false}
+                  input={{ value: saveVenmoPayment, onChange: this.handleVenmoPaymentSaveChange }}
+                />
+                <BodyCopy
+                  fontSize="fs14"
+                  color="gray.900"
+                  mobileFontFamily="secondary"
+                  text={labels.lbl_review_save_venmo}
+                />
+              </SaveVenmoDetails>
+            </BillingAddress>
+          )}
         </PaymentMethodImage>
       </PaymentMethodWrapper>
     );
@@ -234,6 +236,7 @@ BillingSection.propTypes = {
   bagLoading: PropTypes.bool.isRequired,
   venmoPayment: PropTypes.shape({}),
   saveVenmoPaymentOption: PropTypes.func,
+  isGuest: PropTypes.bool.isRequired,
 };
 
 BillingSection.defaultProps = {

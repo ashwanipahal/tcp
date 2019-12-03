@@ -142,9 +142,20 @@ class AddedToBagActions extends React.PureComponent<Props> {
    */
   showVenmoPaypalButton = () => {
     const { venmoEnable } = this.state;
-    const { isNoNEmptyBag, fromAddedToBagModal, isPayPalEnabled, isVenmoEnabled } = this.props;
+    const {
+      isNoNEmptyBag,
+      fromAddedToBagModal,
+      isPayPalEnabled,
+      isVenmoEnabled,
+      isVenmoAppInstalled,
+    } = this.props;
     return (
-      isNoNEmptyBag && !fromAddedToBagModal && venmoEnable && isPayPalEnabled && isVenmoEnabled
+      isNoNEmptyBag &&
+      !fromAddedToBagModal &&
+      venmoEnable &&
+      isPayPalEnabled &&
+      isVenmoEnabled &&
+      isVenmoAppInstalled
     );
   };
 
@@ -190,10 +201,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
       resetTimerStatus,
       isPayPalWebViewEnable,
       cartOrderItems,
+      isVenmoAppInstalled,
     } = this.props;
 
     const { venmoEnable } = this.state;
-    const isVenmoFlag = isVenmoEnabled && venmoEnable;
+    const isVenmoFlag = isVenmoEnabled && venmoEnable && isVenmoAppInstalled;
     const showVenmoPayPalButton = this.showVenmoPaypalButton();
     const pageData = this.getPageData();
     const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
@@ -214,7 +226,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                 isPayPalWebViewEnable={isPayPalWebViewEnable}
               >
                 {this.getPaypalButton(false, !fromAddedToBagModal)}
-                {!showAddTobag && this.getVenmoButton()}
+                {!showAddTobag && isVenmoAppInstalled && this.getVenmoButton()}
               </PaypalPaymentsButtonWrapper>
             )}
             {!isPayPalWebViewEnable && (
@@ -266,9 +278,10 @@ class AddedToBagActions extends React.PureComponent<Props> {
       navigation,
       closeModal,
       resetTimerStatus,
+      isVenmoAppInstalled,
     } = this.props;
     const { venmoEnable } = this.state;
-    const isVenmoFlag = isVenmoEnabled && venmoEnable;
+    const isVenmoFlag = isVenmoEnabled && venmoEnable && isVenmoAppInstalled;
     const showVenmoPayPalButton = this.showVenmoPaypalButton();
     return (
       <ActionsWrapper isPayPalWebViewEnable={isPayPalWebViewEnable}>
