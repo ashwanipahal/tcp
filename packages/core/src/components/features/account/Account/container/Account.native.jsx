@@ -104,7 +104,7 @@ export class Account extends React.PureComponent {
       closeOverlay();
     }
     if (prevProps.isUserLoggedIn && !isUserLoggedIn) {
-      this.scrollView.scrollTo({ x: 0, y: 0, animated: true });
+      this.scrollView.scrollTo({ x: 0, y: 0, animated: false });
     }
   }
 
