@@ -21,8 +21,10 @@ exports[`ProductList component should renders correctly 1`] = `
     extraData={
       Object {
         "AddToFavoriteErrorMsg": "",
+        "addToBagEcom": [Function],
         "currencyExchange": Array [],
         "currencySymbol": "",
+        "errorMessages": null,
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
         "isFavorite": false,

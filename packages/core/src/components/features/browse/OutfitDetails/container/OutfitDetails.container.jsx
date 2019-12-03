@@ -291,6 +291,9 @@ OutfitDetailsContainer.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  trackPageLoad: PropTypes.func,
+  topPromos: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -312,11 +315,14 @@ OutfitDetailsContainer.defaultProps = {
   isPickupModalOpen: false,
   isLoggedIn: false,
   pdpLabels: {},
+  trackPageLoad: () => {},
   toastMessage: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  topPromos: '',
+  isLoading: false,
 };
 
 export default withIsomorphicRenderer({

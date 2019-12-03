@@ -22,10 +22,11 @@ class BonusPointsView extends React.Component {
     className: PropTypes.string,
     isPlcc: PropTypes.bool,
     view: PropTypes.string,
-    getBonusDaysData: PropTypes.func,
+    getAvailableBonusDaysData: PropTypes.func,
     orderDetails: PropTypes.shape({}),
     isBagPage: PropTypes.bool,
     showAccordian: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -35,9 +36,10 @@ class BonusPointsView extends React.Component {
     className: '',
     isPlcc: false,
     view: constants.VIEWS.EDIT,
-    getBonusDaysData: () => {},
+    getAvailableBonusDaysData: () => {},
     orderDetails: {},
     isBagPage: false,
+    isFetching: false,
   };
 
   constructor(props) {
@@ -61,7 +63,7 @@ class BonusPointsView extends React.Component {
       className,
       view,
       isPlcc,
-      getBonusDaysData,
+      getAvailableBonusDaysData,
       orderDetails,
       isBagPage,
       showAccordian,
@@ -87,7 +89,7 @@ class BonusPointsView extends React.Component {
                 labels={labels.global.bonusPoints}
                 bonusData={bonusData}
                 toggleBonusPointsModal={this.toggleBonusPointsModal}
-                getBonusDaysData={getBonusDaysData}
+                getAvailableBonusDaysData={getAvailableBonusDaysData}
                 orderDetails={orderDetails}
                 isPlcc={isPlcc}
                 isBagPage={isBagPage}

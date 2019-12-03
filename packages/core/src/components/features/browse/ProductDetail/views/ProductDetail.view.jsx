@@ -43,6 +43,7 @@ class ProductDetailView extends PureComponent {
       renderReceiveProps: false,
     };
   }
+
   componentDidMount() {
     const { productInfo, trackPageLoad } = this.props;
     const productsFormatted = this.formatProductsData(productInfo);
@@ -95,6 +96,7 @@ class ProductDetailView extends PureComponent {
       Quantity: selectedQuantity,
     };
   };
+
   onChangeSize = (selectedColor, e, selectedFit, selectedQuantity) => {
     this.setState({ currentGiftCardValue: e });
     this.formValues = {
@@ -178,7 +180,7 @@ class ProductDetailView extends PureComponent {
     return productInfo.isGiftCard ? (
       <div className="go-back-container">
         <button type="button" onClick={this.onGoBack} className="button-go-back">
-          <Image src={getIconPath('medium-left-arrow')} />
+          <Image src={getIconPath('medium-left-arrow')} alt="" />
           <BodyCopy className="back-button" fontFamily="secondary" fontSize="fs16">
             {pdpLabels.back}
           </BodyCopy>
@@ -472,6 +474,11 @@ ProductDetailView.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   sizeChartDetails: PropTypes.shape([]),
+  asPathVal: PropTypes.string,
+  topPromos: PropTypes.string,
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
@@ -493,7 +500,12 @@ ProductDetailView.defaultProps = {
   isKeepAliveEnabled: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
   sizeChartDetails: [],
+  asPathVal: '',
+  topPromos: '',
+  middlePromos: '',
+  bottomPromos: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

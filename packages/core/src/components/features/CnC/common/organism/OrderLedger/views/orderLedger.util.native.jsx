@@ -1,6 +1,6 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { StyledRowDataContainer } from '../styles/orderLedger.style.native';
-import { Text, View } from 'react-native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 export const renderCouponsAndSavingsTotal = (

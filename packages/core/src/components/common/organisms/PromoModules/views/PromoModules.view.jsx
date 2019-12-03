@@ -81,6 +81,8 @@ const PromoModules = ({ asPath, plpTopPromos, isLoggedIn, isPlcc }) => {
 
 PromoModules.propTypes = {
   asPath: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
   plpTopPromos: PropTypes.arrayOf(
     PropTypes.shape({
       // Only including the most important property
@@ -92,6 +94,8 @@ PromoModules.propTypes = {
 PromoModules.defaultProps = {
   asPath: '',
   plpTopPromos: [],
+  isLoggedIn: false,
+  isPlcc: false,
 };
 
 export default PromoModules;

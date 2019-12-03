@@ -1,9 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-// import { LazyloadScrollView } from 'react-native-lazyload-deux';
-import { ScrollView as LazyloadScrollView } from 'react-native';
-import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
+import { getLoading } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';

@@ -431,6 +431,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           }
           errorOnHandleSubmit=""
           hideAlternateSizes={true}
+          isFavoriteEdit={false}
           onCloseClick={[Function]}
           plpLabels={Object {}}
           quickViewColorSwatchesCss=""

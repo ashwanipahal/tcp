@@ -68,7 +68,7 @@ class CollapsibleContainer extends React.Component {
           className="collapsible-header"
           type="button"
         >
-          <Image src={isExpanded ? IconOpen : IconClose} className="collapsible-icon" />
+          <Image src={isExpanded ? IconOpen : IconClose} alt="" className="collapsible-icon" />
           <div>{header}</div>
         </button>
         <div className={isExpanded ? 'item-opened' : 'item-closed'}>{body}</div>

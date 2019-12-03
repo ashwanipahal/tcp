@@ -1,8 +1,11 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { fetchRecommendationsData } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.actions';
+import {
+  openQuickViewWithValues,
+  updateAppTypeWithParams,
+} from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { isMobileApp } from '@tcp/core/src/utils/utils';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import Favorites from '../views';
@@ -44,6 +47,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
+import { addToCartEcom } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 class FavoritesContainer extends React.PureComponent {
   constructor(props) {
@@ -51,9 +55,11 @@ class FavoritesContainer extends React.PureComponent {
     this.guestAccessKey = '';
     this.wishListId = '';
   }
+
   state = {
     selectedColorProductId: '',
     filteredId: 'ALL',
+    appliedFilterLength: 0,
     sortId: '',
     gymSelected: false,
     tcpSelected: false,
@@ -86,6 +92,7 @@ class FavoritesContainer extends React.PureComponent {
   onFilterSelection = filteredId => {
     this.setState({
       filteredId,
+      appliedFilterLength: 1,
     });
   };
 
@@ -114,11 +121,14 @@ class FavoritesContainer extends React.PureComponent {
 
   openQuickViewModal = (payload, allColors) => {
     const { onQuickViewOpenClick } = this.props;
+    const selectedColorProductId = !allColors ? payload.colorProductId : '';
     this.setState(
       {
-        selectedColorProductId: !allColors ? payload.colorProductId : '',
+        selectedColorProductId,
       },
-      () => onQuickViewOpenClick(payload)
+      () => {
+        onQuickViewOpenClick(payload);
+      }
     );
   };
 
@@ -185,6 +195,8 @@ class FavoritesContainer extends React.PureComponent {
       setListShareSuccess,
       formErrorMessage,
       isLoggedIn,
+      updateAppTypeHandler,
+      addToBagEcom,
       errorMessages,
     } = this.props;
     const { selectedColorProductId } = this.state;
@@ -226,8 +238,10 @@ class FavoritesContainer extends React.PureComponent {
         guestAccessKey={this.guestAccessKey}
         formErrorMessage={formErrorMessage}
         isLoggedIn={isLoggedIn}
+        addToBagEcom={addToBagEcom}
         onLoadRecommendations={this.onLoadRecommendations}
         onReplaceWishlistItem={this.onReplaceWishlistItem}
+        updateAppTypeHandler={updateAppTypeHandler}
         errorMessages={errorMessages}
         {...this.state}
       />
@@ -285,8 +299,14 @@ const mapDispatchToProps = dispatch => {
     updateWishList: payload => {
       dispatch(updateWishListAction(payload));
     },
+    addToBagEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
     loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
     replaceWishlistItem: payload => dispatch(setReplaceWishlistItem(payload)),
+    updateAppTypeHandler: payload => {
+      dispatch(updateAppTypeWithParams(payload));
+    },
   };
 };
 
@@ -320,8 +340,13 @@ FavoritesContainer.propTypes = {
   wishlistShareStatus: PropTypes.bool,
   setListShareSuccess: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  addToBagEcom: PropTypes.func.isRequired,
   loadRecommendations: PropTypes.func.isRequired,
   replaceWishlistItem: PropTypes.func.isRequired,
+  getActiveWishlistGuest: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}),
+  errorMessages: PropTypes.string,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 FavoritesContainer.defaultProps = {
@@ -338,6 +363,8 @@ FavoritesContainer.defaultProps = {
   defaultWishList: {},
   wishlistShareStatus: false,
   isLoggedIn: false,
+  errorMessages: '',
+  formErrorMessage: {},
 };
 
 export default connect(

@@ -126,6 +126,15 @@ export const generateBrowseDataLayer = store => {
           .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'internalCampaignId'], '');
       },
     },
+    internalCampaignIdList: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData && clickActionAnalyticsData.internalCampaignIdList
+          ? clickActionAnalyticsData.internalCampaignIdList
+          : pageData.internalCampaignIdList;
+      },
+    },
     storeSearchCriteria: {
       get() {
         return store

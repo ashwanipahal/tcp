@@ -335,6 +335,36 @@ class ProductInformation extends PureComponent {
     );
   };
 
+  getSwipeConfig = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled, showOnReviewPage) => {
+    return {
+      rightButtons: showOnReviewPage
+        ? [this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]
+        : null,
+      rightButtonWidth: showOnReviewPage ? 240 : 0,
+      leftButtons: null,
+      onSwipeComplete: showOnReviewPage
+        ? (event, gestureState, swipe) => {
+            CartItemTileExtension.onSwipeComplete(this.props, swipe);
+          }
+        : () => {},
+    };
+  };
+
+  renderProductDetail = () => {
+    const { showOnReviewPage, productDetail } = this.props;
+    return (
+      showOnReviewPage &&
+      !!productDetail.miscInfo.badge && (
+        <BodyCopy
+          fontWeight={['semibold']}
+          fontFamily="secondary"
+          fontSize="fs12"
+          text={productDetail.miscInfo.badge}
+        />
+      )
+    );
+  };
+
   render() {
     const { labels, itemIndex, showOnReviewPage, productDetail } = this.props;
     const {
@@ -375,32 +405,36 @@ class ProductInformation extends PureComponent {
       isBOPISOrder
     );
 
+    const swipeConfig = this.getSwipeConfig(
+      isBOSSOrder,
+      bossDisabled,
+      isBOPISOrder,
+      bopisDisabled,
+      showOnReviewPage
+    );
+
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
-        rightButtons={[this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]}
-        rightButtonWidth={240}
-        leftButtons={null}
-        onSwipeComplete={(event, gestureState, swipe) => {
-          CartItemTileExtension.onSwipeComplete(this.props, swipe);
-        }}
+        {...swipeConfig}
       >
         <MainWrapper>
           {CartItemTileExtension.renderTogglingError(this.props)}
           <UnavailableView>
-            {CartItemTileExtension.renderUnavailableErrorMessage({
-              props: this.props,
-              isEcomSoldout,
-              bossDisabled,
-              isBOSSOrder,
-              bopisDisabled,
-              isBOPISOrder,
-              noBossMessage,
-              noBopisMessage,
-              availability,
-            })}
+            {showOnReviewPage &&
+              CartItemTileExtension.renderUnavailableErrorMessage({
+                props: this.props,
+                isEcomSoldout,
+                bossDisabled,
+                isBOSSOrder,
+                bopisDisabled,
+                isBOPISOrder,
+                noBossMessage,
+                noBopisMessage,
+                availability,
+              })}
           </UnavailableView>
           <OuterContainer showOnReviewPage={showOnReviewPage}>
             {CartItemTileExtension.CartItemImageWrapper(
@@ -411,14 +445,7 @@ class ProductInformation extends PureComponent {
               updateAppTypeHandler
             )}
             <ProductDescription>
-              {showOnReviewPage && !!productDetail.miscInfo.badge && (
-                <BodyCopy
-                  fontWeight={['semibold']}
-                  fontFamily="secondary"
-                  fontSize="fs12"
-                  text={productDetail.miscInfo.badge}
-                />
-              )}
+              {this.renderProductDetail()}
               {CartItemTileExtension.getProductName(
                 productDetail,
                 showOnReviewPage,

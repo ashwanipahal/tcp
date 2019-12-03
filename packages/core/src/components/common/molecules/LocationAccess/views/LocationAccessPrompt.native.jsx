@@ -22,7 +22,7 @@ import {
   StyledAnchor,
   MessageContainer,
   ShadowContainer,
-} from '../styles/LocationAccess.native';
+} from '../styles/LocationAccessPrompt.native';
 
 const locationImage = require('../../../../../../src/assets/location.png');
 const closeImage = require('../../../../../../src/assets/close.png');
@@ -49,7 +49,6 @@ class LocationAccessPrompt extends React.PureComponent {
    * @componentDidMount : In this finction to manage the userlogin or not.
    */
   componentDidMount() {
-    const { isUserLoggedIn } = this.props;
     this.checkLocationAccess();
   }
 

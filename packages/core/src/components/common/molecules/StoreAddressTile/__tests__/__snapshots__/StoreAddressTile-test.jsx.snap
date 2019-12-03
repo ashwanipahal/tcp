@@ -439,6 +439,7 @@ exports[`StoreAddressTile component Details should render details view - with ti
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -497,11 +498,20 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
     <div
       className="store-details-header"
     >
-      <h4
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h4>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
@@ -889,6 +899,7 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -1341,6 +1352,7 @@ exports[`StoreAddressTile component Details should render details view with clic
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -1399,11 +1411,20 @@ exports[`StoreAddressTile component Details should render details view with fav 
     <div
       className="store-details-header"
     >
-      <h4
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h4>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
@@ -1603,7 +1624,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
         >
           <styled.div>
             <Styled(Image)
-              alt="Your Store"
+              alt=""
               className="favorite-store-icon"
               src="/static/version-not-available/images/star.png"
               title="Your Store"
@@ -1862,11 +1883,20 @@ exports[`StoreAddressTile component Details should render details view with set 
     <div
       className="store-details-header"
     >
-      <h4
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h4>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
@@ -2254,6 +2284,7 @@ exports[`StoreAddressTile component Details should render details view with set 
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -2317,6 +2348,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
           </Styled(BodyCopy)>
           <Connect(Component)
             anchorVariation="primary"
+            aria-label="86th Street - 3rd Ave. Get Directions"
             as={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
@@ -2422,7 +2454,6 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
             }
             fontSizeVariation="medium"
             target="_blank"
-            title="Get Directions"
             underline={true}
             url="[object Object]"
           >
@@ -2582,12 +2613,12 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
@@ -2681,6 +2712,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
         </Styled(BodyCopy)>
         <Connect(Component)
           anchorVariation="primary"
+          aria-label="86th Street - 3rd Ave. Get Directions"
           as={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -2786,7 +2818,6 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
           }
           fontSizeVariation="medium"
           target="_blank"
-          title="Get Directions"
           underline={true}
           url="[object Object]"
         >
@@ -3084,12 +3115,12 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
     <div>
       <Styled(Anchor)
         anchorVariation="primary"
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
@@ -3110,6 +3141,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
     </div>
     <div>
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -3216,6 +3248,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
         </Styled(BodyCopy)>
         <Connect(Component)
           anchorVariation="primary"
+          aria-label="86th Street - 3rd Ave. Get Directions"
           as={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -3321,7 +3354,6 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
           }
           fontSizeVariation="medium"
           target="_blank"
-          title="Get Directions"
           underline={true}
           url="[object Object]"
         >
@@ -3652,12 +3684,12 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
     <div>
       <Styled(Anchor)
         anchorVariation="primary"
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
@@ -3678,6 +3710,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
     </div>
     <div>
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -3785,6 +3818,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
         </Styled(BodyCopy)>
         <Connect(Component)
           anchorVariation="primary"
+          aria-label="86th Street - 3rd Ave. Get Directions"
           as={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -3890,7 +3924,6 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
           }
           fontSizeVariation="medium"
           target="_blank"
-          title="Get Directions"
           underline={true}
           url="[object Object]"
         >
@@ -4221,12 +4254,12 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
     <div>
       <Styled(Anchor)
         anchorVariation="primary"
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
@@ -4248,7 +4281,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
     <div>
       <styled.div>
         <Styled(Image)
-          alt="Your Store"
+          alt=""
           className="favorite-store-icon"
           src="/static/version-not-available/images/star.png"
           title="Your Store"
@@ -4344,6 +4377,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       >
         <Connect(Component)
           anchorVariation="primary"
+          aria-label="86th Street - 3rd Ave. Get Directions"
           as={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -4449,7 +4483,6 @@ exports[`StoreAddressTile component Listing should render listing view with inde
           }
           fontSizeVariation="medium"
           target="_blank"
-          title="Get Directions"
           underline={true}
           url="[object Object]"
         >
@@ -4689,12 +4722,12 @@ exports[`StoreAddressTile component Listing should render listing view with inde
     <div>
       <Styled(Anchor)
         anchorVariation="primary"
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
@@ -4715,6 +4748,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
     </div>
     <div>
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}

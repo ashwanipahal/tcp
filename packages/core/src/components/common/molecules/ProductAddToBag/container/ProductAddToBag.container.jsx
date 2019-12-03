@@ -148,6 +148,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     );
   };
 
+  // eslint-disable-next-line complexity
   getInitialAddToBagFormValues = (currentProduct, selectedColorProductId, nextProps) => {
     const colorFitsSizesMapEntry = currentProduct
       ? this.getMapSliceForColorProductId(
@@ -159,9 +160,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     this.initialColorFitsSizesMapEntry = colorFitsSizesMapEntry;
     let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
 
-    const { fromBagPage } = this.props;
+    const { fromBagPage, isFavoriteEdit } = this.props;
 
-    if (fromBagPage) {
+    if (fromBagPage || isFavoriteEdit) {
       const { productInfoFromBag } = this.props;
       initialFormValues = {
         color: productInfoFromBag.selectedColor,
@@ -449,8 +450,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   quickViewPickup = () => {
-    const { isPickup, isMultiItemQVModal, isBundleProduct } = this.props;
-    return !isPickup && !isBundleProduct && !isMultiItemQVModal;
+    const { isPickup, isMultiItemQVModal, isBundleProduct, isFavoriteEdit } = this.props;
+    const isQuickViewPickup = !isPickup && !isBundleProduct && !isMultiItemQVModal;
+    if (isFavoriteEdit) {
+      return isFavoriteEdit && !isFavoriteEdit;
+    }
+    return isQuickViewPickup;
   };
 
   /**
@@ -488,6 +493,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isBundleProduct,
       outOfStockLabels,
       isKeepAliveEnabled,
+      isFavoriteEdit,
       sizeChartDetails,
       isMultiItemQVModal,
       pageNameProp,
@@ -562,6 +568,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         isBundleProduct={isBundleProduct}
         keepAlive={isKeepAliveEnabled && keepAlive}
         outOfStockLabels={outOfStockLabels}
+        isFavoriteEdit={isFavoriteEdit}
         sizeChartDetails={sizeChartDetails}
         isMultiItemQVModal={isMultiItemQVModal}
         quickViewPickup={this.quickViewPickup}

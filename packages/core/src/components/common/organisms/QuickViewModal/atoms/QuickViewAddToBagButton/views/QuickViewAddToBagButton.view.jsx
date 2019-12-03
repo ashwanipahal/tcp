@@ -44,6 +44,11 @@ QuickViewAddToBagButton.propTypes = {
   onClickActn: PropTypes.func.isRequired,
   quickViewLabels: PropTypes.string.isRequired,
   showAddProductValidation: PropTypes.bool.isRequired,
+  dataLocator: PropTypes.string,
+};
+
+QuickViewAddToBagButton.defaultProps = {
+  dataLocator: '',
 };
 
 export default QuickViewAddToBagButton;

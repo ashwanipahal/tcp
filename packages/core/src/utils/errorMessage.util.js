@@ -8,6 +8,8 @@ export const ERRORS = {
 class ServiceError {
   constructor(errorCodes, errorMessages, networkStatusCode, misc) {
     this.errorCodes = errorCodes || '';
+    // Disabling eslint for temporary fix
+    // eslint-disable-next-line no-undef
     this.errorMessages = errorMessages === 'object' ? { errorMessages: { _error } } : errorMessages;
     this.networkStatusCode = networkStatusCode || '';
     this.misc = misc || '';
@@ -97,10 +99,12 @@ export function getFormattedErrorFromResponse(response, ERRORS_MAP, errorsListDa
   return new ServiceError(errorCodes, errorMessages, response.status, response.misc);
 }
 
-export function getFormattedError(err, errorMapping) {
+export function getFormattedError(err, errorMapping, isErrorResponse = false) {
   if (err && err.response && err.response.body !== null) {
     return getFormattedErrorFromResponse(err.response, errorMapping);
-  } else if (err && err.errorResponse !== null) {
+    // Disabling eslint foe temporary fix
+    // eslint-disable-next-line no-else-return
+  } else if (isErrorResponse && err && err.errorResponse !== null) {
     return getFormattedErrorFromResponse(err.errorResponse, errorMapping, [err.errorResponse]);
   } else {
     return err;

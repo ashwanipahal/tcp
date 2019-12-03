@@ -6,6 +6,7 @@ import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getLabelValue } from '@tcp/core/src/utils';
+import ErrorDisplay from '@tcp/core/src/components/common/atoms/ErrorDisplay';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -35,12 +36,62 @@ import { ICON_FONT_CLASS, ICON_NAME } from '../../../../../../common/atoms/Icon/
 import ImageCarousel from '../../ImageCarousel';
 import { getProductListToPathInMobileApp } from '../../ProductList/utils/productsCommonUtils';
 import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
+import { getCartItemInfo } from '../../../../../CnC/AddedToBag/util/utility';
 
 const TextProps = {
   text: PropTypes.string.isRequired,
 };
 
 let renderVariation = false;
+
+const handleFavoriteAddOrEdit = (
+  colorProductId,
+  item,
+  addToBagEcom,
+  onQuickViewOpenClick,
+  isFavoriteEdit
+) => {
+  const {
+    skuInfo: { skuId, size, fit, color },
+  } = item;
+  const { itemId, quantity, isTCP } = item.itemInfo;
+  const itemBrand = isTCP ? 'TCP' : 'GYM';
+  const orderInfo = {
+    orderItemId: itemId,
+    selectedQty: quantity,
+    selectedColor: color,
+    selectedSize: size,
+    selectedFit: fit,
+    skuId,
+    itemBrand,
+  };
+  if (skuId && size) {
+    if (isFavoriteEdit) {
+      onQuickViewOpenClick({
+        colorProductId,
+        orderInfo,
+        isFavoriteEdit: true,
+      });
+    } else if (addToBagEcom) {
+      let cartItemInfo = getCartItemInfo(item, {});
+      cartItemInfo = { ...cartItemInfo };
+      addToBagEcom(cartItemInfo);
+    }
+  } else if (isFavoriteEdit) {
+    onQuickViewOpenClick({
+      colorProductId,
+      orderInfo,
+      isFavoriteEdit: true,
+    });
+  } else {
+    onQuickViewOpenClick({
+      colorProductId,
+      orderInfo: {
+        itemBrand,
+      },
+    });
+  }
+};
 
 const onCTAHandler = props => {
   const {
@@ -50,6 +101,9 @@ const onCTAHandler = props => {
     onQuickViewOpenClick,
     isFavoriteOOS,
     setLastDeletedItemId,
+    addToBagEcom,
+    isFavoriteEdit,
+    isFavorite,
     isSuggestedItem,
     onReplaceWishlistItem,
   } = props;
@@ -72,7 +126,15 @@ const onCTAHandler = props => {
     } = item;
     setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
-    onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
+    onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item);
+  } else if (isFavorite) {
+    handleFavoriteAddOrEdit(
+      colorProductId,
+      item,
+      addToBagEcom,
+      onQuickViewOpenClick,
+      isFavoriteEdit
+    );
   } else {
     onQuickViewOpenClick({
       colorProductId,
@@ -120,7 +182,7 @@ const renderAddToBagContainer = (props, keepAlive) => {
         }
         onPress={() => onCTAHandler(props)}
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
-        margin="0 6px 0 0"
+        margin="0 0 0 0"
       />
     </AddToBagContainer>
   );
@@ -131,7 +193,12 @@ renderAddToBagContainer.propTypes = {
 };
 
 const onEditHandler = props => {
-  onCTAHandler(props);
+  const ctaProps = {
+    ...props,
+    isFavoriteEdit: true,
+    isFavorite: true,
+  };
+  onCTAHandler(ctaProps);
 };
 
 const isItemOutOfStock = (isKeepAliveEnabled, keepAlive, itemInfo) => {
@@ -179,6 +246,7 @@ const ListItem = props => {
     isSuggestedItem,
     outOfStockColorProductId,
     onDismissSuggestion,
+    errorMessages,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -190,6 +258,9 @@ const ListItem = props => {
   const keepAlive = getKeepAlive(isFavorite, itemInfo, miscInfoData);
   const itemOutOfStock = isItemOutOfStock(isKeepAliveEnabled, keepAlive, itemInfo);
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
+  const { generalProductId } = productInfo;
+  const errorMsg =
+    (errorMessages && get(errorMessages[generalProductId], 'errorMessage', null)) || null;
 
   return (
     <ListContainer
@@ -266,6 +337,9 @@ const ListItem = props => {
         />
       ) : null}
       {renderAddToBagContainer(props, itemOutOfStock)}
+      {errorMsg && (
+        <ErrorDisplay error={errorMsg} isBorder margins="12px 0 0 0" paddings="8px 8px 8px 8px" />
+      )}
       <RenderDismissLink
         isSuggestedItem={isSuggestedItem}
         outOfStockColorProductId={outOfStockColorProductId}
@@ -598,7 +672,9 @@ const RenderTitle = ({ text, onGoToPDPPage, colorsMap, productInfo, selectedColo
 
   if (renderVariation) return null;
   return (
-    <TitleContainer onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}>
+    <TitleContainer
+      onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)}
+    >
       <TitleText accessibilityRole="text" accessibilityLabel={text} numberOfLines={2}>
         {text}
       </TitleText>
@@ -788,7 +864,6 @@ ListItem.propTypes = {
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   currencySymbol: PropTypes.string.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
-  onQuickViewOpenClick: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool,
   setLastDeletedItemId: PropTypes.func,
   fullWidth: PropTypes.bool,
@@ -804,6 +879,10 @@ ListItem.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   renderMoveToList: PropTypes.func,
   onSeeSuggestedItems: PropTypes.func,
+  isSuggestedItem: PropTypes.bool,
+  outOfStockColorProductId: PropTypes.string,
+  onDismissSuggestion: PropTypes.func.isRequired,
+  errorMessages: PropTypes.shape({}).isRequired,
 };
 
 ListItem.defaultProps = {
@@ -837,6 +916,67 @@ ListItem.defaultProps = {
   outOfStockLabels: {},
   renderMoveToList: () => {},
   onSeeSuggestedItems: () => {},
+  isSuggestedItem: false,
+  outOfStockColorProductId: '',
+};
+RenderMoveToListOrSeeSuggestedList.propTypes = {
+  onSeeSuggestedItems: PropTypes.func,
+};
+
+RenderMoveToListOrSeeSuggestedList.defaultProps = {
+  onSeeSuggestedItems: () => {},
+};
+
+RenderDismissLink.propTypes = {
+  isSuggestedItem: PropTypes.bool,
+  outOfStockColorProductId: PropTypes.string,
+  onDismissSuggestion: PropTypes.func.isRequired,
+  labelsPlpTiles: PropTypes.shape({}),
+};
+
+RenderDismissLink.defaultProps = {
+  isSuggestedItem: false,
+  outOfStockColorProductId: '',
+  labelsPlpTiles: {},
+};
+
+RenderSuggestedLabel.propTypes = {
+  isSuggestedItem: PropTypes.bool,
+  labelsPlpTiles: PropTypes.shape({}),
+};
+
+RenderSuggestedLabel.defaultProps = {
+  isSuggestedItem: false,
+  labelsPlpTiles: {},
+};
+
+renderAddToBagContainer.propTypes = {
+  renderPriceOnly: PropTypes.bool,
+  bundleProduct: PropTypes.shape({}),
+  labelsPlpTiles: PropTypes.shape({}),
+  outOfStockLabels: PropTypes.shape({}),
+  isFavorite: PropTypes.bool,
+  isSuggestedItem: PropTypes.bool,
+};
+
+renderAddToBagContainer.defaultProps = {
+  renderPriceOnly: false,
+  bundleProduct: {},
+  labelsPlpTiles: {},
+  outOfStockLabels: {},
+  isFavorite: false,
+  isSuggestedItem: false,
+};
+
+RenderCloseIcon.propTypes = {
+  isSuggestedItem: PropTypes.bool,
+  outOfStockColorProductId: PropTypes.string,
+  onDismissSuggestion: PropTypes.func.isRequired,
+};
+
+RenderCloseIcon.defaultProps = {
+  isSuggestedItem: false,
+  outOfStockColorProductId: '',
 };
 
 export default withStyles(ListItem, styles);

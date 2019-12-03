@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 
-import moment from 'moment';
+import { format, differenceInDays } from 'date-fns';
 
 import icons from '../config/icons';
 import locators from '../config/locators';
@@ -439,18 +439,29 @@ export const childOptionsMap = () => {
   };
 };
 
+const returnValue = (condition, conditionTrueValue, conditionFalseValue) => {
+  return condition ? conditionTrueValue : conditionFalseValue;
+};
+
 /**
  *
  * @param {object} labelState object in which key needs to be searched
  * @param {string} labelKey string whose value
  * @param {string} subCategory label subCategory
  * @param {string} category label category
+ * @param {boolean} isreferredContent is label referred content (moduleXContent)
  * This function will return label value if labelKey is present in the object
  * or labelKey itself if its not present in the labelState.
  */
-export const getLabelValue = (labelState, labelKey, subCategory, category) => {
+export const getLabelValue = (
+  labelState,
+  labelKey,
+  subCategory,
+  category,
+  isreferredContent = false
+) => {
   if (typeof labelState !== 'object') {
-    return typeof labelKey !== 'string' ? '' : labelKey; // for incorrect params return empty string
+    return typeof labelKey !== 'string' ? returnValue(isreferredContent, [], '') : labelKey; // for incorrect params return empty string
   }
   let labelValue = '';
 
@@ -469,7 +480,7 @@ export const getLabelValue = (labelState, labelKey, subCategory, category) => {
     labelValue = labelState[labelKey];
   }
 
-  return typeof labelValue === 'string' ? labelValue : labelKey;
+  return typeof labelValue === 'string' ? labelValue : returnValue(isreferredContent, [], labelKey);
 };
 
 // eslint-disable-next-line
@@ -980,6 +991,7 @@ export const getOrderGroupLabelAndMessage = orderProps => {
     isBopisOrder,
     pickUpExpirationDate,
   } = orderProps;
+  const dateFormat = 'MMMM dd, yyyy';
 
   // ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
 
@@ -990,7 +1002,7 @@ export const getOrderGroupLabelAndMessage = orderProps => {
       message =
         shippedDate === constants.STATUS_CONSTANTS.NA
           ? shippedDate
-          : moment(shippedDate).format('LL');
+          : format(new Date(shippedDate), dateFormat);
       break;
     case constants.STATUS_CONSTANTS.ORDER_CANCELED:
     case constants.STATUS_CONSTANTS.ORDER_EXPIRED:
@@ -1003,13 +1015,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
       break;
     case constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pleasePickupBy');
-      message = moment(pickUpExpirationDate).format('LL');
+      message = format(new Date(pickUpExpirationDate), dateFormat);
       break;
 
     case constants.STATUS_CONSTANTS.ORDER_PICKED_UP:
     case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
-      message = moment(pickedUpDate).format('LL');
+      message = format(new Date(pickedUpDate), dateFormat);
       break;
     default:
       ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
@@ -1070,26 +1082,6 @@ export const getProductUrlForDAM = uniqueId => {
   return `${uniqueId.split('_')[0]}/${uniqueId}`;
 };
 
-export const getQueryParamsFromUrl = (url, queryParam) => {
-  let queryString = url || '';
-  let keyValPairs = [];
-  const params = {};
-  queryString = queryString.replace(/.*?\?/, '');
-
-  if (queryString.length) {
-    keyValPairs = queryString.split('&');
-    const resultingArray = Object.values(keyValPairs);
-
-    resultingArray.filter((item, index) => {
-      const key = item.split('=')[0];
-      if (typeof params[key] === 'undefined') params[key] = [];
-      params[key].push(resultingArray[index].split('=')[1]);
-      return params;
-    });
-  }
-  return params[queryParam];
-};
-
 /**
  *
  * Get labels based on pattern
@@ -1144,7 +1136,7 @@ export const orderStatusMapperForNotification = {
  * @param {String} status -
  * @return orderStatus
  */
-export const getOrderStatusForNotification = status => {
+export const getOrderStatusForNotification = (status = '') => {
   const orderStatus =
     orderStatusMapperForNotification[status] ||
     orderStatusMapperForNotification[status.toLowerCase()] ||
@@ -1163,9 +1155,8 @@ export const validateDiffInDaysNotification = (
   orderDateParam,
   limitOfDaysToDisplayNotification
 ) => {
-  let orderDate = orderDateParam;
-  orderDate = moment(orderDate, 'MMM DD, YYYY');
-  if (moment().diff(orderDate, 'days') <= limitOfDaysToDisplayNotification) {
+  const orderDate = orderDateParam ? new Date(orderDateParam) : new Date();
+  if (differenceInDays(new Date(), orderDate) <= limitOfDaysToDisplayNotification) {
     return true;
   }
   return false;

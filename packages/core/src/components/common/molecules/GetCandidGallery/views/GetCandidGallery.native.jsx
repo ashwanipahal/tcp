@@ -139,7 +139,7 @@ class GetCandidGallery extends React.PureComponent {
                 })
               }
             >
-              <Image source={{ uri: ImageUrl }} width={142} height={142} />
+              <Image source={{ uri: ImageUrl }} alt="" width={142} height={142} />
               <ShopLookItemCaption
                 fontFamily="secondary"
                 fontSize="fs14"
@@ -200,6 +200,7 @@ class GetCandidGallery extends React.PureComponent {
         <Touchable accessibilityRole="image" onPress={() => this.candidItemClickHandler(index)}>
           <Image
             source={{ uri: image.Url }}
+            alt=""
             width={this.getImageSize()}
             height={this.calculateItemHeight()}
           />
@@ -208,7 +209,7 @@ class GetCandidGallery extends React.PureComponent {
           <View>
             <DescriptionWrapper>
               <ProfileImageWrapper>
-                <Image source={{ uri: ProfilePicture }} width={66} height={66} />
+                <Image source={{ uri: ProfilePicture }} alt="" width={66} height={66} />
               </ProfileImageWrapper>
               <CaptionTextWrapper>
                 <BodyCopy
@@ -338,3 +339,4 @@ export default connect(
   mapStateToProps,
   {}
 )(GetCandidGallery);
+export { GetCandidGallery as GetCandidGalleryVanilla };

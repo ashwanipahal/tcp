@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import BodyCopy from '../../../atoms/BodyCopy';
 import { getScreenWidth } from '../../../../../utils/index.native';
-import { ViewWithSpacing } from '../../../atoms/styledWrapper';
 
 // @flow
 
@@ -112,7 +111,7 @@ const Address = ({
   regularName,
 }: Props) => {
   return address ? (
-    <ViewWithSpacing spacingStyles="margin-left-XS" style={style}>
+    <View style={style}>
       {showName && getNameFromAddress(address, showDefaultText, regularName)}
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix, fontSize })
@@ -144,7 +143,7 @@ const Address = ({
           color="gray.900"
         />
       )}
-    </ViewWithSpacing>
+    </View>
   ) : null;
 };
 

@@ -33,38 +33,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
         />
       </Text>
     </Styled(View)>
-    <Styled(View)>
-      <Text>
-        <Styled(BodyCopy)
-          accessibilityText=""
-          bodySize="one"
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="regular"
-          margin={null}
-          numberOfLines={null}
-          text="undefined:"
-          textAlign="left"
-          textDecoration={null}
-        />
-      </Text>
-      <Text>
-        <Styled(BodyCopy)
-          accessibilityText=""
-          bodySize="one"
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="regular"
-          margin={null}
-          numberOfLines={null}
-          text="0.00"
-          textAlign="right"
-          textDecoration={null}
-        />
-      </Text>
-    </Styled(View)>
+    <Styled(View) />
     <Styled(LineComp)
       borderColor="gray.600"
       borderWidth={0.65}

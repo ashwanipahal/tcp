@@ -116,6 +116,7 @@ const PromotionESpotTextContainer = styled.View`
 const Container = styled.View`
   ${getAdditionalStyle}
   ${getContainerStyle}
+  margin: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const UnavailableLink = styled.View`

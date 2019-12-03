@@ -10,7 +10,6 @@ import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { isFiltersAvailable } from '../../ProductListing/container/ProductListing.selectors';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
 
@@ -31,13 +30,7 @@ const redirectToSuggestedUrl = (searchText, url) => {
 
 class SearchListingView extends React.Component {
   componentDidUpdate(prevProps) {
-    const {
-      products,
-      trackPageLoad,
-      pageNameProp,
-      pageSectionProp,
-      pageSubSectionProp,
-    } = this.props;
+    const { products, trackPageLoad } = this.props;
     const productsFormatted = this.formatProductsData(products);
     if (prevProps.products !== products && productsFormatted.length) {
       trackPageLoad({
@@ -64,7 +57,7 @@ class SearchListingView extends React.Component {
         colorId: generalProductId,
         name: productName,
         price: offerPrice,
-        listPrice: listPrice,
+        listPrice,
         extPrice: priceRange.lowOfferPrice,
         position: index + 1,
         type: categoryName,
@@ -210,7 +203,6 @@ class SearchListingView extends React.Component {
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
           </Col>
         </Row>
-        <QuickViewModal />
       </div>
     );
   }
@@ -249,6 +241,10 @@ SearchListingView.propTypes = {
   ),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  trackPageLoad: PropTypes.func,
+  pageNameProp: PropTypes.string,
+  pageSectionProp: PropTypes.string,
+  pageSubSectionProp: PropTypes.string,
 };
 
 SearchListingView.defaultProps = {
@@ -275,6 +271,10 @@ SearchListingView.defaultProps = {
   searchResultSuggestions: [],
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
+  pageNameProp: '',
+  pageSectionProp: '',
+  pageSubSectionProp: '',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing block for VideoPlayer VideoPlayer should be rendered correclty  1`] = `
+<Video
+  controls={true}
+  data-setup="{\\"fluid\\": true}"
+  muted={true}
+  paused={false}
+  poster=""
+  posterResizeMode="contain"
+  repeat={true}
+  resizeMode="cover"
+  source={
+    Object {
+      "uri": undefined,
+    }
+  }
+  style={
+    Object {
+      "height": 400,
+      "width": 400,
+    }
+  }
+/>
+`;

@@ -151,11 +151,11 @@ const WithOutRibbonView = props => {
  */
 
 const ModuleS = props => {
-  const { moduleWidth, className, ribbonBanner } = props;
+  const { moduleWidth, className, ribbonBanner, moduleClassName } = props;
   const colSize = getColSize(moduleWidth);
   const ribbonPresent = ribbonBanner && ribbonBanner.length > 0;
   return (
-    <Row fullBleed className={className}>
+    <Row fullBleed className={`${className} ${moduleClassName}`}>
       <Col colSize={colSize}>
         {!ribbonPresent && <WithOutRibbonView {...props} />}
         {ribbonPresent && <RibbonView {...props} />}
@@ -175,11 +175,13 @@ ModuleS.propTypes = {
   className: PropTypes.string.isRequired,
   ribbonBanner: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))),
   moduleWidth: PropTypes.string,
+  moduleClassName: PropTypes.string,
 };
 
 ModuleS.defaultProps = {
   moduleWidth: 'half',
   ribbonBanner: null,
+  moduleClassName: '',
 };
 
 export default ModuleS;
