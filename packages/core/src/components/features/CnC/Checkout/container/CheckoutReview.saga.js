@@ -36,7 +36,6 @@ import {
   getCouponList,
 } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 
-import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
@@ -362,10 +361,8 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     // const vendorId =
     //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
     yield put(getSetOrderProductDetails(cartItems));
-    yield put(CHECKOUT_ACTIONS.resetCheckoutReducer());
     yield put(resetAirmilesReducer());
     yield put(resetCouponReducer());
-    yield put(BagActions.resetCartReducer());
     yield put(getSetCheckoutStage(constants.CHECKOUT_STAGES.CONFIRMATION));
     yield call(fetchCoupons, isCouponAppliedInOrder);
     // getProductsOperator(this.store).loadProductRecommendations(
