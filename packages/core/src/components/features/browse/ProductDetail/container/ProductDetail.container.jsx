@@ -83,7 +83,7 @@ class ProductDetailContainer extends React.PureComponent {
     return productId;
   };
 
-  static getInitialProps = async ({ props, query, isServer }, pageProps) => {
+  static getInitialProps = async ({ props, query, isServer }) => {
     const { getDetails } = props;
     let pid;
     if (isServer) {
@@ -112,11 +112,8 @@ class ProductDetailContainer extends React.PureComponent {
         .toLowerCase()}`;
     }
 
-    console.info(pageProps);
     return {
-      ...pageProps,
-      pageData: {
-        ...pageProps.pageData,
+      pageProps: {
         pageName,
       },
     };

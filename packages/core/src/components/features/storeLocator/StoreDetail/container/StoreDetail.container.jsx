@@ -52,6 +52,11 @@ export class StoreDetailContainer extends PureComponent {
 
     trackStoreDetailPageView({
       eventData: { customEvents: ['event80', 'event96'] },
+      pageName: 'storelocator',
+      pageType: 'companyinfo',
+      pageSection: 'storelocator',
+      pageSubSection: 'storelocator',
+      pageNavigationText: 'header-find a store',
       internalCampaignIdList: internalCampaignProductAnalyticsList(),
     });
 
@@ -106,7 +111,9 @@ export class StoreDetailContainer extends PureComponent {
       this.mapHandler(store);
     } else {
       window.open(
-        `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`,
+        `${
+          googleMapConstants.OPEN_STORE_DIR_WEB
+        }${addressLine1},%20${city},%20${state},%20${zipCode}`,
         '_blank',
         'noopener'
       );
@@ -176,15 +183,8 @@ export class StoreDetailContainer extends PureComponent {
 StoreDetailContainer.getInitialProps = (reduxProps, pageProps) => {
   return {
     ...pageProps,
-    ...{
-      pageData: {
-        pageName: 'storelocator',
-        pageType: 'companyinfo',
-        pageSection: 'storelocator',
-        pageSubSection: 'storelocator',
-        pageNavigationText: 'header-find a store',
-        loadAnalyticsOnload: false,
-      },
+    pageData: {
+      loadAnalyticsOnload: false,
     },
   };
 };
@@ -289,4 +289,7 @@ export const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoreDetailContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StoreDetailContainer);
