@@ -41,7 +41,7 @@ class StyledPLCCTimedoutModal extends React.PureComponent {
         isOpen={isModalOpen}
         onRequestClose={this.restartApplication}
         overlayClassName="TCPModal__Overlay"
-        className={`${className} TCPModal__Content`}
+        className={`${className} TCPModal__Content plccModal`}
         dataLocatorHeader={getLocator('plcc_time_out_modal_2_close_btn')}
         maxWidth="458px"
         minHeight={getModalHeight(bagItems, isPLCCModalFlow)}

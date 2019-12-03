@@ -12,9 +12,6 @@ export function* fetchProductTabListData({ payload }) {
   try {
     const res = yield call(lightweightProductListing.getData, payload);
     if (res) {
-      if (isMobileApp() && res && res.length === 0) {
-        yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
-      }
       return yield put(
         productTabListDataSuccess({
           [categoryId]: res,

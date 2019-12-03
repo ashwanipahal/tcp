@@ -43,6 +43,7 @@ import {
   getVenmoPayment,
   isVenmoOrderPayment,
   getVenmoOrderUserId,
+  isVenmoAppInstalled,
 } from './CheckoutVenmo.selector';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
@@ -1072,4 +1073,5 @@ export default {
   isVenmoOrderPayment,
   getVenmoOrderUserId,
   getShippingInitialSectionValues,
+  isVenmoAppInstalled,
 };

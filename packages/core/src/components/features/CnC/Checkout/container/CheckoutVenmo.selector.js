@@ -29,6 +29,9 @@ export const getVenmoError = state => {
   return error ? error.message : '';
 };
 
+export const isVenmoAppInstalled = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoAppInstalled']);
+
 /**
  * Mainly used to check for Venmo nonce expiry
  * @param state

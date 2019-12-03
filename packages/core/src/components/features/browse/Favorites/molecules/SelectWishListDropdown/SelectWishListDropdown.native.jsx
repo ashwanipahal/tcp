@@ -83,16 +83,9 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
 
   static getDerivedStateFromProps(props, state) {
     const { selectedLabelState } = state;
-    if (props.selectedValue !== selectedLabelState) {
-      const result = props.data.find(item => {
-        if (item.displayName) return item.displayName === props.selectedValue;
-        return item.id === props.selectedValue;
-      });
-
-      if (result) {
-        if (result.displayName) return { selectedLabelState: result.displayName };
-        return { selectedLabelState: result.displayName };
-      }
+    const { selectedValue } = props;
+    if (selectedValue !== '' && selectedValue !== selectedLabelState) {
+      return { selectedLabelState: selectedValue };
     }
     return null;
   }
