@@ -25,11 +25,13 @@ class FavoritesView extends React.PureComponent {
 
   constructor(props) {
     super(props);
+    const { labels } = props;
     this.state = {
       isOpenModal: false,
       itemToMove: '',
       addListFromMoveOption: false,
       seeSuggestedDictionary: {},
+      selectedShareOption: labels.lbl_fav_share,
     };
   }
 
@@ -103,22 +105,32 @@ class FavoritesView extends React.PureComponent {
     return currentWishList && currentWishList[0].shareableLink;
   };
 
-  handleFacebookShare = () => {
-    const shareUrl = this.getSharableLink();
-    const { facebookShareURL } = getAPIConfig();
-    const url = `${facebookShareURL}${encodeURIComponent(shareUrl)}`;
-
-    openWindow(url);
+  handleFacebookShare = lbl => {
+    const { labels } = this.props;
+    this.setState(
+      {
+        selectedShareOption: lbl,
+      },
+      () => {
+        this.setState({
+          selectedShareOption: labels.lbl_fav_share,
+        });
+        const shareUrl = this.getSharableLink();
+        const { facebookShareURL } = getAPIConfig();
+        const url = `${facebookShareURL}${encodeURIComponent(shareUrl)}`;
+        openWindow(url);
+      }
+    );
   };
 
   shareClickHandler = value => {
     const { labels } = this.props;
     if (value === labels.lbl_fav_email) {
-      this.handleShareList();
+      this.handleShareList(labels.lbl_fav_email);
     } else if (value === labels.lbl_fav_copyLink) {
-      this.handleCopyLink();
+      this.handleCopyLink(labels.lbl_fav_copyLink);
     } else {
-      this.handleFacebookShare();
+      this.handleFacebookShare(labels.lbl_fav_facebook);
     }
   };
 
@@ -254,30 +266,35 @@ class FavoritesView extends React.PureComponent {
     });
   };
 
-  handleShareList = () => {
+  handleShareList = lbl => {
     this.currentPopupName = 'shareList';
     this.setState({
       isOpenModal: true,
+      selectedShareOption: lbl,
     });
   };
 
-  handleCopyLink = () => {
+  handleCopyLink = lbl => {
     this.currentPopupName = 'copyLink';
     this.setState({
       isOpenModal: true,
+      selectedShareOption: lbl,
     });
   };
 
   onCloseModal = moveItem => {
+    const { labels } = this.props;
     if (moveItem) {
       this.setState({
         isOpenModal: false,
         itemToMove: '',
         addListFromMoveOption: false,
+        selectedShareOption: labels.lbl_fav_share,
       });
     } else {
       this.setState({
         isOpenModal: false,
+        selectedShareOption: labels.lbl_fav_share,
       });
     }
   };
@@ -333,7 +350,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   onShareListSubmit = data => {
-    const { sendWishListEmail } = this.props;
+    const { sendWishListEmail, labels } = this.props;
+    this.setState({
+      selectedShareOption: labels.lbl_fav_share,
+    });
     const payload = {
       shareToEmailAddresses: data.toEmail,
       shareFromEmailAddresses: data.fromEmail,
@@ -455,6 +475,8 @@ class FavoritesView extends React.PureComponent {
       appliedFilterLength,
     } = this.props;
 
+    const { selectedShareOption } = this.state;
+
     const shareOptions = [
       {
         title: labels.lbl_fav_facebook,
@@ -534,7 +556,7 @@ class FavoritesView extends React.PureComponent {
                   {isActiveListHaveLength ? (
                     <CustomSelect
                       options={shareOptions}
-                      activeTitle={labels.lbl_fav_share}
+                      activeTitle={selectedShareOption}
                       clickHandler={(e, value) => this.shareClickHandler(value)}
                       customSelectClassName="social-share-fav-list"
                     />
