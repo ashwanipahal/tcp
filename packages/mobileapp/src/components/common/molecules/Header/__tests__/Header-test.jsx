@@ -8,6 +8,11 @@ describe('Header Component', () => {
   let component;
   const props = {
     labels: {},
+    screenProps: {
+      network: {
+        isConnected: false,
+      },
+    },
   };
 
   beforeEach(() => {

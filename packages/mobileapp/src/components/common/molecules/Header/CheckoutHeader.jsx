@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLocator } from '@tcp/core/src/utils';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import CheckoutSelectors, {
   isExpressCheckout,
 } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
@@ -22,6 +23,7 @@ import {
   BackIcon,
   BackIconTouchable,
 } from './Header.style';
+import { INTERNET_OFF } from './Header.constants';
 
 const { getCheckoutProgressBarLabels, getCurrentCheckoutStage } = CheckoutSelectors;
 
@@ -55,6 +57,7 @@ class CheckoutHeader extends React.PureComponent {
     if (prevCurrentStage !== currentStage) {
       this.updateState({ currentStage });
     }
+    this.noInterNetHandle(prevProps);
   }
 
   onBackPress = () => {
@@ -71,6 +74,23 @@ class CheckoutHeader extends React.PureComponent {
 
   updateState({ currentStage }) {
     this.setState({ currentStage });
+  }
+
+  noInterNetHandle(prevProps) {
+    const {
+      screenProps: {
+        network: { isConnected },
+      },
+      toastMessage,
+    } = this.props;
+    const {
+      screenProps: {
+        network: { isConnected: PrevIsConnected },
+      },
+    } = prevProps;
+    if (isConnected !== PrevIsConnected && !isConnected) {
+      toastMessage(INTERNET_OFF);
+    }
   }
 
   render() {
@@ -140,6 +160,9 @@ const mapDispatchToProps = dispatch => {
     setCheckoutStage: payload => {
       dispatch(getSetCheckoutStage(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
   };
 };
 
@@ -152,6 +175,8 @@ CheckoutHeader.propTypes = {
   isExpressCheckoutPage: PropTypes.bool,
   checkoutHeaderLabels: PropTypes.shape({}),
   isPayPalWebViewEnable: PropTypes.bool,
+  screenProps: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
 };
 
 CheckoutHeader.defaultProps = {
@@ -161,6 +186,8 @@ CheckoutHeader.defaultProps = {
     lbl_checkoutHeader_expressCheckout: '',
   },
   isPayPalWebViewEnable: false,
+  screenProps: {},
+  toastMessage: () => {},
 };
 
 export default connect(

@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
-import { StackActions, NavigationActions } from 'react-navigation';
 // import { Box, Text } from '@fabulas/astly';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
 
@@ -101,22 +100,6 @@ class HomePageView extends React.PureComponent {
   componentWillUnmount() {
     Linking.removeEventListener('url', this.handleOpenURL);
     this.setState({ handeOpenURLRegister: false });
-  }
-
-  static getDerivedStateFromProps(props) {
-    const {
-      navigation,
-      screenProps: {
-        network: { isConnected },
-      },
-    } = props;
-    if (navigation && !isConnected) {
-      const resetAction = StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: 'NoInternet' })],
-      });
-      navigation.dispatch(resetAction);
-    }
   }
 
   /**
