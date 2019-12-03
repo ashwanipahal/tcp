@@ -37,6 +37,10 @@ const ImageStyle = styled.Image`
   width: 100px;
   height: 100px;
 `;
+const LoaderWrapper = styled.View`
+  flex: 1;
+  max-width: 50px;
+`;
 const ProductSubDetails = styled.View`
   padding-top: 15px;
   flex: 1;
@@ -56,4 +60,5 @@ export {
   ImageGymBrandStyle,
   ProductSubDetails,
   ProductSubDetailLabel,
+  LoaderWrapper,
 };

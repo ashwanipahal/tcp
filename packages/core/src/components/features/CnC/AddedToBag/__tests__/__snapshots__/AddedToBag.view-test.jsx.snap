@@ -392,6 +392,7 @@ exports[`Added to Bag View with Multiple Items should render Added to Bag view  
 ",
           ]
         }
+        isDoubleAddedToBag={true}
         labels={Object {}}
       />
     </div>
