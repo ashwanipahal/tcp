@@ -133,7 +133,7 @@ StoreLanding.getInitActions = () => initActions;
 StoreLanding.getInitialProps = (reduxProps, pageProps) => {
   return {
     ...pageProps,
-    ...{
+    {
       pageData: {
         pageName: 'storelocator',
         pageType: 'companyinfo',

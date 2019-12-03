@@ -173,6 +173,22 @@ export class StoreDetailContainer extends PureComponent {
   }
 }
 
+StoreDetailContainer.getInitialProps = (reduxProps, pageProps) => {
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'storelocator',
+        pageType: 'companyinfo',
+        pageSection: 'storelocator',
+        pageSubSection: 'storelocator',
+        pageNavigationText: 'header-find a store',
+        loadAnalyticsOnload: false,
+      },
+    },
+  };
+};
+
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),
   formatStore: PropTypes.func.isRequired,
