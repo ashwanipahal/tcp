@@ -58,7 +58,10 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../ProductDetail/container/ProductDetail.selectors';
-import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import {
+  fetchAddToFavoriteErrorMsg,
+  fetchErrorMessages,
+} from '../../Favorites/container/Favorites.selectors';
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 const defaultResolver = mod => mod.default;
@@ -358,6 +361,7 @@ function mapStateToProps(state) {
     pageNameProp: getPageName(state),
     pageSectionProp: getPageSection(state),
     pageSubSectionProp: getPageSubSection(state),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
