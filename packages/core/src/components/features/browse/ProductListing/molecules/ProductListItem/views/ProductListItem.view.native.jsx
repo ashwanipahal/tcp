@@ -148,13 +148,15 @@ const getOOSButtonLabel = (isFavorite, outOfStockLabels, labelsPlpTiles) => {
 
 const renderAddToBagContainer = (props, keepAlive) => {
   const {
+    item,
     renderPriceOnly,
-    bundleProduct,
     labelsPlpTiles,
     outOfStockLabels,
     isFavorite,
     isSuggestedItem,
   } = props;
+  const { productInfo } = item;
+  const { bundleProduct } = productInfo;
   if (renderVariation && renderPriceOnly) return null;
   let buttonLabel = '';
   if (isSuggestedItem) {
@@ -186,10 +188,6 @@ const renderAddToBagContainer = (props, keepAlive) => {
       />
     </AddToBagContainer>
   );
-};
-
-renderAddToBagContainer.propTypes = {
-  props: PropTypes.shape({}).isRequired,
 };
 
 const onEditHandler = props => {
@@ -957,6 +955,8 @@ renderAddToBagContainer.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   isFavorite: PropTypes.bool,
   isSuggestedItem: PropTypes.bool,
+  props: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({}),
 };
 
 renderAddToBagContainer.defaultProps = {
@@ -966,6 +966,7 @@ renderAddToBagContainer.defaultProps = {
   outOfStockLabels: {},
   isFavorite: false,
   isSuggestedItem: false,
+  item: {},
 };
 
 RenderCloseIcon.propTypes = {
