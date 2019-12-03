@@ -350,6 +350,9 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoI
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  // For Venmo, express checkout from page is returning plcc eligibility as false.
+  // So, updating to process as normal fromPage for Venmo
+  const isExpress = isVenmoInProgress ? false : isExpressCheckoutEnabled;
   if (pageName === BILLING && showRTPSOnBilling) {
     yield call(updateUserRTPSData, {
       prescreen: true,
@@ -361,7 +364,7 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoI
     (isPaypalPostBack || isVenmoInProgress || isExpressCheckoutEnabled) &&
     pageName === REVIEW
   ) {
-    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
+    yield call(updateUserRTPSData, { prescreen: true, isExpress, navigation });
   }
 }
 
