@@ -19,9 +19,7 @@ export function AppProvider(props) {
         <ThemeProvider theme={{}}>
           <LocationProvider>
             <ReduxProvider store={store}>
-              <ErrorReportProvider>
-                <ErrorBoundary>{children}</ErrorBoundary>
-              </ErrorReportProvider>
+              <ErrorReportProvider>{children}</ErrorReportProvider>
             </ReduxProvider>
           </LocationProvider>
         </ThemeProvider>

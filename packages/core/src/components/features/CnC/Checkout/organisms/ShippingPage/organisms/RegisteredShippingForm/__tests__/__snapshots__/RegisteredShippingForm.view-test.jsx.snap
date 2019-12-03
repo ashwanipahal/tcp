@@ -880,7 +880,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1269,7 +1268,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1439,7 +1437,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1780,7 +1777,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1950,7 +1946,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -2292,7 +2287,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -2588,7 +2582,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -2758,7 +2751,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3006,7 +2998,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3176,7 +3167,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3424,7 +3414,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3594,7 +3583,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3842,7 +3830,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -4012,7 +3999,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",

@@ -6,18 +6,18 @@ import Button from '../../../../../atoms/Button';
 import Col from '../../../../../atoms/Col';
 import Row from '../../../../../atoms/Row';
 
-const applyBonusPoints = (getBonusDaysData, orderDetails, bonusDayAvailableToday) => {
+const applyBonusPoints = (getAvailableBonusDaysData, orderDetails, bonusDayAvailableToday) => {
   const dto = {
     bonusDaySelected: bonusDayAvailableToday ? 0 : 1,
     orderId: orderDetails,
   };
-  return getBonusDaysData(dto);
+  return getAvailableBonusDaysData(dto);
 };
 
 const BonusPointsAvailability = ({
   bonusPoints,
   className,
-  getBonusDaysData,
+  getAvailableBonusDaysData,
   orderDetails,
   bonusDayAvailableToday,
   isPlaceRewardsPage,
@@ -51,7 +51,7 @@ const BonusPointsAvailability = ({
                 data-locator={item.dataLocator}
                 className={`${btnClass} ${isPlaceRewardsPage ? 'pointerEventsNone' : ''}`}
                 onClick={() =>
-                  applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday)
+                  applyBonusPoints(getAvailableBonusDaysData, orderDetails, bonusDayAvailableToday)
                 }
               >
                 {item.buttonText}

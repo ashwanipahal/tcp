@@ -101,7 +101,7 @@ const getBillingAddressWrapper = (selectedCard, onFileCardKey, labels) => {
  * @function getCheckoutBillingAddress
  * @description returns the checkout billing address form
  */
-const getCheckoutBillingAddress = scope => (val = {}) => {
+const getCheckoutBillingAddress = (scope, val = {}) => {
   const { editMode } = val;
   const {
     bagLoading,

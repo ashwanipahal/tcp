@@ -5,7 +5,6 @@ import { formValueSelector } from 'redux-form';
 import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
-  getGiftWrappingOptions,
   getShippingMethods,
   setShippingMethodAndAddressId,
   getInternationCheckoutSettings,
@@ -18,7 +17,6 @@ import CHECKOUT_ACTIONS, {
   getSetPickupAltValuesActn,
   getSetShippingValuesActn,
   getSetBillingValuesActn,
-  getSetGiftWrapOptionsActn,
   setIsLoadingShippingMethods,
   setShippingOptions,
   setAddressError,
@@ -39,7 +37,6 @@ import {
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
-  pickUpRouting,
   callPickupSubmitMethod,
   callUpdateRTPS,
   handleServerSideErrorAPI,
@@ -48,8 +45,10 @@ import {
   makeUpdateRTPSCall,
   shouldInvokeReviewCartCall,
   redirectFromExpress,
+  getGiftWrapOptionsData,
 } from './Checkout.saga.util';
-import { submitEmailSignup } from './CheckoutExtended.saga.util';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { submitEmailSignup, pickUpRouting } from './CheckoutExtended.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
@@ -59,17 +58,6 @@ const { getIsOrderHasShipping, getShippingDestinationValues, getDefaultAddress }
 const { getGiftServicesFormData, getShipmentMethods, getCurrentCheckoutStage } = selectors;
 const { hasPOBox } = utility;
 let oldHasPOB = {};
-
-function* loadGiftWrappingOptions() {
-  try {
-    const res = yield call(getGiftWrappingOptions);
-    yield put(getSetGiftWrapOptionsActn(res));
-  } catch (e) {
-    // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
-    // throw e;
-    logger.error(e);
-  }
-}
 
 function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = true */) {
   // setCartInfo(cartInfo, isSetCartItems, shouldExportActions)
@@ -99,21 +87,26 @@ function* submitPickupSection({ payload }) {
   try {
     const formData = { ...payload };
     const { navigation } = payload;
+    const isGuestUser = yield select(isGuest);
+    const getIsShippingRequired = yield select(getIsOrderHasShipping);
     yield put(setLoaderState(true));
     yield submitEmailSignup(formData.pickUpContact.emailAddress, formData);
     const result = yield call(callPickupSubmitMethod, formData);
     yield put(setLoaderState(false));
 
     if (result.addressId) {
-      yield call(getAddressList);
-      yield call(getCardList, { ignoreCache: true });
+      if (!isGuestUser) {
+        yield call(getAddressList);
+        yield call(getCardList, { ignoreCache: true });
+      }
       if (!isMobileApp()) {
-        const getIsShippingRequired = yield select(getIsOrderHasShipping);
         const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
         const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
         pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
       } else if (navigation) {
-        yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+        if (getIsShippingRequired) {
+          yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+        } else yield put(getSetCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM));
       }
     }
     /* In the future I imagine us sending the SMS to backend for them to
@@ -193,6 +186,7 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
 
 function* initShippingData(pageName) {
   if (pageName === CONSTANTS.CHECKOUT_STAGES.SHIPPING) {
+    yield call(getGiftWrapOptionsData);
     let shippingAddress = yield select(getShippingDestinationValues);
     const shipmentMethods = yield select(getShipmentMethods);
     shippingAddress = shippingAddress.address;
@@ -223,7 +217,7 @@ function* triggerInternationalCheckoutIfRequired() {
 }
 
 function* initCheckoutSectionData({ payload }) {
-  const { recalc, pageName, isPaypalPostBack, appRouting, navigation } = payload;
+  const { recalc, pageName, isPaypalPostBack, appRouting, navigation, initialLoad } = payload;
   yield call(triggerInternationalCheckoutIfRequired);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   const { PICKUP, SHIPPING, BILLING } = CONSTANTS.CHECKOUT_STAGES;
@@ -260,7 +254,7 @@ function* initCheckoutSectionData({ payload }) {
 
   yield all(pendingPromises);
   const requestedStage = yield call(handleCheckoutInitRouting, { pageName }, appRouting);
-  yield call(initShippingData, requestedStage);
+  yield call(initShippingData, requestedStage, initialLoad);
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
   if (makeUpdateRTPSCall(pageName, isPaypalPostBack, isExpressCheckoutEnabled, isVenmoInProgress)) {
     yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack);
@@ -289,6 +283,7 @@ function* triggerExpressCheckout(
     pageName = pageName.toLowerCase();
   }
   try {
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield startExpressCheckout(shouldPreScreenUser, source);
     if (!res.orderId) {
       return yield redirectFromExpress();
@@ -338,6 +333,7 @@ function* loadExpressCheckout(isRecalcRewards, section, navigation, isPaypalPost
 
 function* loadStartupData(isPaypalPostBack, isRecalcRewards, section, navigation /* isVenmo */) {
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const isGuestUser = yield select(isGuest);
   // const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
   // if (isVenmo) {
   //   const venmoData = getLocalStorage(VENMO_STORAGE_KEY);
@@ -357,7 +353,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, section, navigation
   // }
   // let checkoutSignalsOperator = getCheckoutSignalsOperator(this.store);
   // let generalOperator = getGeneralOperator(this.store);
-  const pendingPromises = [call(loadGiftWrappingOptions)];
+  const pendingPromises = [];
   //   let loadCartAndCheckoutDetails = () => {
   //     return this.loadUpdatedCheckoutValues(null, null, isRecalcRewards)
   //     .then(loadSelectedOrDefaultShippingMethods);
@@ -381,7 +377,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, section, navigation
     pendingPromises.push(
       call(loadExpressCheckout, isRecalcRewards, section, navigation, isPaypalPostBack)
     );
-  } else {
+  } else if (!isGuestUser) {
     pendingPromises.push(call(getAddressList));
   }
 
@@ -622,7 +618,9 @@ function* submitShipping({
   // REVIEW: the true indicates to load the reward data for user.
   // But how can the reward points change here?
   yield select(selectors.getSmsNumberForOrderUpdates);
-  yield call(getAddressList);
+  if (!isGuestUser) {
+    yield call(getAddressList);
+  }
 }
 
 export function* submitBillingSection(action) {

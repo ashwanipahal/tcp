@@ -7,6 +7,7 @@ const CouponDetailModalStyle = css`
   }
   .earnPointsModal_title {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .imageSizeSingle {
     width: 70px;
@@ -34,23 +35,28 @@ const CouponDetailModalStyle = css`
     align-items: center;
   }
 
-  .AppDownload {
+  .AppDownload,
+  .Gymboree_AppDownload {
     background-image: url(${getStaticFilePath('images/download-app.png')});
   }
-  .ProductReview {
+  .ProductReview,
+  .Gymboree_ProductReview {
     background-image: url(${getStaticFilePath('images/review.png')});
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .FacebookLink {
+  .FacebookLink,
+  .Gymboree_FacebookLink {
     background-image: url(${getStaticFilePath('images/facebook.png')});
   }
-  .InstagramLink {
+  .InstagramLink,
+  .Gymboree_InstagramLink {
     background-image: url(${getStaticFilePath('images/instagram.png')});
   }
   .ChildProfile {
     background-image: url(${getStaticFilePath('images/child-birthday-profile.png')});
   }
-  .SMSOptIn {
+  .SMSOptIn,
+  .Gymboree_SMSOptIn {
     background-image: url(${getStaticFilePath('images/sms.png')});
   }
   .AddMailingAddress {
@@ -71,8 +77,13 @@ const CouponDetailModalStyle = css`
     background-image: url(${getStaticFilePath('images/oval.svg')});
   }
 
-  .TwitterLink {
+  .TwitterLink,
+  .Gymboree_TwitterLink {
     background-image: url(${getStaticFilePath('images/twitter.png')});
+  }
+  .TwitterPhoto,
+  .Gymboree_TwitterPhoto {
+    background-image: url(${getStaticFilePath('images/share-twitter.png')});
   }
 `;
 

@@ -172,6 +172,8 @@ class CheckoutPage extends React.PureComponent {
       pickupDidMount,
       cartLoading,
       emailSignUpFlags,
+      bagLoading,
+      titleLabel,
     } = this.props;
     const { isHasPickUpAlternatePerson, pickUpAlternatePerson, pickUpContactPerson } = this.props;
     const { pickUpContactAlternate, checkoutServerError, toggleCountrySelector } = this.props;
@@ -305,6 +307,8 @@ class CheckoutPage extends React.PureComponent {
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
             cartLoading={cartLoading}
+            bagLoading={bagLoading}
+            titleLabel={titleLabel}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && isRendorConfirmation && (
@@ -343,8 +347,9 @@ class CheckoutPage extends React.PureComponent {
     const isRendorConfirmation = this.getIsRenderConfirmation();
     return (
       <>
-        {(!isBagLoaded || cartOrderItemsCount > 0) &&
-        (currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION || isRendorConfirmation) ? (
+        {((!isBagLoaded || cartOrderItemsCount > 0) &&
+          currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION) ||
+        isRendorConfirmation ? (
           <CnCTemplate
             showLeftSection
             leftSection={this.renderLeftSection}
@@ -372,9 +377,7 @@ class CheckoutPage extends React.PureComponent {
                       <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
                     </>
                   ) : (
-                    <div className="review-submit-button">
-                      <LoaderSkelton />
-                    </div>
+                    <LoaderSkelton height="50px" />
                   )}
                   <div className="submit-disclaimer">
                     {applyConditionPreText}

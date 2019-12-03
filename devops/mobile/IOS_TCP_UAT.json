@@ -340,6 +340,34 @@
     {
       "name": "RWD_WEB_APP_DOMAIN_GYM",
       "value": "https://test6.gymboree.com"
+    },
+    {
+      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_TCP",
+      "value": "false"
+    },
+    {
+      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
+      "value": "false"
+    },
+    {
+      "name": " RWD_APP_BV_API_KEY_TCP",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_GYM",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_URL",
+      "value": "https://stg.api.bazaarvoice.com"
+    },
+    {
+      "name": "RWD_APP_BV_WEB_VIEW_URL",
+      "value": "https://test6.childrensplace.com/static/bazaarVoice/index.html"
+    },
+    {
+      "name": "RWD_APP_BV_SHARED_KEY",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,

@@ -11,9 +11,13 @@ const styles = css`
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   .fulfillment-section {
     margin-top: auto;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 6px;
+    }
   }
   .favorite-count {
     text-align: center;
@@ -203,11 +207,14 @@ const styles = css`
     min-height: 35px;
   }
 
+  /* stylelint-disable-next-line*/
+  _:-ms-fullscreen,
+  .product-image-container {
+    max-height: 320px;
+  }
+
   .product-image-container {
     position: relative;
-    @media ${props => props.theme.mediaQuery.large} {
-      max-height: 320px;
-    }
   }
 
   .extended-sizes-text {
@@ -216,6 +223,7 @@ const styles = css`
     height: 10px;
     @media ${props => props.theme.mediaQuery.medium} {
       height: 12px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
     @media ${props => props.theme.mediaQuery.large} {
       height: 14px;
@@ -273,6 +281,65 @@ const styles = css`
     }
     .empty-color-chips-container {
       min-height: 40px;
+    }
+  }
+  .see-suggested-items {
+    background: transparent;
+    border: 0;
+    text-decoration: underline;
+  }
+
+  .close-btn {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-left: 10px;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    height: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .close-btn-icon {
+    width: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    height: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} auto;
+
+    .close-btn-icon {
+      width: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      height: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+  .suggested-label {
+    background: ${props => props.theme.colorPalette.gray[800]};
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    width: 100px;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: ${props => props.theme.spacing.ELEM_SPACING.SM} 0px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin: 28px 0px;
+    }
+  }
+  .dismiss-btn {
+    min-height: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    @media ${props => props.theme.mediaQuery.medium} {
+      min-height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      min-height: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     }
   }
 `;

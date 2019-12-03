@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
-import { call, takeLatest, put, all, select } from 'redux-saga/effects';
+import { call, takeLatest, put, all, select, delay } from 'redux-saga/effects';
 import {
   setLoaderState,
   setSectionLoaderState,
@@ -315,6 +315,11 @@ function* renderMobileLoader() {
   if (isMobileApp()) yield put(setLoaderState(true));
 }
 
+function* renderBagPageCheckoutLoader(isMiniBag, isAddedToBag) {
+  if (!isAddedToBag && !isMiniBag) {
+    yield put(setLoaderState(true));
+  }
+}
 export function* startCartCheckout({
   payload: {
     isEditingItem,
@@ -322,7 +327,6 @@ export function* startCartCheckout({
     closeModal,
     navigationActions,
     isMiniBag,
-    isBagPage,
     isAddedToBag,
   } = {},
 } = {}) {
@@ -337,9 +341,7 @@ export function* startCartCheckout({
       if (isAddedToBag) {
         yield put(setSectionLoaderState({ addedToBagLoaderState: true, section: 'addedtobag' }));
       }
-      if (isBagPage) {
-        yield put(setLoaderState(true));
-      }
+      yield call(renderBagPageCheckoutLoader, isMiniBag, isAddedToBag);
       // this.store.dispatch(setVenmoPaymentInProgress(false));
       let res = yield call(getUnqualifiedItems);
       res = res || [];
@@ -485,6 +487,8 @@ export function* addItemToSFL({
     } else {
       yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(true));
       yield put(removeCartItem({ itemId }));
+      yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
+      yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(false));
     }
   } catch (err) {
     yield put(setSectionLoaderState(false, 'minibag'));

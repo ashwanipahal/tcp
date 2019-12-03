@@ -110,7 +110,7 @@ public class VenmoPayment extends ReactContextBaseJavaModule implements Braintre
 
 
     @ReactMethod
-    public void isVenmoInstalledOnDevice(Callback booleanCallback) {
+    public void isVenmoInstalled(Callback booleanCallback) {
         if (Venmo.class != null) {
             booleanCallback.invoke(Venmo.isVenmoInstalled(this.getReactApplicationContext()));
         }else{

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductTile should render component 1`] = `
+<View
+  className="product-item"
+  key="Test Product"
+>
+  <View
+    className="product-image"
+  >
+    <Image
+      alt="product"
+      source={
+        Object {
+          "uri": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/image.png-6.jpg",
+        }
+      }
+      style={
+        Object {
+          "height": 100,
+          "width": 100,
+        }
+      }
+      title="Product Image"
+    />
+  </View>
+  <Text
+    className="product-name"
+  >
+    Test Product
+  </Text>
+  <Text
+    className="product-disc-price"
+  >
+    10
+  </Text>
+  <Text
+    className="product-original-price"
+  >
+    Was 20
+  </Text>
+</View>
+`;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DamImage } from '@tcp/core/src/components/common/atoms';
+import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -13,13 +15,14 @@ import {
   ImageGymBrandStyle,
   ProductSubDetails,
   ProductSubDetailLabel,
+  LoaderWrapper,
 } from '../styles/ProductInformation.style.native';
 import { getLocator } from '../../../../../../../utils';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 
-const ProductInformation = ({ data, labels }) => {
+const ProductInformation = ({ data, labels, quantity, isDoubleAddedToBag, bagLoading }) => {
   return (
     <OuterContainer>
       <ImgWrapper>
@@ -73,29 +76,59 @@ const ProductInformation = ({ data, labels }) => {
                 fontSize="fs12"
                 fontWeight={['semibold']}
                 textAlign="left"
-                text={`${labels.price}: `}
+                text={`${labels.qtyLabel}: `}
               />
             </ProductSubDetailLabel>
 
-            <BodyCopy fontSize="fs12" fontWeight={['semibold']} text={data.itemPrice} />
+            <BodyCopy fontSize="fs12" text={quantity || data.quantity} />
           </ProductDesc>
-          <ProductDesc>
-            <ProductSubDetailLabel>
-              <BodyCopy
-                fontSize="fs12"
-                fontWeight={['semibold']}
-                textAlign="left"
-                text={`${labels.points}: `}
-              />
-            </ProductSubDetailLabel>
-
-            <BodyCopy
-              fontSize="fs12"
-              fontWeight={['semibold']}
-              text={data.itemPoints}
-              color="orange.800"
-            />
-          </ProductDesc>
+          {isDoubleAddedToBag && (
+            <>
+              <ProductDesc>
+                <ProductSubDetailLabel>
+                  <BodyCopy
+                    fontSize="fs12"
+                    fontWeight={['semibold']}
+                    textAlign="left"
+                    text={`${labels.price}: `}
+                  />
+                </ProductSubDetailLabel>
+                {!bagLoading ? (
+                  <BodyCopy
+                    fontSize="fs12"
+                    fontWeight={['semibold']}
+                    text={<PriceCurrency price={Number(data.listPrice)} />}
+                  />
+                ) : (
+                  <LoaderWrapper>
+                    <LoaderSkelton height={12} />
+                  </LoaderWrapper>
+                )}
+              </ProductDesc>
+              <ProductDesc>
+                <ProductSubDetailLabel>
+                  <BodyCopy
+                    fontSize="fs12"
+                    fontWeight={['semibold']}
+                    textAlign="left"
+                    text={`${labels.points}: `}
+                  />
+                </ProductSubDetailLabel>
+                {!bagLoading ? (
+                  <BodyCopy
+                    fontSize="fs12"
+                    fontWeight={['semibold']}
+                    text={data.itemPoints}
+                    color="orange.800"
+                  />
+                ) : (
+                  <LoaderWrapper>
+                    <LoaderSkelton height={12} />
+                  </LoaderWrapper>
+                )}
+              </ProductDesc>
+            </>
+          )}
         </ProductSubDetails>
       </ProductDescription>
     </OuterContainer>
@@ -105,10 +138,15 @@ const ProductInformation = ({ data, labels }) => {
 ProductInformation.propTypes = {
   data: PropTypes.shape,
   labels: PropTypes.shape,
+  quantity: PropTypes.string,
+  isDoubleAddedToBag: PropTypes.bool,
+  bagLoading: PropTypes.bool.isRequired,
 };
 ProductInformation.defaultProps = {
   data: {},
   labels: {},
+  quantity: '',
+  isDoubleAddedToBag: false,
 };
 export default withStyles(ProductInformation);
 export { ProductInformation as ProductInformationVanilla };

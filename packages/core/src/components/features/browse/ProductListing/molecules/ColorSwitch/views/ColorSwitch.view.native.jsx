@@ -27,8 +27,15 @@ const onSelectHandler = (selectedId, index, setSelectedColorId, setSelectedColor
  * @param {String} imageUrl : Image source
  * @desc This method paint color image with border
  */
-const getImageIcon = imageUrl => {
-  return <ImageStyle url={imageUrl} swatchConfig="w_50,h_50,c_thumb,g_auto:0" isProductImage />;
+const getImageIcon = (imageUrl, selected) => {
+  return (
+    <ImageStyle
+      url={imageUrl}
+      swatchConfig="w_50,h_50,c_thumb,g_auto:0"
+      isProductImage
+      selected={selected}
+    />
+  );
 };
 
 /**
@@ -71,7 +78,7 @@ const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelect
         onSelectHandler(colorProductId, index, setSelectedColorId, setSelectedColorIndex)
       }
     >
-      {getImageIcon(imageUrl)}
+      {getImageIcon(imageUrl, selected)}
     </ImageTouchableOpacity>
   );
 };

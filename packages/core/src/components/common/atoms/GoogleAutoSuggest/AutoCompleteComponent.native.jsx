@@ -28,15 +28,12 @@ export class GooglePlacesInput extends PureComponent {
     this.googleApiKey = googleApiKey;
     this.state = {
       listViewDisplayed: false, // we need to handle listViewDisplayed by ourself as library used to set it true on every prop change
-      active: false,
-      touched: false,
     };
   }
 
   onFocus = () => {
     this.setState({
       listViewDisplayed: 'auto',
-      active: true,
     });
   };
 
@@ -45,8 +42,6 @@ export class GooglePlacesInput extends PureComponent {
       // Need to add setTimeout as blur is calling first and then request to get detailed response
       // Value set to 1000ms to handle all auto complete scenarios
       this.setState({
-        active: false,
-        touched: true,
         listViewDisplayed: false,
       });
     }, 1000);
@@ -74,10 +69,10 @@ export class GooglePlacesInput extends PureComponent {
       onChangeText,
       input,
       initialValue,
-      meta: { error },
+      meta: { error, touched, active },
       clearButtonMode,
     } = this.props;
-    const { listViewDisplayed, active, touched } = this.state;
+    const { listViewDisplayed } = this.state;
     return (
       <Container>
         <StyledLabel isFocused={active || input.value}>{headerTitle}</StyledLabel>
@@ -131,7 +126,7 @@ export class GooglePlacesInput extends PureComponent {
         {touched && !active && error ? (
           <StyledErrorWrapper>
             <ViewWithSpacing spacingStyles="margin-right-XS">
-              <Image source={errorIcon} width="16px" height="14px" />
+              <Image source={errorIcon} alt="" width="16px" height="14px" />
             </ViewWithSpacing>
             <BodyCopy
               mobilefontFamily={['secondary']}

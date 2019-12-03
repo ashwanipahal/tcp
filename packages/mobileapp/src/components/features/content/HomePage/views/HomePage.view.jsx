@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
-import ErrorBoundary from 'react-native-error-boundary';
 // import { Box, Text } from '@fabulas/astly';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
 
@@ -48,6 +47,7 @@ import {
   ButtonComponent,
 } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
+import withErrorBoundary from '../../../../common/hoc/ErrorBoundary';
 
 const modulesMap = {
   moduleD: ModuleD,
@@ -70,11 +70,7 @@ const modulesMap = {
 const modulesMapWithErrorBoundary = Object.keys(modulesMap).reduce((modulesMapObj, key) => {
   const modulesMapWithErrorsBoundary = modulesMapObj;
   const Module = modulesMap[key];
-  modulesMapWithErrorsBoundary[key] = props => (
-    <ErrorBoundary>
-      <Module {...props} />
-    </ErrorBoundary>
-  );
+  modulesMapWithErrorsBoundary[key] = props => withErrorBoundary(Module)(props);
   return modulesMapWithErrorsBoundary;
 }, {});
 
@@ -126,10 +122,10 @@ class HomePageView extends React.PureComponent {
     );
   };
 
-  renderGlobalModal = (navigation, isUserLoggedIn, labels) => {
+  renderGlobalModal = (navigation, isUserLoggedIn, labels, isQVModalOpen) => {
     return (
       <View>
-        <QuickViewModal navigation={navigation} />
+        {isQVModalOpen && <QuickViewModal navigation={navigation} />}
         <AddedToBagContainer navigation={navigation} />
         <LocationAccessPrompt
           navigation={navigation}
@@ -186,6 +182,7 @@ class HomePageView extends React.PureComponent {
       labels,
       headerPromo,
       promoHtmlBannerCarousel,
+      isQVModalOpen,
     } = this.props;
     const { value } = this.state;
     return (
@@ -225,7 +222,7 @@ class HomePageView extends React.PureComponent {
             />
           </>
         ) : null}
-        {this.renderGlobalModal(navigation, isUserLoggedIn, labels)}
+        {this.renderGlobalModal(navigation, isUserLoggedIn, labels, isQVModalOpen)}
         <UserOnBoardingScreen navigation={navigation} />
       </ScrollView>
     );
@@ -251,6 +248,7 @@ HomePageView.propTypes = {
   isUserLoggedIn: PropTypes.bool,
   headerPromo: PropTypes.shape({}),
   promoHtmlBannerCarousel: PropTypes.shape([]),
+  isQVModalOpen: PropTypes.bool,
 };
 
 HomePageView.defaultProps = {
@@ -261,6 +259,7 @@ HomePageView.defaultProps = {
   isUserLoggedIn: false,
   headerPromo: {},
   promoHtmlBannerCarousel: [],
+  isQVModalOpen: false,
 };
 
 export { HomePageView };

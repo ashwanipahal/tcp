@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
 import {
@@ -16,6 +17,7 @@ import {
   updateRTPSData,
   getServerErrorMessage,
   acceptOrDeclinePreScreenOffer,
+  getGiftWrappingOptions,
 } from '../../../../../services/abstractors/CnC/index';
 // eslint-disable-next-line
 import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
@@ -35,6 +37,7 @@ import CHECKOUT_ACTIONS, {
   setSmsNumberForUpdates,
   getSetCheckoutStage,
   toggleCheckoutRouting,
+  getSetGiftWrapOptionsActn,
 } from './Checkout.action';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
@@ -45,20 +48,7 @@ import {
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
-
-export const pickUpRouting = ({
-  getIsShippingRequired,
-  isVenmoInProgress,
-  isVenmoPickupDisplayed,
-}) => {
-  if (getIsShippingRequired) {
-    utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-  } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
-    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
-  } else {
-    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
-  }
-};
+import { getGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
 
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
@@ -136,6 +126,7 @@ export function* updateShipmentMethodSelection({ payload }) {
 }
 
 export function* updateShippingAddress({ payload, after }) {
+  const isGuestUser = yield select(isGuest);
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount, onFileAddressKey },
   } = payload;
@@ -163,7 +154,9 @@ export function* updateShippingAddress({ payload, after }) {
       nickName: selectedAddress.nickName,
     },
   });
-  yield call(getAddressList);
+  if (!isGuestUser) {
+    yield call(getAddressList);
+  }
   if (after) {
     after();
   }
@@ -171,6 +164,7 @@ export function* updateShippingAddress({ payload, after }) {
 }
 
 export function* addNewShippingAddress({ payload }) {
+  const isGuestUser = yield select(isGuest);
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount },
   } = payload;
@@ -198,7 +192,9 @@ export function* addNewShippingAddress({ payload }) {
     },
     true
   );
-  yield call(getAddressList);
+  if (!isGuestUser) {
+    yield call(getAddressList);
+  }
   yield put(setOnFileAddressKey(addAddressResponse.payload));
 }
 
@@ -455,4 +451,18 @@ export function* redirectFromExpress() {
     return utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
   }
   return yield put(getSetCheckoutStage(constants.SHIPPING_DEFAULT_PARAM));
+}
+
+export function* getGiftWrapOptionsData() {
+  const giftWrap = yield select(getGiftWrapOptions);
+  if (!giftWrap) {
+    try {
+      const res = yield call(getGiftWrappingOptions);
+      yield put(getSetGiftWrapOptionsActn(res));
+    } catch (e) {
+      // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
+      // throw e;
+      logger.error(e);
+    }
+  }
 }

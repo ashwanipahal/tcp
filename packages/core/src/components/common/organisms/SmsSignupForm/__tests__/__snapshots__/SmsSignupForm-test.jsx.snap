@@ -266,7 +266,6 @@ exports[`SMSSignupModal component renders correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                       "25px",
@@ -793,7 +792,6 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                       "25px",

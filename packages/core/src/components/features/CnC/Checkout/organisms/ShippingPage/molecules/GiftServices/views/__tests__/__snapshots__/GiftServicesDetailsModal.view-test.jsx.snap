@@ -7,7 +7,7 @@ exports[`GiftServices component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jKJlTe",
+        "componentId": "sc-hMqMXs",
         "isStatic": false,
         "rules": Array [
           "
@@ -158,6 +158,10 @@ exports[`GiftServices component renders correctly 1`] = `
     font-size: ",
           [Function],
           "px;
+    .customSelectArrow {
+      top: 52%;
+      right: 0;
+    }
   }
 
   .dropdownDivOverFlow {
@@ -214,6 +218,7 @@ exports[`GiftServices component renders correctly 1`] = `
     margin-bottom: ",
           [Function],
           ";
+    overflow-y: hidden;
   }
 
   .CheckBox__input {
@@ -229,7 +234,7 @@ exports[`GiftServices component renders correctly 1`] = `
       "displayName": "Styled(GiftServicesDetailsModal)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jKJlTe",
+      "styledComponentId": "sc-hMqMXs",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

@@ -209,6 +209,7 @@ export const mapStateToProps = state => {
     venmoError: CheckoutSelectors.getVenmoError(state),
     getPayPalSettings: CheckoutSelectors.getPayPalSettings(state),
     bagLoading: BagPageSelector.isBagLoading(state),
+    isVenmoAppInstalled: CheckoutSelectors.isVenmoAppInstalled(state),
   };
 };
 

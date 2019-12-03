@@ -50,6 +50,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       />
     </Styled(View)>
     <Image
+      alt=""
       source={
         Object {
           "testUri": "../../../../core/src/assets/carrot-small-down.png",
@@ -151,6 +152,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       />
     </Styled(View)>
     <Image
+      alt=""
       source={
         Object {
           "testUri": "../../../../core/src/assets/carrot-small-up.png",

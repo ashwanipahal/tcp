@@ -64,6 +64,7 @@ export class TrackOrderContainer extends React.PureComponent {
         navigation.navigate('OrderDetailPage', {
           title: `${getLabelValue(orderLabels, 'lbl_orderDetail_heading', 'orders')} #${orderId}`,
           router,
+          backTo: 'Account',
         });
       } else {
         routerPush(

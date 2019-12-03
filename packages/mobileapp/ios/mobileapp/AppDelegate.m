@@ -7,7 +7,6 @@
 
 #import "AppDelegate.h"
 #import <CodePush/CodePush.h>
-
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -62,7 +61,7 @@
   // ********************************
     [AppCenterReactNative register];
     [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
-  //[AppCenterReactNativeCrashes registerWithAutomaticProcessing];
+    [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
 
   // ********************************
   // Facebook
@@ -85,7 +84,6 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
  [BTAppSwitch setReturnURLScheme:@"com.childrensplace.tcp-ios.payments"];
- 
  
   return YES;
 }

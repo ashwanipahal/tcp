@@ -4,6 +4,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import CONSTANTS from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -41,6 +43,7 @@ import {
   showRadioButtons,
   getPrices,
 } from './CartItemTile.utils';
+import ClickTracker from '../../../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
@@ -109,29 +112,65 @@ class ProductInformation extends PureComponent {
   };
 
   renderSflActionsLinks = () => {
-    const { productDetail, isShowSaveForLater, labels, isBagPageSflSection } = this.props;
+    const {
+      productDetail,
+      isShowSaveForLater,
+      labels,
+      isBagPageSflSection,
+      cartOrderItems,
+    } = this.props;
     const { saveForLaterLink, moveToBagLink } = labels;
     const isOK = productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK;
+    const shoppingBag = CONSTANTS.SHOPPING_BAG;
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     if (!isBagPageSflSection && isOK && isShowSaveForLater) {
       return (
-        <SflIcons onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
+        <ClickTracker
+          as={SflIcons}
+          onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}
+          name="save_for_later"
+          module="checkout"
+          clickData={{ customEvents: ['event134', 'event136'], products: productsData }}
+          pageData={{
+            pageName: shoppingBag,
+            pageSection: shoppingBag,
+            pageSubSection: shoppingBag,
+            pageType: shoppingBag,
+            pageShortName: shoppingBag,
+            pageSubSubSection: shoppingBag,
+          }}
+        >
           {CartItemTileExtension.renderImage({
             icon: sflIcon,
             iconText: saveForLaterLink,
             dataLocator: 'save-for-later-link',
           })}
-        </SflIcons>
+        </ClickTracker>
       );
     }
     if (isBagPageSflSection && isOK) {
       return (
-        <SflIcons onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
+        <ClickTracker
+          as={SflIcons}
+          onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}
+          name="move_to_bag"
+          module="checkout"
+          clickData={{ customEvents: ['event135', 'event137'], products: productsData }}
+          pageData={{
+            pageName: shoppingBag,
+            pageSection: shoppingBag,
+            pageSubSection: shoppingBag,
+            pageType: shoppingBag,
+            pageShortName: shoppingBag,
+            pageSubSubSection: shoppingBag,
+          }}
+        >
           {CartItemTileExtension.renderImage({
             icon: moveToBagIcon,
             iconText: moveToBagLink,
             dataLocator: 'move-to-bag-link',
           })}
-        </SflIcons>
+        </ClickTracker>
       );
     }
     return null;
@@ -335,6 +374,36 @@ class ProductInformation extends PureComponent {
     );
   };
 
+  getSwipeConfig = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled, showOnReviewPage) => {
+    return {
+      rightButtons: showOnReviewPage
+        ? [this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]
+        : null,
+      rightButtonWidth: showOnReviewPage ? 240 : 0,
+      leftButtons: null,
+      onSwipeComplete: showOnReviewPage
+        ? (event, gestureState, swipe) => {
+            CartItemTileExtension.onSwipeComplete(this.props, swipe);
+          }
+        : () => {},
+    };
+  };
+
+  renderProductDetail = () => {
+    const { showOnReviewPage, productDetail } = this.props;
+    return (
+      showOnReviewPage &&
+      !!productDetail.miscInfo.badge && (
+        <BodyCopy
+          fontWeight={['semibold']}
+          fontFamily="secondary"
+          fontSize="fs12"
+          text={productDetail.miscInfo.badge}
+        />
+      )
+    );
+  };
+
   render() {
     const { labels, itemIndex, showOnReviewPage, productDetail } = this.props;
     const {
@@ -375,32 +444,36 @@ class ProductInformation extends PureComponent {
       isBOPISOrder
     );
 
+    const swipeConfig = this.getSwipeConfig(
+      isBOSSOrder,
+      bossDisabled,
+      isBOPISOrder,
+      bopisDisabled,
+      showOnReviewPage
+    );
+
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
-        rightButtons={[this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]}
-        rightButtonWidth={240}
-        leftButtons={null}
-        onSwipeComplete={(event, gestureState, swipe) => {
-          CartItemTileExtension.onSwipeComplete(this.props, swipe);
-        }}
+        {...swipeConfig}
       >
         <MainWrapper>
           {CartItemTileExtension.renderTogglingError(this.props)}
           <UnavailableView>
-            {CartItemTileExtension.renderUnavailableErrorMessage({
-              props: this.props,
-              isEcomSoldout,
-              bossDisabled,
-              isBOSSOrder,
-              bopisDisabled,
-              isBOPISOrder,
-              noBossMessage,
-              noBopisMessage,
-              availability,
-            })}
+            {showOnReviewPage &&
+              CartItemTileExtension.renderUnavailableErrorMessage({
+                props: this.props,
+                isEcomSoldout,
+                bossDisabled,
+                isBOSSOrder,
+                bopisDisabled,
+                isBOPISOrder,
+                noBossMessage,
+                noBopisMessage,
+                availability,
+              })}
           </UnavailableView>
           <OuterContainer showOnReviewPage={showOnReviewPage}>
             {CartItemTileExtension.CartItemImageWrapper(
@@ -411,14 +484,7 @@ class ProductInformation extends PureComponent {
               updateAppTypeHandler
             )}
             <ProductDescription>
-              {showOnReviewPage && !!productDetail.miscInfo.badge && (
-                <BodyCopy
-                  fontWeight={['semibold']}
-                  fontFamily="secondary"
-                  fontSize="fs12"
-                  text={productDetail.miscInfo.badge}
-                />
-              )}
+              {this.renderProductDetail()}
               {CartItemTileExtension.getProductName(
                 productDetail,
                 showOnReviewPage,
@@ -544,6 +610,7 @@ ProductInformation.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   showLoginModal: PropTypes.bool.isRequired,
   toggleLoginModal: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 
 ProductInformation.defaultProps = {
