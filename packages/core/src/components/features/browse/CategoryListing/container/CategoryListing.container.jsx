@@ -41,7 +41,7 @@ export class CategoryListingContainer extends PureComponent {
     const categoryName =
       getCategoryName(asPath) &&
       getCategoryName(asPath).replace(/-([a-z])/g, g => {
-        return g[1].toUpperCase();
+        return g && g[1] && g[1].toUpperCase();
       });
 
     const categoryListingSlots = (layouts[categoryName] && layouts[categoryName].slots) || [];
