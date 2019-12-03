@@ -480,7 +480,9 @@ export const getLabelValue = (
     labelValue = labelState[labelKey];
   }
 
-  return typeof labelValue === 'string' ? labelValue : returnValue(isreferredContent, [], labelKey);
+  return typeof labelValue === 'string'
+    ? labelValue
+    : returnValue(isreferredContent, labelValue, labelKey);
 };
 
 // eslint-disable-next-line

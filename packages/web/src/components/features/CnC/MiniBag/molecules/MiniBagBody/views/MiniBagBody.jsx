@@ -234,7 +234,7 @@ class MiniBagBody extends React.PureComponent {
                 </BodyCopy>
               )}
             </Col>
-            {headerError && this.getHeaderError(params[0])}
+            {headerError && this.getHeaderError(cartItemCount ? params[0] : this.props)}
             {this.renderGiftCardError()}
           </Row>
         </div>

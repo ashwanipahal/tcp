@@ -21,6 +21,7 @@ import {
   getSelectedFilter,
   getLabelsOutOfStock,
 } from '../../ProductListing/container/ProductListing.selectors';
+import { fetchErrorMessages } from '../../Favorites/container/Favorites.selectors';
 import { setFilter } from '../../ProductListing/container/ProductListing.actions';
 import {
   getLoadedProductsCount,
@@ -268,6 +269,7 @@ function mapStateToProps(state) {
     isKeepModalOpen: getModalState(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
