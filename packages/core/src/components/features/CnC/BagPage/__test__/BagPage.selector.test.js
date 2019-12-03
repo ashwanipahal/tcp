@@ -30,6 +30,7 @@ describe('#Added to bag Selectors', () => {
     orderDetails: {
       totalItems: 0,
       orderItems: [],
+      subTotal: 10,
     },
     sfl: [],
     openItemDeleteConfirmationModalInfo: true,
@@ -80,6 +81,10 @@ describe('#Added to bag Selectors', () => {
 
   it('#getOrderItems', () => {
     expect(BAGPAGE_SELECTORS.getOrderItems(state)).toEqual(fromJS([]));
+  });
+
+  it('#getOrderSubTotal', () => {
+    expect(BAGPAGE_SELECTORS.getOrderSubTotal(state)).toEqual(10);
   });
 
   it('#getUnqualifiedItemsIds', () => {
