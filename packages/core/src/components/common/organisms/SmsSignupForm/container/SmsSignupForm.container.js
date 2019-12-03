@@ -50,4 +50,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SmsSignupFormView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SmsSignupFormView);

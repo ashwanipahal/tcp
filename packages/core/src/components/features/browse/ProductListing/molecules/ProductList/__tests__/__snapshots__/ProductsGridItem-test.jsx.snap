@@ -113,6 +113,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         <ProductWishlistIcon
           activeButton={false}
           className="fav-icon"
+          favoritedCount=""
           onClick={[Function]}
         />
       </Styled(Col)>
