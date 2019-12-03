@@ -143,6 +143,7 @@ exports[`ProductImages component should renders correctly 1`] = `
           </Styled(Anchor)>
         </span>
         <Styled(SocialConnect)
+          accessibilityLabels={Object {}}
           isFacebookEnabled={true}
           isPinterestEnabled={true}
           isTwitterEnabled={true}
