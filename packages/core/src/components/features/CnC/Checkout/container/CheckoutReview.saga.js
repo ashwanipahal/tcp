@@ -366,7 +366,7 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     yield put(resetAirmilesReducer());
     yield put(resetCouponReducer());
     yield put(BagActions.resetCartReducer());
-    yield put(getSetCheckoutStage('confirmation'));
+    yield put(getSetCheckoutStage(constants.CHECKOUT_STAGES.CONFIRMATION));
     yield call(fetchCoupons, isCouponAppliedInOrder);
     // getProductsOperator(this.store).loadProductRecommendations(
     //   RECOMMENDATIONS_SECTIONS.CHECKOUT,

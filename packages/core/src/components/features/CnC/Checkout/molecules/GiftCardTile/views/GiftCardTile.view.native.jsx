@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
+import CONSTANTS from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import CustomButton from '../../../../../../common/atoms/Button';
 
 import {
@@ -49,7 +50,7 @@ export default class GiftCardTile extends React.PureComponent {
       labels,
       orderBalanceTotal,
     } = this.props;
-    const page = 'checkout';
+    const page = CONSTANTS.CHECKOUT_PAGE;
     if (isGiftCardApplied) {
       return (
         <CustomButton
@@ -78,7 +79,7 @@ export default class GiftCardTile extends React.PureComponent {
         module="checkout"
         clickData={{ customEvents: ['event65'] }}
         pageData={{
-          pageName: 'checkout:payment',
+          pageName: CONSTANTS.CHECKOUT_PAYMENT_PAGE,
           pageSection: page,
           pageSubSection: page,
           pageType: page,

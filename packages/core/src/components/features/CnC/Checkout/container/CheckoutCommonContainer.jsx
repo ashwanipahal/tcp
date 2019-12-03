@@ -80,6 +80,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       billingAddress,
       orderSubTotal,
     } = this.props;
+    const { CHECKOUT_PAGE } = constants;
     const events = this.getAnalyticsEvents();
     if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
       const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
@@ -103,11 +104,11 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       trackPageViewCheckout({
         currentScreen: currentStage.toLowerCase(),
         pageData: {
-          pageName: `checkout:${currentStage.toLowerCase()}`,
-          pageSection: 'checkout',
-          pageSubSection: 'checkout',
-          pageType: 'checkout',
-          pageShortName: `checkout:${currentStage.toLowerCase()}`,
+          pageName: `${CHECKOUT_PAGE}:${currentStage.toLowerCase()}`,
+          pageSection: CHECKOUT_PAGE,
+          pageSubSection: CHECKOUT_PAGE,
+          pageType: CHECKOUT_PAGE,
+          pageShortName: `${CHECKOUT_PAGE}:${currentStage.toLowerCase()}`,
         },
       });
     }

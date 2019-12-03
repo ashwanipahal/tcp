@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import PriceCurrency from '@tcp/core/src/components/common/molecules/PriceCurrency';
 import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import CONSTANTS from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -120,7 +121,7 @@ class ProductInformation extends PureComponent {
     } = this.props;
     const { saveForLaterLink, moveToBagLink } = labels;
     const isOK = productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK;
-    const shoppingBag = 'shopping bag';
+    const shoppingBag = CONSTANTS.SHOPPING_BAG;
     const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     if (!isBagPageSflSection && isOK && isShowSaveForLater) {
       return (

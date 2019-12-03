@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import CONSTANTS from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import ClickTracker from '../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
@@ -162,7 +163,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
   getPageData = () => {
     const { navigation } = this.props;
     const { state } = navigation;
-    const page = state.routeName === 'BagPage' ? 'shopping bag' : 'browse';
+    const { SHOPPING_BAG, BROWSE } = CONSTANTS;
+    const page = state.routeName === 'BagPage' ? SHOPPING_BAG : BROWSE;
     return {
       pageName: page,
       pageSection: page,

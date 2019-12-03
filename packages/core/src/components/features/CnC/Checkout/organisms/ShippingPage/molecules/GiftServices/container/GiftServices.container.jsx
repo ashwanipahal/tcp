@@ -5,6 +5,7 @@ import { change } from 'redux-form';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import CONSTANTS from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import GiftServices from '../views/GiftServices.view';
 import {
   getGiftServicesLabels,
@@ -86,6 +87,7 @@ class GiftServicesContainer extends React.PureComponent {
   handleAnalytics = () => {
     const { setClickAnalyticsDataGC, trackClickAnalytics } = this.props;
     const { orderItems } = this.state;
+    const { CHECKOUT_PAGE, CHECKOUT_SHIPPING_PAGE } = CONSTANTS;
     setClickAnalyticsDataGC({
       customEvents: ['event10'],
       eventName: 'select gift option',
@@ -95,11 +97,11 @@ class GiftServicesContainer extends React.PureComponent {
       name: 'gift_options',
       module: 'checkout',
       pageData: {
-        pageName: `checkout:shipping`,
-        pageSection: 'checkout',
-        pageSubSection: 'checkout',
-        pageType: 'checkout',
-        pageShortName: `checkout:shipping`,
+        pageName: CHECKOUT_SHIPPING_PAGE,
+        pageSection: CHECKOUT_PAGE,
+        pageSubSection: CHECKOUT_PAGE,
+        pageType: CHECKOUT_PAGE,
+        pageShortName: CHECKOUT_SHIPPING_PAGE,
       },
     });
   };
