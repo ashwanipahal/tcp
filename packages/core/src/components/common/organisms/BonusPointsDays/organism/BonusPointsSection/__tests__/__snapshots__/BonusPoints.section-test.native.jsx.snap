@@ -53,7 +53,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           }
           className="availability-msg"
           enableApplyCta={false}
-          getBonusDaysData={[Function]}
+          getAvailableBonusDaysData={[Function]}
           isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
@@ -212,7 +212,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           }
           className="availability-msg"
           enableApplyCta={false}
-          getBonusDaysData={[Function]}
+          getAvailableBonusDaysData={[Function]}
           isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
@@ -371,7 +371,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           }
           className="availability-msg"
           enableApplyCta={false}
-          getBonusDaysData={[Function]}
+          getAvailableBonusDaysData={[Function]}
           isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
@@ -530,7 +530,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           }
           className="availability-msg"
           enableApplyCta={false}
-          getBonusDaysData={[Function]}
+          getAvailableBonusDaysData={[Function]}
           isPlaceRewardsPage={false}
           isPlcc={false}
           labels={
@@ -662,7 +662,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           }
           className="availability-msg"
           enableApplyCta={false}
-          getBonusDaysData={[Function]}
+          getAvailableBonusDaysData={[Function]}
           isPlaceRewardsPage={false}
           isPlcc={false}
           labels={

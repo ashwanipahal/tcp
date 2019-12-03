@@ -20,7 +20,6 @@ class FooterTopSignUpForm extends React.PureComponent {
 
   componentDidUpdate({ submitSucceeded: oldSubmitSucceeded }) {
     const { subscription, submitSucceeded, openSuccessModal } = this.props;
-
     if ((subscription.error || subscription.success) && this.formSubmitPromise) {
       if (subscription.error) {
         this.formSubmitPromise.reject();

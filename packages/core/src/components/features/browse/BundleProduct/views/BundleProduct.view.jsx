@@ -17,6 +17,7 @@ import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
 
 class BundleProduct extends React.PureComponent {
   state = {
@@ -225,7 +226,7 @@ class BundleProduct extends React.PureComponent {
   };
 
   render() {
-    const { className, currentProduct, pdpLabels } = this.props;
+    const { className, currentProduct, topPromos } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap, generalProductId } = currentProduct;
       const currentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
@@ -234,6 +235,9 @@ class BundleProduct extends React.PureComponent {
         <div className={className}>
           {this.getBreadCrumb()}
           <Row className="product-container">
+            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+              <PromoPDPBanners promos={topPromos} />
+            </Col>
             <Col colSize={{ small: 6, medium: 3, large: 6 }}>{this.getMainImageCarousel()}</Col>
             <Col colSize={{ small: 6, medium: 5, large: 6 }}>
               <Row fullBleed className="product-summary-section">
@@ -282,6 +286,7 @@ BundleProduct.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  topPromos: PropTypes.shape({}),
 };
 
 BundleProduct.defaultProps = {
@@ -301,6 +306,7 @@ BundleProduct.defaultProps = {
   outOfStockLabels: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  topPromos: null,
 };
 
 export default withStyles(BundleProduct, styles);

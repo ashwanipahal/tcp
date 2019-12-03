@@ -8,13 +8,14 @@ export const RECOMMENDATIONS_PAGES_MAPPING = {
   HOMEPAGE: 'homepage',
   PLP: 'plp',
   FAVORITES: 'favorites',
-  DEPARTMENT_LANDING: '', // TODO
+  DEPARTMENT_LANDING: '', // TODO Please use dpl key in case of having proper data
   CHECKOUT: 'checkout',
   OUTFIT: 'outfit',
   NO_PAGE_FOUND: '404_page',
   SEARCH: 'search',
-  NULL_SEARCH: '', // Please use null_search key in case of having proper data
-  COLLECTION: '', // collection key in not available
+  NULL_SEARCH: '', // TODO Please use null_search key in case of having proper data
+  COLLECTION: '', // TODO collection key is not available
+  NO_FAVORITES: '', // TODO no_favorites page key is not available
 };
 export const RECOMMENDATIONS_MBOXNAMES = {
   RECENTLY_VIEWED: 'recently-viewed-products',

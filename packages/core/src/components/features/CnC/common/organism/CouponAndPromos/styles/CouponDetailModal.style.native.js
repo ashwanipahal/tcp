@@ -12,7 +12,7 @@ const StyledModalWrapper = styled.View`
 const Horizontal = styled.View`
   height: 1px;
   background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-  margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
   flex-direction: row;
   width: 100%;
 `;

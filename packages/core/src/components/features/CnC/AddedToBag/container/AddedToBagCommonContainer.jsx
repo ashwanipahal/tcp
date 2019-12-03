@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getLabelValue } from '@tcp/core/src/utils';
+import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { closeAddedToBag } from './AddedToBag.actions';
 import {
   getAddedToBagData,
@@ -8,10 +9,12 @@ import {
   getQuantityValue,
   getAddedToBagLoaderState,
   getAddedToBagInterval,
+  getPointsSummary,
 } from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
 
 // @flow
 type Props = {
@@ -27,6 +30,10 @@ type Props = {
   addedToBagLoaderState: boolean,
   addedToBagInterval: number,
   totalBagItems: number,
+  pointsSummary: any,
+  isPayPalButtonRendered: boolean,
+  isPayPalEnabled: boolean,
+  bagLoading: boolean,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -63,11 +70,15 @@ export class AddedToBagContainer extends React.Component<Props> {
       navigation,
       isInternationalShipping,
       isPayPalWebViewEnable,
+      isPayPalButtonRendered,
+      isPayPalEnabled,
       router,
       closeModal,
       addedToBagLoaderState,
       addedToBagInterval,
       totalBagItems,
+      pointsSummary,
+      bagLoading,
     } = this.props;
     return (
       <AddedToBag
@@ -82,10 +93,14 @@ export class AddedToBagContainer extends React.Component<Props> {
         handleContinueShopping={this.closeModal}
         navigation={navigation}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
+        isPayPalButtonRendered={isPayPalButtonRendered}
+        isPayPalEnabled={isPayPalEnabled}
         hideHeader={this.hideHeaderWhilePaypalView}
         addedToBagLoaderState={addedToBagLoaderState}
         addedToBagInterval={addedToBagInterval}
         totalBagItems={totalBagItems}
+        pointsSummary={pointsSummary}
+        bagLoading={bagLoading}
       />
     );
   }
@@ -104,13 +119,17 @@ const mapStateToProps = state => {
 
   const newState = {
     addedToBagData: getAddedToBagData(state),
+    pointsSummary: getPointsSummary(getCartOrderDetails(state), getAddedToBagData(state)),
     isOpenDialog: isOpenAddedToBag(state),
     quantity: getQuantityValue(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
+    isPayPalButtonRendered: BagPageSelectors.isPayPalButtonRenderDone(state),
     addedToBagLoaderState: getAddedToBagLoaderState(state),
     addedToBagInterval: getAddedToBagInterval(state),
     totalBagItems: BagPageSelectors.getTotalItems(state),
+    isPayPalEnabled: getIsPayPalEnabled(state),
+    bagLoading: BagPageSelectors.isBagLoading(state),
   };
 
   if (state.Labels.global) {
@@ -170,6 +189,7 @@ const mapStateToProps = state => {
         'addedToBagModal',
         'global'
       ),
+      points: getLabelValue(state.Labels, 'lbl_info_points', 'addedToBagModal', 'global'),
     };
   } else {
     newState.labels = {
@@ -198,6 +218,7 @@ const mapStateToProps = state => {
         'addedToBagModal',
         'global'
       ),
+      points: '',
     };
   }
 

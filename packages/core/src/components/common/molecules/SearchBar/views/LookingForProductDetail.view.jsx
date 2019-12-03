@@ -106,6 +106,8 @@ LookingForProductDetail.propTypes = {
     categories: PropTypes.shape({}),
     products: PropTypes.shape({}),
   }),
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 LookingForProductDetail.defaultProps = {
@@ -114,6 +116,8 @@ LookingForProductDetail.defaultProps = {
     categories: {},
     products: {},
   },
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 const mapStateToProps = state => {

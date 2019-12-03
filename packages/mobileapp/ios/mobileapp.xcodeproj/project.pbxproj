@@ -13,9 +13,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		15C2498280EC058B1A775501 /* libPods-gymboree_uat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F38CB1AC23BA6CA1397BC6 /* libPods-gymboree_uat.a */; };
-		162BEFFF238D5BD90056246A /* gymboree-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5AF23279C35001CC8EF /* gymboree-Info.plist */; };
-		162BF00A238D5E960056246A /* gymboree_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */; };
-		162BF00B238D5ECB0056246A /* gymboree_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */; };
 		162BF00E238D61850056246A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
 		162BF017238D697A0056246A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		162BF018238D697A0056246A /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */; };
@@ -63,7 +60,6 @@
 		16C47554238D502900B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
 		16C47555238D502900B6959B /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
 		16C47556238D502900B6959B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
-		16C47557238D504900B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		16C47559238D526900B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		16C4755A238D526900B6959B /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
 		16C4755B238D526900B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
@@ -78,7 +74,6 @@
 		16C47564238D53AC00B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		16C47565238D53B500B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		16C47566238D53C100B6959B /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
-		16C47567238D53E000B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		16C47568238D53EB00B6959B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8FB177237B30AB006C733A /* Nunito-ExtraBold.ttf */; };
 		16C4756A238D53EB00B6959B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
 		16C4756B238D53EB00B6959B /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
@@ -91,6 +86,18 @@
 		16C47572238D53FC00B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		16C47573238D540800B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		16C47574238D541000B6959B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
+		16C65B3923953D5F009559D2 /* mobileapp-prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B3823953D5F009559D2 /* mobileapp-prod-Info.plist */; };
+		16C65B3A23953D5F009559D2 /* mobileapp-prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B3823953D5F009559D2 /* mobileapp-prod-Info.plist */; };
+		16C65B3C23953D7E009559D2 /* mobileapp-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B3B23953D7E009559D2 /* mobileapp-info.plist */; };
+		16C65B3D23953D7E009559D2 /* mobileapp-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B3B23953D7E009559D2 /* mobileapp-info.plist */; };
+		16C65B3E23953D7E009559D2 /* mobileapp-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B3B23953D7E009559D2 /* mobileapp-info.plist */; };
+		16C65B3F23953D7E009559D2 /* mobileapp-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B3B23953D7E009559D2 /* mobileapp-info.plist */; };
+		16C65B4223953D90009559D2 /* gymboree-prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B4023953D90009559D2 /* gymboree-prod-Info.plist */; };
+		16C65B4423953D9F009559D2 /* gymboree-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B4323953D9F009559D2 /* gymboree-Info.plist */; };
+		16C65B4523953D9F009559D2 /* gymboree-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B4323953D9F009559D2 /* gymboree-Info.plist */; };
+		16C65B4623953D9F009559D2 /* gymboree-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B4323953D9F009559D2 /* gymboree-Info.plist */; };
+		16C65B4723953D9F009559D2 /* gymboree-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B4323953D9F009559D2 /* gymboree-Info.plist */; };
+		16C65B48239541FE009559D2 /* gymboree-prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C65B4023953D90009559D2 /* gymboree-prod-Info.plist */; };
 		2217CA1887DDCECEE46A330F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2BCCB2BBDB5252B7AB582232 /* libPods-mobileapp_int.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE3286F55C040E4667E957A /* libPods-mobileapp_int.a */; };
 		3351837FB28E8E4DAD8DA8BC /* libPods-gymboree_preview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E82BBF7461A7C1A9646777BF /* libPods-gymboree_preview.a */; };
@@ -132,7 +139,6 @@
 		39B94DB62387BC330068B1E5 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		39B94DB72387BC330068B1E5 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		39B94DB82387BC330068B1E5 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
-		39B94DB92387BC330068B1E5 /* mobileapp_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5AE23279C35001CC8EF /* mobileapp_prod-Info.plist */; };
 		39B94DBA2387BC330068B1E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		39B94DBB2387BC330068B1E5 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C945DC8233E6F5000825846 /* AppCenter-Config.plist */; };
 		39B94DBC2387BC330068B1E5 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
@@ -210,7 +216,6 @@
 		84677A73230BCD44001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677A76230BCD44001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		84677A77230BCD44001F5301 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		84677A7B230BCD44001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677A7C230BCD44001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677A7D230BCD44001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -218,7 +223,6 @@
 		84677AA0230BCDAF001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		84677AA2230BCDAF001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677AA3230BCDAF001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		84677AA6230BCDAF001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		84677AA8230BCDAF001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		84677AA9230BCDAF001F5301 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		84677AAA230BCDAF001F5301 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -227,7 +231,6 @@
 		84677AF8230BCE94001F5301 /* GymboreeLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */; };
 		84677AFA230BCE94001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677AFC230BCE94001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
-		84677AFD230BCE94001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		84677AFE230BCE94001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677B00230BCE94001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		84677B03230BCE94001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
@@ -242,7 +245,6 @@
 		84677B52230BCF01001F5301 /* GymboreeLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */; };
 		84677B54230BCF01001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		84677B56230BCF01001F5301 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
-		84677B57230BCF01001F5301 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		84677B58230BCF01001F5301 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		84677B5A230BCF01001F5301 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		84677B5D230BCF01001F5301 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
@@ -296,7 +298,6 @@
 		D94ECADE22D70C2600D9D051 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
 		D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
-		E6B0C5B123279C35001CC8EF /* mobileapp_prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6B0C5AE23279C35001CC8EF /* mobileapp_prod-Info.plist */; };
 		E7EC0A6D2B2169C265D33425 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		EB01F59E7036ADCBCD647853 /* libPods-mobileapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 872335379EE324A5B0FB972D /* libPods-mobileapp.a */; };
 /* End PBXBuildFile section */
@@ -627,11 +628,14 @@
 		13B07F961A680F5B00A75B9A /* mobileapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobileapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TCPLaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = mobileapp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mobileapp/Info.plist; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1668AB12231EA3EA00F75A14 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		16C47523238D38D500B6959B /* libReact-jsi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C47545238D4F7400B6959B /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		16C65B3823953D5F009559D2 /* mobileapp-prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "mobileapp-prod-Info.plist"; sourceTree = "<group>"; };
+		16C65B3B23953D7E009559D2 /* mobileapp-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "mobileapp-info.plist"; sourceTree = "<group>"; };
+		16C65B4023953D90009559D2 /* gymboree-prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gymboree-prod-Info.plist"; sourceTree = "<group>"; };
+		16C65B4323953D9F009559D2 /* gymboree-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gymboree-Info.plist"; sourceTree = "<group>"; };
 		1BA035FFC49949A68B7277FF /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3054F2C959EA7E24157394A0 /* Pods-gymboree_uat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree_uat.debug.xcconfig"; path = "Target Support Files/Pods-gymboree_uat/Pods-gymboree_uat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -644,9 +648,7 @@
 		368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		36C9820F22E6F96D0002786B /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		3973AC832387D12B00538E85 /* Gymboree-Preview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gymboree-Preview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3973AC842387D12C00538E85 /* gymboree copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "gymboree copy3-Info.plist"; path = "/Users/ragsingh5/Documents/TCP/tcp-unified-experience/packages/mobileapp/ios/gymboree copy3-Info.plist"; sourceTree = "<absolute>"; };
 		39B94DC32387BC330068B1E5 /* My Place - Preview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Place - Preview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		39B94DC42387BC340068B1E5 /* mobileapp copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "mobileapp copy2-Info.plist"; path = "/Users/ragsingh5/Documents/TCP/tcp-unified-experience/packages/mobileapp/ios/mobileapp copy2-Info.plist"; sourceTree = "<absolute>"; };
 		3DFBF9005C90030FC0807A79 /* libPods-mobileapp_prod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileapp_prod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA80DB4F41240C4B72A0C81 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		3FCA4D4FA7FFC27C0846949A /* Pods-mobileapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp.release.xcconfig"; path = "Target Support Files/Pods-mobileapp/Pods-mobileapp.release.xcconfig"; sourceTree = "<group>"; };
@@ -717,9 +719,6 @@
 		DEAC55878E1247CABEE097BF /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		E0247F12226DE35B50C03824 /* Pods-gymboree_prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree_prod.debug.xcconfig"; path = "Target Support Files/Pods-gymboree_prod/Pods-gymboree_prod.debug.xcconfig"; sourceTree = "<group>"; };
 		E5D50FB3BB3D9AB71DC63209 /* Pods-gymboree_int.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree_int.release.xcconfig"; path = "Target Support Files/Pods-gymboree_int/Pods-gymboree_int.release.xcconfig"; sourceTree = "<group>"; };
-		E6B0C5AE23279C35001CC8EF /* mobileapp_prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "mobileapp_prod-Info.plist"; sourceTree = "<group>"; };
-		E6B0C5AF23279C35001CC8EF /* gymboree-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gymboree-Info.plist"; sourceTree = "<group>"; };
-		E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gymboree_prod-Info.plist"; sourceTree = "<group>"; };
 		E82BBF7461A7C1A9646777BF /* libPods-gymboree_preview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gymboree_preview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA08333B231E35DA002F4B8B /* libART.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libART.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1D2D9FEA5E1E5A77B9C48D /* Pods-mobileapp_uat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp_uat.debug.xcconfig"; path = "Target Support Files/Pods-mobileapp_uat/Pods-mobileapp_uat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -944,12 +943,8 @@
 				41BE1587238BBE11000B8963 /* VenmoPayment.m */,
 				41BE1588238BBE11000B8963 /* VenmoPayment.swift */,
 				4C997218233E5B7500949134 /* main.m */,
-				E6B0C5B023279C35001CC8EF /* gymboree_prod-Info.plist */,
-				E6B0C5AF23279C35001CC8EF /* gymboree-Info.plist */,
-				E6B0C5AE23279C35001CC8EF /* mobileapp_prod-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */,
 				8480854C22D9B4CE00D7D25B /* GymboreeLaunchScreen.xib */,
 				8424F1F222DC60160090ECF1 /* mobileapp-Bridging-Header.h */,
@@ -988,6 +983,17 @@
 				1668AB1A231EA3EA00F75A14 /* libART-tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		16C65B3623953C7F009559D2 /* PLIST_FILES */ = {
+			isa = PBXGroup;
+			children = (
+				16C65B4323953D9F009559D2 /* gymboree-Info.plist */,
+				16C65B4023953D90009559D2 /* gymboree-prod-Info.plist */,
+				16C65B3B23953D7E009559D2 /* mobileapp-info.plist */,
+				16C65B3823953D5F009559D2 /* mobileapp-prod-Info.plist */,
+			);
+			path = PLIST_FILES;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -1065,6 +1071,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				16C65B3623953C7F009559D2 /* PLIST_FILES */,
 				D94ECAAD22D70C2600D9D051 /* fonts */,
 				13B07FAE1A68108700A75B9A /* mobileapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1074,8 +1081,6 @@
 				8BBF590722C0F18E003678A7 /* Recovered References */,
 				90BB5F2001FD32510EEBECF9 /* Pods */,
 				F2DAC39CB0A04ADAAD256FA7 /* Resources */,
-				39B94DC42387BC340068B1E5 /* mobileapp copy2-Info.plist */,
-				3973AC842387D12C00538E85 /* gymboree copy3-Info.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1261,9 +1266,11 @@
 			buildConfigurationList = 39B94DC02387BC330068B1E5 /* Build configuration list for PBXNativeTarget "mobileapp_preview" */;
 			buildPhases = (
 				995272ED70D2A0DEB48D9BD8 /* [CP] Check Pods Manifest.lock */,
+				16C65B4923954279009559D2 /* ShellScript */,
 				39B94DA92387BC330068B1E5 /* Sources */,
 				39B94DAD2387BC330068B1E5 /* Frameworks */,
 				39B94DAE2387BC330068B1E5 /* Resources */,
+				16C65B4A2395429E009559D2 /* Bundle React Native code and images */,
 				6835D264CEBEC692CB6E6135 /* [CP] Embed Pods Frameworks */,
 				120CC4380D5945194E05D119 /* [CP] Copy Pods Resources */,
 			);
@@ -1487,7 +1494,8 @@
 						ProvisioningStyle = Manual;
 					};
 					39B94DA82387BC330068B1E5 = {
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 9N3QW4M4N3;
+						ProvisioningStyle = Manual;
 					};
 					846779F9230BC69E001F5301 = {
 						ProvisioningStyle = Manual;
@@ -1903,18 +1911,17 @@
 				CA31063C2375C78900D8D91A /* Montserrat-Medium.ttf in Resources */,
 				CA31063D2375C78900D8D91A /* Nunito-Bold.ttf in Resources */,
 				CA31063E2375C78900D8D91A /* Montserrat-Bold.ttf in Resources */,
-				162BF00B238D5ECB0056246A /* gymboree_prod-Info.plist in Resources */,
 				CA31063B2375C72700D8D91A /* Nunito.ttf in Resources */,
 				16C47546238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				3656A5832337836800EF9714 /* icomoon.ttf in Resources */,
 				D94ECADE22D70C2600D9D051 /* Montserrat-SemiBold.ttf in Resources */,
 				D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */,
 				D94ECADB22D70C2600D9D051 /* Nunito-SemiBold.ttf in Resources */,
-				E6B0C5B123279C35001CC8EF /* mobileapp_prod-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				4C945DC9233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* TCPLaunchScreen.xib in Resources */,
+				16C65B3C23953D7E009559D2 /* mobileapp-info.plist in Resources */,
 				D94ECADC22D70C2600D9D051 /* Nunito-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1923,6 +1930,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C65B4723953D9F009559D2 /* gymboree-Info.plist in Resources */,
 				16C47573238D540800B6959B /* FontAwesome.ttf in Resources */,
 				3973AC6F2387D12B00538E85 /* Montserrat-Medium.ttf in Resources */,
 				3973AC702387D12B00538E85 /* Nunito-Bold.ttf in Resources */,
@@ -1937,7 +1945,6 @@
 				16C47551238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				3973AC792387D12B00538E85 /* Images.xcassets in Resources */,
 				3973AC7A2387D12B00538E85 /* Montserrat.ttf in Resources */,
-				162BF00A238D5E960056246A /* gymboree_prod-Info.plist in Resources */,
 				3973AC7B2387D12B00538E85 /* Nunito-Black.ttf in Resources */,
 				3973AC7C2387D12B00538E85 /* icomoon.ttf in Resources */,
 			);
@@ -1957,8 +1964,8 @@
 				39B94DB52387BC330068B1E5 /* icomoon.ttf in Resources */,
 				39B94DB62387BC330068B1E5 /* Montserrat-SemiBold.ttf in Resources */,
 				39B94DB72387BC330068B1E5 /* Montserrat-Black.ttf in Resources */,
+				16C65B3F23953D7E009559D2 /* mobileapp-info.plist in Resources */,
 				39B94DB82387BC330068B1E5 /* Nunito-SemiBold.ttf in Resources */,
-				39B94DB92387BC330068B1E5 /* mobileapp_prod-Info.plist in Resources */,
 				39B94DBA2387BC330068B1E5 /* Images.xcassets in Resources */,
 				39B94DBB2387BC330068B1E5 /* AppCenter-Config.plist in Resources */,
 				39B94DBC2387BC330068B1E5 /* Montserrat.ttf in Resources */,
@@ -1981,6 +1988,7 @@
 				84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A18230BC69E001F5301 /* Images.xcassets in Resources */,
 				4C945DCA233E6F5000825846 /* AppCenter-Config.plist in Resources */,
+				16C65B3D23953D7E009559D2 /* mobileapp-info.plist in Resources */,
 				84677A1B230BC69E001F5301 /* FontAwesome.ttf in Resources */,
 				84677A1D230BC69E001F5301 /* Montserrat.ttf in Resources */,
 				84677A1E230BC69E001F5301 /* TCPLaunchScreen.xib in Resources */,
@@ -1994,7 +2002,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16C47557238D504900B6959B /* FontAwesome.ttf in Resources */,
 				CA8FB179237B30B7006C733A /* Nunito-ExtraBold.ttf in Resources */,
 				CA31063F2375C79800D8D91A /* Montserrat-Medium.ttf in Resources */,
 				CA3106402375C79800D8D91A /* Nunito-Bold.ttf in Resources */,
@@ -2005,8 +2012,8 @@
 				84677A73230BCD44001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A76230BCD44001F5301 /* Images.xcassets in Resources */,
+				16C65B3E23953D7E009559D2 /* mobileapp-info.plist in Resources */,
 				4C945DCB233E6F5000825846 /* AppCenter-Config.plist in Resources */,
-				84677A77230BCD44001F5301 /* (null) in Resources */,
 				84677A7B230BCD44001F5301 /* Montserrat.ttf in Resources */,
 				84677A7C230BCD44001F5301 /* TCPLaunchScreen.xib in Resources */,
 				84677A7D230BCD44001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2021,6 +2028,7 @@
 				16C47535238D4CD200B6959B /* Nunito-ExtraBold.ttf in Resources */,
 				16C47531238D4C3D00B6959B /* Montserrat-Medium.ttf in Resources */,
 				16C47532238D4C3D00B6959B /* Nunito-Bold.ttf in Resources */,
+				16C65B3923953D5F009559D2 /* mobileapp-prod-Info.plist in Resources */,
 				16C47533238D4C3D00B6959B /* Nunito.ttf in Resources */,
 				16C47534238D4C3D00B6959B /* Montserrat-Bold.ttf in Resources */,
 				16C47549238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
@@ -2029,7 +2037,6 @@
 				84677AA2230BCDAF001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677AA3230BCDAF001F5301 /* Images.xcassets in Resources */,
 				4C945DCC233E6F5000825846 /* AppCenter-Config.plist in Resources */,
-				84677AA6230BCDAF001F5301 /* FontAwesome.ttf in Resources */,
 				84677AA8230BCDAF001F5301 /* Montserrat.ttf in Resources */,
 				84677AA9230BCDAF001F5301 /* TCPLaunchScreen.xib in Resources */,
 				84677AAA230BCDAF001F5301 /* Nunito-Black.ttf in Resources */,
@@ -2045,6 +2052,7 @@
 				162BF018238D697A0056246A /* Montserrat-ExtraBold.ttf in Resources */,
 				162BF019238D697A0056246A /* Montserrat-Medium.ttf in Resources */,
 				162BF01A238D697A0056246A /* Nunito-Bold.ttf in Resources */,
+				16C65B3A23953D5F009559D2 /* mobileapp-prod-Info.plist in Resources */,
 				162BF01B238D697A0056246A /* Nunito.ttf in Resources */,
 				162BF01C238D697A0056246A /* Nunito-SemiBold.ttf in Resources */,
 				162BF01D238D697A0056246A /* Nunito-Black.ttf in Resources */,
@@ -2064,6 +2072,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C65B4523953D9F009559D2 /* gymboree-Info.plist in Resources */,
 				16C47559238D526900B6959B /* Nunito-ExtraBold.ttf in Resources */,
 				16C4755A238D526900B6959B /* Montserrat-Medium.ttf in Resources */,
 				16C4755B238D526900B6959B /* Nunito-Bold.ttf in Resources */,
@@ -2072,7 +2081,6 @@
 				84677AF8230BCE94001F5301 /* GymboreeLaunchScreen.xib in Resources */,
 				84677AFA230BCE94001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677AFC230BCE94001F5301 /* Montserrat-Black.ttf in Resources */,
-				84677AFD230BCE94001F5301 /* FontAwesome.ttf in Resources */,
 				84677AFE230BCE94001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				4C945DCF233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677B00230BCE94001F5301 /* Images.xcassets in Resources */,
@@ -2087,7 +2095,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16C47567238D53E000B6959B /* FontAwesome.ttf in Resources */,
+				16C65B4623953D9F009559D2 /* gymboree-Info.plist in Resources */,
 				CA9FB5A92384569200225466 /* Montserrat-Medium.ttf in Resources */,
 				CA9FB5AA2384569200225466 /* Nunito-Bold.ttf in Resources */,
 				CA9FB5AB2384569200225466 /* Nunito.ttf in Resources */,
@@ -2110,8 +2118,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C65B48239541FE009559D2 /* gymboree-prod-Info.plist in Resources */,
 				162BF00E238D61850056246A /* Montserrat-Medium.ttf in Resources */,
-				162BEFFF238D5BD90056246A /* gymboree-Info.plist in Resources */,
 				16C47568238D53EB00B6959B /* Nunito-ExtraBold.ttf in Resources */,
 				16C4756A238D53EB00B6959B /* Nunito-Bold.ttf in Resources */,
 				16C4756B238D53EB00B6959B /* Nunito.ttf in Resources */,
@@ -2119,7 +2127,6 @@
 				84677B52230BCF01001F5301 /* GymboreeLaunchScreen.xib in Resources */,
 				84677B54230BCF01001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677B56230BCF01001F5301 /* Montserrat-Black.ttf in Resources */,
-				84677B57230BCF01001F5301 /* FontAwesome.ttf in Resources */,
 				84677B58230BCF01001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				4C945DD1233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				84677B5A230BCF01001F5301 /* Images.xcassets in Resources */,
@@ -2147,6 +2154,7 @@
 				4C945DD2233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				16C4754F238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				84677B87230BCF37001F5301 /* Images.xcassets in Resources */,
+				16C65B4223953D90009559D2 /* gymboree-prod-Info.plist in Resources */,
 				84677B8A230BCF37001F5301 /* Montserrat.ttf in Resources */,
 				84677B8B230BCF37001F5301 /* Nunito-Black.ttf in Resources */,
 				3656A58C2337836800EF9714 /* icomoon.ttf in Resources */,
@@ -2157,6 +2165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C65B4423953D9F009559D2 /* gymboree-Info.plist in Resources */,
 				CA9FB5BB2384615D00225466 /* Montserrat-Medium.ttf in Resources */,
 				CA9FB5A82384567E00225466 /* Nunito-Bold.ttf in Resources */,
 				CA9FB5A62384562A00225466 /* Nunito.ttf in Resources */,
@@ -2513,6 +2522,41 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gymboree_preview/Pods-gymboree_preview-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		16C65B4923954279009559D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
+		};
+		16C65B4A2395429E009559D2 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		311A17E0C785AEFD36DF447D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3724,7 +3768,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp/Info.plist;
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -3758,7 +3802,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp/Info.plist;
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -3781,7 +3825,8 @@
 				APP_ENV = LOCAL;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vasu Nagpal (JKR6X9J6G9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vasu Nagpal (JKR6X9J6G9)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -3791,7 +3836,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree copy3-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 0.1.0;
@@ -3816,16 +3861,16 @@
 				APP_ENV = LOCAL;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vasu Nagpal (JKR6X9J6G9)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9N3QW4M4N3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree copy3-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 0.1.0;
@@ -3836,7 +3881,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
 				PRODUCT_NAME = "Gymboree-Preview";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3852,16 +3897,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9N3QW4M4N3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "mobileapp copy2-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -3870,7 +3915,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
 				PRODUCT_NAME = "My Place - Preview";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -3887,15 +3932,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9N3QW4M4N3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "mobileapp copy2-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -3904,7 +3949,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
 				PRODUCT_NAME = "My Place - Preview";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4028,7 +4073,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp/Info.plist;
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4063,7 +4108,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp/Info.plist;
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4098,7 +4143,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp/Info.plist;
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4134,7 +4179,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp/Info.plist;
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4169,7 +4214,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp/Info.plist;
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-prod-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4204,7 +4249,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = mobileapp/Info.plist;
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-prod-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4238,7 +4283,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "mobileapp_prod-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-prod-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4272,7 +4317,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "mobileapp_prod-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/mobileapp-prod-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4306,7 +4351,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4339,7 +4384,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4373,7 +4418,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 0.1.0;
@@ -4407,7 +4452,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 0.1.0;
@@ -4442,7 +4487,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-prod-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4466,7 +4511,7 @@
 				APP_ENV = UAT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9N3QW4M4N3;
@@ -4475,7 +4520,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-prod-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4485,7 +4530,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "tcp gymboree distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4508,7 +4553,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree_prod-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-prod-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4540,7 +4585,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree_prod-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-prod-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -4574,7 +4619,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 0.1.0;
@@ -4608,7 +4653,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "gymboree-Info.plist";
+				INFOPLIST_FILE = "PLIST_FILES/gymboree-info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 0.1.0;

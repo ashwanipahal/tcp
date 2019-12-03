@@ -4,8 +4,8 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import styles from './GenericSkeleton.style';
 
-const AddressSkelton = ({ variation, className }) => {
-  const marginBottomClass = variation === 'secondary' ? 'address-field-margin' : 'elem-mb-LRG';
+const AddressSkelton = ({ isCardView, className }) => {
+  const marginBottomClass = isCardView ? 'elem-mb-LRG' : 'address-field-margin';
 
   return (
     <div className={className}>
@@ -24,7 +24,7 @@ const AddressSkelton = ({ variation, className }) => {
 
 AddressSkelton.propTypes = {
   className: PropTypes.string.isRequired,
-  variation: PropTypes.string.isRequired,
+  isCardView: PropTypes.string.isRequired,
 };
 
 export default withStyles(AddressSkelton, styles);

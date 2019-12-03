@@ -112,6 +112,10 @@ export default css`
   .customSelectTitle {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
+    .customSelectArrow {
+      top: 52%;
+      right: 0;
+    }
   }
 
   .dropdownDivOverFlow {
@@ -150,6 +154,7 @@ export default css`
     resize: none;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    overflow-y: hidden;
   }
 
   .CheckBox__input {

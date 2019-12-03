@@ -35,6 +35,7 @@ export class BonusPointsDays extends React.Component {
     additionalClassNameModal: PropTypes.string.isRequired,
     isDefaultOpen: PropTypes.bool,
     isInternationalShipping: PropTypes.bool,
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -53,6 +54,7 @@ export class BonusPointsDays extends React.Component {
     isBagPage: false,
     isDefaultOpen: false,
     isInternationalShipping: false,
+    isFetching: false,
   };
 
   componentDidMount() {
@@ -91,7 +93,7 @@ export class BonusPointsDays extends React.Component {
           bonusDetailsData={bonusDetailsData}
           view={view}
           isPlcc={isPlcc}
-          getBonusDaysData={getAvailableBonusDaysData}
+          getAvailableBonusDaysData={getAvailableBonusDaysData}
           orderDetails={orderId}
           showAccordian={showAccordian}
           isBagPage={isBagPage}

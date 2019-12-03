@@ -4,8 +4,9 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, getLocator, getBrand } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import DamImage from '../../../../../../common/atoms/DamImage';
-
 import ProductInformationStyle from '../styles/ProductInformation.style';
 
 // @flow
@@ -15,8 +16,17 @@ type Props = {
   labels: any,
   quantity: String,
   inheritedStyles: Object,
+  isDoubleAddedToBag: Boolean,
+  bagLoading: Boolean,
 };
-const ProductInformation = ({ data, labels, quantity, inheritedStyles }: Props) => {
+const ProductInformation = ({
+  data,
+  labels,
+  inheritedStyles,
+  quantity,
+  isDoubleAddedToBag,
+  bagLoading,
+}: Props) => {
   return (
     <ProductInformationStyle inheritedStyles={inheritedStyles}>
       <Row tagName="ul" className="product">
@@ -126,35 +136,106 @@ const ProductInformation = ({ data, labels, quantity, inheritedStyles }: Props) 
               </BodyCopy>
             </Col>
           </Row>
-          <Row tagName="ul" className="product-description">
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 2, medium: 3, large: 4 }}
-            >
-              <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {labels.qtyLabel}
-                {':'}
-              </BodyCopy>
-            </Col>
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 4, medium: 5, large: 8 }}
-            >
-              <BodyCopy
-                tag="span"
-                fontSize="fs13"
-                textAlign="left"
-                className="itemDesc"
-                dataLocator="addedtobag-productqty"
+          {
+            <Row tagName="ul" className="product-description">
+              <Col
+                tagName="li"
+                key="product-title"
+                className="itemList"
+                colSize={{ small: 2, medium: 3, large: 4 }}
               >
-                {quantity || data.quantity}
-              </BodyCopy>
-            </Col>
-          </Row>
+                <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
+                  {labels.qtyLabel}
+                  {':'}
+                </BodyCopy>
+              </Col>
+              <Col
+                tagName="li"
+                key="product-title"
+                className="itemList"
+                colSize={{ small: 4, medium: 5, large: 8 }}
+              >
+                <BodyCopy
+                  tag="span"
+                  fontSize="fs13"
+                  textAlign="left"
+                  className="itemDesc"
+                  dataLocator="addedtobag-productqty"
+                >
+                  {quantity || data.quantity}
+                </BodyCopy>
+              </Col>
+            </Row>
+          }
+          {isDoubleAddedToBag && (
+            <>
+              <Row tagName="ul" className="product-description">
+                <Col
+                  tagName="li"
+                  key="product-title"
+                  className="itemList"
+                  colSize={{ small: 2, medium: 3, large: 4 }}
+                >
+                  <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
+                    {labels.price}
+                    {':'}
+                  </BodyCopy>
+                </Col>
+                <Col
+                  tagName="li"
+                  key="product-title"
+                  className="itemList"
+                  colSize={{ small: 4, medium: 5, large: 8 }}
+                >
+                  <BodyCopy
+                    tag="span"
+                    fontSize="fs13"
+                    textAlign="left"
+                    className="itemDesc"
+                    dataLocator="addedtobag-productprice"
+                    fontWeight={['semibold']}
+                  >
+                    {!bagLoading ? (
+                      <PriceCurrency price={data.listPrice} />
+                    ) : (
+                      <LoaderSkelton width="50px" />
+                    )}
+                  </BodyCopy>
+                </Col>
+              </Row>
+              <Row tagName="ul" className="product-description">
+                <Col
+                  tagName="li"
+                  key="product-title"
+                  className="itemList"
+                  colSize={{ small: 2, medium: 3, large: 4 }}
+                >
+                  <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
+                    {labels.points}
+                    {':'}
+                  </BodyCopy>
+                </Col>
+                <Col
+                  tagName="li"
+                  key="product-title"
+                  className="itemList"
+                  colSize={{ small: 4, medium: 5, large: 8 }}
+                >
+                  <BodyCopy
+                    tag="span"
+                    fontSize="fs13"
+                    textAlign="left"
+                    className="itemDesc"
+                    dataLocator="addedtobag-productprice"
+                    color="orange.800"
+                    fontWeight={['semibold']}
+                  >
+                    {!bagLoading ? data.itemPoints : <LoaderSkelton width="50px" />}
+                  </BodyCopy>
+                </Col>
+              </Row>
+            </>
+          )}
         </Col>
       </Row>
     </ProductInformationStyle>

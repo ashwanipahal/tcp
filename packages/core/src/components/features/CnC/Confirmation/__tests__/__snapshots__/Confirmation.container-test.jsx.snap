@@ -21,6 +21,7 @@ exports[`ConfirmationContainer should render correctly 1`] = `
   orderShippingDetails={null}
   pageCategory=""
   updateOrderDetailsData={null}
+  venmoOrderConfirmationContent=""
   venmoUserName=""
 />
 `;
@@ -46,6 +47,7 @@ exports[`ConfirmationContainer should render correctly with Bopis item 1`] = `
   orderShippingDetails={null}
   pageCategory=""
   updateOrderDetailsData={null}
+  venmoOrderConfirmationContent=""
   venmoUserName=""
 />
 `;

@@ -11,6 +11,7 @@ exports[`CollapsibleContainer should render correctly 1`] = `
     type="button"
   >
     <Styled(Image)
+      alt=""
       className="collapsible-icon"
       src="/static/version-not-available/images/carrot-small-down.png"
     />

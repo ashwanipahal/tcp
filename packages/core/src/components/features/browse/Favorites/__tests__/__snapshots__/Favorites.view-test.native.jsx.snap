@@ -6,9 +6,7 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
     heading=""
     isOpenModal={false}
     labels={Object {}}
-    margins={null}
     modalMargins="0 14px 0 14px"
-    noscroll={true}
     onCloseModal={[Function]}
   />
   <Styled(BodyCopy)
@@ -96,8 +94,8 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
     />
     <Styled(View)>
       <Connect(Recommendations)
-        headerAlignment="left"
-        page="homepage"
+        isFavoriteRecommendation={true}
+        page=""
         showLoyaltyPromotionMessage={false}
         variation="moduleO"
       />
