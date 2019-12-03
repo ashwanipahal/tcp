@@ -1,27 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StackActions, NavigationActions } from 'react-navigation';
 import { Button, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { Container, SafeAreaViewStyle, TextConatiner } from './NoInternetPage.style';
 
 class NoInternetPage extends React.PureComponent {
   onRetry = () => {
     const {
-      navigation,
-      screenProps: {
-        network: { isConnected },
-      },
+      screenProps: { retryNetwork },
     } = this.props;
-    if (navigation && isConnected) {
-      const resetAction = StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: 'Home' })],
-      });
-      navigation.dispatch(resetAction);
+    if (retryNetwork) {
+      retryNetwork();
     }
   };
 
   render() {
+    const {
+      screenProps: {
+        network: { isConnected },
+      },
+    } = this.props;
     return (
       <SafeAreaViewStyle>
         <Container>
@@ -40,6 +37,7 @@ class NoInternetPage extends React.PureComponent {
             fill="BLUE"
             color="white"
             onPress={this.onRetry}
+            disabled={!isConnected}
           />
         </Container>
       </SafeAreaViewStyle>
