@@ -341,7 +341,7 @@ export function* startCartCheckout({
       if (isAddedToBag) {
         yield put(setSectionLoaderState({ addedToBagLoaderState: true, section: 'addedtobag' }));
       }
-      yield call(renderBagPageCheckoutLoader);
+      yield call(renderBagPageCheckoutLoader, isMiniBag, isAddedToBag);
       // this.store.dispatch(setVenmoPaymentInProgress(false));
       let res = yield call(getUnqualifiedItems);
       res = res || [];
