@@ -53,7 +53,7 @@ const MyAccountLayoutView = props => {
 
           <Col colSize={{ large: 10, medium: 8, small: 6 }} role="main">
             <div ref={pageContentRef} tabIndex={-1} className="no-outline">
-              <MainContent router={router} labels={labels} />
+              <MainContent router={router} labels={labels} isUserLoggedIn={isUserLoggedIn} />
             </div>
           </Col>
         </Row>
@@ -61,7 +61,7 @@ const MyAccountLayoutView = props => {
         <Row>
           <Col colSize={{ large: 12, medium: 8, small: 6 }} role="main">
             <div ref={pageContentRef} tabIndex={-1} className="no-outline">
-              <MainContent router={router} labels={labels} />
+              <MainContent router={router} labels={labels} isUserLoggedIn={isUserLoggedIn} />
             </div>
           </Col>
         </Row>

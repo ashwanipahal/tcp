@@ -5,8 +5,8 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { setSessionStorage, getSessionStorage } from '@tcp/core/src/utils/utils.web';
+import { isTCP } from '@tcp/core/src/utils/utils';
 import CountrySelector from '../../Header/molecules/CountrySelector';
-
 import {
   FooterMiddleMobile,
   FooterMiddleDesktop,
@@ -17,6 +17,7 @@ import {
 } from '../molecules';
 import { EmailSignupModal, SmsSignupModal } from '../../../../common/molecules';
 import style from '../Footer.style';
+import FOOTER_CONSTANTS from '../Footer.constants';
 
 class Footer extends React.Component {
   constructor(props) {
@@ -38,11 +39,15 @@ class Footer extends React.Component {
     ) {
       this.getPosition();
     }
+    const { pageName } = this.props;
     // TODO: Need to change this when proper solution for A/B test come
     if (window.location.search.match('cand-b')) {
       this.setState({ showFooterTopCandidateB: true });
     } else {
       this.setState({ showFooterTopCandidateB: false });
+    }
+    if (pageName === 'homepage') {
+      this.subscriptionPopUpOnPageLoad();
     }
   }
 
@@ -62,6 +67,57 @@ class Footer extends React.Component {
       }
     } else {
       navigator.geolocation.getCurrentPosition(() => {});
+    }
+  };
+
+  /**
+   * @function subscriptionPopUpOnPageLoad function to show
+   * the email sign up modal on first time visit of the user
+   * and SMS sign up modal on second visit of the user
+   * using cookies for email(@cookie COOKIE_EMAIL_PERSISTENT and @cookie COOKIE_EMAIL_SESSION)
+   * and sms(@cookie COOKIE_SMS_PERSISTENT) sign up modals
+   */
+  subscriptionPopUpOnPageLoad = () => {
+    const { openEmailSignUpModal, openSmsSignUpModal } = this.props;
+    const {
+      COOKIE_EMAIL_PERSISTENT,
+      COOKIE_EMAIL_SESSION,
+      COOKIE_SMS_PERSISTENT,
+      COOKIE_MAX_AGE,
+      TCP_SUB_DOMAIN,
+      GYMBOREE_SUB_DOMAIN,
+    } = FOOTER_CONSTANTS;
+    /**
+     * @function domain check for the domain setting in cookie
+     * using @function isTcp from utils
+     */
+    const domain = isTCP() ? TCP_SUB_DOMAIN : GYMBOREE_SUB_DOMAIN;
+
+    /**
+     * @function checkCookieExist function to check the existence
+     * of cookie in the browser by returning @BOOLEAN
+     */
+    const checkCookieExist = name => document.cookie.indexOf(name) > -1;
+
+    /**
+     * condition checks for the existence of @cookie COOKIE_EMAIL_PERSISTENT
+     * if false, then creates new cookie @cookie COOKIE_EMAIL_PERSISTENT and
+     * COOKIE_EMAIL_SESSION and invoke @function openEmailSignUpModal
+     * else checks for existence of @cookie COOKIE_EMAIL_PERSISTENT and non-existence
+     * of @cookie COOKIE_SMS_PERSISTENT
+     * if the above condition evaluates true then invoke
+     * @function openSmsSignUpModal and set @cookie COOKIE_SMS_PERSISTENT
+     */
+    if (!checkCookieExist(COOKIE_EMAIL_PERSISTENT)) {
+      document.cookie = `${COOKIE_EMAIL_PERSISTENT}=true; domain=${domain}; max-age=${COOKIE_MAX_AGE}`;
+      document.cookie = `${COOKIE_EMAIL_SESSION}=true; domain=${domain};`;
+      openEmailSignUpModal();
+    } else if (
+      checkCookieExist(COOKIE_EMAIL_PERSISTENT) &&
+      !checkCookieExist(COOKIE_SMS_PERSISTENT)
+    ) {
+      document.cookie = `${COOKIE_SMS_PERSISTENT}=true; domain=${domain}; max-age=${COOKIE_MAX_AGE}`;
+      openSmsSignUpModal();
     }
   };
 
@@ -189,6 +245,8 @@ Footer.propTypes = {
   ),
   referenceID: PropTypes.string,
   getUserInfoAction: PropTypes.func.isRequired,
+  openEmailSignUpModal: PropTypes.func,
+  openSmsSignUpModal: PropTypes.func,
   getOrderDetailAction: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   linkConfig: PropTypes.shape({
@@ -212,6 +270,8 @@ Footer.defaultProps = {
   referenceID: '',
   isLoggedIn: false,
   pageName: '',
+  openEmailSignUpModal: () => {},
+  openSmsSignUpModal: () => {},
   isNavigationFooter: false,
   isLocationEnabledForGuest: true,
   isLocationEnabledForLoggedInUser: true,

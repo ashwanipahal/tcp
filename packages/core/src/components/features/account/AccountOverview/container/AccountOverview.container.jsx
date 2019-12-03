@@ -21,14 +21,17 @@ const AccountOverviewContainer = ({
   openTrackOrder,
   openApplyNowModal,
   fetchCoupons,
+  isUserLoggedIn,
   ...otherProps
 }) => {
   const overviewLabels = getAccountOverviewLabels(labels);
   const commonLabels = getAccountCommonLabels(labels);
 
   useEffect(() => {
-    fetchCoupons();
-  }, []);
+    if (isUserLoggedIn) {
+      fetchCoupons();
+    }
+  }, [isUserLoggedIn]);
 
   return (
     <AccountOverviewComponent
@@ -36,6 +39,7 @@ const AccountOverviewContainer = ({
       commonLabels={commonLabels}
       openTrackOrder={openTrackOrder}
       openApplyNowModal={openApplyNowModal}
+      isUserLoggedIn={isUserLoggedIn}
       {...otherProps}
     />
   );
@@ -48,12 +52,14 @@ AccountOverviewContainer.propTypes = {
   openTrackOrder: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
   fetchCoupons: PropTypes.func.isRequired,
+  isUserLoggedIn: PropTypes.bool,
 };
 
 AccountOverviewContainer.defaultProps = {
   labels: {
     accountOverview: {},
   },
+  isUserLoggedIn: false,
 };
 
 export const mapStateToProps = state => {

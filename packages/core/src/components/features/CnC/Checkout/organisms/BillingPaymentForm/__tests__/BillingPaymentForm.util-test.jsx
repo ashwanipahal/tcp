@@ -3,6 +3,7 @@ import {
   setFormToEditState,
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
+  getPaymentMethods,
 } from '../views/BillingPaymentForm.util';
 
 describe('BillingPaymentForm Util', () => {
@@ -16,6 +17,11 @@ describe('BillingPaymentForm Util', () => {
     setState: jest.fn(),
     ediCardErrorRef: { current: { scrollIntoView: jest.fn() } },
     state: { editMode: true },
+  };
+  const labels = {
+    payPal: 'Paypal',
+    venmo: 'Venmo',
+    creditCard: 'Credit Card',
   };
   it('should call onEditCardFocus', () => {
     onEditCardFocus(scope);
@@ -45,5 +51,20 @@ describe('BillingPaymentForm Util', () => {
   it('#onAddCreditCardClick called', () => {
     scope.state.state = true;
     expect(scope.state.state).toBeTruthy();
+  });
+  it('#getPaymentMethods called without Venmo', () => {
+    const response = [
+      { id: 'creditCard', displayName: labels.creditCard },
+      { id: 'payPal', displayName: labels.payPal },
+    ];
+    expect(getPaymentMethods(labels, false)).toEqual(response);
+  });
+  it('#getPaymentMethods called with Venmo', () => {
+    const response = [
+      { id: 'creditCard', displayName: labels.creditCard },
+      { id: 'payPal', displayName: labels.payPal },
+      { id: 'venmo', displayName: labels.venmo },
+    ];
+    expect(getPaymentMethods(labels, true)).toEqual(response);
   });
 });
