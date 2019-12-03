@@ -173,3 +173,7 @@ export const getAddedToBagErrorCatId = state => {
 export const getLoadingState = state => {
   return state.BundleProduct && state.BundleProduct.isLoading;
 };
+
+export const getAccessibilityLabels = state => {
+  return state.Labels.global && state.Labels.global.accessibility;
+};

@@ -68,6 +68,7 @@ class ProductImages extends React.Component {
       outOfStockCaps: PropTypes.string,
     }),
     keepAlive: PropTypes.bool,
+    accessibilityLabels: PropTypes.shape({}),
   };
 
   state = {
@@ -108,6 +109,7 @@ class ProductImages extends React.Component {
       isGiftCard,
       keepAlive,
       outOfStockLabels,
+      accessibilityLabels,
     } = this.props;
     const { currentImageIndex } = this.state;
     const thumbnailImagesPaths = images.map(image => ({
@@ -189,7 +191,12 @@ class ProductImages extends React.Component {
                 </span>
               )}
               {isFullSizeVisible && (
-                <SocialConnect isFacebookEnabled isPinterestEnabled isTwitterEnabled />
+                <SocialConnect
+                  isFacebookEnabled
+                  isPinterestEnabled
+                  isTwitterEnabled
+                  accessibilityLabels={accessibilityLabels}
+                />
               )}
             </div>
           </div>
@@ -224,6 +231,7 @@ ProductImages.defaultProps = {
     outOfStockCaps: '',
   },
   keepAlive: false,
+  accessibilityLabels: {},
 };
 
 export default withStyles(ProductImages, styles);

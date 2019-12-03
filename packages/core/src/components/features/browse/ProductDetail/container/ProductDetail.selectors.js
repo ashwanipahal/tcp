@@ -320,3 +320,7 @@ export const getSizeChartDetails = state => {
     state.ProductDetail.currentProduct.categoryPathMap;
   return fetchSizeChartDetails(navigationTree, breadCrumbs, categoryPathMap, isBundleProduct);
 };
+
+export const getAccessibilityLabels = state => {
+  return state.Labels.global && state.Labels.global.accessibility;
+};

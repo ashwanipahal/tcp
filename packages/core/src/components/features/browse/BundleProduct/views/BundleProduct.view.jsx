@@ -60,12 +60,14 @@ class BundleProduct extends React.PureComponent {
   };
 
   getSocialConnectWidget = () => {
+    const { accessibilityLabels } = this.props;
     return (
       <SocialConnect
         className="bundle-social-wrapper"
         isFacebookEnabled
         isPinterestEnabled
         isTwitterEnabled
+        accessibilityLabels={accessibilityLabels}
       />
     );
   };
@@ -287,6 +289,7 @@ BundleProduct.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   topPromos: PropTypes.shape({}),
+  accessibilityLabels: PropTypes.shape({}),
 };
 
 BundleProduct.defaultProps = {
@@ -307,6 +310,7 @@ BundleProduct.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   topPromos: null,
+  accessibilityLabels: {},
 };
 
 export default withStyles(BundleProduct, styles);

@@ -14,7 +14,15 @@ import ProductColorChipsSelector from '../../../../../../common/molecules/Produc
 import FullSizeImageWithQuickViewConstant from './FullSizeImageWithQuickViewModal.constants';
 
 const FullSizeImageWithQuickViewModal = props => {
-  const { isMobile, onCloseClick, name, isThumbnailListVisible, images, colorChipSelector } = props;
+  const {
+    isMobile,
+    onCloseClick,
+    name,
+    isThumbnailListVisible,
+    images,
+    colorChipSelector,
+    accessibilityLabels,
+  } = props;
   const { selectColor } = colorChipSelector;
 
   let { colorList } = colorChipSelector;
@@ -65,6 +73,7 @@ const FullSizeImageWithQuickViewModal = props => {
           isFullSizeForTab
           isZoomEnabled={false}
           isThumbnailListVisible={isThumbnailListVisible}
+          accessibilityLabels={accessibilityLabels}
         />
       </div>
     </Modal>
@@ -94,12 +103,14 @@ FullSizeImageWithQuickViewModal.propTypes = {
       selectColor: PropTypes.func,
     })
   ),
+  accessibilityLabels: PropTypes.shape({}),
 };
 
 FullSizeImageWithQuickViewModal.defaultProps = {
   isMobile: true,
   isThumbnailListVisible: true,
   colorChipSelector: {},
+  accessibilityLabels: {},
 };
 
 export default compose(

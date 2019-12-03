@@ -21,6 +21,7 @@ import {
   prodDetails,
   getOutfitLabels,
   getLoadingState,
+  getAccessibilityLabels,
 } from './BundleProduct.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
@@ -130,6 +131,7 @@ export class ProductBundleContainer extends React.PureComponent {
       toastMessage,
       isLoading,
       topPromos,
+      accessibilityLabels,
     } = this.props;
     return (
       <>
@@ -164,6 +166,7 @@ export class ProductBundleContainer extends React.PureComponent {
             outOfStockLabels={outOfStockLabels}
             toastMessage={toastMessage}
             topPromos={topPromos}
+            accessibilityLabels={accessibilityLabels}
           />
         ) : (
           <BundleProductItemsSkeleton />
@@ -204,6 +207,7 @@ function mapStateToProps(state) {
       : getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
     topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
+    accessibilityLabels: getAccessibilityLabels(state),
   };
 }
 
@@ -266,6 +270,7 @@ ProductBundleContainer.propTypes = {
   toastMessage: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
   topPromos: PropTypes.shape({}),
+  accessibilityLabels: PropTypes.shape({}),
 };
 
 ProductBundleContainer.defaultProps = {
@@ -296,6 +301,7 @@ ProductBundleContainer.defaultProps = {
   outOfStockLabels: {},
   isLoading: false,
   topPromos: null,
+  accessibilityLabels: {},
 };
 
 export default connect(

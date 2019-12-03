@@ -13,6 +13,7 @@ class SocialConnect extends React.PureComponent {
     isFacebookEnabled: PropTypes.bool,
     isPinterestEnabled: PropTypes.bool,
     isTwitterEnabled: PropTypes.bool,
+    accessibilityLabels: PropTypes.shape({}),
   };
 
   constructor(props, context) {
@@ -45,7 +46,13 @@ class SocialConnect extends React.PureComponent {
   };
 
   render() {
-    const { isFacebookEnabled, isPinterestEnabled, isTwitterEnabled, className } = this.props;
+    const {
+      isFacebookEnabled,
+      isPinterestEnabled,
+      isTwitterEnabled,
+      className,
+      accessibilityLabels,
+    } = this.props;
 
     return (
       <span className={`${className} social-connect-sub-wrapper`}>
@@ -60,7 +67,7 @@ class SocialConnect extends React.PureComponent {
               rel="noopener"
             >
               <Image
-                alt="twitter"
+                alt={accessibilityLabels.lbl_img_alt_twitter}
                 className="twitter"
                 src={getIconPath('twitter-icon')}
                 data-locator="twitter-icon"
@@ -79,7 +86,7 @@ class SocialConnect extends React.PureComponent {
               title="Facebook"
             >
               <Image
-                alt="Facebook"
+                alt={accessibilityLabels.lbl_img_alt_facebook}
                 className="facebook"
                 src={getIconPath('facebook-icon')}
                 data-locator="facebook-icon"
@@ -97,7 +104,7 @@ class SocialConnect extends React.PureComponent {
               title="Pinterest"
             >
               <Image
-                alt="pinterest"
+                alt={accessibilityLabels.lbl_img_alt_pinterest}
                 className="pinterest"
                 src={getIconPath('pinterest-icon')}
                 data-locator="pinterest-icon"
@@ -115,6 +122,7 @@ SocialConnect.defaultProps = {
   isTwitterEnabled: true,
   isFacebookEnabled: true,
   isPinterestEnabled: true,
+  accessibilityLabels: {},
 };
 
 export default withStyles(SocialConnect, styles);

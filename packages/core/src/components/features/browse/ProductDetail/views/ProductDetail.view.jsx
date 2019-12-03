@@ -254,6 +254,7 @@ class ProductDetailView extends PureComponent {
       middlePromos,
       bottomPromos,
       sizeChartDetails,
+      accessibilityLabels,
       ...otherProps
     } = this.props;
 
@@ -335,6 +336,7 @@ class ProductDetailView extends PureComponent {
               initialValues={this.formValues}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              accessibilityLabels={accessibilityLabels}
             />
           </Col>
           <Col
@@ -479,6 +481,7 @@ ProductDetailView.propTypes = {
   middlePromos: PropTypes.string,
   bottomPromos: PropTypes.string,
   trackPageLoad: PropTypes.func,
+  accessibilityLabels: PropTypes.shape({}),
 };
 
 ProductDetailView.defaultProps = {
@@ -506,6 +509,7 @@ ProductDetailView.defaultProps = {
   topPromos: '',
   middlePromos: '',
   bottomPromos: '',
+  accessibilityLabels: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

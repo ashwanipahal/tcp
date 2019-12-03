@@ -40,6 +40,7 @@ import {
   getPLPPromos,
   getSizeChartDetails,
   getPDPLoadingState,
+  getAccessibilityLabels,
 } from './ProductDetail.selectors';
 
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
@@ -188,6 +189,7 @@ class ProductDetailContainer extends React.PureComponent {
       router: { asPath: asPathVal },
       trackPageLoad,
       sizeChartDetails,
+      accessibilityLabels,
       ...otherProps
     } = this.props;
 
@@ -229,6 +231,7 @@ class ProductDetailContainer extends React.PureComponent {
               bottomPromos={bottomPromos}
               trackPageLoad={trackPageLoad}
               sizeChartDetails={sizeChartDetails}
+              accessibilityLabels={accessibilityLabels}
             />
           ) : null}
           {isLoading ? <ProductDetailSkeleton /> : null}
@@ -279,6 +282,7 @@ function mapStateToProps(state) {
     bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
     sizeChartDetails: getSizeChartDetails(state),
     store: state,
+    accessibilityLabels: getAccessibilityLabels(state),
   };
 }
 
@@ -369,6 +373,7 @@ ProductDetailContainer.propTypes = {
   bottomPromos: PropTypes.string,
   isLoading: PropTypes.bool,
   trackPageLoad: PropTypes.func,
+  accessibilityLabels: PropTypes.shape({}),
 };
 
 ProductDetailContainer.defaultProps = {
@@ -399,6 +404,7 @@ ProductDetailContainer.defaultProps = {
   bottomPromos: '',
   isLoading: false,
   trackPageLoad: () => {},
+  accessibilityLabels: {},
 };
 
 export default withIsomorphicRenderer({
