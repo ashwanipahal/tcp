@@ -154,6 +154,11 @@ const CONSTANTS = {
     DEFAULT: 'white',
     BLUE: 'blue',
   },
+  SHOPPING_BAG: 'shopping bag',
+  BROWSE: 'browse',
+  CHECKOUT_PAGE: 'checkout',
+  CHECKOUT_SHIPPING_PAGE: 'checkout:shipping',
+  CHECKOUT_PAYMENT_PAGE: 'checkout:payment',
 };
 
 const {
