@@ -166,6 +166,18 @@ const getPlpUrlQueryValues = (filtersAndSort, location) => {
   return true;
 };
 
+function isFiltered(filtersAndSort) {
+  let isFilterApplied = false;
+  if (filtersAndSort) {
+    Object.keys(filtersAndSort).forEach(key => {
+      if (filtersAndSort[key].length > 0 && key.toLowerCase() !== FACETS_FIELD_KEY.sort) {
+        isFilterApplied = true;
+      }
+    });
+  }
+  return isFilterApplied;
+}
+
 // eslint-disable-next-line complexity
 const processResponse = (
   res,
@@ -252,10 +264,12 @@ const processResponse = (
     totalProductsCount = productListingTotalCount || 0;
   }
 
-  if (totalProductsCount === 1 && isSearch && searchTerm) {
-    routerPush(`/p?pid=${searchTerm}`, `/p/${searchTerm}`, {
+  if (totalProductsCount === 1 && isSearch && searchTerm && !isFiltered(filters)) {
+    const productId = res.body.response.products && res.body.response.products[0].prodpartno;
+    routerPush(`/p?pid=${productId}&navigateType=direct`, `/p/${productId}&navigateType=direct`, {
       shallow: false,
     });
+    return res;
   }
 
   // WHY DO WE NEED THIS??

@@ -58,7 +58,6 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../ProductDetail/container/ProductDetail.selectors';
-import { routerPush } from '../../../../../utils/index';
 
 class SearchDetailContainer extends React.PureComponent {
   static pageProps = {
