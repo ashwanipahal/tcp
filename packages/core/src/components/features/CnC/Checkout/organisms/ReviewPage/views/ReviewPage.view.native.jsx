@@ -182,6 +182,8 @@ class ReviewPage extends React.PureComponent {
             showAccordian
             pageCategory="review"
             bagLoading={bagLoading}
+            pageName="checkout"
+            pageSection="review"
           />
         </ScrollView>
       </>

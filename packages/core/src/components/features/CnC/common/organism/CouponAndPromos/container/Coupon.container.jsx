@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { updatePageData } from '@tcp/core/src/analytics/actions';
 import { connect } from 'react-redux';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
-
+import { isMobileApp } from '@tcp/core/src/utils';
 import { applyCoupon, removeCoupon, setError, toggleNeedHelpModalState } from './Coupon.actions';
 import {
   getCouponFetchingState,
@@ -19,6 +19,25 @@ import Coupon from '../views/Coupon.view';
 import MyOffersCoupons from '../../../../../account/common/organism/MyOffersCoupons/views/MyOffersCoupons.view';
 
 export class CouponContainer extends React.PureComponent {
+  componentDidMount() {
+    if (isMobileApp()) {
+      const { updateCouponPageData } = this.props;
+      const pageData = this.getPageDataObject();
+      updateCouponPageData(pageData);
+    }
+  }
+
+  getPageDataObject = () => {
+    const { pageName, pageSection } = this.props;
+    return {
+      pageName: `${pageName}:${pageSection}`,
+      pageSection: pageName,
+      pageSubSection: pageName,
+      pageType: pageName,
+      pageShortName: `${pageName}:${pageSection}`,
+    };
+  };
+
   render() {
     const {
       labels,
@@ -115,8 +134,11 @@ CouponContainer.propTypes = {
   idPrefix: PropTypes.string,
   openApplyNowModal: PropTypes.func,
   navigation: PropTypes.shape({}),
+  pageName: PropTypes.string,
+  pageSection: PropTypes.string,
   isNeedHelpModalOpen: PropTypes.bool,
   toggleNeedHelpModal: PropTypes.func.isRequired,
+  updateCouponPageData: PropTypes.func,
 };
 
 CouponContainer.defaultProps = {
@@ -125,7 +147,10 @@ CouponContainer.defaultProps = {
   idPrefix: '',
   navigation: null,
   openApplyNowModal: () => {},
+  pageName: '',
+  pageSection: '',
   isNeedHelpModalOpen: false,
+  updateCouponPageData: () => {},
 };
 
 export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
@@ -173,6 +198,9 @@ export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
   },
   toggleNeedHelpModal: () => {
     dispatch(toggleNeedHelpModalState());
+  },
+  updateCouponPageData: payload => {
+    dispatch(updatePageData(payload));
   },
 });
 

@@ -190,6 +190,8 @@ const ShippingForm = ({
         pageCategory="shippingPage"
         showAccordian
         bagLoading={bagLoading}
+        pageName="checkout"
+        pageSection="shipping"
       />
     </>
   );

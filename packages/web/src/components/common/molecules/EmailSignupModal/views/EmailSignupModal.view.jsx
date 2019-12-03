@@ -2,22 +2,28 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import { Modal } from '@tcp/core/src/components/common/molecules';
+import { Spinner } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '@tcp/web/src/components/common/molecules/SmsSignupModal/SmsSignupModal.style';
 
 const returnModule = mod => mod.default;
-export const DynamicForm = dynamic({
-  modules: () => ({
-    email_signup: () =>
-      import('@tcp/core/src/components/common/organisms/EmailSignupForm/views').then(returnModule),
-    sms_signup: () =>
-      import('@tcp/core/src/components/common/organisms/SmsSignupForm/views').then(returnModule),
-  }),
-  render: (properties, modules) => {
-    const Module = modules[properties.formType];
-    return <Module {...properties} />;
+export const DynamicForm = dynamic(
+  {
+    modules: () => ({
+      email_signup: () =>
+        import('@tcp/core/src/components/common/organisms/EmailSignupForm/views').then(
+          returnModule
+        ),
+      sms_signup: () =>
+        import('@tcp/core/src/components/common/organisms/SmsSignupForm/views').then(returnModule),
+    }),
+    render: (properties, modules) => {
+      const Module = modules[properties.formType];
+      return <Module {...properties} />;
+    },
   },
-});
+  { loading: () => <Spinner /> }
+);
 
 class EmailSignupModal extends React.PureComponent {
   componentDidUpdate({ subscription: oldSubscription }) {

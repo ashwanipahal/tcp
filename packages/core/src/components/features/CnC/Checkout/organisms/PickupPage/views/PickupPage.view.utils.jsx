@@ -53,4 +53,29 @@ const renderSmsUpdatedEnabled = (
   );
 };
 
-export { getNextCTAText, renderSmsUpdatedEnabled };
+const handleEditModeChange = (isEditing, pickUpContact) => {
+  let { editPickupError } = this.state;
+  if (isEditing) {
+    editPickupError = '';
+  }
+  if (pickUpContact) {
+    this.setState({
+      isEditing,
+      editPickupError,
+      dataUpdated: true,
+      pickUpContact: {
+        firstName: pickUpContact.firstName,
+        lastName: pickUpContact.lastName,
+        phoneNumber: pickUpContact.phoneNumber,
+        emailAddress: pickUpContact.emailAddress,
+      },
+    });
+  } else {
+    this.setState({
+      isEditing,
+      editPickupError,
+    });
+  }
+};
+
+export { getNextCTAText, renderSmsUpdatedEnabled, handleEditModeChange };

@@ -135,7 +135,12 @@ const CnCCommonTemplate = ({
           {!isPayPalWebViewEnable && (
             <>
               <CouponAndPromosWrapper>
-                <CouponAndPromos isCheckout bagLoading={bagLoading} navigation={navigation} />
+                <CouponAndPromos
+                  isCheckout
+                  pageCategory={pageCategory}
+                  bagLoading={bagLoading}
+                  navigation={navigation}
+                />
               </CouponAndPromosWrapper>
               <View>
                 <OrderLedgerContainer

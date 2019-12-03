@@ -277,7 +277,7 @@ export class BagPage extends React.Component {
     if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
-          <CouponAndPromos showAccordian={false} />
+          <CouponAndPromos pageName="shopping bag" showAccordian={false} />
         </RowSectionStyle>
       );
     }

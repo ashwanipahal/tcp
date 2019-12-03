@@ -316,6 +316,12 @@ export default css`
 
   @media ${props => props.theme.mediaQuery.large} {
 
+    /* stylelint-disable-next-line*/  
+      _:-ms-fullscreen,
+      .searchWrapper  {
+        overflow: visible;
+      }
+
     .searchWrapper {
       width: 100%;
       height: 40px;

@@ -122,6 +122,7 @@ class Recommendations extends Component {
       ctaUrl,
       carouselConfigProps,
       headerAlignment,
+      isFavoriteRecommendation,
       isSuggestedItem,
     } = this.props;
 
@@ -130,11 +131,12 @@ class Recommendations extends Component {
     const headerLabel =
       variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
     const carouselProps = { ...config.CAROUSEL_OPTIONS, ...carouselConfigProps };
+    const showHeader = !isFavoriteRecommendation && !isSuggestedItem;
     return (
       products &&
       products.length > 0 && (
         <React.Fragment>
-          {!isSuggestedItem && (
+          {showHeader && (
             <Heading
               variant="h4"
               className={`recommendations-header ${priceOnlyClass}`}
@@ -265,6 +267,7 @@ Recommendations.propTypes = {
   reduxKey: PropTypes.string.isRequired,
   ariaPrevious: PropTypes.string,
   ariaNext: PropTypes.string,
+  isFavoriteRecommendation: PropTypes.bool,
   isSuggestedItem: PropTypes.bool,
 };
 
@@ -287,6 +290,7 @@ Recommendations.defaultProps = {
   headerAlignment: '',
   ariaPrevious: '',
   ariaNext: '',
+  isFavoriteRecommendation: false,
   isSuggestedItem: false,
 };
 

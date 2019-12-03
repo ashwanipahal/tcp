@@ -149,6 +149,8 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       onVenmoError={false}
       onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
+      pageName="checkout"
+      pageSection="pickup"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}
@@ -308,6 +310,8 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       onVenmoError={false}
       onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
+      pageName="checkout"
+      pageSection="pickup"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}
@@ -417,6 +421,8 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       onVenmoError={false}
       onVenmoSubmit={[Function]}
       pageCategory="pickupPage"
+      pageName="checkout"
+      pageSection="pickup"
       routeToPage="ShippingPage"
       showAccordian={true}
       showPayPalButton={false}

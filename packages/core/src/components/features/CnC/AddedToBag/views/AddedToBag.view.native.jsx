@@ -69,10 +69,17 @@ const getRowWrapper = (labels, onRequestClose, navigation) => {
   return <RowWrapper />;
 };
 
-const getProductsWrapper = (addedToBagData, labels, quantity, pointsSummary) => {
+const getProductsWrapper = (addedToBagData, labels, quantity, pointsSummary, bagLoading) => {
   if (Array.isArray(addedToBagData)) {
     return addedToBagData.map(item => {
-      return <ProductInformation data={item} labels={labels} />;
+      return (
+        <ProductInformation
+          data={item}
+          labels={labels}
+          isDoubleAddedToBag
+          bagLoading={bagLoading}
+        />
+      );
     });
   }
   return (
@@ -102,6 +109,7 @@ const AddedToBag = ({
   isPayPalButtonRendered,
   isPayPalEnabled,
   pointsSummary,
+  bagLoading,
 }) => {
   const [counter, setCounter] = useState(0);
   const [resetTimer, resetTimerStatus] = useState(false);
@@ -157,7 +165,7 @@ const AddedToBag = ({
           {getRowWrapper(labels, onRequestClose, navigation)}
           {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
           <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
-            {getProductsWrapper(addedToBagData, labels, quantity, pointsSummary)}
+            {getProductsWrapper(addedToBagData, labels, quantity, pointsSummary, bagLoading)}
             <AddedToBagViewPoints labels={labels} />
             <AddedToBagActions
               labels={labels}
@@ -217,6 +225,7 @@ AddedToBag.propTypes = {
   pointsSummary: PropTypes.number.isRequired,
   isPayPalButtonRendered: PropTypes.bool,
   isPayPalEnabled: PropTypes.bool,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 AddedToBag.defaultProps = {

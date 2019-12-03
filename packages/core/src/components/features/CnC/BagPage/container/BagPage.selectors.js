@@ -86,6 +86,10 @@ const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
 
+const getOrderSubTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
+};
+
 const getIsPayPalEnabled = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isPayPalEnabled']) || false;
 };
@@ -117,7 +121,7 @@ const getProductsTypes = state => {
 
 const getNeedHelpContentId = state => {
   const referred = getLabelValue(state.Labels, 'referred', 'addedToBagModal', 'global', true);
-  const content = referred.find(label => label.name === 'NEED_HELP_DATA');
+  const content = referred && referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
 };
 
@@ -261,10 +265,6 @@ const getIfEmailSignUpDone = state => {
     emailSignUpTCP: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpTCP']),
     emailSignUpGYM: state.CartPageReducer.getIn(['orderDetails', 'emailSignUpGYM']),
   };
-};
-
-const getOrderSubTotal = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
 };
 
 export default {

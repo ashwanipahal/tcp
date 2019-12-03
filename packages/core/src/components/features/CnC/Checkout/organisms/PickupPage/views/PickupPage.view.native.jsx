@@ -4,14 +4,17 @@ import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
 import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
-
 import PickupPageSkeleton from './PickupPageSkeleton.native';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import { getNextCTAText, renderSmsUpdatedEnabled } from './PickupPage.view.utils';
+import {
+  getNextCTAText,
+  renderSmsUpdatedEnabled,
+  handleEditModeChange,
+} from './PickupPage.view.utils';
 
 import {
   FormStyle,
@@ -63,31 +66,6 @@ class PickUpFormPart extends React.Component {
     pickupDidMount(true);
   }
 
-  handleEditModeChange = (isEditing, pickUpContact) => {
-    let { editPickupError } = this.state;
-    if (isEditing) {
-      editPickupError = '';
-    }
-    if (pickUpContact) {
-      this.setState({
-        isEditing,
-        editPickupError,
-        dataUpdated: true,
-        pickUpContact: {
-          firstName: pickUpContact.firstName,
-          lastName: pickUpContact.lastName,
-          phoneNumber: pickUpContact.phoneNumber,
-          emailAddress: pickUpContact.emailAddress,
-        },
-      });
-    } else {
-      this.setState({
-        isEditing,
-        editPickupError,
-      });
-    }
-  };
-
   onEditMainContactSubmit = () => {
     this.setState({ isEditing: false });
   };
@@ -117,7 +95,7 @@ class PickUpFormPart extends React.Component {
     this.setState({
       dataUpdated: true,
     });
-    this.handleEditModeChange(false, pickUpContact);
+    handleEditModeChange(false, pickUpContact);
   };
 
   pickupSubmit = data => {
@@ -147,7 +125,6 @@ class PickUpFormPart extends React.Component {
       return onPickupSubmit(params);
     }
     this.setState({ editPickupError: pickUpLabels.editFormSubmitError });
-
     return this.errorMessageRef.measure((x, y, width, height) => {
       const scrollPosition = y - height;
       this.scrollView.scrollTo({ x: 0, y: scrollPosition, animated: true });
@@ -288,7 +265,7 @@ class PickUpFormPart extends React.Component {
                             className="pickup-contact-guest-form"
                             showPhoneNumber
                             formData={pickUpContact}
-                            onEditModeChange={this.handleEditModeChange}
+                            onEditModeChange={handleEditModeChange}
                             handleExitEditModeClick={this.handleExitEditModeClick}
                           />
                         )}
@@ -379,6 +356,8 @@ class PickUpFormPart extends React.Component {
                 pageCategory="pickupPage"
                 showAccordian
                 bagLoading={bagLoading}
+                pageName="checkout"
+                pageSection="pickup"
               />
             </ScrollView>
           </>
