@@ -314,8 +314,9 @@ export class BillingPaymentForm extends React.PureComponent {
       bagLoading,
       isVenmoEnabled,
       onVenmoError,
+      isVenmoAppInstalled,
     } = this.props;
-    const paymentMethods = getPaymentMethods(labels);
+    const paymentMethods = getPaymentMethods(labels, isVenmoEnabled, isVenmoAppInstalled);
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
@@ -409,6 +410,8 @@ export class BillingPaymentForm extends React.PureComponent {
           continueWithText={labels.continueWith}
           onVenmoSubmit={e => handleBillingFormSubmit(this, e, true)}
           onVenmoError={onVenmoError}
+          pageName="checkout"
+          pageSection="billing"
         />
       </>
     );

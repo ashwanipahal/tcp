@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { QuickViewAddToBagButtonWrapper } from '../styles/QuickViewAddToBagButton.styles.native';
 import { Button } from '../../../../../atoms';
 
-export const QuickViewAddToBagButton = ({ buttonLabel, onClickActn, dataLocator }) => {
+export const QuickViewAddToBagButton = ({
+  buttonLabel,
+  onClickActn,
+  dataLocator,
+  showAddProductValidation,
+  toastMessage,
+  quickViewLabels,
+  changeQuickViewState,
+}) => {
+  useEffect(() => {
+    if (showAddProductValidation) {
+      toastMessage(quickViewLabels.noProductSelected);
+      changeQuickViewState(false);
+    }
+  }, [showAddProductValidation]);
   return (
     <QuickViewAddToBagButtonWrapper>
       <Button
@@ -26,11 +40,21 @@ export const QuickViewAddToBagButton = ({ buttonLabel, onClickActn, dataLocator 
 QuickViewAddToBagButton.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
   onClickActn: PropTypes.func.isRequired,
+  quickViewLabels: PropTypes.shape({
+    addToBag: PropTypes.string,
+    viewProductDetails: PropTypes.string,
+  }).isRequired,
   dataLocator: PropTypes.string,
+  showAddProductValidation: PropTypes.bool,
+  toastMessage: PropTypes.func,
+  changeQuickViewState: PropTypes.func,
 };
 
 QuickViewAddToBagButton.defaultProps = {
   dataLocator: '',
+  showAddProductValidation: false,
+  toastMessage: () => {},
+  changeQuickViewState: () => {},
 };
 
 QuickViewAddToBagButton.defaultProps = {

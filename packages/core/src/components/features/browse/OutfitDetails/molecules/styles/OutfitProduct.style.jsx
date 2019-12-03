@@ -226,12 +226,12 @@ export default css`
       }
     }
   }
-  .slick-dots{
+  .slick-dots {
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      margin-bottom: -10px
+      margin-bottom: -10px;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      margin-bottom: -10px
+      margin-bottom: -10px;
     }
   }
   .slick-prev,

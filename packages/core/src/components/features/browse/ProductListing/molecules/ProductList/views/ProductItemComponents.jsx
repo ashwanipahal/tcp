@@ -205,7 +205,11 @@ export function PromotionalMessage(props) {
         )}
       </BodyCopy>
     </Dotdotdot>
-  ) : null;
+  ) : (
+    <>
+      <div className="loyalty-text-container" />
+    </>
+  );
 }
 
 const renderWishListItem = (item, labels, activeWishListId) => (

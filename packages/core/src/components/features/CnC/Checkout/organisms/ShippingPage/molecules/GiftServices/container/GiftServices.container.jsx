@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { change } from 'redux-form';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
-import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
+import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import CONSTANTS from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import GiftServices from '../views/GiftServices.view';
 import {
   getGiftServicesLabels,
@@ -19,10 +21,37 @@ import BagPageSelector from '../../../../../../BagPage/container/BagPage.selecto
 class GiftServicesContainer extends React.PureComponent {
   constructor(props) {
     super(props);
-    const { giftWrap } = this.props;
+    const { giftWrap, cartOrderItems } = this.props;
+    const productsData = [];
+    if (cartOrderItems) {
+      cartOrderItems.map(tile => {
+        const productDetail = getProductDetails(tile);
+        const {
+          itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
+          productInfo: { skuId, upc, productPartNumber, generalProductId },
+        } = productDetail;
 
+        const prodData = {
+          color,
+          id: itemId,
+          name,
+          price: offerPrice,
+          extPrice: offerPrice,
+          listPrice,
+          partNumber: productPartNumber,
+          size,
+          upc,
+          sku: skuId.toString(),
+          quantity: qty,
+          colorId: generalProductId,
+        };
+        productsData.push(prodData);
+        return prodData;
+      });
+    }
     this.state = {
       brandState: giftWrap ? giftWrap.get('brand') : '',
+      orderItems: productsData,
     };
   }
 
@@ -53,6 +82,28 @@ class GiftServicesContainer extends React.PureComponent {
       dispatch(change('GiftServices', `message`, ''));
     }
     this.setState({ brandState: brandName });
+  };
+
+  handleAnalytics = () => {
+    const { setClickAnalyticsDataGC, trackClickAnalytics } = this.props;
+    const { orderItems } = this.state;
+    const { CHECKOUT_PAGE, CHECKOUT_SHIPPING_PAGE } = CONSTANTS;
+    setClickAnalyticsDataGC({
+      customEvents: ['event10'],
+      eventName: 'select gift option',
+      products: orderItems,
+    });
+    trackClickAnalytics({
+      name: 'gift_options',
+      module: 'checkout',
+      pageData: {
+        pageName: CHECKOUT_SHIPPING_PAGE,
+        pageSection: CHECKOUT_PAGE,
+        pageSubSection: CHECKOUT_PAGE,
+        pageType: CHECKOUT_PAGE,
+        pageShortName: CHECKOUT_SHIPPING_PAGE,
+      },
+    });
   };
 
   render() {
@@ -96,6 +147,7 @@ class GiftServicesContainer extends React.PureComponent {
               SelectedBrand={SelectedBrand}
               setClickAnalyticsDataGC={setClickAnalyticsDataGC}
               cartOrderItems={cartOrderItems}
+              handleAnalytics={this.handleAnalytics}
             />
           )}
         </>
@@ -116,6 +168,7 @@ GiftServicesContainer.propTypes = {
   detailsRichTextGymboree: PropTypes.shape.isRequired,
   setClickAnalyticsDataGC: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
+  trackClickAnalytics: PropTypes.func.isRequired,
 };
 GiftServicesContainer.defaultProps = {
   dispatch: () => {},
@@ -128,6 +181,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     setClickAnalyticsDataGC: payload => {
       dispatch(setClickAnalyticsData(payload));
+    },
+    trackClickAnalytics: payload => {
+      dispatch(trackClick(payload));
     },
   };
 };

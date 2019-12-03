@@ -1,4 +1,4 @@
-import { readCookie } from '@tcp/core/src/utils/cookie.util';
+import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
@@ -198,12 +198,17 @@ export default function create(store) {
 
     checkoutType: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('isGuest')
-          ? 'guest'
-          : 'registered';
+        const { pageType = '' } = store.getState().pageData;
+        let userType = '';
+        if (pageType === 'checkout') {
+          userType = store
+            .getState()
+            .User.get('personalData')
+            .get('isGuest')
+            ? 'guest'
+            : 'registered';
+        }
+        return userType;
       },
     },
 
@@ -215,7 +220,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency.toUpperCase();
+        return store.getState().session.siteDetails.currency.toUpperCase();
       },
     },
 
@@ -263,18 +268,22 @@ export default function create(store) {
     },
     cartType: {
       get() {
-        const orderDetails = store.getState().CartPageReducer.get('orderDetails');
-        let typeCart = 'standard';
-        const isBopisOrder = orderDetails.get('isBopisOrder');
-        const isBossOrder = orderDetails.get('isBossOrder');
-        const isPickupOrder = orderDetails.get('isPickupOrder');
-        const isShippingOrder = orderDetails.get('isShippingOrder');
-        if (isShippingOrder && (isBopisOrder || isBossOrder || isPickupOrder)) {
-          typeCart = 'mix';
-        } else if (isBopisOrder && !isBossOrder) {
-          typeCart = 'bopis';
-        } else if (isBossOrder && !isBopisOrder) {
-          typeCart = 'boss';
+        const { pageType = '' } = store.getState().pageData;
+        let typeCart = '';
+        if (pageType === 'checkout') {
+          const orderDetails = store.getState().CartPageReducer.get('orderDetails');
+          typeCart = 'standard';
+          const isBopisOrder = orderDetails.get('isBopisOrder');
+          const isBossOrder = orderDetails.get('isBossOrder');
+          const isPickupOrder = orderDetails.get('isPickupOrder');
+          const isShippingOrder = orderDetails.get('isShippingOrder');
+          if (isShippingOrder && (isBopisOrder || isBossOrder || isPickupOrder)) {
+            typeCart = 'mix';
+          } else if (isBopisOrder && !isBossOrder) {
+            typeCart = 'bopis';
+          } else if (isBossOrder && !isBopisOrder) {
+            typeCart = 'boss';
+          }
         }
         return typeCart;
       },
@@ -301,6 +310,19 @@ export default function create(store) {
       get() {
         const { brandId = '' } = store.getState().APIConfig;
         return brandId.toUpperCase();
+      },
+    },
+    landingSiteBrandId: {
+      get() {
+        const { landingSite } = API_CONFIG;
+        if (!readCookie(landingSite) && readCookie(pageCountCookieKey) === '1') {
+          const { brandId = '' } = store.getState().APIConfig;
+          setCookie({
+            key: landingSite,
+            value: brandId.toUpperCase(),
+          });
+        }
+        return readCookie(landingSite);
       },
     },
   });

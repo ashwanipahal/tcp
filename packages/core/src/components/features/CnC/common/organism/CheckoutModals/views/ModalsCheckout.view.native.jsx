@@ -23,6 +23,7 @@ class ModalsCheckout extends React.PureComponent {
     if (e) {
       e.preventDefault();
     }
+
     if (isExpressCheckoutPage) {
       this.navigateToCheckout(CheckoutConstants.REVIEW_DEFAULT_PARAM);
     } else if (orderHasPickup) {

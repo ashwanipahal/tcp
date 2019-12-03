@@ -88,6 +88,10 @@ export default css`
     color: ${props => props.theme.colorPalette.gray[900]};
   }
 
+  .link-button-wrapper-class {
+    color: ${props => props.theme.colorPalette.gray[900]};
+  }
+
   .small-composite-image img {
     max-height: 164px;
 
