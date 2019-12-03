@@ -445,8 +445,8 @@ class ProductsGridItem extends React.PureComponent {
 
     const {
       productInfo: { generalProductId },
-      skuInfo: { skuId, size },
-      itemInfo: { isTCP },
+      skuInfo: { skuId, size } = {},
+      itemInfo: { isTCP } = {},
     } = item;
 
     const { selectedColorProductId } = this.state;

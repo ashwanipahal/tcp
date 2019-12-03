@@ -39,8 +39,13 @@ export default css`
     .searchbar .icon-small {
       vertical-align: middle;
       padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
-      padding-left:25px;
+      padding-left: 35px;
       cursor: pointer;
+    }
+
+    .searchbar .close-icon-small{
+      vertical-align: middle;
+      padding-left: 10px;
     }
 
     .searchbar-withRecent input {
@@ -259,6 +264,11 @@ export default css`
     .searchbar .icon-small {
       vertical-align: middle;
       cursor: pointer;
+    }
+
+    .searchbar .close-icon-small{
+      vertical-align: middle;
+      padding-left: 15px;
     }
 
     .searchbar-withRecent .icon-small {

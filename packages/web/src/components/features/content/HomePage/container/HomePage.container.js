@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
-import { toggleEmailSignupModal } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
-import { toggleSmsSignupModal } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
 import HomePageView from '../views/HomePage.view';
 import { initActions } from './HomePage.actions';
 import {
@@ -79,8 +77,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     openCountrySelectorModal: () => dispatch(toggleCountrySelectorModal({ isModalOpen: true })),
-    openEmailSignUpModal: () => dispatch(toggleEmailSignupModal({ isModalOpen: true })),
-    openSmsSignUpModal: () => dispatch(toggleSmsSignupModal({ isModalOpen: true })),
     setCampaignId: campaignId => dispatch(setCampaignId(campaignId)),
     setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
     trackHomepageView: payload => {

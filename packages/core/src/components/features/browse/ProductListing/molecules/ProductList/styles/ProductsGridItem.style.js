@@ -15,6 +15,9 @@ const styles = css`
   }
   .fulfillment-section {
     margin-top: auto;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 6px;
+    }
   }
   .favorite-count {
     text-align: center;
@@ -217,6 +220,7 @@ const styles = css`
     height: 10px;
     @media ${props => props.theme.mediaQuery.medium} {
       height: 12px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
     @media ${props => props.theme.mediaQuery.large} {
       height: 14px;
