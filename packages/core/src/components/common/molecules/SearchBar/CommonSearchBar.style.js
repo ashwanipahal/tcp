@@ -346,7 +346,12 @@ export const mediumOnlyStyles = css`
       vertical-align: middle;
       padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
       cursor: pointer;
-      padding-left: 25px;
+      padding-left: 35px;
+    }
+
+    .searchbar .close-icon-small {
+      vertical-align: middle;
+      padding-left: 10px;
     }
 
     .searchbar-withRecent {
