@@ -33,7 +33,7 @@
       function handleCloseClick(event) {
         event.preventDefault();
         event.stopPropagation();
-        window.ReactNativeWebView && window.postMessage("closeRating");
+        window.ReactNativeWebView && window.ReactNativeWebView.postMessage("closeRating");
       }
 
       var securityToken = getUrlVars()['securityToken'];
@@ -82,4 +82,4 @@
 
 </body>
 </html>
-<!-- test Url: http://local.childrensplace.com:3000/static/bazaarVoice/index.html?securityToken=354tggrwt445w354545=&brand=tcp&productId=2043572 -->
+<!-- test Url: http://test5.childrensplace.com/static/bazaarVoice/index.html?securityToken=354tggrwt445w354545=&brand=tcp&productId=2043572 -->

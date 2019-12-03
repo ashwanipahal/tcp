@@ -104,6 +104,8 @@ const ConfirmationView = ({
         pageCategory="confirmation"
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         venmoPayment={venmoPayment}
+        pageName="checkout"
+        pageSection="confirmation"
       />
     </Wrapper>
   );

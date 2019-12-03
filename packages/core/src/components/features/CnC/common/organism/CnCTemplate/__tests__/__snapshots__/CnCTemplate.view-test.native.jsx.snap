@@ -11,6 +11,7 @@ exports[`CnCCommonTemplate Page should render correctly 1`] = `
       <Connect(CouponContainer)
         isCheckout={true}
         navigation={Object {}}
+        pageCategory={Object {}}
       />
     </Styled(View)>
     <View>

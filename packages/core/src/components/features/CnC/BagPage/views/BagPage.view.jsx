@@ -21,7 +21,6 @@ import styles, { addedToBagActionsStyles, recommendationStyles } from '../styles
 import BagPageUtils from './Bagpage.utils';
 import InformationHeader from '../../common/molecules/InformationHeader';
 import { isClient } from '../../../../../utils';
-import BagPageAnalytics from './BagPageAnalytics.view';
 
 class BagPageView extends React.PureComponent {
   constructor(props) {
@@ -239,7 +238,6 @@ class BagPageView extends React.PureComponent {
             orderItemsCount
           )}
         {this.renderRecommendations()}
-        <BagPageAnalytics {...this.props} />
       </React.Fragment>
     );
   };

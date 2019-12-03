@@ -59,13 +59,6 @@ exports[`HomePageView should render correctly 1`] = `
     variation="moduleO,moduleP"
   />
   <View>
-    <Connect(QuickViewModalContainer)
-      navigation={
-        Object {
-          "getParam": [Function],
-        }
-      }
-    />
     <Connect(AddedToBagContainer)
       navigation={
         Object {

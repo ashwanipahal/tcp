@@ -220,7 +220,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency.toUpperCase();
+        return store.getState().session.siteDetails.currency.toUpperCase();
       },
     },
 

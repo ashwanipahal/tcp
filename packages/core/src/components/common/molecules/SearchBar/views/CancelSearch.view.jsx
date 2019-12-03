@@ -52,7 +52,7 @@ class CancelSearch extends React.PureComponent {
         >
           <Image
             alt="mobile-close"
-            className="icon-small "
+            className="close-icon-small"
             src={getIconPath('search-close-icon')}
             height="25px"
           />

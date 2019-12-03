@@ -68,6 +68,7 @@ const ProductList = props => {
     onCloseSuggestedModal,
     seeSuggestedDictionary,
     addToBagEcom,
+    errorMessages,
   } = props;
   let gridIndex = 0;
 
@@ -161,6 +162,7 @@ const ProductList = props => {
               onCloseSuggestedModal={onCloseSuggestedModal}
               seeSuggestedDictionary={seeSuggestedDictionary}
               addToBagEcom={addToBagEcom}
+              errorMessages={errorMessages}
             />
           </div>
         );
@@ -221,6 +223,7 @@ ProductList.propTypes = {
   onCloseSuggestedModal: PropTypes.func,
   seeSuggestedDictionary: PropTypes.shape({}),
   addToBagEcom: PropTypes.func,
+  errorMessages: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -265,6 +268,7 @@ ProductList.defaultProps = {
   onCloseSuggestedModal: () => {},
   seeSuggestedDictionary: {},
   addToBagEcom: () => {},
+  errorMessages: {},
 };
 
 export default withStyles(ProductList, ProductListStyle);
