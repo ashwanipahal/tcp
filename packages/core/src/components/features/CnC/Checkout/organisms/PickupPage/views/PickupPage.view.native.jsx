@@ -368,6 +368,7 @@ class PickUpFormPart extends React.Component {
                 onPress={handleSubmit(this.pickupSubmit)}
                 pageCategory="pickupPage"
                 showAccordian
+                bagLoading={bagLoading}
               />
             </ScrollView>
           </>
