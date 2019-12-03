@@ -15,10 +15,6 @@ export const getLoadingState = state => {
   return state.QuickView.get('isLoading');
 };
 
-export const getSelectedColorId = state => {
-  return state.QuickView.get('selectedColorId');
-};
-
 export const getFromBagPage = state => {
   return state.QuickView.get('fromBagPage');
 };
