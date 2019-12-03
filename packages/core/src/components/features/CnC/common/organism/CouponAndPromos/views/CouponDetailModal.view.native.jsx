@@ -118,19 +118,19 @@ class CouponDetailModal extends React.PureComponent<Props> {
           <StyledModalWrapper>
             <BodyCopy
               data-locator={`couponDetailModal_${coupon.status}_NameLbl`}
-              fontSize="fs42"
+              fontSize="fs40"
               fontFamily="primary"
               fontWeight="black"
               text={coupon.title}
               textAlign="center"
             />
             {!isConfirmation && (
-              <ViewWithSpacing spacingStyles="margin-top-SM">
+              <ViewWithSpacing spacingStyles="margin-top-XS">
                 <BodyCopy
                   data-locator={`couponDetailModal_${coupon.status}_ValidityDateLbl`}
-                  fontSize="fs24"
+                  fontSize="fs22"
                   fontFamily="secondary"
-                  fontWeight="semibold"
+                  fontWeight="extrabold"
                   text={this.showValidity()}
                 />
               </ViewWithSpacing>
@@ -143,7 +143,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
                     setScreenViewShotRef={this.setScreenViewShotRef}
                     options={{ format: 'png', quality: 0.9, result: 'base64' }}
                   >
-                    <Barcode value={coupon.id} height="50" />
+                    <Barcode value={coupon.id} height="50" fontSize="fs12" />
                   </ScreenViewShot>
                 </View>
                 <Horizontal />
