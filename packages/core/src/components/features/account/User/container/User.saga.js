@@ -83,7 +83,7 @@ export function* getUserInfoSaga() {
       yield put(setLanguage(language));
     }
 
-    if (country === siteIds.ca.toUpperCase() && siteId !== apiConfig.siteId) {
+    if (!isMobileApp() && country === siteIds.ca.toUpperCase() && siteId !== apiConfig.siteId) {
       routerPush(window.location, '/home', null, siteId);
     }
   } catch (err) {
