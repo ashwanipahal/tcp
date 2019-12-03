@@ -48,12 +48,12 @@ const onAddNewCreditCardClick = scope => {
   onAddNewCreditCardUpdate(dispatch);
 };
 
-const getPaymentMethods = (labels, isVenmoEnabled = true) => {
+const getPaymentMethods = (labels, isVenmoEnabled = true, isVenmoAppInstalled = true) => {
   const paymentTabs = [
     { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
     { id: constants.PAYMENT_METHOD_PAY_PAL, displayName: labels.payPal },
   ];
-  if (isVenmoEnabled) {
+  if (isVenmoEnabled && isVenmoAppInstalled) {
     paymentTabs.push({ id: constants.PAYMENT_METHOD_VENMO, displayName: labels.venmo });
   }
   return paymentTabs;

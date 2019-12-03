@@ -59,12 +59,19 @@ describe('BillingPaymentForm Util', () => {
     ];
     expect(getPaymentMethods(labels, false)).toEqual(response);
   });
-  it('#getPaymentMethods called with Venmo', () => {
+  it('#getPaymentMethods called without Venmo kill switch is disabled and venmo app is not installed', () => {
+    const response = [
+      { id: 'creditCard', displayName: labels.creditCard },
+      { id: 'payPal', displayName: labels.payPal },
+    ];
+    expect(getPaymentMethods(labels, false, false)).toEqual(response);
+  });
+  it('#getPaymentMethods called with Venmo kill switch is enabled and venmo app is installed', () => {
     const response = [
       { id: 'creditCard', displayName: labels.creditCard },
       { id: 'payPal', displayName: labels.payPal },
       { id: 'venmo', displayName: labels.venmo },
     ];
-    expect(getPaymentMethods(labels, true)).toEqual(response);
+    expect(getPaymentMethods(labels, true, true)).toEqual(response);
   });
 });
