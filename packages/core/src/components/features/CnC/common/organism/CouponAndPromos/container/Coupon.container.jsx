@@ -17,6 +17,7 @@ import {
 import { getGlobalLabels } from '../../../../../account/Account/container/Account.selectors';
 import Coupon from '../views/Coupon.view';
 import MyOffersCoupons from '../../../../../account/common/organism/MyOffersCoupons/views/MyOffersCoupons.view';
+import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 
 export class CouponContainer extends React.PureComponent {
   componentDidMount() {
@@ -59,6 +60,7 @@ export class CouponContainer extends React.PureComponent {
       additionalClassNameModal,
       openApplyNowModal,
       navigation,
+      bagLoading,
       isNeedHelpModalOpen,
       toggleNeedHelpModal,
     } = this.props;
@@ -79,6 +81,7 @@ export class CouponContainer extends React.PureComponent {
             showAccordian={showAccordian}
             additionalClassNameModal={additionalClassNameModal}
             idPrefix={idPrefix}
+            bagLoading={bagLoading}
             openApplyNowModal={openApplyNowModal}
             navigation={navigation}
             isNeedHelpModalOpen={isNeedHelpModalOpen}
@@ -130,6 +133,7 @@ CouponContainer.propTypes = {
   closedOverlay: PropTypes.func,
   idPrefix: PropTypes.string,
   openApplyNowModal: PropTypes.func,
+  bagLoading: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}),
   pageName: PropTypes.string,
   pageSection: PropTypes.string,
@@ -210,6 +214,7 @@ export const mapStateToProps = state => ({
   needHelpRichText: getNeedHelpContent(state),
   commonLabels: getGlobalLabels(state),
   isNeedHelpModalOpen: getNeedHelpModalState(state),
+  bagLoading: BagPageSelectors.isBagLoading(state),
 });
 
 export default connect(
