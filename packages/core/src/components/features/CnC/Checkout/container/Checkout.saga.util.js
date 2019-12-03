@@ -453,20 +453,16 @@ export function* redirectFromExpress() {
   return yield put(getSetCheckoutStage(constants.SHIPPING_DEFAULT_PARAM));
 }
 
-function* loadGiftWrappingOptions() {
-  try {
-    const res = yield call(getGiftWrappingOptions);
-    yield put(getSetGiftWrapOptionsActn(res));
-  } catch (e) {
-    // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
-    // throw e;
-    logger.error(e);
-  }
-}
-
 export function* getGiftWrapOptionsData() {
   const giftWrap = yield select(getGiftWrapOptions);
   if (!giftWrap) {
-    yield call(loadGiftWrappingOptions);
+    try {
+      const res = yield call(getGiftWrappingOptions);
+      yield put(getSetGiftWrapOptionsActn(res));
+    } catch (e) {
+      // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
+      // throw e;
+      logger.error(e);
+    }
   }
 }
