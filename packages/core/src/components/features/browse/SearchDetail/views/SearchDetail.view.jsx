@@ -39,7 +39,7 @@ class SearchListingView extends React.Component {
         pageName: 'search',
         pageSection: 'search',
         pageSubSection: 'search',
-        customEvents: ['prodView', 'event1', 'event80', 'event83', 'event93'],
+        customEvents: ['event91', 'event92', 'event80', 'event20'],
       });
     }
   }
