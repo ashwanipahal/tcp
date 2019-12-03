@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Image } from 'react-native';
+import { Text } from 'react-native';
 import { shallow } from 'enzyme';
 import { RenderTree } from '@fabulas/astly';
 import RichText from '../views/RichText.native';
@@ -7,7 +7,6 @@ import RichText from '../views/RichText.native';
 describe('RichText', () => {
   let component;
   let props;
-  const helloWorldText = 'Hello World';
 
   beforeEach(() => {
     props = {

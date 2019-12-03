@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import { WebView } from 'react-native-webview';
-import { Dimensions, View, Text } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
-import Image from '@tcp/core/src/components/common/atoms/Image';
 import { PropTypes } from 'prop-types';
 import generateComponentMap from '../ComponentMap.native';
 
@@ -74,6 +73,7 @@ RichText.propTypes = {
   thirdPartyCookiesEnabled: PropTypes.bool,
   isApplyDeviceHeight: PropTypes.bool,
   actionHandler: PropTypes.func,
+  navigation: PropTypes.shape({}),
 };
 
 RichText.defaultProps = {
@@ -84,6 +84,7 @@ RichText.defaultProps = {
   thirdPartyCookiesEnabled: false,
   isApplyDeviceHeight: false,
   actionHandler: () => {},
+  navigation: {},
 };
 
 export default RichText;

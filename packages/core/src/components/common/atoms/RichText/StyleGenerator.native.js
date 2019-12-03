@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import { View, Text, Image } from 'react-native';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor/views/Anchor.native';
 import { getScreenWidth } from '../../../../utils/utils.app';
 
 const cssRuleParser = (StyledStrings, className) => {

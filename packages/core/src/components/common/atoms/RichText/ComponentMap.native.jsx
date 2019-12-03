@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Text, Image, View } from 'react-native';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor/views/Anchor.native';
 import {
@@ -32,6 +33,15 @@ export const RenderText = (props, className) => {
   return <StyledText style={{ ...style }}>{children}</StyledText>;
 };
 
+RenderText.propTypes = {
+  style: PropTypes.shape({}).isRequired,
+  children: PropTypes.shape({}),
+};
+
+RenderText.defaultProps = {
+  children: {},
+};
+
 export const RenderAnchor = (props, className) => {
   const { children, href, className: selfClass } = props;
   const classes = className ? `${className} ${selfClass}` : selfClass;
@@ -44,6 +54,17 @@ export const RenderAnchor = (props, className) => {
   );
 };
 
+RenderAnchor.propTypes = {
+  style: PropTypes.shape({}).isRequired,
+  children: PropTypes.Array({}).isRequired,
+  href: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+RenderAnchor.defaultProps = {
+  className: '',
+};
+
 export const RenderImage = (props, className) => {
   const { alt, source, className: selfClass, style } = props;
   const classes = className ? `${className} ${selfClass}` : selfClass;
@@ -54,6 +75,19 @@ export const RenderImage = (props, className) => {
       <StyledImage style={{ ...style }} resizeMode="stretch" alt={alt} source={{ uri: source }} />
     </ImageWrapperView>
   );
+};
+
+RenderImage.propTypes = {
+  style: PropTypes.shape({}).isRequired,
+  children: PropTypes.shape({}).isRequired,
+  alt: PropTypes.string,
+  source: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+RenderImage.defaultProps = {
+  className: '',
+  alt: '',
 };
 
 export const RenderView = props => {
@@ -86,6 +120,15 @@ export const RenderView = props => {
       })}
     </StyledView>
   ) : null;
+};
+
+RenderView.propTypes = {
+  children: PropTypes.shape({}).isRequired,
+  className: PropTypes.string,
+};
+
+RenderView.defaultProps = {
+  className: '',
 };
 
 const generateComponentMap = navigation => {
