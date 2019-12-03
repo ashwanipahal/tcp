@@ -371,9 +371,7 @@ class CheckoutPage extends React.PureComponent {
                       {nextSubmitText}
                     </Button>
                   ) : (
-                    <div className="review-submit-button">
-                      <LoaderSkelton />
-                    </div>
+                    <LoaderSkelton height="50px" />
                   )}
                   <div className="submit-disclaimer">
                     {applyConditionPreText}
