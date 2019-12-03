@@ -32,6 +32,7 @@ export class ShippingReviewSection extends React.PureComponent {
       shipmentMethods,
       formName,
       formSection,
+      bagLoading,
       checkoutRoutingDone,
     } = this.props;
     const {
@@ -49,35 +50,27 @@ export class ShippingReviewSection extends React.PureComponent {
               editTitle={edit}
               onEdit={onEdit}
               dataLocator="pickup-section"
+              bagLoading={bagLoading}
             />
           </Col>
         </Row>
 
         {this.shouldRenderAddressTile() ? (
-          <Row fullBleed>
-            <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-              <div className="shippingAddressTitle">
-                <BodyCopy
-                  fontSize="fs16"
-                  dataLocator=""
-                  fontFamily="secondary"
-                  color="gray.900"
-                  fontWeight="extrabold"
-                >
-                  {addressTitle}
-                </BodyCopy>
-              </div>
-              <Address className="addressStyle" address={shippingAddress.address} />
-              <BodyCopy
-                fontSize="fs16"
-                dataLocator=""
-                fontFamily="secondary"
-                color="gray.900"
-                fontWeight="regular"
-              >
-                {shippingAddress.emailAddress}
-              </BodyCopy>
-              {shippingAddress.phoneNumber && (
+          <>
+            <Row fullBleed>
+              <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+                <div className="shippingAddressTitle">
+                  <BodyCopy
+                    fontSize="fs16"
+                    dataLocator=""
+                    fontFamily="secondary"
+                    color="gray.900"
+                    fontWeight="extrabold"
+                  >
+                    {addressTitle}
+                  </BodyCopy>
+                </div>
+                <Address className="addressStyle" address={shippingAddress.address} />
                 <BodyCopy
                   fontSize="fs16"
                   dataLocator=""
@@ -85,44 +78,56 @@ export class ShippingReviewSection extends React.PureComponent {
                   color="gray.900"
                   fontWeight="regular"
                 >
-                  {formatPhoneNumber(shippingAddress.phoneNumber)}
+                  {shippingAddress.emailAddress}
                 </BodyCopy>
-              )}
-            </Col>
-            <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-              {!isExpressCheckout && shippingMethod && (
-                <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
-              )}
-              {isExpressCheckout && shippingMethod && (
-                <ShipmentMethods
-                  shipmentMethods={shipmentMethods}
-                  formName={formName}
-                  formSection={formSection}
-                  selectedShipmentId={shippingMethod.id}
-                  shipmentHeader={shippingMethodTitle}
-                  checkoutRoutingDone={checkoutRoutingDone}
-                />
-              )}
-              {isGiftOptionsEnabled && !isExpressCheckout && (
-                <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
-              )}
-            </Col>
-          </Row>
+                {shippingAddress.phoneNumber && (
+                  <BodyCopy
+                    fontSize="fs16"
+                    dataLocator=""
+                    fontFamily="secondary"
+                    color="gray.900"
+                    fontWeight="regular"
+                  >
+                    {formatPhoneNumber(shippingAddress.phoneNumber)}
+                  </BodyCopy>
+                )}
+              </Col>
+              <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+                {!isExpressCheckout && shippingMethod && (
+                  <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
+                )}
+                {isExpressCheckout && shippingMethod && (
+                  <ShipmentMethods
+                    shipmentMethods={shipmentMethods}
+                    formName={formName}
+                    formSection={formSection}
+                    selectedShipmentId={shippingMethod.id}
+                    shipmentHeader={shippingMethodTitle}
+                    checkoutRoutingDone={checkoutRoutingDone}
+                  />
+                )}
+                {isGiftOptionsEnabled && !isExpressCheckout && (
+                  <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+                )}
+              </Col>
+            </Row>
+
+            <Row fullBleed>
+              <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+                {isExpressCheckout && (
+                  <GiftWrappingDisplay
+                    labels={labels}
+                    displayName={giftWrappingDisplayName}
+                    onEdit={onEdit}
+                    isExpressCheckout={isExpressCheckout}
+                  />
+                )}
+              </Col>
+            </Row>
+          </>
         ) : (
           <GenericSkeleton />
         )}
-        <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-            {isExpressCheckout && (
-              <GiftWrappingDisplay
-                labels={labels}
-                displayName={giftWrappingDisplayName}
-                onEdit={onEdit}
-                isExpressCheckout={isExpressCheckout}
-              />
-            )}
-          </Col>
-        </Row>
       </div>
     );
   }

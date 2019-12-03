@@ -18,6 +18,7 @@ const styles = css`
 
   .review-billing-skeleton {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 `;
 
