@@ -32,7 +32,7 @@ const OrderNotification = ({ labels, orderLabels, order, navigation, separator }
   const orderStatus = order ? getOrderStatusForNotification(order.orderStatus) : '';
   return (
     <>
-      {order && (
+      {!!(order && order.orderNumber) && (
         <MainContainer>
           <Container
             separator={separator}

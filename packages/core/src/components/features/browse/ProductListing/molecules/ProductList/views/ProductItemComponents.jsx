@@ -205,7 +205,11 @@ export function PromotionalMessage(props) {
         )}
       </BodyCopy>
     </Dotdotdot>
-  ) : null;
+  ) : (
+    <>
+      <div className="loyalty-text-container" />
+    </>
+  );
 }
 
 const renderWishListItem = (item, labels, activeWishListId) => (
@@ -321,9 +325,10 @@ export const WishListIcon = (
   isInDefaultWishlist,
   handleAddToWishlist,
   itemNotAvailable,
-  favoritedCount
+  favoritedCount,
+  isSuggestedItem
 ) => {
-  if (itemNotAvailable) {
+  if (itemNotAvailable && !isSuggestedItem) {
     return null;
   }
 

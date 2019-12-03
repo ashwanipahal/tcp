@@ -5,7 +5,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   styles,
   PageContainer,
@@ -14,6 +13,8 @@ import {
   EmptyView,
   RowContainer,
   ItemCountContainer,
+  DisplaySkeleton,
+  DisplayPlp,
 } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
@@ -119,6 +120,19 @@ const onRenderHeader = data => {
   );
 };
 
+const renderPromModules = (isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn) => {
+  return (
+    !isSearchListing && (
+      <PromoModules
+        plpTopPromos={plpTopPromos}
+        navigation={navigation}
+        isPlcc={isPlcc}
+        isLoggedIn={isLoggedIn}
+      />
+    )
+  );
+};
+
 const ProductListView = ({
   products,
   filters,
@@ -159,6 +173,7 @@ const ProductListView = ({
   isBothTcpAndGymProductAreAvailable,
   renderMoveToList,
   filtersLength,
+  updateAppTypeHandler,
   QRAnimationURL,
   resetCustomLoader,
   ...otherProps
@@ -196,39 +211,37 @@ const ProductListView = ({
     />
   ) : (
     <ScrollView>
-      {!isSearchListing && (
-        <PromoModules
-          plpTopPromos={plpTopPromos}
-          navigation={navigation}
-          isPlcc={isPlcc}
-          isLoggedIn={isLoggedIn}
-        />
-      )}
+      {renderPromModules(isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn)}
       <PageContainer margins={margins} paddings={paddings}>
         <FilterContainer>{onRenderHeader(headerData)}</FilterContainer>
-        {!isLoadingMore && (
-          <ProductList
-            getProducts={getProducts}
-            navigation={navigation}
-            products={products}
-            title={title}
-            scrollToTop={scrollToTop}
-            totalProductsCount={totalProductsCount}
-            isFavorite={isFavorite}
-            onAddItemToFavorites={onAddItemToFavorites}
-            isLoggedIn={isLoggedIn}
-            labelsLogin={labelsLogin}
-            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-            isSearchListing={isSearchListing}
-            renderMoveToList={renderMoveToList}
-            {...otherProps}
-          />
-        )}
-        <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
+        <>
+          <DisplayPlp renderskeleton={!isLoadingMore} renderplp={isLoadingMore}>
+            <ProductList
+              getProducts={getProducts}
+              navigation={navigation}
+              products={products}
+              title={title}
+              scrollToTop={scrollToTop}
+              totalProductsCount={totalProductsCount}
+              isFavorite={isFavorite}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              labelsLogin={labelsLogin}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              isSearchListing={isSearchListing}
+              renderMoveToList={renderMoveToList}
+              updateAppTypeHandler={updateAppTypeHandler}
+              {...otherProps}
+            />
+          </DisplayPlp>
+
+          <DisplaySkeleton renderskeleton={isLoadingMore} renderplp={!isLoadingMore}>
+            <PLPSkeleton col={20} />
+          </DisplaySkeleton>
+        </>
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
-      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
     </ScrollView>
   );
 };
@@ -276,6 +289,7 @@ ProductListView.propTypes = {
   showCustomLoader: PropTypes.bool,
   QRAnimationURL: PropTypes.string.isRequired,
   resetCustomLoader: PropTypes.func,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 ProductListView.defaultProps = {

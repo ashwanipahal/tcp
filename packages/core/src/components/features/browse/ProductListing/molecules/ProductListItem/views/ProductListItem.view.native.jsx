@@ -126,7 +126,7 @@ const onCTAHandler = props => {
     } = item;
     setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
-    onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
+    onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item);
   } else if (isFavorite) {
     handleFavoriteAddOrEdit(
       colorProductId,
@@ -672,7 +672,9 @@ const RenderTitle = ({ text, onGoToPDPPage, colorsMap, productInfo, selectedColo
 
   if (renderVariation) return null;
   return (
-    <TitleContainer onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}>
+    <TitleContainer
+      onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)}
+    >
       <TitleText accessibilityRole="text" accessibilityLabel={text} numberOfLines={2}>
         {text}
       </TitleText>
