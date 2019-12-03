@@ -75,14 +75,6 @@
         }
       }
 
-      const handleCloseClick = event => {
-        if(window.ReactNativeWebView) {
-          event.preventDefault();
-          event.stopPropagation();
-          window.ReactNativeWebView.postMessage("closeRating");
-        }
-      }
-
       // *** code to observe DOM mutation and add custom handlers start ***
       const targetNode = document.getElementById('bazaarVoiceContainer');
       // Options for the observer (which mutations to observe)
@@ -91,9 +83,6 @@
       const callback = mutationsList =>  {
         for(let mutation of mutationsList) {
           if (mutation.type === 'childList') {
-            if(document.querySelector('button.bv-mbox-close')) {
-              document.querySelector('button.bv-mbox-close').addEventListener('click', handleCloseClick);
-            }
             if(document.querySelector('button.bv-write-review')) {
               document.querySelector('button.bv-write-review').addEventListener('click', handleWriteReviewClick);
             }
