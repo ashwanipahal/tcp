@@ -364,7 +364,6 @@ export const languageRedirect = (
   if (
     onlyCurrencyChanged(newCountry, oldCountry, newLanguage, oldLanguage, newCurrency, oldCurrency)
   ) {
-    console.log('page refreshed!!!');
     refreshPage();
   }
 };
