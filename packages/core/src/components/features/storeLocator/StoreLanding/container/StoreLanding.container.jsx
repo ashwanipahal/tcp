@@ -133,14 +133,12 @@ StoreLanding.getInitActions = () => initActions;
 StoreLanding.getInitialProps = (reduxProps, pageProps) => {
   return {
     ...pageProps,
-    ...{
-      pageData: {
-        pageName: 'storelocator',
-        pageType: 'companyinfo',
-        pageSection: 'storelocator',
-        pageSubSection: 'storelocator',
-        pageNavigationText: 'header-find a store',
-      },
+    pageData: {
+      pageName: 'storelocator',
+      pageType: 'companyinfo',
+      pageSection: 'storelocator',
+      pageSubSection: 'storelocator',
+      pageNavigationText: 'header-find a store',
     },
   };
 };

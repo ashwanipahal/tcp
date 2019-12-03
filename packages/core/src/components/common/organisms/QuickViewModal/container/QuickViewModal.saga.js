@@ -27,7 +27,7 @@ function* fetchProductDetail({ payload }) {
     }
     const fetchDetailArray = payloadArray.map(product => {
       const { colorProductId } = product;
-      return call(getProductInfoById, colorProductId, state, !payload.isFavoriteEdit && itemBrand);
+      return call(getProductInfoById, colorProductId, state, itemBrand);
     });
     const productDetailArray = yield all(fetchDetailArray);
     yield put(setQuickView(productDetailArray));

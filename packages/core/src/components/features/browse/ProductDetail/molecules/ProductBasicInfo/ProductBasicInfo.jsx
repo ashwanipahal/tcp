@@ -21,6 +21,7 @@ class ProductBasicInfo extends React.Component {
     this.state = {
       clickedProdutId: '',
       errorProductId: '',
+      isLoggedIn: props.isLoggedIn,
     };
   }
 
@@ -34,16 +35,15 @@ class ProductBasicInfo extends React.Component {
       skuId,
     } = props;
 
-    const { clickedProdutId } = state;
-
-    if (isLoggedIn && clickedProdutId === productId) {
+    const { clickedProdutId, isLoggedIn: wasLoggedIn } = state;
+    if (isLoggedIn && isLoggedIn !== wasLoggedIn && clickedProdutId === productId) {
       onAddItemToFavorites({
         colorProductId: productId,
         productSkuId: (skuId && skuId.skuId) || null,
         pdpColorProductId: colorProductId,
         page: pageName || 'PDP',
       });
-      return { clickedProdutId: '' };
+      return { clickedProdutId: '', isLoggedIn };
     }
     return null;
   }
@@ -195,6 +195,7 @@ ProductBasicInfo.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   pageName: PropTypes.string,
   skuId: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductBasicInfo.defaultProps = {
@@ -214,6 +215,7 @@ ProductBasicInfo.defaultProps = {
   pageName: '',
   skuId: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);

@@ -57,6 +57,8 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
       onVenmoError={false}
       onVenmoSubmit={[Function]}
       pageCategory="review"
+      pageName="checkout"
+      pageSection="review"
       routeToPage=""
       showAccordian={true}
       showPayPalButton={false}

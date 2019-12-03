@@ -1,7 +1,7 @@
 const path = require('path');
 const blacklist = require('metro-config/src/defaults/blacklist');
 
-const watchFolders = [path.join(__dirname, '/../core/')];
+const watchFolders = [path.join(__dirname, '/../core/'), path.join(__dirname, '/../web/')];
 
 const extraNodeModules = new Proxy(
   /* First argument in Proxy constructor is passed as
@@ -11,6 +11,7 @@ const extraNodeModules = new Proxy(
    */
   {
     '@tcp/core': path.join(__dirname, '/../core/'),
+    '@tcp/web': path.join(__dirname, '/../web/'),
   },
   {
     get: (target, name) => {

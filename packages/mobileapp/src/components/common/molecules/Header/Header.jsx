@@ -11,7 +11,10 @@ import {
   getLabelValue,
 } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
-import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
+import {
+  getFavoriteStoreActn,
+  setStoresByCoordinates,
+} from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import {
   updateCartCount,
@@ -109,8 +112,9 @@ class Header extends React.PureComponent {
    * This function validate the iconView.
    */
   validateIcon = () => {
-    const { navigation, labels } = this.props;
+    const { navigation, labels, resetSuggestedStores } = this.props;
     const { isDownIcon } = this.state;
+    resetSuggestedStores([]);
     navigation.navigate({
       routeName: 'StoreLanding',
       params: {
@@ -263,7 +267,7 @@ class Header extends React.PureComponent {
         <Container>
           <HeaderContainer data-locator={getLocator('global_headerpanel')}>
             {headertype === STORE_TYPE ? (
-              <BackContainer position="row">
+              <BackContainer>
                 <TouchableOpacity
                   accessible
                   onPress={() => onBack(navigation)}
@@ -371,6 +375,7 @@ Header.propTypes = {
   headertype: PropTypes.string,
   screenProps: PropTypes.shape({}),
   toastMessage: PropTypes.func,
+  resetSuggestedStores: PropTypes.func,
 };
 
 Header.defaultProps = {
@@ -388,6 +393,7 @@ Header.defaultProps = {
   headertype: '',
   screenProps: {},
   toastMessage: () => {},
+  resetSuggestedStores: () => {},
 };
 
 const mapStateToProps = state => {
@@ -414,6 +420,7 @@ const mapDispatchToProps = dispatch => {
     toastMessage: payload => {
       dispatch(toastMessageInfo(payload));
     },
+    resetSuggestedStores: payload => dispatch(setStoresByCoordinates(payload)),
   };
 };
 

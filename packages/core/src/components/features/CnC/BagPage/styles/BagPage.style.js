@@ -25,6 +25,7 @@ const styles = css`
     display: flex;
     justify-content: center;
     @media ${props => props.theme.mediaQuery.medium} {
+      justify-content: initial;
       pointer-events: none;
     }
   }

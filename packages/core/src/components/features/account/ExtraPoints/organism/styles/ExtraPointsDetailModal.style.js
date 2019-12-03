@@ -7,6 +7,7 @@ const CouponDetailModalStyle = css`
   }
   .earnPointsModal_title {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .imageSizeSingle {
     width: 70px;

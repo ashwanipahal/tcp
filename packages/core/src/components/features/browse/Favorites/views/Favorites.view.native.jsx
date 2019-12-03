@@ -161,9 +161,11 @@ class FavoritesView extends React.PureComponent {
   };
 
   handleShareListByEmail = () => {
+    const { labels } = this.props;
     this.currentPopupName = SHARE_LIST_BY_EMAIL;
     this.setState({
       isOpenModal: true,
+      selectedShareOption: labels.lbl_fav_email,
     });
   };
 
@@ -186,8 +188,14 @@ class FavoritesView extends React.PureComponent {
   };
 
   onCloseModal = () => {
+    const { labels } = this.props;
+    const { selectedShareOption } = this.state;
+    const isSelectedShareOptionIsNotDefault = selectedShareOption !== labels.lbl_fav_share;
     this.setState({
       isOpenModal: false,
+      ...(isSelectedShareOptionIsNotDefault && {
+        selectedShareOption: labels.lbl_fav_share,
+      }),
     });
   };
 
@@ -345,6 +353,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   shareLinkOnFacebook = () => {
+    const { labels } = this.props;
+    this.setState({
+      selectedShareOption: labels.lbl_fav_share,
+    });
     const shareLinkContent = {
       contentType: 'link',
       contentUrl: this.getSharableLink(),
@@ -358,6 +370,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   onShareLink = () => {
+    const { labels } = this.props;
+    this.setState({
+      selectedShareOption: labels.lbl_fav_copyLink,
+    });
     Share.share({
       message: this.getSharableLink(),
     });
@@ -608,6 +624,7 @@ class FavoritesView extends React.PureComponent {
       resetBrandFilters,
       isBothTcpAndGymProductAreAvailable,
       isLoggedIn,
+      updateAppTypeHandler,
       addToBagEcom,
     } = this.props;
 
@@ -634,9 +651,9 @@ class FavoritesView extends React.PureComponent {
 
     const recommendationAttributes = {
       variation: 'moduleO',
-      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.NO_FAVORITES,
       showLoyaltyPromotionMessage: false,
-      headerAlignment: 'left',
+      isFavoriteRecommendation: true,
     };
     const displayName = (activeWishList && activeWishList.displayName) || '';
 
@@ -751,6 +768,7 @@ class FavoritesView extends React.PureComponent {
               onSeeSuggestedItems={this.onSeeSuggestedItems}
               onCloseSuggestedModal={this.onCloseSuggestedModal}
               seeSuggestedDictionary={seeSuggestedDictionary}
+              updateAppTypeHandler={updateAppTypeHandler}
             />
           </View>
         )}
@@ -799,6 +817,7 @@ FavoritesView.propTypes = {
   onReplaceWishlistItem: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}),
   errorMessages: PropTypes.shape({}).isRequired,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {

@@ -54,7 +54,7 @@ class ProductDetailView extends PureComponent {
         pageSection: 'product',
         pageSubSection: 'product',
         products: productsFormatted,
-        customEvents: ['event74', 'event76', 'event95'],
+        customEvents: ['prodView', 'event1', 'event80', 'event93', 'event81'],
       });
     }
   }
@@ -180,7 +180,7 @@ class ProductDetailView extends PureComponent {
     return productInfo.isGiftCard ? (
       <div className="go-back-container">
         <button type="button" onClick={this.onGoBack} className="button-go-back">
-          <Image src={getIconPath('medium-left-arrow')} />
+          <Image src={getIconPath('medium-left-arrow')} alt="" />
           <BodyCopy className="back-button" fontFamily="secondary" fontSize="fs16">
             {pdpLabels.back}
           </BodyCopy>

@@ -109,6 +109,7 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
             "pageSection": "shopping bag",
             "pageSubSection": "shopping bag",
             "pageType": "shopping bag",
+            "products": Array [],
           }
         }
       >
@@ -147,6 +148,7 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
             ],
             "eventName": "loyaltyclick",
             "pageName": "shopping bag",
+            "products": Array [],
           }
         }
       >
