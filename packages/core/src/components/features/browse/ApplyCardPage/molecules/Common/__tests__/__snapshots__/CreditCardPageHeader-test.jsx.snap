@@ -23,7 +23,7 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
         <span
           className="left-arrow"
         >
-
+           
         </span>
         <Styled(BodyCopy)
           className="back_button"
@@ -60,7 +60,7 @@ exports[`CreditCardPageHeader component should renders correctly 1`] = `
       <Styled(BodyCopy)
         className="credit_card_heading"
         color="text.primary"
-        component="h1"
+        component="h2"
         data-locator="rewards"
         fontFamily="primary"
         fontSize="fs16"

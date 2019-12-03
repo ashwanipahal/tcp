@@ -317,8 +317,7 @@ class TCPWebApp extends App {
               {Component.pageInfo && Component.pageInfo.pageId
                 ? this.getSEOTags(Component.pageInfo.pageId, store, router)
                 : null}
-              {isNonCheckoutPage && <Header />}
-              {!isNonCheckoutPage && <CheckoutHeader />}
+              {isNonCheckoutPage ? <Header /> : <CheckoutHeader />}
               <Loader />
               {/* Provider for global hotfixes object */}
               <HotfixBrowserContext.Provider value={global.TCP_HOTFIX_BROWSER || {}}>
