@@ -15,7 +15,7 @@ import BrandSwitchStack from '../pages/brandSwitch';
 import CheckoutStack from '../pages/checkout';
 import BagStack from '../pages/bag';
 import QRScanner from '../components/common/molecules/QRScanner';
-import NoInternet from '../pages/noInternet';
+import NoInternetStack from '../pages/noInternet';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -48,7 +48,7 @@ const RootStack = createStackNavigator(
       screen: QRScanner,
     },
     NoInternet: {
-      screen: NoInternet,
+      screen: NoInternetStack,
     },
   },
   {

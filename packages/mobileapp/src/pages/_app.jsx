@@ -8,7 +8,7 @@ import codePush from 'react-native-code-push';
 import CookieManager from 'react-native-cookies';
 import AsyncStorage from '@react-native-community/async-storage';
 import { PropTypes } from 'prop-types';
-import { SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
+// import { SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
 import { initAppErrorReporter } from '@tcp/core/src/utils/errorReporter.util.native';
 import {
   createAPIConfig,
@@ -82,7 +82,8 @@ export class App extends React.PureComponent {
     const { apiConfig } = this.state;
     const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
     codePush.sync({ installMode: codePush.InstallMode.ON_NEXT_RESUME });
-    this.store.dispatch(SetTcpSegmentMethodCall()); // this method needs to be exposed and will be called by Adobe target if required. and in fututr a payload neess to be passed in it , for reference please check _app.jsx of web.
+    /* this method needs to be exposed and will be called by Adobe target if required. and in fututr a payload neess to be passed in it , for reference please check _app.jsx of web.
+    this.store.dispatch(SetTcpSegmentMethodCall());  */
     if (isErrorReportingActive) {
       initAppErrorReporter({
         isDevelopment: false,

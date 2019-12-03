@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation';
 import NoInternetPage from '../components/common/molecules/NoInternetPage';
 
-const NoInternet = createStackNavigator(
+const NoInternetStack = createStackNavigator(
   {
     NoInternetPage: {
       screen: NoInternetPage,
@@ -12,4 +12,4 @@ const NoInternet = createStackNavigator(
   }
 );
 
-export default NoInternet;
+export default NoInternetStack;
