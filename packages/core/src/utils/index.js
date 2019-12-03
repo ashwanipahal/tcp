@@ -19,7 +19,6 @@ export {
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,
-  siteRedirect,
   languageRedirect,
   getAsPathWithSlug,
   getMappedPageHref,

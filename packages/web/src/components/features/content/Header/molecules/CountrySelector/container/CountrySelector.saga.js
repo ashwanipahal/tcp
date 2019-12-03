@@ -90,15 +90,26 @@ export function* submitCountrySelectionData({ payload: data }) {
     const { submitData } = countryListAbstractor;
     const res = yield call(submitData, payload);
     if (!res) logger.error('Error occurered!');
-    const { country: newCountry, language: newLanguage } = data;
+    const { country: newCountry, language: newLanguage, currency: newCurrency } = data;
     const oldCountry = yield select(state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country);
+    const oldCurrency = yield select(
+      state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.currency
+    );
     const oldLanguage = yield select(
       state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language
     );
     const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
     yield put(udpateSiteId(newSiteId));
     yield call(NavigateXHR, '');
-    languageRedirect(newCountry, oldCountry, newSiteId, newLanguage, oldLanguage);
+    languageRedirect(
+      newCountry,
+      oldCountry,
+      newSiteId,
+      newLanguage,
+      oldLanguage,
+      newCurrency,
+      oldCurrency
+    );
   } catch (error) {
     yield null;
   }
