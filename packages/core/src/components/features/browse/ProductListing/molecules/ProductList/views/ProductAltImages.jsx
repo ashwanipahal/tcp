@@ -278,7 +278,6 @@ class ProductAltImages extends React.PureComponent {
             unbxdparam_sku={unbxdData && unbxdData.pId}
             unbxdparam_prank={unbxdData && unbxdData.prank}
             inheritedStyles={imageAnchorInheritedStyles}
-            noLink
           >
             <DamImage
               className="loadImage"
