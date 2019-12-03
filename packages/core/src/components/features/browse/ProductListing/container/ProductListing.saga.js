@@ -80,8 +80,8 @@ export function* fetchPlpProducts({ payload }) {
             instanceProductListing.parsedModuleData,
             plpProducts.bannerInfo
           );
-          yield put(loadModulesData(modules));
           yield put(loadLayoutData(layout, 'productListingPage'));
+          yield put(loadModulesData(modules));
         }
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
