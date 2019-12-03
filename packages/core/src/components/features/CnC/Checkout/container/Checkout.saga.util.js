@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
 import {
@@ -16,6 +17,7 @@ import {
   updateRTPSData,
   getServerErrorMessage,
   acceptOrDeclinePreScreenOffer,
+  getGiftWrappingOptions,
 } from '../../../../../services/abstractors/CnC/index';
 // eslint-disable-next-line
 import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
@@ -35,6 +37,7 @@ import CHECKOUT_ACTIONS, {
   setSmsNumberForUpdates,
   getSetCheckoutStage,
   toggleCheckoutRouting,
+  getSetGiftWrapOptionsActn,
 } from './Checkout.action';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
@@ -45,6 +48,7 @@ import {
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
+import { getGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
 
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
@@ -447,4 +451,22 @@ export function* redirectFromExpress() {
     return utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
   }
   return yield put(getSetCheckoutStage(constants.SHIPPING_DEFAULT_PARAM));
+}
+
+function* loadGiftWrappingOptions() {
+  try {
+    const res = yield call(getGiftWrappingOptions);
+    yield put(getSetGiftWrapOptionsActn(res));
+  } catch (e) {
+    // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
+    // throw e;
+    logger.error(e);
+  }
+}
+
+export function* getGiftWrapOptionsData() {
+  const giftWrap = yield select(getGiftWrapOptions);
+  if (!giftWrap) {
+    yield call(loadGiftWrappingOptions);
+  }
 }
