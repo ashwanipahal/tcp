@@ -49,6 +49,7 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
             currencySymbol="USD"
             headerAlignment=""
             headerLabel="You May Also Like"
+            isFavoriteRecommendation={false}
             isPerfectBlock={true}
             isPromoAvailable={
               Array [
@@ -168,6 +169,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
             currencySymbol="USD"
             headerAlignment=""
             headerLabel="You May Also Like"
+            isFavoriteRecommendation={false}
             isPerfectBlock={true}
             isPromoAvailable={
               Array [
@@ -321,6 +323,7 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
             currencySymbol="USD"
             headerAlignment=""
             headerLabel="You May Also Like"
+            isFavoriteRecommendation={false}
             isPerfectBlock={true}
             isPromoAvailable={
               Array [
@@ -430,6 +433,7 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
             currencySymbol="USD"
             headerAlignment=""
             headerLabel="You May Also Like"
+            isFavoriteRecommendation={false}
             isPerfectBlock={true}
             isPromoAvailable={
               Array [
