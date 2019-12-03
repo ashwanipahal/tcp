@@ -56,16 +56,11 @@ class AccountOverview extends PureComponent<Props> {
         {isUserLoggedIn && (
           <React.Fragment>
             <OrderNotification />
+            <Panel title={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}>
+              <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}>
               <MyPlaceRewardsOverviewTile
-                labels={labels}
-                commonLabels={commonLabels}
-                handleComponentChange={handleComponentChange}
-              />
-            </Panel>
-
-            <Panel title={getLabelValue(labels, 'lbl_overview_myWalletHeading')}>
-              <MyWalletTile
                 labels={labels}
                 commonLabels={commonLabels}
                 handleComponentChange={handleComponentChange}
@@ -74,6 +69,13 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_earnPointsHeading')}>
               <EarnExtraPointsOverview handleComponentChange={handleComponentChange} />
             </Panel>
+            <Panel title={getLabelValue(labels, 'lbl_overview_myWalletHeading')}>
+              <MyWalletTile
+                labels={labels}
+                commonLabels={commonLabels}
+                handleComponentChange={handleComponentChange}
+              />
+            </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')}>
               <OrdersTile
                 labels={labels}
@@ -81,23 +83,21 @@ class AccountOverview extends PureComponent<Props> {
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
-              <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
-            </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}>
-              <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
-            </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
-              <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
-            </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
-              <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
-            </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')}>
               <MyPlaceRewardsCreditCard
                 labels={labels}
                 handleComponentChange={handleComponentChange}
               />
+            </Panel>
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
+              <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
+            <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
+              <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
+
+            <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
+              <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
           </React.Fragment>
         )}

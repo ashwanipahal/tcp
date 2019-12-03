@@ -42,11 +42,11 @@ export const COMPONENTS_US = [
 
 export const COMPONENTS_CA = [
   'profileInfoTile',
-  'addressOverviewTile',
-  'paymentOverviewTile',
   'myWalletTile',
   'ordersTile',
   'myPreferencesTile',
+  'addressOverviewTile',
+  'paymentOverviewTile',
 ];
 
 export const AccountOverviewTileList = ({ className, ...otherProps }) => {
