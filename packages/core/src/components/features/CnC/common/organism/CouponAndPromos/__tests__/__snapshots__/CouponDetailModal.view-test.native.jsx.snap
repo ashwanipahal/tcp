@@ -28,7 +28,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         data-locator="couponDetailModal_applied_NameLbl"
         dataLocator=""
         fontFamily="primary"
-        fontSize="fs42"
+        fontSize="fs40"
         fontWeight="black"
         margin={null}
         numberOfLines={null}
@@ -37,15 +37,15 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         textDecoration={null}
       />
       <Styled(View)
-        spacingStyles="margin-top-SM"
+        spacingStyles="margin-top-XS"
       >
         <Styled(BodyCopy)
           accessibilityText=""
           data-locator="couponDetailModal_applied_ValidityDateLbl"
           dataLocator=""
           fontFamily="secondary"
-          fontSize="fs24"
-          fontWeight="semibold"
+          fontSize="fs22"
+          fontWeight="extrabold"
           margin={null}
           numberOfLines={null}
           text="USE_BY_TEXT 8/10/19"
@@ -68,6 +68,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         >
           <BarcodeView
             displayValue={true}
+            fontSize="fs12"
             format="CODE128"
             height="50"
             value="Y00105578"
