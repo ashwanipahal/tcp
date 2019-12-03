@@ -96,11 +96,6 @@ const DamImage = props => {
     const { uri: videoUri } = uri;
     const VideoUri = videoUri.replace('/image/', '/video/');
     const videoDataOptions = {
-      // autoplay: false,
-      // controls: true,
-      // loop: false,
-      // muted: true,
-      // inline: true,
       url: VideoUri,
     };
 

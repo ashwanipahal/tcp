@@ -1033,11 +1033,6 @@ export const getOrderGroupLabelAndMessage = orderProps => {
   return { label, message };
 };
 
-/**
-  this is a temporary fix only for DEMO to change
-  WCS store image path to DAM image for Gymboree
-  MUST BE REVERTED
- */
 export const changeImageURLToDOM = (imgPath, cropParams) => {
   const brandName = getBrand();
   const brandId = brandName && brandName.toUpperCase();
