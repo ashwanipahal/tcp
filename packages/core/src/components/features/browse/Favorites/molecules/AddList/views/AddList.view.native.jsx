@@ -1,5 +1,4 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -33,54 +32,52 @@ class AddList extends React.PureComponent {
   render() {
     const { labels, margins, onCloseModal } = this.props;
     return (
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <Container margins={margins}>
+      <Container margins={margins}>
+        <Field
+          label={getLabelValue(labels, 'lbl_fav_list_name')}
+          name="listName"
+          id="listName"
+          type="text"
+          autoCapitalize="none"
+          component={TextBox}
+          dataLocator="listName"
+          maxLength={50}
+          bottomBorderColor="gray.600"
+        />
+        <RowContainer margins="20px 0 0 0">
           <Field
-            label={getLabelValue(labels, 'lbl_fav_list_name')}
-            name="listName"
-            id="listName"
-            type="text"
-            autoCapitalize="none"
-            component={TextBox}
-            dataLocator="listName"
-            maxLength={50}
-            bottomBorderColor="gray.600"
+            inputVariation="inputVariation-1"
+            name="default_checkbox"
+            component={InputCheckbox}
+            dataLocator="default_checkbox"
+            disabled={false}
+            rightText={getLabelValue(labels, 'lbl_fav_default_list')}
+            textMargin="4px 0 0 0"
           />
-          <RowContainer margins="20px 0 0 0">
-            <Field
-              inputVariation="inputVariation-1"
-              name="default_checkbox"
-              component={InputCheckbox}
-              dataLocator="default_checkbox"
-              disabled={false}
-              rightText={getLabelValue(labels, 'lbl_fav_default_list')}
-              textMargin="4px 0 0 0"
-            />
-            <CustomIcon
-              margins="0 0 0 8px"
-              iconFontName={ICON_FONT_CLASS.Icomoon}
-              name={ICON_NAME.heart}
-              size="fs12"
-              color="gray.900"
-            />
-          </RowContainer>
-          <Button
-            margin="40px 0 0 0"
-            fill="BLUE"
-            type="submit"
-            color="white"
-            onPress={this.submitHandler}
-            text={getLabelValue(labels, 'btn_fav_save')}
+          <CustomIcon
+            margins="0 0 0 8px"
+            iconFontName={ICON_FONT_CLASS.Icomoon}
+            name={ICON_NAME.heart}
+            size="fs12"
+            color="gray.900"
           />
-          <Button
-            margin="24px 0 0 0"
-            fill="WHITE"
-            type="submit"
-            onPress={onCloseModal}
-            text={getLabelValue(labels, 'btn_fav_cancel')}
-          />
-        </Container>
-      </ScrollView>
+        </RowContainer>
+        <Button
+          margin="40px 0 0 0"
+          fill="BLUE"
+          type="submit"
+          color="white"
+          onPress={this.submitHandler}
+          text={getLabelValue(labels, 'btn_fav_save')}
+        />
+        <Button
+          margin="24px 0 0 0"
+          fill="WHITE"
+          type="submit"
+          onPress={onCloseModal}
+          text={getLabelValue(labels, 'btn_fav_cancel')}
+        />
+      </Container>
     );
   }
 }

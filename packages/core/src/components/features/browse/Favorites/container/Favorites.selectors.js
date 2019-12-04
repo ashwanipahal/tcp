@@ -101,3 +101,7 @@ export const getIsDataLoading = state => {
 
 export const getFormErrorLabels = state =>
   state.Labels.global && state.Labels.global.formValidation;
+
+export const fetchErrorMessages = state => {
+  return state.Favorites && state.Favorites.get('errorMessages');
+};

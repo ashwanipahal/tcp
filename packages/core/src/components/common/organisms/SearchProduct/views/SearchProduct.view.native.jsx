@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BodyCopy, Button } from '../../../atoms';
 import CustomIcon from '../../../atoms/Icon';
+import QRScannerIcon from '../../../atoms/QRScannerIcon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../atoms/Icon/Icon.constants';
 import SearchContainer, {
   HeaderContainer,
@@ -135,9 +136,12 @@ class SearchProduct extends React.PureComponent {
    */
   renderSearchContainer = () => {
     const topStyle = { marginTop: 10 };
+    const topStyleQRScan = { marginTop: 5 };
     const cancelStyle = { borderWidth: 0, marginTop: 3 };
     const canceTextStyle = { textTransform: 'none', fontWeight: 'normal' };
     const { searchText } = this.state;
+    const { navigation } = this.props;
+
     return (
       <SearchContainer>
         <CustomIcon
@@ -168,13 +172,12 @@ class SearchProduct extends React.PureComponent {
             />
           </CloseButton>
         ) : (
-          <CustomIcon
-            iconFontName={ICON_FONT_CLASS.Icomoon}
-            name={ICON_NAME.qrcode}
+          <QRScannerIcon
             size="fs25"
-            color="gray.600"
-            accessibilityLabel="barcode"
-            style={topStyle}
+            navigation={navigation}
+            closeModal={this.closeModal}
+            style={topStyleQRScan}
+            isDisabled={false}
           />
         )}
         <Button
@@ -327,6 +330,7 @@ SearchProduct.propTypes = {
   searchResults: PropTypes.instanceOf(Object),
   recentSearches: PropTypes.arrayOf(Object),
   setRecentSearches: PropTypes.func,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 SearchProduct.defaultProps = {

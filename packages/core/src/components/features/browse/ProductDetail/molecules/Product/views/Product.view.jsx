@@ -13,6 +13,8 @@ import {
   getMapSliceForSizeSkuID,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+const getColorname = colorProduct => colorProduct.color && colorProduct.color.name;
+
 // eslint-disable-next-line complexity
 const Product = props => {
   const {
@@ -58,18 +60,14 @@ const Product = props => {
     skuId = getMapSliceForSizeSkuID(colorProduct, size);
   }
 
+  const colorProductName = getColorname(colorProduct);
+
   if (isShowPriceRange) {
     const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(productInfo, formValues);
-    prices = getPricesWithRange(
-      productInfo,
-      colorProduct.color.name,
-      fit,
-      size,
-      isSelectedSizeDisabled
-    );
+    prices = getPricesWithRange(productInfo, colorProductName, fit, size, isSelectedSizeDisabled);
   }
   if (isBundleProduct) {
-    prices = getPricesWithRange(productInfo, colorProduct.color.name);
+    prices = getPricesWithRange(productInfo, colorProductName);
   }
 
   return (
@@ -151,6 +149,7 @@ Product.propTypes = {
   reviewOnTop: PropTypes.bool.isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 Product.defaultProps = {

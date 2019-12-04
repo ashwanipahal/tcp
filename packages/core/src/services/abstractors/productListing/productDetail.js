@@ -1,7 +1,7 @@
 import layoutAbstractor from '@tcp/core/src/services/abstractors/bootstrap/layout';
 import { getAPIConfig } from '@tcp/core/src/utils';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import handler from '@tcp/core/src/services/handler/handler';
+import handler, { executeExternalAPICall } from '@tcp/core/src/services/handler/handler';
 import { executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import processHelpers from './processHelpers';
@@ -198,7 +198,7 @@ export const layoutResolver = async ({ category, pageName }) => {
       data: {
         brand: brandIdCMS,
         country: siteIdCMS,
-        channel: channelId,
+        channel: channelId || 'Mobile',
         lang: language === 'en' ? '' : language,
         path: pageName,
         category,
@@ -314,6 +314,81 @@ const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
       // }
       console.log(err);
       // TODO - handle it - throw this.apiHelper.getFormattedError(err);
+    });
+};
+
+const hashValuesReplace = (str, utilArr) => {
+  let finalString = str;
+  utilArr.map(obj => {
+    finalString = finalString && finalString.replace(obj.key, !obj.value ? '' : obj.value);
+    return finalString;
+  });
+  return finalString;
+};
+
+const getReviewContent = (reviewStats, productId) => {
+  const stats = {
+    avgRating: 0,
+    totalReviewCount: 0,
+  };
+  try {
+    const rating = reviewStats.Includes.Products[productId].ReviewStatistics;
+    stats.avgRating = rating.AverageOverallRating;
+    stats.totalReviewCount = rating.TotalReviewCount;
+    return stats;
+  } catch {
+    return stats;
+  }
+};
+
+/**
+ * @function getProductBVRatings
+ * @param {object} productId -  productId of product to fetch its review
+ * @summary This will get the review stats from bazar voice
+ */
+export const getProductBVReviewStats = async productId => {
+  const apiConfig = getAPIConfig();
+  const serviceConfig = endpoints.getBazaarVoiceRatings;
+  const utilArrayHeader = ({ pId, passKey, limit }) => {
+    return [
+      {
+        key: '#product-id#',
+        value: pId,
+      },
+      {
+        key: '#pass-key#',
+        value: passKey,
+      },
+      {
+        key: '#limit#',
+        value: limit,
+      },
+    ];
+  };
+  const fetchReviewURL = hashValuesReplace(
+    serviceConfig.URI,
+    utilArrayHeader({
+      pId: productId,
+      passKey: apiConfig.BV_API_KEY,
+      limit: 1,
+    })
+  );
+
+  const formattedBvApiURL = `${apiConfig.BV_API_URL}/${fetchReviewURL}`;
+
+  const payload = {
+    webService: {
+      URI: formattedBvApiURL,
+      method: serviceConfig.method,
+    },
+  };
+
+  return executeExternalAPICall(payload)
+    .then(res => {
+      return getReviewContent(res.body, productId);
+    })
+    .catch(err => {
+      console.log(err);
     });
 };
 

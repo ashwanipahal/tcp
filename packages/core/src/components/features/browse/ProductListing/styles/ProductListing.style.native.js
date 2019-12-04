@@ -46,6 +46,16 @@ const RowContainer = styled.View`
   ${getAdditionalStyle};
 `;
 
+const DisplayPlp = styled.View`
+  ${props => (props.renderplp ? `display:none` : ``)};
+  ${props => (!props.renderskeleton ? `display:none` : '')};
+`;
+
+const DisplaySkeleton = styled.View`
+  ${props => (!props.renderskeleton ? `display:none` : ``)};
+  ${props => (props.renderplp ? `display:none` : '')};
+`;
+
 const styles = css``;
 
 export {
@@ -56,4 +66,6 @@ export {
   FilterContainer,
   EmptyView,
   RowContainer,
+  DisplayPlp,
+  DisplaySkeleton,
 };

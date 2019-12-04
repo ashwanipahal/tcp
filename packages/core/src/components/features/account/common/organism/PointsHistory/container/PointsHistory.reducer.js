@@ -20,6 +20,8 @@ const PointsHistoryReducer = (state = initialState, action) => {
   switch (action.type) {
     case POINTSHISTORY_CONSTANTS.SHOW_LOADER:
       return state.set('isFetching', true);
+    case POINTSHISTORY_CONSTANTS.HIDE_LOADER:
+      return state.set('isFetching', false);
     case POINTSHISTORY_CONSTANTS.SET_POINTSHISTORY_LIST:
       return state
         .set('isFetching', false)

@@ -9,6 +9,8 @@ import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
 import PropTypes from 'prop-types';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
+import get from 'lodash/get';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
@@ -205,7 +207,11 @@ export function PromotionalMessage(props) {
         )}
       </BodyCopy>
     </Dotdotdot>
-  ) : null;
+  ) : (
+    <>
+      <div className="loyalty-text-container" />
+    </>
+  );
 }
 
 const renderWishListItem = (item, labels, activeWishListId) => (
@@ -239,6 +245,12 @@ const renderWishListItem = (item, labels, activeWishListId) => (
   </div>
 );
 
+const moveToListErrorDisplay = error => {
+  return error ? (
+    <Notification status="error" colSize={{ large: 12, medium: 8, small: 6 }} message={error} />
+  ) : null;
+};
+
 export const CreateWishList = props => {
   const {
     labels,
@@ -249,8 +261,12 @@ export const CreateWishList = props => {
     getActiveWishlist,
     activeWishListId,
     openAddNewList,
+    favoriteErrorMessages,
   } = props;
   const activateCreateButton = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
+  const errorMsg = favoriteErrorMessages
+    ? get(favoriteErrorMessages[itemId], 'errorMessage', null)
+    : '';
   return (
     <div className="create-wish-list-section">
       <h4 className="create-wish-list-header">{labels.lbl_fav_myFavWishList}</h4>
@@ -275,6 +291,7 @@ export const CreateWishList = props => {
           </li>
         ))}
       </ul>
+      {moveToListErrorDisplay(errorMsg)}
       <Button
         onClick={() => openAddNewList(itemId)}
         buttonVariation="fixed-width"
@@ -321,9 +338,10 @@ export const WishListIcon = (
   isInDefaultWishlist,
   handleAddToWishlist,
   itemNotAvailable,
-  favoritedCount
+  favoritedCount,
+  isSuggestedItem
 ) => {
-  if (itemNotAvailable) {
+  if (itemNotAvailable && !isSuggestedItem) {
     return null;
   }
 
@@ -343,21 +361,52 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
   if (itemNotAvailable) {
     return null;
   }
-  const { isFavoriteView, labels, onQuickViewOpenClick } = props;
-  return (
-    isFavoriteView && (
+  const { isFavoriteView, labels, onQuickViewOpenClick, item } = props;
+  if (isFavoriteView) {
+    const {
+      skuInfo: { skuId, size, fit, color },
+    } = item;
+    const { itemId, quantity, isTCP } = item.itemInfo;
+    return (
       <Anchor
         className="edit-fav-item__button"
         handleLinkClick={event => {
           event.preventDefault();
-          onQuickViewOpenClick({ colorProductId: selectedColorProductId }, true);
+          onQuickViewOpenClick({
+            colorProductId: selectedColorProductId,
+            orderInfo: {
+              orderItemId: itemId,
+              selectedQty: quantity,
+              selectedColor: color.name,
+              selectedSize: size || '',
+              selectedFit: fit || '',
+              skuId,
+              itemBrand: isTCP ? 'TCP' : 'GYM',
+            },
+            isFavoriteEdit: true,
+          });
         }}
         noLink
       >
         {labels.lbl_fav_edit}
       </Anchor>
-    )
-  );
+    );
+  }
+  return null;
+};
+
+EditButton.propTypes = {
+  isFavoriteView: PropTypes.bool,
+  labels: PropTypes.shape({}),
+  onQuickViewOpenClick: PropTypes.func,
+  item: PropTypes.shape({}),
+};
+
+EditButton.defaultProps = {
+  isFavoriteView: false,
+  labels: {},
+  onQuickViewOpenClick: () => {},
+  item: {},
 };
 
 ProductSKUInfo.propTypes = {
@@ -379,6 +428,7 @@ CreateWishList.propTypes = {
   itemId: PropTypes.string.isRequired,
   getActiveWishlist: PropTypes.func,
   activeWishListId: PropTypes.string.isRequired,
+  favoriteErrorMessages: PropTypes.shape({}).isRequired,
 };
 
 CreateWishList.defaultProps = {

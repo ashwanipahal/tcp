@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
+import CONSTANTS from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import CustomButton from '../../../../../../common/atoms/Button';
 
 import {
@@ -10,6 +11,7 @@ import {
   GiftBoxText,
 } from '../styles/GiftCardTile.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
+import ClickTracker from '../../../../../../../../../mobileapp/src/components/common/atoms/ClickTracker';
 
 export default class GiftCardTile extends React.PureComponent {
   static propTypes = {
@@ -20,7 +22,6 @@ export default class GiftCardTile extends React.PureComponent {
     handleRemoveGiftCard: PropTypes.func.isRequired,
     giftCardErrors: PropTypes.shape({}),
     orderBalanceTotal: PropTypes.number,
-    toastMessage: PropTypes.func.isRequired,
     isFromReview: PropTypes.bool,
     isExpressCheckout: PropTypes.bool,
   };
@@ -34,13 +35,6 @@ export default class GiftCardTile extends React.PureComponent {
     isFromReview: false,
     isExpressCheckout: false,
   };
-
-  componentDidUpdate() {
-    const { giftCardErrors, toastMessage } = this.props;
-    if (giftCardErrors) {
-      toastMessage(giftCardErrors[Object.keys(giftCardErrors)[0]]);
-    }
-  }
 
   showRemoveCtas = () => {
     const { isFromReview, isExpressCheckout } = this.props;
@@ -56,7 +50,7 @@ export default class GiftCardTile extends React.PureComponent {
       labels,
       orderBalanceTotal,
     } = this.props;
-
+    const page = CONSTANTS.CHECKOUT_PAGE;
     if (isGiftCardApplied) {
       return (
         <CustomButton
@@ -71,7 +65,8 @@ export default class GiftCardTile extends React.PureComponent {
     }
 
     return (
-      <CustomButton
+      <ClickTracker
+        as={CustomButton}
         fill="DARK"
         type="submit"
         data-locator=""
@@ -79,6 +74,17 @@ export default class GiftCardTile extends React.PureComponent {
         disableButton={!orderBalanceTotal}
         onPress={() => {
           applyExistingGiftCardToOrder(cardData);
+        }}
+        name="apply_gift_card"
+        module="checkout"
+        clickData={{ customEvents: ['event65'] }}
+        pageData={{
+          pageName: CONSTANTS.CHECKOUT_PAYMENT_PAGE,
+          pageSection: page,
+          pageSubSection: page,
+          pageType: page,
+          pageShortName: page,
+          pageSubSubSection: page,
         }}
       />
     );

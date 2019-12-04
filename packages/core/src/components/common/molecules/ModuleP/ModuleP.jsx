@@ -30,7 +30,8 @@ const ModuleP = props => {
     labels,
     className,
     viaModule,
-    isPromoAvailable,
+    isSuggestedItem,
+    ...otherProps
   } = props;
   return (
     <ul>
@@ -70,6 +71,8 @@ const ModuleP = props => {
         isKeepAliveKillSwitch={false}
         labels={labels}
         viaModule={viaModule}
+        isSuggestedItem={isSuggestedItem}
+        {...otherProps}
       />
     </ul>
   );
@@ -105,7 +108,7 @@ ModuleP.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
   viaModule: PropTypes.string,
-  isPromoAvailable: PropTypes.bool,
+  isSuggestedItem: PropTypes.bool,
 };
 
 ModuleP.defaultProps = {
@@ -130,7 +133,7 @@ ModuleP.defaultProps = {
   isEvenElement: false,
   gridIndex: 0,
   viaModule: '',
-  isPromoAvailable: false,
+  isSuggestedItem: false,
 };
 
 export { ModuleP as ModulePVanilla };

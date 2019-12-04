@@ -2,13 +2,15 @@
 import React from 'react';
 import { View, Share, Dimensions } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { ShareDialog } from 'react-native-fbsdk';
+import get from 'lodash/get';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import ErrorDisplay from '@tcp/core/src/components/common/atoms/ErrorDisplay';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
-import { getLoading, getLabelValue } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import { ShareDialog } from 'react-native-fbsdk';
 import {
   PageContainer,
   RowContainer,
@@ -24,7 +26,7 @@ import {
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
 import SelectWishListDropdown from '../molecules/SelectWishListDropdown/SelectWishListDropdown.native';
-import { Button } from '../../../../common/atoms';
+import { Button, FavoriteSkeleton } from '../../../../common/atoms';
 import { ICON_NAME } from '../../../../common/atoms/Icon/Icon.constants';
 import CustomIcon from '../../../../common/atoms/Icon';
 import ModalWrapper from '../molecules/ModalWrapper';
@@ -60,14 +62,18 @@ const SHARE_LIST_BY_COPY_LINK = 'shareListByCopyLink';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
+
   addListFromMoveOption = false;
+
   selectedItemId = '';
 
   brandOptions;
+
   constructor(props) {
     super(props);
     this.state = {
       isOpenModal: false,
+      seeSuggestedDictionary: {},
     };
     const { labels, gymSelected, tcpSelected } = props;
     this.brandOptions = [
@@ -155,9 +161,11 @@ class FavoritesView extends React.PureComponent {
   };
 
   handleShareListByEmail = () => {
+    const { labels } = this.props;
     this.currentPopupName = SHARE_LIST_BY_EMAIL;
     this.setState({
       isOpenModal: true,
+      selectedShareOption: labels.lbl_fav_email,
     });
   };
 
@@ -180,8 +188,14 @@ class FavoritesView extends React.PureComponent {
   };
 
   onCloseModal = () => {
+    const { labels } = this.props;
+    const { selectedShareOption } = this.state;
+    const isSelectedShareOptionIsNotDefault = selectedShareOption !== labels.lbl_fav_share;
     this.setState({
       isOpenModal: false,
+      ...(isSelectedShareOptionIsNotDefault && {
+        selectedShareOption: labels.lbl_fav_share,
+      }),
     });
   };
 
@@ -339,6 +353,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   shareLinkOnFacebook = () => {
+    const { labels } = this.props;
+    this.setState({
+      selectedShareOption: labels.lbl_fav_share,
+    });
     const shareLinkContent = {
       contentType: 'link',
       contentUrl: this.getSharableLink(),
@@ -352,6 +370,10 @@ class FavoritesView extends React.PureComponent {
   };
 
   onShareLink = () => {
+    const { labels } = this.props;
+    this.setState({
+      selectedShareOption: labels.lbl_fav_copyLink,
+    });
     Share.share({
       message: this.getSharableLink(),
     });
@@ -374,11 +396,16 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
-  renderFooter = (closeDropDown, addListFromMoveOption) => {
-    const { labels, wishlistsSummaries } = this.props;
+  renderFooter = (closeDropDown, addListFromMoveOption, itemId) => {
+    const { labels, wishlistsSummaries, errorMessages } = this.props;
     const isDisable = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
+    const errorMsg = get(errorMessages[itemId], 'errorMessage', null);
     return (
       <ListFooterContainer>
+        {errorMsg && (
+          <ErrorDisplay error={errorMsg} isBorder margins="0 0 8px 0" paddings="8px 8px 8px 8px" />
+        )}
+
         <Button
           buttonVariation="fixed-width"
           onPress={() => this.handleAddList(closeDropDown, addListFromMoveOption)}
@@ -399,7 +426,7 @@ class FavoritesView extends React.PureComponent {
         onPress={() => onDropDownItemClick && onDropDownItemClick(item)}
         style={itemStyle}
       >
-        <SelectedWishlistContainer width="80%">
+        <SelectedWishlistContainer width="75%">
           {isSelectedFavorites && (
             <CustomIcon
               margins="0 4px 0 0"
@@ -448,6 +475,8 @@ class FavoritesView extends React.PureComponent {
   renderMoveToList = itemId => {
     const { labels, wishlistsSummaries, defaultWishList, activeWishList } = this.props;
     this.selectedItemId = itemId;
+    const dropDownStyles = { ...dropDownStyle, height: 36 };
+    const itemStyles = { ...itemStyle, height: 36 };
     return (
       <SelectWishListDropdown
         selectedValue={getLabelValue(labels, 'lbl_fav_moveToAnotherList')}
@@ -458,10 +487,10 @@ class FavoritesView extends React.PureComponent {
           this.handleMoveToList(itemValue, itemId);
         }}
         variation="secondary"
-        dropDownStyle={{ ...dropDownStyle, height: 36 }}
-        itemStyle={{ ...itemStyle, height: 36 }}
+        dropDownStyle={dropDownStyles}
+        itemStyle={itemStyles}
         renderHeader={() => this.renderHeader('16px 0 0 12px')}
-        renderFooter={closeDropDown => this.renderFooter(closeDropDown, true)}
+        renderFooter={closeDropDown => this.renderFooter(closeDropDown, true, itemId)}
         renderItems={this.renderMoveToListItems}
         selectedItemFontWeight="regular"
         dropDownItemFontWeight="regular"
@@ -476,14 +505,18 @@ class FavoritesView extends React.PureComponent {
   renderMoveToListItems = ({ item }, onDropDownItemClick) => {
     const { activeWishList, labels } = this.props;
     const { displayName, itemsCount, id } = item;
-    const isSelectedFavorites = activeWishList && activeWishList.id === id;
+    const isSelectedFavorites = item.isDefault;
     const selectedItem = {
       ...item,
       displayName: getLabelValue(labels, 'lbl_fav_moveToAnotherList'),
     };
+    const isPreventSelfClose = itemsCount === 50 || false;
+    if (activeWishList && activeWishList.id === id) {
+      return null;
+    }
     return (
       <DropDownWishlistItemContainer
-        onPress={() => onDropDownItemClick && onDropDownItemClick(selectedItem)}
+        onPress={() => onDropDownItemClick && onDropDownItemClick(selectedItem, isPreventSelfClose)}
         style={itemStyle}
       >
         <SelectedWishlistContainer width="60%">
@@ -525,6 +558,46 @@ class FavoritesView extends React.PureComponent {
     ];
   };
 
+  onSeeSuggestedItems = (colorProductId, itemId) => {
+    const { activeWishListId, onReplaceWishlistItem } = this.props;
+    const { seeSuggestedDictionary } = this.state;
+    const { navigation } = this.props;
+
+    const recommendationAttributes = {
+      variation: 'moduleP',
+      navigation,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.FAVORITES,
+      partNumber: colorProductId,
+      isHeaderAccordion: true,
+      isSuggestedItem: true,
+      outOfStockColorProductId: colorProductId,
+      onDismissSuggestion: this.onCloseSuggestedModal,
+      onReplaceWishlistItem,
+      suggestedOOSItemId: itemId,
+      activeWishListId,
+    };
+    const suggestedData = {
+      colorProductId,
+      attributes: recommendationAttributes,
+    };
+    const dictionary = { ...seeSuggestedDictionary, [colorProductId]: suggestedData };
+    this.setState({
+      seeSuggestedDictionary: dictionary,
+    });
+  };
+
+  onCloseSuggestedModal = colorProductId => {
+    const { seeSuggestedDictionary } = this.state;
+    const suggestedData = {
+      colorProductId: null,
+      attributes: null,
+    };
+    const dictionary = { ...seeSuggestedDictionary, [colorProductId]: suggestedData };
+    this.setState({
+      seeSuggestedDictionary: dictionary,
+    });
+  };
+
   render() {
     const {
       activeWishListProducts,
@@ -551,10 +624,17 @@ class FavoritesView extends React.PureComponent {
       resetBrandFilters,
       isBothTcpAndGymProductAreAvailable,
       isLoggedIn,
+      updateAppTypeHandler,
+      addToBagEcom,
     } = this.props;
 
-    const { selectedShareOption } = this.state;
-    if (isDataLoading) return getLoading();
+    const { selectedShareOption, seeSuggestedDictionary } = this.state;
+    if (isDataLoading)
+      return (
+        <>
+          <FavoriteSkeleton col={8} />
+        </>
+      );
     const filtersArray = activeWishListProducts
       ? getNonEmptyFiltersList(activeWishListProducts, labels)
       : [];
@@ -571,9 +651,9 @@ class FavoritesView extends React.PureComponent {
 
     const recommendationAttributes = {
       variation: 'moduleO',
-      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.NO_FAVORITES,
       showLoyaltyPromotionMessage: false,
-      headerAlignment: 'left',
+      isFavoriteRecommendation: true,
     };
     const displayName = (activeWishList && activeWishList.displayName) || '';
 
@@ -684,6 +764,11 @@ class FavoritesView extends React.PureComponent {
               isBothTcpAndGymProductAreAvailable={isBothTcpAndGymProductAreAvailable}
               renderMoveToList={this.renderMoveToList}
               isLoggedIn={isLoggedIn}
+              addToBagEcom={addToBagEcom}
+              onSeeSuggestedItems={this.onSeeSuggestedItems}
+              onCloseSuggestedModal={this.onCloseSuggestedModal}
+              seeSuggestedDictionary={seeSuggestedDictionary}
+              updateAppTypeHandler={updateAppTypeHandler}
             />
           </View>
         )}
@@ -727,6 +812,12 @@ FavoritesView.propTypes = {
   resetBrandFilters: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
+  onLoadRecommendations: PropTypes.func.isRequired,
+  onReplaceWishlistItem: PropTypes.func.isRequired,
+  formErrorMessage: PropTypes.shape({}),
+  errorMessages: PropTypes.shape({}).isRequired,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 FavoritesView.defaultProps = {
@@ -736,6 +827,7 @@ FavoritesView.defaultProps = {
   selectedColorProductId: '',
   filteredId: 'ALL',
   outOfStockLabels: {},
+  formErrorMessage: {},
 };
 
 export default FavoritesView;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Platform } from 'react-native';
+import { getScreenHeight } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -39,6 +40,7 @@ class BillingPage extends React.PureComponent {
     isVenmoEnabled: PropTypes.bool,
     isPayPalWebViewEnable: PropTypes.bool,
     isFetching: PropTypes.bool.isRequired,
+    onVenmoError: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -52,6 +54,7 @@ class BillingPage extends React.PureComponent {
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
     isPayPalWebViewEnable: false,
+    onVenmoError: {},
   };
 
   componentDidMount() {
@@ -86,6 +89,16 @@ class BillingPage extends React.PureComponent {
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
+    // Below Style is Only for handling PayPal FullScreen View
+    const isIOS = Platform.OS === 'ios';
+    const screenHeight = getScreenHeight();
+    const scrollStyle = {
+      position: 'absolute',
+      zIndex: 992,
+      height: isIOS ? screenHeight - 40 : screenHeight,
+      width: '100%',
+    };
+    const defualtScrollStyle = { flexGrow: 1 };
     return (
       <BillingPageContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
         {!isPayPalWebViewEnable && (
@@ -97,10 +110,12 @@ class BillingPage extends React.PureComponent {
           />
         )}
         <ScrollView
+          style={isPayPalWebViewEnable ? scrollStyle : defualtScrollStyle}
           ref={scrollView => {
             this.scrollView = scrollView;
           }}
-          disableScrollViewPanResponder={!isPayPalWebViewEnable}
+          scrollEnabled={!isPayPalWebViewEnable}
+          contentContainerStyle={isPayPalWebViewEnable ? scrollStyle : defualtScrollStyle}
         >
           <Container isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <CheckoutSectionTitleDisplay title={header} />

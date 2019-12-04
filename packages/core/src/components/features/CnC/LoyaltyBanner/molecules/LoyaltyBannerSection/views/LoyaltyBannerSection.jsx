@@ -91,6 +91,7 @@ const LoyaltyBannerSection = props => {
     openApplyNowModal,
     bagLoading,
     footerLabels,
+    cartOrderItems,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -201,6 +202,7 @@ const LoyaltyBannerSection = props => {
                 closeAddedToBagModal={closeAddedToBagModal}
                 openApplyNowModal={openApplyNowModal}
                 isProductDetailView={isProductDetailView}
+                cartOrderItems={cartOrderItems}
               />
             </div>
           </BodyCopy>
@@ -231,6 +233,7 @@ LoyaltyBannerSection.propTypes = {
   closeAddedToBagModal: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
   bagLoading: PropTypes.bool,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 LoyaltyBannerSection.defaultProps = {

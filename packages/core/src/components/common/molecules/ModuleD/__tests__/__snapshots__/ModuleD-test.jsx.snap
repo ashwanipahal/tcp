@@ -2,13 +2,13 @@
 
 exports[`ModuleD component renders correctly 1`] = `
 <StyledComponent
-  className="undefined moduleD"
+  className="undefined  moduleD"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-ckVGcZ",
+        "componentId": "sc-eNQAEJ",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-ckVGcZ",
+      "styledComponentId": "sc-eNQAEJ",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

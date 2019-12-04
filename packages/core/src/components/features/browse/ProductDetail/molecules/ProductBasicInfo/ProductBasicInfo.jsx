@@ -21,6 +21,7 @@ class ProductBasicInfo extends React.Component {
     this.state = {
       clickedProdutId: '',
       errorProductId: '',
+      isLoggedIn: props.isLoggedIn,
     };
   }
 
@@ -34,16 +35,15 @@ class ProductBasicInfo extends React.Component {
       skuId,
     } = props;
 
-    const { clickedProdutId } = state;
-
-    if (isLoggedIn && clickedProdutId === productId) {
+    const { clickedProdutId, isLoggedIn: wasLoggedIn } = state;
+    if (isLoggedIn && isLoggedIn !== wasLoggedIn && clickedProdutId === productId) {
       onAddItemToFavorites({
         colorProductId: productId,
         productSkuId: (skuId && skuId.skuId) || null,
         pdpColorProductId: colorProductId,
         page: pageName || 'PDP',
       });
-      return { clickedProdutId: '' };
+      return { clickedProdutId: '', isLoggedIn };
     }
     return null;
   }
@@ -64,7 +64,7 @@ class ProductBasicInfo extends React.Component {
       <BodyCopy
         className={`product-title ${className}`}
         fontSize="fs18"
-        component="p"
+        component="h1"
         fontFamily="secondary"
         fontWeight="extrabold"
       >
@@ -108,7 +108,6 @@ class ProductBasicInfo extends React.Component {
       outOfStockLabels,
       productMiscInfo,
       AddToFavoriteErrorMsg,
-      AddToFavoriteErrorMsgID,
     } = this.props;
     const { errorProductId } = this.state;
     const isFavorite =
@@ -193,8 +192,10 @@ ProductBasicInfo.propTypes = {
     isInDefaultWishlist: PropTypes.bool,
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
-  AddToFavoriteErrorMsgID: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  pageName: PropTypes.string,
+  skuId: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductBasicInfo.defaultProps = {
@@ -211,8 +212,10 @@ ProductBasicInfo.defaultProps = {
     isInDefaultWishlist: false,
   },
   AddToFavoriteErrorMsg: '',
-  AddToFavoriteErrorMsgID: '',
+  pageName: '',
+  skuId: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);

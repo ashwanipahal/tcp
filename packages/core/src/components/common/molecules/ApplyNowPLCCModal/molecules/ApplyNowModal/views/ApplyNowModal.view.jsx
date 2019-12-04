@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../../../atoms';
 import Modal from '../../../../Modal';
 import withStyles from '../../../../../hoc/withStyles';
 import { getLocator } from '../../../../../../../utils';
 import styles, { modalStyles } from '../../../styles/ApplyNowModal.style';
 import ApplyNowPLCCModal from '../../ApplyNowPLCCModal/views/ApplyNowPLCCModal';
-import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 
 /**
  * @constant ApplyNowModal - Opens a Modal containing modal to open apply plcc modal.
@@ -64,7 +64,7 @@ const StyledApplyNowModal = ({
             colSize={{ large: 12, medium: 8, small: 6 }}
             className="submit_button_plcc_form_container"
           >
-            <div className="header-image" />
+            <div className="header-image" aria-hidden />
           </Col>
         </Row>
         <Row fullBleed className="submit_plcc_form">
@@ -171,6 +171,7 @@ const StyledApplyNowModal = ({
             </Col>
           </Row>
         )}
+        <div className="separator" />
         <div
           className="offer_info_icon"
           data-locator="plcc_modal_logo"
@@ -187,7 +188,7 @@ const StyledApplyNowModal = ({
         </BodyCopy>
         <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
         <div className="footerLinks">
-          <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
+          <BodyCopy component="span" fontSize="fs10" fontFamily="secondary">
             {getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
           </BodyCopy>
           <Anchor
@@ -223,6 +224,7 @@ const StyledApplyNowModal = ({
             {getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
           </Anchor>
         </div>
+        <div className="separator" />
         {isRtpsFlow && (
           <Row>
             <Col colSize={{ large: 12, medium: 8, small: 6 }}>
@@ -270,6 +272,7 @@ StyledApplyNowModal.propTypes = {
     apply_now_rewardTerms: PropTypes.string.isRequired,
     oneequalstwopointsoffer: PropTypes.bool.isRequired,
   }).isRequired,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default withStyles(StyledApplyNowModal, styles);

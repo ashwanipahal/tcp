@@ -20,7 +20,6 @@ class FooterTopSignUpForm extends React.PureComponent {
 
   componentDidUpdate({ submitSucceeded: oldSubmitSucceeded }) {
     const { subscription, submitSucceeded, openSuccessModal } = this.props;
-
     if ((subscription.error || subscription.success) && this.formSubmitPromise) {
       if (subscription.error) {
         this.formSubmitPromise.reject();
@@ -88,6 +87,7 @@ class FooterTopSignUpForm extends React.PureComponent {
       fieldName,
       secondFieldName,
       fieldProps,
+      isNavigationFooter,
     } = this.props;
 
     const { isFieldEmpty } = this.state;
@@ -158,6 +158,7 @@ class FooterTopSignUpForm extends React.PureComponent {
               <Field
                 name={secondFieldName}
                 id={secondFieldName}
+                className={isNavigationFooter ? 'input-checkbox-wrapper' : ''}
                 component={InputCheckbox}
                 dataLocator={isGym ? dataLocators.checkBox_tcp : dataLocators.checkBox_gym}
                 type="checkbox"
@@ -200,6 +201,7 @@ FooterTopSignUpForm.propTypes = {
   fieldName: PropTypes.string,
   fieldProps: PropTypes.shape({}),
   secondFieldName: PropTypes.string,
+  isNavigationFooter: PropTypes.bool.isRequired,
 };
 
 FooterTopSignUpForm.defaultProps = {

@@ -86,6 +86,9 @@ export default {
     outOfStockCaps: PropTypes.string,
   }),
   activeWishListId: PropTypes.number,
+  addToBagEcom: PropTypes.func,
+  isFavoriteView: PropTypes.bool,
+  favoriteErrorMessages: PropTypes.shape({}),
 };
 
 export const productGridDefaultProps = {
@@ -109,4 +112,7 @@ export const productGridDefaultProps = {
     outOfStockCaps: '',
   },
   activeWishListId: '',
+  addToBagEcom: () => {},
+  isFavoriteView: false,
+  favoriteErrorMessages: {},
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import Carousel from '../../../../common/molecules/Carousel';
@@ -17,6 +19,7 @@ import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
 
 class BundleProduct extends React.PureComponent {
   state = {
@@ -93,12 +96,10 @@ class BundleProduct extends React.PureComponent {
               isBundleProduct
               {...otherProps}
             />
+            {/* UX timer */}
+            {/* TODO: When there is an actual promo image, revise timer logic */}
+            <RenderPerf.Measure name={PROMOTION_VISIBLE} />
           </div>
-          <Row className="placeholder-small">
-            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-              <div className="promo-area-1">{pdpLabels.promoArea1}</div>
-            </Col>
-          </Row>
         </Col>
       </Row>
     );
@@ -230,7 +231,7 @@ class BundleProduct extends React.PureComponent {
   };
 
   render() {
-    const { className, currentProduct, pdpLabels } = this.props;
+    const { className, currentProduct, topPromos } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap, generalProductId } = currentProduct;
       const currentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
@@ -238,12 +239,10 @@ class BundleProduct extends React.PureComponent {
       return (
         <div className={className}>
           {this.getBreadCrumb()}
-          <Row className="placeholder-large">
-            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-              <div className="promo-area-1">{pdpLabels.promoArea1}</div>
-            </Col>
-          </Row>
           <Row className="product-container">
+            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+              <PromoPDPBanners promos={topPromos} />
+            </Col>
             <Col colSize={{ small: 6, medium: 3, large: 6 }}>{this.getMainImageCarousel()}</Col>
             <Col colSize={{ small: 6, medium: 5, large: 6 }}>
               <Row fullBleed className="product-summary-section">
@@ -292,6 +291,7 @@ BundleProduct.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  topPromos: PropTypes.shape({}),
 };
 
 BundleProduct.defaultProps = {
@@ -311,6 +311,7 @@ BundleProduct.defaultProps = {
   outOfStockLabels: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  topPromos: null,
 };
 
 export default withStyles(BundleProduct, styles);

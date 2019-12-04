@@ -22,6 +22,7 @@ describe('CheckoutBilling saga', () => {
     CheckoutReviewSaga.next();
 
     CheckoutReviewSaga.next(false);
+    CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next(false).value).toEqual(call(getAddressList));
     expect(CheckoutReviewSaga.next().value).toEqual(call(getCardList, { ignoreCache: true }));
   });
@@ -167,15 +168,15 @@ describe('CheckoutBilling saga', () => {
     const venmoData = {
       nonce: 'fake-venmo-nonce-data',
       deviceData: 'venmoDeviceDataKey',
-      details: { username: 'test-user' },
     };
+    const userName = CheckoutReviewSaga.next('@test-user').value;
     CheckoutReviewSaga.next();
     const response = CheckoutReviewSaga.next(venmoData).value; // select getVenmoData
     const requestData = {
       billingAddressId: '12345',
       cardType: 'VENMO',
       cc_brand: 'VENMO',
-      cardNumber: 'test-user', // Venmo User Id, for all the scenario's it will have user information from the venmo, for dev, added test-user
+      cardNumber: userName || 'test-user', // Venmo User Id, for all the scenario's it will have user information from the venmo, for dev, added test-user
       isDefault: 'false',
       orderGrandTotal: grandTotal,
       applyToOrder: true,
@@ -184,7 +185,7 @@ describe('CheckoutBilling saga', () => {
       setAsDefault: false,
       saveToAccount: false,
       venmoDetails: {
-        userId: 'test-user',
+        userId: userName || 'test-user',
         saveVenmoTokenIntoProfile: isVenmoSaveSelected,
         nonce: response.nonce,
         venmoDeviceData: response.deviceData,

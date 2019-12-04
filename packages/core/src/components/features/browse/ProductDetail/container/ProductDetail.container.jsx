@@ -8,6 +8,7 @@ import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
 import ProductDetailView from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -83,45 +84,6 @@ class ProductDetailContainer extends React.PureComponent {
     return productId;
   };
 
-  static getInitialProps = async ({ props: passedProps, store, isServer, query, req }) => {
-    const props = passedProps || {
-      ...mapStateToProps(store.getState()),
-      ...mapDispatchToProps(store.dispatch),
-    };
-    const { getDetails } = props;
-    let pid;
-    if (isServer) {
-      ({ pid } = query);
-    } else {
-      ({
-        router: {
-          query: { pid },
-        },
-      } = props);
-    }
-    // TODO - fix this to extract the product ID from the page.
-    const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
-    await getDetails({ productColorId: productId, escapeEmptyProduct: true });
-    // Build a page name for tracking
-    let pageName = '';
-    if (productId) {
-      const productIdParts = productId.split('_');
-      pageName = `product:${productIdParts[0]}:${(pid || '')
-        .replace(productIdParts[0], '')
-        .replace(productIdParts[1], '')
-        .split('-')
-        .join(' ')
-        .trim()
-        .toLowerCase()}`;
-    }
-
-    return {
-      pageProps: {
-        pageName,
-      },
-    };
-  };
-
   componentDidMount() {
     const { props } = this;
     window.scrollTo(0, 100);
@@ -191,6 +153,7 @@ class ProductDetailContainer extends React.PureComponent {
       bottomPromos,
       isLoading,
       router: { asPath: asPathVal },
+      trackPageLoad,
       sizeChartDetails,
       ...otherProps
     } = this.props;
@@ -231,6 +194,7 @@ class ProductDetailContainer extends React.PureComponent {
               topPromos={topPromos}
               middlePromos={middlePromos}
               bottomPromos={bottomPromos}
+              trackPageLoad={trackPageLoad}
               sizeChartDetails={sizeChartDetails}
               isLoading={typeof window === 'undefined' || isLoading}
             />
@@ -247,6 +211,8 @@ ProductDetailContainer.pageInfo = {
   pageData: {
     pageName: 'product',
     pageSection: 'product',
+    pageSubSection: 'product',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -301,8 +267,74 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
+    trackPageLoad: payload => {
+      const { products, customEvents } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+          customEvents,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
+    },
   };
 }
+
+ProductDetailContainer.getInitialProps = async ({ props: passedProps, store, isServer, query }) => {
+  const props = passedProps || {
+    ...mapStateToProps(store.getState()),
+    ...mapDispatchToProps(store.dispatch),
+  };
+  const { getDetails } = props;
+  let pid;
+  if (isServer) {
+    ({ pid } = query);
+  } else {
+    ({
+      router: {
+        query: { pid },
+      },
+    } = props);
+  }
+  // TODO - fix this to extract the product ID from the page.
+  const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
+  await getDetails({ productColorId: productId, escapeEmptyProduct: true });
+  // Build a page name for tracking
+  let pageName = '';
+  if (productId) {
+    const productIdParts = productId.split('_');
+    pageName = `product:${productIdParts[0]}:${(pid || '')
+      .replace(productIdParts[0], '')
+      .replace(productIdParts[1], '')
+      .split('-')
+      .join(' ')
+      .trim()
+      .toLowerCase()}`;
+  }
+
+  return {
+    pageProps: {
+      pageName,
+    },
+  };
+};
 
 ProductDetailContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
@@ -339,6 +371,11 @@ ProductDetailContainer.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   sizeChartDetails: PropTypes.shape([]),
+  topPromos: PropTypes.string,
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
+  isLoading: PropTypes.bool,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -364,6 +401,11 @@ ProductDetailContainer.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   sizeChartDetails: [],
+  topPromos: '',
+  middlePromos: '',
+  bottomPromos: '',
+  isLoading: false,
+  trackPageLoad: () => {},
 };
 
 export default withRouter(

@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import Anchor from '../../Anchor';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../Image.style';
-import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
+import { configureInternalNavigationFromCMSUrl, isMobileWeb, isClient } from '../../../../../utils';
 
 const renderImage = imageProps => {
   const {
@@ -16,8 +16,12 @@ const renderImage = imageProps => {
     ref,
     placeholderSrc,
     dataLocator,
+    role,
+    onLoad,
     ...other
   } = imageProps;
+
+  const setRole = isClient() && isMobileWeb() && src && src.toLowerCase().includes('.svg');
   return (
     <img
       data-locator={dataLocator}
@@ -27,7 +31,9 @@ const renderImage = imageProps => {
       sizes={sizes || null}
       alt={alt}
       ref={ref}
+      role={setRole ? role : null}
       {...other}
+      onLoad={onLoad}
       onError={
         placeholderSrc
           ? event => {
@@ -41,7 +47,19 @@ const renderImage = imageProps => {
 };
 
 const Image = props => {
-  const { link, className, src, url, srcset, sizes, alt, ref, placeholderSrc, ...others } = props;
+  const {
+    link,
+    className,
+    src,
+    url,
+    srcset,
+    sizes,
+    alt,
+    ref,
+    placeholderSrc,
+    onLoad,
+    ...others
+  } = props;
 
   const imageProps = {
     className,
@@ -52,6 +70,7 @@ const Image = props => {
     alt,
     ref,
     placeholderSrc,
+    onLoad,
     ...others,
   };
 
@@ -94,6 +113,8 @@ Image.propTypes = {
   placeholderSrc: PropTypes.string,
   ref: PropTypes.func,
   url: PropTypes.string,
+  role: PropTypes.string,
+  onLoad: PropTypes.func,
 };
 
 Image.defaultProps = {
@@ -104,6 +125,8 @@ Image.defaultProps = {
   ref: () => {},
   url: '',
   link: null,
+  role: 'img',
+  onLoad() {},
 };
 
 export default withStyles(Image, styles);

@@ -56,7 +56,12 @@ const OrderStatus = props => {
             <Col colSize={{ large: 7, medium: 8, small: 6 }}>
               <BodyCopy className="button-track" component="div">
                 <ClickTracker
-                  clickData={{ customEvents: ['event28'], eventName: 'trackingnumberclick' }}
+                  clickData={{
+                    customEvents: ['event118'],
+                    eventName: 'trackingnumberclick',
+                    pageName: 'myplace:orders:order details',
+                    pageShortName: 'myplace:orders:order details',
+                  }}
                 >
                   <Anchor
                     to={trackingUrl}

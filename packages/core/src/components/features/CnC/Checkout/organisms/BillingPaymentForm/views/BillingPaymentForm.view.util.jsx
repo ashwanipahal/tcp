@@ -32,6 +32,7 @@ const propTypes = {
   isSameAsShippingChecked: PropTypes.bool,
   billingData: PropTypes.shape({}),
   showAccordian: PropTypes.bool,
+  isVenmoAppInstalled: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -50,6 +51,7 @@ const defaultProps = {
   isSameAsShippingChecked: false,
   billingData: null,
   showAccordian: true,
+  isVenmoAppInstalled: true,
 };
 
 const getCardOptions = ({

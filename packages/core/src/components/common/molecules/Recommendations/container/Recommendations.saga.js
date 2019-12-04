@@ -8,7 +8,6 @@ function* fetchRecommendationsData(action) {
   const { payload } = action;
   try {
     const result = yield call(RecommendationsAbstractor.getData, payload);
-
     yield put(loadRecommendationsData({ reduxKey: payload.reduxKey, result }));
   } catch (e) {
     logger.log(e);

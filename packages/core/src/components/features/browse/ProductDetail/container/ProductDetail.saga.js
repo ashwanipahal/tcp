@@ -1,5 +1,6 @@
 import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { isMobileApp } from '@tcp/core/src/utils';
 import PRODUCTLISTING_CONSTANTS from './ProductDetail.constants';
 import {
   setProductDetails,
@@ -8,6 +9,7 @@ import {
 } from './ProductDetail.actions';
 import getProductInfoById, {
   layoutResolver,
+  getProductBVReviewStats,
 } from '../../../../../services/abstractors/productListing/productDetail';
 import {
   getUserLoggedInState,
@@ -15,7 +17,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
 
-function* fetchProductDetail({ payload, payload: { productColorId, escapeEmptyProduct } }) {
+function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }) {
   try {
     const pageName = 'pdp';
     yield put(loadLayoutData({}, pageName));
@@ -28,10 +30,15 @@ function* fetchProductDetail({ payload, payload: { productColorId, escapeEmptyPr
     const {
       product: { category },
     } = productDetail;
+    const { layout, modules } = yield call(layoutResolver, { category, pageName });
     if (typeof window !== 'undefined') {
-      const { layout, modules } = yield call(layoutResolver, { category, pageName });
       yield put(loadLayoutData(layout, pageName));
       yield put(loadModulesData(modules));
+    }
+    // fetch review/rating summary from Bazar Voice only for App
+    if (isMobileApp) {
+      const productId = productDetail.product.ratingsProductId || 0;
+      productDetail.product.bazaarVoice = yield call(getProductBVReviewStats, productId);
     }
     const isGuest = !getUserLoggedInState({ ...state });
     const isRemembered = isRememberedUser({ ...state });
@@ -53,7 +60,6 @@ function* fetchProductDetail({ payload, payload: { productColorId, escapeEmptyPr
     }
     yield put(setPDPLoadingState({ isLoading: false }));
   } catch (err) {
-    console.log(err);
     yield put(setPDPLoadingState({ isLoading: false }));
   }
 }

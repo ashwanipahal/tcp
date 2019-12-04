@@ -29,6 +29,7 @@ class VideoPlayer extends React.Component {
       uniqueId: getUniqueID(),
     };
   }
+
   componentDidMount() {
     const { id, autoplay, url, muted, loop, controls } = this.props;
     const { uniqueId } = this.state;
@@ -59,7 +60,12 @@ class VideoPlayer extends React.Component {
       return null;
     }
     return (
-      <video id={id || uniqueId} className={className} dataLocator={`${dataLocator}_video`}>
+      <video
+        id={id || uniqueId}
+        source={url}
+        className={className}
+        data-locator={`${dataLocator}_video`}
+      >
         <track kind="captions" />
       </video>
     );
@@ -69,16 +75,21 @@ class VideoPlayer extends React.Component {
 VideoPlayer.propTypes = {
   id: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  loop: PropTypes.bool.isRequired,
-  autoplay: PropTypes.bool.isRequired,
-  muted: PropTypes.bool.isRequired,
-  className: PropTypes.number.isRequired,
-  controls: PropTypes.bool.isRequired,
+  loop: PropTypes.bool,
+  autoplay: PropTypes.string,
+  muted: PropTypes.string,
+  className: PropTypes.string,
+  controls: PropTypes.string,
   dataLocator: PropTypes.string,
 };
 
 VideoPlayer.defaultProps = {
   dataLocator: '',
+  loop: '0',
+  autoplay: '1',
+  muted: '0',
+  className: '',
+  controls: '1',
 };
 
 export default withStyles(VideoPlayer, styles);

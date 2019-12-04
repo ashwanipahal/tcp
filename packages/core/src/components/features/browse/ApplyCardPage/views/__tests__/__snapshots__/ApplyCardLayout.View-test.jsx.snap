@@ -12,6 +12,7 @@ exports[`ApplyCardLayoutView component should renders correctly considering sele
 <styled.div>
   <ReduxForm
     applicationStatus=""
+    cartOrderItems={Array []}
     destroyOnUnmount={true}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}

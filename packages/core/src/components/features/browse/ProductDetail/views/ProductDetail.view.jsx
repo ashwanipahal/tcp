@@ -2,7 +2,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { ProductDetailSectionSkeleton } from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDetailSkeleton/views/ProductDetailSectionSkeleton.view';
-import ExecutionEnvironment from 'exenv';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { isClient } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
@@ -11,7 +10,6 @@ import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle, { customSubmitButtonStyle } from '../ProductDetail.style';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
-import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
@@ -46,6 +44,38 @@ class ProductDetailView extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    const { productInfo, trackPageLoad } = this.props;
+    const productsFormatted = this.formatProductsData(productInfo);
+    if (productsFormatted) {
+      trackPageLoad({
+        pageType: 'product',
+        pageName: 'product',
+        pageSection: 'product',
+        pageSubSection: 'product',
+        products: productsFormatted,
+        customEvents: ['prodView', 'event1', 'event80', 'event93', 'event81'],
+      });
+    }
+  }
+
+  formatProductsData = product => {
+    const productData = [];
+    const colorName = product.colorFitsSizesMap.map(productTile => {
+      return productTile.color.name || '';
+    });
+    const productId = product.generalProductId.split('_')[0];
+    productData.push({
+      colorId: product.generalProductId,
+      color: colorName,
+      id: productId,
+      price: product.listPrice,
+      rating: product.ratings,
+      reviews: product.reviewsCount,
+    });
+    return productData;
+  };
+
   onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
     const {
       productInfo: { colorFitsSizesMap },
@@ -66,6 +96,7 @@ class ProductDetailView extends PureComponent {
       Quantity: selectedQuantity,
     };
   };
+
   onChangeSize = (selectedColor, e, selectedFit, selectedQuantity) => {
     this.setState({ currentGiftCardValue: e });
     this.formValues = {
@@ -151,7 +182,7 @@ class ProductDetailView extends PureComponent {
     return productInfo.isGiftCard ? (
       <div className="go-back-container">
         <button type="button" onClick={this.onGoBack} className="button-go-back">
-          <Image src={getIconPath('medium-left-arrow')} />
+          <Image src={getIconPath('medium-left-arrow')} alt="" />
           <BodyCopy className="back-button" fontFamily="secondary" fontSize="fs16">
             {pdpLabels.back}
           </BodyCopy>
@@ -239,7 +270,10 @@ class ProductDetailView extends PureComponent {
     const { currentColorEntry, renderReceiveProps } = this.state;
     const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
     const keepAlive =
-      isKeepAliveEnabled && currentColorEntry && currentColorEntry.miscInfo.keepAlive;
+      isKeepAliveEnabled &&
+      currentColorEntry &&
+      currentColorEntry.miscInfo &&
+      currentColorEntry.miscInfo.keepAlive;
     const { imagesByColor } = productInfo;
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
@@ -263,7 +297,7 @@ class ProductDetailView extends PureComponent {
       headerAlignment: 'left',
     };
 
-    const itemColor = currentColorEntry.color.name;
+    const itemColor = currentColorEntry && currentColorEntry.color && currentColorEntry.color.name;
     return (
       <div className={className}>
         <Row>
@@ -406,11 +440,6 @@ class ProductDetailView extends PureComponent {
             </div>
           </Col>
         </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.myStylePlace}</div>
-          </Col>
-        </Row>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductReviewsContainer
@@ -454,6 +483,12 @@ ProductDetailView.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   sizeChartDetails: PropTypes.shape([]),
+  asPathVal: PropTypes.string,
+  topPromos: PropTypes.string,
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
+  trackPageLoad: PropTypes.func,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 ProductDetailView.defaultProps = {
@@ -475,7 +510,12 @@ ProductDetailView.defaultProps = {
   isKeepAliveEnabled: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
   sizeChartDetails: [],
+  asPathVal: '',
+  topPromos: '',
+  middlePromos: '',
+  bottomPromos: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

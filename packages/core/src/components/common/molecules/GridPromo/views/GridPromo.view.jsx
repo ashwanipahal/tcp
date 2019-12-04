@@ -4,18 +4,17 @@ import { Button, BodyCopy, Anchor } from '../../../atoms';
 import styles from '../styles/GridPromo.style';
 import withStyles from '../../../hoc/withStyles';
 
-const GridPromo = props => {
-  const {
-    className,
-    promoObj,
-    promoObj: { textItems, subHeadLine, promoWrapper } = {},
-    variation,
-  } = props;
+const getSplitText = val => {
+  return (val && val[0] && val[0].text) || '';
+};
 
-  const headingLine = textItems[0] && textItems[0].text;
+const GridPromo = props => {
+  const { className, promoObj: { textItems, subHeadLine, promoWrapper } = {}, variation } = props;
+
+  const headingLine = getSplitText(textItems);
   const headLineParts = headingLine.split('|');
 
-  const descriptionLine = subHeadLine && subHeadLine[0] && subHeadLine[0].text;
+  const descriptionLine = getSplitText(subHeadLine);
   const descriptionParts = descriptionLine.split('|');
 
   if (variation === 'horizontal') {
@@ -42,7 +41,7 @@ const GridPromo = props => {
                 className={`${className} highlighted-text`}
                 color="black"
                 fontFamily="secondary"
-                fontSize="fs36"
+                fontSize={['fs28', 'fs32', 'fs36']}
                 fontWeight="black"
                 textAlign="center"
               >
@@ -54,13 +53,19 @@ const GridPromo = props => {
         })}
       </div>
       <div className="middle-text-wrapper">
-        <BodyCopy color="white" fontFamily="secondary" fontSize="fs24" textAlign="center">
+        <BodyCopy
+          color="white"
+          fontFamily="secondary"
+          fontSize={['fs18', 'fs20', 'fs24']}
+          fontWeight="black"
+          textAlign="center"
+        >
           {textItems && textItems[1] && textItems[1].text}
         </BodyCopy>
         <BodyCopy
           color="white"
           fontFamily="secondary"
-          fontSize="fs24"
+          fontSize={['fs18', 'fs20', 'fs24']}
           fontWeight="black"
           textAlign="center"
         >
@@ -70,7 +75,12 @@ const GridPromo = props => {
       <div className="description-wrapper">
         {descriptionParts.map(description => {
           return (
-            <BodyCopy color="white" fontFamily="secondary" fontSize="fs12" textAlign="center">
+            <BodyCopy
+              color="white"
+              fontFamily="secondary"
+              fontSize={['fs10', 'fs12', 'fs12']}
+              textAlign="center"
+            >
               {description}
             </BodyCopy>
           );

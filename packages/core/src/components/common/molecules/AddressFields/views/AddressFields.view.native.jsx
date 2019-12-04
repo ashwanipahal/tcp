@@ -68,12 +68,15 @@ export class AddressFields extends React.PureComponent {
   }
 
   handlePlaceSelected = (place, inputValue) => {
-    const { dispatch, formName, formSection } = this.props;
+    const { dispatch, formName, formSection, loadShipmentMethods } = this.props;
     const address = getAddressFromPlace(place, inputValue);
     dispatch(change(formName, `${formSection}.city`, address.city));
     dispatch(change(formName, `${formSection}.zipCode`, address.zip));
     dispatch(change(formName, `${formSection}.state`, address.state));
     dispatch(change(formName, `${formSection}.addressLine1`, address.street));
+    if (loadShipmentMethods) {
+      loadShipmentMethods({ state: address.state, formName });
+    }
   };
 
   getInitialAddressLine1 = initialValues => {
