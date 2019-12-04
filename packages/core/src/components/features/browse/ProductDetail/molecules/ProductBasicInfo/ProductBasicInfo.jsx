@@ -5,6 +5,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductRating from '../ProductRating/ProductRating';
 import { Anchor, BodyCopy } from '../../../../../common/atoms';
 import withStyles from '../../../../../common/hoc/withStyles';
@@ -33,6 +34,7 @@ class ProductBasicInfo extends React.Component {
       productMiscInfo: { colorProductId },
       pageName,
       skuId,
+      formName,
     } = props;
 
     const { clickedProdutId, isLoggedIn: wasLoggedIn } = state;
@@ -41,6 +43,7 @@ class ProductBasicInfo extends React.Component {
         colorProductId: productId,
         productSkuId: (skuId && skuId.skuId) || null,
         pdpColorProductId: colorProductId,
+        formName: formName || PRODUCT_ADD_TO_BAG,
         page: pageName || 'PDP',
       });
       return { clickedProdutId: '', isLoggedIn };
@@ -80,12 +83,14 @@ class ProductBasicInfo extends React.Component {
       productMiscInfo: { colorProductId },
       pageName,
       skuId,
+      formName,
     } = this.props;
 
     onAddItemToFavorites({
       colorProductId: productId,
       productSkuId: (skuId && skuId.skuId) || null,
       pdpColorProductId: colorProductId,
+      formName: formName || PRODUCT_ADD_TO_BAG,
       page: pageName || 'PDP',
     });
     this.setState({
@@ -196,6 +201,7 @@ ProductBasicInfo.propTypes = {
   pageName: PropTypes.string,
   skuId: PropTypes.string,
   isLoggedIn: PropTypes.bool,
+  formName: PropTypes.string,
 };
 
 ProductBasicInfo.defaultProps = {
@@ -216,6 +222,7 @@ ProductBasicInfo.defaultProps = {
   skuId: '',
   removeAddToFavoritesErrorMsg: () => {},
   isLoggedIn: false,
+  formName: PRODUCT_ADD_TO_BAG,
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);
