@@ -158,6 +158,10 @@ exports[`GiftServices component renders correctly 1`] = `
     font-size: ",
           [Function],
           "px;
+    .customSelectArrow {
+      top: 52%;
+      right: 0;
+    }
   }
 
   .dropdownDivOverFlow {
@@ -214,6 +218,7 @@ exports[`GiftServices component renders correctly 1`] = `
     margin-bottom: ",
           [Function],
           ";
+    overflow-y: hidden;
   }
 
   .CheckBox__input {
