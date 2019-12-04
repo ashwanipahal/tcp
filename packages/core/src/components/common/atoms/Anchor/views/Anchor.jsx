@@ -15,7 +15,6 @@ const triggerLinkOnClick = url => {
   const apiConfig = getAPIConfig();
   if (window && window.ReactNativeWebView && apiConfig.isAppChannel) {
     window.ReactNativeWebView.postMessage(url);
-    console.log('WEB VIEW EVENT CAPTURED');
   }
 };
 

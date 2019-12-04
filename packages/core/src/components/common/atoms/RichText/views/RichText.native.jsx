@@ -35,12 +35,20 @@ class RichText extends PureComponent {
     );
   };
 
+  /**
+   * To start the loader when the webview is starts Loading
+   */
+
   handleLoaderStart = () => {
     const { enableLoader, setLoaderState } = this.props;
     if (enableLoader) {
       setLoaderState(true);
     }
   };
+
+  /**
+   * To Close the loader when the webview is succeds for fails.
+   */
 
   handleLoaderEnd = () => {
     const { enableLoader, setLoaderState } = this.props;
@@ -79,6 +87,7 @@ class RichText extends PureComponent {
         injectedJavaScript={injectedJavaScript}
         onMessage={onMessage}
         onLoadStart={this.handleLoaderStart}
+        onLoad={this.handleLoaderEnd}
         onLoadEnd={this.handleLoaderEnd}
         {...others}
       />

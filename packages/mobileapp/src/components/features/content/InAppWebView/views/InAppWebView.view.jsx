@@ -18,7 +18,7 @@ class InAppWebView extends React.Component {
   };
 
   /**
-   * To handle the
+   * To capture the postmessages for web view.
    */
 
   handleWebViewEvents = event => {
@@ -34,7 +34,6 @@ class InAppWebView extends React.Component {
         url.includes(URL_PATTERN.OUTFIT_DETAILS))
     ) {
       const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
-      console.log(cmsValidatedUrl);
       navigateToPage(cmsValidatedUrl, navigation);
     }
   };
