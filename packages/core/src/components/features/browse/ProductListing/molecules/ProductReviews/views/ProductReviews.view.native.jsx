@@ -37,10 +37,6 @@ class ProductReviews extends React.PureComponent {
   };
 
   getWriteReviewFormattedUrl = ratingsProductId => {
-    // const { getSecurityToken } = this.props;
-    // const bvBrand = this.brand  && this.brand.toUpperCase();
-    // const securityToken = !isGuest ? getSecurityToken(userId, mprId) : '';
-
     return `${this.apiConfig.BV_WEB_VIEW_URL}?productId=${ratingsProductId}&env=${
       this.apiConfig.BV_ENVIRONMENT
     }&instance=${this.apiConfig.BV_INSTANCE}`;
