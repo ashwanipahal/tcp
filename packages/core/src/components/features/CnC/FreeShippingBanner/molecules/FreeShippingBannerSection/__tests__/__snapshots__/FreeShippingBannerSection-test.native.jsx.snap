@@ -5,7 +5,7 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
   <Styled(View)>
     <Styled(View)>
       <Styled(ImageComp)
-        alt=""
+        alt="lbl_img_alt_fast_shipping"
         height={18}
         host=""
         source={
