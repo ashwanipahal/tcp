@@ -369,7 +369,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "tcpIntRelease",
+      "buildVariant": "tcpInt",
       "isRoot": false,
       "runTests": false,
       "runLint": false,

@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
@@ -401,7 +401,7 @@
       "provisioningProfileFileId": "86c75568-d841-44a5-a73c-a419306b47cd",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
-      "scheme": "mobileapp_uat",
+      "scheme": "mobileapp_uat_preview",
       "xcodeVersion": "10.2.1",
       "podfilePath": "packages/mobileapp/ios/Podfile"
     }

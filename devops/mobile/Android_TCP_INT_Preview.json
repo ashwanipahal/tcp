@@ -365,7 +365,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "tcpPreviewRelease",
+      "buildVariant": "tcpPreview",
       "isRoot": false,
       "runTests": false,
       "runLint": false,

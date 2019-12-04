@@ -370,7 +370,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "gymboreeIntRelease",
+      "buildVariant": "gymboreeInt",
       "isRoot": false,
       "runTests": false,
       "runLint": false,

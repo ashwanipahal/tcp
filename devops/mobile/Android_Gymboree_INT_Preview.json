@@ -366,7 +366,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "gymboreePreviewRelease",
+      "buildVariant": "gymboreePreview",
       "isRoot": false,
       "runTests": false,
       "runLint": false,

@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
@@ -400,7 +400,7 @@
       "provisioningProfileFileId": "e880b7bf-3a12-455e-98cf-d8226f597d48",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
-      "scheme": "gymboree_uat",
+      "scheme": "gymboree_uat_preview",
       "xcodeVersion": "10.2.1",
       "podfilePath": "packages/mobileapp/ios/Podfile"
     }
