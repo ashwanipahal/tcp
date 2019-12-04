@@ -18,9 +18,4 @@ const QUICK_VIEW_CONSTANT = {
   UPDATE_APP_TYPE_AND_REDIRECT,
 };
 
-export const APP_TYPE = {
-  TCP: 'tcp',
-  GYMBOREE: 'gymboree',
-};
-
 export default QUICK_VIEW_CONSTANT;

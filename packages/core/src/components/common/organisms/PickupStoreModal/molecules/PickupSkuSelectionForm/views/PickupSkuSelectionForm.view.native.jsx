@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import { BodyCopy, DamImage } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
+import { APP_TYPE } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import { getBrand } from '../../../../../../../utils';
 import withStyles from '../../../../../hoc/withStyles';
 import styles from '../../../../QuickViewModal/molecules/ProductCustomizeFormPart/styles/ProductCustomizeFormPart.style';
@@ -16,7 +17,6 @@ import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { SKU_DETAILS, PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
 import { BodyCopyWithSpacing } from '../../../../../atoms/styledWrapper';
-import { APP_TYPE } from '../../../../../../../../../mobileapp/src/components/common/hoc/ThemeWrapper.constants';
 
 import {
   PickUpSkUSectionContainer,

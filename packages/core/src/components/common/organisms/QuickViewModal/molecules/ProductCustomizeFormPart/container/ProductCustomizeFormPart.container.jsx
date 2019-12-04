@@ -4,7 +4,7 @@ import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import ProductCustomizeFormPart from '../views/ProductCustomizeFormPart.view';
 import { routerPush, getBrand } from '../../../../../../../utils';
-import { APP_TYPE } from '../../../container/QuickViewModal.constants';
+import { APP_TYPE } from '../../../../../../features/CnC/Checkout/Checkout.constants';
 import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
