@@ -22,6 +22,9 @@ import CartItemTileSkelton from '../../../molecules/CartItemTile/skelton/CartIte
  * number is greater than zero.
  */
 function CartItemsUXTimer({ orderItems }) {
+  if (isMobileApp) {
+    return null;
+  }
   const [state, setState] = useState(false);
   useEffect(() => {
     if (orderItems.size > 0) setState(true);
@@ -260,7 +263,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
           {orderItemsView}
           {/* UX timer */}
-          <CartItemsUXTimer orderItems={orderItems} />
+          {<CartItemsUXTimer orderItems={orderItems} />}
         </>
       );
     }
