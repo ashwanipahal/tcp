@@ -137,7 +137,7 @@ const ProductList = props => {
               isShowVideoOnPlp={false}
               onQuickBopisOpenClick={onQuickBopisOpenClick}
               isProductsGridCTAView
-              isMatchingFamily={false}
+              isMatchingFamily // TODO: Need to add kill switch for this
               siblingProperties={siblingProperties}
               isEvenElement={isEvenElement}
               gridIndex={gridIndex}
