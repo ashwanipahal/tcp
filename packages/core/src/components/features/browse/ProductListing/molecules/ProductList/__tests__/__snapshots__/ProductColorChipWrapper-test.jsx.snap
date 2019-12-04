@@ -25,6 +25,7 @@ exports[`ProductColorChipWrapperVanilla component should renders correctly 1`] =
             "colorProductId": 123,
           }
         }
+        imagesByColor={Object {}}
         isActive={false}
         key="123"
         onChipClick={[MockFunction]}
@@ -38,6 +39,7 @@ exports[`ProductColorChipWrapperVanilla component should renders correctly 1`] =
             "colorProductId": 123,
           }
         }
+        imagesByColor={Object {}}
         isActive={false}
         key="123"
         onChipClick={[MockFunction]}
@@ -55,6 +57,7 @@ exports[`ProductColorChipWrapperVanilla component should renders correctly 1`] =
             "colorProductId": 123,
           }
         }
+        imagesByColor={Object {}}
         isActive={false}
         key="123"
         onChipClick={[MockFunction]}
@@ -68,6 +71,7 @@ exports[`ProductColorChipWrapperVanilla component should renders correctly 1`] =
             "colorProductId": 123,
           }
         }
+        imagesByColor={Object {}}
         isActive={false}
         key="123"
         onChipClick={[MockFunction]}
