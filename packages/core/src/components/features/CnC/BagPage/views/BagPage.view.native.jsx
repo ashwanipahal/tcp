@@ -315,6 +315,10 @@ export class BagPage extends React.Component {
     return <>{isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}</>;
   };
 
+  renderPlaceCashBanner = isBagStage => {
+    return isBagStage ? <PlaceCashBanner /> : null;
+  };
+
   render() {
     const {
       labels,
@@ -384,7 +388,7 @@ export class BagPage extends React.Component {
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
-              <PlaceCashBanner />
+              {this.renderPlaceCashBanner(isBagStage)}
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
               {this.renderRecommendations()}
