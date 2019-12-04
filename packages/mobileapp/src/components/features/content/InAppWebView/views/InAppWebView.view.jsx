@@ -13,7 +13,10 @@ class InAppWebView extends React.Component {
   hideWebViewHeaderFooter = () => {
     return `document.querySelector('.header-global').style.display = 'none';
     document.querySelector('.footer-global').style.display = 'none';
-    document.querySelector('.help-center-back').style.display = 'none';
+    const helpCenter = document.querySelector('.help-center-back');
+    if(helpCenter){
+      helpCenter.style.display = 'none';
+    }
     `;
   };
 
