@@ -328,7 +328,6 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
       isSuggestedItem,
     } = this.props;
-    console.log('gridItemProps>>', this.props);
     const colorProductId = skuInfo && skuInfo.colorProductId;
     if (isSuggestedItem) {
       return false;

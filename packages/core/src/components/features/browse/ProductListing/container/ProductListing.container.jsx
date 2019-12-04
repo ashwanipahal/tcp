@@ -208,7 +208,6 @@ class ProductListingContainer extends React.PureComponent {
       trackPageLoad,
       ...otherProps
     } = this.props;
-    console.log({ containerProps: this.props });
     const { isOutfit, asPath, isCLP } = this.state;
     if (isCLP) {
       return (
