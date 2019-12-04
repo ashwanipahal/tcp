@@ -184,6 +184,11 @@ export class App extends React.PureComponent {
       this.setState({
         onLoadCheckInternet: true,
       });
+      if (Platform.OS === 'ios') {
+        this.setCooKies();
+      } else {
+        this.store.dispatch(getUserInfo());
+      }
     }
   };
 
