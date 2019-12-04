@@ -44,7 +44,7 @@ export default class ProductColorChip extends React.Component {
         color: { name },
       },
     } = this.props;
-    return imagesByColor && imagesByColor[name] && imagesByColor[name].basicImageUrl;
+    return (imagesByColor && imagesByColor[name] && imagesByColor[name].basicImageUrl) || '';
   };
 
   render() {
