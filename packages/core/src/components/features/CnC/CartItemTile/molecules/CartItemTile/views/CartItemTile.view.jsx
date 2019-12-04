@@ -651,7 +651,7 @@ class CartItemTile extends PureComponent {
             >
               <PriceCurrency price={Number(price)} />
             </BodyCopy>
-            {wasPrice !== salePrice && (
+            {listPrice !== price && (
               <BodyCopy
                 fontFamily="secondary"
                 component="span"

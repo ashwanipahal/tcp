@@ -265,51 +265,53 @@ class GiftCards extends React.PureComponent {
             true
           )}
 
-          {this.renderNoApplied(labels, isFromReview, appliedGiftCards)}
-
-          {this.renderApplyGiftCards(
-            appliedGiftCards,
-            handleRemoveGiftCard,
-            labels,
-            isExpressCheckout,
-            isFromReview
-          )}
-
-          {this.renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
-
-          {GiftCardSectionHeading(
-            giftCardList,
-            labels,
-            isFromReview,
-            isExpressCheckout,
-            this.getHeading
-          )}
-
           {!isFetching ? (
-            (!isFromReview || isExpressCheckout) &&
-            giftCardList &&
-            giftCardList.size > 0 &&
-            giftCardList.map(cardData => {
-              return (
-                <GiftCardBody>
-                  <GiftCardTileView
-                    cardData={cardData}
-                    applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
-                    labels={labels}
-                    orderBalanceTotal={orderBalanceTotal}
-                    isExpressCheckout={isExpressCheckout}
-                    isFromReview={isFromReview}
-                  />
-                </GiftCardBody>
-              );
-            })
+            <>
+              {this.renderNoApplied(labels, isFromReview, appliedGiftCards)}
+
+              {this.renderApplyGiftCards(
+                appliedGiftCards,
+                handleRemoveGiftCard,
+                labels,
+                isExpressCheckout,
+                isFromReview
+              )}
+
+              {this.renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
+
+              {GiftCardSectionHeading(
+                giftCardList,
+                labels,
+                isFromReview,
+                isExpressCheckout,
+                this.getHeading
+              )}
+
+              {(!isFromReview || isExpressCheckout) &&
+                giftCardList &&
+                giftCardList.size > 0 &&
+                giftCardList.map(cardData => {
+                  return (
+                    <GiftCardBody>
+                      <GiftCardTileView
+                        cardData={cardData}
+                        applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
+                        labels={labels}
+                        orderBalanceTotal={orderBalanceTotal}
+                        isExpressCheckout={isExpressCheckout}
+                        isFromReview={isFromReview}
+                      />
+                    </GiftCardBody>
+                  );
+                })}
+              {checkAddNewButton && this.renderAddNewGiftButton()}
+              {enableAddGiftCard && this.renderAddGiftCard()}
+            </>
           ) : (
             <>
               <GiftCardSkeleton />
             </>
           )}
-          {checkAddNewButton && this.renderAddNewGiftButton()}
-          {enableAddGiftCard && this.renderAddGiftCard()}
         </Container>
       </>
     );
