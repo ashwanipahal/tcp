@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OrderLedgerContainer } from '../container/orderLedger.container';
+import { OrderLedgerContainerVanilla } from '../container/orderLedger.container';
 import OrderLedger from '../views/orderLedger.view';
 
 describe('Order Ledger Container', () => {
@@ -19,7 +19,7 @@ describe('Order Ledger Container', () => {
 
   it('should render Order Ledger view section', () => {
     const tree = shallow(
-      <OrderLedgerContainer
+      <OrderLedgerContainerVanilla
         className={className}
         itemsCount={itemsCount}
         currencySymbol={currencySymbol}

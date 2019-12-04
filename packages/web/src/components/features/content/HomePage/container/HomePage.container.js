@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
+import { getIsRegisteredUserCallDone } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import HomePageView from '../views/HomePage.view';
 import { initActions } from './HomePage.actions';
 import {
@@ -71,6 +72,7 @@ const mapStateToProps = state => {
         data: Modules[slot.contentId],
       };
     }),
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
   };
 };
 

@@ -56,6 +56,7 @@ class ContactInformationFormWrapper extends React.Component {
           fontWeight="semiBold"
           className="contactFormTitle"
           tabIndex="0"
+          component="h2"
         >
           {getLabelValue(labels, 'lbl_PLCCForm_contactInfoHeader')}
         </Heading>
