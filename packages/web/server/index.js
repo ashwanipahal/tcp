@@ -47,7 +47,7 @@ const {
   initErrorReporter,
   getExpressMiddleware,
 } = require('@tcp/core/src/utils/errorReporter.util');
-const { ENV_DEVELOPMENT } = require('@tcp/core/src/constants/env.config');
+const { ENV_DEVELOPMENT, ENV_PRODUCTION } = require('@tcp/core/src/constants/env.config');
 
 const {
   connectRedis,
@@ -56,6 +56,8 @@ const {
 } = require('@tcp/core/src/utils/redis.util');
 
 const dev = process.env.NODE_ENV === 'development';
+const isProd = process.env.NODE_ENV === ENV_PRODUCTION;
+
 setEnvConfig(dev);
 const isLocalEnv = process.env.RWD_WEB_ENV_ID === 'LOCAL';
 const port = process.env.RWD_WEB_PORT || 3000;
@@ -285,7 +287,9 @@ app.prepare().then(() => {
   });
 
   // setup the logger
-  server.use(morgan('combined', { stream: accessLogStream }));
+  if (isProd) {
+    server.use(morgan('combined', { stream: accessLogStream }));
+  }
 
   server.get('/', redirectToHomePage);
 
