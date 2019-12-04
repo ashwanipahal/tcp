@@ -49,18 +49,17 @@ const styles = css`
   }
 
   .rewards-container {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-row-gap: 24px;
-    grid-auto-rows: minmax(345px, auto);
+    display: -ms-grid;
     align-items: stretch;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      grid-template-columns: repeat(2, calc(50% - 15px));
+      -ms-grid-column-gap: 30px;
       grid-column-gap: 30px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
+      -ms-grid-template-columns: calc(20% - 24px) calc(20% - 24px) calc(20% - 24px) calc(20% - 24px)
+        calc(20% - 24px);
       grid-template-columns: repeat(5, calc(20% - 24px));
     }
   }

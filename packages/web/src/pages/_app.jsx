@@ -153,7 +153,7 @@ class TCPWebApp extends App {
     const { store } = this.props;
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
-    this.checkForlogin();
+    // this.checkForlogin();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
     window.testApp = payload => {
       store.dispatch(SetTcpSegmentMethodCall(payload));
@@ -179,7 +179,7 @@ class TCPWebApp extends App {
 
   componentDidUpdate() {
     ReactAxe.runAccessibility();
-    this.checkForlogin();
+    // this.checkForlogin();
   }
 
   /**
