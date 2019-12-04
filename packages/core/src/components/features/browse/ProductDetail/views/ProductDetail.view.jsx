@@ -61,9 +61,12 @@ class ProductDetailView extends PureComponent {
 
   formatProductsData = product => {
     const productData = [];
-    const colorName = product.colorFitsSizesMap.map(productTile => {
-      return productTile.color.name || '';
-    });
+    const colorName =
+      product &&
+      product.colorFitsSizesMap &&
+      product.colorFitsSizesMap.map(productTile => {
+        return productTile.color.name || '';
+      });
     const productId = product.generalProductId.split('_')[0];
     productData.push({
       colorId: product.generalProductId,
