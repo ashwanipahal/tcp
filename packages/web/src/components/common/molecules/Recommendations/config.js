@@ -11,6 +11,9 @@ export default {
     dots: false,
     dotsClass: 'slick-dots',
     swipe: true,
+    slide: true,
+    touchMove: true,
+    touchThreshold: 100,
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [

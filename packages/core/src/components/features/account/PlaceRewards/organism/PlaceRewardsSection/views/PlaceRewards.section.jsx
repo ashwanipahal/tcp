@@ -61,7 +61,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
                     fontFamily="secondary"
                     fontSize="fs16"
                     fontWeight="extrabold"
-                    component="h4"
+                    component="h3"
                     className="elem-mb-SM elem-mt-XXXS"
                   >
                     {getLabelValue(labels, 'lbl_my_rewards_point_balance', 'placeRewards')}
@@ -104,7 +104,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
                       fontFamily="secondary"
                       fontSize="fs16"
                       fontWeight="extrabold"
-                      component="h4"
+                      component="h3"
                       className="elem-mb-SM elem-mt-XXXS"
                       data-locator="pointshistorylbl"
                     >

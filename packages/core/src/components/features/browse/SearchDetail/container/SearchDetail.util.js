@@ -1,5 +1,7 @@
-const isSearched = () => {
+export const isSearched = () => {
   return true;
 };
 
-export default isSearched;
+export const getLatestSearchResultsExists = latestSearchResults => {
+  return !!(latestSearchResults && latestSearchResults.length > 0);
+};

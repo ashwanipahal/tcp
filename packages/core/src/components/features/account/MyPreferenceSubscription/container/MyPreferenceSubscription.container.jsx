@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
-import { isMobileApp } from '@tcp/core/src/utils';
+import { isMobileApp, getLabelValue } from '@tcp/core/src/utils';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import MyPrefrence from '../views';
 import {
@@ -58,6 +58,29 @@ export class MyPreferenceSubscription extends PureComponent {
   getSubscribeInitialValues = props => {
     const { phoneNumber } = props;
     return { phoneNumber };
+  };
+
+  getModalAriaLabel = (activeModal, labels) => {
+    switch (activeModal) {
+      case MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE:
+        return getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts');
+      case MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE:
+        return getLabelValue(labels, 'lbl_preference_push_notification_heading');
+      case MyPreferenceSubscriptionConstants.TCP_WEB_UNSUBSCRIBE:
+        return getLabelValue(labels, 'lbl_prefrence_modal_unsubscribe_title');
+      case MyPreferenceSubscriptionConstants.TCP_APP_UNSUBSCRIBE:
+        return getLabelValue(labels, 'lbl_preference_push_unsubscribe_heading');
+      case MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE:
+        return getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts');
+      case MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE:
+        return getLabelValue(labels, 'lbl_preference_push_notification_heading');
+      case MyPreferenceSubscriptionConstants.GYMBOREE_WEB_UNSUBSCRIBE:
+        return getLabelValue(labels, 'lbl_prefrence_modal_unsubscribe_title');
+      case MyPreferenceSubscriptionConstants.GYMBOREE_APP_UNSUBSCRIBE:
+        return getLabelValue(labels, 'lbl_preference_push_unsubscribe_heading');
+      default:
+        return null;
+    }
   };
 
   handleSubmitModalPopup = data => {
@@ -272,6 +295,7 @@ export class MyPreferenceSubscription extends PureComponent {
       trackSubscriptionEvent,
     } = this.props;
     const { modalVisible, activeModal } = this.state;
+    const modalAriaLabel = this.getModalAriaLabel(activeModal, labels);
 
     const urlParams = router.query || {};
     return (
@@ -301,6 +325,7 @@ export class MyPreferenceSubscription extends PureComponent {
             heading={!isMobileApp() ? '' : ' '}
             standardHeight
             horizontalBar={false}
+            contentLabel={modalAriaLabel}
             closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
           >
             {(activeModal === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE ||
