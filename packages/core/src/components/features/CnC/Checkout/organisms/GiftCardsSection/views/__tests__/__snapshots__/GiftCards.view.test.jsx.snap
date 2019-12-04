@@ -639,11 +639,26 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         <Styled(Row)
           fullBleed={true}
         >
-          <Styled(ErrorMessage)
-            error="Duplicate card"
-            fontSize="fs12"
-            fontWeight="extrabold"
-          />
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 6,
+                "medium": 10,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(ErrorMessage)
+              error="Duplicate card"
+              fontSize="fs12"
+              fontWeight="extrabold"
+            />
+          </Styled(Col)>
         </Styled(Row)>
         <ReduxForm
           addGiftCardError="Duplicate card"
