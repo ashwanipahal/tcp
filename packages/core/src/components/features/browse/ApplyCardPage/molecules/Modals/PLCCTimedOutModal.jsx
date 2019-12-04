@@ -47,6 +47,11 @@ class StyledPLCCTimedoutModal extends React.PureComponent {
         minHeight={getModalHeight(bagItems, isPLCCModalFlow)}
         inheritedStyles={modalStyles}
         shouldCloseOnOverlayClick={false}
+        contentLabel={
+          isPLCCModalFlow
+            ? getLabelValue(labels, 'lbl_PLCCTimeoutModal_preacceptance')
+            : getLabelValue(labels, 'lbl_PLCCTimeoutModal_applicationClosure')
+        }
       >
         <div className="Modal__Content__Wrapper">
           <Row fullBleed className="modal_content">

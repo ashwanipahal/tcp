@@ -145,7 +145,7 @@ export default class ShippingPage extends React.PureComponent {
                 saveToAddressBook: !isGuest,
                 onFileAddressKey: shippingAddressId || primaryAddressId,
                 emailSignUp: {
-                  emailSignUp: emailSignUpFlags.emailSignUpTCP,
+                  emailSignUpTCP: emailSignUpFlags.emailSignUpTCP,
                   emailSignUpGYM: emailSignUpFlags.emailSignUpGYM,
                 },
                 smsSignUp: initShippingPage && initShippingPage.smsSignUp,

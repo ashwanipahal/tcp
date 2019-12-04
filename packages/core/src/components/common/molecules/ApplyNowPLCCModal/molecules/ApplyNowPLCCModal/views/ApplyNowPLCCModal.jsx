@@ -10,6 +10,7 @@ const ApplyNowPLCCModal = ({
   closePLCCModal,
   className,
   isRtpsFlow,
+  labels,
 }) => {
   return (
     <Modal
@@ -24,6 +25,9 @@ const ApplyNowPLCCModal = ({
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
       standardHeight
+      contentLabel={`${labels.lbl_PLCCModal_applyNowLink} for ${
+        labels.lbl_PLCCForm_rewardsCardHeading
+      }`}
       shouldCloseOnEsc={!isRtpsFlow}
     >
       <ApplyCardPage isPLCCModalFlow closePLCCModal={closePLCCModal} />
@@ -37,6 +41,7 @@ ApplyNowPLCCModal.propTypes = {
   closePLCCModal: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
   isRtpsFlow: PropTypes.bool.isRequired,
+  labels: PropTypes.bool.isRequired,
 };
 
 export default ApplyNowPLCCModal;

@@ -99,6 +99,7 @@ class MiniBag extends React.Component {
           labelledby: 'Mini Bag',
           describedby: 'Mini Bag Modal',
         }}
+        contentLabel={labels.accessibility.cartIconButton}
         data-locator="mini-bag-modal"
         inheritedStyles={modalStyles}
         closeIconLeftAligned

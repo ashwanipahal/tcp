@@ -142,7 +142,7 @@ class LocationAccessPrompt extends React.PureComponent {
           <Container>
             <Wrapper width={PROPMT_WIDTH}>
               <StyledImage source={locationImage} width="35px" height="35px" marginTop="15px" />
-              <Touchable accessibilityRole="button" onPress={this.toggleModal}>
+              <Touchable accessibilityRole="button" onPress={this.close}>
                 <StyledImage source={closeImage} width="15px" height="15px" />
               </Touchable>
               <MessageContainer>
