@@ -199,7 +199,13 @@ const styles = css`
         ? props.theme.colorPalette.userTheme.plcc
         : props.theme.colorPalette.userTheme.mpr};
     box-sizing: border-box;
-    height: 20px;
+    height: 12px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 16px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 20px;
+    }
     span {
       visibility: visible;
     }
@@ -244,6 +250,7 @@ const styles = css`
 
   .container-price {
     white-space: nowrap;
+    height: 40px;
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
