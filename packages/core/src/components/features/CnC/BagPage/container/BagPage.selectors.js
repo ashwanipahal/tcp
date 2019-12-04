@@ -90,6 +90,10 @@ const getOrderSubTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
 };
 
+const getBillingPaymentMethod = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'checkout', 'billing', 'paymentMethod']);
+};
+
 const getIsPayPalEnabled = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isPayPalEnabled']) || false;
 };
@@ -121,7 +125,7 @@ const getProductsTypes = state => {
 
 const getNeedHelpContentId = state => {
   const referred = getLabelValue(state.Labels, 'referred', 'addedToBagModal', 'global', true);
-  const content = referred.find(label => label.name === 'NEED_HELP_DATA');
+  const content = referred && referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
 };
 
@@ -304,4 +308,5 @@ export default {
   getIfEmailSignUpDone,
   getExitCheckoutAriaLabel,
   getOrderSubTotal,
+  getBillingPaymentMethod,
 };
