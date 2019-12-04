@@ -40,9 +40,9 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="checkout-header-title"
         color="text.primary"
-        component="span"
+        component="h1"
         fontFamily="primary"
         fontSize="fs32"
         fontWeight="regular"
@@ -171,9 +171,9 @@ exports[`CheckoutHeaderVanilla should render checkout header section 2`] = `
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="checkout-header-title"
         color="text.primary"
-        component="span"
+        component="h1"
         fontFamily="primary"
         fontSize="fs32"
         fontWeight="regular"

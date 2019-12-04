@@ -22,13 +22,13 @@ const HeaderTopNav = ({
   };
   return (
     <div className={className}>
-      <PromotionalArea mobile data={promoMessageWrapper} />
+      <PromotionalArea mobile data={promoMessageWrapper} maxLoopCount={1} />
       <div className="header-topnav__row content-wrapper">
         <div className="header-topnav__brand-tabs">
           <BrandTabs data={brandTabs} />
         </div>
         <div className="header-topnav__promo-area">
-          <PromotionalArea mobile={false} data={promoMessageWrapper} />
+          <PromotionalArea mobile={false} data={promoMessageWrapper} maxLoopCount={1} />
         </div>
         <div className="header-topnav__track-order">
           <CountrySelector />

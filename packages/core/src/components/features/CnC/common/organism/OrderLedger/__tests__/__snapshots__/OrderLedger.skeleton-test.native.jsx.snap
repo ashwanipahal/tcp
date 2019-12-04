@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Order Ledger Skeleton Order Ledger Skeleton should render properly 1`] = `
-<View>
+<Styled(View)>
   <Styled(View)>
     <Styled(View)>
       <FadeInView
@@ -94,5 +94,5 @@ exports[`Order Ledger Skeleton Order Ledger Skeleton should render properly 1`] 
       />
     </Styled(View)>
   </Styled(View)>
-</View>
+</Styled(View)>
 `;

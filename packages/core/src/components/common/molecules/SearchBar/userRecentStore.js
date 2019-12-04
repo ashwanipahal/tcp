@@ -1,16 +1,24 @@
+import { getAPIConfig } from '@tcp/core/src/utils';
 import { setLocalStorage, getLocalStorage } from '../../../../utils/localStorageManagement';
 import constants from './SearchBar.constants';
 
 export const setRecentStoreToLocalStorage = store => {
+  const apiConfigObj = getAPIConfig();
+  const { brandId, language, siteId } = apiConfigObj;
+  const RECENT_STORE_CACHE_KEY = `${constants.RECENT_SEARCH}-${brandId}-${language}-${siteId}`;
   const params = {
-    key: constants.RECENT_STORE_CACHE_KEY,
+    key: RECENT_STORE_CACHE_KEY,
     value: JSON.stringify(store),
   };
   setLocalStorage(params);
 };
 
-export const getRecentStoreFromLocalStorage = () =>
-  getLocalStorage(constants.RECENT_STORE_CACHE_KEY);
+export const getRecentStoreFromLocalStorage = () => {
+  const apiConfigObj = getAPIConfig();
+  const { brandId, language, siteId } = apiConfigObj;
+  const RECENT_STORE_CACHE_KEY = `${constants.RECENT_SEARCH}-${brandId}-${language}-${siteId}`;
+  return getLocalStorage(RECENT_STORE_CACHE_KEY);
+};
 
 export const updateLocalStorageData = (searchText, url) => {
   if (searchText) {

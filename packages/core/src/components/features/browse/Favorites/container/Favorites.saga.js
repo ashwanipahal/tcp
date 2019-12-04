@@ -4,6 +4,7 @@ import processHelperUtil from '@tcp/core/src/services/abstractors/productListing
 import { FAVORITES_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import getErrorList from '@tcp/core/src/components/features/CnC/BagPage/container/Errors.selector';
 import FAVORITES_CONSTANTS from './Favorites.constants';
+import { isCanada } from '../../../../../utils';
 import {
   setWishlistState,
   setWishlistsSummariesAction,
@@ -33,7 +34,7 @@ import {
   getUserContactInfo,
 } from '../../../account/User/container/User.selectors';
 import { setLoginModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
-import { isCanada } from '../../../../../utils';
+
 import { setAddToFavorite } from '../../ProductListing/container/ProductListing.actions';
 import { setAddToFavoritePDP } from '../../ProductDetail/container/ProductDetail.actions';
 import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.actions';
@@ -68,15 +69,26 @@ export function* loadActiveWishlistByGuestKey({ payload }) {
 /* eslint-disable sonarjs/cognitive-complexity */
 // eslint-disable-next-line complexity
 export function* addItemsToWishlist({ payload }) {
-  const { colorProductId, activeWishListId, productSkuId, pdpColorProductId, page } = payload;
+  const {
+    colorProductId,
+    activeWishListId,
+    productSkuId,
+    pdpColorProductId,
+    formName,
+    page,
+  } = payload;
   const state = yield select();
   const isGuest = !getUserLoggedInState(state);
   const errorMapping = getErrorList(state);
 
   let skuIdOrProductId;
+  let isProduct = true;
+
+  const quantity = formName ? state.form[`${formName}-${colorProductId}`].values.Quantity : 1;
 
   if (productSkuId) {
     skuIdOrProductId = productSkuId;
+    isProduct = false;
   } else if (pdpColorProductId) {
     skuIdOrProductId = pdpColorProductId;
   } else {
@@ -92,8 +104,8 @@ export function* addItemsToWishlist({ payload }) {
       const res = yield call(addItemsToWishlistAbstractor, {
         wishListId: activeWishListId || '',
         skuIdOrProductId,
-        quantity: 1,
-        isProduct: true,
+        quantity,
+        isProduct,
         uniqueId: colorProductId,
         errorMapping,
       });

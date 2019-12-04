@@ -21,8 +21,8 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
-      padding: 12px ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-      width: calc(33.33% - ${props => props.theme.spacing.LAYOUT_SPACING.LRG});
+      padding: 12px ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+      width: calc(33.33% - ${props => props.theme.spacing.LAYOUT_SPACING.MED});
     }
     @media only screen and (min-width: 1350px) {
       margin: 0 0 19px 0;

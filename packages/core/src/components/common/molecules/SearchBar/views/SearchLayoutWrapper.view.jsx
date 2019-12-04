@@ -61,8 +61,10 @@ class SearchLayoutWrapper extends React.PureComponent {
       commonCloseClick,
     } = this.props;
 
-    const searchText =
+    let searchText =
       this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
+
     if (searchText) {
       setDataInLocalStorage(searchText);
       redirectToSearchPage(searchText);
@@ -137,8 +139,10 @@ class SearchLayoutWrapper extends React.PureComponent {
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, labels, toggleSearchResults } = this.props;
-    const searchText =
+    let searchText =
       this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
+
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     const searchImage = document

@@ -200,6 +200,22 @@ export default css`
     background-color: ${props => props.theme.colorPalette.gray[300]};
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};
     box-sizing: border-box;
+    outline: none;
+  }
+
+  .empty-search-input-withRecent {
+    position: absolute;
+    width: 240px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    border-radius: 20px;
+    background-color: ${props => props.theme.colorPalette.gray[300]};
+    border: 1px solid ${props => props.theme.colorPalette.gray[300]};
+    box-sizing: border-box;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    outline: none;
   }
 
   .empty-search-image {
@@ -231,7 +247,7 @@ export default css`
   }
 
   .matchBox {
-    width: 245px;
+    width: 100%;
     display: table-cell;
     border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border-top: 0px;
@@ -240,7 +256,7 @@ export default css`
     position: absolute;
     background-color: ${props => props.theme.colors.WHITE};
     overflow-y: auto;
-    margin: 40px 10px 0 10px;
+    margin: 40px 10px 0 0;
   }
 
   .boxHead {
@@ -285,5 +301,39 @@ export default css`
   .empty-search-linkName {
     color: ${props => props.theme.colors.ACCORDION.TEXT};
     padding: 5px 14px;
+  }
+
+  .suggestionBox {
+    width: 100%;
+    display: block;
+    border-top: 0;
+    box-sizing: border-box;
+    z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
+    position: relative;
+    background-color: ${props => props.theme.colors.WHITE};
+    overflow-y: auto;
+  }
+
+  li.recentTag {
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    width: 100%;
+    cursor: pointer;
+  }
+
+  li.recentTag a {
+    line-height: 2.08;
+  }
+
+  .recentBox .recentBoxHead {
+    height: 52px;
+    background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
+    line-height: 52px;
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
+  .recentBox .recentBoxBody {
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.SM}
+      ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 `;
