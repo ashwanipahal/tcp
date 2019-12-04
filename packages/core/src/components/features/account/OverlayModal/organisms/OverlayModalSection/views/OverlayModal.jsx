@@ -303,6 +303,7 @@ class OverlayModal extends React.Component {
         color={color}
         ref={this.setModalRef}
         tabIndex="-1"
+        aria-label={headingForMobile}
       >
         <div
           id="dialogContent"

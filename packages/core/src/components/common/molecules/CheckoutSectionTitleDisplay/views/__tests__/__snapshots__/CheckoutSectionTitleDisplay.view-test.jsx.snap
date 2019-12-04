@@ -8,7 +8,7 @@ exports[`CheckoutSectionTitleDisplay should render correctly 1`] = `
     <Styled(BodyCopy)
       className={null}
       color="text.primary"
-      component="p"
+      component="h2"
       data-locator="pickup-title"
       fontFamily="primary"
       fontSize="fs16"

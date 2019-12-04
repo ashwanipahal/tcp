@@ -4,6 +4,7 @@ exports[`Help Coupon Modal should call correctly 1`] = `
 <Styled(Modal)
   className="TCPModal__Content"
   closeIconDataLocator="helpmodalcrossicon"
+  contentLabel="Coupon Apply Help"
   fixedWidth={true}
   heightConfig={
     Object {

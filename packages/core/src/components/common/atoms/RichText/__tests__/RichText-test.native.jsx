@@ -78,7 +78,9 @@ describe('RichText', () => {
 
   it('should render img tag as Image Component', () => {
     props.isNativeView = true;
-    const source = '/';
+    const source = {
+      uri: '/',
+    };
     component = shallow(<RichText {...props} />);
     const renderedComp = component
       .find(RenderTree)
