@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { getIconPath } from '@tcp/core/src/utils';
-import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
+import { getSiteId } from '@tcp/core/src/utils/utils';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
@@ -10,8 +10,14 @@ import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
 import { getSearchResult } from '../container/SearchDetail.actions';
-import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
+import {
+  updateLocalStorageData,
+  getRecentStoreFromLocalStorage,
+} from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
+import SuggestionBox from '../../../../common/molecules/SearchBar/views/SuggestionBox.view';
+import CategoryMatches from './CategoryMatches.view';
+import { getLatestSearchResultsExists } from '../container/SearchDetail.util';
 
 class NoResponseSearchDetailView extends React.PureComponent {
   constructor(props) {
@@ -29,7 +35,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, slpLabels, searchResults } = this.props;
-    const searchText = this.searchInput.current.value;
+    let searchText = this.searchInput.current.value;
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
 
     const showMatchBox = this.getMatchBoxStatus(searchResults);
 
@@ -48,7 +55,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
 
   getSearchResults = e => {
     e.preventDefault();
-    const searchText = this.searchInput.current.value;
+    let searchText = this.searchInput.current.value;
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
     if (searchText) {
       this.redirectToSuggestedUrl(searchText);
     }
@@ -58,6 +66,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
     let searchText = this.searchInput.current.value;
     if (searchText) {
       searchText = searchText.toLowerCase();
+      searchText = searchText.replace(/ %|% |%/g, ' ').trim();
       this.redirectToSuggestedUrl(searchText);
     }
   };
@@ -94,6 +103,14 @@ class NoResponseSearchDetailView extends React.PureComponent {
     }
   };
 
+  getEmptySearchInputClassName = isLatestSearchResultsExists => {
+    const { showProduct } = this.state;
+
+    return isLatestSearchResultsExists && showProduct
+      ? 'empty-search-input-withRecent'
+      : 'empty-search-input';
+  };
+
   render() {
     const {
       className,
@@ -117,6 +134,21 @@ class NoResponseSearchDetailView extends React.PureComponent {
       showLoyaltyPromotionMessage: false,
       headerAlignment: 'left',
     };
+
+    const getRecentStore = getRecentStoreFromLocalStorage();
+    let latestSearchResults;
+
+    if (getRecentStore) {
+      latestSearchResults = JSON.parse(getRecentStore.split(','));
+    } else {
+      latestSearchResults = [];
+    }
+
+    const isLatestSearchResultsExists = getLatestSearchResultsExists(latestSearchResults);
+    const emptySearchInputClassName = this.getEmptySearchInputClassName(
+      isLatestSearchResultsExists
+    );
+
     return (
       <div className={className}>
         <Row className="search-by-keywords-container">
@@ -128,7 +160,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               fontWeight="regular"
             >
               {slpLabels.lbl_searched_for}
-              <span className="empty-searched-label">{`"${searchedText.split('?')[0]}"`}</span>
+              <span className="empty-searched-label">{` "${searchedText.split('?')[0]}"`}</span>
             </BodyCopy>
           </Col>
         </Row>
@@ -143,7 +175,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
             >
               {slpLabels.lbl_nothing_matched}
               <span className="empty-searched-label-title">
-                {`"${searchedText.split('?')[0]}"`}
+                {` "${searchedText.split('?')[0]}"`}
               </span>
             </BodyCopy>
           </Col>
@@ -168,7 +200,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                     this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
                   }}
                 >
-                  {`${searchResultSuggestionsArg}`}
+                  {` ${searchResultSuggestionsArg}`}
                 </Anchor>
                 {`"?`}
               </BodyCopy>
@@ -185,11 +217,13 @@ class NoResponseSearchDetailView extends React.PureComponent {
             >
               <form className={className} noValidate onSubmit={this.initiateSearchBySubmit}>
                 <input
-                  className="empty-search-input"
+                  id="emptySearchInput"
+                  className={`${emptySearchInputClassName}`}
                   maxLength="150"
                   placeholder={slpLabels.lbl_looking_for}
                   onChange={this.changeSearchText}
                   ref={this.searchInput}
+                  autoComplete="off"
                 />
               </form>
 
@@ -212,58 +246,17 @@ class NoResponseSearchDetailView extends React.PureComponent {
               ) : (
                 <div className="matchBox">
                   <div className="matchLinkBox">
-                    {searchResults &&
-                      searchResults.autosuggestList &&
-                      searchResults.autosuggestList.length > 0 &&
-                      searchResults.autosuggestList.map(item => {
-                        const isCategory =
-                          item.heading === getLabelValue(slpLabels, 'lbl_category_matches');
-                        return (
-                          <div>
-                            {item && item.suggestions.length > 0 && (
-                              <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
-                                {item.heading}
-                              </BodyCopy>
-                            )}
-                            <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
-                              <ul>
-                                {item &&
-                                  item.suggestions &&
-                                  item.suggestions.map(itemData => {
-                                    const itemUrl = isCategory
-                                      ? itemData.url.replace(/'/g, '')
-                                      : undefined;
-                                    return (
-                                      <BodyCopy
-                                        component="li"
-                                        fontFamily="secondary"
-                                        fontSize="fs14"
-                                        key={item.id}
-                                        className="empty-search-linkName"
-                                      >
-                                        <Anchor
-                                          className="suggestion-label"
-                                          to={
-                                            isCategory ? `${itemUrl}` : `/search/${itemData.text}`
-                                          }
-                                          onClick={e => {
-                                            e.preventDefault();
-                                            this.redirectToSuggestedUrl(
-                                              `${itemData.text}`,
-                                              itemUrl
-                                            );
-                                          }}
-                                        >
-                                          {itemData.text}
-                                        </Anchor>
-                                      </BodyCopy>
-                                    );
-                                  })}
-                              </ul>
-                            </BodyCopy>
-                          </div>
-                        );
-                      })}
+                    <SuggestionBox
+                      isLatestSearchResultsExists={isLatestSearchResultsExists}
+                      latestSearchResults={latestSearchResults}
+                      labels={slpLabels}
+                      redirectToSuggestedUrl={this.redirectToSuggestedUrl}
+                    />
+                    <CategoryMatches
+                      searchResults={searchResults}
+                      labels={slpLabels}
+                      redirectToSuggestedUrl={this.redirectToSuggestedUrl}
+                    />
                   </div>
                 </div>
               )}
