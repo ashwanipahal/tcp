@@ -32,17 +32,19 @@ class CouponCard extends React.Component<Props> {
             {type}
           </BodyCopy>
         </div>
-        {coupon.isExpiring && (!isCarouselView || (isCarouselView && coupon.status !== 'applied')) && (
-          <BodyCopy
-            data-locator={`coupon_${coupon.status}_header_expired`}
-            className="couponCard__header_expired"
-            component="p"
-            fontSize="fs10"
-            fontFamily="secondary"
-          >
-            {labels.EXPIRING_SOON}
-          </BodyCopy>
-        )}
+        {!coupon.isExpiring &&
+          (!isCarouselView || (isCarouselView && coupon.status !== 'applied')) && (
+            <BodyCopy
+              data-locator={`coupon_${coupon.status}_header_expired`}
+              className="couponCard__header_expired"
+              component="p"
+              fontSize="fs10"
+              fontFamily="primary"
+              fontWeight="regular"
+            >
+              {labels.EXPIRING_SOON}
+            </BodyCopy>
+          )}
         {isCarouselView && coupon.status === 'applied' && (
           <BodyCopy
             data-locator="coupon_header_applied"
