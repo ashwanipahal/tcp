@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+const OrderSummarySkeletonWrapper = styled.View`
+  padding-bottom: 18px;
+`;
+
 const PricePointsWrapper = styled.View`
   padding: 10px 10px 0 10px;
   width: 100%;
@@ -68,6 +72,7 @@ const PriceSubValue6 = styled.View`
 `;
 
 export {
+  OrderSummarySkeletonWrapper,
   PricePointsWrapper,
   PriceSubText,
   PriceSubValue,

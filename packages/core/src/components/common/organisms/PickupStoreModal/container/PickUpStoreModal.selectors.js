@@ -156,5 +156,6 @@ export const getInitialValuesFromBagPage = state => {
     orderItemType: pickUpModalReducer && pickUpModalReducer.get('orderItemType'),
     orderId: pickUpModalReducer && pickUpModalReducer.get('orderId'),
     orderItemId: pickUpModalReducer && pickUpModalReducer.get('orderItemId'),
+    itemBrand: pickUpModalReducer && pickUpModalReducer.get('itemBrand'),
   };
 };
