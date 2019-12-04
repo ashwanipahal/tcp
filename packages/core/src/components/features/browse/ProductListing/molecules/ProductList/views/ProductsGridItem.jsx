@@ -3,10 +3,11 @@
 
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, routerPush, getBrand, getAPIConfig, getSiteId } from '@tcp/core/src/utils';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -49,11 +50,28 @@ class ProductsGridItem extends React.PureComponent {
       };
     }
     const colorProductId = colorsMap ? colorsMap[0].colorProductId : itemColorProductId;
+    const {
+      item: {
+        productInfo: { pdpUrl },
+      },
+    } = props;
+    const currentSiteBrand = getBrand();
+    const isTCP =
+      props.item && props.item.itemInfo
+        ? props.item.itemInfo.isTCP
+        : currentSiteBrand.toUpperCase() === 'TCP';
+    const apiConfigObj = getAPIConfig();
+    const { crossDomain } = apiConfigObj;
+    const itemBrand = isTCP ? 'TCP' : 'GYM';
+    const isProductBrandOfSameSiteBrand =
+      currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
     this.state = {
       isInDefaultWishlist: props.item.miscInfo.isInDefaultWishlist,
       selectedColorProductId: colorProductId,
       currentImageIndex: 0,
-      pdpUrl: props.item.productInfo.pdpUrl,
+      pdpUrl: isProductBrandOfSameSiteBrand
+        ? props.item.productInfo.pdpUrl
+        : `${crossDomain}/${getSiteId()}${pdpUrl}`,
       isAltImgRequested: false,
       isMoveItemOpen: false,
       generalProductId: '',
@@ -134,6 +152,39 @@ class ProductsGridItem extends React.PureComponent {
       ? { color: colorEntry.color.name }
       : undefined;
   }
+  /**
+   * This function returns array of suggested Items
+   * @param {*} item
+   */
+
+  checkAndRenderSuggestedItem = item => {
+    if (!item.skuInfo) {
+      return false;
+    }
+    const { seeSuggestedDictionary } = this.props;
+    const {
+      skuInfo: { colorProductId },
+    } = item;
+    const suggestedItem = {
+      status: false,
+      attributes: null,
+    };
+
+    if (!colorProductId) {
+      return null;
+    }
+
+    const outOfStockProduct =
+      colorProductId && seeSuggestedDictionary && seeSuggestedDictionary[colorProductId];
+    const outOfStockColorProductId = outOfStockProduct && outOfStockProduct.colorProductId;
+    const suggestedAttributes = outOfStockProduct && outOfStockProduct.attributes;
+
+    if (outOfStockColorProductId && outOfStockColorProductId === colorProductId) {
+      suggestedItem.status = true;
+      suggestedItem.attributes = suggestedAttributes;
+    }
+    return suggestedItem;
+  };
 
   /**
    * This function returns array of images for carousal and also decides whether to show image carousal or not
@@ -160,6 +211,55 @@ class ProductsGridItem extends React.PureComponent {
     }
   };
 
+  crossIcon = () => {
+    const { onDismissSuggestion, outOfStockColorProductId, isSuggestedItem } = this.props;
+
+    return isSuggestedItem ? (
+      <button
+        aria-label="close"
+        onClick={() => onDismissSuggestion(outOfStockColorProductId)}
+        className="close-btn"
+      >
+        <svg className="close-btn-icon" viewBox="0 0 25 25" aria-hidden="true">
+          <path
+            fill="#a0a0a0"
+            fillRule="nonzero"
+            d="M14.107 12.5l10.56-10.56A1.136 1.136 0 1 0 23.06.333L12.5 10.893 1.94.333A1.136 1.136 0 1 0 .333 1.94l10.56 10.56L.333 23.06a1.136 1.136 0 1 0 1.607 1.607l10.56-10.56 10.56 10.56c.222.222.513.333.804.333a1.136 1.136 0 0 0 .803-1.94L14.107 12.5z"
+          />
+        </svg>
+      </button>
+    ) : null;
+  };
+
+  dismissBtn = () => {
+    const {
+      onDismissSuggestion,
+      outOfStockColorProductId,
+      labelsPlpTiles,
+      isSuggestedItem,
+    } = this.props;
+
+    return isSuggestedItem ? (
+      <div>
+        <div className="move-item-container">
+          <Button
+            className="move-item-button dismiss-btn"
+            onClick={() => onDismissSuggestion(outOfStockColorProductId)}
+          >
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize={['fs10', 'fs12', 'fs14']}
+              color="gray.900"
+              className="see-suggested-items"
+            >
+              {labelsPlpTiles.lbl_dismiss}
+            </BodyCopy>
+          </Button>
+        </div>
+      </div>
+    ) : null;
+  };
+
   handleAddToWishlist = () => {
     const {
       item: {
@@ -170,9 +270,13 @@ class ProductsGridItem extends React.PureComponent {
       isLoggedIn,
       removeFavItem,
       isSearchListing,
+      isSuggestedItem,
     } = this.props;
     const { selectedColorProductId } = this.state;
-    if (removeFavItem) {
+
+    if (isSuggestedItem) {
+      this.handleQuickViewOpenClick();
+    } else if (removeFavItem) {
       removeFavItem({ itemId });
     } else {
       onAddItemToFavorites({
@@ -198,6 +302,23 @@ class ProductsGridItem extends React.PureComponent {
     this.setState({ isAltImgRequested: true });
   };
 
+  renderSuggestedLabel = () => {
+    const { labelsPlpTiles, isSuggestedItem } = this.props;
+
+    return isSuggestedItem ? (
+      <BodyCopy
+        dataLocator="plp_offer_price"
+        mobileFontFamily="secondary"
+        fontSize="fs10"
+        fontWeight="extrabold"
+        color="white"
+        className="suggested-label"
+      >
+        {labelsPlpTiles.lbl_suggested}
+      </BodyCopy>
+    ) : null;
+  };
+
   /* get color chip component */
   getColorChipContainer = curentColorEntry => {
     const {
@@ -205,15 +326,19 @@ class ProductsGridItem extends React.PureComponent {
       item: { colorsMap, skuInfo },
       isPLPredesign,
       isFavoriteView,
+      isSuggestedItem,
     } = this.props;
     const colorProductId = skuInfo && skuInfo.colorProductId;
+    if (isSuggestedItem) {
+      return false;
+    }
     const ChipProps = {
       className: 'color-chips-container',
       isMobile: { isMobile },
       showColorEvenOne: true,
       isPLPredesign: { isPLPredesign },
     };
-    if (colorProductId) {
+    if (colorProductId && !isSuggestedItem) {
       return (
         <ProductColorChipWrapper
           selectedColorId={colorProductId}
@@ -307,12 +432,35 @@ class ProductsGridItem extends React.PureComponent {
   };
 
   handleQuickViewOpenClick = () => {
-    const { onQuickViewOpenClick, item, addToBagEcom, isFavoriteView } = this.props;
+    const {
+      onQuickViewOpenClick,
+      isSuggestedItem,
+      onReplaceWishlistItem,
+      activeWishListId,
+      suggestedOOSItemId,
+      item,
+      addToBagEcom,
+      isFavoriteView,
+    } = this.props;
+
+    const {
+      productInfo: { generalProductId },
+      skuInfo: { skuId, size } = {},
+      itemInfo: { isTCP } = {},
+    } = item;
+
     const { selectedColorProductId } = this.state;
-    if (isFavoriteView) {
-      const {
-        skuInfo: { skuId, size },
-      } = item;
+    if (isSuggestedItem && onReplaceWishlistItem) {
+      const formData = {
+        activeWishListId,
+        itemId: suggestedOOSItemId,
+        colorProductId: generalProductId,
+      };
+      onReplaceWishlistItem(formData);
+    } else if (isFavoriteView) {
+      const orderInfo = {
+        itemBrand: isTCP ? 'TCP' : 'GYM',
+      };
       if (skuId && size) {
         let cartItemInfo = getCartItemInfo(item, {});
         cartItemInfo = { ...cartItemInfo };
@@ -320,6 +468,7 @@ class ProductsGridItem extends React.PureComponent {
       } else {
         onQuickViewOpenClick({
           colorProductId: selectedColorProductId,
+          orderInfo,
         });
       }
     } else {
@@ -353,6 +502,7 @@ class ProductsGridItem extends React.PureComponent {
       gridIndex,
       openAddNewList,
       activeWishListId,
+      favoriteErrorMessages,
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
@@ -382,6 +532,7 @@ class ProductsGridItem extends React.PureComponent {
                 gridIndex={gridIndex}
                 openAddNewList={openAddNewList}
                 activeWishListId={activeWishListId}
+                favoriteErrorMessages={favoriteErrorMessages}
               />
             </div>
           )}
@@ -390,31 +541,83 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  onSeeSuggestedHandler = itemId => {
+    const {
+      item: { skuInfo },
+      onSeeSuggestedItems,
+    } = this.props;
+
+    const { colorProductId } = skuInfo;
+
+    if (colorProductId && onSeeSuggestedItems) {
+      onSeeSuggestedItems(colorProductId, itemId);
+    }
+  };
+
+  SeeSuggestedList = itemId => {
+    const { labelsPlpTiles } = this.props;
+
+    return (
+      <div className="move-item-container">
+        <Button className="move-item-button" onClick={() => this.onSeeSuggestedHandler(itemId)}>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize={['fs10', 'fs12', 'fs14']}
+            color="gray.900"
+            className="see-suggested-items"
+          >
+            {labelsPlpTiles.lbl_see_suggested_items}
+          </BodyCopy>
+        </Button>
+      </div>
+    );
+  };
+
   renderAddToBagLabel = (isBundleProduct, keepAlive) => {
     const {
       outOfStockLabels,
       labels: { shopCollection, addToBag },
+      isSuggestedItem,
+      labelsPlpTiles,
     } = this.props;
-    const addToBagLabel = isBundleProduct ? shopCollection : addToBag;
+    let addToBagLabel = '';
+
+    if (isSuggestedItem) {
+      addToBagLabel = labelsPlpTiles && labelsPlpTiles.lbl_add_to_favorites;
+    } else if (isBundleProduct) {
+      addToBagLabel = shopCollection;
+    } else {
+      addToBagLabel = addToBag;
+    }
+
     return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
   };
 
   errorMsgDisplay = () => {
     const {
+      errorMessages,
       AddToFavoriteErrorMsg,
       item: {
         productInfo: { generalProductId },
       },
     } = this.props;
-    const { errorProductId } = this.state;
+    const errorMsg = errorMessages && errorMessages[generalProductId];
 
-    return errorProductId === generalProductId && AddToFavoriteErrorMsg ? (
+    return errorMsg && errorMsg.itemId === generalProductId && AddToFavoriteErrorMsg ? (
       <Notification
         status="error"
         colSize={{ large: 12, medium: 8, small: 6 }}
         message={AddToFavoriteErrorMsg}
       />
     ) : null;
+  };
+
+  getColorMiscInfo = curentColorEntry => {
+    return (
+      (curentColorEntry &&
+        (this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo)) ||
+      {}
+    );
   };
 
   renderSubmitButton = (keepAlive, itemNotAvailable) => {
@@ -494,10 +697,23 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
-  renderFavouriteIcon = (bundleProduct, isFavoriteView, isInDefaultWishlist, itemNotAvailable) => {
+  renderFavouriteIcon = (
+    bundleProduct,
+    isFavoriteView,
+    isInDefaultWishlist,
+    itemNotAvailable,
+    isSuggestedItem
+  ) => {
     return (
       !bundleProduct &&
-      WishListIcon(isFavoriteView, isInDefaultWishlist, this.handleAddToWishlist, itemNotAvailable)
+      WishListIcon(
+        isFavoriteView,
+        isInDefaultWishlist,
+        this.handleAddToWishlist,
+        itemNotAvailable,
+        '',
+        isSuggestedItem
+      )
     );
   };
 
@@ -525,23 +741,7 @@ class ProductsGridItem extends React.PureComponent {
       //  isBopisEnabledForClearance,
       //  isBossClearanceProductEnabled,
       //  isBossEnabled,
-      item: {
-        productInfo: {
-          bundleProduct,
-          promotionalMessage,
-          promotionalPLCCMessage,
-          generalProductId,
-          name,
-          listPrice: itemListPrice,
-          offerPrice: itemOfferPrice,
-          long_product_title: longProductTitle,
-        },
-        itemInfo: { itemId, quantity, availability } = {},
-        quantityPurchased,
-        colorsMap,
-        imagesByColor,
-        miscInfo: { isInDefaultWishlist },
-      },
+      item,
       // isGridView,
       // isProductsGridCTAView,
       // isCanada,
@@ -561,8 +761,26 @@ class ProductsGridItem extends React.PureComponent {
       forwardedRef,
       outOfStockLabels,
       isKeepAliveEnabled,
-      item,
+      isSuggestedItem,
     } = this.props;
+
+    const {
+      productInfo: {
+        bundleProduct,
+        promotionalMessage,
+        promotionalPLCCMessage,
+        generalProductId,
+        name,
+        listPrice: itemListPrice,
+        offerPrice: itemOfferPrice,
+        long_product_title: longProductTitle,
+      },
+      itemInfo: { itemId, quantity, availability } = {},
+      quantityPurchased,
+      colorsMap,
+      imagesByColor,
+      miscInfo: { isInDefaultWishlist },
+    } = item;
 
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
     const prodNameAltImages = longProductTitle || name;
@@ -573,6 +791,11 @@ class ProductsGridItem extends React.PureComponent {
       pdpUrl,
     } = this.state;
 
+    const suggestedItem = this.checkAndRenderSuggestedItem(item);
+    if (suggestedItem && suggestedItem.status) {
+      return <Recommendations {...suggestedItem.attributes} />;
+    }
+
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
     const imageUrls = getImagesToDisplay({
       imagesByColor,
@@ -581,10 +804,8 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
     });
     const imageUrlsToShow = this.getImageCarouselOptions(imageUrls);
-    const currentColorMiscInfo =
-      (curentColorEntry &&
-        (this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo)) ||
-      {};
+    const currentColorMiscInfo = this.getColorMiscInfo(curentColorEntry);
+
     const {
       listPrice = itemListPrice,
       offerPrice = itemOfferPrice,
@@ -640,6 +861,7 @@ class ProductsGridItem extends React.PureComponent {
               haveSpace
             />
           }
+          {this.crossIcon()}
           <ProductAltImages
             className="product-image-container"
             pdpUrl={pdpUrl}
@@ -692,7 +914,8 @@ class ProductsGridItem extends React.PureComponent {
                 bundleProduct,
                 isFavoriteView,
                 isInDefaultWishlist,
-                itemNotAvailable
+                itemNotAvailable,
+                isSuggestedItem
               )}
             </Row>
           }
@@ -708,6 +931,8 @@ class ProductsGridItem extends React.PureComponent {
             }}
           />
 
+          {this.renderSuggestedLabel()}
+
           {this.getColorChipContainer(curentColorEntry)}
 
           {this.getPromotionalMessageComponent(
@@ -717,12 +942,20 @@ class ProductsGridItem extends React.PureComponent {
           <div className="fulfillment-section">
             {this.renderSubmitButton(keepAlive, itemNotAvailable)}
           </div>
-          {!itemNotAvailable && (
+          {!itemNotAvailable ? (
             <div className="favorite-move-purchase-section">
               {PurchaseSection(quantity, labels, quantityPurchased)}
               {this.renderMoveItem(itemId)}
             </div>
+          ) : (
+            <div className="favorite-move-purchase-section">
+              {PurchaseSection(quantity, labels, quantityPurchased)}
+              {this.SeeSuggestedList(itemId)}
+            </div>
           )}
+
+          {this.dismissBtn()}
+
           {/* {error && <ErrorMessage error={error} />} */}
           {this.errorMsgDisplay()}
         </div>

@@ -86,6 +86,14 @@ const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
 
+const getOrderSubTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
+};
+
+const getBillingPaymentMethod = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'checkout', 'billing', 'paymentMethod']);
+};
+
 const getIsPayPalEnabled = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isPayPalEnabled']) || false;
 };
@@ -116,14 +124,13 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = state.Labels.global.addedToBagModal;
-
-  const content = referred.find(label => label.name === 'NEED_HELP_DATA');
+  const referred = getLabelValue(state.Labels, 'referred', 'addedToBagModal', 'global', true);
+  const content = referred && referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
 };
 
 const getDetailsContentTcpId = state => {
-  const { referred = [] } = state.Labels.checkout.shipping;
+  const referred = getLabelValue(state.Labels, 'referred', 'shipping', 'checkout', true);
   const content = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
   return content && content.contentId;
 };
@@ -132,19 +139,19 @@ const getExitCheckoutAriaLabel = state =>
   getLabelValue(state.Labels, 'exit_checkout', 'accessibility', 'global');
 
 const getDetailsContentGymId = state => {
-  const { referred = [] } = state.Labels.checkout.shipping;
+  const referred = getLabelValue(state.Labels, 'referred', 'shipping', 'checkout', true);
   const content = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
   return content && content.contentId;
 };
 
 const getGiftServicesContentTcpId = state => {
-  const { referred = [] } = state.Labels.checkout.shipping;
+  const referred = getLabelValue(state.Labels, 'referred', 'shipping', 'checkout', true);
   const contentTCP = referred.find(label => label.name === 'GiftServicesDetailsTCPModal');
   return contentTCP && contentTCP.contentId;
 };
 
 const getGiftServicesContentGymId = state => {
-  const { referred = [] } = state.Labels.checkout.shipping;
+  const referred = getLabelValue(state.Labels, 'referred', 'shipping', 'checkout', true);
   const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
   return contentGYM && contentGYM.contentId;
 };
@@ -300,4 +307,6 @@ export default {
   isBagRouting,
   getIfEmailSignUpDone,
   getExitCheckoutAriaLabel,
+  getOrderSubTotal,
+  getBillingPaymentMethod,
 };

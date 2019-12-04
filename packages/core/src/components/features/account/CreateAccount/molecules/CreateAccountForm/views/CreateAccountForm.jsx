@@ -122,7 +122,11 @@ let CreateAccountForm = ({
             <span className="hide-show show-hide-icons">
               <span className="info-icon-img-wrapper">
                 <ReactTooltip message={tooltipContent} aligned="right">
-                  <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+                  <Image
+                    className="tcp_carousel__play tooltip"
+                    src={getIconPath('info-icon')}
+                    alt=""
+                  />
                 </ReactTooltip>
               </span>
               <Col

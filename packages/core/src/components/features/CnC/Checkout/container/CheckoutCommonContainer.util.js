@@ -195,6 +195,10 @@ export const mapDispatchToProps = dispatch => {
     trackPageViewCheckout: payload => {
       dispatch(trackPageView(payload));
     },
+    resetCartCheckoutData: () => {
+      dispatch(CHECKOUT_ACTIONS.resetCheckoutReducer());
+      dispatch(BAG_PAGE_ACTIONS.resetCartReducer());
+    },
     dispatch,
   };
 };
@@ -292,6 +296,10 @@ export const mapStateToProps = state => {
     subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
+    currentOrderId: selectors.getCurrentOrderId(state),
+    paymentMethodId: BagPageSelector.getBillingPaymentMethod(state),
+    orderSubTotal: BagPageSelector.getOrderSubTotal(state),
+    billingAddress: selectors.getBillingAddressFields(state),
     titleLabel: BillingSectionSelectors.getReviewPageLabels(state),
     initShippingPage: selectors.getShippingInitialSectionValues(state),
   };

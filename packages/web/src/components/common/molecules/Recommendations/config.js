@@ -2,24 +2,26 @@ import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 
 export default {
   CAROUSEL_OPTIONS: {
+    autoplay: false,
     infinite: true,
-    autoplay: true,
     arrows: true,
-    autoplaySpeed: 4000,
     fade: false,
     speed: 200,
     swipeToSlide: true,
     dots: false,
     dotsClass: 'slick-dots',
     swipe: true,
+    slide: true,
+    touchMove: true,
+    touchThreshold: 100,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: breakpoints.values.lg - 1,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           arrows: false,
         },
       },
@@ -28,7 +30,7 @@ export default {
         settings: {
           arrows: false,
           slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
     ],

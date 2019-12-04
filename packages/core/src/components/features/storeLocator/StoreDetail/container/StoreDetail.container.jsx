@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { internalCampaignProductAnalyticsList } from '@tcp/core/src/utils';
 import { getNearByStore, getCurrentStoreInfo, getModuleXContent } from './StoreDetail.actions';
 import {
   getFavoriteStoreActn,
@@ -21,7 +22,7 @@ import {
 } from './StoreDetail.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
-import { openWindow } from '../../../../../utils/utils.web';
+import { trackPageView } from '../../../../../analytics/actions';
 
 export class StoreDetailContainer extends PureComponent {
   static routesBack(e) {
@@ -47,7 +48,20 @@ export class StoreDetailContainer extends PureComponent {
   }
 
   componentDidMount() {
-    const { getModuleX, referredContentList } = this.props;
+    const { getModuleX, referredContentList, trackStoreDetailPageView } = this.props;
+
+    if (!isMobileApp()) {
+      trackStoreDetailPageView({
+        eventData: { customEvents: ['event80', 'event96'] },
+        pageName: 'storelocator',
+        pageType: 'companyinfo',
+        pageSection: 'storelocator',
+        pageSubSection: 'storelocator',
+        pageNavigationText: 'header-find a store',
+        internalCampaignIdList: internalCampaignProductAnalyticsList(),
+      });
+    }
+
     this.loadCurrentStoreInitialInfo();
     getModuleX(referredContentList);
   }
@@ -98,7 +112,7 @@ export class StoreDetailContainer extends PureComponent {
     if (isMobileApp()) {
       this.mapHandler(store);
     } else {
-      openWindow(
+      window.open(
         `${
           googleMapConstants.OPEN_STORE_DIR_WEB
         }${addressLine1},%20${city},%20${state},%20${zipCode}`,
@@ -168,6 +182,15 @@ export class StoreDetailContainer extends PureComponent {
   }
 }
 
+StoreDetailContainer.getInitialProps = (reduxProps, pageProps) => {
+  return {
+    ...pageProps,
+    pageData: {
+      loadAnalyticsOnload: false,
+    },
+  };
+};
+
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),
   formatStore: PropTypes.func.isRequired,
@@ -197,11 +220,13 @@ StoreDetailContainer.propTypes = {
   getModuleX: PropTypes.func,
   referredContentList: PropTypes.shape([]),
   getRichContent: PropTypes.func,
+  trackStoreDetailPageView: PropTypes.func,
   storeId: PropTypes.string,
   fetchCurrentStoreInfo: PropTypes.func,
 };
 
 StoreDetailContainer.defaultProps = {
+  trackStoreDetailPageView: () => {},
   currentStoreInfo: fromJS({
     basicInfo: {
       id: '',
@@ -249,6 +274,21 @@ export const mapDispatchToProps = dispatch => ({
     dispatch(getModuleXContent(payload));
   },
   fetchCurrentStoreInfo: payload => dispatch(getCurrentStoreInfo(payload)),
+  trackStoreDetailPageView: payload => {
+    dispatch(
+      trackPageView({
+        props: {
+          initialProps: {
+            pageProps: {
+              pageData: {
+                ...payload,
+              },
+            },
+          },
+        },
+      })
+    );
+  },
 });
 
 export default connect(

@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Gymboree</string>
+	<string>My Place</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,7 +27,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb2346328792295830</string>
+				<string>fb312738492865420</string>
 			</array>
 		</dict>
 		<dict>
@@ -43,7 +43,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>gym</string>
+				<string>tcp</string>
 			</array>
 		</dict>
 		<dict>
@@ -58,9 +58,9 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CodePushDeploymentKey</key>
-	<string>yk5X-LiBxTDjh7fLUaPRhDljtJ0UIdsHa1hhW</string>
+	<string>eb3t7uIJtXcq5tolIjtBlqJ2ybJXR_VD0Ydyb</string>
 	<key>FacebookAppID</key>
-	<string>2346328792295830</string>
+	<string>312738492865420</string>
 	<key>FacebookDisplayName</key>
 	<string>My Place</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -127,7 +127,7 @@
 		<string>Montserrat-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>GymboreeLaunchScreen</string>
+	<string>TCPLaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -135,8 +135,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

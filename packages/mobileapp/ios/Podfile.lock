@@ -1,12 +1,12 @@
 PODS:
-  - appcenter (2.4.0):
+  - appcenter (2.6.0):
     - AppCenterReactNativeShared
     - React
-  - appcenter-analytics (2.4.0):
+  - appcenter-analytics (2.6.0):
     - AppCenter/Analytics
     - AppCenterReactNativeShared
     - React
-  - appcenter-crashes (2.4.0):
+  - appcenter-crashes (2.6.0):
     - AppCenter/Crashes
     - AppCenterReactNativeShared
     - React
@@ -135,10 +135,20 @@ PODS:
     - React-RCTSettings (= 0.61.1)
     - React-RCTText (= 0.61.1)
     - React-RCTVibration (= 0.61.1)
+  - React-ART (0.61.1):
+    - React-Core/ARTHeaders (= 0.61.1)
   - React-Core (0.61.1):
     - Folly (= 2018.10.22.00)
     - glog
     - React-Core/Default (= 0.61.1)
+    - React-cxxreact (= 0.61.1)
+    - React-jsi (= 0.61.1)
+    - React-jsiexecutor (= 0.61.1)
+    - Yoga
+  - React-Core/ARTHeaders (0.61.1):
+    - Folly (= 2018.10.22.00)
+    - glog
+    - React-Core/Default
     - React-cxxreact (= 0.61.1)
     - React-jsi (= 0.61.1)
     - React-jsiexecutor (= 0.61.1)
@@ -279,6 +289,14 @@ PODS:
     - React-cxxreact (= 0.61.1)
     - React-jsi (= 0.61.1)
   - React-jsinspector (0.61.1)
+  - react-native-camera (3.11.1):
+    - React
+    - react-native-camera/RCT (= 3.11.1)
+    - react-native-camera/RN (= 3.11.1)
+  - react-native-camera/RCT (3.11.1):
+    - React
+  - react-native-camera/RN (3.11.1):
+    - React
   - react-native-config (0.11.7):
     - React
   - react-native-cookies (3.2.0):
@@ -417,6 +435,7 @@ DEPENDENCIES:
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
+  - React-ART (from `../node_modules/react-native/Libraries/ART`)
   - React-Core (from `../node_modules/react-native/`)
   - React-Core/DevSupport (from `../node_modules/react-native/`)
   - React-Core/RCTWebSocket (from `../node_modules/react-native/`)
@@ -425,6 +444,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-cookies (from `../node_modules/react-native-cookies/ios`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
@@ -527,6 +547,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/TypeSafety"
   React:
     :path: "../node_modules/react-native/"
+  React-ART:
+    :path: "../node_modules/react-native/Libraries/ART"
   React-Core:
     :path: "../node_modules/react-native/"
   React-CoreModules:
@@ -539,6 +561,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-camera:
+    :path: "../node_modules/react-native-camera"
   react-native-config:
     :path: "../node_modules/react-native-config"
   react-native-cookies:
@@ -610,9 +634,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AppCenter: fddcbac6e4baae3d93a196ceb0bfe0e4ce407dec
-  appcenter: 4072e79b8d037d99056e6fc6556224b4525b5829
-  appcenter-analytics: 94be52eca805d586207d710aac95e0ddca8b3ddb
-  appcenter-crashes: 30caece47856aee7c4c7449d4f4dae2d69795bd6
+  appcenter: dc687dcf81280ccab1dc938b0b974d265144a802
+  appcenter-analytics: fa8dba207d07733dcbda749d262fde3e7161258d
+  appcenter-crashes: fa97ffec69882486d7183193cc9394473757d1ad
   AppCenterReactNativeShared: d5e360f8a4cb5126d29e31ab98051d2f070ba631
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
@@ -643,12 +667,14 @@ SPEC CHECKSUMS:
   RCTRequired: 53825815218847d3e9c7b6d92ad2d197a926d51e
   RCTTypeSafety: d886540c518e53064dfa081bf7693fd650699b92
   React: 5dea58967c421bd1fdf6b94c18b9ed0f5134683c
+  React-ART: f13bb521beccd46cf8bebc7e56ee8a38a761ffb2
   React-Core: b381e65aa0da9b94b9dcdc4a99298075b1c3876c
   React-CoreModules: 4ed224e29848ba76d26aacb8e3fe85712d3c4fe1
   React-cxxreact: 52c98f5c1fb4e4d9f4b588742718350a55f4f088
   React-jsi: 61ff417c95e6c3af50fb96399037e80752fb5ce7
   React-jsiexecutor: ee45274419eb95614bbbadb98e20684c5f29996e
   React-jsinspector: 574d597112f9ea3d1b717f6fb62aef764c70dd6f
+  react-native-camera: 576f6dbb490af4285de1f8002a09dd3daa86c112
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-cookies: 854d59c4135c70b92a02ca4930e68e4e2eb58150
   react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
@@ -689,6 +715,6 @@ SPEC CHECKSUMS:
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
   Yoga: d8c572ddec8d05b7dba08e4e5f1924004a177078
 
-PODFILE CHECKSUM: aa809b0632df8e59b380988ab1b8b1de9bfd66fb
+PODFILE CHECKSUM: ac8064f0760be35b53d39066fd055608d51c8bca
 
 COCOAPODS: 1.8.4

@@ -15,6 +15,7 @@ describe('Order Basic Details component ', () => {
     const component = shallow(<OrderBasicDetails {...props} />);
     expect(component).toMatchSnapshot();
   });
+
   it('should render correctly for Boss order', () => {
     const props = {
       orderDetailsData: {

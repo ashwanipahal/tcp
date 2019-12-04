@@ -330,7 +330,7 @@ export function* updateWishListItem({ payload }) {
       isProduct: true,
       uniqueId,
     });
-    yield* loadWishlistsSummaries();
+    yield* loadWishlistsSummaries(activeWishlistId);
     if (callBack) {
       callBack();
     }

@@ -14,7 +14,7 @@ import styles from './ProductDetailImage.style';
 import { getLocator } from '../../../../utils';
 
 const NonZoomImage = ({ isMobile, imageUrl, imageName, onOpenSimpleFullSize }) => {
-  const [isImageLoaded] = useBooleanState(false);
+  const [isImageLoaded, handleImageLoaded] = useBooleanState(false);
   const imgData = {
     alt: imageName,
     url: imageUrl,
@@ -30,6 +30,7 @@ const NonZoomImage = ({ isMobile, imageUrl, imageName, onOpenSimpleFullSize }) =
           itemProp="contentUrl"
           isProductImage
           lazyLoad={false}
+          onLoad={handleImageLoaded}
         />
       ) : (
         <Anchor aria-label="view full size image" onClick={onOpenSimpleFullSize}>
@@ -40,6 +41,7 @@ const NonZoomImage = ({ isMobile, imageUrl, imageName, onOpenSimpleFullSize }) =
             itemProp="contentUrl"
             isProductImage
             lazyLoad={false}
+            onLoad={handleImageLoaded}
           />
         </Anchor>
       )}

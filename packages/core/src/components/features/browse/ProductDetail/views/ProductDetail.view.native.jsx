@@ -167,6 +167,7 @@ class ProductDetailView extends React.PureComponent {
         ref={view => {
           this.ratingViewRef = view;
         }}
+        collapsable={false}
       >
         <ProductReviewsContainer
           reviewsCount={bazaarVoice.totalReviewCount}

@@ -41,7 +41,6 @@ import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialProps
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.container';
 
 const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
@@ -278,7 +277,7 @@ export class BagPage extends React.Component {
     if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
-          <CouponAndPromos showAccordian={false} />
+          <CouponAndPromos pageName="shopping bag" showAccordian={false} />
         </RowSectionStyle>
       );
     }
@@ -390,7 +389,6 @@ export class BagPage extends React.Component {
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
               {this.renderRecommendations()}
             </MainSection>
-            <QuickViewModal navigation={navigation} />
             {this.renderPickupModal()}
           </ScrollViewWrapper>
         </ContainerMain>

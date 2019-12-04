@@ -25,7 +25,7 @@ const getNewHeader = navigation => {
     header: props =>
       !showHeader ? (
         <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
-          <HeaderNew {...props} title={title} />
+          <HeaderNew {...props} title={title} navigation={navigation} />
         </SafeAreaView>
       ) : null,
     headerBackground: 'transparent',

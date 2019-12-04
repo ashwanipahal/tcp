@@ -226,4 +226,23 @@ export default css`
       }
     }
   }
+  .slick-dots {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-bottom: -10px;
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      margin-bottom: -10px;
+    }
+  }
+  .slick-prev,
+  .slick-next {
+    height: 30px;
+    z-index: 10;
+  }
+  .slick-prev {
+    left: -20px;
+  }
+  .slick-next {
+    right: -20px;
+  }
 `;

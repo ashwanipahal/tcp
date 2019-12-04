@@ -119,6 +119,8 @@ const styles = css`
   .transparent-box {
     background: none;
     padding-bottom: 0;
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
+    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
   }
   .couponTitle {
     word-break: ${props => (props.isCarouselView ? 'break-word' : 'normal')};

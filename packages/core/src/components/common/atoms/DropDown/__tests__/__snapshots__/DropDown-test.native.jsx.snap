@@ -42,10 +42,10 @@ exports[`DropDown Test should render correctly 1`] = `
         accessibilityText=""
         color="gray.800"
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs13"
         fontWeight="semibold"
         margin={null}
-        mobileFontFamily="secondary"
         numberOfLines={null}
         text="foo"
         textAlign="center"
@@ -53,6 +53,7 @@ exports[`DropDown Test should render correctly 1`] = `
       />
     </Styled(View)>
     <Image
+      alt=""
       source={
         Object {
           "testUri": "../../../../core/src/assets/carrot-small-down.png",
@@ -132,10 +133,10 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         accessibilityText=""
         color="gray.800"
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs13"
         fontWeight="semibold"
         margin={null}
-        mobileFontFamily="secondary"
         numberOfLines={null}
         text="foo"
         textAlign="center"
@@ -143,6 +144,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
       />
     </Styled(View)>
     <Image
+      alt=""
       source={
         Object {
           "testUri": "../../../../core/src/assets/carrot-small-up.png",

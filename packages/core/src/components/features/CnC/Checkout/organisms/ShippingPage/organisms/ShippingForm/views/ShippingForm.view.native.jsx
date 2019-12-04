@@ -189,6 +189,8 @@ const ShippingForm = ({
         onBackLinkPress={() => setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)}
         pageCategory="shippingPage"
         showAccordian
+        pageName="checkout"
+        pageSection="shipping"
       />
     </>
   );

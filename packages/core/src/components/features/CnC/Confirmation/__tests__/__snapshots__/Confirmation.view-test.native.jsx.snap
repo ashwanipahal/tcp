@@ -12,6 +12,7 @@ exports[`ConfirmationView should render correctly 1`] = `
       isShowBopisMessage={false}
       isShowMixedMessage={false}
       isShowShippingMessage={false}
+      isVenmoPaymentInProgress={false}
       venmoOrderConfirmationContent={null}
     />
   </Styled(View)>
@@ -25,9 +26,11 @@ exports[`ConfirmationView should render correctly 1`] = `
     onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="confirmation"
+    pageName="checkout"
+    pageSection="confirmation"
     showPayPalButton={false}
     showVenmoSubmit={false}
-    venmoPayment={null}
+    venmoPayment={Object {}}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -58,6 +61,7 @@ exports[`ConfirmationView should render correctly 2`] = `
       isShowBopisMessage={true}
       isShowMixedMessage={false}
       isShowShippingMessage={true}
+      isVenmoPaymentInProgress={false}
       orderNumbersByFullfillmentCenter={
         Object {
           "fullfillmentCenterMap": Array [
@@ -83,9 +87,74 @@ exports[`ConfirmationView should render correctly 2`] = `
     onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="confirmation"
+    pageName="checkout"
+    pageSection="confirmation"
     showPayPalButton={false}
     showVenmoSubmit={false}
-    venmoPayment={null}
+    venmoPayment={Object {}}
+  />
+</Styled(ScrollViewMock)>
+`;
+
+exports[`ConfirmationView should render correctly with venmo Information 1`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Connect(SMSNotificationFormContainer) />
+    <ThankYouComponent
+      fullfillmentCenterData={
+        Array [
+          Object {
+            "center": Object {
+              "orderType": "BOSS",
+              "shippingFullname": "ship",
+            },
+          },
+        ]
+      }
+      isBossInList={false}
+      isGuest={true}
+      isOrderPending={false}
+      isShowBopisMessage={true}
+      isShowMixedMessage={false}
+      isShowShippingMessage={false}
+      isVenmoPaymentInProgress={true}
+      orderNumbersByFullfillmentCenter={
+        Object {
+          "fullfillmentCenterMap": Array [
+            Object {
+              "center": Object {
+                "orderType": "BOSS",
+                "shippingFullname": "ship",
+              },
+            },
+          ],
+        }
+      }
+      venmoOrderConfirmationContent={Object {}}
+    />
+  </Styled(View)>
+  <CnCCommonTemplate
+    getPayPalSettings={Object {}}
+    isConfirmationPage={true}
+    isGuest={true}
+    isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={true}
+    navigation={null}
+    onVenmoError={false}
+    onVenmoSubmit={[Function]}
+    pageCategory="confirmation"
+    pageName="checkout"
+    pageSection="confirmation"
+    showPayPalButton={false}
+    showVenmoSubmit={false}
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "test-user",
+      }
+    }
   />
 </Styled(ScrollViewMock)>
 `;
@@ -111,6 +180,7 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
       isShowBopisMessage={true}
       isShowMixedMessage={false}
       isShowShippingMessage={false}
+      isVenmoPaymentInProgress={true}
       orderNumbersByFullfillmentCenter={
         Object {
           "fullfillmentCenterMap": Array [
@@ -136,9 +206,18 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
     onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="confirmation"
+    pageName="checkout"
+    pageSection="confirmation"
     showPayPalButton={false}
     showVenmoSubmit={false}
-    venmoPayment={Object {}}
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
   />
 </Styled(ScrollViewMock)>
 `;

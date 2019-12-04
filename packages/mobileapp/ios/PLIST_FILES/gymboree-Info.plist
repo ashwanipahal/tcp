@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>My Place</string>
+	<string>Gymboree</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,6 +27,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>fb2346328792295830</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>twitterkit-7GFPBsI0aEZgbVSFQYXBwBbOK</string>
 			</array>
 		</dict>
@@ -35,7 +43,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb312738492865420</string>
+				<string>gym</string>
 			</array>
 		</dict>
 		<dict>
@@ -50,13 +58,11 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CodePushDeploymentKey</key>
-	<string>enfFTGfxEG6PdxtDQyNGYQ-df_wSndUfGGN9V</string>
+	<string></string>
 	<key>FacebookAppID</key>
-	<string>312738492865420</string>
+	<string>2346328792295830</string>
 	<key>FacebookDisplayName</key>
 	<string>My Place</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>twitter</string>
@@ -124,7 +130,7 @@
 		<string>Montserrat-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>TCPLaunchScreen</string>
+	<string>GymboreeLaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -132,6 +138,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

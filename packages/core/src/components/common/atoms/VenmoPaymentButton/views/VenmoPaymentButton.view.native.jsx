@@ -99,7 +99,21 @@ export class VenmoPaymentButton extends Component {
         prevProps.isNonceNotExpired !== isNonceNotExpired)
     ) {
       NativeModules.VenmoPayment.initialize(authorizationKey);
+      this.isVenmoInstalled();
     }
+  };
+
+  /**
+   * @method isVenmoInstalled
+   * @description - Check if Venmo app is installed on the phone.
+   * For app business requirement, we need to hide Venmo CTA when Venmo app is NOT installed.
+   * We are calling this method here, as we need authKey to initialize venmo sdk to check if app is installed or not
+   */
+  isVenmoInstalled = () => {
+    const { setVenmoInstalledAction } = this.props;
+    NativeModules.VenmoPayment.isVenmoInstalled(data => {
+      setVenmoInstalledAction(data === true || data === 'true');
+    });
   };
 
   componentDidMount = () => {
@@ -114,6 +128,7 @@ export class VenmoPaymentButton extends Component {
       setVenmoData({ loading: false });
     } else if (this.canCallVenmoApi()) {
       NativeModules.VenmoPayment.initialize(authorizationKey);
+      this.isVenmoInstalled();
     }
   };
 
@@ -166,7 +181,7 @@ export class VenmoPaymentButton extends Component {
             onPress={this.handleVenmoClick}
             isVenmoBlue={isVenmoBlueButton}
           >
-            <Image source={venmoIcon} width="80px" height="15px" />
+            <Image source={venmoIcon} alt="" width="80px" height="15px" />
           </VenmoButton>
         )}
       </View>
@@ -203,6 +218,7 @@ VenmoPaymentButton.propTypes = {
   isGuest: bool.isRequired,
   orderId: string.isRequired,
   isVenmoBlueButton: bool,
+  setVenmoInstalledAction: func,
 };
 
 VenmoPaymentButton.defaultProps = {
@@ -219,6 +235,7 @@ VenmoPaymentButton.defaultProps = {
   isNonceNotExpired: false,
   isRemoveOOSItems: false,
   isVenmoBlueButton: false,
+  setVenmoInstalledAction: () => {},
 };
 
 export default VenmoPaymentButton;

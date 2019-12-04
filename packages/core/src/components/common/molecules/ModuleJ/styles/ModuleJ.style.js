@@ -192,13 +192,11 @@ export default css`
   .product-image {
     margin-top: 16px;
     margin-bottom: 16px;
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: calc(100% - 14px);
-      margin-right: 0;
-    }
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      width: calc(100% - 15px);
-      margin-right: 0;
+    width: calc(100% - 14px);
+    margin-right: 0;
+    @media ${props => props.theme.mediaQuery.large} {
+      width: calc(100% - 26px);
+      margin-right: 13px;
     }
   }
 `;

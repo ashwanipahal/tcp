@@ -54,7 +54,8 @@ const handleFavoriteAddOrEdit = (
   const {
     skuInfo: { skuId, size, fit, color },
   } = item;
-  const { itemId, quantity } = item.itemInfo;
+  const { itemId, quantity, isTCP } = item.itemInfo;
+  const itemBrand = isTCP ? 'TCP' : 'GYM';
   const orderInfo = {
     orderItemId: itemId,
     selectedQty: quantity,
@@ -62,6 +63,7 @@ const handleFavoriteAddOrEdit = (
     selectedSize: size,
     selectedFit: fit,
     skuId,
+    itemBrand,
   };
   if (skuId && size) {
     if (isFavoriteEdit) {
@@ -84,6 +86,9 @@ const handleFavoriteAddOrEdit = (
   } else {
     onQuickViewOpenClick({
       colorProductId,
+      orderInfo: {
+        itemBrand,
+      },
     });
   }
 };
@@ -121,7 +126,7 @@ const onCTAHandler = props => {
     } = item;
     setLastDeletedItemId({ itemId });
   } else if (bundleProduct) {
-    onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
+    onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item);
   } else if (isFavorite) {
     handleFavoriteAddOrEdit(
       colorProductId,
@@ -143,13 +148,15 @@ const getOOSButtonLabel = (isFavorite, outOfStockLabels, labelsPlpTiles) => {
 
 const renderAddToBagContainer = (props, keepAlive) => {
   const {
+    item,
     renderPriceOnly,
-    bundleProduct,
     labelsPlpTiles,
     outOfStockLabels,
     isFavorite,
     isSuggestedItem,
   } = props;
+  const { productInfo } = item;
+  const { bundleProduct } = productInfo;
   if (renderVariation && renderPriceOnly) return null;
   let buttonLabel = '';
   if (isSuggestedItem) {
@@ -181,10 +188,6 @@ const renderAddToBagContainer = (props, keepAlive) => {
       />
     </AddToBagContainer>
   );
-};
-
-renderAddToBagContainer.propTypes = {
-  props: PropTypes.shape({}).isRequired,
 };
 
 const onEditHandler = props => {
@@ -667,7 +670,9 @@ const RenderTitle = ({ text, onGoToPDPPage, colorsMap, productInfo, selectedColo
 
   if (renderVariation) return null;
   return (
-    <TitleContainer onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}>
+    <TitleContainer
+      onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)}
+    >
       <TitleText accessibilityRole="text" accessibilityLabel={text} numberOfLines={2}>
         {text}
       </TitleText>
@@ -950,6 +955,8 @@ renderAddToBagContainer.propTypes = {
   outOfStockLabels: PropTypes.shape({}),
   isFavorite: PropTypes.bool,
   isSuggestedItem: PropTypes.bool,
+  props: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({}),
 };
 
 renderAddToBagContainer.defaultProps = {
@@ -959,6 +966,7 @@ renderAddToBagContainer.defaultProps = {
   outOfStockLabels: {},
   isFavorite: false,
   isSuggestedItem: false,
+  item: {},
 };
 
 RenderCloseIcon.propTypes = {

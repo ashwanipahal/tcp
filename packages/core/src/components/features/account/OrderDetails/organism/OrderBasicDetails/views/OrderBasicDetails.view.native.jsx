@@ -12,8 +12,10 @@ export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
   const { orderNumber, isBossOrder, status } = orderDetailsData;
   const { orderDate, pickUpExpirationDate } = orderDetailsData;
   let { bossMaxDate, bossMinDate } = orderDetailsData;
-  const orderDateParsed = new Date(orderDate);
-  const pickUpExpirationDateParsed = new Date(pickUpExpirationDate);
+  const orderDateParsed = new Date(orderDate ? orderDate.replace(' ', 'T') : orderDate);
+  const pickUpExpirationDateParsed = new Date(
+    pickUpExpirationDate ? pickUpExpirationDate.replace(' ', 'T') : pickUpExpirationDate
+  );
   bossMinDate = getDateInformation(bossMinDate);
   bossMaxDate = getDateInformation(bossMaxDate);
   const bossDate =

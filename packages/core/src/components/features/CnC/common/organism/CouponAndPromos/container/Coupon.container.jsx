@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { updatePageData } from '@tcp/core/src/analytics/actions';
 import { connect } from 'react-redux';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
-
+import { isMobileApp } from '@tcp/core/src/utils';
 import { applyCoupon, removeCoupon, setError, toggleNeedHelpModalState } from './Coupon.actions';
 import {
   getCouponFetchingState,
@@ -17,8 +17,28 @@ import {
 import { getGlobalLabels } from '../../../../../account/Account/container/Account.selectors';
 import Coupon from '../views/Coupon.view';
 import MyOffersCoupons from '../../../../../account/common/organism/MyOffersCoupons/views/MyOffersCoupons.view';
+import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 
 export class CouponContainer extends React.PureComponent {
+  componentDidMount() {
+    if (isMobileApp()) {
+      const { updateCouponPageData } = this.props;
+      const pageData = this.getPageDataObject();
+      updateCouponPageData(pageData);
+    }
+  }
+
+  getPageDataObject = () => {
+    const { pageName, pageSection } = this.props;
+    return {
+      pageName: `${pageName}:${pageSection}`,
+      pageSection: pageName,
+      pageSubSection: pageName,
+      pageType: pageName,
+      pageShortName: `${pageName}:${pageSection}`,
+    };
+  };
+
   render() {
     const {
       labels,
@@ -40,6 +60,7 @@ export class CouponContainer extends React.PureComponent {
       additionalClassNameModal,
       openApplyNowModal,
       navigation,
+      bagLoading,
       isNeedHelpModalOpen,
       toggleNeedHelpModal,
     } = this.props;
@@ -60,6 +81,7 @@ export class CouponContainer extends React.PureComponent {
             showAccordian={showAccordian}
             additionalClassNameModal={additionalClassNameModal}
             idPrefix={idPrefix}
+            bagLoading={bagLoading}
             openApplyNowModal={openApplyNowModal}
             navigation={navigation}
             isNeedHelpModalOpen={isNeedHelpModalOpen}
@@ -111,9 +133,13 @@ CouponContainer.propTypes = {
   closedOverlay: PropTypes.func,
   idPrefix: PropTypes.string,
   openApplyNowModal: PropTypes.func,
+  bagLoading: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}),
+  pageName: PropTypes.string,
+  pageSection: PropTypes.string,
   isNeedHelpModalOpen: PropTypes.bool,
   toggleNeedHelpModal: PropTypes.func.isRequired,
+  updateCouponPageData: PropTypes.func,
 };
 
 CouponContainer.defaultProps = {
@@ -122,7 +148,10 @@ CouponContainer.defaultProps = {
   idPrefix: '',
   navigation: null,
   openApplyNowModal: () => {},
+  pageName: '',
+  pageSection: '',
   isNeedHelpModalOpen: false,
+  updateCouponPageData: () => {},
 };
 
 export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
@@ -171,6 +200,9 @@ export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
   toggleNeedHelpModal: () => {
     dispatch(toggleNeedHelpModalState());
   },
+  updateCouponPageData: payload => {
+    dispatch(updatePageData(payload));
+  },
 });
 
 export const mapStateToProps = state => ({
@@ -182,6 +214,7 @@ export const mapStateToProps = state => ({
   needHelpRichText: getNeedHelpContent(state),
   commonLabels: getGlobalLabels(state),
   isNeedHelpModalOpen: getNeedHelpModalState(state),
+  bagLoading: BagPageSelectors.isBagLoading(state),
 });
 
 export default connect(
