@@ -21,6 +21,9 @@ const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
 const device = require('express-device');
+const morgan = require('morgan');
+const rfs = require('rotating-file-stream');
+
 const {
   ROUTES_LIST,
   ROUTING_MAP,
@@ -208,6 +211,12 @@ const renderAndCache = async (app, req, res, resolver, params) => {
   }
 };
 
+// create a rotating write stream
+const accessLogStream = rfs.createStream('access.log', {
+  interval: '1d', // rotate daily
+  path: join(__dirname, 'log'),
+});
+
 app.prepare().then(() => {
   // static files path - ignore version and serve file from the directory
   // this is being done to avoid serving stale files from Akamai - add version numbers to static files
@@ -274,6 +283,9 @@ app.prepare().then(() => {
       });
     }
   });
+
+  // setup the logger
+  server.use(morgan('combined', { stream: accessLogStream }));
 
   server.get('/', redirectToHomePage);
 
