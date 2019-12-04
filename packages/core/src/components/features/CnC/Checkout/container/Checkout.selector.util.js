@@ -39,6 +39,8 @@ const getPickUpContactFormLabels = state => {
   } = state.Labels.global && state.Labels.checkout.pickup;
   const { lbl_shipping_header: shippingText } =
     state.Labels.checkout && state.Labels.checkout.shipping;
+  const { lbl_img_alt_venmo_icon: venmoIconAltText } =
+    state.Labels.global && state.Labels.global.accessibility;
   return {
     title: title.toUpperCase(),
     firstName,
@@ -75,6 +77,7 @@ const getPickUpContactFormLabels = state => {
     childrenPlaceCheckoutTxt,
     emailSignUpDisclaimer,
     gymboreePlaceCheckoutTxt,
+    venmoIconAltText,
   };
 };
 

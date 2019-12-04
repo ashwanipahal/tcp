@@ -57,3 +57,7 @@ export const getDefaultStore = state => {
 export const getGeoDefaultStore = state => {
   return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].get('geoDefaultStore')) || null;
 };
+
+export const getAccessibilityLabels = state => {
+  return state.Labels.global && state.Labels.global.accessibility;
+};

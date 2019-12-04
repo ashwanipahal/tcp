@@ -509,7 +509,7 @@ class ProductPickup extends React.PureComponent {
                 <div className="title-pickup-section">
                   <img
                     className="shipping-icon"
-                    alt="shipping-icon"
+                    alt={labels.lbl_img_alt_shipping_icon}
                     src={getIconPath('fast-shipping')}
                   />
                   <div className="shipping-text-section">
@@ -532,7 +532,7 @@ class ProductPickup extends React.PureComponent {
                   <div className="title-pickup-section">
                     <img
                       className="pickup-icon"
-                      alt="pickup-icon"
+                      alt={labels.lbl_img_alt_pickup_icon}
                       src={getIconPath('marker-icon')}
                     />
                   </div>
