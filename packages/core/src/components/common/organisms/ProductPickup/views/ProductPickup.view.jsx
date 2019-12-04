@@ -8,7 +8,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, getLabelValue } from '@tcp/core/src/utils';
 import {
   COLOR_FITS_SIZES_MAP_PROP_TYPE,
   PRICING_PROP_TYPES,
@@ -509,7 +509,7 @@ class ProductPickup extends React.PureComponent {
                 <div className="title-pickup-section">
                   <img
                     className="shipping-icon"
-                    alt={labels.lbl_img_alt_shipping_icon}
+                    alt={getLabelValue(labels, 'lbl_shipping_icon')}
                     src={getIconPath('fast-shipping')}
                   />
                   <div className="shipping-text-section">
@@ -532,7 +532,7 @@ class ProductPickup extends React.PureComponent {
                   <div className="title-pickup-section">
                     <img
                       className="pickup-icon"
-                      alt={labels.lbl_img_alt_pickup_icon}
+                      alt={getLabelValue(labels, 'lbl_pickup_icon')}
                       src={getIconPath('marker-icon')}
                     />
                   </div>

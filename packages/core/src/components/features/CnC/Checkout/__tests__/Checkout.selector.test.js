@@ -177,7 +177,7 @@ describe('Checkout Selectors', () => {
   it('#getPickUpContactFormLabels', () => {
     const State = {
       Labels: {
-        global: { accessibility: { lbl_img_alt_venmo_icon: '' } },
+        global: { accessibility: { lbl_venmo_icon: '' } },
         checkout: { pickup: { lbl_pickup_title: '' }, shipping: {} },
       },
     };
