@@ -143,6 +143,7 @@ const renderRecommendationView = (props, variation) => {
     isRecentlyViewed,
     isHeaderAccordion,
     handleAccordionToggle,
+    isFavoriteRecommendation,
     ...others
   } = props;
 
@@ -153,7 +154,8 @@ const renderRecommendationView = (props, variation) => {
     products &&
     products.length > 0 && (
       <Container>
-        {renderHeader(props, variation, isAccordionOpen, setIsAccordionOpen)}
+        {!isFavoriteRecommendation &&
+          renderHeader(props, variation, isAccordionOpen, setIsAccordionOpen)}
         {isSuggestedItem && (
           <FlatList
             data={products}

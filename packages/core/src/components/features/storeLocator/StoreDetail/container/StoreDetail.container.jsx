@@ -50,10 +50,17 @@ export class StoreDetailContainer extends PureComponent {
   componentDidMount() {
     const { getModuleX, referredContentList, trackStoreDetailPageView } = this.props;
 
-    trackStoreDetailPageView({
-      customEvents: ['event80', 'event96'],
-      internalCampaignIdList: internalCampaignProductAnalyticsList(),
-    });
+    if (!isMobileApp()) {
+      trackStoreDetailPageView({
+        eventData: { customEvents: ['event80', 'event96'] },
+        pageName: 'storelocator',
+        pageType: 'companyinfo',
+        pageSection: 'storelocator',
+        pageSubSection: 'storelocator',
+        pageNavigationText: 'header-find a store',
+        internalCampaignIdList: internalCampaignProductAnalyticsList(),
+      });
+    }
 
     this.loadCurrentStoreInitialInfo();
     getModuleX(referredContentList);
@@ -174,6 +181,15 @@ export class StoreDetailContainer extends PureComponent {
     ) : null;
   }
 }
+
+StoreDetailContainer.getInitialProps = (reduxProps, pageProps) => {
+  return {
+    ...pageProps,
+    pageData: {
+      loadAnalyticsOnload: false,
+    },
+  };
+};
 
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),

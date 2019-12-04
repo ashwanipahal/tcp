@@ -334,7 +334,7 @@ export const getPLPTopPromos = createSelector(
     const promos =
       (topPromos &&
         topPromos.map(promoItem => {
-          return promoItem.contentId && modules[promoItem.contentId];
+          return (promoItem.contentId && modules[promoItem.contentId]) || {};
         })) ||
       [];
 

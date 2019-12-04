@@ -29,14 +29,13 @@ import {
 } from '../../Confirmation/container/Confirmation.actions';
 import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import CHECKOUT_ACTIONS from './Checkout.action';
+import CHECKOUT_ACTIONS, { getSetCheckoutStage } from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import {
   resetCouponReducer,
   getCouponList,
 } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 
-import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
@@ -362,10 +361,9 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     // const vendorId =
     //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
     yield put(getSetOrderProductDetails(cartItems));
-    yield put(CHECKOUT_ACTIONS.resetCheckoutReducer());
     yield put(resetAirmilesReducer());
     yield put(resetCouponReducer());
-    yield put(BagActions.resetCartReducer());
+    yield put(getSetCheckoutStage(constants.CHECKOUT_STAGES.CONFIRMATION));
     yield call(fetchCoupons, isCouponAppliedInOrder);
     // getProductsOperator(this.store).loadProductRecommendations(
     //   RECOMMENDATIONS_SECTIONS.CHECKOUT,

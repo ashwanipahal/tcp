@@ -122,10 +122,10 @@ class HomePageView extends React.PureComponent {
     );
   };
 
-  renderGlobalModal = (navigation, isUserLoggedIn, labels) => {
+  renderGlobalModal = (navigation, isUserLoggedIn, labels, isQVModalOpen) => {
     return (
       <View>
-        <QuickViewModal navigation={navigation} />
+        {isQVModalOpen && <QuickViewModal navigation={navigation} />}
         <AddedToBagContainer navigation={navigation} />
         <LocationAccessPrompt
           navigation={navigation}
@@ -182,6 +182,7 @@ class HomePageView extends React.PureComponent {
       labels,
       headerPromo,
       promoHtmlBannerCarousel,
+      isQVModalOpen,
     } = this.props;
     const { value } = this.state;
     return (
@@ -221,7 +222,7 @@ class HomePageView extends React.PureComponent {
             />
           </>
         ) : null}
-        {this.renderGlobalModal(navigation, isUserLoggedIn, labels)}
+        {this.renderGlobalModal(navigation, isUserLoggedIn, labels, isQVModalOpen)}
         <UserOnBoardingScreen navigation={navigation} />
       </ScrollView>
     );
@@ -247,6 +248,7 @@ HomePageView.propTypes = {
   isUserLoggedIn: PropTypes.bool,
   headerPromo: PropTypes.shape({}),
   promoHtmlBannerCarousel: PropTypes.shape([]),
+  isQVModalOpen: PropTypes.bool,
 };
 
 HomePageView.defaultProps = {
@@ -257,6 +259,7 @@ HomePageView.defaultProps = {
   isUserLoggedIn: false,
   headerPromo: {},
   promoHtmlBannerCarousel: [],
+  isQVModalOpen: false,
 };
 
 export { HomePageView };

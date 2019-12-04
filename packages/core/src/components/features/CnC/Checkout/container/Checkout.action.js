@@ -458,6 +458,13 @@ export const setVenmoPaymentOptionSave = payload => {
   };
 };
 
+export const setVenmoInstalled = payload => {
+  return {
+    type: constants.SET_VENMO_APP_INSTALLED,
+    payload,
+  };
+};
+
 export const resetAddGiftCard = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD,

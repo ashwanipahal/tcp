@@ -75,17 +75,12 @@ class ShippingContainer extends React.Component {
   };
 
   callUpdateShippingMethod = ({
-    shippingAddressId,
     prevSelectedShipmentId,
     selectedShipmentId,
     updateShippingMethodSelection,
     isAddressChange,
   }) => {
-    if (
-      shippingAddressId &&
-      prevSelectedShipmentId &&
-      selectedShipmentId !== prevSelectedShipmentId
-    ) {
+    if (prevSelectedShipmentId && selectedShipmentId !== prevSelectedShipmentId) {
       updateShippingMethodSelection({ id: selectedShipmentId, isAddressChange });
     }
   };

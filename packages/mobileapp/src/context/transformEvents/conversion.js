@@ -1,10 +1,12 @@
 import get from 'lodash/get';
+import getProducts from './clickEvents/eventsUtility';
 
 /**
  * This object will contain mapping of constants variables
  */
 const staticConversion = {
   prop27: 'D=mid',
+  prop28: '2.10.0',
   eVar10: 'D=pageName',
   eVar33: 'D=pageName',
   eVar29: 'D=c6',
@@ -27,13 +29,20 @@ const standardConversion = {
 const varConversion = {
   eVar1: 'siteType',
   eVar7: 'pageLocale',
+  eVar3: 'orderId',
+  eVar4: 'paymentMethod',
   eVar8: 'storeId',
   eVar13: 'customerType',
+  eVar28: 'pageShortName',
   eVar31: 'userEmailAddress',
   eVar32: 'currencyCode',
   eVar65: 'pageShortName',
+  eVar68: 'billingZip',
+  eVar73: 'orderSubtotal',
   eVar74: 'pageDate',
+  eVar86: 'cartType',
   eVar93: 'customerId',
+  eVar98: 'checkoutType',
 };
 
 const propConversion = {
@@ -70,7 +79,15 @@ const getConversionValue = key => {
   }
   const dataLayer = global._dataLayer;
   const dataLayerKey = getConversionKey(key);
-  return get(dataLayer, dataLayerKey, '');
+  let convertedData = get(dataLayer, dataLayerKey, '');
+  if (staticConversion[key]) {
+    convertedData = staticConversion[key];
+  }
+
+  if (key === 'products') {
+    return getProducts(convertedData);
+  }
+  return convertedData;
 };
 
 export default getConversionValue;

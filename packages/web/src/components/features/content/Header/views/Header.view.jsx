@@ -100,6 +100,7 @@ class Header extends React.PureComponent {
       isPickupModalOpen,
       loyaltyPromoBanner,
       setClickAnalyticsData,
+      isQVModalOpen,
     } = this.props;
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
@@ -182,7 +183,7 @@ class Header extends React.PureComponent {
         )}
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
-        <QuickViewModal />
+        {isQVModalOpen ? <QuickViewModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
       </header>
     );
@@ -225,6 +226,7 @@ Header.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   isRememberedUser: PropTypes.bool,
   setClickAnalyticsData: PropTypes.func.isRequired,
+  isQVModalOpen: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -249,6 +251,7 @@ Header.defaultProps = {
   },
   isPickupModalOpen: false,
   isRememberedUser: false,
+  isQVModalOpen: false,
 };
 
 export default withStyles(errorBoundary(Header), style);

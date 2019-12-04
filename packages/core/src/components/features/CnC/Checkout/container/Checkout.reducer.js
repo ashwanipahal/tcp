@@ -53,6 +53,7 @@ const initialState = fromJS({
     venmoPickupMessageDisplayed: false,
     venmoShppingMessageDisplayed: false,
     venmoPaymentOptionSave: false,
+    venmoAppInstalled: true,
     isLoadingShippingMethods: false,
     isEditingSubform: false,
     isBillingVisited: false,
@@ -94,6 +95,9 @@ function venmoFlagReducer(checkout, action) {
     }
     case CheckoutConstants.SET_VENMO_PAYMENT_OPTION_SAVE: {
       return checkout.setIn(['uiFlags', 'venmoPaymentOptionSave'], action.payload);
+    }
+    case CheckoutConstants.SET_VENMO_APP_INSTALLED: {
+      return checkout.setIn(['uiFlags', 'venmoAppInstalled'], action.payload);
     }
     default:
       return checkout;

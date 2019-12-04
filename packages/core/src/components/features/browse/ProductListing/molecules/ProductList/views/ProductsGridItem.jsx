@@ -445,8 +445,8 @@ class ProductsGridItem extends React.PureComponent {
 
     const {
       productInfo: { generalProductId },
-      skuInfo: { skuId, size },
-      itemInfo: { isTCP },
+      skuInfo: { skuId, size } = {},
+      itemInfo: { isTCP } = {},
     } = item;
 
     const { selectedColorProductId } = this.state;
@@ -502,6 +502,7 @@ class ProductsGridItem extends React.PureComponent {
       gridIndex,
       openAddNewList,
       activeWishListId,
+      favoriteErrorMessages,
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
@@ -531,6 +532,7 @@ class ProductsGridItem extends React.PureComponent {
                 gridIndex={gridIndex}
                 openAddNewList={openAddNewList}
                 activeWishListId={activeWishListId}
+                favoriteErrorMessages={favoriteErrorMessages}
               />
             </div>
           )}
@@ -593,14 +595,15 @@ class ProductsGridItem extends React.PureComponent {
 
   errorMsgDisplay = () => {
     const {
+      errorMessages,
       AddToFavoriteErrorMsg,
       item: {
         productInfo: { generalProductId },
       },
     } = this.props;
-    const { errorProductId } = this.state;
+    const errorMsg = errorMessages && errorMessages[generalProductId];
 
-    return errorProductId === generalProductId && AddToFavoriteErrorMsg ? (
+    return errorMsg && errorMsg.itemId === generalProductId && AddToFavoriteErrorMsg ? (
       <Notification
         status="error"
         colSize={{ large: 12, medium: 8, small: 6 }}
