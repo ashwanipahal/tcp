@@ -321,6 +321,7 @@ const processResponse = (
     logger.error(error);
   }
   return Promise.all(pendingPromises).then(() => {
+    console.log({ response });
     return { ...response, bannerInfo };
   });
 };

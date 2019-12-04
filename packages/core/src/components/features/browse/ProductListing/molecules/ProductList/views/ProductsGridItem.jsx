@@ -323,11 +323,12 @@ class ProductsGridItem extends React.PureComponent {
   getColorChipContainer = curentColorEntry => {
     const {
       isMobile,
-      item: { colorsMap, skuInfo },
+      item: { colorsMap, skuInfo, relatedSwatchImages, imagesByColor },
       isPLPredesign,
       isFavoriteView,
       isSuggestedItem,
     } = this.props;
+    console.log('gridItemProps>>', this.props);
     const colorProductId = skuInfo && skuInfo.colorProductId;
     if (isSuggestedItem) {
       return false;
@@ -354,6 +355,8 @@ class ProductsGridItem extends React.PureComponent {
         maxVisibleItems={5}
         selectedColorId={curentColorEntry.color.name}
         colorsMap={colorsMap}
+        imagesByColor={imagesByColor}
+        relatedSwatchImages={relatedSwatchImages}
         {...ChipProps}
       />
     ) : (

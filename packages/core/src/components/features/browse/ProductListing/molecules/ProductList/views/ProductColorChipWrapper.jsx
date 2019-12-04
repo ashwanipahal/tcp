@@ -35,12 +35,16 @@ class ProductColorChipWrapper extends React.Component {
         colorProductId: PropTypes.string.isRequired,
       })
     ),
+    relatedSwatchImages: PropTypes.arrayOf(PropTypes.string),
+    imagesByColor: PropTypes.shape({}),
     isFavoriteView: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
     onChipClick: () => {},
     colorsMap: [],
+    relatedSwatchImages: [],
+    imagesByColor: {},
   };
 
   constructor(props) {
@@ -124,7 +128,14 @@ class ProductColorChipWrapper extends React.Component {
   };
 
   getColorSwatches = () => {
-    const { onChipClick, selectedColorId, skuInfo, isFavoriteView } = this.props;
+    const {
+      onChipClick,
+      selectedColorId,
+      skuInfo,
+      isFavoriteView,
+      imagesByColor,
+      relatedSwatchImages,
+    } = this.props;
     if (isFavoriteView) {
       return (
         <ProductColorChip
@@ -136,14 +147,26 @@ class ProductColorChipWrapper extends React.Component {
         />
       );
     }
-    return this.getColors().map(colorEntry => (
-      <ProductColorChip
-        key={colorEntry.colorProductId}
-        colorEntry={colorEntry}
-        isActive={selectedColorId === colorEntry.color.name}
-        onChipClick={onChipClick}
-      />
-    ));
+    return this.getColors().map((colorEntry, index) => {
+      let {
+        color: { swatchImage },
+      } = colorEntry;
+      if (index !== 0 && relatedSwatchImages) {
+        swatchImage = relatedSwatchImages.find(swatchImageUrl =>
+          swatchImageUrl.startsWith(colorEntry.colorProductId)
+        );
+      }
+      return (
+        <ProductColorChip
+          key={colorEntry.colorProductId}
+          swatchImage={swatchImage}
+          colorEntry={colorEntry}
+          isActive={selectedColorId === colorEntry.color.name}
+          onChipClick={onChipClick}
+          imagesByColor={imagesByColor}
+        />
+      );
+    });
   };
 
   render() {

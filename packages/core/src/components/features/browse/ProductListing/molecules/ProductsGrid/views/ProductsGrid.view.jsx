@@ -185,6 +185,7 @@ class ProductsGrid extends React.Component {
       onSeeSuggestedItems,
       ...otherProps
     } = this.props;
+    console.log({ gridProps: this.props });
 
     const containerClassName = `${className} main-section-container `;
 
@@ -199,6 +200,7 @@ class ProductsGrid extends React.Component {
               <div className="product-grid-block-container">
                 {!!productsBlock.length &&
                   productsBlock.map((block, index) => {
+                    console.log({ productsBlock });
                     const nextBlock =
                       index < productsBlock.length - 1 ? productsBlock[index + 1] : false;
                     const isPerfectBlock = nextBlock

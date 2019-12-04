@@ -12,9 +12,11 @@ export default class ProductColorChip extends React.Component {
     /** the color name of the currently selected chip */
     isActive: PropTypes.bool.isRequired,
     onChipClick: PropTypes.func.isRequired,
+    swatchImage: PropTypes.string.isRequired,
 
     /** map of available colors to render chips for */
     colorEntry: PropTypes.shape().isRequired,
+    imagesByColor: PropTypes.shape({}).isRequired,
   };
 
   constructor(props) {
@@ -35,22 +37,32 @@ export default class ProductColorChip extends React.Component {
     return !isActive && onChipClick(colorProductId, name, miscInfo);
   };
 
+  getColorImageUrlByName = () => {
+    const {
+      imagesByColor,
+      colorEntry: {
+        color: { name },
+      },
+    } = this.props;
+    return imagesByColor && imagesByColor[name] && imagesByColor[name].basicImageUrl;
+  };
+
   render() {
     const {
       colorEntry: {
-        color: { name, swatchImage },
+        color: { name },
       },
       isActive,
+      swatchImage,
     } = this.props;
-    const swatchImageUrl = swatchImage && swatchImage.split('_');
-    const imgUrl = swatchImageUrl
-      ? `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`
-      : '';
+    const imgUrl = swatchImage
+      ? `${swatchImage.split('_')[0]}/${swatchImage}`
+      : this.getColorImageUrlByName();
     const imgData = {
       alt: name,
       url: imgUrl,
     };
-    const imgConfig = 'w_50,h_50,c_thumb,g_auto:0';
+    const imgConfig = swatchImage ? '' : 'w_50,h_50,c_thumb,g_auto:0';
     const imgDataConfig = [`${imgConfig}`, `${imgConfig}`, `${imgConfig}`];
     return (
       <button

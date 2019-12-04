@@ -65,10 +65,10 @@ const getBreakpointImgUrl = (type, props) => {
   if (isVideoUrl) {
     assetHost = assetHost.replace('/image/', '/video/');
   }
-
+  const configUrl = config === '' ? '' : `${config}/`;
   return isProductImage
-    ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
-    : `${basePath}/${config}/${imgPath}`;
+    ? `${assetHost}/${configUrl}${productAssetPath}/${imgPath}`
+    : `${basePath}/${configUrl}${imgPath}`;
 };
 
 const RenderVideo = videoProps => {

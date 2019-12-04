@@ -61,6 +61,7 @@ export function* fetchPlpProducts({ payload }) {
       );
       yield put(loadLayoutData(layout, 'productListingPage'));
       yield put(loadModulesData(modules));
+      console.log({ res });
       yield put(setListingFirstProductsPage({ ...res }));
       state = yield select();
       reqObj = operatorInstance.processProductFilterAndCountData(res, { ...state }, reqObj);
@@ -72,6 +73,7 @@ export function* fetchPlpProducts({ payload }) {
         { ...reqObj, location },
         { ...state }
       );
+      console.log('plpProducts>>>', plpProducts);
       if (plpProducts) {
         // The layout needs to loaded when the first call has not already done it
         // In case of bucketing, this would have already be done
@@ -97,6 +99,7 @@ export function* fetchPlpProducts({ payload }) {
             products
           );
         }
+        console.log({ beforeSet: plpProducts });
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }
@@ -121,6 +124,7 @@ export function* fetchMoreProducts({ payload = {} }) {
     if (reqObj && reqObj.categoryId) {
       state = yield select();
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
+      console.log('afterCall', { plpProducts });
       if (
         plpProducts &&
         plpProducts.loadedProductsPages &&
@@ -140,7 +144,9 @@ export function* fetchMoreProducts({ payload = {} }) {
             generalProductIdsList,
             products
           );
+          console.log({ 'plpProducts.loadedProductsPages[0]': plpProducts.loadedProductsPages[0] });
         }
+        console.log({ plpProducts });
         yield putResolve(setPlpProducts({ ...plpProducts }));
       }
     }
