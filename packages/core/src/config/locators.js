@@ -425,6 +425,7 @@ export default {
   fav_brand_gym_lbl: 'Gymboree',
   fav_lbl_myFavorites: 'My Favorites',
   fav_lbl_editListSettings: 'Edit List Settings',
+  fav_heading: 'favorite-heading',
 
   // module M
   moduleM_header_text: 'moduleM_header_text',

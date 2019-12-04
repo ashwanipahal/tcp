@@ -68,9 +68,6 @@ const styles = css`
   }
 
   .top-badge-container {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    margin-left: 0;
     min-height: 14px;
     width: 100%;
   }
@@ -256,9 +253,6 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.medium} {
     .top-badge-container {
       min-height: 16px;
-      padding-top: 20px;
-      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-      margin-left: 0px;
     }
 
     .container-price {
@@ -272,9 +266,6 @@ const styles = css`
 
   @media ${props => props.theme.mediaQuery.large} {
     .top-badge-container {
-      padding-top: 10px;
-      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-      margin-left: -2px;
       min-height: 19px;
     }
 
