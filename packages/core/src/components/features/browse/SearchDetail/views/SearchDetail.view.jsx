@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getSiteId } from '@tcp/core/src/utils/utils';
-import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
 import { CONTROLS_VISIBLE, RESULTS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
