@@ -316,7 +316,6 @@ export default css`
 
   li.recentTag {
     color: ${props => props.theme.colors.ACCORDION.TEXT};
-    font-size: ${props => props.theme.typography.fontSizes.fs13};
     width: 100%;
     cursor: pointer;
   }

@@ -53,21 +53,6 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   }
 
-  trimStart = v => {
-    if (!v) {
-      return v;
-    }
-    if (String.prototype.trimStart) {
-      return v.trimStart();
-    }
-    if (String.prototype.trimLeft) {
-      return v.trimLeft();
-    }
-    const trimmed = v.trim();
-    const indexOfWord = v.indexOf(trimmed);
-    return v.slice(indexOfWord, v.length);
-  };
-
   startInitiateSearch = () => {
     const {
       setSearchState,
@@ -78,7 +63,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
     let searchText =
       this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
-    searchText = this.trimStart(searchText.replace(/ %|% |%/g, ' ').trim());
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
 
     if (searchText) {
       setDataInLocalStorage(searchText);
@@ -156,7 +141,7 @@ class SearchLayoutWrapper extends React.PureComponent {
     const { startSearch, labels, toggleSearchResults } = this.props;
     let searchText =
       this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
-    searchText = this.trimStart(searchText.replace(/ %|% |%/g, ' ').trim());
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
 
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';

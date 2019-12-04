@@ -17,6 +17,7 @@ import {
 import { routerPush } from '../../../../../utils/index';
 import SuggestionBox from '../../../../common/molecules/SearchBar/views/SuggestionBox.view';
 import CategoryMatches from './CategoryMatches.view';
+import { getLatestSearchResultsExists } from '../container/SearchDetail.util';
 
 class NoResponseSearchDetailView extends React.PureComponent {
   constructor(props) {
@@ -31,26 +32,11 @@ class NoResponseSearchDetailView extends React.PureComponent {
     this.getSearchResults = this.getSearchResults.bind(this);
   }
 
-  trimStart = v => {
-    if (!v) {
-      return v;
-    }
-    if (String.prototype.trimStart) {
-      return v.trimStart();
-    }
-    if (String.prototype.trimLeft) {
-      return v.trimLeft();
-    }
-    const trimmed = v.trim();
-    const indexOfWord = v.indexOf(trimmed);
-    return v.slice(indexOfWord, v.length);
-  };
-
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, slpLabels, searchResults } = this.props;
     let searchText = this.searchInput.current.value;
-    searchText = this.trimStart(searchText.replace(/ %|% |%/g, ' ').trim());
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
 
     const showMatchBox = this.getMatchBoxStatus(searchResults);
 
@@ -70,7 +56,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
   getSearchResults = e => {
     e.preventDefault();
     let searchText = this.searchInput.current.value;
-    searchText = this.trimStart(searchText.replace(/ %|% |%/g, ' ').trim());
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
     if (searchText) {
       this.redirectToSuggestedUrl(searchText);
     }
@@ -80,7 +66,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
     let searchText = this.searchInput.current.value;
     if (searchText) {
       searchText = searchText.toLowerCase();
-      searchText = this.trimStart(searchText.replace(/ %|% |%/g, ' ').trim());
+      searchText = searchText.replace(/ %|% |%/g, ' ').trim();
       this.redirectToSuggestedUrl(searchText);
     }
   };
@@ -115,10 +101,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
         routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
       }
     }
-  };
-
-  getLatestSearchResultsExists = latestSearchResults => {
-    return !!(latestSearchResults && latestSearchResults.length > 0);
   };
 
   getEmptySearchInputClassName = isLatestSearchResultsExists => {
@@ -162,7 +144,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
       latestSearchResults = [];
     }
 
-    const isLatestSearchResultsExists = this.getLatestSearchResultsExists(latestSearchResults);
+    const isLatestSearchResultsExists = getLatestSearchResultsExists(latestSearchResults);
     const emptySearchInputClassName = this.getEmptySearchInputClassName(
       isLatestSearchResultsExists
     );
@@ -178,7 +160,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               fontWeight="regular"
             >
               {slpLabels.lbl_searched_for}
-              <span className="empty-searched-label">{`"${searchedText.split('?')[0]}"`}</span>
+              <span className="empty-searched-label">{` "${searchedText.split('?')[0]}"`}</span>
             </BodyCopy>
           </Col>
         </Row>
@@ -218,7 +200,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                     this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
                   }}
                 >
-                  {`${searchResultSuggestionsArg}`}
+                  {` ${searchResultSuggestionsArg}`}
                 </Anchor>
                 {`"?`}
               </BodyCopy>
