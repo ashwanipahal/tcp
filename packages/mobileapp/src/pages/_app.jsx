@@ -75,7 +75,12 @@ export class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (Platform.OS === 'ios') {
+    const {
+      context: {
+        network: { isConnected },
+      },
+    } = this.props;
+    if (Platform.OS === 'ios' && isConnected) {
       this.setCooKies();
     } else {
       this.store.dispatch(getUserInfo());
