@@ -20,6 +20,7 @@ const getCheckoutHeaderLabels = state => {
       'checkoutHeader',
       'checkout'
     ),
+    carotIconLbl: getLabelValue(state.Labels, 'lbl_img_alt_carot_icon', 'accessibility', 'global'),
   };
 };
 
