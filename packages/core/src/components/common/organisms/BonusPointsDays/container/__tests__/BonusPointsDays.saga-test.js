@@ -16,6 +16,7 @@ describe('BonusPointsDays saga', () => {
       bonusDaysGen = getBonusDaysData();
       bonusDaysGen.next();
       bonusDaysGen.next();
+      bonusDaysGen.next();
     });
 
     it('should dispatch setBonusDaysSuccess action for success resposnse', () => {
