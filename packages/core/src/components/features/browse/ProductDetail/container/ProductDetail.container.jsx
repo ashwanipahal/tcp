@@ -1,5 +1,6 @@
 import React from 'react';
-import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import { connect } from 'react-redux';
+import { withRouter } from 'next/router'; // eslint-disable-line
 import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import SEOTags from '@tcp/web/src/components/common/atoms';
@@ -82,7 +83,11 @@ class ProductDetailContainer extends React.PureComponent {
     return productId;
   };
 
-  static getInitialProps = async ({ props, query, isServer }) => {
+  static getInitialProps = async ({ props: passedProps, store, isServer, query, req }) => {
+    const props = passedProps || {
+      ...mapStateToProps(store.getState()),
+      ...mapDispatchToProps(store.dispatch),
+    };
     const { getDetails } = props;
     let pid;
     if (isServer) {
@@ -96,13 +101,12 @@ class ProductDetailContainer extends React.PureComponent {
     }
     // TODO - fix this to extract the product ID from the page.
     const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
-    await getDetails({ productColorId: productId });
-
+    await getDetails({ productColorId: productId, escapeEmptyProduct: true });
     // Build a page name for tracking
     let pageName = '';
     if (productId) {
       const productIdParts = productId.split('_');
-      pageName = `product:${productIdParts[0]}:${pid
+      pageName = `product:${productIdParts[0]}:${(pid || '')
         .replace(productIdParts[0], '')
         .replace(productIdParts[1], '')
         .split('-')
@@ -119,7 +123,9 @@ class ProductDetailContainer extends React.PureComponent {
   };
 
   componentDidMount() {
+    const { props } = this;
     window.scrollTo(0, 100);
+    ProductDetailContainer.getInitialProps({ props });
   }
 
   componentDidUpdate(prevProps) {
@@ -226,6 +232,7 @@ class ProductDetailContainer extends React.PureComponent {
               middlePromos={middlePromos}
               bottomPromos={bottomPromos}
               sizeChartDetails={sizeChartDetails}
+              isLoading={typeof window === 'undefined' || isLoading}
             />
           ) : null}
           {isLoading ? <ProductDetailSkeleton /> : null}
@@ -359,8 +366,9 @@ ProductDetailContainer.defaultProps = {
   sizeChartDetails: [],
 };
 
-export default withIsomorphicRenderer({
-  WrappedComponent: ProductDetailContainer,
-  mapStateToProps,
-  mapDispatchToProps,
-});
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProductDetailContainer)
+);

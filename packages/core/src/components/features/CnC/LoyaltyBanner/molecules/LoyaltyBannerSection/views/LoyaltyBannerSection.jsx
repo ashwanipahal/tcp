@@ -205,9 +205,7 @@ const LoyaltyBannerSection = props => {
             </div>
           </BodyCopy>
         ) : (
-          <>
-            <LoyaltyBannerSkeleton />
-          </>
+          <LoyaltyBannerSkeleton />
         )}
       </div>
     </div>

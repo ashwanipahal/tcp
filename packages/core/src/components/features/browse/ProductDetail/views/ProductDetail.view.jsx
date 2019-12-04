@@ -1,7 +1,9 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { ProductDetailSectionSkeleton } from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDetailSkeleton/views/ProductDetailSectionSkeleton.view';
 import ExecutionEnvironment from 'exenv';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { isClient } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
@@ -94,6 +96,7 @@ class ProductDetailView extends PureComponent {
       outOfStockLabels,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      isLoading,
       ...otherProps
     } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
@@ -115,16 +118,21 @@ class ProductDetailView extends PureComponent {
           className="hide-on-mobile"
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+          isLoading={isLoading}
         />
         {isGiftCard ? (
           <div className="product-price-desktop-view">
-            <ProductPrice
-              offerPrice={parseInt(currentGiftCardValue, 10)}
-              listPrice={parseInt(currentGiftCardValue, 10)}
-              currencySymbol={currency}
-              currencyAttributes={currencyAttributes}
-              isGiftCard={isGiftCard}
-            />
+            {isLoading ? (
+              <LoaderSkelton />
+            ) : (
+              <ProductPrice
+                offerPrice={parseInt(currentGiftCardValue, 10)}
+                listPrice={parseInt(currentGiftCardValue, 10)}
+                currencySymbol={currency}
+                currencyAttributes={currencyAttributes}
+                isGiftCard={isGiftCard}
+              />
+            )}
           </div>
         ) : null}
         {isGiftCard ? (
@@ -136,10 +144,6 @@ class ProductDetailView extends PureComponent {
         ) : null}
       </div>
     );
-  };
-
-  isWebEnvironment = () => {
-    return ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
   };
 
   getBreadCrumb = () => {
@@ -164,16 +168,20 @@ class ProductDetailView extends PureComponent {
   };
 
   getProductPriceForGiftCard = () => {
-    const { productInfo, currency, currencyAttributes } = this.props;
+    const { productInfo, currency, currencyAttributes, isLoading } = this.props;
     const { currentGiftCardValue } = this.state;
     return productInfo.isGiftCard ? (
       <div className="product-price-mobile-view">
-        <ProductPrice
-          listPrice={parseInt(currentGiftCardValue, 10)}
-          offerPrice={parseInt(currentGiftCardValue, 10)}
-          currencyAttributes={currencyAttributes}
-          currencySymbol={currency}
-        />
+        {isLoading ? (
+          <LoaderSkelton />
+        ) : (
+          <ProductPrice
+            listPrice={parseInt(currentGiftCardValue, 10)}
+            offerPrice={parseInt(currentGiftCardValue, 10)}
+            currencyAttributes={currencyAttributes}
+            currencySymbol={currency}
+          />
+        )}
       </div>
     ) : null;
   };
@@ -221,11 +229,11 @@ class ProductDetailView extends PureComponent {
       middlePromos,
       bottomPromos,
       sizeChartDetails,
+      isLoading,
       ...otherProps
     } = this.props;
 
-    const { currentProduct } = productDetails;
-    const isWeb = this.isWebEnvironment();
+    const { currentProduct, currentProductDynamicData } = productDetails;
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry, renderReceiveProps } = this.state;
@@ -289,7 +297,7 @@ class ProductDetailView extends PureComponent {
             <ProductImagesWrapper
               productName={productInfo.name}
               isGiftCard={isGiftCard}
-              isThumbnailListVisible={isWeb}
+              isThumbnailListVisible
               images={imagesToDisplay}
               pdpLabels={pdpLabels}
               isZoomEnabled
@@ -313,27 +321,30 @@ class ProductDetailView extends PureComponent {
             {middlePromos && middlePromos.length > 0 && (
               <div className="promo-area-middle">{this.renderPromoBanner(middlePromos)}</div>
             )}
-            {currentProduct && (
-              <ProductAddToBagContainer
-                handleFormSubmit={handleAddToBag}
-                errorOnHandleSubmit={addToBagError}
-                currentProduct={currentProduct}
-                plpLabels={plpLabels}
-                onChangeColor={this.onChangeColor}
-                customSubmitButtonStyle={customSubmitButtonStyle}
-                onChangeSize={this.onChangeSize}
-                selectedColorProductId={selectedColorProductId}
-                renderReceiveProps={renderReceiveProps}
-                initialFormValues={this.formValues}
-                isPDP
-                alternateSizes={alternateSizes}
-                sizeChartLinkVisibility={sizeChartLinkVisibility}
-                isKeepAliveEnabled={isKeepAliveEnabled}
-                outOfStockLabels={outOfStockLabels}
-                sizeChartDetails={sizeChartDetails}
-              />
+            {isLoading ? (
+              <ProductDetailSectionSkeleton />
+            ) : (
+              currentProduct && (
+                <ProductAddToBagContainer
+                  handleFormSubmit={handleAddToBag}
+                  errorOnHandleSubmit={addToBagError}
+                  currentProduct={currentProductDynamicData || currentProduct}
+                  plpLabels={plpLabels}
+                  onChangeColor={this.onChangeColor}
+                  customSubmitButtonStyle={customSubmitButtonStyle}
+                  onChangeSize={this.onChangeSize}
+                  selectedColorProductId={selectedColorProductId}
+                  renderReceiveProps={renderReceiveProps}
+                  initialFormValues={this.formValues}
+                  isPDP
+                  alternateSizes={alternateSizes}
+                  sizeChartLinkVisibility={sizeChartLinkVisibility}
+                  isKeepAliveEnabled={isKeepAliveEnabled}
+                  outOfStockLabels={outOfStockLabels}
+                  sizeChartDetails={sizeChartDetails}
+                />
+              )
             )}
-
             {productInfo && currentColorEntry && (
               <ProductPickupContainer
                 productInfo={productInfo}
@@ -344,7 +355,7 @@ class ProductDetailView extends PureComponent {
                 // onPickUpOpenClick={onPickUpOpenClick}
               />
             )}
-            {<LoyaltyBanner pageCategory="isProductDetailView" />}
+            {!isLoading && <LoyaltyBanner pageCategory="isProductDetailView" />}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>

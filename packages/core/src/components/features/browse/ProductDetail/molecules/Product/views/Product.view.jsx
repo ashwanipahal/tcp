@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import ProductPrice from '../../ProductPrice/ProductPrice';
@@ -35,10 +36,11 @@ const Product = props => {
     reviewOnTop,
     AddToFavoriteErrorMsg,
     removeAddToFavoritesErrorMsg,
+    isLoading,
   } = props;
 
   const { fit, size } = formValues;
-  const productInfo = productDetails.currentProduct;
+  const productInfo = productDetails.currentProductDynamicData || productDetails.currentProduct;
   if (!productInfo) {
     return <div />; // TODO - maybe add loader later
   }
@@ -98,7 +100,7 @@ const Product = props => {
         />
       </div>
       <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop hide-on-tablet' : ''}>
-        {!isGiftCard ? (
+        {!isGiftCard && !isLoading ? (
           <>
             <ProductPrice
               currencySymbol={currencySymbol}
@@ -115,7 +117,9 @@ const Product = props => {
             />
             <RenderPerf.Measure name={PRICING_VISIBLE} />
           </>
-        ) : null}
+        ) : (
+          <LoaderSkelton />
+        )}
       </div>
     </>
   );

@@ -8,8 +8,11 @@ const initialState = {
 const ProductDetailReducer = (state = initialState, action) => {
   const { payload = {}, type } = action;
   switch (type) {
-    case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS:
+    case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS: {
       return { ...state, currentProduct: { ...payload.product }, breadCrumbs: payload.breadCrumbs };
+    }
+    case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS_DYNAMIC_DATA:
+      return { ...state, currentProductDynamicData: { ...payload.product } };
     case PRODUCTDETAIL_CONSTANTS.SET_PDP_LOADING_STATE:
       return { ...state, ...payload };
     case PRODUCTDETAIL_CONSTANTS.SET_ADD_TO_FAVORITE:

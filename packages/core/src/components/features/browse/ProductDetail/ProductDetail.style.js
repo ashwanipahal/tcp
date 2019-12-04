@@ -47,6 +47,12 @@ export default css`
   .promo-area-bottom {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
+  .preview-and-social-media-icons {
+    display: none;
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
+    }
+  }
   .product-summary-wrapper {
     display: flex;
     flex-direction: column;
