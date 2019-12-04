@@ -1,6 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getSiteId } from '@tcp/core/src/utils/utils';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
+import { CONTROLS_VISIBLE, RESULTS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
@@ -10,7 +12,6 @@ import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { isFiltersAvailable } from '../../ProductListing/container/ProductListing.selectors';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
 
@@ -40,7 +41,7 @@ class SearchListingView extends React.Component {
         pageName: 'search',
         pageSection: 'search',
         pageSubSection: 'search',
-        customEvents: ['prodView', 'event1', 'event80', 'event83', 'event93'],
+        customEvents: ['event91', 'event92', 'event80', 'event20'],
       });
     }
   }
@@ -168,6 +169,8 @@ class SearchListingView extends React.Component {
               slpLabels={slpLabels}
               isLoadingMore={isLoadingMore}
             />
+            {/* UX timer */}
+            <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
         </Row>
         <Row>
@@ -182,29 +185,32 @@ class SearchListingView extends React.Component {
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {productsBlock.length ? (
-              <ProductsGrid
-                className={className}
-                productsBlock={productsBlock}
-                products={products}
-                labels={labels}
-                productTileVariation="search-product-tile"
-                currencyAttributes={currencyAttributes}
-                currency={currency}
-                onAddItemToFavorites={onAddItemToFavorites}
-                isLoggedIn={isLoggedIn}
-                isLoadingMore={isLoadingMore}
-                isSearchListing={isSearchListing}
-                getProducts={getProducts}
-                asPathVal={asPathVal}
-                AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-                removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-                {...otherProps}
-              />
+              <>
+                <ProductsGrid
+                  className={className}
+                  productsBlock={productsBlock}
+                  products={products}
+                  labels={labels}
+                  productTileVariation="search-product-tile"
+                  currencyAttributes={currencyAttributes}
+                  currency={currency}
+                  onAddItemToFavorites={onAddItemToFavorites}
+                  isLoggedIn={isLoggedIn}
+                  isLoadingMore={isLoadingMore}
+                  isSearchListing={isSearchListing}
+                  getProducts={getProducts}
+                  asPathVal={asPathVal}
+                  AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                  removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                  {...otherProps}
+                />
+                {/* UX timer */}
+                <RenderPerf.Measure name={RESULTS_VISIBLE} />
+              </>
             ) : null}
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
           </Col>
         </Row>
-        <QuickViewModal />
       </div>
     );
   }

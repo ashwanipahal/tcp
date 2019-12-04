@@ -94,8 +94,8 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
     />
     <Styled(View)>
       <Connect(Recommendations)
-        headerAlignment="left"
-        page="homepage"
+        isFavoriteRecommendation={true}
+        page=""
         showLoyaltyPromotionMessage={false}
         variation="moduleO"
       />

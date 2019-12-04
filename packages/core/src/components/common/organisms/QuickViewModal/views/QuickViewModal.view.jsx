@@ -38,11 +38,18 @@ class QuickViewModal extends React.Component {
   };
 
   getHeadingText = () => {
-    const { quickViewLabels, fromBagPage, isLoading } = this.props;
+    const { quickViewLabels, fromBagPage, isLoading, isFavoriteEdit } = this.props;
     if (isLoading) {
       return ' ';
     }
-    return fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag;
+    const { editItem, addToBag, editProduct } = quickViewLabels;
+    let headerText = addToBag;
+    if (fromBagPage) {
+      headerText = editItem;
+    } else if (isFavoriteEdit) {
+      headerText = editProduct;
+    }
+    return headerText;
   };
 
   handleMultipleItemsAddToBagClick(e) {
@@ -86,15 +93,18 @@ class QuickViewModal extends React.Component {
     const {
       plpLabels: { addToBag },
       quickViewLabels,
+      toastMessage,
     } = this.props;
     const { showAddProductValidation } = this.state;
     return (
       <QuickViewAddToBagButton
         dataLocator="MULTI_QV_ATB"
         onClickActn={this.handleMultipleItemsAddToBagClick}
+        toastMessage={toastMessage}
         buttonLabel={addToBag}
         quickViewLabels={quickViewLabels}
         showAddProductValidation={showAddProductValidation}
+        changeQuickViewState={this.changeQuickViewState}
       />
     );
   };
@@ -154,10 +164,17 @@ class QuickViewModal extends React.Component {
     );
   }
 
-  renderFulFilmentSection = (isMultiItemQVModal, fromBagPage, product, currentColorEntry) => {
+  renderFulFilmentSection = (
+    isMultiItemQVModal,
+    fromBagPage,
+    product,
+    currentColorEntry,
+    isFavoriteEdit
+  ) => {
     return (
       !isMultiItemQVModal &&
       !fromBagPage &&
+      !isFavoriteEdit &&
       product &&
       currentColorEntry && (
         <ProductPickupContainer
@@ -171,7 +188,14 @@ class QuickViewModal extends React.Component {
   };
 
   render() {
-    const { isModalOpen, productInfo, isMultiItemQVModal, fromBagPage, isLoading } = this.props;
+    const {
+      isModalOpen,
+      productInfo,
+      isMultiItemQVModal,
+      fromBagPage,
+      isLoading,
+      isFavoriteEdit,
+    } = this.props;
     const product = productInfo && productInfo.length && productInfo[0].product;
     const currentColorEntry =
       product && getMapSliceForColorProductId(product.colorFitsSizesMap, product.generalProductId);
@@ -209,7 +233,8 @@ class QuickViewModal extends React.Component {
                   isMultiItemQVModal,
                   fromBagPage,
                   product,
-                  currentColorEntry
+                  currentColorEntry,
+                  isFavoriteEdit
                 )}
 
                 {isMultiItemQVModal && this.renderAddToBagButton()}
@@ -243,6 +268,7 @@ QuickViewModal.propTypes = {
   currencyAttributes: PropTypes.shape({}).isRequired,
   isLoading: PropTypes.bool.isRequired,
   toastMessage: PropTypes.func,
+  isFavoriteEdit: PropTypes.bool.isRequired,
 };
 
 QuickViewModal.defaultProps = {

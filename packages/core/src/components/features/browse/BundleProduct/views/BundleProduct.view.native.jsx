@@ -7,6 +7,7 @@ import ProductSummary from '@tcp/core/src/components/features/browse/ProductDeta
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { OUTFIT_LISTING_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import { PageContainer, RecommendationWrapper } from '../styles/BundleProduct.style.native';
 import {
@@ -94,6 +95,7 @@ class ProductBundle extends React.PureComponent {
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               currentColorEntry={this.currentColorEntry}
               isBundleProduct
+              formName={OUTFIT_LISTING_FORM}
             />
             <ProductSummary
               productData={currentProduct}

@@ -62,14 +62,22 @@ exports[`MiniBag template should render correctly 1`] = `
   <Styled(MiniBagHeader)
     cartItemCount={0}
     currentPoints=""
-    labels={Object {}}
+    labels={
+      Object {
+        "accessibility": Object {},
+      }
+    }
     totalRewards=""
     userName=""
   />
   <Styled(MiniBagBody)
     cartItemCount={0}
     isCartItemsUpdating={true}
-    labels={Object {}}
+    labels={
+      Object {
+        "accessibility": Object {},
+      }
+    }
     onLinkClick={[Function]}
     savedforLaterQty={0}
     subTotal=""

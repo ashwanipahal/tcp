@@ -41,6 +41,15 @@ function setPageCountCookie() {
   });
 }
 
+function setLandingSiteCookie() {
+  const { landingSite } = API_CONFIG;
+  const siteId = readCookie(landingSite) || '';
+  setCookie({
+    key: landingSite,
+    value: siteId,
+  });
+}
+
 /**
  * A component that sets up event handlers for when the
  * route changes, and dispatches Redux actions with
@@ -51,6 +60,7 @@ function RouteTracker({ dispatch }) {
   const track = usePageTracking(dispatch);
   const handleChange = url => {
     setPageCountCookie();
+    setLandingSiteCookie();
     track({
       path: url,
       props: getRouteProps(),

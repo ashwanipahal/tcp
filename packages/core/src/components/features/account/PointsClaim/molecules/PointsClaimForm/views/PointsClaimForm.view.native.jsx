@@ -7,12 +7,10 @@ import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import DateInput from '@tcp/core/src/components/common/molecules/DateInput';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
+import Select from '@tcp/core/src/components/common/atoms/Select';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import {
-  dropDownStyle,
-  itemStyle,
   DropdownWrapper,
   SaveButtonWrapper,
   CancelButtonWrapper,
@@ -92,7 +90,7 @@ export class PointsClaimForm extends PureComponent {
           <Field
             id={fieldNames.TRANSACTION_TYPE}
             name={fieldNames.TRANSACTION_TYPE}
-            component={DropDown}
+            component={Select}
             dataLocator="points-claim-transactiontype"
             heading={getLabelValue(labels, 'lbl_points_claim_transaction_type', 'myPlaceRewards')}
             selectedValue={type}
@@ -102,8 +100,6 @@ export class PointsClaimForm extends PureComponent {
               this.setState({ type: itemValue });
             }}
             variation="secondary"
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
           />
         </DropdownWrapper>
         <UserInfoView labels={labels} {...otherprops} />
@@ -120,7 +116,7 @@ export class PointsClaimForm extends PureComponent {
                   textAlign="center"
                 />
               </ImageCaption>
-              <Image height="122px" width="262px" source={receiptImg} />
+              <Image height="122px" width="262px" source={receiptImg} alt="" />
             </ImageContainer>
             <FieldWrapper>
               <Field

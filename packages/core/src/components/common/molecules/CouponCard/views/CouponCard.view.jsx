@@ -38,7 +38,8 @@ class CouponCard extends React.Component<Props> {
             className="couponCard__header_expired"
             component="p"
             fontSize="fs10"
-            fontFamily="secondary"
+            fontFamily="primary"
+            fontWeight="regular"
           >
             {labels.EXPIRING_SOON}
           </BodyCopy>

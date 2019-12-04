@@ -15,7 +15,7 @@ export const CardImage = ({ card, cardNumber }) => {
     <ImageViewWrapper>
       {card.ccType && (
         <ImageWrapper>
-          <Image source={cardIcon} width="40" height="30" />
+          <Image source={cardIcon} alt="" width="40" height="30" />
         </ImageWrapper>
       )}
       <CardWrapper>

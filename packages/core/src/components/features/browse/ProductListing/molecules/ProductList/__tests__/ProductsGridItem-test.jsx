@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import * as utils from '@tcp/core/src/utils/utils';
 import { ProductsGridItemVanilla } from '../views/ProductsGridItem';
 
+utils.getBrand = jest.fn().mockReturnValue('tcp');
 const props = {
   currencyExchange: [
     {
@@ -13,7 +15,12 @@ const props = {
   item: {
     productInfo: {},
     miscInfo: {},
-
+    skuInfo: {
+      skuId: '',
+      size: '',
+      fit: '',
+      color: '',
+    },
     colorsMap: [
       {
         color: { name: '' },
@@ -23,6 +30,11 @@ const props = {
     ],
     imagesByColor: {},
     sqnNmbr: 123,
+    itemInfo: {
+      itemId: '',
+      quantity: '1',
+      isTCP: true,
+    },
   },
   sqnNmbr: 123,
   isPLPredesign: false,

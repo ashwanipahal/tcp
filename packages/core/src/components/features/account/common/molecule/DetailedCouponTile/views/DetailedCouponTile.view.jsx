@@ -155,7 +155,7 @@ export class DetailedCouponTile extends React.Component {
               data-locator="coupon-overlay-icon"
               className="overlay__content"
             >
-              <Image src={bagIcon} />
+              <Image src={bagIcon} alt="" />
               <BodyCopy
                 component="p"
                 fontSize="fs16"

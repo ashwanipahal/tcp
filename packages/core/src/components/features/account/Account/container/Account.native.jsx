@@ -36,7 +36,7 @@ const navConfigMap = {
   orders: 'myOrdersPageMobile',
   'address-book': 'addressBookMobile',
   favorites: 'myFavoritePageMobile',
-  'rewards-credit-card': 'myPlaceRewardsCCPageMobile',
+  rewardsCreditCard: 'myPlaceRewardsCCPageMobile',
 };
 
 export class Account extends React.PureComponent {
@@ -103,6 +103,9 @@ export class Account extends React.PureComponent {
     if (!prevProps.isUserLoggedIn && isUserLoggedIn && !hasMobile) {
       closeOverlay();
     }
+    if (prevProps.isUserLoggedIn && !isUserLoggedIn) {
+      this.scrollView.scrollTo({ x: 0, y: 0, animated: false });
+    }
   }
 
   /**
@@ -162,7 +165,12 @@ export class Account extends React.PureComponent {
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
-        <StyledScrollView keyboardShouldPersistTaps="handled">
+        <StyledScrollView
+          ref={ref => {
+            this.scrollView = ref;
+          }}
+          keyboardShouldPersistTaps="handled"
+        >
           <MyAccountLayout
             navData={navData}
             component={this.getComponent(component)}

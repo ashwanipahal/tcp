@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import ModalsCheckoutView from '../views/ModalsCheckout.view';
 import { setCheckoutModalMountedState } from '../../../../../account/LoginPage/container/LoginPage.actions';
 import { getSetCheckoutStage } from '../../../../Checkout/container/Checkout.action';
@@ -65,6 +65,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       cartOrderItems,
       handleCartCheckout,
       setBagPageIsRouting,
+      trackClickAnalytics,
     } = this.props;
     return (
       <ModalsCheckoutView
@@ -96,6 +97,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
         cartOrderItems={cartOrderItems}
         handleCartCheckout={handleCartCheckout}
+        trackClickAnalytics={trackClickAnalytics}
       />
     );
   }
@@ -109,6 +111,7 @@ AddedToBagContainer.propTypes = {
   removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
   modalInfo: PropTypes.shape({}).isRequired,
+  trackClickAnalytics: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -152,6 +155,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     setBagPageIsRouting: () => {
       dispatch(bagPageActions.setBagPageIsRouting(true));
+    },
+    trackClickAnalytics: payload => {
+      dispatch(trackClick(payload));
     },
   };
 };

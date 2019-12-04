@@ -37,6 +37,7 @@ import {
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import BagPageUtils from '../views/Bagpage.utils';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -70,6 +71,9 @@ export class BagPageContainer extends React.Component<Props> {
         }, 100);
       }
     }
+    const { cartOrderItems: prevCartOrderItems } = prevProps;
+    const { cartOrderItems } = this.props;
+    this.startBagAnalytics(cartOrderItems, prevCartOrderItems);
   }
 
   componentWillUnmount() {
@@ -78,6 +82,33 @@ export class BagPageContainer extends React.Component<Props> {
   }
 
   closeModal = () => {};
+
+  startBagAnalytics = (cartOrderItems, prevCartOrderItems) => {
+    const { setClickAnalyticsDataBag, trackPageViewBag, router } = this.props;
+    const events = ['scView', 'scOpen', 'event80'];
+    let fromMiniBag = false;
+    if (!isMobileApp()) {
+      fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    }
+    if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
+      const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+      setClickAnalyticsDataBag({
+        customEvents: events,
+        products: productsData,
+      });
+      trackPageViewBag({
+        currentScreen: 'bagPage',
+        pageData: {
+          pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageNavigationText: fromMiniBag ? 'header-cart' : '',
+        },
+      });
+    }
+  };
 
   fetchInitialActions() {
     const { isRegisteredUserCallDone, initialActions, fetchSflData } = this.props;

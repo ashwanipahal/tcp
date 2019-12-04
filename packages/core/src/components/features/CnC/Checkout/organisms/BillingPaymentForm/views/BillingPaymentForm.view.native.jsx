@@ -169,6 +169,10 @@ export class BillingPaymentForm extends React.PureComponent {
     unsetPaymentFormEditState(this, e);
   };
 
+  getCheckoutBillingAddressEdit = edit => {
+    return getCheckoutBillingAddress(this, edit);
+  };
+
   getCCDropDown = ({
     labels,
     creditCardList,
@@ -219,7 +223,7 @@ export class BillingPaymentForm extends React.PureComponent {
             {...{ selectedCard, unsetFormEditState, getAddNewCCForm }}
             {...{ onEditCardFocus, dispatch, labels, updateCardDetail, editModeSubmissionError }}
             key="cardEditForm"
-            addressForm={getCheckoutBillingAddress(this)}
+            addressForm={this.getCheckoutBillingAddressEdit}
             errorMessageRef={this.ediCardErrorRef}
             {...{ getDefaultPayment, toastMessage }}
             cardType={editFormCardType}
@@ -238,7 +242,7 @@ export class BillingPaymentForm extends React.PureComponent {
           creditCardList.size > 0 &&
           this.getCCDropDown({ labels, creditCardList, onFileCardKey, dispatch })}
         {this.getAddNewCCForm()}
-        {getCheckoutBillingAddress(this)()}
+        {getCheckoutBillingAddress(this)}
       </>
     );
   };
@@ -314,8 +318,9 @@ export class BillingPaymentForm extends React.PureComponent {
       bagLoading,
       isVenmoEnabled,
       onVenmoError,
+      isVenmoAppInstalled,
     } = this.props;
-    const paymentMethods = getPaymentMethods(labels);
+    const paymentMethods = getPaymentMethods(labels, isVenmoEnabled, isVenmoAppInstalled);
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
@@ -409,6 +414,8 @@ export class BillingPaymentForm extends React.PureComponent {
           continueWithText={labels.continueWith}
           onVenmoSubmit={e => handleBillingFormSubmit(this, e, true)}
           onVenmoError={onVenmoError}
+          pageName="checkout"
+          pageSection="billing"
         />
       </>
     );

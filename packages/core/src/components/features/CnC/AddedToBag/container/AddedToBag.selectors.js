@@ -7,7 +7,24 @@ export const getAddedToBagLoaderState = state => {
 };
 
 export const getAddedToBagData = state => {
-  return state.AddedToBagReducer.get('itemInfo');
+  let data = state.AddedToBagReducer.get('itemInfo');
+  const orderItems = getCartOrderDetails(state) && getCartOrderDetails(state).get('orderItems');
+  if (data && data.length > 1) {
+    data = data.map(item => {
+      const itemCopy = Object.assign({}, item);
+      if (orderItems) {
+        orderItems.forEach(orderItem => {
+          if (item.orderItemId === orderItem.getIn(['itemInfo', 'itemId'])) {
+            itemCopy.listPrice = orderItem.getIn(['itemInfo', 'listPrice']);
+            itemCopy.itemPoints = orderItem.getIn(['itemInfo', 'itemPoints']);
+            itemCopy.quantity = orderItem.getIn(['itemInfo', 'quantity']);
+          }
+        });
+      }
+      return itemCopy;
+    });
+  }
+  return data;
 };
 
 export const isOpenAddedToBag = state => {

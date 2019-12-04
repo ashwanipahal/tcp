@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
 import { Modal } from '@tcp/core/src/components/common/molecules';
-import { getViewportInfo, isMobileWeb, isCanada, getLabelValue } from '@tcp/core/src/utils';
+import {
+  getViewportInfo,
+  isMobileWeb,
+  isCanada,
+  getLabelValue,
+  enableBodyScroll,
+  disableBodyScroll,
+} from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
 
@@ -114,7 +121,7 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.removeEventListener('click', this.handleWindowClick);
-      this.body.style['overflow-y'] = '';
+      enableBodyScroll(this.body);
     }
     const modal = document.getElementById('dialogContent');
     modal.removeEventListener('keydown', this.keydownInOverlay);
@@ -157,8 +164,7 @@ class OverlayModal extends React.Component {
     } else {
       modal.style.height = `${window.innerHeight - (modalTrianglePos + 20)}px`;
     }
-    this.body.style.overflow = 'hidden';
-
+    disableBodyScroll(this.body);
     /* istanbul ignore else */
     if ((!showCondensedHeader || this.isMobile) && modal && modalTriangle) {
       modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
@@ -198,7 +204,7 @@ class OverlayModal extends React.Component {
     const { closeOverlay } = this.props;
     closeOverlay();
     if (this.body) {
-      this.body.style['overflow-y'] = '';
+      enableBodyScroll(this.body);
     }
     this.resetBodyScrollStyles();
   };
@@ -228,6 +234,7 @@ class OverlayModal extends React.Component {
   }
 
   handleWindowClick(e) {
+    const { component } = this.props;
     /* istanbul ignore else */
     if (
       this.modalRef &&
@@ -236,10 +243,10 @@ class OverlayModal extends React.Component {
     ) {
       this.closeModal();
       const nextComponent = e.target;
-      if (
-        nextComponent.hasAttribute('data-overlayTarget') ||
-        nextComponent.closest('[data-overlayTarget]')
-      ) {
+      const componentAttributeValue =
+        nextComponent.getAttribute('data-overlayTarget') ||
+        nextComponent.closest('[data-overlayTarget]').getAttribute('data-overlayTarget');
+      if (component === componentAttributeValue) {
         e.stopImmediatePropagation();
       }
     }
@@ -296,6 +303,7 @@ class OverlayModal extends React.Component {
         color={color}
         ref={this.setModalRef}
         tabIndex="-1"
+        aria-label={headingForMobile}
       >
         <div
           id="dialogContent"

@@ -53,6 +53,7 @@ class CouponView extends React.PureComponent<Props> {
     handleApplyCouponFromList,
     appliedCouponList,
     availableCouponList,
+    bagLoading,
     className,
     handleRemoveCoupon,
     handleErrorCoupon,
@@ -88,7 +89,7 @@ class CouponView extends React.PureComponent<Props> {
               additionalClassNameModal={additionalClassName}
             />
           )}
-          {availableCouponList && availableCouponList.size > 0 ? (
+          {availableCouponList && availableCouponList.size > 0 && !bagLoading ? (
             <CouponListSection
               labels={labels}
               isFetching={isFetching}
@@ -156,6 +157,7 @@ class CouponView extends React.PureComponent<Props> {
       showAccordian,
       additionalClassNameModal,
       idPrefix,
+      bagLoading,
       isNeedHelpModalOpen,
     } = this.props;
     const { detailStatus, selectedCoupon } = this.state;
@@ -169,6 +171,7 @@ class CouponView extends React.PureComponent<Props> {
         appliedCouponList,
         availableCouponList,
         className,
+        bagLoading,
         handleRemoveCoupon,
         handleErrorCoupon,
         detailStatus,
