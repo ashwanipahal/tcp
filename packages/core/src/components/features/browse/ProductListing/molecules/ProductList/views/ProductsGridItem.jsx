@@ -717,6 +717,35 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  renderBadgeItem = (isShowBadges, topBadge) => {
+    const { isSuggestedItem } = this.props;
+    return !isSuggestedItem ? (
+      <BadgeItem
+        isShowBadges={isShowBadges}
+        className="top-badge-container"
+        text={topBadge}
+        haveSpace
+      />
+    ) : null;
+  };
+
+  renderBadgeTwo = badge2 => {
+    const { isSuggestedItem } = this.props;
+    return !isSuggestedItem ? (
+      <Col colSize={{ small: 12 }}>
+        <BodyCopy
+          dataLocator={getLocator('global_Extended_sizes_text')}
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize={['fs10', 'fs12', 'fs14']}
+          className="extended-sizes-text elem-mb-SM"
+        >
+          {badge2 && badge2.toUpperCase()}
+        </BodyCopy>
+      </Col>
+    ) : null;
+  };
+
   getPriceForProduct = (listPrice, offerPrice, currencyAttributes) => {
     let listPriceForColor = listPrice;
     let offerPriceForColor = offerPrice;
@@ -853,14 +882,7 @@ class ProductsGridItem extends React.PureComponent {
         ref={forwardedRef}
       >
         <div className="item-container-inner">
-          {
-            <BadgeItem
-              isShowBadges={isShowBadges}
-              className="top-badge-container"
-              text={topBadge}
-              haveSpace
-            />
-          }
+          {this.renderBadgeItem(isShowBadges, topBadge)}
           {this.crossIcon()}
           <ProductAltImages
             className="product-image-container"
@@ -891,18 +913,7 @@ class ProductsGridItem extends React.PureComponent {
           )}
           {
             <Row fullBleed className="product-wishlist-container">
-              <Col colSize={{ small: 12 }}>
-                <BodyCopy
-                  dataLocator={getLocator('global_Extended_sizes_text')}
-                  fontWeight="extrabold"
-                  fontFamily="secondary"
-                  fontSize={['fs10', 'fs12', 'fs14']}
-                  className="extended-sizes-text elem-mb-SM"
-                >
-                  {badge2 && badge2.toUpperCase()}
-                </BodyCopy>
-              </Col>
-
+              {this.renderBadgeTwo(badge2)}
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
                 {this.getProductPriceSection(
                   listPriceForColor,
@@ -936,10 +947,11 @@ class ProductsGridItem extends React.PureComponent {
 
           {this.getColorChipContainer(curentColorEntry)}
 
-          {this.getPromotionalMessageComponent(
-            promotionalMessageModified,
-            promotionalPLCCMessageModified
-          )}
+          {!isSuggestedItem &&
+            this.getPromotionalMessageComponent(
+              promotionalMessageModified,
+              promotionalPLCCMessageModified
+            )}
           <div className="fulfillment-section">
             {this.renderSubmitButton(keepAlive, itemNotAvailable)}
           </div>

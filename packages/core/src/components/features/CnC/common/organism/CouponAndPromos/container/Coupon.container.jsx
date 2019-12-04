@@ -63,7 +63,6 @@ export class CouponContainer extends React.PureComponent {
       isNeedHelpModalOpen,
       toggleNeedHelpModal,
       isFetchingCouponState,
-      bagLoading,
     } = this.props;
     const isFetching = isFetchingCouponState || bagLoading;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
@@ -136,7 +135,6 @@ CouponContainer.propTypes = {
   closedOverlay: PropTypes.func,
   idPrefix: PropTypes.string,
   openApplyNowModal: PropTypes.func,
-  bagLoading: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}),
   pageName: PropTypes.string,
   pageSection: PropTypes.string,
