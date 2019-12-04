@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import { Row, Col, BodyCopy, Anchor, DamImage } from '../../../../../common/atoms';
 import ProductBasicInfo from '../../../ProductDetail/molecules/ProductBasicInfo/ProductBasicInfo';
 import Carousel from '../../../../../common/molecules/Carousel';
@@ -181,6 +182,7 @@ const OutfitDetailsView = ({
             AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             pageName={pageName || 'OUTFIT'}
+            formName={PRODUCT_ADD_TO_BAG}
           />
           <ProductPrice
             currencySymbol={currencySymbol}
