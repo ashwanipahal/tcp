@@ -71,6 +71,10 @@ const TextWrapper = styled.View`
   flex-direction: row;
 `;
 
+const PickupPageSkeletonWrapper = styled.View`
+  padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+`;
+
 export {
   FormStyle,
   Container,
@@ -89,4 +93,5 @@ export {
   CheckBoxColTwo,
   CheckBoxSubWrapper,
   TextWrapper,
+  PickupPageSkeletonWrapper,
 };
