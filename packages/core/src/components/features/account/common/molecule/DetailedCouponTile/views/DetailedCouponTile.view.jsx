@@ -155,7 +155,7 @@ export class DetailedCouponTile extends React.Component {
               data-locator="coupon-overlay-icon"
               className="overlay__content"
             >
-              <Image src={bagIcon} />
+              <Image src={bagIcon} alt="" />
               <BodyCopy
                 component="p"
                 fontSize="fs16"
@@ -204,7 +204,7 @@ export class DetailedCouponTile extends React.Component {
                 role="img"
               >
                 <BodyCopy component="div" aria-hidden>
-                  <Barcode value={coupon.id} barcodeId={coupon.id} aria-hidden />
+                  <Barcode value={coupon.id} barcodeId={coupon.id} />
                 </BodyCopy>
               </BodyCopy>
             )}
@@ -214,6 +214,7 @@ export class DetailedCouponTile extends React.Component {
             error={coupon.error}
             fontWeight="extrabold"
             noBackground
+            isEspot={isPlaceCash}
           />
           <BodyCopy component="div" className="bottom-content">
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">

@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-async function fetchData(baseURL, relURL, params = {}, method) {
+async function fetchData(baseURL, relURL, params = {}, method = 'get') {
   const requestType = method;
   const requestUrl = baseURL + relURL;
   let reqSetting = {};

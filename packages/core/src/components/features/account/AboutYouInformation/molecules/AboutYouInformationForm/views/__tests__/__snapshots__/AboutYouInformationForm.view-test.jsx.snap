@@ -814,7 +814,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -898,7 +897,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -987,7 +988,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1071,7 +1071,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1160,7 +1162,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1244,7 +1245,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1333,7 +1336,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1417,7 +1419,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1506,7 +1510,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1590,7 +1593,9 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",

@@ -69,6 +69,24 @@ function convertToColorArray(colorSwatches, id, color) {
     ? colorSwatches
     : colorSwatchFilter(colorSwatches.split('|'), id, color);
 }
+
+const getDecodedData = filterIds => {
+  const facetKeys = filterIds ? Object.keys(filterIds) : [];
+  let modifiedFilterIds = {};
+
+  facetKeys.forEach(facetKey => {
+    const modifiedFacetKeys =
+      facetKey !== 'sort'
+        ? filterIds[facetKey].map(value => decodeURIComponent(value))
+        : filterIds[facetKey];
+    modifiedFilterIds = {
+      ...modifiedFilterIds,
+      [facetKey]: modifiedFacetKeys,
+    };
+  });
+
+  return modifiedFilterIds;
+};
 /**
  * @function getAppliedFilters
  * @summary To get the applied filters to pass in the PLP/SRP UI to render
@@ -78,6 +96,7 @@ function convertToColorArray(colorSwatches, id, color) {
 const getAppliedFilters = (filters, filterIds) => {
   const appliedFilters = {};
   const facetKeys = filterIds ? Object.keys(filterIds) : [];
+
   facetKeys.forEach(facetKey => {
     if (isUnbxdFacetKey(facetKey)) {
       // for facets having facetName as key
@@ -373,6 +392,7 @@ const processHelpers = {
   getCurrentNavigationIds,
   getSearchResultSuggestions,
   convertToColorArray,
+  getDecodedData,
   getAppliedFilters,
   getParticularCategory,
   parseCategoryEntity,

@@ -74,6 +74,7 @@ export const PaymentOverviewTile = ({
                   <Image
                     className="elem-mr-XS"
                     src={getIconPath(cardIconMapping[creditCardDefault.ccBrand])}
+                    alt={creditCardDefault.ccBrand || creditCardDefault.ccType}
                   />
                   <BodyCopy component="div" className="cardDescriptionWrapper">
                     <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
@@ -142,6 +143,7 @@ export const PaymentOverviewTile = ({
                     <Image
                       className="venmoCardList_img"
                       src={getIconPath(cardIconMapping[venmoCardList.ccBrand])}
+                      alt={venmoCardList.ccBrand || venmoCardList.ccType}
                     />
                     <BodyCopy
                       fontSize="fs12"
@@ -191,6 +193,7 @@ export const PaymentOverviewTile = ({
                   <Image
                     className="elem-mr-XS"
                     src={getIconPath(cardIconMapping[giftCardList.ccBrand])}
+                    alt={giftCardList.ccBrand || giftCardList.ccType}
                   />
                   <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
                     <span>{getLabelValue(labels, 'lbl_overview_card_ending')}</span>

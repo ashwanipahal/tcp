@@ -94,6 +94,7 @@ class ApplyNowModalWrapper extends React.Component {
       rtpsOptOutMsg,
       rtpsTextTerms,
       submitAcceptOrDeclinePlcc,
+      cartOrderItems,
     } = this.props;
     return (
       <div className={className}>
@@ -112,6 +113,7 @@ class ApplyNowModalWrapper extends React.Component {
               rtpsOptOutMsg={rtpsOptOutMsg}
               rtpsTextTerms={rtpsTextTerms}
               submitAcceptOrDeclinePlcc={submitAcceptOrDeclinePlcc}
+              cartOrderItems={cartOrderItems}
             />
           ) : null}
         </React.Fragment>
@@ -137,6 +139,7 @@ ApplyNowModalWrapper.propTypes = {
   setIsRTPSFlow: PropTypes.func.isRequired,
   isRtpsFlow: PropTypes.bool,
   submitAcceptOrDeclinePlcc: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 ApplyNowModalWrapper.defaultProps = {

@@ -27,6 +27,7 @@ const ItemDeleteConfirmationModal = ({
       fixedWidth
       closeIconDataLocator="coupondetailmodalcrossicon"
       innerContentClassName="item-delete-confirmation-modal"
+      contentLabel={modalTitle}
     >
       <div className="modal-content">
         <BodyCopy

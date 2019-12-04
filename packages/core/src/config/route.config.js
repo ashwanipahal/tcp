@@ -54,7 +54,11 @@ const ROUTES_LIST = [
     path: '/login',
     resolver: '/login',
   },
-
+  {
+    noSlugPath: 'sitemap',
+    path: '/sitemap',
+    resolver: '/sitemap',
+  },
   {
     noSlugPath: 'instagram',
     path: '/instagram',
@@ -71,6 +75,11 @@ const ROUTES_LIST = [
     path: '/account/:id?/:subSection?/:orderId?',
     resolver: '/account',
     params: ['id', 'subSection', 'orderId'],
+  },
+  {
+    noSlugPath: 'favorites',
+    path: '/favorites',
+    resolver: '/Favorites',
   },
   {
     noSlugPath: 'ds',

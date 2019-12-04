@@ -32,4 +32,16 @@ describe('ConfirmationView', () => {
     const tree = shallow(<ConfirmationView {...props1} />);
     expect(tree).toMatchSnapshot();
   });
+  it('should render correctly with venmo Information', () => {
+    const props1 = {
+      orderNumbersByFullfillmentCenter: {
+        fullfillmentCenterMap: [{ center: { shippingFullname: 'ship', orderType: 'BOSS' } }],
+      },
+      isVenmoPaymentInProgress: true,
+      venmoUserName: 'test-user',
+      venmoOrderConfirmationContent: {},
+    };
+    const tree = shallow(<ConfirmationView {...props1} />);
+    expect(tree).toMatchSnapshot();
+  });
 });

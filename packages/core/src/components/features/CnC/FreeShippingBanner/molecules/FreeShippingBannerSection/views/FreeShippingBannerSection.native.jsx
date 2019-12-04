@@ -20,6 +20,7 @@ const FreeShippingBannerSection = props => {
     },
   ];
   const labelStr = getLabelValue(labels, 'lbl_freeShippingBanner_label');
+  const freeShippingURL = getLabelValue(labels, 'lbl_freeShippingBanner_url_app');
   const freeShippingLabel = labelStr ? mobileHashValues(labelStr, utilArrShippingNew) : false;
 
   return (
@@ -27,7 +28,7 @@ const FreeShippingBannerSection = props => {
       {freeShippingLabel && (
         <FreeShippingLabel>
           <FreeShippingIconWrapper>
-            <Image source={fastShipping} height={18} width={20} />
+            <Image source={fastShipping} alt="" height={18} width={20} />
           </FreeShippingIconWrapper>
           <View>
             <BodyCopy
@@ -43,6 +44,7 @@ const FreeShippingBannerSection = props => {
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_freeShippingBanner_details')}
               underline
+              url={freeShippingURL}
             />
           </AnchorWrapper>
         </FreeShippingLabel>

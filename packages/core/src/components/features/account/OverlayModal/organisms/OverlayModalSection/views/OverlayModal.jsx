@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
 import { Modal } from '@tcp/core/src/components/common/molecules';
-import { getViewportInfo, isMobileWeb, isCanada, getLabelValue } from '@tcp/core/src/utils';
+import {
+  getViewportInfo,
+  isMobileWeb,
+  isCanada,
+  getLabelValue,
+  enableBodyScroll,
+  disableBodyScroll,
+} from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
 
@@ -18,6 +25,8 @@ const propTypes = {
     lbl_login_loginCTA: PropTypes.string,
     lbl_login_createAccountCTA: PropTypes.string,
   }),
+  isLoggedIn: PropTypes.bool,
+  setNeedHelpModal: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -29,6 +38,7 @@ const defaultProps = {
     lbl_login_loginCTA: '',
     lbl_login_createAccountCTA: '',
   }),
+  isLoggedIn: false,
 };
 
 const TAB_KEY = 9;
@@ -81,7 +91,8 @@ class OverlayModal extends React.Component {
     if (nextTargetComponent !== prevTargetComponent) {
       modal.scrollTo(0, 0);
       return this.getCustomStyles({ styleModal: false });
-    } else if (condensedStateChanged || loginStateChanged) {
+    }
+    if (condensedStateChanged || loginStateChanged) {
       this.getCustomStyles({ styleModal: true });
     }
 
@@ -101,6 +112,8 @@ class OverlayModal extends React.Component {
   }
 
   componentWillUnmount() {
+    const { setNeedHelpModal } = this.props;
+    setNeedHelpModal(false);
     this.overlayElementWrapper.style.position = 'static';
     this.overlayElementWrapper.style.pointerEvents = 'auto';
     /* istanbul ignore else */
@@ -108,7 +121,7 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.removeEventListener('click', this.handleWindowClick);
-      this.body.style['overflow-y'] = '';
+      enableBodyScroll(this.body);
     }
     const modal = document.getElementById('dialogContent');
     modal.removeEventListener('keydown', this.keydownInOverlay);
@@ -151,8 +164,7 @@ class OverlayModal extends React.Component {
     } else {
       modal.style.height = `${window.innerHeight - (modalTrianglePos + 20)}px`;
     }
-    this.body.style.overflow = 'hidden';
-
+    disableBodyScroll(this.body);
     /* istanbul ignore else */
     if ((!showCondensedHeader || this.isMobile) && modal && modalTriangle) {
       modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
@@ -192,7 +204,7 @@ class OverlayModal extends React.Component {
     const { closeOverlay } = this.props;
     closeOverlay();
     if (this.body) {
-      this.body.style['overflow-y'] = '';
+      enableBodyScroll(this.body);
     }
     this.resetBodyScrollStyles();
   };
@@ -222,6 +234,7 @@ class OverlayModal extends React.Component {
   }
 
   handleWindowClick(e) {
+    const { component } = this.props;
     /* istanbul ignore else */
     if (
       this.modalRef &&
@@ -230,10 +243,10 @@ class OverlayModal extends React.Component {
     ) {
       this.closeModal();
       const nextComponent = e.target;
-      if (
-        nextComponent.hasAttribute('data-overlayTarget') ||
-        nextComponent.closest('[data-overlayTarget]')
-      ) {
+      const componentAttributeValue =
+        nextComponent.getAttribute('data-overlayTarget') ||
+        nextComponent.closest('[data-overlayTarget]').getAttribute('data-overlayTarget');
+      if (component === componentAttributeValue) {
         e.stopImmediatePropagation();
       }
     }
@@ -290,6 +303,7 @@ class OverlayModal extends React.Component {
         color={color}
         ref={this.setModalRef}
         tabIndex="-1"
+        aria-label={headingForMobile}
       >
         <div
           id="dialogContent"

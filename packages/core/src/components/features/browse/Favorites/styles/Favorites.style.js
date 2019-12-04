@@ -6,6 +6,21 @@ export default css`
       color: ${props => props.theme.colors.TEXT.LIGHTGRAY};
     }
   }
+  .heading-wrapper {
+    ${props =>
+      props.guestAccessKey
+        ? `
+        margin: 0 auto ${props.theme.spacing.ELEM_SPACING.MED};
+        width: 92%;`
+        : ''}
+    @media ${props => props.theme.mediaQuery.large} {
+      ${props =>
+        props.guestAccessKey
+          ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.XXL};
+        width: 100%`
+          : ''}
+    }
+  }
   .favorite-title {
     padding-bottom: 12px;
     border-bottom: 3px solid black;
@@ -23,10 +38,47 @@ export default css`
     margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
       ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
+
+  .render-mobile-view {
+    width: auto;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .filter-row {
+        width: auto;
+      }
+    }
+  }
+
+  .filter-and-sort-form-container .render-mobile-view {
+    position: relative;
+    width: auto;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
+
+  .filter-and-sort-form-container .filter-row {
+    margin-right: auto;
+    margin-left: 0;
+  }
   .brand-filter-section {
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     margin: 0;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    ${props =>
+      props.guestAccessKey
+        ? `width: 92%;
+        margin: auto;`
+        : ''}
+    @media ${props => props.theme.mediaQuery.large} {
+      ${props => (props.guestAccessKey ? `width: 100%` : '')}
+    }
   }
 
   .filters-only-container {
@@ -74,20 +126,6 @@ export default css`
     }
   }
 
-  .render-mobile-view {
-    width: auto;
-    padding: 0;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      display: none;
-    }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      .filter-row {
-        width: auto;
-      }
-    }
-  }
-
   .brand-options {
     display: inline-block;
     min-width: 152px;
@@ -102,7 +140,9 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs12};
     }
   }
-
+  .dropdownListWrapper li {
+      cursor: pointer;
+  }
   .brand-option-list {
     li {
       &:first-child {
@@ -139,5 +179,8 @@ export default css`
         padding-bottom: 0;
       }
     }
+  }
+  .dropdownliBottomBorder {
+    border-bottom: 0;
   }
 `;

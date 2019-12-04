@@ -51,6 +51,9 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     defaultWishList: PropTypes.shape([]),
     activeWishList: PropTypes.shape({}),
     renderItems: PropTypes.func,
+    showListSeperator: PropTypes.bool,
+    isCustomiseListHeight: PropTypes.bool,
+    isMoveToList: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -73,20 +76,16 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
     defaultWishList: [],
     activeWishList: {},
     renderItems: null,
+    showListSeperator: false,
+    isCustomiseListHeight: false,
+    isMoveToList: false,
   };
 
   static getDerivedStateFromProps(props, state) {
     const { selectedLabelState } = state;
-    if (props.selectedValue !== selectedLabelState) {
-      const result = props.data.find(item => {
-        if (item.displayName) return item.displayName === props.selectedValue;
-        return item.id === props.selectedValue;
-      });
-
-      if (result) {
-        if (result.displayName) return { selectedLabelState: result.displayName };
-        return { selectedLabelState: result.displayName };
-      }
+    const { selectedValue } = props;
+    if (selectedValue !== '' && selectedValue !== selectedLabelState) {
+      return { selectedLabelState: selectedValue };
     }
     return null;
   }
@@ -107,10 +106,12 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       height: 0,
     };
 
-    const { selectedValue, defaultWishList, isShareOptions, labels } = this.props;
+    const { selectedValue, defaultWishList, isShareOptions, labels, isMoveToList } = this.props;
     let selectedLabelState = '';
     if (isShareOptions) {
       selectedLabelState = selectedValue || labels.lbl_fav_share;
+    } else if (isMoveToList) {
+      selectedLabelState = selectedValue || labels.lbl_fav_moveToAnotherList;
     } else {
       selectedLabelState =
         defaultWishList && defaultWishList.length && defaultWishList[0].displayName;
@@ -147,8 +148,10 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       const windowHeight = getScreenHeight();
 
       // calculate the list height
-      const { data, itemStyle } = this.props;
-      const calculateHeight = data && data.length * itemStyle.height;
+      const { data, itemStyle, isCustomiseListHeight } = this.props;
+      const dataLength = data && data.length && data.length < 4;
+      const additionalHeight = isCustomiseListHeight && dataLength ? 100 : 0;
+      const calculateHeight = data && data.length * itemStyle.height + additionalHeight;
 
       // checking bottom space
       const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.height;
@@ -170,17 +173,16 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
-    const { customDropDownHeight, isWishlist, data } = this.props;
+    const { customDropDownHeight } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
-    const dataLength = data && data.length && data.length < 4;
 
     if (showInBottom) {
       if (calculateHeight > dH) {
         listHeight = dH - 100;
       } else {
-        listHeight = isWishlist && dataLength ? calculateHeight + 100 : calculateHeight;
+        listHeight = calculateHeight;
       }
       if (customDropDownHeight) {
         listHeight = customDropDownHeight;
@@ -231,14 +233,16 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
   /**
    * Handle the drop down item click
    */
-  onDropDownItemClick = item => {
+  onDropDownItemClick = (item, isPreventSelfClose = false) => {
     let { value } = item;
     const { id, displayName } = item;
     if (!value) value = id;
-    this.setState({
-      dropDownIsOpen: false,
-      selectedLabelState: displayName,
-    });
+    if (!isPreventSelfClose) {
+      this.setState({
+        dropDownIsOpen: false,
+        selectedLabelState: displayName,
+      });
+    }
 
     // pass the callback here with value
     const { onValueChange } = this.props;
@@ -276,6 +280,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
       renderItems,
       defaultWishList,
       activeWishList,
+      showListSeperator,
     } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
 
@@ -313,7 +318,7 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
               />
             )}
           </HeaderContainer>
-          <Image source={dropDownIsOpen ? upIcon : downIcon} style={arrowImageStyle} />
+          <Image source={dropDownIsOpen ? upIcon : downIcon} alt="" style={arrowImageStyle} />
         </Row>
 
         <Modal visible={dropDownIsOpen} transparent>
@@ -352,7 +357,8 @@ class SelectWishListDropdown extends React.PureComponent<Props> {
                     style={{ height: flatListHeight }}
                     ListHeaderComponent={renderHeader}
                     ListFooterComponent={this.handleRenderFooter}
-                    ItemSeparatorComponent={() => !isWishlist && <Separator />}
+                    ItemSeparatorComponent={() => showListSeperator && <Separator />}
+                    showsVerticalScrollIndicator={false}
                   />
                 )}
               </FlatListWrapper>

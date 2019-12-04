@@ -2,10 +2,10 @@ import React from 'react';
 import { Image } from 'react-native';
 // import { LazyloadImage } from 'react-native-lazyload-deux';
 import PropTypes from 'prop-types';
-import VideoPlayer from '../../VideoPlayer';
+// import VideoPlayer from '../../VideoPlayer';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
-import { cropImageUrl, getAPIConfig } from '../../../../../utils/index.native';
+import { cropImageUrl, getAPIConfig, getVideoUrl } from '../../../../../utils/index.native';
 
 const placeHolderImg = require('../../../../../assets/img-placeholder.png');
 
@@ -31,7 +31,6 @@ const createURI = properties => {
   const cropVal = crop || '';
   const urlVal = url || '';
   // const ImageComponent = host ? Image : Image;
-  const ImageComponent = Image;
   const namedTransformation = imgConfig || '';
   const apiConfigObj = getAPIConfig();
 
@@ -69,13 +68,39 @@ const DamImage = props => {
     ...otherProps
   } = props;
 
-  const ImageComponent = host ? Image : Image;
+  const ImageComponent = Image;
 
   if (videoData) {
-    return <VideoPlayer {...videoData} />;
+    return null; // <VideoPlayer {...videoData} />;
   }
 
+  // const RenderVideo = videoProps => {
+  // const { video, image } = videoProps;
+  // const { autoplay, controls, url: videoUri } = video;
+
+  // const options = {
+  //   autoplay,
+  //   controls,
+  //   url: videoUri,
+  //   image,
+  // };
+
+  // return null; //<VideoPlayer {...options} />;
+  // };
+
   const uri = createURI(props);
+
+  const uriParam = getVideoUrl(uri.uri);
+
+  if (uriParam) {
+    // const { uri: videoUri } = uri;
+    // const VideoUri = videoUri.replace('/image/', '/video/');
+    // const videoDataOptions = {
+    //   url: VideoUri,
+    // };
+
+    return null; // <RenderVideo video={videoDataOptions} />;
+  }
 
   return (
     <ImageComponent

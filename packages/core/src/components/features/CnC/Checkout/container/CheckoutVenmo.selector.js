@@ -1,5 +1,6 @@
 import { CHECKOUT_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import { constants as venmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import { getContextVenmoUserId } from '../../../account/User/container/User.selectors';
 
 export const getVenmoData = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
@@ -27,6 +28,9 @@ export const getVenmoError = state => {
   const error = state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData', 'error']);
   return error ? error.message : '';
 };
+
+export const isVenmoAppInstalled = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoAppInstalled']);
 
 /**
  * Mainly used to check for Venmo nonce expiry
@@ -68,11 +72,44 @@ export const isVenmoNonceActive = state => {
 export const getVenmoUserName = state => {
   const venmoData = getVenmoData(state);
   const { details: { username } = {} } = venmoData || {};
-  return username;
+  let venmoUserName = username;
+  if (!username) {
+    venmoUserName = getContextVenmoUserId(state);
+  }
+  return venmoUserName;
 };
 
 export function isVenmoPaymentAvailable(state) {
   const venmoData = getVenmoData(state);
   const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
   return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
+}
+
+export function getVenmoPayment(state) {
+  const isNonceNotExpired = isVenmoNonceNotExpired(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  const venmoData = getVenmoData(state);
+  const userName = (venmoData && venmoData.details && venmoData.details.username) || '';
+  return {
+    ccBrand: venmoConstants.VENMO,
+    ccType: venmoConstants.VENMO,
+    userName,
+    isVenmoPaymentSelected: venmoPaymentInProgress && isNonceNotExpired,
+  };
+}
+
+export function isVenmoOrderPayment(state) {
+  const orderConfirmation = state.Confirmation && state.Confirmation.get('orderConfirmation');
+  const paymentLists = orderConfirmation && orderConfirmation.paymentsList;
+  const venmoPayment =
+    paymentLists && paymentLists.find(method => method.paymentMethod.toLowerCase() === 'venmo');
+  return venmoPayment || false;
+}
+
+export function getVenmoOrderUserId(state) {
+  const orderConfirmation = state.Confirmation && state.Confirmation.get('orderConfirmation');
+  const paymentLists = orderConfirmation && orderConfirmation.paymentsList;
+  const venmoPayment =
+    paymentLists && paymentLists.find(method => method.paymentMethod.toLowerCase() === 'venmo');
+  return venmoPayment ? venmoPayment.venmoUserId : '';
 }

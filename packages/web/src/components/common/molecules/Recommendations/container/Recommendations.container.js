@@ -6,6 +6,7 @@ import {
   getProducts,
   getLoadedProductsCount,
   getLabelsProductListing,
+  getFirstSuggestedProduct,
 } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.selector';
 import {
   getCurrentCurrency,
@@ -17,8 +18,11 @@ import RecommendationsView from '../Recommendations';
 const mapStateToProps = (state, ownProps) => {
   const { page, portalValue } = ownProps;
   const reduxKey = `${page}_${portalValue || 'global'}_products`;
+
   return {
-    products: getProducts(state, reduxKey),
+    products: ownProps.isSuggestedItem
+      ? getFirstSuggestedProduct(state)
+      : getProducts(state, reduxKey),
     moduleOHeaderLabel:
       ownProps.headerLabel ||
       getLabelValue(state.Labels, 'MODULE_O_HEADER_LABEL', 'recommendations', 'global'),
@@ -40,7 +44,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
+    loadRecommendations: action => {
+      dispatch(fetchRecommendationsData(action));
+    },
     onPickUpOpenClick: payload => {
       dispatch(openPickupModalWithValues(payload));
     },

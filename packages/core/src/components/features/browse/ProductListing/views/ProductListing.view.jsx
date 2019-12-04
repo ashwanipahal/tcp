@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// Disabling eslint for temporary file
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
@@ -13,23 +15,9 @@ import PromoModules from '../../../../common/organisms/PromoModules';
 
 import { Row, Col, PLPSkeleton } from '../../../../common/atoms';
 
-/*
-// Changes as per RWD-9852. Keeping this for future reference.
-import ModuleA from '../../../../common/molecules/ModuleA';
-import ModuleD from '../../../../common/molecules/ModuleD';
-import ModuleG from '../../../../common/molecules/ModuleG';
-import ModuleQ from '../../../../common/molecules/ModuleQ';
-import moduleAMock from '../../../../../services/abstractors/common/moduleA/mock';
-import moduleDMock from '../../../../../services/abstractors/common/moduleD/mock';
-import moduleGMock from '../../../../../services/abstractors/common/moduleG/mock';
-import moduleQMock from '../../../../../services/abstractors/common/moduleQ/mock';
-*/
-
-// import ProductList from '../molecules/ProductList/views';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -42,6 +30,27 @@ import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
 
 // Minimum number of product results worth measuring with a UX timer
 const MINIMUM_RESULTS_TO_MEASURE = 3;
+
+const formatProductsData = products => {
+  return products.map((tile, index) => {
+    const {
+      productInfo: { listPrice, offerPrice, name, generalProductId, priceRange },
+      miscInfo: { categoryName },
+    } = tile;
+    const productId = generalProductId && generalProductId.split('_')[0];
+    const productName = name;
+    return {
+      id: productId,
+      colorId: generalProductId,
+      name: productName,
+      price: offerPrice,
+      listPrice,
+      extPrice: priceRange.lowOfferPrice,
+      position: index + 1,
+      type: categoryName,
+    };
+  });
+};
 
 const ProductListView = ({
   className,
@@ -68,10 +77,21 @@ const ProductListView = ({
   currency,
   isLoadingMore,
   plpTopPromos,
+  plpGridPromos,
+  plpHorizontalPromos,
   asPathVal,
   isSearchListing,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  isLoggedIn,
+  isPlcc,
+  pageItems,
+  products,
+  store,
+  pageNameProp,
+  pageSectionProp,
+  pageSubSectionProp,
+  trackPageLoad,
   ...otherProps
 }) => {
   // State needed to trigger UX timer once initial product results have rendered
@@ -84,6 +104,20 @@ const ProductListView = ({
       setResultsExist(true);
     }
   }, [productsBlock.length]);
+
+  useEffect(() => {
+    const productsFormatted = formatProductsData(products);
+    if (products.length) {
+      trackPageLoad({
+        pageType: 'browse',
+        pageName: 'browse',
+        pageSection: 'browse',
+        pageSubSection: 'browse',
+        products: productsFormatted,
+        customEvents: ['event91', 'event92', 'event82', 'event80'],
+      });
+    }
+  }, [products.length]);
 
   return (
     <div className={className}>
@@ -107,20 +141,13 @@ const ProductListView = ({
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
           {plpTopPromos.length > 0 && (
-            <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+            <PromoModules
+              plpTopPromos={plpTopPromos}
+              asPath={asPathVal}
+              isLoggedIn={isLoggedIn}
+              isPlcc={isPlcc}
+            />
           )}
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area">
-              {/*
-              // Changes as per RWD-9852. Keeping this for future reference.
-              <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" fullBleed />
-              <ModuleD {...moduleDMock.composites} fullBleed />
-              <ModuleG {...moduleGMock.moduleG.composites} />
-              <ModuleQ {...moduleQMock.moduleQ.composites} />
-              <Recommendations variations="moduleO,moduleP" />
-              */}
-            </div>
-          </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="filter-section" id="filterWrapper">
               <ProductListingFiltersForm
@@ -155,10 +182,17 @@ const ProductListView = ({
               currencyAttributes={currencyAttributes}
               isLoadingMore={isLoadingMore}
               isSearchListing={isSearchListing}
+              plpGridPromos={plpGridPromos}
+              plpHorizontalPromos={plpHorizontalPromos}
               getProducts={getProducts}
               asPathVal={asPathVal}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              isLoggedIn={isLoggedIn}
+              isPlcc={isPlcc}
+              pageNameProp={pageNameProp}
+              pageSectionProp={pageNameProp}
+              pageSubSectionProp={pageNameProp}
               {...otherProps}
             />
             {/* UX timer */}
@@ -179,7 +213,6 @@ const ProductListView = ({
           </Col>
         </Col>
       </Row>
-      <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
     </div>
   );
 };
@@ -217,8 +250,12 @@ ProductListView.propTypes = {
   ),
   asPathVal: PropTypes.string,
   isSearchListing: PropTypes.bool,
+  plpGridPromos: PropTypes.shape({}),
+  plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -243,8 +280,12 @@ ProductListView.defaultProps = {
   plpTopPromos: [],
   asPathVal: '',
   isSearchListing: false,
+  plpGridPromos: {},
+  plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
+  isPlcc: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

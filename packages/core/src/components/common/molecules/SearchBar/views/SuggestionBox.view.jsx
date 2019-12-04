@@ -29,7 +29,7 @@ class SuggestionBox extends React.PureComponent {
       <React.Fragment>
         <div className="suggestionBox">
           {isLatestSearchResultsExists && (
-            <div className="recentBox">
+            <BodyCopy component="div" className="recentBox" fontSize="fs13">
               {latestSearchResults && latestSearchResults.length > 0 && (
                 <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
                   {getLabelValue(labels, 'lbl_search_recent_search')}
@@ -47,6 +47,10 @@ class SuggestionBox extends React.PureComponent {
                         fontSize="fs14"
                         key={item.id}
                         className="recentTag"
+                        onClick={e => {
+                          e.preventDefault();
+                          redirectToSuggestedUrl(`${itemParts[0]}`, itemParts[1]);
+                        }}
                       >
                         <Anchor
                           noLink
@@ -56,10 +60,6 @@ class SuggestionBox extends React.PureComponent {
                               ? `/${getSiteId()}${itemParts[1]}`
                               : `/${getSiteId()}/search/${itemParts[0]}`
                           }
-                          onClick={e => {
-                            e.preventDefault();
-                            redirectToSuggestedUrl(`${itemParts[0]}`, itemParts[1]);
-                          }}
                         >
                           {itemParts[0].charAt(0).toUpperCase() + itemParts[0].slice(1)}
                         </Anchor>
@@ -68,7 +68,7 @@ class SuggestionBox extends React.PureComponent {
                   })}
                 </ul>
               </BodyCopy>
-            </div>
+            </BodyCopy>
           )}
         </div>
       </React.Fragment>

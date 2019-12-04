@@ -3,7 +3,15 @@ import { css } from 'styled-components';
 export default css`
   display: flex;
   flex-wrap: wrap;
-  &.product-tile {
+  &.product-list.horizontal-promo {
+    width: 100%;
+    background: #eeeeee;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
+  &.product-tile,
+  &.promo-div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,8 +21,8 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
-      padding: 12px ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-      width: calc(33.33% - ${props => props.theme.spacing.LAYOUT_SPACING.LRG});
+      padding: 12px ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+      width: calc(33.33% - ${props => props.theme.spacing.LAYOUT_SPACING.MED});
     }
     @media only screen and (min-width: 1350px) {
       margin: 0 0 19px 0;

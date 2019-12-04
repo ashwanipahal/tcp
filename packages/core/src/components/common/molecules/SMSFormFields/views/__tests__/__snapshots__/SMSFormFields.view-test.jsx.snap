@@ -39,7 +39,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -123,7 +122,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -222,7 +223,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -306,7 +306,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -516,7 +518,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -616,7 +620,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -700,7 +703,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -910,7 +915,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;

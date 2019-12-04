@@ -1,9 +1,11 @@
 import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { isMobileApp } from '@tcp/core/src/utils';
 import PRODUCTLISTING_CONSTANTS from './ProductDetail.constants';
-import { setProductDetails } from './ProductDetail.actions';
+import { setProductDetails, setPDPLoadingState } from './ProductDetail.actions';
 import getProductInfoById, {
   layoutResolver,
+  getProductBVReviewStats,
 } from '../../../../../services/abstractors/productListing/productDetail';
 import {
   getUserLoggedInState,
@@ -17,6 +19,7 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     yield put(loadLayoutData({}, pageName));
     yield put(setProductDetails({ product: {} }));
     const state = yield select();
+    yield put(setPDPLoadingState({ isLoading: true }));
     const productDetail = yield call(getProductInfoById, productColorId, state);
     const {
       product: { category },
@@ -24,6 +27,11 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     const { layout, modules } = yield call(layoutResolver, { category, pageName });
     yield put(loadLayoutData(layout, pageName));
     yield put(loadModulesData(modules));
+    // fetch review/rating summary from Bazar Voice only for App
+    if (isMobileApp) {
+      const productId = productDetail.product.ratingsProductId || 0;
+      productDetail.product.bazaarVoice = yield call(getProductBVReviewStats, productId);
+    }
     const isGuest = !getUserLoggedInState({ ...state });
     const isRemembered = isRememberedUser({ ...state });
     if (!isGuest && !isRemembered) {
@@ -39,8 +47,9 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     }
 
     yield put(setProductDetails({ ...productDetail }));
+    yield put(setPDPLoadingState({ isLoading: false }));
   } catch (err) {
-    console.log(err);
+    yield put(setPDPLoadingState({ isLoading: false }));
   }
 }
 

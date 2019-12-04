@@ -26,7 +26,7 @@ class CouponCard extends React.Component<Props> {
             data-locator={dataLocator}
             className="couponCard__header_text"
             component="p"
-            fontSize="fs12"
+            fontSize="fs10"
             fontFamily="secondary"
           >
             {type}
@@ -37,8 +37,9 @@ class CouponCard extends React.Component<Props> {
             data-locator={`coupon_${coupon.status}_header_expired`}
             className="couponCard__header_expired"
             component="p"
-            fontSize="fs12"
-            fontFamily="secondary"
+            fontSize="fs10"
+            fontFamily="primary"
+            fontWeight="regular"
           >
             {labels.EXPIRING_SOON}
           </BodyCopy>
@@ -149,6 +150,8 @@ class CouponCard extends React.Component<Props> {
         <div className={`couponCard__container ${containerOveride}`}>
           {!isCarouselView && (
             <ErrorMessage
+              fontSize="fs12"
+              fontWeight="extrabold"
               error={coupon.error}
               isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
             />
@@ -217,6 +220,8 @@ class CouponCard extends React.Component<Props> {
           {isCarouselView && (
             <ErrorMessage
               className="transparent-box"
+              fontSize="fs12"
+              fontWeight="extrabold"
               error={coupon.error}
               isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
             />

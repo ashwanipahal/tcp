@@ -69,11 +69,11 @@ const addItemToWishlist = wishlistDetails => {
     })
     .catch(err => {
       logger.error('err', err);
-      const errorMssg = getFormattedError(err, errorMapping);
+      const errorMssg = getFormattedError(err, errorMapping, true);
       return {
         errorMessage:
-          (err && err.errorResponse && err.errorResponse.errorMessage) ||
           (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
+          (err && err.errorResponse && err.errorResponse.errorMessage) ||
           (errorMapping && errorMapping.DEFAULT) ||
           '',
       };
@@ -88,8 +88,9 @@ export const getUserWishLists = userName => {
   const payload = {
     webService: endpoints.getListofWishList,
   };
-  const { siteId } = getAPIConfig();
-  const assetHost = typeof window !== 'undefined' && window.location && window.location.origin;
+  const { siteId, webAppDomain } = getAPIConfig();
+  const assetHost =
+    (typeof window !== 'undefined' && window.location && window.location.origin) || webAppDomain;
 
   return executeStatefulAPICall(payload)
     .then(res => {
@@ -215,6 +216,15 @@ const getClearanceItem = item => (item.itemTCPProductInd || '').toLowerCase() ==
 
 const newArrivalItem = item => (item.itemTCPProductInd || '').toLowerCase() === 'new arrivals';
 
+const getFinalPDPUrl = item => {
+  const { siteId } = getAPIConfig();
+  let pdpURL;
+  if (item.productURL.indexOf(`/${siteId}/`) !== -1) {
+    pdpURL = item.productURL.replace(`/${siteId}`, '');
+  }
+  return pdpURL;
+};
+
 /**
  * @function getWishListbyId
  * @param {String} wishListId - Id of the wishlist you are moving the item from
@@ -249,7 +259,6 @@ export const getWishListbyId = ({
   }
 
   const { isUSStore } = getAPIConfig();
-
   return executeStatefulAPICall(payload)
     .then(res => {
       if (responseContainsErrors(res)) {
@@ -293,7 +302,7 @@ export const getWishListbyId = ({
                 generalProductId: item.parentProductId,
                 name: item.productName,
                 isGiftCard: item.isGiftCard !== '0',
-                pdpUrl: item.productURL,
+                pdpUrl: getFinalPDPUrl(item),
                 listPrice: item.ListPrice,
                 offerPrice: isCanada ? item.OfferPriceCAD : item.OfferPriceUS,
               },
@@ -431,7 +440,12 @@ export const createWishList = (wishlistName, isDefault) => {
     });
 };
 
-export const moveItemToNewWishList = (formData, activeWishlistId, activeWishlistItem) => {
+export const moveItemToNewWishList = (
+  formData,
+  activeWishlistId,
+  activeWishlistItem,
+  errorMapping
+) => {
   const args = {
     fromWishListId: activeWishlistId,
     toWishListId: formData.toWishListId,
@@ -471,7 +485,14 @@ export const moveItemToNewWishList = (formData, activeWishlistId, activeWishlist
       }
     })
     .catch(err => {
-      throw getFormattedError(err);
+      const errorMssg = getFormattedError(err, errorMapping, true);
+      return {
+        errorMessage:
+          (errorMssg && errorMssg.errorMessages && errorMssg.errorMessages._error) ||
+          (err && err.errorResponse && err.errorResponse.errorMessage) ||
+          (errorMapping && errorMapping.DEFAULT) ||
+          '',
+      };
     });
 };
 

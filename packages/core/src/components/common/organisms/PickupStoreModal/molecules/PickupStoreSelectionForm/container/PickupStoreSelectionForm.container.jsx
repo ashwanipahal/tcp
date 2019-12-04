@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { propTypes as reduxFormPropTypes, change } from 'redux-form';
 import { connect } from 'react-redux';
+import { propTypes as reduxFormPropTypes, change } from 'redux-form';
+import { setClickAnalyticsData, trackClick } from '../../../../../../../analytics/actions';
 import PickupStoreSelectionForm from '../views';
 import { getBrand } from '../../../../../../../utils';
 import { getAddressLocationInfo } from '../../../../../../../utils/addressLocation';
@@ -474,11 +475,17 @@ class PickupStoreSelectionFormContainer extends React.Component {
       openRestrictedModalForBopis,
       storeSearchCriteria,
       storeSearchDistance,
+      setClickAnalyticsDataDispatch,
+      trackClickDispatch,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     const { selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
     return (
       <PickupStoreSelectionForm
+        setFavoriteStore={setFavoriteStore}
+        getDefaultStore={getDefaultStore}
         onSearch={this.onSearch}
         pageNameProp={pageNameProp}
         isPickUpWarningModal={isPickUpWarningModal}
@@ -523,16 +530,26 @@ class PickupStoreSelectionFormContainer extends React.Component {
         openRestrictedModalForBopis={openRestrictedModalForBopis}
         storeSearchCriteria={storeSearchCriteria}
         storeSearchDistance={storeSearchDistance}
+        setClickAnalyticsData={setClickAnalyticsDataDispatch}
+        trackClick={trackClickDispatch}
       />
     );
   }
 }
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     pageNameProp: getPageName(state),
     storeSearchCriteria: getStoreSearchCriteria(state),
     storeSearchDistance: getStoreSearchDistance(state),
   };
-}
+};
 
-export default connect(mapStateToProps)(PickupStoreSelectionFormContainer);
+const mapDispatchToProps = dispatch => ({
+  setClickAnalyticsDataDispatch: payload => dispatch(setClickAnalyticsData(payload)),
+  trackClickDispatch: payload => dispatch(trackClick(payload)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PickupStoreSelectionFormContainer);

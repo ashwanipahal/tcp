@@ -1935,9 +1935,9 @@ exports[`StoreSelector component should default set title as value for selected 
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "sc-jKJlTe",
             "isStatic": false,
-            "lastClassName": "kzDcnq",
+            "lastClassName": "dybRop",
             "rules": Array [
               "
   ",
@@ -2049,7 +2049,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "displayName": "Styled(StoreSelector)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "sc-jKJlTe",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -3310,7 +3310,7 @@ exports[`StoreSelector component should default set title as value for selected 
       titleText="Test Title"
     >
       <StoreSelector
-        className="sc-ckVGcZ kzDcnq"
+        className="sc-jKJlTe dybRop"
         dataLocator=""
         defaultSelectText="Test Text"
         options={
@@ -4566,14 +4566,14 @@ exports[`StoreSelector component should default set title as value for selected 
         titleText="Test Title"
       >
         <div
-          className="sc-ckVGcZ kzDcnq"
+          className="sc-jKJlTe dybRop"
         >
           <div
             className="store-selector-icon"
           >
             <Styled(Image)
               alt="Store Icon"
-              src="/static/images/store.png"
+              src="/static/version-not-available/images/store.png"
             >
               <StyledComponent
                 alt="Store Icon"
@@ -4582,9 +4582,9 @@ exports[`StoreSelector component should default set title as value for selected 
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-bZQynM",
+                      "componentId": "sc-htoDjs",
                       "isStatic": false,
-                      "lastClassName": "kRaWkN",
+                      "lastClassName": "kuuBJg",
                       "rules": Array [
                         "
   ",
@@ -4600,7 +4600,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     "displayName": "Styled(Image)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-bZQynM",
+                    "styledComponentId": "sc-htoDjs",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -4608,25 +4608,29 @@ exports[`StoreSelector component should default set title as value for selected 
                   }
                 }
                 forwardedRef={null}
-                src="/static/images/store.png"
+                src="/static/version-not-available/images/store.png"
               >
                 <Image
                   alt="Store Icon"
-                  className="sc-bZQynM kRaWkN"
+                  className="sc-htoDjs kuuBJg"
                   link={null}
+                  onLoad={[Function]}
                   placeholderSrc=""
                   ref={[Function]}
+                  role="img"
                   sizes=""
-                  src="/static/images/store.png"
+                  src="/static/version-not-available/images/store.png"
                   srcset=""
                   url=""
                 >
                   <img
                     alt="Store Icon"
-                    className="sc-bZQynM kRaWkN"
+                    className="sc-htoDjs kuuBJg"
                     onError={null}
+                    onLoad={[Function]}
+                    role={null}
                     sizes={null}
-                    src="/static/images/store.png"
+                    src="/static/version-not-available/images/store.png"
                     srcSet=""
                   />
                 </Image>
@@ -5909,9 +5913,9 @@ exports[`StoreSelector component should default set title as value for selected 
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-dxgOiQ",
+                        "componentId": "sc-ckVGcZ",
                         "isStatic": false,
-                        "lastClassName": "ibfiZV",
+                        "lastClassName": "dHhQXd",
                         "rules": Array [
                           "
   ",
@@ -6135,7 +6139,7 @@ exports[`StoreSelector component should default set title as value for selected 
 
   .dropdownActiveIcon {
     background-image: url(",
-                          "/static/images/circle-check-no-circle.svg",
+                          "/static/version-not-available/images/circle-check-no-circle.svg",
                           ");
     width: ",
                           [Function],
@@ -6221,10 +6225,10 @@ exports[`StoreSelector component should default set title as value for selected 
                       },
                       "displayName": "Styled(Styled(CustomSelect))",
                       "foldedComponentIds": Array [
-                        "sc-kpOJdX",
+                        "sc-bxivhb",
                       ],
                       "render": [Function],
-                      "styledComponentId": "sc-dxgOiQ",
+                      "styledComponentId": "sc-ckVGcZ",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -7486,7 +7490,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     activeTitle="Canada"
                     activeValue="Canada"
                     childrenComp={null}
-                    className="sc-kpOJdX sc-dxgOiQ ibfiZV"
+                    className="sc-bxivhb sc-ckVGcZ dHhQXd"
                     clickHandler={[Function]}
                     customSelectClassName=""
                     dataLocatorObj={
@@ -8747,7 +8751,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     selectListTitle=""
                   >
                     <Styled(BodyCopy)
-                      className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select "
+                      className="sc-bxivhb sc-ckVGcZ dHhQXd custom-select "
                       color="text.primary"
                       component="div"
                       fontFamily="primary"
@@ -8759,7 +8763,7 @@ exports[`StoreSelector component should default set title as value for selected 
                       textAlign="left"
                     >
                       <StyledComponent
-                        className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select "
+                        className="sc-bxivhb sc-ckVGcZ dHhQXd custom-select "
                         color="text.primary"
                         component="div"
                         fontFamily="primary"
@@ -8818,7 +8822,7 @@ exports[`StoreSelector component should default set title as value for selected 
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select  sc-bwzfXH fdGFgB"
+                          className="sc-bxivhb sc-ckVGcZ dHhQXd custom-select  sc-bwzfXH fdGFgB"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -8830,7 +8834,7 @@ exports[`StoreSelector component should default set title as value for selected 
                           textAlign="left"
                         >
                           <div
-                            className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select  sc-bwzfXH fdGFgB"
+                            className="sc-bxivhb sc-ckVGcZ dHhQXd custom-select  sc-bwzfXH fdGFgB"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"
@@ -10974,9 +10978,9 @@ exports[`StoreSelector component should render correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "sc-jKJlTe",
             "isStatic": false,
-            "lastClassName": "kzDcnq",
+            "lastClassName": "dybRop",
             "rules": Array [
               "
   ",
@@ -11088,7 +11092,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "displayName": "Styled(StoreSelector)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "sc-jKJlTe",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -12348,7 +12352,7 @@ exports[`StoreSelector component should render correctly 1`] = `
       titleText="Test Title"
     >
       <StoreSelector
-        className="sc-ckVGcZ kzDcnq"
+        className="sc-jKJlTe dybRop"
         dataLocator=""
         defaultSelectText="Test Text"
         options={
@@ -13604,14 +13608,14 @@ exports[`StoreSelector component should render correctly 1`] = `
         titleText="Test Title"
       >
         <div
-          className="sc-ckVGcZ kzDcnq"
+          className="sc-jKJlTe dybRop"
         >
           <div
             className="store-selector-icon"
           >
             <Styled(Image)
               alt="Store Icon"
-              src="/static/images/store.png"
+              src="/static/version-not-available/images/store.png"
             >
               <StyledComponent
                 alt="Store Icon"
@@ -13620,9 +13624,9 @@ exports[`StoreSelector component should render correctly 1`] = `
                     "$$typeof": Symbol(react.forward_ref),
                     "attrs": Array [],
                     "componentStyle": ComponentStyle {
-                      "componentId": "sc-bZQynM",
+                      "componentId": "sc-htoDjs",
                       "isStatic": false,
-                      "lastClassName": "kRaWkN",
+                      "lastClassName": "kuuBJg",
                       "rules": Array [
                         "
   ",
@@ -13638,7 +13642,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     "displayName": "Styled(Image)",
                     "foldedComponentIds": Array [],
                     "render": [Function],
-                    "styledComponentId": "sc-bZQynM",
+                    "styledComponentId": "sc-htoDjs",
                     "target": [Function],
                     "toString": [Function],
                     "warnTooManyClasses": [Function],
@@ -13646,25 +13650,29 @@ exports[`StoreSelector component should render correctly 1`] = `
                   }
                 }
                 forwardedRef={null}
-                src="/static/images/store.png"
+                src="/static/version-not-available/images/store.png"
               >
                 <Image
                   alt="Store Icon"
-                  className="sc-bZQynM kRaWkN"
+                  className="sc-htoDjs kuuBJg"
                   link={null}
+                  onLoad={[Function]}
                   placeholderSrc=""
                   ref={[Function]}
+                  role="img"
                   sizes=""
-                  src="/static/images/store.png"
+                  src="/static/version-not-available/images/store.png"
                   srcset=""
                   url=""
                 >
                   <img
                     alt="Store Icon"
-                    className="sc-bZQynM kRaWkN"
+                    className="sc-htoDjs kuuBJg"
                     onError={null}
+                    onLoad={[Function]}
+                    role={null}
                     sizes={null}
-                    src="/static/images/store.png"
+                    src="/static/version-not-available/images/store.png"
                     srcSet=""
                   />
                 </Image>
@@ -14947,9 +14955,9 @@ exports[`StoreSelector component should render correctly 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-dxgOiQ",
+                        "componentId": "sc-ckVGcZ",
                         "isStatic": false,
-                        "lastClassName": "ibfiZV",
+                        "lastClassName": "dHhQXd",
                         "rules": Array [
                           "
   ",
@@ -15173,7 +15181,7 @@ exports[`StoreSelector component should render correctly 1`] = `
 
   .dropdownActiveIcon {
     background-image: url(",
-                          "/static/images/circle-check-no-circle.svg",
+                          "/static/version-not-available/images/circle-check-no-circle.svg",
                           ");
     width: ",
                           [Function],
@@ -15259,10 +15267,10 @@ exports[`StoreSelector component should render correctly 1`] = `
                       },
                       "displayName": "Styled(Styled(CustomSelect))",
                       "foldedComponentIds": Array [
-                        "sc-kpOJdX",
+                        "sc-bxivhb",
                       ],
                       "render": [Function],
-                      "styledComponentId": "sc-dxgOiQ",
+                      "styledComponentId": "sc-ckVGcZ",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -16524,7 +16532,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     activeTitle="Test Text"
                     activeValue={null}
                     childrenComp={null}
-                    className="sc-kpOJdX sc-dxgOiQ ibfiZV"
+                    className="sc-bxivhb sc-ckVGcZ dHhQXd"
                     clickHandler={[Function]}
                     customSelectClassName=""
                     dataLocatorObj={
@@ -17785,7 +17793,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     selectListTitle=""
                   >
                     <Styled(BodyCopy)
-                      className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select "
+                      className="sc-bxivhb sc-ckVGcZ dHhQXd custom-select "
                       color="text.primary"
                       component="div"
                       fontFamily="primary"
@@ -17797,7 +17805,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                       textAlign="left"
                     >
                       <StyledComponent
-                        className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select "
+                        className="sc-bxivhb sc-ckVGcZ dHhQXd custom-select "
                         color="text.primary"
                         component="div"
                         fontFamily="primary"
@@ -17856,7 +17864,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select  sc-bwzfXH fdGFgB"
+                          className="sc-bxivhb sc-ckVGcZ dHhQXd custom-select  sc-bwzfXH fdGFgB"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -17868,7 +17876,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                           textAlign="left"
                         >
                           <div
-                            className="sc-kpOJdX sc-dxgOiQ ibfiZV custom-select  sc-bwzfXH fdGFgB"
+                            className="sc-bxivhb sc-ckVGcZ dHhQXd custom-select  sc-bwzfXH fdGFgB"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"

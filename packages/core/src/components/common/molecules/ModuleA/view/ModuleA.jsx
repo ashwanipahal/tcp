@@ -53,7 +53,7 @@ class ModuleA extends React.Component {
     const curCarouselSlide = largeCompImageCarousel[curSlideIndex];
     let ribbonAlignedClass = '';
 
-    if (curCarouselSlide) {
+    if (curCarouselSlide && curCarouselSlide.ribbonBanner) {
       const [ribbonBanner = {}] = curCarouselSlide.ribbonBanner;
       if (ribbonBanner.ribbonPlacement === 'left') {
         ribbonAlignedClass = 'left-aligned-ribbon';
@@ -71,6 +71,7 @@ class ModuleA extends React.Component {
       className,
       accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
       fullBleed,
+      moduleClassName,
     } = this.props;
 
     const buttonListCtaType = ctaTypes[ctaType];
@@ -112,7 +113,7 @@ class ModuleA extends React.Component {
 
     return (
       <Row
-        className={`${className} ${
+        className={`${className} ${moduleClassName} ${
           isGymboree() ? 'gymboree-module-a' : ''
         } ${this.getRibbonClass()} moduleA`}
         fullBleed={fullBleed || { small: true, medium: true, large: false }}
@@ -143,6 +144,7 @@ class ModuleA extends React.Component {
                       imgData={linkedImage.image}
                       imgConfigs={imageConfig}
                       data-locator={`${getLocator('moduleA_image')}${i}`}
+                      videoData={linkedImage.video}
                     />
                     <div className="banner-content">
                       {headerText && (
@@ -200,6 +202,7 @@ class ModuleA extends React.Component {
 ModuleA.defaultProps = {
   accessibility: {},
   fullBleed: false,
+  moduleClassName: '',
 };
 
 ModuleA.propTypes = {
@@ -227,6 +230,7 @@ ModuleA.propTypes = {
   ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
     .isRequired,
   fullBleed: PropTypes.bool,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleA), style);

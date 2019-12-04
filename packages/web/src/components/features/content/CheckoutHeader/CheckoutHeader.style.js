@@ -115,6 +115,11 @@ export default css`
     }
   }
 
+  .checkout-header-title {
+    margin: 0;
+    text-align: center;
+  }
+
   .non-checkout-pages & {
     display: none;
   }

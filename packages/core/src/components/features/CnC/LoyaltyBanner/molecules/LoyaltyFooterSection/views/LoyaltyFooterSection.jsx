@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyFooterSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
@@ -15,8 +16,9 @@ const openModalApplyNowModal = (openApplyNowModal, step = 1) => {
   return null;
 };
 
-const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
+const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal, cartOrderItems) => {
   const pageData = 'shopping bag';
+  const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
   return (
     <Anchor
       fontSizeVariation="medium"
@@ -34,8 +36,10 @@ const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
           pageType: pageData,
           pageSection: pageData,
           pageSubSection: pageData,
+          products: productsData,
           pageName: pageData,
           customEvents: ['event116'],
+          eventName: 'loyaltyclick',
         }}
       >
         {text}
@@ -44,7 +48,9 @@ const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
   );
 };
 
-const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal) => {
+const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal, cartOrderItems) => {
+  const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+
   return (
     <Anchor
       fontSizeVariation="medium"
@@ -60,7 +66,9 @@ const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal) => {
       <ClickTracker
         clickData={{
           pageName: 'shopping bag',
+          eventName: 'loyaltyclick',
           customEvents: ['event117'],
+          products: productsData,
         }}
       >
         {text}
@@ -114,13 +122,23 @@ const renderLoginLink = (text, closeAddedToBagModal, openOverlay) => {
 
 const getLinkWithName = (props, action, text) => {
   let returnLink;
-  const { closeAddedToBagModal, openOverlay, openApplyNowModal } = props;
+  const { closeAddedToBagModal, openOverlay, openApplyNowModal, cartOrderItems } = props;
   switch (action) {
     case 'ApplyNowAction':
-      returnLink = renderApplyNowLink(text, closeAddedToBagModal, openApplyNowModal);
+      returnLink = renderApplyNowLink(
+        text,
+        closeAddedToBagModal,
+        openApplyNowModal,
+        cartOrderItems
+      );
       break;
     case 'LearnMoreAction':
-      returnLink = renderLearnMoreLink(text, closeAddedToBagModal, openApplyNowModal);
+      returnLink = renderLearnMoreLink(
+        text,
+        closeAddedToBagModal,
+        openApplyNowModal,
+        cartOrderItems
+      );
       break;
     case 'CreateAccountAction':
       returnLink = renderCreateAccountLink(text, closeAddedToBagModal, openOverlay);

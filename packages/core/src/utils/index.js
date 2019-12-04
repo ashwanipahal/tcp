@@ -40,6 +40,8 @@ export {
   removeBodyScrollLocks,
   isAndroidWeb,
   createLayoutPath,
+  internalCampaignProductAnalyticsList,
+  getQueryParamsFromUrl,
 } from './utils.web';
 
 export {
@@ -50,9 +52,11 @@ export {
   isGymboree,
   isTCP,
   getBrand,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,
+  getVideoUrl,
   getAPIConfig,
   isCanada,
   isUsOnly,
@@ -90,4 +94,5 @@ export {
   calculatePriceValue,
   getProductUrlForDAM,
   plpRoutingHandling,
+  convertNumToBool,
 } from './utils';

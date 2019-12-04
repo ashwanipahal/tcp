@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoriteSkeletonVanilla Component should match snapshot 1`] = `
+<Fragment>
+  <div
+    className="skeleton"
+  >
+    <div
+      className="skeleton-wishListName"
+    >
+      <SkeletonLine
+        height="40px"
+        width="130px"
+      />
+    </div>
+    <div
+      className="skeleton-displayFilter"
+    >
+      <SkeletonLine
+        height="40px"
+        width="130px"
+      />
+    </div>
+    <div
+      className="skeleton-sortFilter"
+    >
+      <SkeletonLine
+        height="40px"
+        width="130px"
+      />
+    </div>
+  </div>
+  <Styled(PLPSkeleton)
+    col={8}
+  />
+</Fragment>
+`;

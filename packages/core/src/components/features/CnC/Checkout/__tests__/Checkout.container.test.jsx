@@ -28,6 +28,7 @@ describe('CheckoutPage Container', () => {
     getUserInformation: jest.fn(),
     markBagPageRoutingDone: jest.fn(),
     isPayPalWebViewEnable: false,
+    currentStage: 'shipping',
   };
 
   it('should render CheckoutPage view section', () => {

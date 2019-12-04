@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Account Page should render correctly 1`] = `
+<View
+  className=""
+>
+  <Styled(CreateAccounPage)
+    className=""
+    confirmHideShowPwd=""
+    createAccountAction={[MockFunction]}
+    error={Object {}}
+    hideShowPwd=""
+    isIAgreeChecked=""
+    labels={[Function]}
+    onAlreadyHaveAnAccountClick={[Function]}
+    onRequestClose={[Function]}
+    showForgotPasswordForm={[Function]}
+    toastMessage={[Function]}
+    userplccCardId=""
+    userplccCardNumber=""
+  />
+</View>
+`;
+
+exports[`Create Account Page should render correctly Forgot Password 1`] = `
+<View
+  className=""
+>
+  <Connect(ForgotPasswordContainer)
+    labels={[Function]}
+    showForgotPasswordForm={[Function]}
+    updateHeader={[Function]}
+  />
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_login_createAccountHelp_1"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_login_createAccountHelp_2"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="#575757"
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator=""
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_login_createAccountCTA"
+      theme={Object {}}
+      type="submit"
+      url=""
+      withNoLineHeight={false}
+    />
+  </Styled(View)>
+</View>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OutfitProductSkeletonVanilla OutfitProductSkeletonVanilla should render correctly 1`] = `
+<div>
+  <Styled(Row)
+    className="product-detail-skeleton-wrapper"
+    fullBleed={true}
+  >
+    <div
+      className="product-main-image"
+    >
+      <SkeletonLine />
+    </div>
+    <div
+      className="product-overview-wrapper-main"
+    >
+      <ProductOverViewDetailWrapper />
+      <ProductOverViewDetailWrapper />
+    </div>
+  </Styled(Row)>
+</div>
+`;

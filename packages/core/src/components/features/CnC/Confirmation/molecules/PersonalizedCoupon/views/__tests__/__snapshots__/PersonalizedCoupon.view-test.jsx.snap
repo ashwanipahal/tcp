@@ -73,10 +73,11 @@ exports[`PersonalizedCoupon View should render correctly for empty state with on
       textAlign="left"
     >
       <Styled(Image)
+        alt=""
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/icon-printer.png"
+        src="/static/version-not-available/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -169,10 +170,11 @@ exports[`PersonalizedCoupon View should render correctly for empty state with on
       textAlign="left"
     >
       <Styled(Image)
+        alt=""
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/icon-printer.png"
+        src="/static/version-not-available/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -374,10 +376,11 @@ exports[`PersonalizedCoupon View should render correctly for full filled state 1
       textAlign="left"
     >
       <Styled(Image)
+        alt=""
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/icon-printer.png"
+        src="/static/version-not-available/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -400,9 +403,10 @@ exports[`PersonalizedCoupon View should render correctly for full filled state 1
       noLink={true}
     >
       <Styled(Image)
+        alt=""
         className="down-arrow"
         height="10px"
-        src="/static/images/carrot-left.png"
+        src="/static/version-not-available/images/carrot-left.png"
         width="7px"
       />
     </Styled(Anchor)>
@@ -592,10 +596,11 @@ exports[`PersonalizedCoupon View should render correctly for full filled state f
       textAlign="left"
     >
       <Styled(Image)
+        alt=""
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/icon-printer.png"
+        src="/static/version-not-available/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -618,9 +623,10 @@ exports[`PersonalizedCoupon View should render correctly for full filled state f
       noLink={true}
     >
       <Styled(Image)
+        alt=""
         className="down-arrow"
         height="10px"
-        src="/static/images/carrot-left.png"
+        src="/static/version-not-available/images/carrot-left.png"
         width="7px"
       />
     </Styled(Anchor)>
@@ -722,10 +728,11 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       textAlign="left"
     >
       <Styled(Image)
+        alt=""
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/icon-printer.png"
+        src="/static/version-not-available/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -748,9 +755,10 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       noLink={true}
     >
       <Styled(Image)
+        alt=""
         className="down-arrow"
         height="10px"
-        src="/static/images/carrot-left.png"
+        src="/static/version-not-available/images/carrot-left.png"
         width="7px"
       />
     </Styled(Anchor)>
@@ -852,10 +860,11 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       textAlign="left"
     >
       <Styled(Image)
+        alt=""
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/icon-printer.png"
+        src="/static/version-not-available/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -878,9 +887,10 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       noLink={true}
     >
       <Styled(Image)
+        alt=""
         className="down-arrow"
         height="10px"
-        src="/static/images/carrot-left.png"
+        src="/static/version-not-available/images/carrot-left.png"
         width="7px"
       />
     </Styled(Anchor)>
@@ -982,10 +992,11 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       textAlign="left"
     >
       <Styled(Image)
+        alt=""
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/icon-printer.png"
+        src="/static/version-not-available/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -1008,9 +1019,10 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       noLink={true}
     >
       <Styled(Image)
+        alt=""
         className="down-arrow"
         height="10px"
-        src="/static/images/carrot-left.png"
+        src="/static/version-not-available/images/carrot-left.png"
         width="7px"
       />
     </Styled(Anchor)>
@@ -1112,10 +1124,11 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       textAlign="left"
     >
       <Styled(Image)
+        alt=""
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
-        src="/static/images/icon-printer.png"
+        src="/static/version-not-available/images/icon-printer.png"
         width="20px"
       />
     </Styled(BodyCopy)>
@@ -1138,9 +1151,10 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       noLink={true}
     >
       <Styled(Image)
+        alt=""
         className="down-arrow"
         height="10px"
-        src="/static/images/carrot-left.png"
+        src="/static/version-not-available/images/carrot-left.png"
         width="7px"
       />
     </Styled(Anchor)>

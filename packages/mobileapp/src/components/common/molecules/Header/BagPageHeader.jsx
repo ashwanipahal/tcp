@@ -1,6 +1,8 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { getLocator, isGymboree } from '@tcp/core/src/utils';
+import { TouchableOpacity } from 'react-native';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   SafeAreaViewStyle,
@@ -10,7 +12,10 @@ import {
   CloseIconTouchable,
   CloseContainer,
   BagPageContainer,
+  ArrowBackIcon,
 } from './Header.style';
+
+import { BagPageBackContainer } from './BagPageHeader.style';
 
 // @flow
 type Props = {
@@ -23,6 +28,7 @@ type Props = {
  */
 
 const closeIcon = require('@tcp/core/src/assets/close.png');
+const backIcon = require('@tcp/core/src/assets/carrot-large-left.png');
 const tcpIcon = require('../../../../assets/images/tcp/tcpLaunchImage.png');
 const gymIcon = require('../../../../assets/images/gymboree/gymboreeLaunchImage.png');
 
@@ -40,27 +46,49 @@ class BagPageHeader extends React.PureComponent<Props> {
   };
 
   render() {
+    const { showBrandIcon, showCloseButton, showGobackIcon, isPayPalWebViewEnable } = this.props;
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
-        <BagPageContainer data-locator={getLocator('global_bagpageheaderpanel')}>
-          <BrandIconSection>
-            <BrandIcon
-              source={isGymboree() ? gymIcon : tcpIcon}
-              data-locator={getLocator('global_bagpageheaderpanelbrandicon')}
-              accessibilityRole="image"
-            />
-          </BrandIconSection>
-          <CloseContainer>
-            <CloseIconTouchable onPress={this.closeIconAction}>
-              <CloseIcon
-                source={closeIcon}
-                data-locator={getLocator('global_bagpageheaderpanelcloseicon')}
-                accessibilityRole="button"
-              />
-            </CloseIconTouchable>
-          </CloseContainer>
-        </BagPageContainer>
+        {!isPayPalWebViewEnable && (
+          <BagPageContainer data-locator={getLocator('global_bagpageheaderpanel')}>
+            {showGobackIcon && (
+              <BagPageBackContainer>
+                <TouchableOpacity
+                  accessible
+                  onPress={this.closeIconAction}
+                  accessibilityRole="button"
+                  accessibilityLabel="back button"
+                  data-locator={getLocator('global_bagpagebackbutton')}
+                >
+                  <ArrowBackIcon source={backIcon} />
+                </TouchableOpacity>
+              </BagPageBackContainer>
+            )}
+
+            {showBrandIcon && (
+              <BrandIconSection>
+                <BrandIcon
+                  source={isGymboree() ? gymIcon : tcpIcon}
+                  data-locator={getLocator('global_bagpageheaderpanelbrandicon')}
+                  accessibilityRole="image"
+                />
+              </BrandIconSection>
+            )}
+
+            {showCloseButton && (
+              <CloseContainer>
+                <CloseIconTouchable onPress={this.closeIconAction}>
+                  <CloseIcon
+                    source={closeIcon}
+                    data-locator={getLocator('global_bagpageheaderpanelcloseicon')}
+                    accessibilityRole="button"
+                  />
+                </CloseIconTouchable>
+              </CloseContainer>
+            )}
+          </BagPageContainer>
+        )}
       </SafeAreaViewStyle>
     );
   }
@@ -69,7 +97,23 @@ class BagPageHeader extends React.PureComponent<Props> {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
+    isPayPalWebViewEnable:
+      state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false,
   };
+};
+
+BagPageHeader.propTypes = {
+  showBrandIcon: PropTypes.bool,
+  showCloseButton: PropTypes.bool,
+  showGobackIcon: PropTypes.bool,
+  isPayPalWebViewEnable: PropTypes.shape({}),
+};
+
+BagPageHeader.defaultProps = {
+  showBrandIcon: true,
+  showCloseButton: true,
+  showGobackIcon: false,
+  isPayPalWebViewEnable: false,
 };
 
 export default connect(mapStateToProps)(BagPageHeader);

@@ -388,19 +388,24 @@ class CartItemTile extends PureComponent {
     ) {
       return (
         <ClickTracker name="Save_for_Later">
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            component="p"
-            fontWeight={['semibold']}
+          <Anchor
             dataLocator="saveForLaterLink"
-            className="sflActions"
-            onClick={() => {
+            onClick={e => {
+              e.preventDefault();
               this.handleMoveItemtoSaveList();
             }}
+            noLink
+            className="sflActions"
           >
-            {labels.saveForLaterLink}
-          </BodyCopy>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              component="span"
+              fontWeight={['semibold']}
+            >
+              {labels.saveForLaterLink}
+            </BodyCopy>
+          </Anchor>
         </ClickTracker>
       );
     }
@@ -410,19 +415,24 @@ class CartItemTile extends PureComponent {
     ) {
       return (
         <ClickTracker name="Move_to_Bag">
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            component="p"
-            fontWeight={['semibold']}
+          <Anchor
             dataLocator="moveToBagLink"
-            className="sflActions"
-            onClick={() => {
+            onClick={e => {
+              e.preventDefault();
               this.moveToBagSflItem();
             }}
+            noLink
+            className="sflActions"
           >
-            {labels.moveToBagLink}
-          </BodyCopy>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              component="span"
+              fontWeight={['semibold']}
+            >
+              {labels.moveToBagLink}
+            </BodyCopy>
+          </Anchor>
         </ClickTracker>
       );
     }
@@ -489,19 +499,26 @@ class CartItemTile extends PureComponent {
           !isBagPageSflSection &&
           isEditAllowed &&
           !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs12"
-              component="div"
+            <Anchor
               role="button"
-              tabIndex="0"
               dataLocator={getLocator('cart_item_edit_link')}
               className="padding-left-10 responsive-edit-css"
-              onClick={this.callEditMethod}
+              onClick={e => {
+                e.preventDefault();
+                this.callEditMethod(e);
+              }}
               onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
+              noLink
             >
-              {labels.edit}
-            </BodyCopy>
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs12"
+                component="span"
+                fontWeight={['semibold']}
+              >
+                {labels.edit}
+              </BodyCopy>
+            </Anchor>
           )}
       </>
     );
@@ -634,16 +651,18 @@ class CartItemTile extends PureComponent {
             >
               <PriceCurrency price={Number(price)} />
             </BodyCopy>
-            <BodyCopy
-              fontFamily="secondary"
-              component="span"
-              fontSize="fs12"
-              dataLocator={getLocator('sfl_was_price')}
-              fontWeight={['regular']}
-              className="was-price"
-            >
-              <PriceCurrency price={Number(listPrice)} />
-            </BodyCopy>
+            {listPrice !== price && (
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs12"
+                dataLocator={getLocator('sfl_was_price')}
+                fontWeight={['regular']}
+                className="was-price"
+              >
+                <PriceCurrency price={Number(listPrice)} />
+              </BodyCopy>
+            )}
           </Col>
         </>
       );
@@ -671,7 +690,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            <PriceCurrency price={Number(salePrice)} />
+            <PriceCurrency price={Number(price)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy

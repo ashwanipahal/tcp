@@ -89,7 +89,7 @@ class InputCheckBox extends React.Component {
     const source = isChecked ? checkedIcon : uncheckedIcon;
     return (
       <StyledImage>
-        <Image source={source} height="25px" width="25px" />
+        <Image source={source} alt="" height="25px" width="25px" />
       </StyledImage>
     );
   }
@@ -152,6 +152,7 @@ class InputCheckBox extends React.Component {
       fontSize,
       ...otherProps
     } = this.props;
+    const { isChecked } = this.state;
     const { value } = input;
     const { touched, error } = meta;
     const isError = touched && error;
@@ -162,7 +163,15 @@ class InputCheckBox extends React.Component {
           {...input}
           {...otherProps}
           value={value}
+          accessible
+          // eslint-disable-next-line react-native-a11y/has-valid-accessibility-role
+          accessibilityRole="checkbox"
+          accessibilityLabel={children}
           pointerEvents={disabled ? 'none' : 'auto'}
+          accessibilityState={{
+            disabled,
+            checked: isChecked,
+          }}
         >
           {!hideCheckboxIcon && this.genCheckedIcon()}
           {rightText && this.renderRight()}
@@ -180,7 +189,7 @@ class InputCheckBox extends React.Component {
           {isError ? (
             <StyledErrorWrapper>
               <StyledErrorIcon>
-                <Image source={errorIcon} width="16px" height="14px" />
+                <Image source={errorIcon} alt="" width="16px" height="14px" />
               </StyledErrorIcon>
 
               <BodyCopy

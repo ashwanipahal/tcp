@@ -9,6 +9,18 @@ import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButto
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class CheckoutFooter extends React.PureComponent {
+  renderSkeleton = (showVenmoSubmit, showPayPalButton) => {
+    return (
+      <>
+        {!showVenmoSubmit && !showPayPalButton && (
+          <div className="footer-button footer-button-web">
+            <LoaderSkelton />
+          </div>
+        )}
+      </>
+    );
+  };
+
   renderNextButton = () => {
     const {
       showVenmoSubmit,
@@ -35,9 +47,13 @@ class CheckoutFooter extends React.PureComponent {
         {nextButtonText}
       </Button>
     ) : (
-      <div className="footer-button footer-button-mob">
-        <LoaderSkelton />
-      </div>
+      <>
+        {!showVenmoSubmit && !showPayPalButton && (
+          <div className="footer-button footer-button-mob">
+            <LoaderSkelton />
+          </div>
+        )}
+      </>
     );
   };
 
@@ -119,9 +135,7 @@ class CheckoutFooter extends React.PureComponent {
               {nextButtonText}
             </Button>
           ) : (
-            <div className="footer-button footer-button-web">
-              <LoaderSkelton />
-            </div>
+            this.renderSkeleton(showVenmoSubmit, showPayPalButton)
           )}
         </div>
       </div>
@@ -147,6 +161,7 @@ CheckoutFooter.propTypes = {
   continueWithText: PropTypes.string,
   onVenmoSubmit: PropTypes.func, // Venmo Submit for billing page, redirect to review page once already authorized or new authorization with the venmo app.
   venmoError: PropTypes.string,
+  bagLoading: PropTypes.bool,
 };
 
 CheckoutFooter.defaultProps = {
@@ -157,6 +172,7 @@ CheckoutFooter.defaultProps = {
   continueWithText: '',
   onVenmoSubmit: () => {},
   venmoError: '',
+  bagLoading: false,
 };
 
 export default withStyles(CheckoutFooter, style);

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, NativeModules } from 'react-native';
 import { string, func, bool, shape, oneOf } from 'prop-types';
 import Image from '../../Image/views/Image';
-import logger from '../../../../../utils/loggerInstance';
 import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import VenmoButton from '../styles/VenmoPaymentButton.style.native';
 import { isAndroid } from '../../../../../utils/index.native';
@@ -11,13 +10,6 @@ const venmoIconBlue = require('../../../../../assets/venmo_logo_blue.png');
 const venmoIconWhite = require('../../../../../assets/venmo_logo_white.png');
 
 export class VenmoPaymentButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hasVenmoError: true,
-    };
-  }
-
   /**
    * @function fetchVenmoClientToken
    * @description Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
@@ -38,17 +30,6 @@ export class VenmoPaymentButton extends Component {
     return enabled && authorizationKey && mode === modes.CLIENT_TOKEN;
   };
 
-  // Logic will go here for in some cases, we may not want to display an error message
-  handleVenmoClickedError = e => logger.error('Venmo', 'Promises Error', e);
-
-  handleVenmoInstanceError = err => {
-    const { hasVenmoError } = this.state;
-    if (!hasVenmoError) {
-      this.setState({ hasVenmoError: true });
-    }
-    this.handleVenmoClickedError(err);
-  };
-
   handleVenmoClick = () => {
     const {
       setVenmoData,
@@ -56,6 +37,7 @@ export class VenmoPaymentButton extends Component {
       mode,
       setVenmoPaymentInProgress,
       isRemoveOOSItems,
+      isNonceNotExpired,
     } = this.props;
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
@@ -64,10 +46,17 @@ export class VenmoPaymentButton extends Component {
       onVenmoPaymentButtonClick(mode);
       setVenmoData({ loading: false });
     }
-    if (isAndroid()) {
-      this.authorizeVenmoPaymentApp();
+    // Cache of 3 hours on venmo authorization, no need to authorize again
+    if (!isNonceNotExpired && this.canCallVenmoApi()) {
+      if (isAndroid()) {
+        this.authorizeVenmoPaymentApp();
+      } else {
+        this.authorizeVenmoPaymentIOSApp();
+      }
     } else {
-      this.authorizeVenmoPaymentIOSApp();
+      // Nonce is already there in the cache, proceed with the callback.
+      onVenmoPaymentButtonClick(mode);
+      setVenmoData({ loading: false });
     }
   };
 
@@ -104,12 +93,27 @@ export class VenmoPaymentButton extends Component {
       this.fetchVenmoClientToken();
     }
     if (
+      authorizationKey &&
       mode === modes.CLIENT_TOKEN &&
       (prevProps.authorizationKey !== authorizationKey ||
         prevProps.isNonceNotExpired !== isNonceNotExpired)
     ) {
       NativeModules.VenmoPayment.initialize(authorizationKey);
+      this.isVenmoInstalled();
     }
+  };
+
+  /**
+   * @method isVenmoInstalled
+   * @description - Check if Venmo app is installed on the phone.
+   * For app business requirement, we need to hide Venmo CTA when Venmo app is NOT installed.
+   * We are calling this method here, as we need authKey to initialize venmo sdk to check if app is installed or not
+   */
+  isVenmoInstalled = () => {
+    const { setVenmoInstalledAction } = this.props;
+    NativeModules.VenmoPayment.isVenmoInstalled(data => {
+      setVenmoInstalledAction(data === true || data === 'true');
+    });
   };
 
   componentDidMount = () => {
@@ -121,20 +125,20 @@ export class VenmoPaymentButton extends Component {
     } = this.props;
     this.fetchVenmoClientToken();
     if (nonce && isNonceNotExpired) {
-      this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
     } else if (this.canCallVenmoApi()) {
       NativeModules.VenmoPayment.initialize(authorizationKey);
+      this.isVenmoInstalled();
     }
   };
 
   /**
-   * @description - This method should be called on Venmo payment button click
+   * @description - Android - This method is called on Venmo payment button click
    */
   authorizeVenmoPaymentApp = () => {
     NativeModules.VenmoPayment.authorizeVenmoAccount(
       errorMessage => {
-        this.handleVenmoError(errorMessage);
+        this.handleVenmoError({ message: errorMessage });
       },
       successMessage => {
         if (successMessage) {
@@ -144,14 +148,16 @@ export class VenmoPaymentButton extends Component {
     );
   };
 
-  // iOS Venmo Initialization and authorization
+  /**
+   * @description - iOS - This method is called on Venmo payment button click, iOS Venmo Initialization and authorization
+   */
   authorizeVenmoPaymentIOSApp = () => {
     NativeModules.VenmoPayment.authorizeVenmoAccount((val, error) => {
       if (val && val.nonce) {
         const venmoRespone = { details: { username: val.username }, ...val };
         this.handleVenmoSuccess(venmoRespone);
       } else {
-        this.handleVenmoError(errorMessage);
+        this.handleVenmoError({ message: error });
       }
     });
   };
@@ -175,7 +181,7 @@ export class VenmoPaymentButton extends Component {
             onPress={this.handleVenmoClick}
             isVenmoBlue={isVenmoBlueButton}
           >
-            <Image source={venmoIcon} width="80px" height="15px" />
+            <Image source={venmoIcon} alt="" width="80px" height="15px" />
           </VenmoButton>
         )}
       </View>
@@ -212,6 +218,7 @@ VenmoPaymentButton.propTypes = {
   isGuest: bool.isRequired,
   orderId: string.isRequired,
   isVenmoBlueButton: bool,
+  setVenmoInstalledAction: func,
 };
 
 VenmoPaymentButton.defaultProps = {
@@ -228,6 +235,7 @@ VenmoPaymentButton.defaultProps = {
   isNonceNotExpired: false,
   isRemoveOOSItems: false,
   isVenmoBlueButton: false,
+  setVenmoInstalledAction: () => {},
 };
 
 export default VenmoPaymentButton;

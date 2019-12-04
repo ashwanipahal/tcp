@@ -36,25 +36,35 @@ const ListHeaderContainer = styled.View`
 `;
 
 const ListFooterContainer = styled.View`
-  padding: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
   background-color: ${props => props.theme.colors.WHITE};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const DropDownWishlistItemContainer = styled.TouchableOpacity.attrs({
   underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
   activeOpacity: 1,
 })`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   background-color: ${props => props.theme.colors.WHITE};
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
+
+const getAdditionalListItemStyle = props => {
+  const { width } = props;
+  return {
+    ...(width && { width }),
+  };
+};
 
 const SelectedWishlistContainer = styled.View`
   flex-direction: row;
   align-items: center;
   margin-left: 12px;
+  ${getAdditionalListItemStyle}
 `;
 
 const ItemCountContainer = styled.View`

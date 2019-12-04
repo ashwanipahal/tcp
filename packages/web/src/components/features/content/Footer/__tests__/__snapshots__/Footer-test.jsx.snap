@@ -2,7 +2,7 @@
 
 exports[`Footer component Footer component renders correctly with props 1`] = `
 <footer
-  className="footer-class"
+  className="footer-class footer-global"
 >
   <Styled(Row)
     className="footer-candidate-wrapper"
@@ -17,11 +17,13 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
       isNavigationFooter={false}
       legalLinks={Array []}
       navLinks={Array []}
+      openEmailSignUpModal={[Function]}
+      openSmsSignUpModal={[Function]}
       pageName=""
       referenceID=""
     />
-    <Connect(Styled(ReduxForm)) />
-    <Connect(Styled(ReduxForm)) />
+    <Connect(Styled(EmailSignupModal)) />
+    <Connect(Styled(SmsSignupModal)) />
   </Styled(Row)>
   <Styled(Row)
     className="footer-middle mobile"
@@ -139,7 +141,9 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
 `;
 
 exports[`Footer component Footer component renders correctly without props 1`] = `
-<footer>
+<footer
+  className="undefined footer-global"
+>
   <Styled(Row)
     className="footer-candidate-wrapper"
     fullBleed={true}
@@ -152,11 +156,13 @@ exports[`Footer component Footer component renders correctly without props 1`] =
       isNavigationFooter={false}
       legalLinks={Array []}
       navLinks={Array []}
+      openEmailSignUpModal={[Function]}
+      openSmsSignUpModal={[Function]}
       pageName=""
       referenceID=""
     />
-    <Connect(Styled(ReduxForm)) />
-    <Connect(Styled(ReduxForm)) />
+    <Connect(Styled(EmailSignupModal)) />
+    <Connect(Styled(SmsSignupModal)) />
   </Styled(Row)>
   <Styled(Row)
     className="footer-middle mobile"

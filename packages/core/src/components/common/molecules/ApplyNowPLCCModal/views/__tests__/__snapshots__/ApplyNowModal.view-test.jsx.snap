@@ -3,6 +3,7 @@
 exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 <Styled(Modal)
   className="demo TCPModal__Content"
+  contentLabel="lbl_PLCCModal_applyNowHeaderText"
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
@@ -16,6 +17,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       ";
   }
   .apply-now-heading {
+    font-family: ",
+      [Function],
+      ";
     margin: ",
       [Function],
       " 0px
@@ -80,7 +84,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .learn_more_link {
-    padding: 14px 0px 28px 0px;
+    padding: 16px 0px 12px 0px;
   }
 
   .learn_more_link_wrapper {
@@ -103,13 +107,15 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   }
 
   .header__greeting {
-    margin: 9px 0px;
+    margin-top: 9px;
   }
 
   .header-image {
     display: flex;
     justify-content: center;
-    background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
+    background: transparent url(",
+      "/static/version-not-available/images/tcp-cc@2x.png",
+      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     width: 175px;
@@ -135,6 +141,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 
   .linkIconSeperator {
     margin-left: 10px;
+    font-size: ",
+      [Function],
+      ";
   }
 
   .rewards__benefits {
@@ -150,7 +159,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       width: 355px;
       text-align: left;
       ::before {
-        content: url('/static/images/confirmation_check.svg');
+        content: url(",
+      "/static/version-not-available/images/confirmation_check.svg",
+      ");
         display: inline-block;
         height: 10px;
         width: 10px;
@@ -163,17 +174,33 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 
   .footerLinks {
     display: flex;
-    margin-top: 38px;
+    margin-top: ",
+      [Function],
+      ";
     justify-content: center;
-    padding-bottom: 33px;
+    padding-bottom: ",
+      [Function],
+      ";
   }
 
   .footerLink {
     margin-left: 28px;
+    font-size: ",
+      [Function],
+      ";
   }
 
   div.TCPModal__InnerContent.plcc_modal_content {
     height: 100vh;
+  }
+
+  .separator {
+    padding-top: ",
+      [Function],
+      ";
+    border-top: 1px solid ",
+      [Function],
+      ";
   }
 ",
     ]
@@ -223,6 +250,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         }
       >
         <div
+          aria-hidden={true}
           className="header-image"
         />
       </Styled(Col)>
@@ -291,7 +319,19 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           fill="BLUE"
           type="submit"
         >
-          lbl_PLCC_interested
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event47",
+                ],
+                "eventName": "plcc checkout invite accepted",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCC_interested
+          </Connect(Component)>
         </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
@@ -323,7 +363,19 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
           target="_blank"
           underline={true}
         >
-          lbl_PLCC_noThanks
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [
+                  "event48",
+                ],
+                "eventName": "plcc checkout invite declined",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCC_noThanks
+          </Connect(Component)>
         </Styled(Anchor)>
       </Styled(Col)>
     </Styled(Row)>
@@ -342,6 +394,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         />
       </Styled(Col)>
     </Styled(Row)>
+    <div
+      className="separator"
+    />
     <div
       className="offer_info_icon"
       data-locator="plcc_modal_logo"
@@ -372,7 +427,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         color="text.primary"
         component="span"
         fontFamily="secondary"
-        fontSize="fs12"
+        fontSize="fs10"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -414,6 +469,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
         lbl_PLCCModal_rewardsProgramText
       </Styled(Anchor)>
     </div>
+    <div
+      className="separator"
+    />
     <Styled(Row)>
       <Styled(Col)
         colSize={
@@ -438,12 +496,27 @@ exports[`ApplyNowModalWrapper component should renders correctly if isPLCCModalO
   className="demo"
   isPLCCModalOpen={true}
   isRtpsFlow={false}
+  labels={
+    Object {
+      "apply_now_discount_20": "abc",
+      "apply_now_discount_20_subtext": "abc",
+      "apply_now_discount_25": "abc",
+      "apply_now_discount_25_subtext": "abc",
+      "apply_now_discount_30": "abc",
+      "apply_now_discount_30_subtext": "abc",
+      "apply_now_discount_standard": "abc",
+      "apply_now_discount_standard_subtext": "abc",
+      "apply_now_double": "abc",
+      "apply_now_double_subtext": "abc",
+    }
+  }
 />
 `;
 
 exports[`ApplyNowModalWrapper component should renders correctly with rtps false  1`] = `
 <Styled(Modal)
   className="demo TCPModal__Content"
+  contentLabel="lbl_PLCCModal_applyNowHeaderText"
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
@@ -457,6 +530,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
       ";
   }
   .apply-now-heading {
+    font-family: ",
+      [Function],
+      ";
     margin: ",
       [Function],
       " 0px
@@ -521,7 +597,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   }
 
   .learn_more_link {
-    padding: 14px 0px 28px 0px;
+    padding: 16px 0px 12px 0px;
   }
 
   .learn_more_link_wrapper {
@@ -544,13 +620,15 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   }
 
   .header__greeting {
-    margin: 9px 0px;
+    margin-top: 9px;
   }
 
   .header-image {
     display: flex;
     justify-content: center;
-    background: transparent url('/static/images/tcp-cc@2x.png') no-repeat 0 0;
+    background: transparent url(",
+      "/static/version-not-available/images/tcp-cc@2x.png",
+      ") no-repeat 0 0;
     background-size: contain;
     border: none;
     width: 175px;
@@ -576,6 +654,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
 
   .linkIconSeperator {
     margin-left: 10px;
+    font-size: ",
+      [Function],
+      ";
   }
 
   .rewards__benefits {
@@ -591,7 +672,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
       width: 355px;
       text-align: left;
       ::before {
-        content: url('/static/images/confirmation_check.svg');
+        content: url(",
+      "/static/version-not-available/images/confirmation_check.svg",
+      ");
         display: inline-block;
         height: 10px;
         width: 10px;
@@ -604,17 +687,33 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
 
   .footerLinks {
     display: flex;
-    margin-top: 38px;
+    margin-top: ",
+      [Function],
+      ";
     justify-content: center;
-    padding-bottom: 33px;
+    padding-bottom: ",
+      [Function],
+      ";
   }
 
   .footerLink {
     margin-left: 28px;
+    font-size: ",
+      [Function],
+      ";
   }
 
   div.TCPModal__InnerContent.plcc_modal_content {
     height: 100vh;
+  }
+
+  .separator {
+    padding-top: ",
+      [Function],
+      ";
+    border-top: 1px solid ",
+      [Function],
+      ";
   }
 ",
     ]
@@ -664,6 +763,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         }
       >
         <div
+          aria-hidden={true}
           className="header-image"
         />
       </Styled(Col)>
@@ -729,7 +829,17 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
           fill="BLUE"
           type="submit"
         >
-          lbl_PLCCModal_applyNowCTA
+          <Connect(Component)
+            clickData={
+              Object {
+                "customEvents": Array [],
+                "eventName": "plcc checkout invite accepted",
+                "products": Array [],
+              }
+            }
+          >
+            lbl_PLCCModal_applyNowCTA
+          </Connect(Component)>
         </Styled(Button)>
       </Styled(Col)>
     </Styled(Row)>
@@ -765,6 +875,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
       </Styled(Col)>
     </Styled(Row)>
     <div
+      className="separator"
+    />
+    <div
       className="offer_info_icon"
       data-locator="plcc_modal_logo"
       offerType="lbl_PLCCModal_oneEqualsTwoPoints"
@@ -794,7 +907,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         color="text.primary"
         component="span"
         fontFamily="secondary"
-        fontSize="fs12"
+        fontSize="fs10"
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
@@ -836,6 +949,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         lbl_PLCCModal_rewardsProgramText
       </Styled(Anchor)>
     </div>
+    <div
+      className="separator"
+    />
   </div>
 </Styled(Modal)>
 `;

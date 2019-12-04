@@ -10,7 +10,6 @@ describe('Shipping Page', () => {
       addressLine1: 'pob',
       addressLine2: '',
     };
-    const data = { address, shipmentMethods: [{}], smsSignUp: {}, onFileAddressKey: '1234' };
     const props = {
       address,
       addressLabels: {},
@@ -43,8 +42,6 @@ describe('Shipping Page', () => {
       address,
     };
     const tree = shallow(<ShippingPage {...props} prevProps={prevProps} />);
-    tree.instance().submitShippingForm(data);
-    expect(mockedhandleSubmit).toHaveBeenCalled();
     expect(tree).toMatchSnapshot();
   });
   it('should call component did Update', () => {
@@ -54,6 +51,7 @@ describe('Shipping Page', () => {
     };
     const mockedloadShipmentMethods = jest.fn();
     const props = {
+      shippingDidUpdate: () => {},
       initShippingPage: () => {},
       shippingDidMount: () => {},
       shipmentMethods: [{}],
@@ -97,6 +95,7 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      shippingDidUpdate: () => {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       formatPayload: () => {},
@@ -119,7 +118,6 @@ describe('Shipping Page', () => {
       updateShippingMethodSelection: mockedupdateShippingMethodSelection,
     };
     const tree = shallow(<ShippingPage {...props} />);
-    tree.instance().submitShippingForm({ address, shipmentMethods: {}, smsSignUp: {} });
     tree.setProps({
       address: {
         addressLine1: 'pob 123',
@@ -127,8 +125,6 @@ describe('Shipping Page', () => {
       },
       selectedShipmentId: '336',
     });
-    expect(mockedloadShipmentMethods).toBeCalled();
-    expect(mockedupdateShippingMethodSelection).toBeCalled();
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse', () => {
@@ -141,6 +137,7 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      shippingDidUpdate: () => {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       formatPayload: () => {},
@@ -164,7 +161,6 @@ describe('Shipping Page', () => {
       updateShippingMethodSelection: mockedupdateShippingMethodSelection,
     };
     const tree = shallow(<ShippingPage {...props} />);
-    tree.instance().submitShippingForm({ address, shipmentMethods: {}, smsSignUp: {} });
     tree.setProps({
       address: {
         addressLine1: 'pob 123',
@@ -173,8 +169,6 @@ describe('Shipping Page', () => {
       selectedShipmentId: '336',
     });
     tree.setState({ defaultAddressId: '34567' });
-    expect(mockedloadShipmentMethods).toBeCalled();
-    expect(mockedupdateShippingMethodSelection).toBeCalled();
     expect(tree).toMatchSnapshot();
   });
   it('should call submitShippingData for loggedin user', () => {
@@ -187,6 +181,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      shippingDidUpdate: () => {},
       shipmentMethods: [{}],
       addressLabels: {},
       handleSubmit: () => {},
@@ -219,12 +214,5 @@ describe('Shipping Page', () => {
 
     const tree = shallow(<ShippingPage {...props} />);
     tree.setState({ isAddNewAddress: false });
-    tree.instance().updateShippingAddress();
-    expect(mockedupdateShippingAddressData).toBeCalled();
-    tree.instance().addNewShippingAddress();
-    expect(mockedaddNewShippingAddressData).toBeCalled();
-    tree
-      .instance()
-      .submitShippingForm({ address, shipmentMethods: {}, smsSignUp: {}, onFileAddressKey: '123' });
   });
 });

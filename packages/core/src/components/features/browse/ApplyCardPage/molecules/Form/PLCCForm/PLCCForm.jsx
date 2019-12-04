@@ -1,6 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
 import { Grid } from '../../../../../../common/molecules';
 import { getLabelValue } from '../../../../../../../utils';
@@ -175,9 +177,11 @@ class PLCCForm extends React.PureComponent {
       invalid,
       isRtpsFlow,
       closePLCCModal,
+      cartOrderItems,
     } = this.props;
     const { isIdleModalActive, isTimedOutModalActive } = this.state;
     const bagItems = getCartItemCount();
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     return (
       <StyledPLCCFormWrapper isPLCCModalFlow={isPLCCModalFlow}>
         <form onSubmit={handleSubmit}>
@@ -290,7 +294,13 @@ class PLCCForm extends React.PureComponent {
                   colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
                   className="submit_button_plcc_form_container"
                 >
-                  <Button
+                  <ClickTracker
+                    as={Button}
+                    clickData={{
+                      customEvents: ['event49'],
+                      eventName: 'credit application submitted',
+                      products: productsData,
+                    }}
                     buttonVariation="fixed-width"
                     fill="BLUE"
                     type="submit"
@@ -300,7 +310,7 @@ class PLCCForm extends React.PureComponent {
                     disabled={invalid}
                   >
                     {getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
-                  </Button>
+                  </ClickTracker>
                 </Col>
               </Row>
               <Row fullBleed>
@@ -369,10 +379,12 @@ PLCCForm.propTypes = {
   invalid: PropTypes.bool,
   isRtpsFlow: PropTypes.bool.isRequired,
   closePLCCModal: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]),
 };
 
 PLCCForm.defaultProps = {
   invalid: false,
+  cartOrderItems: [],
 };
 
 const validateMethod = createValidateMethod(

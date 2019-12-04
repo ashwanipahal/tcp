@@ -5,6 +5,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductRating from '../ProductRating/ProductRating';
 import { Anchor, BodyCopy } from '../../../../../common/atoms';
 import withStyles from '../../../../../common/hoc/withStyles';
@@ -18,7 +19,36 @@ import {
 class ProductBasicInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      clickedProdutId: '',
+      errorProductId: '',
+      isLoggedIn: props.isLoggedIn,
+    };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const {
+      isLoggedIn,
+      onAddItemToFavorites,
+      productInfo: { productId },
+      productMiscInfo: { colorProductId },
+      pageName,
+      skuId,
+      formName,
+    } = props;
+
+    const { clickedProdutId, isLoggedIn: wasLoggedIn } = state;
+    if (isLoggedIn && isLoggedIn !== wasLoggedIn && clickedProdutId === productId) {
+      onAddItemToFavorites({
+        colorProductId: productId,
+        productSkuId: (skuId && skuId.skuId) || null,
+        pdpColorProductId: colorProductId,
+        formName: formName || PRODUCT_ADD_TO_BAG,
+        page: pageName || 'PDP',
+      });
+      return { clickedProdutId: '', isLoggedIn };
+    }
+    return null;
   }
 
   componentWillUnmount() {
@@ -37,7 +67,7 @@ class ProductBasicInfo extends React.Component {
       <BodyCopy
         className={`product-title ${className}`}
         fontSize="fs18"
-        component="p"
+        component="h1"
         fontFamily="secondary"
         fontWeight="extrabold"
       >
@@ -53,13 +83,19 @@ class ProductBasicInfo extends React.Component {
       productMiscInfo: { colorProductId },
       pageName,
       skuId,
+      formName,
     } = this.props;
 
     onAddItemToFavorites({
       colorProductId: productId,
       productSkuId: (skuId && skuId.skuId) || null,
       pdpColorProductId: colorProductId,
+      formName: formName || PRODUCT_ADD_TO_BAG,
       page: pageName || 'PDP',
+    });
+    this.setState({
+      clickedProdutId: productId,
+      errorProductId: productId,
     });
   };
 
@@ -72,13 +108,13 @@ class ProductBasicInfo extends React.Component {
       isGiftCard,
       className,
       // isShowFavoriteCount,
-      productInfo: { ratingsProductId },
+      productInfo: { ratingsProductId, productId },
       keepAlive,
       outOfStockLabels,
       productMiscInfo,
       AddToFavoriteErrorMsg,
-      AddToFavoriteErrorMsgID,
     } = this.props;
+    const { errorProductId } = this.state;
     const isFavorite =
       productMiscInfo.isFavorite ||
       (productMiscInfo.miscInfo && productMiscInfo.miscInfo.isInDefaultWishlist);
@@ -97,7 +133,8 @@ class ProductBasicInfo extends React.Component {
             {outOfStockLabels.itemSoldOutMessage}
           </BodyCopy>
         )}
-        {AddToFavoriteErrorMsg && (
+
+        {AddToFavoriteErrorMsg && errorProductId === productId && (
           <Notification
             status="error"
             colSize={{ large: 12, medium: 8, small: 6 }}
@@ -160,8 +197,11 @@ ProductBasicInfo.propTypes = {
     isInDefaultWishlist: PropTypes.bool,
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
-  AddToFavoriteErrorMsgID: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  pageName: PropTypes.string,
+  skuId: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
+  formName: PropTypes.string,
 };
 
 ProductBasicInfo.defaultProps = {
@@ -178,8 +218,11 @@ ProductBasicInfo.defaultProps = {
     isInDefaultWishlist: false,
   },
   AddToFavoriteErrorMsg: '',
-  AddToFavoriteErrorMsgID: '',
+  pageName: '',
+  skuId: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
+  formName: PRODUCT_ADD_TO_BAG,
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);

@@ -1,6 +1,27 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 
-// TODO : task of creating 404 page to be done is separate story.
-const NotFoundPage = () => <h1>404 Page Not Found</h1>;
+function Error({ statusCode }) {
+  return (
+    <h1>
+      {statusCode
+        ? `Error occurred on server. Status: ${statusCode}`
+        : 'An unknown error occurred on client!'}
+    </h1>
+  );
+}
 
-export default NotFoundPage;
+Error.getInitialProps = ({ res, err }) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404; // eslint-disable-line no-nested-ternary
+  return { statusCode };
+};
+
+Error.propTypes = {
+  statusCode: PropTypes.number,
+};
+
+Error.defaultProps = {
+  statusCode: 404,
+};
+
+export default Error;

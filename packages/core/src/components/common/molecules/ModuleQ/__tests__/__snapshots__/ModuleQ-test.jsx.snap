@@ -2,7 +2,7 @@
 
 exports[`ModuleQ component renders correctly 1`] = `
 <Styled(Grid)
-  className=" yellow-bg moduleQ"
+  className=" yellow-bg moduleQ "
 >
   <Styled(Row)
     centered={true}

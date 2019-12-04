@@ -6,9 +6,7 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
     heading=""
     isOpenModal={false}
     labels={Object {}}
-    margins={null}
     modalMargins="0 14px 0 14px"
-    noscroll={true}
     onCloseModal={[Function]}
   />
   <Styled(BodyCopy)
@@ -52,6 +50,8 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
       }
       fontSize="fs24"
       isAnimateList={false}
+      isCustomiseListHeight={true}
+      isMoveToList={false}
       isShareOptions={false}
       isWishlist={true}
       itemStyle={
@@ -67,6 +67,7 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
       renderItems={[Function]}
       selectedItemFontWeight="semibold"
       selectedValue=""
+      showListSeperator={false}
       variation="secondary"
     />
   </Styled(View)>
@@ -93,8 +94,8 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
     />
     <Styled(View)>
       <Connect(Recommendations)
-        headerAlignment="left"
-        page="homepage"
+        isFavoriteRecommendation={true}
+        page=""
         showLoyaltyPromotionMessage={false}
         variation="moduleO"
       />

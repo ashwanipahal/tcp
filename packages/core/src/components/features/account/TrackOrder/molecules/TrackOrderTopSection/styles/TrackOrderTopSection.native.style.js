@@ -5,15 +5,16 @@ export const TrackOrderTopSectionView = styled.View``;
 export const TrackOrderTopHeader = styled.View`
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
 `;
 export const ModalHeader = styled.View`
-  width: 50%;
+  width: 70%;
 `;
 export const TrackOrderSubHeader = styled.View`
   margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0 0;
 `;
 export const ImageWrapper = styled.View`
-  width: 50%;
+  width: 30%;
 `;
 
 export const StyledTouchableOpacity = styled.TouchableOpacity`

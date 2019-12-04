@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
+import { getSiteId, getLabelValue, isGymboree } from '@tcp/core/src/utils/utils';
 import { getIconPath, disableBodyScroll, enableBodyScroll } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
@@ -60,8 +60,11 @@ class SearchLayoutWrapper extends React.PureComponent {
       redirectToSearchPage,
       commonCloseClick,
     } = this.props;
-    const searchText =
+
+    let searchText =
       this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
+
     if (searchText) {
       setDataInLocalStorage(searchText);
       redirectToSearchPage(searchText);
@@ -136,8 +139,10 @@ class SearchLayoutWrapper extends React.PureComponent {
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, labels, toggleSearchResults } = this.props;
-    const searchText =
+    let searchText =
       this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
+    searchText = searchText.replace(/ %|% |%/g, ' ').trim();
+
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     const searchImage = document
@@ -176,6 +181,31 @@ class SearchLayoutWrapper extends React.PureComponent {
     return flag;
   };
 
+  setTypeAheadLayout = () => {
+    const { showProduct, isLatestSearchResultsExists } = this.props;
+    const SEARCH_IMAGE_BAR = 'search-image-icon';
+    const SEARCH_BAR = 'searchBar-wrapper';
+    const element = !!document.getElementById(`${SEARCH_IMAGE_BAR}`);
+    if (!isLatestSearchResultsExists) {
+      if (element) {
+        if (showProduct) {
+          document.getElementById(`${SEARCH_BAR}`).style.borderBottomRightRadius = '0px';
+          document.getElementById(`${SEARCH_BAR}`).style.borderBottomLeftRadius = '0px';
+        } else {
+          document.getElementById(`${SEARCH_BAR}`).removeAttribute('style');
+        }
+      }
+    } else if (element) {
+      document.getElementById(`${SEARCH_BAR}`).style.borderBottomRightRadius = '0px';
+      document.getElementById(`${SEARCH_BAR}`).style.borderBottomLeftRadius = '0px';
+    }
+  };
+
+  getSearchBarClassName = () => {
+    const { isLatestSearchResultsExists } = this.props;
+    return isLatestSearchResultsExists ? 'searchbar-withRecent' : 'searchbar';
+  };
+
   handleClickOutside() {
     const { setSearchState, isSearchOpen } = this.props;
     if (isSearchOpen && window.innerWidth > breakpoints.values.lg) {
@@ -195,19 +225,24 @@ class SearchLayoutWrapper extends React.PureComponent {
       searchResults,
       redirectToSuggestedUrl,
       closeSearchLayover,
+      fromCondensedHeader,
     } = this.props;
 
     const HighLightSearch = inputText => this.highlight(inputText);
 
-    // const SEARCH_BLUE_IMAGE = 'search-icon';
+    const SEARCH_IMAGE = 'search-icon';
     const SEARCH_BLUE_IMAGE = 'search-icon-blue';
 
     const suggestionFound = this.suggestionFound(searchResults);
 
+    this.setTypeAheadLayout();
+
+    const searchBarClassName = this.getSearchBarClassName();
+
     return (
       <React.Fragment>
         <div className="searchWrapper" ref={this.targetElement}>
-          <div className="searchbar">
+          <div id="searchBar-wrapper" className={`${searchBarClassName}`}>
             <Image
               alt="search-mobile"
               id="search-image-mobile"
@@ -235,16 +270,26 @@ class SearchLayoutWrapper extends React.PureComponent {
                 autoComplete="off"
               />
             </form>
-            <Image
-              alt="search"
+            <Anchor
               id="search-image-typeAhead"
-              className="search-image-typeAhead icon-small"
-              onClick={this.initiateSearch}
-              src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+              noLink
+              onClick={e => {
+                e.preventDefault();
+                this.initiateSearch(e);
+              }}
+              className="search-image-typeAhead"
               data-locator="search-icon"
-              height="25px"
-            />
-
+            >
+              <Image
+                id="search-image-icon"
+                alt="search"
+                className="icon-small"
+                src={getIconPath(
+                  fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
+                )}
+                height="25px"
+              />
+            </Anchor>
             <CancelSearch
               closeSearchBar={closeSearchBar}
               closeModalSearch={closeModalSearch}
@@ -351,6 +396,7 @@ SearchLayoutWrapper.propTypes = {
   commonCloseClick: PropTypes.func.isRequired,
   showProduct: PropTypes.bool,
   isSearchOpen: PropTypes.bool,
+  fromCondensedHeader: PropTypes.bool,
   isLatestSearchResultsExists: PropTypes.bool,
   searchResults: PropTypes.shape({
     trends: PropTypes.shape({}),
@@ -369,6 +415,7 @@ SearchLayoutWrapper.propTypes = {
 SearchLayoutWrapper.defaultProps = {
   showProduct: false,
   isSearchOpen: false,
+  fromCondensedHeader: false,
   searchResults: {
     trends: {},
     categories: {},

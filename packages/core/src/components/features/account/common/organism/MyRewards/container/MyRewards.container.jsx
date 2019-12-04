@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import CouponHelpModal from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/views/CouponHelpModal.view';
+import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
+import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import {
   getCouponList,
   applyCoupon,
   removeCoupon,
   setError,
+  toggleNeedHelpModalState,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 
 import {
@@ -13,6 +17,8 @@ import {
   getAllRewardsCoupons,
   getCouponsLabels,
   getCouponFetchingState,
+  getNeedHelpModalState,
+  getNeedHelpContent,
 } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import { getCommonLabels } from '../../../../Account/container/Account.selectors';
 import MyRewards from '../views';
@@ -31,6 +37,11 @@ export class MyRewardsContainer extends PureComponent {
     handleErrorCoupon: PropTypes.func,
     toastMessage: PropTypes.func,
     isApplyingOrRemovingCoupon: PropTypes.bool,
+    isNeedHelpModalOpen: PropTypes.bool,
+    toggleNeedHelpModal: PropTypes.func.isRequired,
+    needHelpRichText: PropTypes.string,
+    fetchNeedHelpContent: PropTypes.func.isRequired,
+    needHelpContentId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -39,6 +50,9 @@ export class MyRewardsContainer extends PureComponent {
     handleErrorCoupon: () => {},
     toastMessage: () => {},
     isApplyingOrRemovingCoupon: false,
+    isNeedHelpModalOpen: false,
+    needHelpRichText: '',
+    needHelpContentId: '',
   };
 
   constructor(props) {
@@ -49,8 +63,9 @@ export class MyRewardsContainer extends PureComponent {
   }
 
   componentDidMount() {
-    const { fetchCoupons } = this.props;
+    const { fetchCoupons, needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchCoupons();
+    fetchNeedHelpContent([needHelpContentId]);
   }
 
   /**
@@ -85,9 +100,13 @@ export class MyRewardsContainer extends PureComponent {
       onApplyCouponToBagFromList,
       toastMessage,
       isApplyingOrRemovingCoupon,
+      isNeedHelpModalOpen,
+      toggleNeedHelpModal,
+      needHelpRichText,
       ...otherProps
     } = this.props;
     const { selectedCoupon } = this.state;
+    const updateLabels = { ...couponsLabels, NEED_HELP_RICH_TEXT: needHelpRichText };
 
     return (
       <>
@@ -114,6 +133,15 @@ export class MyRewardsContainer extends PureComponent {
             onApplyCouponToBagFromList={onApplyCouponToBagFromList}
           />
         )}
+        <CouponHelpModal
+          labels={updateLabels}
+          openState={isNeedHelpModalOpen}
+          coupon={selectedCoupon}
+          onRequestClose={() => {
+            toggleNeedHelpModal();
+          }}
+          heading="Help Modal"
+        />
       </>
     );
   }
@@ -125,7 +153,15 @@ const mapStateToProps = state => ({
   rewardCoupons: getAllRewardsCoupons(state),
   couponsLabels: getCouponsLabels(state),
   isApplyingOrRemovingCoupon: getCouponFetchingState(state),
+  isNeedHelpModalOpen: getNeedHelpModalState(state),
+  needHelpRichText: getNeedHelpContent(state),
+  needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
 });
+
+const analyticsData = {
+  eventName: 'walletlinksclickevent',
+  pageNavigationText: 'my account-my wallet-apply to bag',
+};
 
 export const mapDispatchToProps = dispatch => ({
   fetchCoupons: () => {
@@ -135,7 +171,7 @@ export const mapDispatchToProps = dispatch => ({
     return new Promise((resolve, reject) => {
       dispatch(
         applyCoupon({
-          formData: { couponCode: coupon.id },
+          formData: { couponCode: coupon.id, analyticsData },
           formPromise: { resolve, reject },
           coupon,
         })
@@ -157,6 +193,12 @@ export const mapDispatchToProps = dispatch => ({
     setTimeout(() => {
       dispatch(setError({ msg: null, couponCode: coupon.id }));
     }, DEFAULT_TOAST_ERROR_MESSAGE_TTL);
+  },
+  toggleNeedHelpModal: () => {
+    dispatch(toggleNeedHelpModalState());
+  },
+  fetchNeedHelpContent: contentIds => {
+    dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
   },
 });
 

@@ -14,6 +14,8 @@ import {
   isGymboree,
   getLabelValue,
 } from '@tcp/core/src/utils';
+import { CALL_TO_ACTION_VISIBLE, FULLY_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
 import StoreDetailContainerClass from '../../../StoreDetail/container/StoreDetail.container';
 
@@ -28,6 +30,7 @@ export class StoreLanding extends PureComponent {
     isGym: isGymboree(),
     centeredStoreId: '',
     showSubmitError: false,
+    mapImageHasLoaded: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -75,6 +78,12 @@ export class StoreLanding extends PureComponent {
     });
   };
 
+  handleMapImageLoaded = () => {
+    this.setState({
+      mapImageHasLoaded: true,
+    });
+  };
+
   renderMapView = suggestedStoreList => {
     const { setFavoriteStore, favoriteStore, labels, searchDone, ...others } = this.props;
     const { centeredStoreId } = this.state;
@@ -116,6 +125,7 @@ export class StoreLanding extends PureComponent {
           apiKey={this.googleApiKey}
           labels={labels}
           centeredStoreId={centeredStoreId}
+          onImageLoad={this.handleMapImageLoaded}
           {...others}
         />
       </Col>
@@ -252,7 +262,7 @@ export class StoreLanding extends PureComponent {
       trackClick,
       ...others
     } = this.props;
-    const { mapView, isGym, isOutlet, centeredStoreId } = this.state;
+    const { mapView, isGym, isOutlet, centeredStoreId, mapImageHasLoaded } = this.state;
 
     let modifiedStoreList = suggestedStoreList;
 
@@ -301,11 +311,14 @@ export class StoreLanding extends PureComponent {
                     trackClick={trackClick}
                     selectedCountry={isCanada() ? 'CA' : 'USA'}
                   />
+                  {/* UX Timer */}
+                  <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
                 </Col>
               </Row>
               <Row
                 className={`storeView__List${mapView ? ' storeView__ListAndMap' : ''}`}
                 fullBleed
+                aria-live="polite"
               >
                 {mapView
                   ? this.renderMapView(modifiedStoreList)
@@ -322,10 +335,13 @@ export class StoreLanding extends PureComponent {
                 isCanada={isCanada()}
                 apiKey={this.googleApiKey}
                 centeredStoreId={centeredStoreId}
+                onImageLoad={this.handleMapImageLoaded}
                 {...others}
               />
             </Col>
           </Row>
+          {/* UX Timer */}
+          {mapImageHasLoaded && <RenderPerf.Measure name={FULLY_VISIBLE} />}
         </Grid>
       </>
     );

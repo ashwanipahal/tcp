@@ -14,7 +14,8 @@ import { PropTypes } from 'prop-types';
 
 class RichText extends PureComponent {
   renderImage = ({ style, source, ...otherProps }) => {
-    return <Image url={source} {...otherProps} />;
+    const url = typeof source === 'object' ? source.uri : source;
+    return <Image url={url} {...otherProps} />;
   };
 
   renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
@@ -40,11 +41,13 @@ class RichText extends PureComponent {
       domStorageEnabled,
       thirdPartyCookiesEnabled,
       isApplyDeviceHeight,
+      source,
+      ...others
     } = this.props;
     const screenHeight = Math.round(Dimensions.get('window').height);
     const style = { backgroundColor: 'transparent' };
     const styleWithHeight = { backgroundColor: 'transparent', height: screenHeight };
-
+    const { html } = source;
     return (
       <WebView
         style={isApplyDeviceHeight ? styleWithHeight : style}
@@ -52,7 +55,10 @@ class RichText extends PureComponent {
         javaScriptEnabled={javaScriptEnabled}
         domStorageEnabled={domStorageEnabled}
         thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
-        {...this.props}
+        source={{
+          html: `<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </head><body>${html}</body></html>`,
+        }}
+        {...others}
       />
     );
   };

@@ -746,26 +746,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="hide-on-desktop"
-    fullBleed={true}
-  >
-    <Styled(BodyCopy)
-      className="elem-mb-XS"
-      color="text.primary"
-      component="p"
-      data-locator="shipping-details"
-      fontFamily="primary"
-      fontSize="fs28"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    >
-      lbl_shipping_edit
-    </Styled(BodyCopy)>
-  </Styled(Row)>
-  <Styled(Row)
     className="hide-on-mobile"
     fullBleed={true}
   >
@@ -900,7 +880,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -984,7 +963,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1287,7 +1268,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1371,7 +1351,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1455,7 +1437,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1539,7 +1520,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1794,7 +1777,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1878,7 +1860,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1962,7 +1946,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -2046,7 +2029,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2184,26 +2169,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="hide-on-desktop"
-    fullBleed={true}
-  >
-    <Styled(BodyCopy)
-      className="elem-mb-XS"
-      color="text.primary"
-      component="p"
-      data-locator="shipping-details"
-      fontFamily="primary"
-      fontSize="fs28"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    >
-      lbl_shipping_edit
-    </Styled(BodyCopy)>
-  </Styled(Row)>
-  <Styled(Row)
     className="hide-on-mobile"
     fullBleed={true}
   >
@@ -2322,7 +2287,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -2406,7 +2370,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2616,7 +2582,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -2700,7 +2665,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -2784,7 +2751,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -2868,7 +2834,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3030,7 +2998,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3114,7 +3081,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3198,7 +3167,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3282,7 +3250,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3444,7 +3414,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3528,7 +3497,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3612,7 +3583,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3696,7 +3666,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -3858,7 +3830,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -3942,7 +3913,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -4026,7 +3999,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -4110,7 +4082,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",

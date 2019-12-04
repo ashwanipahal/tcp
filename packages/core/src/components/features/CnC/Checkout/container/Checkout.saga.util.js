@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
 import {
@@ -16,9 +17,10 @@ import {
   updateRTPSData,
   getServerErrorMessage,
   acceptOrDeclinePreScreenOffer,
+  getGiftWrappingOptions,
 } from '../../../../../services/abstractors/CnC/index';
+// eslint-disable-next-line
 import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
-import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
@@ -35,6 +37,7 @@ import CHECKOUT_ACTIONS, {
   setSmsNumberForUpdates,
   getSetCheckoutStage,
   toggleCheckoutRouting,
+  getSetGiftWrapOptionsActn,
 } from './Checkout.action';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
@@ -45,20 +48,7 @@ import {
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
-
-export const pickUpRouting = ({
-  getIsShippingRequired,
-  isVenmoInProgress,
-  isVenmoPickupDisplayed,
-}) => {
-  if (getIsShippingRequired) {
-    utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-  } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
-    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
-  } else {
-    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
-  }
-};
+import { getGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
 
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
@@ -99,7 +89,11 @@ export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, 
 }
 
 export function* updateShipmentMethodSelection({ payload }) {
-  const addressId = yield select(selectors.getOnFileAddressKey);
+  let addressId = yield select(selectors.getOnFileAddressKey);
+  const currentStage = yield select(selectors.getCurrentCheckoutStage);
+  if (!addressId && currentStage.toLowerCase() === constants.CHECKOUT_STAGES.REVIEW) {
+    addressId = yield select(selectors.getShippingAddressID);
+  }
   const smsSignUp = yield select(selectors.getShippingSmsSignUpFields);
   let transVibesSmsPhoneNo = null;
   if (smsSignUp) {
@@ -115,13 +109,15 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo,
       yield select(BagPageSelectors.getErrorMapping)
     );
-    yield call(getCartDataSaga, {
-      isRecalculateTaxes: true,
-      excludeCartItems: false,
-      recalcRewards: false,
-      isCheckoutFlow: true,
-      translation: false,
-    });
+    if (!payload.isAddressChange) {
+      yield call(getCartDataSaga, {
+        isRecalculateTaxes: true,
+        excludeCartItems: false,
+        recalcRewards: false,
+        isCheckoutFlow: true,
+        translation: false,
+      });
+    }
     yield put(setLoaderState(false));
   } catch (err) {
     yield put(setLoaderState(false));
@@ -130,6 +126,7 @@ export function* updateShipmentMethodSelection({ payload }) {
 }
 
 export function* updateShippingAddress({ payload, after }) {
+  const isGuestUser = yield select(isGuest);
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount, onFileAddressKey },
   } = payload;
@@ -157,7 +154,9 @@ export function* updateShippingAddress({ payload, after }) {
       nickName: selectedAddress.nickName,
     },
   });
-  yield call(getAddressList);
+  if (!isGuestUser) {
+    yield call(getAddressList);
+  }
   if (after) {
     after();
   }
@@ -165,6 +164,7 @@ export function* updateShippingAddress({ payload, after }) {
 }
 
 export function* addNewShippingAddress({ payload }) {
+  const isGuestUser = yield select(isGuest);
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount },
   } = payload;
@@ -192,7 +192,9 @@ export function* addNewShippingAddress({ payload }) {
     },
     true
   );
-  yield call(getAddressList);
+  if (!isGuestUser) {
+    yield call(getAddressList);
+  }
   yield put(setOnFileAddressKey(addAddressResponse.payload));
 }
 
@@ -290,9 +292,8 @@ export function* addOrEditGuestUserAddress({
       },
       {}
     );
+    addOrEditAddressRes = { payload: addOrEditAddressRes };
   }
-  addOrEditAddressRes = { payload: addOrEditAddressRes };
-
   return addOrEditAddressRes;
 }
 
@@ -347,7 +348,10 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoI
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
-  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const isExpress = yield select(isExpressCheckout);
+  // For Venmo, express checkout fromPage flag is returning plcc eligibility as false.
+  // So, updating to process as normal fromPage for Venmo
+  const isExpressCheckoutEnabled = isVenmoInProgress ? false : isExpress;
   if (pageName === BILLING && showRTPSOnBilling) {
     yield call(updateUserRTPSData, {
       prescreen: true,
@@ -356,7 +360,7 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoI
     });
   } else if (
     showRTPSOnReview &&
-    (isPaypalPostBack || isVenmoInProgress || isExpressCheckoutEnabled) &&
+    (isPaypalPostBack || isVenmoInProgress || isExpress) &&
     pageName === REVIEW
   ) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
@@ -449,4 +453,18 @@ export function* redirectFromExpress() {
     return utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
   }
   return yield put(getSetCheckoutStage(constants.SHIPPING_DEFAULT_PARAM));
+}
+
+export function* getGiftWrapOptionsData() {
+  const giftWrap = yield select(getGiftWrapOptions);
+  if (!giftWrap) {
+    try {
+      const res = yield call(getGiftWrappingOptions);
+      yield put(getSetGiftWrapOptionsActn(res));
+    } catch (e) {
+      // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
+      // throw e;
+      logger.error(e);
+    }
+  }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
@@ -7,11 +8,17 @@ import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
 } from '../../Favorites/container/Favorites.actions';
+import {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+} from '../../../../common/organisms/PickupStoreModal/molecules/PickupStoreSelectionForm/container/PickupStoreSelectionForm.selectors';
 import {
   openQuickViewWithValues,
   closeQuickViewModal,
@@ -35,6 +42,8 @@ import {
   getLabels,
   getIsFilterBy,
   getPLPTopPromos,
+  getPLPGridPromos,
+  getPlpHorizontalPromo,
   getLabelsOutOfStock,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
@@ -49,7 +58,10 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../ProductDetail/container/ProductDetail.selectors';
-import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import {
+  fetchAddToFavoriteErrorMsg,
+  fetchErrorMessages,
+} from '../../Favorites/container/Favorites.selectors';
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 const defaultResolver = mod => mod.default;
@@ -112,16 +124,16 @@ class ProductListingContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
       router: { asPath },
-      isLoggedIn,
     } = prevProps;
     const {
       router: { asPath: currentAsPath },
-      isLoggedIn: currentLyLoggedIn,
     } = this.props;
-    if (asPath !== currentAsPath) {
-      this.makeApiCall();
-    }
-    if (isLoggedIn !== currentLyLoggedIn) {
+
+    // To restrict unnecessary calls while applying filters and sort
+    const modifiedAsPath = asPath.split('?');
+    const modifiedCurrentAsPath = currentAsPath.split('?');
+
+    if (modifiedAsPath[0] !== modifiedCurrentAsPath[0]) {
       this.makeApiCall();
     }
   }
@@ -182,14 +194,21 @@ class ProductListingContainer extends React.PureComponent {
       sortLabels,
       slpLabels,
       isLoggedIn,
+      isPlcc,
       currencyAttributes,
       currency,
       plpTopPromos,
+      plpGridPromos,
+      plpHorizontalPromos,
       router: { asPath: asPathVal },
       isSearchListing,
       navigation,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
+      trackPageLoad,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -227,14 +246,21 @@ class ProductListingContainer extends React.PureComponent {
         sortLabels={sortLabels}
         slpLabels={slpLabels}
         isLoggedIn={isLoggedIn}
+        isPlcc={isPlcc}
         currency={currency}
         currencyAttributes={currencyAttributes}
         plpTopPromos={plpTopPromos}
+        plpGridPromos={plpGridPromos}
+        plpHorizontalPromos={plpHorizontalPromos}
         asPathVal={asPathVal}
         isSearchListing={isSearchListing}
         navigation={navigation}
         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
+        trackPageLoad={trackPageLoad}
         {...otherProps}
       />
     ) : (
@@ -247,6 +273,11 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         categoryId={categoryId}
         plpTopPromos={plpTopPromos}
+        setClickAnalyticsData={setClickAnalyticsData}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
+        trackPageLoad={trackPageLoad}
       />
     );
   }
@@ -258,6 +289,7 @@ ProductListingContainer.pageInfo = {
     pageName: 'browse',
     pageSection: 'browse',
     pageSubSection: 'browse',
+    loadAnalyticsOnload: false,
   },
 };
 
@@ -267,16 +299,27 @@ function mapStateToProps(state) {
 
   // eslint-disable-next-line
   let filtersLength = {};
+  let filterCount = 0;
 
   // eslint-disable-next-line
   for (let key in appliedFilters) {
     if (appliedFilters[key]) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
+      filterCount += appliedFilters[key].length;
     }
   }
+  const plpHorizontalPromos = getPlpHorizontalPromo(state);
+  const plpGridPromos = getPLPGridPromos(state);
 
   return {
-    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
+    productsBlock: getProductsAndTitleBlocks(
+      state,
+      productBlocks,
+      plpGridPromos,
+      plpHorizontalPromos,
+      4,
+      filterCount
+    ),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
     currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
@@ -289,7 +332,6 @@ function mapStateToProps(state) {
     filtersLength,
     initialValues: {
       ...getAppliedFilters(state),
-      // TODO - change after site id comes for us or ca
       sort: getAppliedSortId(state) || '',
     },
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
@@ -311,9 +353,15 @@ function mapStateToProps(state) {
     currency: getCurrentCurrency(state),
     routerParam: state.routerParam,
     plpTopPromos: getPLPTopPromos(state),
+    plpGridPromos: getPLPGridPromos(state),
+    plpHorizontalPromos: getPlpHorizontalPromo(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    pageNameProp: getPageName(state),
+    pageSectionProp: getPageSection(state),
+    pageSubSectionProp: getPageSubSection(state),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
@@ -342,6 +390,33 @@ function mapDispatchToProps(dispatch) {
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
+    trackPageLoad: payload => {
+      const { products, customEvents } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+          customEvents,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
+    },
   };
 }
 
@@ -373,14 +448,21 @@ ProductListingContainer.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
   currencyAttributes: PropTypes.shape({}),
   currency: PropTypes.string,
   plpTopPromos: PropTypes.shape({}),
   closeQuickViewModalAction: PropTypes.func,
   navigationData: PropTypes.shape({}),
   isSearchListing: PropTypes.bool,
+  plpGridPromos: PropTypes.shape({}),
+  plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  pageNameProp: PropTypes.string,
+  pageSectionProp: PropTypes.string,
+  pageSubSectionProp: PropTypes.string,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductListingContainer.defaultProps = {
@@ -409,8 +491,15 @@ ProductListingContainer.defaultProps = {
   closeQuickViewModalAction: () => {},
   navigationData: null,
   isSearchListing: false,
+  plpGridPromos: {},
+  plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isPlcc: false,
+  pageNameProp: '',
+  pageSectionProp: '',
+  pageSubSectionProp: '',
+  trackPageLoad: () => {},
 };
 
 const IsomorphicProductListingContainer = withIsomorphicRenderer({

@@ -653,13 +653,10 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
               }
             }
           >
-            <ErrorMessage
-              className=""
+            <Styled(ErrorMessage)
               error="Duplicate card"
-              errorId="addNew"
-              formName=""
-              isShowingMessage={true}
-              withoutErrorDataAttribute={true}
+              fontSize="fs12"
+              fontWeight="extrabold"
             />
           </Styled(Col)>
         </Styled(Row)>
@@ -825,7 +822,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 6,
           "medium": 4,
           "small": 4,
         }

@@ -159,8 +159,9 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           }
         >
           <ForwardRef
+            alt=""
             height="15"
-            src="/static/images/info-icon.png"
+            src="/static/version-not-available/images/info-icon.png"
             width="15"
           />
         </ForwardRef>
@@ -457,8 +458,9 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           }
         >
           <ForwardRef
+            alt=""
             height="15"
-            src="/static/images/info-icon.png"
+            src="/static/version-not-available/images/info-icon.png"
             width="15"
           />
         </ForwardRef>
@@ -1049,7 +1051,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-jzJRlG",
+                "componentId": "sc-kAzzGY",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1177,7 +1179,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1192,7 +1196,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-jzJRlG",
+              "styledComponentId": "sc-kAzzGY",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1223,8 +1227,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
               }
             >
               <Styled(Image)
+                alt=""
                 height="15"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
                 width="15"
               />
             </Styled(ReactTooltip)>
@@ -1259,7 +1264,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1343,7 +1347,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
@@ -1680,7 +1686,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-jzJRlG",
+                "componentId": "sc-kAzzGY",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1808,7 +1814,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
                   ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                  "/static/version-not-available/images/circle-alert-fill.svg",
+                  ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1823,7 +1831,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-jzJRlG",
+              "styledComponentId": "sc-kAzzGY",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1854,8 +1862,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
               }
             >
               <Styled(Image)
+                alt=""
                 height="15"
-                src="/static/images/info-icon.png"
+                src="/static/version-not-available/images/info-icon.png"
                 width="15"
               />
             </Styled(ReactTooltip)>
@@ -1890,7 +1899,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
                 "25px",
@@ -1974,7 +1982,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 ";
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",

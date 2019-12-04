@@ -35,7 +35,6 @@ const fetchBootstrapData = async (
         },
       }
     : {};
-
   /**
    * Sets up query params for global modules requests - (labels, header, footer, navigation)
    */
@@ -257,7 +256,8 @@ const parsedResponse = async (
  * @param {String} pageName
  * @param {module} Array ['header', 'footer', 'layout', 'navigation']
  */
-const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl, deviceType) => {
+const bootstrap = async (pageNameStr, modules, cachedData, state, originalUrl, deviceType) => {
+  const pageName = pageNameStr || '';
   const response = {};
   const apiConfig = getAPIConfig();
   const { language } = apiConfig;

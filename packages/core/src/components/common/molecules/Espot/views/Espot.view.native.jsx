@@ -11,6 +11,7 @@ export class Espot extends PureComponent {
     richTextHtml: PropTypes.string.isRequired,
     togglePlccModal: PropTypes.func.isRequired,
     navigation: PropTypes.func.isRequired,
+    toggleNeedHelpModal: PropTypes.func.isRequired,
   };
 
   /**
@@ -36,12 +37,15 @@ export class Espot extends PureComponent {
    * @returns {function} calls function received from prop to open a modal
    */
   openModal = action => {
-    const { togglePlccModal, navigation } = this.props;
+    const { togglePlccModal, navigation, toggleNeedHelpModal } = this.props;
 
     switch (action) {
       case 'plccModal':
         navigation.navigate('ApplyNow');
         togglePlccModal(true);
+        break;
+      case 'isCouponHelpModalOpen':
+        toggleNeedHelpModal();
         break;
       default:
         break;

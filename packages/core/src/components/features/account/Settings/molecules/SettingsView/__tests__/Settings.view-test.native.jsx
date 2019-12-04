@@ -33,6 +33,11 @@ describe('SettingsView component', () => {
     expect(component.state('faceIdValue')).toBe(false);
   });
 
+  it('test if handleFaceId is enabled ', () => {
+    component.instance().handleFaceId(false);
+    expect(component.state('faceIdValue')).toBe(false);
+  });
+
   it('test if handleFaceId is enable ', () => {
     component.instance().handleTouchId(false);
     expect(component.state('promptVisible')).toBe(false);

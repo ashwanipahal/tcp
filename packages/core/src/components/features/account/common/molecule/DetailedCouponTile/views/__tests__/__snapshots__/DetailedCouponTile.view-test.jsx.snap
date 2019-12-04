@@ -41,7 +41,8 @@ exports[`DetailedCouponTile should display overlay 1`] = `
       textAlign="left"
     >
       <Styled(Image)
-        src="/static/images/white-bag.svg"
+        alt=""
+        src="/static/version-not-available/images/white-bag.svg"
       />
       <Styled(BodyCopy)
         className={null}
@@ -144,7 +145,6 @@ exports[`DetailedCouponTile should display overlay 1`] = `
           textAlign="left"
         >
           <Barcode
-            aria-hidden={true}
             background="#ffffff"
             displayValue={true}
             font="Nunito"
@@ -166,6 +166,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
     <Styled(ErrorMessage)
       className="error-notification"
       fontWeight="extrabold"
+      isEspot={false}
       noBackground={true}
     />
     <Styled(BodyCopy)
@@ -351,6 +352,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
     <Styled(ErrorMessage)
       className="error-notification"
       fontWeight="extrabold"
+      isEspot={false}
       noBackground={true}
     />
     <Styled(BodyCopy)
@@ -508,7 +510,8 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       textAlign="left"
     >
       <Styled(Image)
-        src="/static/images/white-bag.svg"
+        alt=""
+        src="/static/version-not-available/images/white-bag.svg"
       />
       <Styled(BodyCopy)
         className={null}
@@ -611,7 +614,6 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           textAlign="left"
         >
           <Barcode
-            aria-hidden={true}
             background="#ffffff"
             displayValue={true}
             font="Nunito"
@@ -633,6 +635,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
     <Styled(ErrorMessage)
       className="error-notification"
       fontWeight="extrabold"
+      isEspot={false}
       noBackground={true}
     />
     <Styled(BodyCopy)
@@ -861,7 +864,6 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           textAlign="left"
         >
           <Barcode
-            aria-hidden={true}
             background="#ffffff"
             displayValue={true}
             font="Nunito"
@@ -883,6 +885,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     <Styled(ErrorMessage)
       className="error-notification"
       fontWeight="extrabold"
+      isEspot={false}
       noBackground={true}
     />
     <Styled(BodyCopy)

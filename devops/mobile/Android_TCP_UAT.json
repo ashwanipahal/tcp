@@ -308,6 +308,50 @@
     {
       "name": "RWD_APP_HOST_GYM",
       "value": ".gymboree.com"
+    },
+    {
+      "name": "RWD_APP_RAYGUN_API_KEY_TCP",
+      "value": "gEzYmTNVR3IdQgwiw2T0xQ"
+    },
+    {
+      "name": "isErrorReportingActive",
+      "value": "true"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_TCP",
+      "value": "https://test6.childrensplace.com"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_GYM",
+      "value": "https://test6.gymboree.com"
+    },
+    {
+      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_TCP",
+      "value": "false"
+    },
+    {
+      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
+      "value": "false"
+    },
+    {
+      "name": " RWD_APP_BV_API_KEY_TCP",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_GYM",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_URL",
+      "value": "https://stg.api.bazaarvoice.com"
+    },
+    {
+      "name": "RWD_APP_BV_WEB_VIEW_URL",
+      "value": "https://test6.childrensplace.com/static/bazaarVoice/index.html"
+    },
+    {
+      "name": "RWD_APP_BV_SHARED_KEY",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -337,7 +381,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "1881e243-2da4-473b-a5d7-e19e845f9519"
+        "c6d91041-0ebb-48cd-b8e9-f71470f2f6dd"
       ],
       "isSilent": false
     },

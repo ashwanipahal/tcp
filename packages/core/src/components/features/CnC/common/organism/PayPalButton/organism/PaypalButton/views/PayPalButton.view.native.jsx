@@ -25,6 +25,7 @@ class PayPalButton extends React.PureComponent {
       navigation,
       setVenmoState,
       closeModal,
+      isRenderDone,
     } = this.props;
 
     switch (event.nativeEvent.data) {
@@ -45,6 +46,9 @@ class PayPalButton extends React.PureComponent {
         setVenmoState(true);
         payPalWebViewHandle(false);
         this.setState({ showAsModal: false });
+        break;
+      case 'loadSuccess':
+        isRenderDone(true);
         break;
       default:
         payPalWebViewHandle(false);
@@ -69,14 +73,13 @@ class PayPalButton extends React.PureComponent {
 
   render() {
     const { getPayPalSettings, top, fullWidth } = this.props;
-
     const { showAsModal } = this.state;
     if (showAsModal) {
       const isIOS = Platform.OS === 'ios';
       const screenHeight = getScreenHeight();
       styles = {
         position: 'absolute',
-        top: isIOS && top ? top : 0,
+        top: 0,
         width: '100%',
         height: isIOS ? screenHeight - top : screenHeight,
         zIndex: 999,
@@ -135,11 +138,14 @@ PayPalButton.propTypes = {
   top: PropTypes.number,
   isBillingPage: PropTypes.bool.isRequired,
   fullWidth: PropTypes.bool,
+  isRenderDone: PropTypes.bool,
 };
 
 PayPalButton.defaultProps = {
   top: 0,
   fullWidth: false,
+  isRenderDone: false,
 };
 
 export default PayPalButton;
+export { PayPalButton as PayPalButtonVanilla };

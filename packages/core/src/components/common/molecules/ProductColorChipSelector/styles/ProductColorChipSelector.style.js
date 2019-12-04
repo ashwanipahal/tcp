@@ -111,7 +111,7 @@ const styles = css`
         height: 19px;
       }
     }
-    .input-radio-icon-checked + .input-radio-title .color-image.error {
+    .input-radio-title .color-image.error {
       border: 12px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     }
 

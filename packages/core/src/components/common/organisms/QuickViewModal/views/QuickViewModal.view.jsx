@@ -10,11 +10,11 @@ import styles, {
 } from '../styles/QuickViewModal.style';
 import { getLocator } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
-import { Spinner } from '../../../atoms';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
 import QuickViewAddToBagButton from '../atoms/QuickViewAddToBagButton';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
+import QuickViewSkeleton from '../molecules/QuickViewSkeleton';
 
 class QuickViewModal extends React.Component {
   constructor(props) {
@@ -38,11 +38,18 @@ class QuickViewModal extends React.Component {
   };
 
   getHeadingText = () => {
-    const { quickViewLabels, fromBagPage, isLoading } = this.props;
+    const { quickViewLabels, fromBagPage, isLoading, isFavoriteEdit } = this.props;
     if (isLoading) {
       return ' ';
     }
-    return fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag;
+    const { editItem, addToBag, editProduct } = quickViewLabels;
+    let headerText = addToBag;
+    if (fromBagPage) {
+      headerText = editItem;
+    } else if (isFavoriteEdit) {
+      headerText = editProduct;
+    }
+    return headerText;
   };
 
   handleMultipleItemsAddToBagClick(e) {
@@ -86,15 +93,18 @@ class QuickViewModal extends React.Component {
     const {
       plpLabels: { addToBag },
       quickViewLabels,
+      toastMessage,
     } = this.props;
     const { showAddProductValidation } = this.state;
     return (
       <QuickViewAddToBagButton
         dataLocator="MULTI_QV_ATB"
         onClickActn={this.handleMultipleItemsAddToBagClick}
+        toastMessage={toastMessage}
         buttonLabel={addToBag}
         quickViewLabels={quickViewLabels}
         showAddProductValidation={showAddProductValidation}
+        changeQuickViewState={this.changeQuickViewState}
       />
     );
   };
@@ -154,10 +164,17 @@ class QuickViewModal extends React.Component {
     );
   }
 
-  renderFulFilmentSection = (isMultiItemQVModal, fromBagPage, product, currentColorEntry) => {
+  renderFulFilmentSection = (
+    isMultiItemQVModal,
+    fromBagPage,
+    product,
+    currentColorEntry,
+    isFavoriteEdit
+  ) => {
     return (
       !isMultiItemQVModal &&
       !fromBagPage &&
+      !isFavoriteEdit &&
       product &&
       currentColorEntry && (
         <ProductPickupContainer
@@ -171,7 +188,14 @@ class QuickViewModal extends React.Component {
   };
 
   render() {
-    const { isModalOpen, productInfo, isMultiItemQVModal, fromBagPage, isLoading } = this.props;
+    const {
+      isModalOpen,
+      productInfo,
+      isMultiItemQVModal,
+      fromBagPage,
+      isLoading,
+      isFavoriteEdit,
+    } = this.props;
     const product = productInfo && productInfo.length && productInfo[0].product;
     const currentColorEntry =
       product && getMapSliceForColorProductId(product.colorFitsSizesMap, product.generalProductId);
@@ -188,7 +212,7 @@ class QuickViewModal extends React.Component {
             closeIconDataLocator={getLocator('quick_view_icon_btn')}
             heading={this.getHeadingText()}
             widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
-            heightConfig={{ height: '95%' }}
+            standardHeight
             fixedWidth
             inheritedStyles={customHeaderStyle}
             headingAlign="center"
@@ -201,7 +225,7 @@ class QuickViewModal extends React.Component {
             fontSize="fs22"
           >
             {isLoading ? (
-              <Spinner inheritedStyles={customSpinnerStyle} />
+              <QuickViewSkeleton inheritedStyles={customSpinnerStyle} />
             ) : (
               <React.Fragment>
                 {this.renderProductCustomizeFormPart()}
@@ -209,7 +233,8 @@ class QuickViewModal extends React.Component {
                   isMultiItemQVModal,
                   fromBagPage,
                   product,
-                  currentColorEntry
+                  currentColorEntry,
+                  isFavoriteEdit
                 )}
 
                 {isMultiItemQVModal && this.renderAddToBagButton()}
@@ -243,6 +268,7 @@ QuickViewModal.propTypes = {
   currencyAttributes: PropTypes.shape({}).isRequired,
   isLoading: PropTypes.bool.isRequired,
   toastMessage: PropTypes.func,
+  isFavoriteEdit: PropTypes.bool.isRequired,
 };
 
 QuickViewModal.defaultProps = {

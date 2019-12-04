@@ -12,6 +12,11 @@ const styles = css`
     flex-direction: column;
     display: flex;
   }
+  /* stylelint-disable-next-line */
+  _:-ms-fullscreen,
+  .image-wrapper img {
+    max-height: 320px;
+  }
   .image-wrapper {
     display: flex;
     flex-direction: column;
@@ -39,6 +44,12 @@ const styles = css`
   .product-details-card-container {
     display: none;
   }
+  .edit-form-css {
+    .color-selector {
+      margin-bottom: 32px;
+    }
+  }
+
   .image-title-wrapper {
     display: flex;
     flex-direction: row;

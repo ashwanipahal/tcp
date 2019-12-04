@@ -63,14 +63,14 @@ class Espot extends PureComponent {
     const { assetHost } = getAPIConfig();
 
     if (externalUrl.test(link)) {
-      window.open(link, '_blank');
+      window.open(link, '_blank', 'noopener');
     } else {
       switch (target) {
         case '_self':
           this.richTextInternalRoute(link);
           break;
         case '_blank':
-          window.open(`${assetHost}${link}`, '_blank');
+          window.open(`${assetHost}${link}`, '_blank', 'noopener');
           break;
         default:
           break;
@@ -106,6 +106,7 @@ Espot.propTypes = {
   togglePlccModal: PropTypes.func.isRequired,
   richTextHtml: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  toggleNeedHelpModal: PropTypes.func.isRequired,
 };
 
 export default Espot;

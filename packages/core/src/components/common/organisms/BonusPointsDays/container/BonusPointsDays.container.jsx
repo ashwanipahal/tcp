@@ -9,6 +9,7 @@ import {
   getBonusDetailsContentId,
   getBonusDetailsData,
   getBonusPointsSwitch,
+  getIsFetching,
 } from './BonusPointsDays.selectors';
 import { isPlccUser } from '../../../../features/account/User/container/User.selectors';
 import BonusPointsView from '../views/BonusPointsView';
@@ -34,6 +35,8 @@ export class BonusPointsDays extends React.Component {
     additionalClassNameModal: PropTypes.string.isRequired,
     isDefaultOpen: PropTypes.bool,
     isInternationalShipping: PropTypes.bool,
+    isFetchingStateSection: PropTypes.bool.isRequired,
+    isFetchingStatePageLevel: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -78,8 +81,11 @@ export class BonusPointsDays extends React.Component {
       additionalClassNameModal,
       isDefaultOpen,
       isInternationalShipping,
+      isFetchingStateSection,
+      isFetchingStatePageLevel,
       ...otherProps
     } = this.props;
+    const isFetching = isFetchingStateSection || isFetchingStatePageLevel;
     return (
       !isCanada() &&
       isBonusPointsEnabled && (
@@ -89,13 +95,14 @@ export class BonusPointsDays extends React.Component {
           bonusDetailsData={bonusDetailsData}
           view={view}
           isPlcc={isPlcc}
-          getBonusDaysData={getAvailableBonusDaysData}
+          getAvailableBonusDaysData={getAvailableBonusDaysData}
           orderDetails={orderId}
           showAccordian={showAccordian}
           isBagPage={isBagPage}
           isDefaultOpen={isDefaultOpen}
           additionalClassNameModal={additionalClassNameModal}
           isInternationalShipping={isInternationalShipping}
+          isFetching={isFetching}
           {...otherProps}
         />
       )
@@ -113,6 +120,7 @@ export const mapStateToProps = state => {
     isPlcc: isPlccUser(state),
     orderId: getCartOrderId(state),
     isInternationalShipping: getIsInternationalShipping(state),
+    isFetchingStateSection: getIsFetching(state),
   };
 };
 

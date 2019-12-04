@@ -1,23 +1,14 @@
 import React, { useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import { plpRoutingHandling } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
 import Footer from '../../Footer';
 import style from '../Navigation.style';
-import { filterParams, clearAll } from '../../../../../constants/constants';
-
-const {
-  FILTER_CATAGORY,
-  FILTER_COLOR,
-  FILTER_SIZE,
-  FILTER_PRICE_RANGE,
-  FILTER_FIT,
-  FILTER_GENDER,
-  FILTER_AGE,
-} = filterParams;
+import { clearAll } from '../../../../../constants/constants';
 
 const { CLEAR_ALL_SEARCH_FILTER, CLEAR_ALL_PLP_FILTER } = clearAll;
 /**
@@ -39,17 +30,17 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
 const handleRouteComplete = url => {
   const clearAllFilter =
     localStorage.getItem(CLEAR_ALL_SEARCH_FILTER) || localStorage.getItem(CLEAR_ALL_PLP_FILTER);
-  const params = new URL(document.location).searchParams;
-  const sortParam = params.has('sort');
+  const params = queryString.parse(document.location.search);
+  const sortParam = params.sort !== undefined;
   // document.getElementById(`default_spinner_overlay`).classList.add(`hide-default-spinner`); /* TODO - Need to reformat the code so that we can use according to requirement   */
   const filterParam =
-    params.has(FILTER_CATAGORY) ||
-    params.has(FILTER_COLOR) ||
-    params.has(FILTER_SIZE) ||
-    params.has(FILTER_PRICE_RANGE) ||
-    params.has(FILTER_FIT) ||
-    params.has(FILTER_GENDER) ||
-    params.has(FILTER_AGE);
+    params.FILTER_CATAGORY !== undefined ||
+    params.FILTER_COLOR !== undefined ||
+    params.FILTER_SIZE !== undefined ||
+    params.FILTER_PRICE_RANGE !== undefined ||
+    params.FILTER_FIT !== undefined ||
+    params.FILTER_GENDER !== undefined ||
+    params.FILTER_AGE !== undefined;
 
   /**
    * check if sort or filter param present in PLP page

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductPrice from '../../ProductPrice/ProductPrice';
 import ProductBasicInfo from '../../ProductBasicInfo/ProductBasicInfo';
 import {
@@ -56,23 +57,19 @@ const Product = props => {
     skuId = getMapSliceForSizeSkuID(colorProduct, size);
   }
 
+  const colorProductName = colorProduct && colorProduct.color && colorProduct.color.name;
+
   if (isShowPriceRange) {
     const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(productInfo, formValues);
-    prices = getPricesWithRange(
-      productInfo,
-      colorProduct.color.name,
-      fit,
-      size,
-      isSelectedSizeDisabled
-    );
+    prices = getPricesWithRange(productInfo, colorProductName, fit, size, isSelectedSizeDisabled);
   }
   if (isBundleProduct) {
-    prices = getPricesWithRange(productInfo, colorProduct.color.name);
+    prices = getPricesWithRange(productInfo, colorProductName);
   }
 
   return (
     <>
-      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop hide-on-tablet'}>
         <ProductBasicInfo
           keepAlive={keepAlive}
           outOfStockLabels={outOfStockLabels}
@@ -95,9 +92,10 @@ const Product = props => {
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           pageName="PDP"
           skuId={skuId}
+          formName={PRODUCT_ADD_TO_BAG}
         />
       </div>
-      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
+      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop hide-on-tablet' : ''}>
         {!isGiftCard ? (
           <>
             <ProductPrice
