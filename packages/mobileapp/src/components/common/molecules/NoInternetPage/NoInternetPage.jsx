@@ -37,7 +37,7 @@ class NoInternetPage extends React.PureComponent {
             fill="BLUE"
             color="white"
             onPress={this.onRetry}
-            disabled={!isConnected}
+            disableButton={!isConnected}
           />
         </Container>
       </SafeAreaViewStyle>

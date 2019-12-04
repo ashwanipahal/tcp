@@ -23,7 +23,6 @@ exports[`NoInternetPage Component NoInternetPage should render correctly 1`] = `
       customStyle={Object {}}
       customTextStyle={null}
       disableButton={false}
-      disabled={false}
       fill="BLUE"
       fontFamily="secondary"
       fullWidth=""

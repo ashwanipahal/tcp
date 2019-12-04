@@ -24,7 +24,7 @@ export const NetworkContext = React.createContext({ isConnected: true });
 export function useNetworkState() {
   const context = React.useContext(NetworkContext);
   if (context === undefined) {
-    throw new Error('useLocationState must be used within a LocationProvider');
+    throw new Error('NetworkContext must be used within a NetworkProvider');
   }
   return context;
 }
