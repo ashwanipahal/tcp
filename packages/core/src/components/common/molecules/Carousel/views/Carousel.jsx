@@ -23,6 +23,7 @@ type Props = {
 
 type State = {
   autoplay: boolean,
+  uniqueId: number,
 };
 
 /**
@@ -39,6 +40,7 @@ class Carousel extends React.PureComponent<Props, State> {
     (this: any).pause = this.pause.bind(this);
     this.state = {
       autoplay: true,
+      uniqueId: Math.random(),
     };
   }
 
@@ -167,13 +169,15 @@ class Carousel extends React.PureComponent<Props, State> {
       dots: options.dots || options.autoplay,
     };
 
+    const { uniqueId } = this.state;
+
     return (
       <div
         className={`${className} tcp_carousel_wrapper`}
         carouselConfig={carouselConfig}
         data-locator={carouselConfig.dataLocatorCarousel}
       >
-        <Slider className="tcp_carousel" ref={this.getSlider} {...settings}>
+        <Slider className="tcp_carousel" ref={this.getSlider} key={uniqueId} {...settings}>
           {!children ? null : children}
         </Slider>
       </div>

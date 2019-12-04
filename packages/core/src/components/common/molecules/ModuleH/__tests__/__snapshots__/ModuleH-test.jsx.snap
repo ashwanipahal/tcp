@@ -230,7 +230,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "autoplaySpeed": 4000,
           "beforeChange": [Function],
           "fade": true,
-          "key": 0.7783080126113864,
+          "key": 0.13062152412600225,
           "responsive": Array [
             Object {
               "breakpoint": 767,
