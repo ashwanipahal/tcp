@@ -4,7 +4,7 @@ import logger from '../../../../../utils/loggerInstance';
 import { isGuest } from './Checkout.selector';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { emailSignupStatus } from './Checkout.action';
-import { CHECKOUT_ROUTES } from '../Checkout.constants';
+import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import briteVerifyStatusExtraction from '../../../../../services/abstractors/common/briteVerifyStatusExtraction';
 import utility from '../util/utility';
 
@@ -22,10 +22,14 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
     const payloadObject = {
       emailaddr: payload.signup,
       URL: 'email-confirmation',
-      response: status,
+      response: payload.isCheckoutFow ? status : `${status}:::false:false`,
       brandTCP,
       brandGYM,
     };
+
+    if (!payload.isCheckoutFow) {
+      payloadObject.registrationType = constants.EMAIL_REGISTRATION_TYPE_CONSTANT;
+    }
 
     if (field1) {
       payloadObject.field1 = field1;
