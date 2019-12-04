@@ -176,7 +176,10 @@ describe('Checkout Selectors', () => {
 
   it('#getPickUpContactFormLabels', () => {
     const State = {
-      Labels: { global: {}, checkout: { pickup: { lbl_pickup_title: '' }, shipping: {} } },
+      Labels: {
+        global: { accessibility: { lbl_img_alt_venmo_icon: '' } },
+        checkout: { pickup: { lbl_pickup_title: '' }, shipping: {} },
+      },
     };
     expect(CHECKOUT_SELECTORS.getPickUpContactFormLabels(State)).toEqual({
       SMSHeading: undefined,
@@ -205,6 +208,7 @@ describe('Checkout Selectors', () => {
       shippingText: undefined,
       title: '',
       titleEditPickup: undefined,
+      venmoIconAltText: '',
     });
   });
 
