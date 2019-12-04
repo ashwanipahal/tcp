@@ -14,7 +14,8 @@ import { PropTypes } from 'prop-types';
 
 class RichText extends PureComponent {
   renderImage = ({ style, source, ...otherProps }) => {
-    return <Image url={source} {...otherProps} />;
+    const url = typeof source === 'object' ? source.uri : source;
+    return <Image url={url} {...otherProps} />;
   };
 
   renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
