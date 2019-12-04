@@ -3,6 +3,15 @@
 exports[`InputCheckbox component should render correctly 1`] = `
 <Fragment>
   <Styled(View)
+    accessibilityLabel={null}
+    accessibilityRole="checkbox"
+    accessibilityState={
+      Object {
+        "checked": true,
+        "disabled": false,
+      }
+    }
+    accessible={true}
     execOnChangeByDefault={true}
     id="checkbox"
     isChecked={false}
@@ -133,6 +142,15 @@ exports[`InputCheckbox component should render correctly 1`] = `
 exports[`InputCheckbox component should render correctly with checked state false 1`] = `
 <Fragment>
   <Styled(View)
+    accessibilityLabel={null}
+    accessibilityRole="checkbox"
+    accessibilityState={
+      Object {
+        "checked": false,
+        "disabled": false,
+      }
+    }
+    accessible={true}
     execOnChangeByDefault={true}
     id="checkbox"
     isChecked={false}
