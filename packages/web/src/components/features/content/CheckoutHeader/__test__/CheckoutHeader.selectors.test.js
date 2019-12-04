@@ -11,7 +11,7 @@ describe('#Checkout Header Selectors', () => {
     },
     global: {
       accessibility: {
-        lbl_img_alt_carot_icon: 'Exit from checkout',
+        lbl_caret_icon: 'Exit from checkout',
       },
     },
   };

@@ -30,7 +30,7 @@ const FreeShippingBannerSection = props => {
           <FreeShippingIconWrapper>
             <Image
               source={fastShipping}
-              alt={getLabelValue(labels, 'lbl_img_alt_fast_shipping')}
+              alt={getLabelValue(labels, 'lbl_fast_shipping')}
               height={18}
               width={20}
             />

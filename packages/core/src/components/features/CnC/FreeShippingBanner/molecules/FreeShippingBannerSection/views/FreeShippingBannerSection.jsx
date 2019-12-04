@@ -38,7 +38,7 @@ const FreeShippingBannerSection = props => {
         >
           <Image
             src={fastShippingPath}
-            alt={getLabelValue(labels, 'lbl_img_alt_fast_shipping')}
+            alt={getLabelValue(labels, 'lbl_fast_shipping')}
             className="fast-shipping"
           />
           {freeShippingLabel}
