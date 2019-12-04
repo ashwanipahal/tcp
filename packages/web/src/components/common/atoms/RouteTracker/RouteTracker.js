@@ -41,13 +41,15 @@ function setPageCountCookie() {
   });
 }
 
-function setLandingSiteCookie() {
-  const { landingSite } = API_CONFIG;
+function setLandingSiteCookie(brandId) {
+  const { landingSite, pageCountCookieKey } = API_CONFIG;
   const siteId = readCookie(landingSite) || '';
-  setCookie({
-    key: landingSite,
-    value: siteId,
-  });
+  if (readCookie(pageCountCookieKey) === '1' && !siteId) {
+    setCookie({
+      key: landingSite,
+      value: brandId,
+    });
+  }
 }
 
 /**
@@ -56,15 +58,18 @@ function setLandingSiteCookie() {
  * payloads containing the current URL and route
  * component properties.
  */
-function RouteTracker({ dispatch }) {
+function RouteTracker(props) {
+  const { dispatch, isAnalyticsEnabled, brandId } = props;
   const track = usePageTracking(dispatch);
   const handleChange = url => {
     setPageCountCookie();
-    setLandingSiteCookie();
-    track({
-      path: url,
-      props: getRouteProps(),
-    });
+    setLandingSiteCookie(brandId);
+    if (isAnalyticsEnabled) {
+      track({
+        path: url,
+        props: getRouteProps(),
+      });
+    }
   };
 
   useEffect(() => {
@@ -76,7 +81,7 @@ function RouteTracker({ dispatch }) {
 
     // Stop tracking route changes on unmount
     return () => Router.events.off('routeChangeComplete', handleChange);
-  }, []);
+  }, [brandId]);
 
   return null;
 }

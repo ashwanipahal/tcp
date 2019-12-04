@@ -302,6 +302,7 @@ class TCPWebApp extends App {
       internationalCheckout.asPath,
     ];
     const isCheckAnalyticsOnload = this.checkLoadAnalyticsOnload(pageProps);
+    const { brandId = '' } = store.getState().APIConfig;
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
@@ -335,7 +336,12 @@ class TCPWebApp extends App {
               <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {process.env.ANALYTICS && isCheckAnalyticsOnload && <RouteTracker />}
+            {
+              <RouteTracker
+                brandId={brandId}
+                isAnalyticsEnabled={process.env.ANALYTICS && isCheckAnalyticsOnload}
+              />
+            }
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}
