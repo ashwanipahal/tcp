@@ -180,4 +180,7 @@ const mapStateToProps = state => ({
   searchDone: state.StoreLocatorReducer && state.StoreLocatorReducer.get('searchDone'),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoreLanding);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StoreLanding);

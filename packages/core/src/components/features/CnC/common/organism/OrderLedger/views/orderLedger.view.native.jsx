@@ -74,7 +74,14 @@ export const createRowForGiftServiceTotal = (giftServiceTotal, labels) => {
   ) : null;
 };
 
-const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, navigation) => {
+const getBody = (
+  ledgerSummaryData,
+  labels,
+  isConfirmationPage,
+  pageCategory,
+  navigation,
+  bagLoading
+) => {
   const {
     itemsCount,
     currencySymbol,
@@ -89,7 +96,6 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
     orderBalanceTotal,
     totalOrderSavings,
     isOrderHasShipping,
-    bagLoading,
   } = ledgerSummaryData;
   let fontSize = 'fs13';
   let totalFontSize = 'fs16';
@@ -258,12 +264,13 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, na
               </Text>
             </StyledRowDataContainer>
           ) : null}
+
+          {renderFreeShippingBanner(pageCategory)}
+          {getLoyaltybanner(isConfirmationPage, pageCategory, navigation)}
         </>
       ) : (
         <OrderSummarySkeleton />
       )}
-      {renderFreeShippingBanner(pageCategory)}
-      {getLoyaltybanner(isConfirmationPage, pageCategory, navigation)}
     </StyledOrderLedger>
   );
 };
@@ -292,13 +299,21 @@ const OrderLedger = ({
   isConfirmationPage,
   pageCategory,
   navigation,
+  bagLoading,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = getBody(summaryData, labels, isConfirmationPage, pageCategory, navigation);
+  const body = getBody(
+    summaryData,
+    labels,
+    isConfirmationPage,
+    pageCategory,
+    navigation,
+    bagLoading
+  );
   return (
     <View>
       {showAccordian ? (
@@ -318,6 +333,7 @@ const OrderLedger = ({
 };
 
 OrderLedger.propTypes = {
+  bagLoading: PropTypes.bool.isRequired,
   ledgerSummaryData: PropTypes.shape({
     itemsCount: PropTypes.number.isRequired,
 
