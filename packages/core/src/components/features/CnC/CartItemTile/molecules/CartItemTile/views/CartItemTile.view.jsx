@@ -527,8 +527,12 @@ class CartItemTile extends PureComponent {
   // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { isBagPageSflSection } = this.props;
+    const { isBagPageSflSection, currencyExchange } = this.props;
     const { offerPrice } = productDetail.itemInfo;
+    const { price } = getPrices({
+      productDetail,
+      currencyExchange,
+    });
     // SFL prices
     const isBagPage = pageView === 'myBag';
     const topPaddingClass = isBagPageSflSection ? 'padding-top-40' : 'padding-top-15';
@@ -576,7 +580,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            <PriceCurrency price={offerPrice} />
+            <PriceCurrency price={isBagPageSflSection ? price : offerPrice} />
           </BodyCopy>
         )}
       </Row>
@@ -690,7 +694,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            <PriceCurrency price={Number(price)} />
+            <PriceCurrency price={Number(salePrice)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy
