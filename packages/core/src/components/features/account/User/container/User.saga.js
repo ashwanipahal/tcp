@@ -39,6 +39,7 @@ export function* getUserInfoSaga() {
     }
 
     dataSetActions.push(
+      put(setCurrency({ currency })),
       put(setUserInfo(response)),
       put(setAddressList(response.contactList, true)),
       put(setBossBopisFlags(bossBopisFlags)),

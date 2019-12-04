@@ -3,6 +3,7 @@
 exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 <Styled(Modal)
   className="demo TCPModal__Content"
+  contentLabel="lbl_PLCCModal_applyNowHeaderText"
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
@@ -495,12 +496,27 @@ exports[`ApplyNowModalWrapper component should renders correctly if isPLCCModalO
   className="demo"
   isPLCCModalOpen={true}
   isRtpsFlow={false}
+  labels={
+    Object {
+      "apply_now_discount_20": "abc",
+      "apply_now_discount_20_subtext": "abc",
+      "apply_now_discount_25": "abc",
+      "apply_now_discount_25_subtext": "abc",
+      "apply_now_discount_30": "abc",
+      "apply_now_discount_30_subtext": "abc",
+      "apply_now_discount_standard": "abc",
+      "apply_now_discount_standard_subtext": "abc",
+      "apply_now_double": "abc",
+      "apply_now_double_subtext": "abc",
+    }
+  }
 />
 `;
 
 exports[`ApplyNowModalWrapper component should renders correctly with rtps false  1`] = `
 <Styled(Modal)
   className="demo TCPModal__Content"
+  contentLabel="lbl_PLCCModal_applyNowHeaderText"
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}

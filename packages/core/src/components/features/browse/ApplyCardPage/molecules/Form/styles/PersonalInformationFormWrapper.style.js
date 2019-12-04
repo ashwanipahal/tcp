@@ -21,8 +21,7 @@ export default styled.div`
       border: 0;
     }
 
-    @media ${props => props.theme.mediaQuery.medium} and ${props =>
-  props.theme.mediaQuery.largeMax} {
+    @media ${props => props.theme.mediaQuery.medium} {
       .contact_information_form:nth-of-type(2) {
         margin-top: 12px;
       }
