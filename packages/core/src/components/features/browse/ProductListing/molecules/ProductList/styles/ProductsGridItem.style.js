@@ -15,9 +15,6 @@ const styles = css`
   }
   .fulfillment-section {
     margin-top: auto;
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 6px;
-    }
   }
   .favorite-count {
     text-align: center;
@@ -41,6 +38,7 @@ const styles = css`
     text-decoration: line-through;
   }
   .product-title-container {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     box-sizing: border-box;
     height: 36px;
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
@@ -70,6 +68,9 @@ const styles = css`
   }
 
   .top-badge-container {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    margin-left: 0;
     min-height: 14px;
     width: 100%;
   }
@@ -207,14 +208,11 @@ const styles = css`
     min-height: 35px;
   }
 
-  /* stylelint-disable-next-line*/
-  _:-ms-fullscreen,
-  .product-image-container {
-    max-height: 320px;
-  }
-
   .product-image-container {
     position: relative;
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 320px;
+    }
   }
 
   .extended-sizes-text {
@@ -223,7 +221,6 @@ const styles = css`
     height: 10px;
     @media ${props => props.theme.mediaQuery.medium} {
       height: 12px;
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
     @media ${props => props.theme.mediaQuery.large} {
       height: 14px;
@@ -248,6 +245,9 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.medium} {
     .top-badge-container {
       min-height: 16px;
+      padding-top: 20px;
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      margin-left: 0px;
     }
 
     .container-price {
@@ -261,6 +261,9 @@ const styles = css`
 
   @media ${props => props.theme.mediaQuery.large} {
     .top-badge-container {
+      padding-top: 10px;
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      margin-left: -2px;
       min-height: 19px;
     }
 
