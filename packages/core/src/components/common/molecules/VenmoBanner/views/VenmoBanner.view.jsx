@@ -1,5 +1,5 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { string, shape } from 'prop-types';
 import { BodyCopy, Image } from '../../../atoms';
 import { getIconPath } from '../../../../../utils/utils';
 import styles from '../styles/VenmoBanner.style';
