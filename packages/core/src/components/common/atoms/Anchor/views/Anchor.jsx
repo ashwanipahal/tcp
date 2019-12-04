@@ -2,13 +2,21 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
-import { buildUrl, getAsPathWithSlug, getMappedPageHref } from '../../../../../utils';
+import { buildUrl, getAsPathWithSlug, getMappedPageHref, getAPIConfig } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
 
 const getAsLinkPath = (IsSlugPathAdded, asPath, incomingUrl) => {
   return IsSlugPathAdded ? asPath || incomingUrl : getAsPathWithSlug(asPath || incomingUrl);
+};
+
+const triggerLinkOnClick = url => {
+  const apiConfig = getAPIConfig();
+  if (window && window.ReactNativeWebView && apiConfig.isAppChannel) {
+    window.ReactNativeWebView.postMessage(url);
+    console.log('WEB VIEW EVENT CAPTURED');
+  }
 };
 
 /**
@@ -45,6 +53,7 @@ const Anchor = ({
     incomingUrl = getMappedPageHref(incomingUrl);
   }
   const hrefUrl = asLinkPath || buildUrl(incomingUrl);
+
   let AnchorComponent = null;
   if (children || text) {
     AnchorComponent = noLink ? (
@@ -66,6 +75,7 @@ const Anchor = ({
           href={hrefUrl}
           title={title}
           target={targetVal}
+          onClick={() => triggerLinkOnClick(to)}
           data-locator={dataLocator}
           {...other}
         >

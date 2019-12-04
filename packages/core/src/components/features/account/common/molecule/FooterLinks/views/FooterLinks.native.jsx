@@ -220,6 +220,13 @@ class FooterLinks extends PureComponent {
     }));
   };
 
+  redirectToInAppView = url => {
+    const { navigation } = this.props;
+    navigation.navigate('InAppView', {
+      url,
+    });
+  };
+
   renderLinks = () => {
     const { getComponentId, toggleViewModal, webUrl } = this.state;
     const {
@@ -356,6 +363,28 @@ class FooterLinks extends PureComponent {
         linkMarkup = (
           <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         );
+      } else if (leafLink.url.includes('help-center') || leafLink.url.includes('content')) {
+        linkMarkup = (
+          <Anchor
+            {...(leafLink.target === '_self'
+              ? {
+                  onPress: () => this.redirectToInAppView(leafLink.url),
+                }
+              : { url: leafLink.url })}
+            customStyle={AnchorStyles}
+          >
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              text={leafLink.text}
+              color="gray.900"
+            />
+            <RightArrowImageContainer>
+              <ImageComp source={rightIcon} width={6} height={10} />
+            </RightArrowImageContainer>
+          </Anchor>
+        );
       } else if (!leafLink.url.includes('track-order')) {
         linkMarkup = (
           <Anchor
@@ -377,6 +406,7 @@ class FooterLinks extends PureComponent {
           </Anchor>
         );
       }
+
       return (
         <>
           {linkMarkup}

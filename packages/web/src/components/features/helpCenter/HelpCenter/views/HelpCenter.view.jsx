@@ -32,6 +32,7 @@ const BackButton = ({ labels }) => {
       title={labels.lbl_helpCenter_continueShopping}
       to="/home"
       asPath="/home"
+      className="help-center-back"
     >
       <span className="left-arrow" />
       {labels.lbl_helpCenter_continueShopping}

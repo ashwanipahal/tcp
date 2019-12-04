@@ -31,16 +31,6 @@ const redis = require('async-redis');
 const { join } = require('path');
 
 const {
-  settingHelmetConfig,
-  settingDeviceConfig,
-  sites,
-  siteIds,
-  setEnvConfig,
-  HEALTH_CHECK_PATH,
-  ERROR_REDIRECT_STATUS,
-  CACHE_CLEAR_PATH,
-} = require('./config/server.config');
-const {
   initErrorReporter,
   getExpressMiddleware,
 } = require('@tcp/core/src/utils/errorReporter.util');
@@ -51,6 +41,16 @@ const {
   getDataFromRedis,
   setDataInRedis,
 } = require('@tcp/core/src/utils/redis.util');
+const {
+  settingHelmetConfig,
+  settingDeviceConfig,
+  sites,
+  siteIds,
+  setEnvConfig,
+  HEALTH_CHECK_PATH,
+  ERROR_REDIRECT_STATUS,
+  CACHE_CLEAR_PATH,
+} = require('./config/server.config');
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
@@ -89,7 +89,7 @@ const setErrorReporter = () => {
 settingDeviceConfig(server, device);
 
 const getLanguageByDomain = domain => {
-  let langCode = domain.substr(0, 2).toLowerCase();
+  const langCode = domain.substr(0, 2).toLowerCase();
 
   // FIXME: backend should return this somehow, if not possible we need to complete this list
   return langCode === 'es' || langCode === 'en' || langCode === 'fr' ? langCode : 'en';
@@ -98,7 +98,7 @@ const getLanguageByDomain = domain => {
 const setSiteDetails = (req, res) => {
   const { url } = req;
   let siteId = siteIds.us;
-  let reqUrl = url.split('/');
+  const reqUrl = url.split('/');
   for (let i = 0; i < reqUrl.length - 1; i++) {
     if (reqUrl[i].toLowerCase() === siteIds.ca) {
       siteId = siteIds.ca;
@@ -146,12 +146,12 @@ const redirectToErrorPage = (req, res) => {
   // TODO - To handle all this in Akamai redirect ?
   // This should redirect based on country like us/ca - Note hardcoded US
   // This method should handle all other cases like /wrongCountry/wrongRoute & /us/wrongRoute
-  const errorPageRoute = '/' + siteIds.us + ROUTING_MAP.error;
+  const errorPageRoute = `/${siteIds.us}${ROUTING_MAP.error}`;
   res.redirect(ERROR_REDIRECT_STATUS, errorPageRoute);
 };
 
 const redirectToHomePage = (req, res) => {
-  const errorPageRoute = '/' + siteIds.us + ROUTE_PATH.home;
+  const errorPageRoute = `/${siteIds.us}${ROUTE_PATH.home}`;
   res.redirect(ERROR_REDIRECT_STATUS, errorPageRoute);
 };
 

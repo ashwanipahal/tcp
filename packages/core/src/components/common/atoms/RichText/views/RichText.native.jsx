@@ -4,6 +4,7 @@ import { Dimensions, View, Text } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import { PropTypes } from 'prop-types';
+import { MobileChannel } from '@tcp/core/src/services/api.constants';
 
 /**
  * @param {object} props : Props for RichText
@@ -34,19 +35,39 @@ class RichText extends PureComponent {
     );
   };
 
+  handleLoaderStart = () => {
+    const { enableLoader, setLoaderState } = this.props;
+    if (enableLoader) {
+      setLoaderState(true);
+    }
+  };
+
+  handleLoaderEnd = () => {
+    const { enableLoader, setLoaderState } = this.props;
+    if (enableLoader) {
+      setLoaderState(false);
+    }
+  };
+
   renderWebView = () => {
     const {
       javaScriptEnabled,
       domStorageEnabled,
       thirdPartyCookiesEnabled,
       isApplyDeviceHeight,
+      injectedJavaScript,
       source,
+      onMessage,
       ...others
     } = this.props;
     const screenHeight = Math.round(Dimensions.get('window').height);
     const style = { backgroundColor: 'transparent' };
     const styleWithHeight = { backgroundColor: 'transparent', height: screenHeight };
-    const { html } = source;
+    const { html, uri } = source;
+    let webViewSource = { html };
+    if (uri) {
+      webViewSource = { uri, headers: { channel: MobileChannel } };
+    }
     return (
       <WebView
         style={isApplyDeviceHeight ? styleWithHeight : style}
@@ -54,9 +75,11 @@ class RichText extends PureComponent {
         javaScriptEnabled={javaScriptEnabled}
         domStorageEnabled={domStorageEnabled}
         thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
-        source={{
-          html: `<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </head><body>${html}</body></html>`,
-        }}
+        source={webViewSource}
+        injectedJavaScript={injectedJavaScript}
+        onMessage={onMessage}
+        onLoadStart={this.handleLoaderStart}
+        onLoadEnd={this.handleLoaderEnd}
         {...others}
       />
     );
@@ -102,10 +125,14 @@ RichText.propTypes = {
   isNativeView: PropTypes.bool,
   source: PropTypes.string,
   javaScriptEnabled: PropTypes.bool,
+  injectedJavaScript: PropTypes.string,
   domStorageEnabled: PropTypes.bool,
   thirdPartyCookiesEnabled: PropTypes.bool,
   isApplyDeviceHeight: PropTypes.bool,
   actionHandler: PropTypes.func,
+  onMessage: PropTypes.func,
+  enableLoader: PropTypes.bool,
+  setLoaderState: PropTypes.func,
 };
 
 RichText.defaultProps = {
@@ -114,8 +141,12 @@ RichText.defaultProps = {
   javaScriptEnabled: false,
   domStorageEnabled: false,
   thirdPartyCookiesEnabled: false,
+  injectedJavaScript: '',
   isApplyDeviceHeight: false,
   actionHandler: () => {},
+  onMessage: () => {},
+  enableLoader: false,
+  setLoaderState: () => {},
 };
 
 export default RichText;
