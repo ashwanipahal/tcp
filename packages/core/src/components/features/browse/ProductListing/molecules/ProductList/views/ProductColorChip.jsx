@@ -77,6 +77,7 @@ export default class ProductColorChip extends React.Component {
           imgData={imgData}
           imgConfigs={imgDataConfig}
           isProductImage
+          xsOnly
         />
       </button>
     );
