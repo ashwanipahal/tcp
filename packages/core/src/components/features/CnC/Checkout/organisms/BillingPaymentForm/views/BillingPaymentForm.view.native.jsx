@@ -414,6 +414,7 @@ export class BillingPaymentForm extends React.PureComponent {
           continueWithText={labels.continueWith}
           onVenmoSubmit={e => handleBillingFormSubmit(this, e, true)}
           onVenmoError={onVenmoError}
+          bagLoading={bagLoading}
           pageName="checkout"
           pageSection="billing"
         />
