@@ -70,7 +70,7 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
  * @param    {[Object]}  promoListData tile data from graphQL
  * @return   {[Object]} JSX of the component
  */
-const getPromoTileData = (promoListData, isPromoListFetching) => {
+const getPromoTileData = (promoListData, isPromoListFetching, openPLCCModal) => {
   if (isPromoListFetching) {
     return <PromoBannerSkeleton />;
   }
@@ -81,19 +81,31 @@ const getPromoTileData = (promoListData, isPromoListFetching) => {
           <>
             {item && (index === 0 || index === 2) && (
               <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderAll">
-                <PromoListTile key={index.toString()} tileData={item} />
+                <PromoListTile
+                  openPLCCModal={openPLCCModal}
+                  key={index.toString()}
+                  tileData={item}
+                />
                 <BodyCopy component="div" className="tile-border" />
               </Col>
             )}
             {item && index === 1 && (
               <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderAll">
-                <PromoListTile key={index.toString()} tileData={item} />
+                <PromoListTile
+                  openPLCCModal={openPLCCModal}
+                  key={index.toString()}
+                  tileData={item}
+                />
                 <BodyCopy component="div" className="tile-border-desktop" />
               </Col>
             )}
             {item && index === 3 && (
               <Col colSize={{ small: 3, medium: 2, large: 3 }}>
-                <PromoListTile key={index.toString()} tileData={item} />
+                <PromoListTile
+                  openPLCCModal={openPLCCModal}
+                  key={index.toString()}
+                  tileData={item}
+                />
               </Col>
             )}
           </>
@@ -214,6 +226,8 @@ const EarnPoints = ({
   promoListData,
   isEarnExtraPointsFetching,
   isPromoListFetching,
+  openPLCCModal,
+  openModal,
 }) => {
   let fistRowItem = [];
   let secondRowItem = [];
@@ -268,6 +282,7 @@ const EarnPoints = ({
             </BodyCopy>
             <BodyCopy textAlign="center" className="learnMore">
               <Anchor
+                onClick={openModal}
                 fontSizeVariation="xlarge"
                 underline
                 noLink
@@ -281,7 +296,7 @@ const EarnPoints = ({
               </Anchor>
             </BodyCopy>
           </div>
-          {getPromoTileData(promoListData, isPromoListFetching)}
+          {getPromoTileData(promoListData, isPromoListFetching, openPLCCModal)}
           {getEarnExtraPointTile(
             waysToEarn,
             onViewActivityDetails,
@@ -332,6 +347,8 @@ EarnPoints.propTypes = {
   promoListData: PropTypes.shape([]),
   isEarnExtraPointsFetching: PropTypes.bool,
   isPromoListFetching: PropTypes.bool,
+  openPLCCModal: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 EarnPoints.defaultProps = {

@@ -14,6 +14,7 @@ export class PromoListTile extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     tileData: PropTypes.shape({}).isRequired,
+    openPLCCModal: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -27,7 +28,7 @@ export class PromoListTile extends React.PureComponent {
    */
 
   render() {
-    const { className, tileData } = this.props;
+    const { className, tileData, openPLCCModal } = this.props;
     return (
       <BodyCopy component="div" className={className}>
         <BodyCopy className="border-padding">
@@ -69,6 +70,8 @@ export class PromoListTile extends React.PureComponent {
                 to={tileData.buttonList[0].url}
                 fontSizeVariation="large"
                 data-locator="privacyLnk"
+                target="_blank"
+                onClick={tileData.buttonList[0].action === 'plccModal' ? openPLCCModal : () => {}}
               >
                 {tileData.buttonList[0].text}
               </Anchor>
