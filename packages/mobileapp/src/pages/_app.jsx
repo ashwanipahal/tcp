@@ -75,17 +75,6 @@ export class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {
-      context: {
-        network: { isConnected },
-      },
-    } = this.props;
-    if (Platform.OS === 'ios' && isConnected) {
-      this.setCooKies();
-    } else {
-      this.store.dispatch(getUserInfo());
-    }
-
     const { apiConfig } = this.state;
     const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
     codePush.sync({ installMode: codePush.InstallMode.ON_NEXT_RESUME });
@@ -176,6 +165,11 @@ export class App extends React.PureComponent {
         this.setState({
           onLoadCheckInternet: true,
         });
+        if (Platform.OS === 'ios') {
+          this.setCooKies();
+        } else {
+          this.store.dispatch(getUserInfo());
+        }
       }
     });
   };
