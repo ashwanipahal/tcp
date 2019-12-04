@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import QuickViewModal from '../views';
-import { closeQuickViewModal } from './QuickViewModal.actions';
+import { closeQuickViewModal, updateAppTypeWithParams } from './QuickViewModal.actions';
 import {
   getAddedToBagError,
   getMultipleItemsAddedToBagError,
@@ -169,6 +169,9 @@ function mapDispatchToProps(dispatch) {
     },
     toastMessage: payload => {
       dispatch(toastMessageInfo(payload));
+    },
+    updateAppTypeHandler: payload => {
+      dispatch(updateAppTypeWithParams(payload));
     },
     updateWishListItemFav: payload => {
       dispatch(updateWishListItemIdAction(payload));
