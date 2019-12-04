@@ -42,8 +42,7 @@ export default css`
     height: 70px;
     margin-bottom: 20px;
   }
-  .product-size,
-  .loyality-banner {
+  .product-size {
     width: 100%;
     height: 70px;
     margin-bottom: 40px;
@@ -51,14 +50,6 @@ export default css`
   .product-add-to-bag {
     width: 70%;
     height: 50px;
-  }
-  &.product-detail-section {
-    margin: 0;
-    padding: 10px 0 20px;
-    .product-add-to-bag {
-      width: 100%;
-      padding-bottom: 15px;
-    }
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .product-detail-skeleton-wrapper {
@@ -78,10 +69,6 @@ export default css`
       display: flex;
       flex-direction: column;
       margin-left: 2%;
-    }
-    .product-overview-section {
-      margin-left: 0%;
-      width: 100%;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
@@ -105,10 +92,6 @@ export default css`
       display: flex;
       flex-direction: column;
       margin-right: 2%;
-    }
-    .product-overview-section {
-      width: 100%;
-      margin-right:);
     }
   }
 

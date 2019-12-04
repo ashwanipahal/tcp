@@ -116,7 +116,7 @@ const Product = props => {
             <RenderPerf.Measure name={PRICING_VISIBLE} />
           </>
         ) : (
-          <LoaderSkelton />
+          <LoaderSkelton height="40px" />
         )}
       </div>
     </>

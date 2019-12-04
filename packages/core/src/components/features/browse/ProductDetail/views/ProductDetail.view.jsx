@@ -1,7 +1,6 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { ProductDetailSectionSkeleton } from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDetailSkeleton/views/ProductDetailSectionSkeleton.view';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { isClient } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
@@ -355,29 +354,26 @@ class ProductDetailView extends PureComponent {
             {middlePromos && middlePromos.length > 0 && (
               <div className="promo-area-middle">{this.renderPromoBanner(middlePromos)}</div>
             )}
-            {isLoading ? (
-              <ProductDetailSectionSkeleton />
-            ) : (
-              currentProduct && (
-                <ProductAddToBagContainer
-                  handleFormSubmit={handleAddToBag}
-                  errorOnHandleSubmit={addToBagError}
-                  currentProduct={currentProductDynamicData || currentProduct}
-                  plpLabels={plpLabels}
-                  onChangeColor={this.onChangeColor}
-                  customSubmitButtonStyle={customSubmitButtonStyle}
-                  onChangeSize={this.onChangeSize}
-                  selectedColorProductId={selectedColorProductId}
-                  renderReceiveProps={renderReceiveProps}
-                  initialFormValues={this.formValues}
-                  isPDP
-                  alternateSizes={alternateSizes}
-                  sizeChartLinkVisibility={sizeChartLinkVisibility}
-                  isKeepAliveEnabled={isKeepAliveEnabled}
-                  outOfStockLabels={outOfStockLabels}
-                  sizeChartDetails={sizeChartDetails}
-                />
-              )
+            {currentProduct && (
+              <ProductAddToBagContainer
+                handleFormSubmit={handleAddToBag}
+                errorOnHandleSubmit={addToBagError}
+                currentProduct={currentProductDynamicData || currentProduct}
+                plpLabels={plpLabels}
+                onChangeColor={this.onChangeColor}
+                customSubmitButtonStyle={customSubmitButtonStyle}
+                onChangeSize={this.onChangeSize}
+                selectedColorProductId={selectedColorProductId}
+                renderReceiveProps={renderReceiveProps}
+                initialFormValues={this.formValues}
+                isPDP
+                alternateSizes={alternateSizes}
+                sizeChartLinkVisibility={sizeChartLinkVisibility}
+                isKeepAliveEnabled={isKeepAliveEnabled}
+                outOfStockLabels={outOfStockLabels}
+                sizeChartDetails={sizeChartDetails}
+                isLoading={isLoading}
+              />
             )}
             {productInfo && currentColorEntry && (
               <ProductPickupContainer
@@ -389,7 +385,13 @@ class ProductDetailView extends PureComponent {
                 // onPickUpOpenClick={onPickUpOpenClick}
               />
             )}
-            {!isLoading && <LoyaltyBanner pageCategory="isProductDetailView" />}
+            {!isLoading ? (
+              <LoyaltyBanner pageCategory="isProductDetailView" />
+            ) : (
+              <div className="product-property-section">
+                <LoaderSkelton height="40px" />
+              </div>
+            )}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
