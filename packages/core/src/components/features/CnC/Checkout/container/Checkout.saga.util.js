@@ -292,9 +292,8 @@ export function* addOrEditGuestUserAddress({
       },
       {}
     );
+    addOrEditAddressRes = { payload: addOrEditAddressRes };
   }
-  addOrEditAddressRes = { payload: addOrEditAddressRes };
-
   return addOrEditAddressRes;
 }
 
