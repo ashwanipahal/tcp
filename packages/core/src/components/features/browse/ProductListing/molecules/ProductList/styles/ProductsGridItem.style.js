@@ -208,11 +208,14 @@ const styles = css`
     min-height: 35px;
   }
 
+  /* stylelint-disable-next-line*/
+  _:-ms-fullscreen,
+  .product-image-container {
+    max-height: 320px;
+  }
+
   .product-image-container {
     position: relative;
-    @media ${props => props.theme.mediaQuery.large} {
-      max-height: 320px;
-    }
   }
 
   .extended-sizes-text {
@@ -221,6 +224,7 @@ const styles = css`
     height: 10px;
     @media ${props => props.theme.mediaQuery.medium} {
       height: 12px;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
     @media ${props => props.theme.mediaQuery.large} {
       height: 14px;
