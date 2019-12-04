@@ -4,7 +4,7 @@ import handler from '../../../handler';
 import { getAPIConfig, isMobileApp, getCacheKeyForRedis } from '../../../../utils';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../../api.constants';
 import { DEFAULT_XAPP_CONFIG_TTL } from '../../../../config/site.config';
-import { getDataFromRedis, setDataInRedis } from '../../../../utils/redis.util';
+import { getDataFromRedis } from '../../../../utils/redis.util';
 
 /**
  * Abstractor layer for loading data from API for Labels related components

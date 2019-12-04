@@ -3,7 +3,6 @@ import { all, call, put, putResolve, takeLatest, select } from 'redux-saga/effec
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { setPlpProductsDataOnServer } from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.actions';
 import { getAPIConfig, createLayoutPath } from '@tcp/core/src/utils';
-import { API_CONFIG } from '@tcp/core/src/services/config';
 import { getNavigationData } from '@tcp/core/src/services/abstractors/common/subNavigation';
 import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
@@ -79,7 +78,6 @@ function* bootstrap(params) {
       );
       yield put(loadXappConfigData(xappConfig));
 
-      const { brandIdCMS } = getAPIConfig();
       const xappConfigOtherBrand = yield call(
         xappAbstractor.getData,
         GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE,
