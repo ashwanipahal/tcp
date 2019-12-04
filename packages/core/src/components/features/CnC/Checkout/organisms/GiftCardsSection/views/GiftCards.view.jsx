@@ -6,7 +6,7 @@ import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
 import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 import GiftCardSkeleton from '../skeleton/GiftCardSkeleton.view';
-import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 import {
   propTypes,
@@ -36,12 +36,7 @@ const renderAddGiftCardError = getAddGiftCardError => {
     return (
       <Row fullBleed>
         <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 10, large: 6 }}>
-          <ErrorMessage
-            isShowingMessage
-            errorId="addNew"
-            error={getAddGiftCardError}
-            withoutErrorDataAttribute
-          />
+          <ErrorMessage error={getAddGiftCardError} fontSize="fs12" fontWeight="extrabold" />
         </Col>
       </Row>
     );
