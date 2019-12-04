@@ -13,7 +13,7 @@ class TitlePlusEditButton extends React.PureComponent {
   };
 
   render() {
-    const { title, editTitle, className, dataLocator } = this.props;
+    const { title, editTitle, className, dataLocator, bagLoading } = this.props;
     return (
       <div className={className}>
         <div className="header">
@@ -26,20 +26,22 @@ class TitlePlusEditButton extends React.PureComponent {
           >
             {title}
           </BodyCopy>
-          <div className="EditAnchor">
-            <Anchor
-              underline
-              anchorVariation="secondary"
-              fontSize="fs12"
-              fontFamily="secondary"
-              dataLocator={`review-${dataLocator}-edit-anchor`}
-              onClick={this.handleClick}
-              className="anchorStyle"
-              color="gray.900"
-            >
-              {editTitle}
-            </Anchor>
-          </div>
+          {!bagLoading && (
+            <div className="EditAnchor">
+              <Anchor
+                underline
+                anchorVariation="secondary"
+                fontSize="fs12"
+                fontFamily="secondary"
+                dataLocator={`review-${dataLocator}-edit-anchor`}
+                onClick={this.handleClick}
+                className="anchorStyle"
+                color="gray.900"
+              >
+                {editTitle}
+              </Anchor>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -52,6 +54,7 @@ TitlePlusEditButton.propTypes = {
   className: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
   onEdit: PropTypes.func.isRequired,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 export default withStyles(TitlePlusEditButton, styles);

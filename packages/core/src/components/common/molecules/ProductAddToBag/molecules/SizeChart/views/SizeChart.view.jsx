@@ -51,6 +51,7 @@ class SizeChart extends React.Component {
           stickyCloseIcon
           horizontalBar={false}
           inheritedStyles={modalstyles}
+          contentLabel="Size chart modal"
         >
           This is size chart modal
         </Modal>

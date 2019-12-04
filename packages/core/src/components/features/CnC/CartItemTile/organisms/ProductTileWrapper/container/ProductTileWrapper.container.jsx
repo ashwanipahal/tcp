@@ -17,6 +17,7 @@ import {
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { updateCartItem, confirmRemoveCartItem } from '../../../container/CartItemTile.actions';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
+import BAG_SELECTORS from '../../../../BagPage/container/BagPage.selectors';
 
 export const ProductTileWrapperContainer = props => {
   return (
@@ -35,6 +36,7 @@ const mapStateToProps = state => {
     isCartItemsUpdating: getIsCartItemsUpdating(state),
     isCartItemSFL: getIsCartItemsSFL(state),
     isSflItemRemoved: getIsSflItemRemoved(state),
+    isBagLoading: BAG_SELECTORS.isBagLoading(state),
   };
 };
 export const mapDispatchToProps = dispatch => {

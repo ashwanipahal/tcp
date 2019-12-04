@@ -257,7 +257,7 @@ function* initCheckoutSectionData({ payload }) {
   yield call(initShippingData, requestedStage, initialLoad);
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
   if (makeUpdateRTPSCall(pageName, isPaypalPostBack, isExpressCheckoutEnabled, isVenmoInProgress)) {
-    yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack);
+    yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack, isVenmoInProgress);
   }
 }
 
@@ -284,6 +284,7 @@ function* triggerExpressCheckout(
   }
   try {
     yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
+    const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
     const res = yield startExpressCheckout(shouldPreScreenUser, source);
     if (!res.orderId) {
       return yield redirectFromExpress();
@@ -298,7 +299,7 @@ function* triggerExpressCheckout(
       },
     });
     if (!isPaypalPostBack) {
-      yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack);
+      yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack, isVenmoInProgress);
     }
     const shippingValues = yield select(getShippingDestinationValues);
     const shippingAddress = (shippingValues && shippingValues.address) || {};

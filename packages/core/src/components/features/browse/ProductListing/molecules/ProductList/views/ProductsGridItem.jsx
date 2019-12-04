@@ -502,6 +502,7 @@ class ProductsGridItem extends React.PureComponent {
       gridIndex,
       openAddNewList,
       activeWishListId,
+      favoriteErrorMessages,
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
@@ -531,6 +532,7 @@ class ProductsGridItem extends React.PureComponent {
                 gridIndex={gridIndex}
                 openAddNewList={openAddNewList}
                 activeWishListId={activeWishListId}
+                favoriteErrorMessages={favoriteErrorMessages}
               />
             </div>
           )}
@@ -773,7 +775,7 @@ class ProductsGridItem extends React.PureComponent {
         offerPrice: itemOfferPrice,
         long_product_title: longProductTitle,
       },
-      itemInfo: { itemId, quantity, availability } = {},
+      itemInfo: { itemId, quantity, availability, isTCP } = {},
       quantityPurchased,
       colorsMap,
       imagesByColor,
@@ -880,6 +882,7 @@ class ProductsGridItem extends React.PureComponent {
             keepAlive={keepAlive}
             isSoldOut={itemNotAvailable}
             soldOutLabel={outOfStockLabels.outOfStockCaps}
+            itemBrand={isTCP ? 'TCP' : 'GYM'}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels, item },

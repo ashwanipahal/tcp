@@ -51,16 +51,16 @@ class Modal extends React.PureComponent {
     return isOpen ? (
       <ReactModal
         {...otherProps}
-        aria-label=""
         overlayClassName={`${className} ${overlayClassName}`}
         aria={{
-          labelledby: ariaLabelledby || aria.ariaLabelledby || hiddenHeaderUniqueId,
+          labelledby:
+            ariaLabelledby || aria.ariaLabelledby || (heading && hiddenHeaderUniqueId) || '',
           describedby: ariaDescribedby || aria.ariaDescribedby,
           modal: true,
         }}
       >
         <span id={hiddenHeaderUniqueId} className="TCPModal__hidden_header_label">
-          {heading || ariaLabelledby || aria.ariaLabelledby}
+          {heading}
         </span>
         {!fixedWidth && (
           <Grid>

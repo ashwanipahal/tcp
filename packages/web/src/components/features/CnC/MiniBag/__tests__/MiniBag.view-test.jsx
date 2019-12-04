@@ -8,7 +8,9 @@ describe('MiniBag template', () => {
       className: '',
       closeMiniBagDispatch: jest.fn(),
       openState: true,
-      labels: {},
+      labels: {
+        accessibility: {},
+      },
       router: {},
       userName: '',
       subTotal: '',

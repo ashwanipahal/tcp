@@ -120,13 +120,17 @@ const CarouselOptions = {
   CAROUSEL_OPTIONS: {
     infinite: true,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
+    slide: true,
+    touchMove: true,
+    touchThreshold: 100,
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: breakpoints.values.lg - 1,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           arrows: false,
         },
       },
@@ -135,7 +139,7 @@ const CarouselOptions = {
         settings: {
           arrows: false,
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
     ],

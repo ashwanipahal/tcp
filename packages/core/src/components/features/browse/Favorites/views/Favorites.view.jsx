@@ -164,6 +164,7 @@ class FavoritesView extends React.PureComponent {
       outOfStockLabels,
       activeWishList,
       addToBagEcom,
+      errorMessages,
     } = this.props;
 
     const { seeSuggestedDictionary } = this.state;
@@ -191,6 +192,7 @@ class FavoritesView extends React.PureComponent {
             onCloseSuggestedModal={this.onCloseSuggestedModal}
             seeSuggestedDictionary={seeSuggestedDictionary}
             addToBagEcom={addToBagEcom}
+            favoriteErrorMessages={errorMessages}
           />
         </>
       )
@@ -665,6 +667,7 @@ FavoritesView.propTypes = {
   labelsPlpTiles: PropTypes.shape({}),
   onReplaceWishlistItem: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  errorMessages: PropTypes.shape({}).isRequired,
 };
 
 FavoritesView.defaultProps = {

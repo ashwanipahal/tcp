@@ -45,6 +45,7 @@ const StyledApplyNowModal = ({
       shouldCloseOnOverlayClick={false}
       innerContentClassName="innerContent"
       shouldCloseOnEsc={!isRtpsFlow}
+      contentLabel={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
     >
       <div className="Modal__Content__Wrapper">
         <BodyCopy
@@ -240,6 +241,7 @@ const StyledApplyNowModal = ({
       isPLCCModalOpen={isPLCCModalOpen}
       closePLCCModal={closePLCCModal}
       isRtpsFlow={isRtpsFlow}
+      labels={labels}
     />
   );
 };

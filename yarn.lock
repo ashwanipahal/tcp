@@ -1656,15 +1656,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
   integrity sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
 
-"@fabulas/astly@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.12.tgz#d824bf8de94eaa376fbc376c9fb2688ef847e4f8"
-  integrity sha512-bQViF/wc+0ETYnrS2zlXyG1YZqN85rYvuafVMxF2H8ldyXVSz1NFgFh5TDhkHB80npDDWdz6rANbKnnH8xrUaw==
-
-"@fabulas/astly@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.13.tgz#380e90e333d74c24a5deb06956c76e9a56196886"
-  integrity sha512-OAgnWatc/nFEfee5o+TivU7X6xYajMXnzKJqbGZi+ZGYROCFE87PpLdTJIJvSAQ0Mhx50haYhKcyGzzaNJdL/w==
+"@fabulas/astly@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.17.tgz#99fe5f755870c8d7a0479fd91930512b35479fee"
+  integrity sha512-/cyMuVKYVva6RMxyUEFTbMV5u0e3Jk9a/RNSXWtJ5N0p8CAfbdn039xuFR+GfshO2OQmxZWZ7UuDdN2Z/f5wRQ==
 
 "@google-cloud/common@^2.1.1":
   version "2.2.2"
@@ -17115,7 +17110,7 @@ moo@^0.4.3:
   resolved "https://registry.yarnpkg.com/moo/-/moo-0.4.3.tgz#3f847a26f31cf625a956a87f2b10fbc013bfd10e"
   integrity sha512-gFD2xGCl8YFgGHsqJ9NKRVdwlioeW3mI1iqfLNYQOv0+6JRwG58Zk9DIGQgyIaffSYaO1xsKnMaYzzNr1KyIAw==
 
-morgan@^1.9.0:
+morgan@^1.9.0, morgan@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.9.1.tgz#0a8d16734a1d9afbc824b99df87e738e58e2da59"
   integrity sha512-HQStPIV4y3afTiCYVxirakhlCfGkI161c76kKFca7Fk1JusM//Qeo1ej2XaMniiNeaZklMVrh3vTtIzpzwbpmA==
@@ -22123,6 +22118,11 @@ robots-parser@^2.0.1, robots-parser@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/robots-parser/-/robots-parser-2.1.1.tgz#41b289cf44a6aa136dc62be0085adca954573ab0"
   integrity sha512-6yWEYSdhK3bAEcYY0In3wgSBK70BiQoJArzdjZKCP/35b3gKIYu5Lc0qQqsoxjoLVebVoJiKK4VWGc5+oxvWBQ==
+
+rotating-file-stream@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/rotating-file-stream/-/rotating-file-stream-2.0.0.tgz#68ffb5abcf5b46009dc26d70b7675b9913310f77"
+  integrity sha512-CICpV69VCUujsdLdD6bqig7A9NjQU+HXRlt4YOqArg7wZynmvVOFYuL7tFF7UQEE7rUxy8G4RrRgo0tX1RU5uw==
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"
