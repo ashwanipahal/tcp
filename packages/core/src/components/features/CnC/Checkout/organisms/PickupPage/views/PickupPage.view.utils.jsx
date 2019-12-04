@@ -1,7 +1,8 @@
 import React from 'react';
 import { FormSection } from 'redux-form';
-import { SmsSignUpForm } from '../styles/PickupPage.style.native';
+import { SmsSignUpForm, PickUpAlternateForm } from '../styles/PickupPage.style.native';
 import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
+import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 
 /**
  * @description - This method is to return the label text based on venmo or normal checkout
@@ -53,29 +54,21 @@ const renderSmsUpdatedEnabled = (
   );
 };
 
-const handleEditModeChange = (isEditing, pickUpContact) => {
-  let { editPickupError } = this.state;
-  if (isEditing) {
-    editPickupError = '';
-  }
-  if (pickUpContact) {
-    this.setState({
-      isEditing,
-      editPickupError,
-      dataUpdated: true,
-      pickUpContact: {
-        firstName: pickUpContact.firstName,
-        lastName: pickUpContact.lastName,
-        phoneNumber: pickUpContact.phoneNumber,
-        emailAddress: pickUpContact.emailAddress,
-      },
-    });
-  } else {
-    this.setState({
-      isEditing,
-      editPickupError,
-    });
-  }
+const renderPickupAlternateForm = (isAlternateUpdateChecked, pickUpLabels, isEditing) => {
+  return (
+    <PickUpAlternateForm>
+      <FormSection name="pickUpAlternate">
+        <PickUpAlternateFormPart
+          isAlternateUpdateChecked={isAlternateUpdateChecked}
+          showNoteOnToggle
+          formName="checkoutPickup"
+          formSection="pickUpAlternate"
+          labels={pickUpLabels}
+          isEditing={isEditing}
+        />
+      </FormSection>
+    </PickUpAlternateForm>
+  );
 };
 
-export { getNextCTAText, renderSmsUpdatedEnabled, handleEditModeChange };
+export { getNextCTAText, renderSmsUpdatedEnabled, renderPickupAlternateForm };

@@ -6,38 +6,36 @@ import OrderLedger from '../views/orderLedger.view';
 import { getLedgerSummaryData, getOrderLedgerLabels } from './orderLedger.selector';
 import confirmationSelectors from '../../../../Confirmation/container/Confirmation.selectors';
 
-export class OrderLedgerContainer extends React.PureComponent {
-  render() {
-    const {
-      className,
-      ledgerSummaryData,
-      labels,
-      showAccordian,
-      confirmationPageLedgerSummaryData,
-      isConfirmationPage,
-      orderLedgerAfterView,
-      pageCategory,
-      navigation,
-      bagLoadingSection,
-      bagLoadingPageLevel,
-    } = this.props;
-    const bagLoading = bagLoadingSection === true || bagLoadingPageLevel === true || false;
-    return (
-      <OrderLedger
-        className={className}
-        ledgerSummaryData={ledgerSummaryData}
-        labels={labels}
-        showAccordian={showAccordian}
-        orderLedgerAfterView={orderLedgerAfterView}
-        confirmationPageLedgerSummaryData={confirmationPageLedgerSummaryData}
-        isConfirmationPage={isConfirmationPage}
-        pageCategory={pageCategory}
-        navigation={navigation}
-        bagLoading={bagLoading}
-      />
-    );
-  }
-}
+const OrderLedgerContainer = props => {
+  const {
+    className,
+    ledgerSummaryData,
+    labels,
+    showAccordian,
+    confirmationPageLedgerSummaryData,
+    isConfirmationPage,
+    orderLedgerAfterView,
+    pageCategory,
+    navigation,
+    bagLoadingSection,
+    bagLoadingPageLevel,
+  } = props;
+  const bagLoading = bagLoadingSection || bagLoadingPageLevel;
+  return (
+    <OrderLedger
+      className={className}
+      ledgerSummaryData={ledgerSummaryData}
+      labels={labels}
+      showAccordian={showAccordian}
+      orderLedgerAfterView={orderLedgerAfterView}
+      confirmationPageLedgerSummaryData={confirmationPageLedgerSummaryData}
+      isConfirmationPage={isConfirmationPage}
+      pageCategory={pageCategory}
+      navigation={navigation}
+      bagLoading={bagLoading}
+    />
+  );
+};
 
 OrderLedgerContainer.propTypes = {
   className: PropTypes.string.isRequired,
@@ -66,3 +64,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(OrderLedgerContainer);
+export const OrderLedgerContainerVanilla = OrderLedgerContainer;

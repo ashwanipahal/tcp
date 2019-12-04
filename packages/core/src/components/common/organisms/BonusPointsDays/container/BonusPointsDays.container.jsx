@@ -85,8 +85,7 @@ export class BonusPointsDays extends React.Component {
       isFetchingStatePageLevel,
       ...otherProps
     } = this.props;
-    const isFetching =
-      isFetchingStateSection === true || isFetchingStatePageLevel === true || false;
+    const isFetching = isFetchingStateSection || isFetchingStatePageLevel;
     return (
       !isCanada() &&
       isBonusPointsEnabled && (

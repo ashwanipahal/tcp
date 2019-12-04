@@ -63,7 +63,7 @@ export class CouponContainer extends React.PureComponent {
       isFetchingCouponState,
       bagLoading,
     } = this.props;
-    const isFetching = isFetchingCouponState === true || bagLoading === true || false;
+    const isFetching = isFetchingCouponState || bagLoading;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
       <>
