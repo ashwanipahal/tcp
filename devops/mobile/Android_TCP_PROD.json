@@ -327,11 +327,11 @@
     },
     {
       "name": " RWD_APP_BV_API_KEY_TCP",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_URL",
@@ -340,10 +340,6 @@
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
       "value": "https://childrensplace.com/static/bazaarVoice/index.html"
-    },
-    {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_ENV",

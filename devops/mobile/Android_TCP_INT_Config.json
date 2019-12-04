@@ -328,10 +328,6 @@
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
       "value": "https://test5.childrensplace.com/static/bazaarVoice/index.html"
-    },
-    {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
