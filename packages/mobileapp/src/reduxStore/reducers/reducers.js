@@ -129,7 +129,7 @@ import {
   ANALYTICS_DATA_KEY,
   SUB_NAVIGATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import { TRACK_PAGE_VIEW, UPDATE_PAGE_DATA } from '@tcp/core/src/analytics';
+import { TRACK_PAGE_VIEW, UPDATE_PAGE_DATA, TRACK_CLICK } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
@@ -186,7 +186,8 @@ const filteredRecommendationsReducers = createFilteredReducer(
 
 function pageNameReducer(state = {}, action) {
   switch (action.type) {
-    case TRACK_PAGE_VIEW: {
+    case TRACK_PAGE_VIEW:
+    case TRACK_CLICK: {
       const { payload } = action;
       if (payload.pageData) {
         return { ...state, ...payload.pageData };

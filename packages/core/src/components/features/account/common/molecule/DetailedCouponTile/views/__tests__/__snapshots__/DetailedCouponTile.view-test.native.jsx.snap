@@ -39,6 +39,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       <Styled(View)>
         <BarcodeView
           displayValue={true}
+          fontSize="fs12"
           format="CODE128"
           height="50"
           width="1"
@@ -213,6 +214,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       <Styled(View)>
         <BarcodeView
           displayValue={true}
+          fontSize="fs12"
           format="CODE128"
           height="50"
           width="1"
@@ -372,6 +374,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       <Styled(View)>
         <BarcodeView
           displayValue={true}
+          fontSize="fs12"
           format="CODE128"
           height="50"
           width="1"

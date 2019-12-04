@@ -88,6 +88,7 @@ export default {
   activeWishListId: PropTypes.number,
   addToBagEcom: PropTypes.func,
   isFavoriteView: PropTypes.bool,
+  favoriteErrorMessages: PropTypes.shape({}),
 };
 
 export const productGridDefaultProps = {
@@ -113,4 +114,5 @@ export const productGridDefaultProps = {
   activeWishListId: '',
   addToBagEcom: () => {},
   isFavoriteView: false,
+  favoriteErrorMessages: {},
 };

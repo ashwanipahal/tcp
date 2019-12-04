@@ -54,7 +54,7 @@ class ProductDetailView extends PureComponent {
         pageSection: 'product',
         pageSubSection: 'product',
         products: productsFormatted,
-        customEvents: ['event74', 'event76', 'event95'],
+        customEvents: ['prodView', 'event1', 'event80', 'event93', 'event81'],
       });
     }
   }

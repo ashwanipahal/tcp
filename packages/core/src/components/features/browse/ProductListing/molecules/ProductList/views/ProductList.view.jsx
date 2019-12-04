@@ -69,6 +69,7 @@ const ProductList = props => {
     seeSuggestedDictionary,
     addToBagEcom,
     errorMessages,
+    favoriteErrorMessages,
   } = props;
   let gridIndex = 0;
 
@@ -163,6 +164,7 @@ const ProductList = props => {
               seeSuggestedDictionary={seeSuggestedDictionary}
               addToBagEcom={addToBagEcom}
               errorMessages={errorMessages}
+              favoriteErrorMessages={favoriteErrorMessages}
             />
           </div>
         );
@@ -224,6 +226,7 @@ ProductList.propTypes = {
   seeSuggestedDictionary: PropTypes.shape({}),
   addToBagEcom: PropTypes.func,
   errorMessages: PropTypes.shape({}),
+  favoriteErrorMessages: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -269,6 +272,7 @@ ProductList.defaultProps = {
   seeSuggestedDictionary: {},
   addToBagEcom: () => {},
   errorMessages: {},
+  favoriteErrorMessages: {},
 };
 
 export default withStyles(ProductList, ProductListStyle);

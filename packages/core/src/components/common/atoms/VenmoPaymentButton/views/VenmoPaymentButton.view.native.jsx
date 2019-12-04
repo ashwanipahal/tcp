@@ -112,7 +112,7 @@ export class VenmoPaymentButton extends Component {
   isVenmoInstalled = () => {
     const { setVenmoInstalledAction } = this.props;
     NativeModules.VenmoPayment.isVenmoInstalled(data => {
-      setVenmoInstalledAction(data === 'true');
+      setVenmoInstalledAction(data === true || data === 'true');
     });
   };
 
@@ -128,6 +128,7 @@ export class VenmoPaymentButton extends Component {
       setVenmoData({ loading: false });
     } else if (this.canCallVenmoApi()) {
       NativeModules.VenmoPayment.initialize(authorizationKey);
+      this.isVenmoInstalled();
     }
   };
 
