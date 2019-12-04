@@ -30,8 +30,8 @@ exports[`Shipping Page should render correctly 1`] = `
           "country": "US",
         },
         "emailSignUp": Object {
-          "emailSignUp": true,
           "emailSignUpGYM": undefined,
+          "emailSignUpTCP": true,
         },
         "onFileAddressKey": null,
         "saveToAddressBook": false,
@@ -122,8 +122,8 @@ exports[`Shipping Page should render correctly with component did update and get
           "country": "US",
         },
         "emailSignUp": Object {
-          "emailSignUp": true,
           "emailSignUpGYM": undefined,
+          "emailSignUpTCP": true,
         },
         "onFileAddressKey": "123",
         "saveToAddressBook": false,
@@ -230,8 +230,8 @@ exports[`Shipping Page should render correctly with component did update and get
           "country": "US",
         },
         "emailSignUp": Object {
-          "emailSignUp": true,
           "emailSignUpGYM": undefined,
+          "emailSignUpTCP": true,
         },
         "onFileAddressKey": "123",
         "saveToAddressBook": false,
