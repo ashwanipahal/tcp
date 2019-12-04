@@ -17,6 +17,7 @@ type Props = {
 };
 
 const LARGE_TEXT_BLACK_STYLE = { lineHeight: 47 };
+const LARGE_TEXT_REGULAR_LINEHEIGHT = { lineHeight: 31 };
 const heartIcon = require('../../../../../assets/heart-icon.png');
 
 export const icons = {
@@ -83,6 +84,7 @@ export const bodyCopyStyles = {
         fontSize="fs32"
         fontWeight="black"
         textAlign="center"
+        style={LARGE_TEXT_REGULAR_LINEHEIGHT}
         {...props}
       />
     );
