@@ -119,7 +119,7 @@ export default function create(store) {
         const pageName = clickActionAnalyticsData.pageName
           ? clickActionAnalyticsData.pageName
           : pageData.pageName;
-        return `gl:${pageShortName || pageName}`;
+        return `${pageShortName || pageName}`;
       },
     },
 
