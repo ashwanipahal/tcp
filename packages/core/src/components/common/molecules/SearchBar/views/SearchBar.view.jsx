@@ -11,6 +11,7 @@ import { getRecentStoreFromLocalStorage, updateLocalStorageData } from '../userR
 
 import SearchBarPropTypes from '../SearchBar.PropTypes';
 import SearchImageWrapper from './SearchImageWrapper.view';
+import { getLatestSearchResultsExists } from '../../../../features/browse/SearchDetail/container/SearchDetail.util';
 
 /**
  * This component produces a Search Bar component for Header
@@ -93,10 +94,6 @@ class SearchBar extends React.PureComponent {
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
 
-  getLatestSearchResultsExists = latestSearchResults => {
-    return !!(latestSearchResults && latestSearchResults.length > 0);
-  };
-
   clearModalParams = () => {
     if (window.innerWidth <= breakpoints.values.lg) {
       this.commonCloseClick();
@@ -140,7 +137,7 @@ class SearchBar extends React.PureComponent {
       latestSearchResults = [];
     }
 
-    const isLatestSearchResultsExists = this.getLatestSearchResultsExists(latestSearchResults);
+    const isLatestSearchResultsExists = getLatestSearchResultsExists(latestSearchResults);
 
     return (
       <React.Fragment>
