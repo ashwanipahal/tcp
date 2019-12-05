@@ -7,7 +7,7 @@ import SEOTags from '@tcp/web/src/components/common/atoms';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
 import ProductDetailView from '../views';
-import { getProductDetails } from './ProductDetail.actions';
+import { getProductDetails, setProductDetailsDynamicData } from './ProductDetail.actions';
 import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   removeAddToFavoriteErrorState,
@@ -106,8 +106,9 @@ class ProductDetailContainer extends React.PureComponent {
   }
 
   componentWillUnmount = () => {
-    const { clearAddToBagError } = this.props;
+    const { clearAddToBagError, resetProductDetailsDynamicData } = this.props;
     clearAddToBagError();
+    resetProductDetailsDynamicData();
   };
 
   getSEOTags = pageId => {
@@ -252,6 +253,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    resetProductDetailsDynamicData: () => dispatch(setProductDetailsDynamicData({ product: {} })),
     getDetails: payload => {
       dispatch(getProductDetails(payload));
     },
@@ -376,6 +378,7 @@ ProductDetailContainer.propTypes = {
   bottomPromos: PropTypes.string,
   isLoading: PropTypes.bool,
   trackPageLoad: PropTypes.func,
+  resetProductDetailsDynamicData: PropTypes.func.isRequired,
 };
 
 ProductDetailContainer.defaultProps = {
