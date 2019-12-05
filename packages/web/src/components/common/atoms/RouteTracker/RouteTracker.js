@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-import { usePageTracking } from '@tcp/core/src/analytics';
-
 /**
  * NOTE: Using `withRouter` or `useRouter` did not work
  * for this component because the `components` property
@@ -12,25 +10,6 @@ import Router from 'next/router';
 import { connect } from 'react-redux';
 import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
-
-/**
- * Get the component properties of the current route.
- *
- * NOTE: this `components` property on the router is
- * not documented. We should consider this risky. The
- * main purpose of this is to associate the initial
- * props of a route component with the URL when the
- * router change events occur.
- *
- * @see https://nextjs.org/docs#routing
- * @see https://github.com/zeit/next.js/blob/canary/packages/next/next-server/lib/router/router.ts
- * @returns {Object} route component props
- */
-function getRouteProps() {
-  const { components, route } = Router;
-  const { props = {} } = components[route] || {};
-  return props;
-}
 
 function setPageCountCookie() {
   const { pageCountCookieKey } = API_CONFIG;
@@ -53,28 +32,22 @@ function setLandingSiteCookie(brandId) {
 }
 
 /**
- * A component that sets up event handlers for when the
- * route changes, and dispatches Redux actions with
- * payloads containing the current URL and route
- * component properties.
+ * A component that sets up cookie for number of
+ * page visits and also sets the brand cookie
+ * if already not present. It is for the initial
+ * landing site only
  */
 function RouteTracker(props) {
-  const { dispatch, isAnalyticsEnabled, brandId } = props;
-  const track = usePageTracking(dispatch);
-  const handleChange = url => {
+  const { brandId } = props;
+
+  const handleChange = () => {
     setPageCountCookie();
     setLandingSiteCookie(brandId);
-    if (isAnalyticsEnabled) {
-      track({
-        path: url,
-        props: getRouteProps(),
-      });
-    }
   };
 
   useEffect(() => {
     // Track current route on mount
-    handleChange(Router.asPath);
+    handleChange();
 
     // Track future route changes
     Router.events.on('routeChangeComplete', handleChange);
