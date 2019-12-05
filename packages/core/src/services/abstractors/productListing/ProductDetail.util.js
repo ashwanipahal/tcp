@@ -372,8 +372,6 @@ const getCategoryValue = baseProduct => {
     } else if (categoryPath2CatMap) {
       const [, catPath2] = categoryPath2CatMap[0].split('|')[0].split('>');
       categoryId = catPath2;
-    } else {
-      categoryId = 'global';
     }
   } catch (err) {
     categoryId = 'global';
