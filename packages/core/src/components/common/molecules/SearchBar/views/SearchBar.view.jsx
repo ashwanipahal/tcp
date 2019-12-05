@@ -91,7 +91,9 @@ class SearchBar extends React.PureComponent {
   redirectToSearchPage = searchText => {
     const { toggleSearchResults } = this.props;
     toggleSearchResults(false);
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    routerPush(`/search?searchQuery=${searchText}&searchType=keyword`, `/search/${searchText}`, {
+      shallow: true,
+    });
   };
 
   clearModalParams = () => {
@@ -111,7 +113,11 @@ class SearchBar extends React.PureComponent {
     if (url) {
       routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
     } else {
-      routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+      routerPush(
+        `/search?searchQuery=${searchText}&searchType=typeahead:keyword`,
+        `/search/${searchText}`,
+        { shallow: true }
+      );
     }
   };
 

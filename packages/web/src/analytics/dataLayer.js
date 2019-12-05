@@ -260,6 +260,22 @@ export default function create(store) {
       },
     },
 
+    searchType: {
+      get() {
+        const { AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageSearchType || '';
+      },
+    },
+
+    searchText: {
+      get() {
+        const { AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageSearchText || '';
+      },
+    },
+
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {

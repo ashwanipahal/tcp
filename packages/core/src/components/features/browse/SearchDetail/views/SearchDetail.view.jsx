@@ -32,11 +32,13 @@ const redirectToSuggestedUrl = (searchText, url) => {
 
 class SearchListingView extends React.Component {
   componentDidUpdate(prevProps) {
-    const { products, trackPageLoad } = this.props;
+    const { products, trackPageLoad, searchType, searchedText } = this.props;
     const productsFormatted = this.formatProductsData(products);
-    if (prevProps.products !== products && productsFormatted.length) {
+    if (prevProps.products !== products && productsFormatted.length && searchType && searchedText) {
       trackPageLoad({
         products: productsFormatted,
+        pageSearchType: searchType,
+        pageSearchText: searchedText,
         pageType: 'search',
         pageName: 'search',
         pageSection: 'search',
@@ -253,6 +255,7 @@ SearchListingView.propTypes = {
   pageNameProp: PropTypes.string,
   pageSectionProp: PropTypes.string,
   pageSubSectionProp: PropTypes.string,
+  searchType: PropTypes.string,
 };
 
 SearchListingView.defaultProps = {
@@ -283,6 +286,7 @@ SearchListingView.defaultProps = {
   pageNameProp: '',
   pageSectionProp: '',
   pageSubSectionProp: '',
+  searchType: 'keyword',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);
