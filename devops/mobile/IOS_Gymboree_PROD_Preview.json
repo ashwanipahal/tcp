@@ -375,7 +375,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "7394b6b8-192f-4cca-8015-26d5aa3db12d"
+        "2bd28e70-8553-4c6f-bd1e-56c66b4ae772"
       ],
       "isSilent": false
     },
@@ -388,8 +388,8 @@
       "certificatePassword": "__protected__",
       "certificateFilename": "Dist-Certificates.p12",
       "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
-      "certificateFileId": "4a99762d-6cfa-49c4-bbb2-4ae66abf5ed8",
-      "provisioningProfileFileId": "e880b7bf-3a12-455e-98cf-d8226f597d48",
+      "certificateFileId": "ee6008de-5256-4366-8ec4-86084606ee62",
+      "provisioningProfileFileId": "5d650252-eada-4a6b-a973-e5da14307a0e",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "gymboree_prod_preview",
