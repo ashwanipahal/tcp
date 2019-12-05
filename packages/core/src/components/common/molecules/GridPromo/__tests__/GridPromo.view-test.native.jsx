@@ -10,7 +10,7 @@ describe('GridPromo component', () => {
       subHeadLine: [{ text: '' }],
       promoWrapper: [{ text: '' }],
       mediaWrapper: [{ text: '' }],
-      variation: '',
+      variation: 'vertical',
       navigation: {
         dispatch: jest.fn(),
       },
