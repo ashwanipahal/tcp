@@ -86,6 +86,8 @@ export class ExtraPointsContainer extends PureComponent {
       promoListData,
       isEarnExtraPointsFetching,
       isPromoListFetching,
+      navigation,
+      toggleModal,
     } = this.props;
     const { selectedActivity } = this.state;
     return (
@@ -102,6 +104,8 @@ export class ExtraPointsContainer extends PureComponent {
           promoListData={promoListData}
           isEarnExtraPointsFetching={isEarnExtraPointsFetching}
           isPromoListFetching={isPromoListFetching}
+          navigation={navigation}
+          toggleModal={toggleModal}
         />
         {selectedActivity && (
           <ExtraPointsDetailModal
@@ -159,6 +163,7 @@ ExtraPointsContainer.propTypes = {
   isEarnExtraPointsFetching: PropTypes.bool,
   isPromoListFetching: PropTypes.bool,
   toggleModal: PropTypes.func.isRequired,
+  navigation: PropTypes.func.isRequired,
 };
 
 ExtraPointsContainer.defaultProps = {

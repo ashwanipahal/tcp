@@ -4,7 +4,6 @@ import { BodyCopy, Image, Row, Col, Anchor } from '@tcp/core/src/components/comm
 
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/PromoListTile.style';
-import EspotContainer from '../../Espot';
 
 /**
  * This class component returns the Extra Points Promo List Tiles
@@ -80,7 +79,9 @@ export class PromoListTile extends React.PureComponent {
                 fontSizeVariation="large"
                 data-locator="privacyLnk"
                 target="_blank"
-                onClick={evt => this.ctaHandler(evt, tileData.buttonList[0].target, 'plccModal')}
+                onClick={evt =>
+                  this.ctaHandler(evt, tileData.buttonList[0].target, tileData.buttonList[0].action)
+                }
               >
                 {tileData.buttonList[0].text}
               </Anchor>
