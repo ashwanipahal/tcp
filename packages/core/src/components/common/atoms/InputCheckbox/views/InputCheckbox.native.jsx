@@ -117,7 +117,7 @@ class InputCheckBox extends React.Component {
           span: props => (
             <BodyCopy
               margin={textMargin}
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize={fontSize || 'fs12'}
               text={props.children}
               {...props}
@@ -127,7 +127,7 @@ class InputCheckBox extends React.Component {
             return (
               <BodyCopy
                 margin={textMargin}
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontSize={fontSize || 'fs12'}
                 text={props.children}
                 {...props}
