@@ -61,7 +61,6 @@ describe('Store Locator saga', () => {
       const generator = getFavoriteStoreSaga({
         payload,
       });
-      expect(generator.next().value).toEqual(select());
       expect(typeof generator.next().value).toEqual('object');
     });
   });
