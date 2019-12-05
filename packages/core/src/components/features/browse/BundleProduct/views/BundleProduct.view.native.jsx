@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { getLoading } from '@tcp/core/src/utils';
+import { getLoading, scrollToViewBottom } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
@@ -25,11 +25,27 @@ class ProductBundle extends React.PureComponent {
     this.state = {
       showCarousel: false,
     };
+    this.currentScrollValue = 0;
   }
 
   onImageClick = () => {
     const { showCarousel } = this.state;
     this.setState({ showCarousel: !showCarousel });
+  };
+
+  scrollToAccordionBottom = (x, y, width, height, pageX, pageY) => {
+    scrollToViewBottom({
+      width,
+      height,
+      pageX,
+      pageY,
+      callBack: this.scrollView,
+      currentScrollValue: this.currentScrollValue,
+    });
+  };
+
+  handleScroll = event => {
+    this.currentScrollValue = event.nativeEvent.contentOffset.y;
   };
 
   render() {
@@ -79,7 +95,12 @@ class ProductBundle extends React.PureComponent {
         isHeaderAccordion: true,
       };
       return (
-        <ScrollView>
+        <ScrollView
+          ref={ref => {
+            this.scrollView = ref;
+          }}
+          onScroll={this.handleScroll}
+        >
           {AddToFavoriteErrorMsg !== '' && (
             <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
           )}
@@ -110,6 +131,7 @@ class ProductBundle extends React.PureComponent {
               longDescription={longDescription}
               isShowMore={false}
               pdpLabels={pdpLabels}
+              scrollToAccordionBottom={this.scrollToAccordionBottom}
             />
             <BundleProductItems
               currentBundle={currentBundle}
