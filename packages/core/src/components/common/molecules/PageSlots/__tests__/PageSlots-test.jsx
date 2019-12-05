@@ -71,36 +71,33 @@ describe('PageSlots component', () => {
     expect(component.children()).toMatchInlineSnapshot(
       snapshot,
       `
-            Array [
-              <ModuleC
-                key="id-3"
-                moduleName="moduleC"
-                slotData="slot C Data"
-              >
-                <div>
-                  Module C
-                </div>
-              </ModuleC>,
-              <ModuleA
-                key="id-1"
-                moduleName="moduleA"
-                slotData="slot A Data"
-              >
-                <div>
-                  Module A
-                </div>
-              </ModuleA>,
-              <ModuleB
-                key="id-2"
-                moduleName="moduleB"
-                slotData="slotB Data"
-              >
-                <div>
-                  Module B
-                </div>
-              </ModuleB>,
-            ]
-        `
+      Array [
+        <ModuleC
+          key="0"
+          slotData="slot C Data"
+        >
+          <div>
+            Module C
+          </div>
+        </ModuleC>,
+        <ModuleA
+          key="1"
+          slotData="slot A Data"
+        >
+          <div>
+            Module A
+          </div>
+        </ModuleA>,
+        <ModuleB
+          key="2"
+          slotData="slotB Data"
+        >
+          <div>
+            Module B
+          </div>
+        </ModuleB>,
+      ]
+    `
     );
   });
 
@@ -111,7 +108,7 @@ describe('PageSlots component', () => {
 
     expect(component.children()).toMatchInlineSnapshot(`
       <ModuleA
-        key="id-1"
+        key="1"
         slotData="slot A Data"
       >
         <div>
@@ -138,7 +135,7 @@ describe('PageSlots component', () => {
 
     expect(component.children()).toMatchInlineSnapshot(`
       <ModuleB
-        key="id-1"
+        key="0"
         slotData="slot B Data"
       >
         <div>
@@ -216,7 +213,7 @@ describe('PageSlots component', () => {
       Array [
         <ModuleA
           extraProp="extraProp"
-          key="id-1"
+          key="0"
           slotData="slot B Data"
         >
           <div>
@@ -225,7 +222,7 @@ describe('PageSlots component', () => {
         </ModuleA>,
         <ModuleB
           extraProp="extraProp"
-          key="id-2"
+          key="1"
           slotData="slot A Data"
         >
           <div>
