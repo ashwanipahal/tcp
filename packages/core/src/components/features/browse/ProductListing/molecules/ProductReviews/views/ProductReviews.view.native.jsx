@@ -175,7 +175,7 @@ class ProductReviews extends React.PureComponent {
           <ModalNative
             isOpen={openSubmissionForm}
             onRequestClose={this.toggleSubmissionForm}
-            heading={ratingsAndReviewsLabel.lab_rating_form_title}
+            heading={ratingsAndReviewsLabel.lbl_rating_form_title}
             headingFontFamily="secondary"
             fontSize="fs16"
           >
