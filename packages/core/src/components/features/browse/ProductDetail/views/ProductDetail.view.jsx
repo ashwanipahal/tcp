@@ -397,7 +397,7 @@ class ProductDetailView extends PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row fullBleed={{ small: true, medium: false, large: false }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="product-detail-section">
               <ProductDescription
@@ -437,7 +437,7 @@ class ProductDetailView extends PureComponent {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row fullBleed={{ small: true, medium: false, large: false }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductReviewsContainer
               expanded={false}
