@@ -7,7 +7,7 @@
   "environmentVariables": [
     {
       "name": "ENV",
-      "value": "uat"
+      "value": "prod"
     },
     {
       "name": "RWD_APP_BRANDID_TCP",
@@ -270,12 +270,12 @@
       "value": "948cee6a142678762564f9ec4e02e91c"
     },
     {
-      "name": "RWD_APP_INSTAGRAM_GYM",
-      "value": "f0eaf419384f43a0acd059c4f87163c1"
-    },
-    {
       "name": "RWD_APP_INSTAGRAM_TCP",
       "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_GYM",
+      "value": "f0eaf419384f43a0acd059c4f87163c1"
     },
     {
       "name": "RWD_APP_ASSETHOST_TCP",
@@ -310,8 +310,8 @@
       "value": ".gymboree.com"
     },
     {
-      "name": "RWD_APP_RAYGUN_API_KEY_GYM",
-      "value": "lIDoLeWINLsUuqPKTf4Sw"
+      "name": "RWD_APP_RAYGUN_API_KEY_TCP",
+      "value": "gEzYmTNVR3IdQgwiw2T0xQ"
     },
     {
       "name": "isErrorReportingActive",
@@ -326,14 +326,6 @@
       "value": "https://test6.gymboree.com"
     },
     {
-      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_TCP",
-      "value": "false"
-    },
-    {
-      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
-      "value": "false"
-    },
-    {
       "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
@@ -343,11 +335,11 @@
     },
     {
       "name": "RWD_APP_BV_API_URL",
-      "value": "https://stg.api.bazaarvoice.com"
+      "value": "https://api.bazaarvoice.com"
     },
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
-      "value": "https://test5.gymboree.com/static/bazaarVoice/index.html"
+      "value": "https://childrensplace.com/static/bazaarVoice/index.html"
     },
     {
       "name": "RWD_APP_BV_SHARED_KEY",
@@ -360,13 +352,12 @@
   "toolsets": {
     "buildscripts": {
       "packages/mobileapp/package.json": {
-        "postClone": "packages/mobileapp/appcenter-post-clone.sh",
-        "preBuild": "packages/mobileapp/appcenter-pre-build.sh"
+        "postClone": "packages/mobileapp/appcenter-post-clone.sh"
       }
     },
     "android": {
       "module": "app",
-      "buildVariant": "gymboreeUatRelease",
+      "buildVariant": "tcpProdPreviewRelease",
       "isRoot": false,
       "runTests": false,
       "runLint": false,
@@ -382,7 +373,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "02151f85-54c0-4b93-af4f-66e1e162afe8"
+        "490295cf-ff9d-4404-944a-6ad438029508"
       ],
       "isSilent": false
     },
