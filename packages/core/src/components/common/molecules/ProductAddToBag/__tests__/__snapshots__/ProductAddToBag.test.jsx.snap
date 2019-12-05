@@ -89,7 +89,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     ";
       border-radius: 6px;
       text-align: center;
-      width: 54px;
+      width: auto;
       @media ",
                     [Function],
                     " {
@@ -288,7 +288,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     ";
       border-radius: 6px;
       text-align: center;
-      width: 54px;
+      width: auto;
       @media ",
                     [Function],
                     " {
@@ -408,7 +408,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
               link={null}
               textAlign="left"
             >
-               ERROR: 
+               ERROR:
             </Styled(BodyCopy)>
           </Styled(BodyCopy)>
         </div>
