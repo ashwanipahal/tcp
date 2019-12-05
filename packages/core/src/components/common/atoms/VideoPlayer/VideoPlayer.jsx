@@ -5,14 +5,18 @@ import cloudinaryVideoPlayer from 'cloudinary-video-player'; // eslint-disable-l
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getAPIConfig, convertNumToBool } from '@tcp/core/src/utils';
 import styles from './VideoPlayer.style';
+import { VIDEO_BASE_PATH } from './VideoPlayer.config';
 
 /**
- * This function parses file name from video url
+ * This function return the page video name when updateVideoUrl is true
  * @param {String} url
  */
-const parseFileName = url => {
-  const urlFragments = url.split('/');
-  return urlFragments[urlFragments.length - 1].split('.')[0];
+const parseFileName = (url, updateVideoUrl) => {
+  if (updateVideoUrl) {
+    const urlFragments = url.split('/');
+    return urlFragments[urlFragments.length - 1].split('.')[0];
+  }
+  return url;
 };
 
 /**
@@ -22,6 +26,13 @@ const getUniqueID = () => {
   return `video_${Date.now() + (Math.random() * 100000).toFixed()}`;
 };
 
+/**
+ * To Render the video element
+ * cloudinary handles the url by default so when updateVideoUrl is passed as false then url should
+ * not contain the base url and it should not have any version
+ * example url when updateVideoUrl is false - ecom/assets/content/gym/video/Gymboree_CircleOpen_500_20191029
+ * no need to pass the video extension as this is handled by cloudinary itself.
+ */
 class VideoPlayer extends React.Component {
   constructor() {
     super();
@@ -31,29 +42,31 @@ class VideoPlayer extends React.Component {
   }
 
   componentDidMount() {
-    const { id, autoplay, url, muted, loop, controls } = this.props;
+    const { autoplay, url, muted, loop, controls, updateVideoUrl } = this.props;
     const { uniqueId } = this.state;
     const apiConfig = getAPIConfig();
     const cloudinaryCore = cloudinary.Cloudinary.new({
       cloud_name: apiConfig.damCloudName,
+      secure: true,
+      private_cdn: true,
+      secure_distribution: VIDEO_BASE_PATH,
     });
 
-    const player = cloudinaryCore.videoPlayer(id || uniqueId, {
+    const player = cloudinaryCore.videoPlayer(uniqueId, {
       autoplay: convertNumToBool(autoplay),
       muted: convertNumToBool(muted),
       loop: convertNumToBool(loop),
       controls: convertNumToBool(controls),
     });
-
     player.fluid(true);
 
     player.source({
-      publicId: parseFileName(url),
+      publicId: parseFileName(url, updateVideoUrl),
     });
   }
 
   render() {
-    const { id, url, className, dataLocator } = this.props;
+    const { url, className, dataLocator } = this.props;
     const { uniqueId } = this.state;
 
     if (!url) {
@@ -61,9 +74,8 @@ class VideoPlayer extends React.Component {
     }
     return (
       <video
-        id={id || uniqueId}
-        source={url}
-        className={className}
+        id={uniqueId}
+        className={`${className} cld-video-player`}
         data-locator={`${dataLocator}_video`}
       >
         <track kind="captions" />
@@ -73,14 +85,14 @@ class VideoPlayer extends React.Component {
 }
 
 VideoPlayer.propTypes = {
-  id: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  loop: PropTypes.bool,
+  loop: PropTypes.string,
   autoplay: PropTypes.string,
   muted: PropTypes.string,
   className: PropTypes.string,
   controls: PropTypes.string,
   dataLocator: PropTypes.string,
+  updateVideoUrl: PropTypes.bool,
 };
 
 VideoPlayer.defaultProps = {
@@ -90,6 +102,7 @@ VideoPlayer.defaultProps = {
   muted: '0',
   className: '',
   controls: '1',
+  updateVideoUrl: true,
 };
 
 export default withStyles(VideoPlayer, styles);

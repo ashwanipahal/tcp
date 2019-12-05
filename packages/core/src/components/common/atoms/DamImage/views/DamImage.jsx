@@ -72,7 +72,7 @@ const getBreakpointImgUrl = (type, props) => {
 };
 
 const RenderVideo = videoProps => {
-  const { video, image } = videoProps;
+  const { video, image, dataLocator, updateVideoUrl } = videoProps;
   const { autoplay, controls, url, muted, loop } = video;
 
   const options = {
@@ -82,6 +82,8 @@ const RenderVideo = videoProps => {
     muted,
     loop,
     image,
+    dataLocator,
+    updateVideoUrl,
   };
 
   return <VideoPlayer {...options} />;
@@ -155,11 +157,19 @@ const DamImage = props => {
     showPlaceHolder,
     videoData,
     isProductImage,
+    updateVideoUrl,
     ...other
   } = props;
 
   if (videoData) {
-    return <RenderVideo video={videoData} image={imgData} dataLocator={dataLocator} />;
+    return (
+      <RenderVideo
+        video={videoData}
+        image={imgData}
+        dataLocator={dataLocator}
+        updateVideoUrl={updateVideoUrl}
+      />
+    );
   }
 
   const imgProps = {
@@ -226,6 +236,7 @@ DamImage.defaultProps = {
   showPlaceHolder: true,
   videoData: null,
   isProductImage: false,
+  updateVideoUrl: true,
 };
 
 DamImage.propTypes = {
@@ -279,6 +290,7 @@ DamImage.propTypes = {
   itemBrand: PropTypes.string,
   showPlaceHolder: PropTypes.bool,
   isProductImage: PropTypes.bool,
+  updateVideoUrl: PropTypes.bool,
 };
 
 export default withTheme(DamImage);
