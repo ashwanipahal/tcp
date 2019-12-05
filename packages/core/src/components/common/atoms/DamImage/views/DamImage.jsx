@@ -65,10 +65,10 @@ const getBreakpointImgUrl = (type, props) => {
   if (isVideoUrl) {
     assetHost = assetHost.replace('/image/', '/video/');
   }
-
+  const configUrl = config === '' ? '' : `${config}/`;
   return isProductImage
-    ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
-    : `${basePath}/${config}/${imgPath}`;
+    ? `${assetHost}/${configUrl}${productAssetPath}/${imgPath}`
+    : `${basePath}/${configUrl}${imgPath}`;
 };
 
 const RenderVideo = videoProps => {
@@ -101,6 +101,7 @@ const RenderImage = forwardRef((imgProps, ref) => {
     itemBrand,
     showPlaceHolder,
     isProductImage,
+    xsOnly,
     ...other
   } = imgProps;
 
@@ -108,15 +109,19 @@ const RenderImage = forwardRef((imgProps, ref) => {
 
   return (
     <picture>
-      <source
-        media={`(min-width: ${breakpoints.values.lg}px)`}
-        data-srcset={getBreakpointImgUrl('lg', imgProps)}
-      />
+      {!xsOnly && (
+        <source
+          media={`(min-width: ${breakpoints.values.lg}px)`}
+          data-srcset={getBreakpointImgUrl('lg', imgProps)}
+        />
+      )}
 
-      <source
-        media={`(min-width: ${breakpoints.values.sm}px)`}
-        data-srcset={getBreakpointImgUrl('sm', imgProps)}
-      />
+      {!xsOnly && (
+        <source
+          media={`(min-width: ${breakpoints.values.sm}px)`}
+          data-srcset={getBreakpointImgUrl('sm', imgProps)}
+        />
+      )}
 
       {lazyLoad ? (
         <LazyLoadImage
@@ -158,6 +163,7 @@ const DamImage = props => {
     videoData,
     isProductImage,
     updateVideoUrl,
+    xsOnly,
     ...other
   } = props;
 
@@ -183,6 +189,7 @@ const DamImage = props => {
     itemBrand,
     showPlaceHolder,
     isProductImage,
+    xsOnly,
     ...other,
   };
 
@@ -220,6 +227,7 @@ const DamImage = props => {
 
 DamImage.defaultProps = {
   lazyLoad: true,
+  xsOnly: false,
   theme: {},
   imgConfigs: [],
   imgData: {
@@ -243,6 +251,8 @@ DamImage.defaultProps = {
 DamImage.propTypes = {
   /* Load the image laziliy or not */
   lazyLoad: PropTypes.bool,
+  /* Flag to load only small image */
+  xsOnly: PropTypes.bool,
   /* StyleComponent theme, will come from context */
   theme: PropTypes.shape({ breakpoints: PropTypes.object }),
 

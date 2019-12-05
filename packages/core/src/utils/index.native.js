@@ -27,6 +27,7 @@ export {
   mapHandler,
   formatPhnNumber,
   cropVideoUrl,
+  scrollToViewBottom,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
