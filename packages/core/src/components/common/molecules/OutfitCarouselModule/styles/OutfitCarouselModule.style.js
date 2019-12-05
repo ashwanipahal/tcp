@@ -18,10 +18,6 @@ const OutfitCarouselStyle = css`
   .slick-slide > div {
     padding: 0 4px;
   }
-  .slick-prev,
-  .slick-next {
-    margin-top: -20px;
-  }
   .slick-list {
     margin: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
