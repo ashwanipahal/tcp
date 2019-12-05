@@ -46,10 +46,21 @@ class ProductCustomizeFormPartContainer extends React.Component {
   };
 
   goToPDPPageMobile = (pdpUrl, selectedColorProductId) => {
-    const { navigation, onCloseClick, updateAppTypeHandler, productInfoFromBag } = this.props;
+    const {
+      navigation,
+      onCloseClick,
+      updateAppTypeHandler,
+      productInfoFromBag,
+      fromBagPage,
+    } = this.props;
     const currentAppBrand = getBrand();
-    const isProductBrandOfSameDomain =
-      currentAppBrand.toUpperCase() === productInfoFromBag.itemBrand.toUpperCase();
+    let isProductBrandOfSameDomain = true;
+    if (fromBagPage) {
+      isProductBrandOfSameDomain =
+        currentAppBrand.toUpperCase() ===
+        (productInfoFromBag.itemBrand && productInfoFromBag.itemBrand.toUpperCase());
+    }
+
     const title = navigation && navigation.getParam('title');
 
     onCloseClick();
@@ -126,6 +137,7 @@ ProductCustomizeFormPartContainer.propTypes = {
   isMultiItemQVModal: PropTypes.bool.isRequired,
   updateAppTypeHandler: PropTypes.func.isRequired,
   productInfoFromBag: PropTypes.shape({}).isRequired,
+  fromBagPage: PropTypes.bool.isRequired,
 };
 
 ProductCustomizeFormPartContainer.defaultProps = {

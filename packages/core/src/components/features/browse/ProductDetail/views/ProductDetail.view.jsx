@@ -315,7 +315,7 @@ class ProductDetailView extends PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row itemscope itemtype="https://schema.org/Product">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {isGiftCard ? (
               <div className="product-summary-mobile-view">{this.getProductSummary(keepAlive)}</div>
