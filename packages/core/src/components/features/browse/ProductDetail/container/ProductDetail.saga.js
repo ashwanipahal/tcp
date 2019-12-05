@@ -17,6 +17,8 @@ import {
 } from '../../../account/User/container/User.selectors';
 import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
 
+const checkSSR = typeof window !== 'undefined' || isMobileApp;
+
 function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }) {
   try {
     const pageName = 'pdp';
@@ -31,7 +33,7 @@ function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }
       product: { category },
     } = productDetail;
     const { layout, modules } = yield call(layoutResolver, { category, pageName });
-    if (typeof window !== 'undefined') {
+    if (checkSSR()) {
       yield put(loadLayoutData(layout, pageName));
       yield put(loadModulesData(modules));
     }
@@ -55,7 +57,7 @@ function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }
     }
 
     yield put(setProductDetails({ ...productDetail }));
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !isMobileApp) {
       yield put(setProductDetailsDynamicData({ ...productDetail }));
     }
     yield put(setPDPLoadingState({ isLoading: false }));
