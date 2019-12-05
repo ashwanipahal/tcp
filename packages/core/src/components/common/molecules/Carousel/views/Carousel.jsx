@@ -25,6 +25,7 @@ class Carousel extends React.PureComponent {
     this.pause = this.pause.bind(this);
     this.state = {
       autoplay: true,
+      uniqueId: Math.random(),
       loopCompleted: 0,
     };
   }
@@ -184,6 +185,8 @@ class Carousel extends React.PureComponent {
       dots: options.dots || options.autoplay,
     };
 
+    const { uniqueId } = this.state;
+
     return (
       <div
         className={`${className} tcp_carousel_wrapper`}
@@ -193,6 +196,7 @@ class Carousel extends React.PureComponent {
         <Slider
           className="tcp_carousel"
           ref={this.getSlider}
+          key={uniqueId}
           {...settings}
           afterChange={this.afterChange}
         >
