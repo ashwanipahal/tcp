@@ -1,5 +1,6 @@
 import { TRACK_PAGE_VIEW, TRACK_CLICK, trackPageView, trackClick } from '@tcp/core/src/analytics';
 import ADDEDTOBAG_CONSTANTS from '@tcp/core/src/components/features/CnC/AddedToBag/AddedToBag.constants';
+import CONFIRMATION_CONSTANTS from '@tcp/core/src/components/features/CnC/Confirmation/Confirmation.constants';
 
 /**
  * Analytics middleware event mapper.
@@ -34,9 +35,13 @@ export default function(action) {
     case TRACK_CLICK:
       return trackClick(/* (action, prevState, nextState) => ({}) */);
 
-    // NOTE: Example of direct call tracking (opposed to page or click events)
+    // Create a direct call tracking event when the cart is updated.
     case ADDEDTOBAG_CONSTANTS.ADD_TO_CART_ECOM:
       return () => ({ eventName: 'api_addProductToCart' });
+
+    // Create a direct call tracking event when an order succeeds.
+    case CONFIRMATION_CONSTANTS.CONFIRMATION_SET_ORDER_CONFIRMATION:
+      return () => ({ eventName: 'api_checkout' });
 
     default:
       return [];

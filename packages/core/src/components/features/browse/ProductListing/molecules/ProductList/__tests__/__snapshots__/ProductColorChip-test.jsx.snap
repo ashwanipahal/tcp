@@ -24,6 +24,7 @@ exports[`ProductColorChipVanilla component should renders correctly 1`] = `
       }
     }
     isProductImage={true}
+    xsOnly={true}
   />
 </button>
 `;
