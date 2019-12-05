@@ -6,10 +6,10 @@ describe('GridPromo component', () => {
   const props = {
     className: '',
     promoObj: {
-      textItems: [{ text: '' }],
+      textItems: [{ text: 'one' }, { text: 'two' }, { text: 'three' }],
       subHeadLine: [{ text: '' }],
-      promoWrapper: [{ text: '' }],
-      mediaWrapper: [{ text: '' }],
+      promoWrapper: [{ text: '', url: '' }],
+      mediaWrapper: [{ text: '', url: '' }],
       variation: 'vertical',
       navigation: {
         dispatch: jest.fn(),
