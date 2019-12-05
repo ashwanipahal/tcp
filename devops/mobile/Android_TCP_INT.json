@@ -369,7 +369,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "tcpIntRelease",
+      "buildVariant": "tcpInt",
       "isRoot": false,
       "runTests": false,
       "runLint": false,
@@ -385,7 +385,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "52344d80-b49f-4941-a3d0-d215bae8ee01"
+        "c79d7939-a2dd-4916-a893-b47b2eaf018f"
       ],
       "isSilent": false
     },
