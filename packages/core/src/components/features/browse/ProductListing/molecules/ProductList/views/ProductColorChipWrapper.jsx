@@ -151,6 +151,8 @@ class ProductColorChipWrapper extends React.Component {
       let {
         color: { swatchImage },
       } = colorEntry;
+      // todo: below logic of images url for swatch images
+      // from relatedSwatchImages need to be reviewed when this field available from API.
       if (index !== 0 && relatedSwatchImages) {
         swatchImage = relatedSwatchImages.find(swatchImageUrl =>
           swatchImageUrl.startsWith(colorEntry.colorProductId)
