@@ -219,8 +219,7 @@ function RenderApp(props) {
   };
   const { device } = context;
   const { appName } = device;
-  const appType = appName === 'Gymboree' ? 'gymboree' : 'tcp';
-
+  const appType = appName.includes('Gymboree') ? 'gymboree' : 'tcp';
   return <App context={context} appType={appType} {...props} />;
 }
 
