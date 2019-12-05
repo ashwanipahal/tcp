@@ -7,6 +7,7 @@ import { withTheme } from 'styled-components/native';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
+import { getVideoUrl } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -24,7 +25,6 @@ import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/Log
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
 import OutOfStockWaterMark from '../../OutOfStockWaterMark';
-import { getVideoUrl } from '../../../../../../../utils/index.native';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;

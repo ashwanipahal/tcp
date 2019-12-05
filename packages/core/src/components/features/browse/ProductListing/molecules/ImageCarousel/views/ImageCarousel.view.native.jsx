@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, FlatList, Dimensions } from 'react-native';
+import { getVideoUrl } from '@tcp/core/src/utils';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -8,7 +9,6 @@ import {
 } from '../../ProductList/utils/productsCommonUtils';
 import { DamImage } from '../../../../../../common/atoms';
 import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
-import { getVideoUrl } from '../../../../../../../utils/index.native';
 
 const win = Dimensions.get('window');
 const numberOfColumn = 2;
