@@ -318,6 +318,22 @@
       "value": "true"
     },
     {
+      "name": "RWD_APP_STYLITICS_USERNAME_TCP",
+      "value": "thechildrensplace"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_GYM",
+      "value": "gymboree"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_TCP",
+      "value": "country"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_GYM",
+      "value": ""
+    },
+    {
       "name": "RWD_WEB_APP_DOMAIN_TCP",
       "value": "https://test6.childrensplace.com"
     },
@@ -347,7 +363,7 @@
     },
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
-      "value": "https://test5.gymboree.com/static/bazaarVoice/index.html"
+      "value": "https://test6.gymboree.com/static/bazaarVoice/index.html"
     },
     {
       "name": "RWD_APP_BV_SHARED_KEY",
@@ -360,36 +376,33 @@
   "toolsets": {
     "buildscripts": {
       "packages/mobileapp/package.json": {
-        "postClone": "packages/mobileapp/appcenter-post-clone.sh",
-        "preBuild": "packages/mobileapp/appcenter-pre-build.sh"
+        "postClone": "packages/mobileapp/appcenter-post-clone.sh"
       }
-    },
-    "android": {
-      "module": "app",
-      "buildVariant": "gymboreeUatRelease",
-      "isRoot": false,
-      "runTests": false,
-      "runLint": false,
-      "keystorePassword": "__protected__",
-      "keyAlias": "__protected__",
-      "keyPassword": "__protected__",
-      "keystoreFilename": "tcp.jks",
-      "automaticSigning": false,
-      "buildBundle": false,
-      "gradleWrapperPath": "packages/mobileapp/android/gradlew"
     },
     "distribution": {
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "02151f85-54c0-4b93-af4f-66e1e162afe8"
+        "84ca044c-b22a-461a-a624-68ea48377d07"
       ],
       "isSilent": false
     },
     "javascript": {
-      "nodeVersion": "10.x",
+      "nodeVersion": "12.x",
       "packageJsonPath": "packages/mobileapp/package.json",
       "runTests": false
+    },
+    "xcode": {
+      "certificatePassword": "__protected__",
+      "certificateFilename": "Dist-Certificates.p12",
+      "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
+      "certificateFileId": "f965e2b2-4101-411a-a4dd-ff1388a8389d",
+      "provisioningProfileFileId": "9a4a586a-b087-492c-a12d-b83e94536c30",
+      "appExtensionProvisioningProfileFiles": [],
+      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
+      "scheme": "gymboree_qa",
+      "xcodeVersion": "10.2.1",
+      "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },
   "artifactVersioning": {
