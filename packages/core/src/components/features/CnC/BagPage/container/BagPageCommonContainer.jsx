@@ -97,13 +97,14 @@ export class BagPageContainer extends React.Component<Props> {
     }
     if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
       const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+      const { SHOPPING_BAG, HEADER_CART } = BAGPAGE_CONSTANTS;
       updateBagPageData({
-        pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
-        pageSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
-        pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
-        pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
-        pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
-        pageNavigationText: fromMiniBag ? 'header-cart' : '',
+        pageName: SHOPPING_BAG,
+        pageSection: SHOPPING_BAG,
+        pageSubSection: SHOPPING_BAG,
+        pageType: SHOPPING_BAG,
+        pageShortName: SHOPPING_BAG,
+        pageNavigationText: fromMiniBag ? HEADER_CART : '',
       });
       setClickAnalyticsDataBag({
         customEvents: events,
