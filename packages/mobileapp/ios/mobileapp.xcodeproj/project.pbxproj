@@ -302,6 +302,12 @@
 		39B94DBD2387BC330068B1E5 /* TCPLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* TCPLaunchScreen.xib */; };
 		39B94DBE2387BC330068B1E5 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
 		3E322737BEC397CE6274CFCA /* libPods-mobileapp_qa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 473DE01E88FCE3D62859EA57 /* libPods-mobileapp_qa.a */; };
+		411904D723991E8600927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411904D323991D4A00927BBB /* AirshipConfig.plist */; };
+		411904D823991E8600927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411904D323991D4A00927BBB /* AirshipConfig.plist */; };
+		411904D923991E8F00927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */; };
+		411904DA23991E9000927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */; };
+		411904DB23991E9700927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */; };
+		411904DC23991E9F00927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */; };
 		41BE1589238BBE11000B8963 /* VenmoPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1587238BBE11000B8963 /* VenmoPayment.m */; };
 		41BE158B238BBE11000B8963 /* VenmoPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1587238BBE11000B8963 /* VenmoPayment.m */; };
 		41BE158C238BBE11000B8963 /* VenmoPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1587238BBE11000B8963 /* VenmoPayment.m */; };
@@ -353,8 +359,6 @@
 		665715414D28FFD8064B6D52 /* libPods-gymboree_prod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD8A3F2C3F848FC9B161417 /* libPods-gymboree_prod.a */; };
 		6BC89BFC9F961547F218EC8B /* libPods-mobileapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A1971649737552D7FC95AF /* libPods-mobileapp.a */; };
 		6D40DB93D473EF097D9197A5 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		82FA410D238BE4F3009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA410B238BE4E2009ECD1F /* AirshipConfig.plist */; };
-		82FA410E238BE4FC009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */; };
 		82FA410F238BE50B009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */; };
 		82FA4110238BE510009ECD1F /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */; };
 		84677A14230BC69E001F5301 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB122D70C2600D9D051 /* Montserrat-SemiBold.ttf */; };
@@ -778,6 +782,9 @@
 		3973AC832387D12B00538E85 /* Gymboree-Preview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gymboree-Preview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B94DC32387BC330068B1E5 /* My Place - Preview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Place - Preview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA80DB4F41240C4B72A0C81 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		411904D323991D4A00927BBB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		411904D623991D6800927BBB /* mobileapp_qa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_qa.entitlements; sourceTree = "<group>"; };
+		411904E32399298E00927BBB /* mobileapp_prod.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = mobileapp_prod.entitlements; sourceTree = "<group>"; };
 		41BE1586238BBE11000B8963 /* VenmoPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VenmoPayment.h; path = mobileapp/VenmoPayment.h; sourceTree = "<group>"; };
 		41BE1587238BBE11000B8963 /* VenmoPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VenmoPayment.m; path = mobileapp/VenmoPayment.m; sourceTree = "<group>"; };
 		41BE1588238BBE11000B8963 /* VenmoPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenmoPayment.swift; path = mobileapp/VenmoPayment.swift; sourceTree = "<group>"; };
@@ -812,13 +819,10 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		82AAC050F67E4C53B6FB0F64 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
-		82FA4103238BE4E1009ECD1F /* mobileapp_prod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_prod.entitlements; sourceTree = "<group>"; };
 		82FA4105238BE4E2009ECD1F /* mobileapp_uat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_uat.entitlements; sourceTree = "<group>"; };
 		82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		82FA4109238BE4E2009ECD1F /* mobileapp_int.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_int.entitlements; sourceTree = "<group>"; };
-		82FA410B238BE4E2009ECD1F /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
-		82FA410C238BE4E2009ECD1F /* mobileapp_dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_dev.entitlements; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8424F1F222DC60160090ECF1 /* mobileapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobileapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		844B12E82301623400A82DAA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -1239,6 +1243,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		411904D223991D4A00927BBB /* mobileapp_QA */ = {
+			isa = PBXGroup;
+			children = (
+				411904D623991D6800927BBB /* mobileapp_qa.entitlements */,
+				411904D323991D4A00927BBB /* AirshipConfig.plist */,
+			);
+			path = mobileapp_QA;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1260,8 +1273,8 @@
 		82FA4101238BE4E1009ECD1F /* mobileapp_prod */ = {
 			isa = PBXGroup;
 			children = (
+				411904E32399298E00927BBB /* mobileapp_prod.entitlements */,
 				82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */,
-				82FA4103238BE4E1009ECD1F /* mobileapp_prod.entitlements */,
 			);
 			path = mobileapp_prod;
 			sourceTree = "<group>";
@@ -1282,15 +1295,6 @@
 				82FA4109238BE4E2009ECD1F /* mobileapp_int.entitlements */,
 			);
 			path = mobileapp_int;
-			sourceTree = "<group>";
-		};
-		82FA410A238BE4E2009ECD1F /* mobileapp_dev */ = {
-			isa = PBXGroup;
-			children = (
-				82FA410B238BE4E2009ECD1F /* AirshipConfig.plist */,
-				82FA410C238BE4E2009ECD1F /* mobileapp_dev.entitlements */,
-			);
-			path = mobileapp_dev;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -1325,7 +1329,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				82FA410A238BE4E2009ECD1F /* mobileapp_dev */,
+				411904D223991D4A00927BBB /* mobileapp_QA */,
 				82FA4107238BE4E2009ECD1F /* mobileapp_int */,
 				82FA4101238BE4E1009ECD1F /* mobileapp_prod */,
 				82FA4104238BE4E2009ECD1F /* mobileapp_uat */,
@@ -2381,6 +2385,7 @@
 				16C65BBF239797E9009559D2 /* Montserrat.ttf in Resources */,
 				169EF4E323990ACE003AEF10 /* Nunito-ExtraBold.ttf in Resources */,
 				16C65BC0239797E9009559D2 /* TCPLaunchScreen.xib in Resources */,
+				411904D723991E8600927BBB /* AirshipConfig.plist in Resources */,
 				16C65BC1239797E9009559D2 /* Nunito-Black.ttf in Resources */,
 				16C65BC2239797E9009559D2 /* icomoon.ttf in Resources */,
 			);
@@ -2404,6 +2409,7 @@
 				16C65BE42397982A009559D2 /* Montserrat.ttf in Resources */,
 				169EF4E423990ACE003AEF10 /* Nunito-ExtraBold.ttf in Resources */,
 				16C65BE52397982A009559D2 /* TCPLaunchScreen.xib in Resources */,
+				411904D823991E8600927BBB /* AirshipConfig.plist in Resources */,
 				16C65BE62397982A009559D2 /* Nunito-Black.ttf in Resources */,
 				16C65BE72397982A009559D2 /* icomoon.ttf in Resources */,
 			);
@@ -2416,6 +2422,7 @@
 				169EF4D223990A1B003AEF10 /* Montserrat-ExtraBold.ttf in Resources */,
 				169EF4D323990A1B003AEF10 /* Montserrat-Medium.ttf in Resources */,
 				169EF4D423990A1B003AEF10 /* Nunito-Bold.ttf in Resources */,
+				411904DC23991E9F00927BBB /* AirshipConfig.plist in Resources */,
 				169EF4D523990A1B003AEF10 /* Nunito.ttf in Resources */,
 				169EF4D623990A1B003AEF10 /* icomoon.ttf in Resources */,
 				169EF4D723990A1B003AEF10 /* Montserrat-Bold.ttf in Resources */,
@@ -2423,7 +2430,6 @@
 				84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677A18230BC69E001F5301 /* Images.xcassets in Resources */,
-				82FA410D238BE4F3009ECD1F /* AirshipConfig.plist in Resources */,
 				169EF4E623990ACE003AEF10 /* Nunito-ExtraBold.ttf in Resources */,
 				84677A1D230BC69E001F5301 /* Montserrat.ttf in Resources */,
 				84677A1E230BC69E001F5301 /* TCPLaunchScreen.xib in Resources */,
@@ -2437,10 +2443,10 @@
 			files = (
 				169EF4AD2398F58D003AEF10 /* Montserrat-Medium.ttf in Resources */,
 				169EF4AE2398F58D003AEF10 /* Nunito-Bold.ttf in Resources */,
-				82FA410E238BE4FC009ECD1F /* AirshipConfig.plist in Resources */,
 				16C65C2323979850009559D2 /* Montserrat-ExtraBold.ttf in Resources */,
 				16C65C2423979850009559D2 /* Montserrat-Medium.ttf in Resources */,
 				169EF4E823990ACE003AEF10 /* Nunito-ExtraBold.ttf in Resources */,
+				411904DB23991E9700927BBB /* AirshipConfig.plist in Resources */,
 				16C65C2523979850009559D2 /* Nunito-Bold.ttf in Resources */,
 				16C65CDB23979B58009559D2 /* mobileapp-prod-Info.plist in Resources */,
 				16C65C2723979850009559D2 /* Nunito.ttf in Resources */,
@@ -2590,6 +2596,7 @@
 				39B94DBA2387BC330068B1E5 /* Images.xcassets in Resources */,
 				39B94DBB2387BC330068B1E5 /* AppCenter-Config.plist in Resources */,
 				39B94DBC2387BC330068B1E5 /* Montserrat.ttf in Resources */,
+				411904DA23991E9000927BBB /* AirshipConfig.plist in Resources */,
 				39B94DBD2387BC330068B1E5 /* TCPLaunchScreen.xib in Resources */,
 				39B94DBE2387BC330068B1E5 /* Nunito-Black.ttf in Resources */,
 			);
@@ -2613,6 +2620,7 @@
 				16C65CD123979B2F009559D2 /* mobileapp-int-info.plist in Resources */,
 				169EF4E123990ACE003AEF10 /* Nunito-ExtraBold.ttf in Resources */,
 				84677A7C230BCD44001F5301 /* TCPLaunchScreen.xib in Resources */,
+				411904D923991E8F00927BBB /* AirshipConfig.plist in Resources */,
 				84677A7D230BCD44001F5301 /* Nunito-Black.ttf in Resources */,
 				3656A5852337836800EF9714 /* icomoon.ttf in Resources */,
 			);
@@ -5283,6 +5291,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_qa/mobileapp_qa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
@@ -5303,7 +5312,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.qa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TcpAppQA;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5319,6 +5328,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_qa/mobileapp_qa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -5339,7 +5349,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.qa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TcpAppQA;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5354,6 +5364,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_qa_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
@@ -5374,7 +5385,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.qa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TcpAppQA;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5390,7 +5401,8 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = mobileapp_qa_preview.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
@@ -5410,7 +5422,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.qa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TcpAppQA;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5425,6 +5437,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_uat_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5461,6 +5474,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_uat_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5494,6 +5508,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_prod_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5529,6 +5544,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mobileapp_prod_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5903,6 +5919,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "My Place - Preview.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5920,9 +5937,9 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.int";
 				PRODUCT_NAME = "My Place - Preview";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TCPAppInt;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5938,6 +5955,7 @@
 				APP_TYPE = tcp;
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "My Place - Preview.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5954,9 +5972,9 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.int";
 				PRODUCT_NAME = "My Place - Preview";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TCPAppInt;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -6089,9 +6107,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.int";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TCPAppInt;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -6110,7 +6128,7 @@
 				CODE_SIGN_ENTITLEMENTS = mobileapp_int/mobileapp_int.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9N3QW4M4N3;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6126,9 +6144,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.int";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TCPAppInt;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -6251,7 +6269,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TCP;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = mobileapp_prod/mobileapp_prod.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9N3QW4M4N3;
@@ -6270,7 +6288,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.tcp-ios.uat-prod";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Hockey Distribution profile";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_TcpAppUATProd;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

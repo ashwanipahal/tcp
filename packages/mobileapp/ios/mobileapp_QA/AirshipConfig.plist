@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>developmentAppKey</key>
-	<string>zov3EFDeR5Om4aXegb-zdg</string>
+	<string>com.childrensplace.tcp-ios.qa</string>
 	<key>developmentAppSecret</key>
-	<string>52TXMuFMQJ6vEQfC5j4nGg</string>
+	<string>IRnTzY2bSeSjuGux2JJ4yg</string>
 	<key>productionAppKey</key>
 	<string>Your Production App Key</string>
 	<key>productionAppSecret</key>
