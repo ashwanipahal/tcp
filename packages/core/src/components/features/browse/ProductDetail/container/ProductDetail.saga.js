@@ -57,7 +57,7 @@ function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }
     }
 
     yield put(setProductDetails({ ...productDetail }));
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !isMobileApp) {
       yield put(setProductDetailsDynamicData({ ...productDetail }));
     }
     yield put(setPDPLoadingState({ isLoading: false }));
