@@ -48,6 +48,7 @@ class FullSizeImageModal extends React.Component {
         dataLocator={getLocator('pdp_full_size_image_modal')}
         closeIconDataLocator={getLocator('pdp_zoomed_image_closed_btn')}
         fixedWidth
+        contentLabel="Image preview"
       >
         <div className="overlay-content">
           <figure

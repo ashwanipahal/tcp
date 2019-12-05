@@ -3140,25 +3140,25 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
       </Styled(Anchor)>
     </div>
     <div>
-      <Styled(Button)
-        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
-        buttonVariation="fixed-width"
-        data-locator="set-favorite-store"
-        onClick={[Function]}
-        type="button"
-      >
-        <Connect(Component)
-          clickData={
-            Object {
-              "customEvents": Array [
-                "event67",
-              ],
-            }
+      <Connect(Component)
+        clickData={
+          Object {
+            "customEvents": Array [
+              "event67",
+            ],
           }
+        }
+      >
+        <Styled(Button)
+          aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
+          buttonVariation="fixed-width"
+          data-locator="set-favorite-store"
+          onClick={[Function]}
+          type="button"
         >
           SET AS FAVORITE
-        </Connect(Component)>
-      </Styled(Button)>
+        </Styled(Button)>
+      </Connect(Component)>
     </div>
   </styled.div>
 </div>
@@ -3709,25 +3709,25 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
       </Styled(Anchor)>
     </div>
     <div>
-      <Styled(Button)
-        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
-        buttonVariation="fixed-width"
-        data-locator="set-favorite-store"
-        onClick={[Function]}
-        type="button"
-      >
-        <Connect(Component)
-          clickData={
-            Object {
-              "customEvents": Array [
-                "event67",
-              ],
-            }
+      <Connect(Component)
+        clickData={
+          Object {
+            "customEvents": Array [
+              "event67",
+            ],
           }
+        }
+      >
+        <Styled(Button)
+          aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
+          buttonVariation="fixed-width"
+          data-locator="set-favorite-store"
+          onClick={[Function]}
+          type="button"
         >
           SET AS FAVORITE
-        </Connect(Component)>
-      </Styled(Button)>
+        </Styled(Button)>
+      </Connect(Component)>
     </div>
   </styled.div>
 </div>
@@ -4747,25 +4747,25 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       </Styled(Anchor)>
     </div>
     <div>
-      <Styled(Button)
-        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
-        buttonVariation="fixed-width"
-        data-locator="set-favorite-store"
-        onClick={[Function]}
-        type="button"
-      >
-        <Connect(Component)
-          clickData={
-            Object {
-              "customEvents": Array [
-                "event67",
-              ],
-            }
+      <Connect(Component)
+        clickData={
+          Object {
+            "customEvents": Array [
+              "event67",
+            ],
           }
+        }
+      >
+        <Styled(Button)
+          aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
+          buttonVariation="fixed-width"
+          data-locator="set-favorite-store"
+          onClick={[Function]}
+          type="button"
         >
           SET AS FAVORITE
-        </Connect(Component)>
-      </Styled(Button)>
+        </Styled(Button)>
+      </Connect(Component)>
     </div>
   </styled.div>
 </div>

@@ -7,6 +7,7 @@ import { withTheme } from 'styled-components/native';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
+import { getVideoUrl } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -77,7 +78,7 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { onAddItemToFavorites, skuId, currentColorEntry, isLoggedIn } = props;
+    const { onAddItemToFavorites, skuId, currentColorEntry, isLoggedIn, formName } = props;
     const { colorProductId } = currentColorEntry;
     const { productId, showModal } = state;
     if (isLoggedIn && showModal) {
@@ -86,6 +87,7 @@ class ImageCarousel extends React.PureComponent {
           colorProductId: productId,
           productSkuId: (skuId && skuId.skuId) || null,
           pdpColorProductId: colorProductId,
+          formName,
           page: 'PDP',
         });
       }
@@ -100,7 +102,7 @@ class ImageCarousel extends React.PureComponent {
   };
 
   onFavorite = productId => {
-    const { isLoggedIn, onAddItemToFavorites, skuId, currentColorEntry } = this.props;
+    const { isLoggedIn, onAddItemToFavorites, skuId, currentColorEntry, formName } = this.props;
     const { colorProductId } = currentColorEntry;
 
     if (!isLoggedIn) {
@@ -111,6 +113,7 @@ class ImageCarousel extends React.PureComponent {
         colorProductId: productId,
         productSkuId: (skuId && skuId.skuId) || null,
         pdpColorProductId: colorProductId,
+        formName,
         page: 'PDP',
       });
     }
@@ -171,9 +174,10 @@ class ImageCarousel extends React.PureComponent {
     const { activeSlideIndex } = this.state;
 
     const { index } = imgSource;
+    const isVideoUrl = getVideoUrl(imgSource.item.regularSizeImageUrl);
     return (
       <ImageTouchableOpacity
-        onPress={onImageClick}
+        onPress={!isVideoUrl ? onImageClick : null}
         accessible={index === activeSlideIndex}
         accessibilityRole="image"
         accessibilityLabel={`product image ${index + 1}`}
@@ -335,6 +339,7 @@ ImageCarousel.propTypes = {
   outOfStockLabels: PropTypes.shape({
     outOfStockCaps: PropTypes.string,
   }),
+  formName: PropTypes.string,
 };
 
 ImageCarousel.defaultProps = {
@@ -353,6 +358,7 @@ ImageCarousel.defaultProps = {
     outOfStockCaps: '',
   },
   skuId: '',
+  formName: '',
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

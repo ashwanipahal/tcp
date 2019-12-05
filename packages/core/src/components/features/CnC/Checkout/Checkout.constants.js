@@ -214,4 +214,9 @@ export const CHECKOUT_ROUTES = {
   },
 };
 
+export const APP_TYPE = {
+  TCP: 'tcp',
+  GYMBOREE: 'gymboree',
+};
+
 export default CONSTANTS;

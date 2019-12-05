@@ -31,6 +31,7 @@ export default styled.div`
   .credit_card_heading {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     line-height: 2;
+    margin-bottom: 0;
   }
 
   .left-arrow {

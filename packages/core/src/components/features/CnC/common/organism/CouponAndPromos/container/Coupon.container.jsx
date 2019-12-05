@@ -17,6 +17,7 @@ import {
 import { getGlobalLabels } from '../../../../../account/Account/container/Account.selectors';
 import Coupon from '../views/Coupon.view';
 import MyOffersCoupons from '../../../../../account/common/organism/MyOffersCoupons/views/MyOffersCoupons.view';
+import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 
 export class CouponContainer extends React.PureComponent {
   componentDidMount() {
@@ -42,7 +43,6 @@ export class CouponContainer extends React.PureComponent {
     const {
       labels,
       commonLabels,
-      isFetching,
       handleApplyCoupon,
       handleApplyCouponFromList,
       handleRemoveCoupon,
@@ -59,9 +59,12 @@ export class CouponContainer extends React.PureComponent {
       additionalClassNameModal,
       openApplyNowModal,
       navigation,
+      bagLoading,
       isNeedHelpModalOpen,
       toggleNeedHelpModal,
+      isFetchingCouponState,
     } = this.props;
+    const isFetching = isFetchingCouponState || bagLoading;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
       <>
@@ -79,6 +82,7 @@ export class CouponContainer extends React.PureComponent {
             showAccordian={showAccordian}
             additionalClassNameModal={additionalClassNameModal}
             idPrefix={idPrefix}
+            bagLoading={bagLoading}
             openApplyNowModal={openApplyNowModal}
             navigation={navigation}
             isNeedHelpModalOpen={isNeedHelpModalOpen}
@@ -112,7 +116,8 @@ export class CouponContainer extends React.PureComponent {
 }
 
 CouponContainer.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
+  isFetchingCouponState: PropTypes.bool.isRequired,
+  bagLoading: PropTypes.bool.isRequired,
   isCheckout: PropTypes.bool.isRequired,
   labels: PropTypes.shape.isRequired,
   handleApplyCoupon: PropTypes.func.isRequired,
@@ -202,7 +207,7 @@ export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
 });
 
 export const mapStateToProps = state => ({
-  isFetching: getCouponFetchingState(state),
+  isFetchingCouponState: getCouponFetchingState(state),
   labels: getCouponsLabels(state),
   appliedCouponList: getAppliedCouponListState(state),
   availableCouponList: getAvailableCouponListState(state),
@@ -210,6 +215,7 @@ export const mapStateToProps = state => ({
   needHelpRichText: getNeedHelpContent(state),
   commonLabels: getGlobalLabels(state),
   isNeedHelpModalOpen: getNeedHelpModalState(state),
+  bagLoading: BagPageSelectors.isBagLoading(state),
 });
 
 export default connect(

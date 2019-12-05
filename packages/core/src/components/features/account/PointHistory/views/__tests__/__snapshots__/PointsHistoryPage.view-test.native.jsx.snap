@@ -37,41 +37,6 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
         visible={false}
       />
     </Styled(View)>
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        colorName={null}
-        customStyle={Object {}}
-        dataLocator="my-rewards-program-details"
-        fontSizeVariation="medium"
-        justifyContent=""
-        locator=""
-        margins={null}
-        onPress={[Function]}
-        text="lbl_points_history_program_details"
-        underline={true}
-        visible={false}
-      />
-      <Styled(View)>
-        <Styled(Anchor)
-          accessibilityLabel=""
-          anchorVariation="primary"
-          colorName={null}
-          customStyle={Object {}}
-          dataLocator="my-rewards-tnc"
-          fontSizeVariation="medium"
-          justifyContent=""
-          locator=""
-          margins={null}
-          noLink={true}
-          onPress={[Function]}
-          text="lbl_common_tnc"
-          underline={true}
-          visible={false}
-        />
-      </Styled(View)>
-    </Styled(View)>
   </Styled(View)>
 </ScrollViewMock>
 `;

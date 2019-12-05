@@ -19,7 +19,16 @@ class HomePageWrapper extends React.Component {
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
-    this.sHomePageAnalyticsVal(router);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { router, isRegisteredUserCallDone } = this.props;
+    if (
+      isRegisteredUserCallDone &&
+      isRegisteredUserCallDone !== prevProps.isRegisteredUserCallDone
+    ) {
+      this.sHomePageAnalyticsVal(router);
+    }
   }
 
   // For Setting the Home Page Analytics Data.
@@ -83,6 +92,7 @@ const HomePageView = dynamic({
       setCampaignId,
       seoData,
       trackHomepageView,
+      isRegisteredUserCallDone,
     } = compProps;
 
     return (
@@ -90,6 +100,7 @@ const HomePageView = dynamic({
         openCountrySelectorModal={openCountrySelectorModal}
         setCampaignId={setCampaignId}
         trackHomepageView={trackHomepageView}
+        isRegisteredUserCallDone={isRegisteredUserCallDone}
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
@@ -113,6 +124,7 @@ HomePageWrapper.propTypes = {
   router: PropTypes.element.isRequired,
   setCampaignId: PropTypes.func.isRequired,
   trackHomepageView: PropTypes.func.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
 };
 
 HomePageView.propTypes = {
@@ -121,6 +133,7 @@ HomePageView.propTypes = {
   openCountrySelectorModal: PropTypes.func.isRequired,
   setCampaignId: PropTypes.func.isRequired,
   trackHomepageView: PropTypes.func.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
 };
 
 const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);

@@ -29,7 +29,7 @@ class SuggestionBox extends React.PureComponent {
       <React.Fragment>
         <div className="suggestionBox">
           {isLatestSearchResultsExists && (
-            <div className="recentBox">
+            <BodyCopy component="div" className="recentBox" fontSize="fs13">
               {latestSearchResults && latestSearchResults.length > 0 && (
                 <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
                   {getLabelValue(labels, 'lbl_search_recent_search')}
@@ -68,7 +68,7 @@ class SuggestionBox extends React.PureComponent {
                   })}
                 </ul>
               </BodyCopy>
-            </div>
+            </BodyCopy>
           )}
         </div>
       </React.Fragment>

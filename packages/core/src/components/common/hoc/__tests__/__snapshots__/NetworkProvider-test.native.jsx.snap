@@ -4,7 +4,7 @@ exports[`Appsplash component test cases should match snapshot 1`] = `
 <ContextProvider
   value={
     Object {
-      "isConnected": true,
+      "isConnected": false,
     }
   }
 >
