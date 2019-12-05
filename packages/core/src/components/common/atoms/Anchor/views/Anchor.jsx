@@ -2,20 +2,18 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
-import { buildUrl, getAsPathWithSlug, getMappedPageHref, getAPIConfig } from '../../../../../utils';
+import {
+  buildUrl,
+  getAsPathWithSlug,
+  getMappedPageHref,
+  triggerPostMessage,
+} from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
 
 const getAsLinkPath = (IsSlugPathAdded, asPath, incomingUrl) => {
   return IsSlugPathAdded ? asPath || incomingUrl : getAsPathWithSlug(asPath || incomingUrl);
-};
-
-const triggerLinkOnClick = url => {
-  const apiConfig = getAPIConfig();
-  if (window && window.ReactNativeWebView && apiConfig.isAppChannel) {
-    window.ReactNativeWebView.postMessage(url);
-  }
 };
 
 /**
@@ -74,7 +72,7 @@ const Anchor = ({
           href={hrefUrl}
           title={title}
           target={targetVal}
-          onClick={() => triggerLinkOnClick(to)}
+          onClick={() => triggerPostMessage(to || asLinkPath)}
           data-locator={dataLocator}
           {...other}
         >

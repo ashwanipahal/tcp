@@ -1167,6 +1167,21 @@ export const convertNumToBool = val => {
   return !!parseInt(val, 10);
 };
 
+/**
+ * To Trigger the webview post message when any anchor is clicked.
+ * this will work for internal routes only.
+ */
+export const triggerPostMessage = url => {
+  const { isAppChannel } = getAPIConfig();
+  if (url && window && window.ReactNativeWebView && isAppChannel) {
+    let updatedUrl = url;
+    if (updatedUrl.includes('/us')) {
+      updatedUrl = updatedUrl.replace('/us', '');
+    }
+    window.ReactNativeWebView.postMessage(updatedUrl);
+  }
+};
+
 export default {
   getVideoUrl,
   getOrderStatusForNotification,
@@ -1218,4 +1233,5 @@ export default {
   calculatePriceValue,
   getProductUrlForDAM,
   convertNumToBool,
+  triggerPostMessage,
 };

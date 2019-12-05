@@ -21,6 +21,14 @@ class InAppWebView extends React.Component {
     `;
   };
 
+  removeLastNavStack = () => {
+    const { navigation } = this.props;
+    const popAction = StackActions.pop({
+      n: 1,
+    });
+    navigation.dispatch(popAction);
+  };
+
   /**
    * To capture the postmessages for web view.
    */
@@ -30,6 +38,7 @@ class InAppWebView extends React.Component {
     const { navigation } = this.props;
     const { URL_PATTERN } = config;
     if (url && url.includes('home')) {
+      this.removeLastNavStack();
       navigation.navigate('Home');
     } else if (
       url &&
@@ -37,27 +46,27 @@ class InAppWebView extends React.Component {
         url.includes(URL_PATTERN.CATEGORY_LANDING) ||
         url.includes(URL_PATTERN.OUTFIT_DETAILS))
     ) {
+      this.removeLastNavStack();
       const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
-      const popAction = StackActions.pop({
-        n: 1,
-      });
-      navigation.dispatch(popAction);
       navigateToPage(cmsValidatedUrl, navigation);
+    } else if (url && url.includes('/account')) {
+      this.removeLastNavStack();
+      navigation.navigate(url);
     }
   };
 
   render() {
-    const { pageUrl, setAppLoaderState } = this.props;
+    const { pageUrl } = this.props;
     const webViewProps = {
       onMessage: this.handleWebViewEvents,
       javaScriptEnabled: true,
       injectedJavaScript: this.hideWebViewHeaderFooter(),
       source: { uri: pageUrl },
-      enableLoader: true,
-      setLoaderState: setAppLoaderState,
     };
     return (
-      <View height={getScreenHeight()}>{pageUrl ? <RichText {...webViewProps} /> : null}</View>
+      <View height={getScreenHeight() + 100}>
+        {pageUrl ? <RichText {...webViewProps} /> : null}
+      </View>
     );
   }
 }
@@ -65,13 +74,11 @@ class InAppWebView extends React.Component {
 InAppWebView.propTypes = {
   navigation: PropTypes.func,
   pageUrl: PropTypes.string,
-  setAppLoaderState: PropTypes.func,
 };
 
 InAppWebView.defaultProps = {
   navigation: null,
   pageUrl: '',
-  setAppLoaderState: () => {},
 };
 
 export default InAppWebView;
