@@ -35,28 +35,6 @@ class RichText extends PureComponent {
     );
   };
 
-  /**
-   * To start the loader when the webview is starts Loading
-   */
-
-  handleLoaderStart = () => {
-    const { enableLoader, setLoaderState } = this.props;
-    if (enableLoader) {
-      setLoaderState(true);
-    }
-  };
-
-  /**
-   * To Close the loader when the webview is succeds for fails.
-   */
-
-  handleLoaderEnd = () => {
-    const { enableLoader, setLoaderState } = this.props;
-    if (enableLoader) {
-      setLoaderState(false);
-    }
-  };
-
   renderWebView = () => {
     const {
       javaScriptEnabled,
@@ -86,9 +64,6 @@ class RichText extends PureComponent {
         source={webViewSource}
         injectedJavaScript={injectedJavaScript}
         onMessage={onMessage}
-        onLoadStart={this.handleLoaderStart}
-        onLoad={this.handleLoaderEnd}
-        onLoadEnd={this.handleLoaderEnd}
         {...others}
       />
     );
@@ -140,8 +115,6 @@ RichText.propTypes = {
   isApplyDeviceHeight: PropTypes.bool,
   actionHandler: PropTypes.func,
   onMessage: PropTypes.func,
-  enableLoader: PropTypes.bool,
-  setLoaderState: PropTypes.func,
 };
 
 RichText.defaultProps = {
@@ -154,8 +127,6 @@ RichText.defaultProps = {
   isApplyDeviceHeight: false,
   actionHandler: () => {},
   onMessage: () => {},
-  enableLoader: false,
-  setLoaderState: () => {},
 };
 
 export default RichText;

@@ -5,6 +5,7 @@ import { getScreenHeight, configureInternalNavigationFromCMSUrl } from '@tcp/cor
 import { navigateToPage } from '@tcp/core/src/utils/index.native';
 import { RichText } from '@tcp/core/src/components/common/atoms';
 import config from '@tcp/core/src/components/common/atoms/Anchor/config.native';
+import { StackActions } from 'react-navigation';
 
 class InAppWebView extends React.Component {
   /**
@@ -37,6 +38,10 @@ class InAppWebView extends React.Component {
         url.includes(URL_PATTERN.OUTFIT_DETAILS))
     ) {
       const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
+      const popAction = StackActions.pop({
+        n: 1,
+      });
+      navigation.dispatch(popAction);
       navigateToPage(cmsValidatedUrl, navigation);
     }
   };

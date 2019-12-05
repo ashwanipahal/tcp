@@ -9,7 +9,7 @@ import Settings from '@tcp/core/src/components/features/account/Settings';
 import PurchaseGiftsCard from '@tcp/core/src/components/features/account/PurchaseGiftsCard';
 import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
 import StoreDetails from '@tcp/core/src/components/features/storeLocator/StoreDetail';
-import InAppWebView from '../components/features/content/InAppWebView/container';
+import InAppWebView from '../components/features/content/InAppWebView/views';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Account from '../components/features/account/account';
