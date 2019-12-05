@@ -461,6 +461,13 @@ class FavoritesView extends React.PureComponent {
     return null;
   };
 
+  getFavoriteItemCount = filteredList => {
+    if (filteredList && filteredList.length) {
+      return filteredList.length;
+    }
+    return 0;
+  };
+
   render() {
     const {
       className,
@@ -509,6 +516,7 @@ class FavoritesView extends React.PureComponent {
     };
 
     const filteredItemsList = this.getFilteredItemsList();
+    const itemCount = this.getFavoriteItemCount(filteredItemsList);
     const myFavLabel = labels.lbl_fav_myFavorites;
     if (isDataLoading)
       return (
@@ -582,7 +590,7 @@ class FavoritesView extends React.PureComponent {
                       display_group_uFilter: filters.length && filters[0].displayName,
                     },
                   }}
-                  totalProductsCount={filteredItemsList.length}
+                  totalProductsCount={itemCount}
                   initialValues={{}}
                   filtersLength={{}}
                   labels={labels}
@@ -597,7 +605,7 @@ class FavoritesView extends React.PureComponent {
               </Col>
               <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
                 <LoadedProductsCount
-                  totalProductsCount={filteredItemsList.length}
+                  totalProductsCount={itemCount}
                   showingItemsLabel={slpLabels}
                   isFavoriteView
                 />
