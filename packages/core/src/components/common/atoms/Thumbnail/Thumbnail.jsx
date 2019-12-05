@@ -56,6 +56,8 @@ class Thumbnail extends React.Component {
             1} of ${totalCount}. Click or Enter on this Icon to ${'display large view of the Image'}`}
           onClick={this.handleClick}
           className={['image-wrapper', isSelected ? 'selected-image' : ''].join(' ')}
+          itemscope
+          itemtype="http://schema.org/ImageObject"
         >
           <DamImage
             data-locator={`${getLocator('pdp_alt_image')}_${index}`}

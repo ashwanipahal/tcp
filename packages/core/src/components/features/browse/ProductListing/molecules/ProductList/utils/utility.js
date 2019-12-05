@@ -31,7 +31,7 @@ const getPromotionalMessage = (isPlcc, handlers) => {
  */
 
 function validateBossEligibility({ isBossClearanceProductEnabled, isBossEnabled, miscInfo }) {
-  const bossEligibility = isBossEnabled && miscInfo.isBossEligible;
+  const bossEligibility = isBossEnabled && miscInfo && miscInfo.isBossEligible;
   // adding this check as productDynamicAbstractor and cartDynamicAbstractor return
   // different keys for clearance item identification
   return miscInfo.isClearance || miscInfo.clearanceItem
@@ -51,7 +51,7 @@ function validateBossEligibility({ isBossClearanceProductEnabled, isBossEnabled,
  * @param {object} miscInfo object data with pickup eligibility of product
  */
 function validateBopisEligibility({ isBopisClearanceProductEnabled, isBopisEnabled, miscInfo }) {
-  const bopisEligibility = isBopisEnabled && miscInfo.isBopisEligible;
+  const bopisEligibility = isBopisEnabled && miscInfo && miscInfo.isBopisEligible;
   // productDynamicAbstractor and cartDynamicAbstractor return different keys for clearance item
   return miscInfo.isClearance || miscInfo.clearanceItem
     ? isBopisClearanceProductEnabled && bopisEligibility

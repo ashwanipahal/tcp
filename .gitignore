@@ -83,6 +83,7 @@ local.properties
 node_modules/
 npm-debug.log
 yarn-error.log
+packages/web/server/log/
 
 # BUCK
 buck-out/

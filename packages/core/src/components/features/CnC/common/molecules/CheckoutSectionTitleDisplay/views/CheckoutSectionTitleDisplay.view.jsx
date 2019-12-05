@@ -14,6 +14,7 @@ class CheckoutSectionTitleDisplay extends React.PureComponent {
             fontFamily="primary"
             fontSize="fs16"
             fontWeight="extrabold"
+            component="h2"
             data-locator="pickup-title"
           >
             {title}

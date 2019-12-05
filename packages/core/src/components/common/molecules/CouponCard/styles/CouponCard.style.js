@@ -9,13 +9,13 @@ const styles = css`
   }
 
   .couponCard__container_error {
-    border: solid 0.8px ${props => props.theme.colors.TEXT.RED};
+    border: solid 1px ${props => props.theme.colors.TEXT.RED};
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 
   .couponCard__container_main {
-    border: solid 0.8px ${props => props.theme.colors.BRAND.BOY};
+    border: solid 1px ${props => props.theme.colors.BRAND.BOY};
     border-style: dashed;
   }
 

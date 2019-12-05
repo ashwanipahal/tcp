@@ -46,11 +46,14 @@ class ProductDetailView extends PureComponent {
 
   componentDidMount() {
     const { productInfo, trackPageLoad } = this.props;
+    const { name, ratingsProductId } = productInfo;
     const productsFormatted = this.formatProductsData(productInfo);
+    const pageName = `product:${ratingsProductId}:${name.toLowerCase()}`;
+
     if (productsFormatted) {
       trackPageLoad({
         pageType: 'product',
-        pageName: 'product',
+        pageName,
         pageSection: 'product',
         pageSubSection: 'product',
         products: productsFormatted,
@@ -61,9 +64,12 @@ class ProductDetailView extends PureComponent {
 
   formatProductsData = product => {
     const productData = [];
-    const colorName = product.colorFitsSizesMap.map(productTile => {
-      return productTile.color.name || '';
-    });
+    const colorName =
+      product &&
+      product.colorFitsSizesMap &&
+      product.colorFitsSizesMap.map(productTile => {
+        return productTile.color.name || '';
+      });
     const productId = product.generalProductId.split('_')[0];
     productData.push({
       colorId: product.generalProductId,
@@ -304,7 +310,7 @@ class ProductDetailView extends PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row itemscope itemtype="https://schema.org/Product">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {isGiftCard ? (
               <div className="product-summary-mobile-view">{this.getProductSummary(keepAlive)}</div>

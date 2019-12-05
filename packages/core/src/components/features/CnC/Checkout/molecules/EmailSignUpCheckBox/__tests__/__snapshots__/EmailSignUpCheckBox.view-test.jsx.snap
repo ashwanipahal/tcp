@@ -176,7 +176,7 @@ exports[`Shipping Form should render correctly 1`] = `
             }
           }
           dataLocator="signUp-checkbox-field"
-          name="emailSignUp"
+          name="emailSignUpTCP"
         >
           <Styled(BodyCopy)
             className={null}

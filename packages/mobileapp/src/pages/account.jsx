@@ -18,14 +18,14 @@ import ROUTE_NAMES from '../reduxStore/routes';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
 import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
-const getNewHeader = navigation => {
+const getNewHeader = (navigation, showSearch = false) => {
   const title = navigation && navigation.getParam('title');
   const showHeader = navigation && navigation.getParam('noHeader');
   return {
     header: props =>
       !showHeader ? (
         <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
-          <HeaderNew {...props} title={title} navigation={navigation} />
+          <HeaderNew {...props} title={title} navigation={navigation} showSearch={showSearch} />
         </SafeAreaView>
       ) : null,
     headerBackground: 'transparent',
@@ -63,7 +63,7 @@ const AccountStack = createStackNavigator(
     GiftCardPage: {
       screen: PurchaseGiftsCard,
       navigationOptions: ({ navigation }) => {
-        return getNewHeader(navigation);
+        return getNewHeader(navigation, true);
       },
     },
     PointsHistoryPage: {
