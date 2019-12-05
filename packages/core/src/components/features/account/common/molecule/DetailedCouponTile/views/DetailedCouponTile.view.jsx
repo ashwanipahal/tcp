@@ -133,7 +133,10 @@ export class DetailedCouponTile extends React.Component {
     return status === COUPON_STATUS.APPLIED ? 'overlap-text' : '';
   };
 
-  // eslint-disable-next-line complexity
+  getIE11Class = IE11Class => {
+    return isIE11() ? IE11Class : '';
+  };
+
   render() {
     const { className, coupon, labels, isMobile, isDisabled } = this.props;
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
@@ -146,7 +149,7 @@ export class DetailedCouponTile extends React.Component {
     return (
       <BodyCopy
         component="div"
-        className={`${className} ${isIE11() ? 'IE_my_rewards' : ''}`}
+        className={`${className} ${this.getIE11Class('IE_my_rewards')}`}
         data-locator="myrewards-tile"
       >
         {showOverlow && (
@@ -223,7 +226,7 @@ export class DetailedCouponTile extends React.Component {
           />
           <BodyCopy
             component="div"
-            className={`bottom-content ${isIE11() ? 'IE_bottom-content' : ''}`}
+            className={`bottom-content ${this.getIE11Class('IE_bottom-content')}`}
           >
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
               <BodyCopy component="div" data-locator="myrewards-usebylabel">

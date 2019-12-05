@@ -5,6 +5,7 @@ const styles = css`
     ${props =>
       props.coupon.error ? props.theme.colorPalette.red[500] : props.theme.colorPalette.gray[500]};
   position: relative;
+  width: 100%;
   .notification {
     background-color: ${props => props.theme.colorPalette.gray[800]};
     color: ${props => props.theme.colorPalette.white};
@@ -71,7 +72,7 @@ const styles = css`
     width: calc(100% - 24px);
   }
 
-  .IE_my_rewards {
+  .IE_my-rewards {
     -ms-grid-row: ${props => Math.floor(props.index / 5) + 1};
     -ms-grid-column: ${props => (props.index % 5) + 1};
     margin-right: 24px;
