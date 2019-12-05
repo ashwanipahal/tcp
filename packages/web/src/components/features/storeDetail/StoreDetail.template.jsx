@@ -18,10 +18,7 @@ StoreDetail.getInitActions = () => initActions;
 StoreDetail.getInitialProps = () => {
   return {
     pageData: {
-      pageName: 'companyinfo:companyinfo',
-      pageType: 'companyinfo',
-      pageSection: 'companyinfo',
-      pageSubSection: 'companyinfo',
+      loadAnalyticsOnload: false,
     },
   };
 };

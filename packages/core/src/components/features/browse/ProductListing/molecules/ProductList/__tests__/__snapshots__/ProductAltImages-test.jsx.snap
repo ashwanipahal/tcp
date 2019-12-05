@@ -24,7 +24,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
       ]
     }
     title=""
-    to="/p?pid=undefined"
+    to="url"
     unbxdattr="product"
     unbxdparam_prank={1}
     unbxdparam_sku={1}

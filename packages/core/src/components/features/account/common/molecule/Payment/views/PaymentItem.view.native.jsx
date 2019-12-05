@@ -92,7 +92,7 @@ class PaymentItem extends React.Component<Props> {
               color="gray.900"
             />
             {variation === 'add' && (
-              <BodyCopy fontFamily="primary" fontSize="fs13" text={paymentInfo.text} />
+              <BodyCopy fontFamily="secondary" fontSize="fs13" text={paymentInfo.text} />
             )}
             {variation === 'edit' && (
               <PaymentInfoContainer>

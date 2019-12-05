@@ -130,9 +130,8 @@ export class StoreLanding extends PureComponent {
 
 StoreLanding.getInitActions = () => initActions;
 
-StoreLanding.getInitialProps = (reduxProps, pageProps) => {
+StoreLanding.getInitialProps = () => {
   return {
-    ...pageProps,
     pageData: {
       pageName: 'storelocator',
       pageType: 'companyinfo',
@@ -180,4 +179,7 @@ const mapStateToProps = state => ({
   searchDone: state.StoreLocatorReducer && state.StoreLocatorReducer.get('searchDone'),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoreLanding);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StoreLanding);
