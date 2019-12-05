@@ -54,6 +54,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               fontSize={isOrderConfirmation ? 'fs16' : 'fs18'}
               text={labels.title}
               textAlign="center"
+              fontWeight="bold"
             />
             <BodyCopy fontSize="fs14" text={labels.subTitle} />
             {!isOrderConfirmation && (

@@ -34,7 +34,6 @@ const ListPriceAndBadgeContainer = styled.View`
   flex-direction: row;
 `;
 const ProductDetailSummary = styled.View`
-  flex-wrap: wrap;
   flex: 1;
 `;
 const InputCheckboxWrapper = styled.View`

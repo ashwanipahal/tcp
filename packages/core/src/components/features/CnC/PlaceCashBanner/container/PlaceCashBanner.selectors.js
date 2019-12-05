@@ -68,7 +68,7 @@ const getEarnedPlaceCashValue = state => {
 
 const getPlaceDetailsContentId = (state, labelName) => {
   const referred = getLabelValue(state.Labels, 'referred', 'placeCashBanner', 'checkout', true);
-  const content = referred.length && referred.find(label => label.name === labelName);
+  const content = referred && referred.length && referred.find(label => label.name === labelName);
   return content && content.contentId;
 };
 

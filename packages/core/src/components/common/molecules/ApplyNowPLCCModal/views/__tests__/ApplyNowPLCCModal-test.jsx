@@ -10,6 +10,7 @@ describe('ApplyNowModalWrapper component', () => {
     modalStyles: {
       header: 'secondary',
     },
+    labels: {},
   };
 
   const component = shallow(<ApplyNowPLCCModal {...props} />);

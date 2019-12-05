@@ -125,6 +125,7 @@ const CnCCommonTemplate = ({
   venmoPayment,
   onVenmoError,
   isVenmoPaymentInProgress,
+  bagLoading,
 }) => {
   const userName = venmoPayment ? venmoPayment.userName : '';
   return (
@@ -134,10 +135,16 @@ const CnCCommonTemplate = ({
           {!isPayPalWebViewEnable && (
             <>
               <CouponAndPromosWrapper>
-                <CouponAndPromos isCheckout pageCategory={pageCategory} navigation={navigation} />
+                <CouponAndPromos
+                  isCheckout
+                  pageCategory={pageCategory}
+                  bagLoading={bagLoading}
+                  navigation={navigation}
+                />
               </CouponAndPromosWrapper>
               <View>
                 <OrderLedgerContainer
+                  bagLoadingPageLevel={bagLoading}
                   showAccordian={showAccordian}
                   pageCategory={pageCategory}
                   navigation={navigation}
@@ -147,7 +154,7 @@ const CnCCommonTemplate = ({
           )}
           {!isPayPalWebViewEnable && !isGuest && (
             <BonusPointsWrapper>
-              <BonusPointsDays />
+              <BonusPointsDays isFetchingStatePageLevel={bagLoading} />
             </BonusPointsWrapper>
           )}
           {getPaymentButton({
@@ -162,6 +169,7 @@ const CnCCommonTemplate = ({
             showVenmoSubmit,
             onVenmoSubmit,
             onVenmoError,
+            navigation,
           })}
         </CnContent>
       ) : (
@@ -203,6 +211,7 @@ CnCCommonTemplate.propTypes = {
   venmoPayment: PropTypes.shape({}),
   onVenmoError: PropTypes.bool,
   isVenmoPaymentInProgress: PropTypes.bool,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 CnCCommonTemplate.defaultProps = {

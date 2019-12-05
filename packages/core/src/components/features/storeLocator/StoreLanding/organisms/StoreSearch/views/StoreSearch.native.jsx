@@ -60,8 +60,11 @@ class StoreSearch extends Component {
           dataLocator={dataLocator}
           enableSuccessCheck={false}
           isChecked={checked}
+          checkBoxLabel={false}
           onChange={(...args) => this.onSelectStore(args)}
-        />
+        >
+          {storeLabel}
+        </Field>
         <StyledCheckBoxBodyCopy>
           <BodyCopy
             fontSize="fs12"

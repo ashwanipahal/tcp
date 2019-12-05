@@ -334,7 +334,7 @@
       "value": "true"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
@@ -382,7 +382,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "c25ae848-afb5-4f5d-980e-e049badd5410"
+        "cc606d26-4a63-4ea0-9ef4-f2797046e16f"
       ],
       "isSilent": false
     },

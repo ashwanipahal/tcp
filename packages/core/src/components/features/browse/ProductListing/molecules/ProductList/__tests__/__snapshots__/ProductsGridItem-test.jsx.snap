@@ -47,6 +47,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       isPLPredesign={false}
       isShowVideoOnPlp={false}
       isSoldOut={false}
+      itemBrand="TCP"
       loadedProductCount={12}
       onImageChange={[Function]}
       soldOutLabel=""
@@ -141,6 +142,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           },
         ]
       }
+      imagesByColor={Object {}}
       isMobile={
         Object {
           "isMobile": false,

@@ -18,10 +18,8 @@ import {
   getSetOrderProductDetails,
 } from '../../Confirmation/container/Confirmation.actions';
 import { isMobileApp, routerPush } from '../../../../../utils';
-import { resetCheckoutReducer } from '../container/Checkout.action.util';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
-import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from '../container/CheckoutBilling.saga';
 
 jest.mock('../../../../../utils', () => ({
@@ -72,10 +70,8 @@ describe('CheckoutReview saga', () => {
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next({ tcpProducts: [], gymProducts: [] });
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
-    expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCouponReducer()));
-    expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
     CheckoutReviewSaga.next();
   });
   it('CheckoutReview when mobile app', () => {
@@ -99,10 +95,8 @@ describe('CheckoutReview saga', () => {
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next({ tcpProducts: [], gymProducts: [] });
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
-    expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCouponReducer()));
-    expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
   });
   it('CheckoutReview for email sign up', () => {
     isMobileApp.mockImplementation(() => false);

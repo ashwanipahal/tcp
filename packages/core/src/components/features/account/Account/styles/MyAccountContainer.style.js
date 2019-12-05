@@ -15,6 +15,10 @@ const MyAccountStyles = css`
       outline: 0;
     }
   }
+  .user-welcome {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
   @media ${props => props.theme.mediaQuery.large} {
     .is-hidden-nav {
       display: none;

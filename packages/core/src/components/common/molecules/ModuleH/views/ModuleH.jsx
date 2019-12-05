@@ -21,6 +21,7 @@ class ModuleH extends React.PureComponent {
     this.state = {
       current: 0,
       next: 0,
+      uniqueId: Math.random(),
     };
   }
 
@@ -38,7 +39,7 @@ class ModuleH extends React.PureComponent {
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ current, next });
     };
-    const { current, next } = this.state;
+    const { current, next, uniqueId } = this.state;
     return (
       <Row fullBleed={FULL_BLEED} className={`${className} ${moduleClassName} moduleH`}>
         <Col colSize={COL_SIZE} offsetLeft={OFFSET_LEFT} className="moduleH__header--wrapper">
@@ -57,7 +58,7 @@ class ModuleH extends React.PureComponent {
         </Col>
         <Col colSize={COL_SIZE} className="moduleH_carousel_wrapper">
           <Carousel
-            options={CAROUSEL_OPTIONS}
+            options={{ ...CAROUSEL_OPTIONS, key: uniqueId }}
             className="moduleH_carousel"
             carouselConfig={{
               autoplay: true,

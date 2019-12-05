@@ -14,7 +14,7 @@ class SiteMap extends React.PureComponent {
       <Row className={`${className} siteMap`}>
         <div className="siteMap_heading-container">
           <BodyCopy
-            component="h3"
+            component="h1"
             className="siteMap_heading"
             fontWeight="semibold"
             fontSize={['fs16', 'fs24']}
@@ -36,7 +36,7 @@ class SiteMap extends React.PureComponent {
                   name && (
                     <ol className="level-one-container">
                       <BodyCopy
-                        component="h4"
+                        component="h2"
                         className="level-one-title"
                         color="gray.900"
                         fontWeight="semibold"

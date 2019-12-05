@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductPrice from '../../ProductPrice/ProductPrice';
 import ProductBasicInfo from '../../ProductBasicInfo/ProductBasicInfo';
 import {
@@ -11,6 +13,8 @@ import {
   checkIsSelectedSizeDisabled,
   getMapSliceForSizeSkuID,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+
+const getColorname = colorProduct => colorProduct.color && colorProduct.color.name;
 
 // eslint-disable-next-line complexity
 const Product = props => {
@@ -35,10 +39,11 @@ const Product = props => {
     reviewOnTop,
     AddToFavoriteErrorMsg,
     removeAddToFavoritesErrorMsg,
+    isLoading,
   } = props;
 
   const { fit, size } = formValues;
-  const productInfo = productDetails.currentProduct;
+  const productInfo = productDetails.currentProductDynamicData || productDetails.currentProduct;
   if (!productInfo) {
     return <div />; // TODO - maybe add loader later
   }
@@ -56,7 +61,7 @@ const Product = props => {
     skuId = getMapSliceForSizeSkuID(colorProduct, size);
   }
 
-  const colorProductName = colorProduct && colorProduct.color && colorProduct.color.name;
+  const colorProductName = getColorname(colorProduct);
 
   if (isShowPriceRange) {
     const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(productInfo, formValues);
@@ -91,10 +96,11 @@ const Product = props => {
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           pageName="PDP"
           skuId={skuId}
+          formName={PRODUCT_ADD_TO_BAG}
         />
       </div>
       <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop hide-on-tablet' : ''}>
-        {!isGiftCard ? (
+        {!isGiftCard && !isLoading ? (
           <>
             <ProductPrice
               currencySymbol={currencySymbol}
@@ -111,7 +117,9 @@ const Product = props => {
             />
             <RenderPerf.Measure name={PRICING_VISIBLE} />
           </>
-        ) : null}
+        ) : (
+          <LoaderSkelton height="40px" />
+        )}
       </div>
     </>
   );
@@ -143,6 +151,7 @@ Product.propTypes = {
   reviewOnTop: PropTypes.bool.isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 Product.defaultProps = {

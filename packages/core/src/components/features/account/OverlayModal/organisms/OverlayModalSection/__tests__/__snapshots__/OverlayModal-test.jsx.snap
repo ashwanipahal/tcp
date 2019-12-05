@@ -42,6 +42,7 @@ exports[`OverlayModal should render Modal correctly 1`] = `
 
 exports[`OverlayModal should render Overlay correctly 1`] = `
 <div
+  aria-label="lbl_login_loginCTA"
   className=""
   color={null}
   id="modalWrapper"
