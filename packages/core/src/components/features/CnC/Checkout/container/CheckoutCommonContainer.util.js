@@ -198,9 +198,6 @@ export const mapDispatchToProps = dispatch => {
     },
     trackPageViewCheckout: payload => {
       dispatch(trackPageView(payload));
-      setTimeout(() => {
-        dispatch(resetClickAnalyticsData());
-      }, 1000);
     },
     resetCartCheckoutData: () => {
       dispatch(CHECKOUT_ACTIONS.resetCheckoutReducer());

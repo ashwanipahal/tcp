@@ -88,8 +88,9 @@ export class BagPageContainer extends React.Component<Props> {
   }
 
   componentWillUnmount() {
-    const { resetBagLoadedState } = this.props;
+    const { resetBagLoadedState, resetAnalyticsData } = this.props;
     resetBagLoadedState();
+    resetAnalyticsData();
   }
 
   closeModal = () => {};
@@ -286,9 +287,6 @@ export const mapDispatchToProps = dispatch => {
     },
     trackPageViewBag: payload => {
       dispatch(trackPageView(payload));
-      setTimeout(() => {
-        dispatch(resetClickAnalyticsData());
-      }, 1000);
     },
     updateBagPageData: payload => {
       dispatch(updatePageData(payload));

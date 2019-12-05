@@ -69,8 +69,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    const { clearIsBillingVisitedState } = this.props;
+    const { clearIsBillingVisitedState, resetAnalyticsData } = this.props;
     clearIsBillingVisitedState();
+    resetAnalyticsData();
   }
 
   /**
