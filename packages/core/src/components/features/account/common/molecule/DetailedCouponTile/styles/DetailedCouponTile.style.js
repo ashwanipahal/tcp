@@ -18,7 +18,7 @@ const styles = css`
     width: 13px;
   }
   .content {
-    -ms-display: grid;
+    display: -ms-grid;
     display: grid;
     min-height: 302px;
   }
