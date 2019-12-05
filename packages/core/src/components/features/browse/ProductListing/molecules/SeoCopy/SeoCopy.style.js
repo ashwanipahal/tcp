@@ -7,9 +7,6 @@ export default css`
     text-align: center;
     margin-bottom: 14px;
     outline: none;
-    font-size: ${props => props.theme.typography.fontSizes.fs22};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-family: ${props => props.theme.typography.fonts.secondary};
   }
 
   &.seo-text {
