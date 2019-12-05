@@ -265,7 +265,9 @@ export const CreateWishList = props => {
     : '';
   return (
     <div className="create-wish-list-section">
-      <h4 className="create-wish-list-header">{labels.lbl_fav_myFavWishList}</h4>
+      <h4 className="create-wish-list-header" dataLocator={getLocator('fav_list_lbl')}>
+        {labels.lbl_fav_myFavWishList}
+      </h4>
       <ul>
         {wishlistsSummaries.map(item => (
           <li className="wish-list-item">
