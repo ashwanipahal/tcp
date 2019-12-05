@@ -46,10 +46,6 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_DAM_HOST_TCP",
       "value": "https://test1.theplace.com/image/upload"
     },
@@ -136,10 +132,6 @@
     {
       "name": "RWD_APP_ACQUISITION_ID_GYM",
       "value": "ikhNl0Te"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
@@ -342,7 +334,7 @@
       "value": "https://test6.gymboree.com"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
