@@ -17,7 +17,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
 
-const checkSSR = typeof window !== 'undefined' || isMobileApp;
+const checkSSR = () => typeof window !== 'undefined' || isMobileApp;
 
 function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }) {
   try {
