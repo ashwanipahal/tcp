@@ -368,7 +368,10 @@ class FooterLinks extends PureComponent {
           <Anchor
             {...(leafLink.target === '_self'
               ? {
-                  onPress: () => this.redirectToInAppView(leafLink.url),
+                  onPress: () =>
+                    this.redirectToInAppView(
+                      'http://local.childrensplace.com:3000/us/help-center/faq'
+                    ),
                 }
               : { url: leafLink.url })}
             customStyle={AnchorStyles}

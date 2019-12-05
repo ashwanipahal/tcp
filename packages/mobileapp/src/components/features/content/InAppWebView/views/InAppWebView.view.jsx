@@ -9,18 +9,9 @@ import { StackActions } from 'react-navigation';
 
 class InAppWebView extends React.Component {
   /**
-   * To Hide the header,footer and continue shopping button in case of help center and static page.
+   * To remove the last stack from the navigation when user is redirected to home or plp,pdp
+   * this will open the account page again not the web view.
    */
-  hideWebViewHeaderFooter = () => {
-    return `document.querySelector('.header-global').style.display = 'none';
-    document.querySelector('.footer-global').style.display = 'none';
-    const helpCenter = document.querySelector('.help-center-back');
-    if(helpCenter){
-      helpCenter.style.display = 'none';
-    }
-    `;
-  };
-
   removeLastNavStack = () => {
     const { navigation } = this.props;
     const popAction = StackActions.pop({
@@ -40,6 +31,8 @@ class InAppWebView extends React.Component {
     if (url && url.includes('home')) {
       this.removeLastNavStack();
       navigation.navigate('Home');
+    } else if (url && url.includes('/account')) {
+      this.removeLastNavStack();
     } else if (
       url &&
       (url.includes(URL_PATTERN.PRODUCT_LIST) ||
@@ -49,22 +42,18 @@ class InAppWebView extends React.Component {
       this.removeLastNavStack();
       const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
       navigateToPage(cmsValidatedUrl, navigation);
-    } else if (url && url.includes('/account')) {
-      this.removeLastNavStack();
-      navigation.navigate(url);
     }
   };
 
   render() {
     const { pageUrl } = this.props;
     const webViewProps = {
-      onMessage: this.handleWebViewEvents,
       javaScriptEnabled: true,
-      injectedJavaScript: this.hideWebViewHeaderFooter(),
+      onMessage: this.handleWebViewEvents,
       source: { uri: pageUrl },
     };
     return (
-      <View height={getScreenHeight() + 100}>
+      <View height={getScreenHeight() - 150}>
         {pageUrl ? <RichText {...webViewProps} /> : null}
       </View>
     );

@@ -20,7 +20,6 @@ class RichText extends PureComponent {
       domStorageEnabled,
       thirdPartyCookiesEnabled,
       isApplyDeviceHeight,
-      injectedJavaScript,
       source,
       onMessage,
       ...others
@@ -41,7 +40,6 @@ class RichText extends PureComponent {
         domStorageEnabled={domStorageEnabled}
         thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
         source={webViewSource}
-        injectedJavaScript={injectedJavaScript}
         onMessage={onMessage}
         {...others}
       />
@@ -81,7 +79,6 @@ RichText.propTypes = {
   isNativeView: PropTypes.bool,
   source: PropTypes.string,
   javaScriptEnabled: PropTypes.bool,
-  injectedJavaScript: PropTypes.string,
   domStorageEnabled: PropTypes.bool,
   thirdPartyCookiesEnabled: PropTypes.bool,
   isApplyDeviceHeight: PropTypes.bool,
@@ -96,7 +93,6 @@ RichText.defaultProps = {
   javaScriptEnabled: false,
   domStorageEnabled: false,
   thirdPartyCookiesEnabled: false,
-  injectedJavaScript: '',
   isApplyDeviceHeight: false,
   actionHandler: () => {},
   onMessage: () => {},
