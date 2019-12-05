@@ -286,7 +286,7 @@ export const scrollTopElement = elem => {
 };
 
 export const refreshPage = () => {
-  if (window) {
+  if (isClient() && window) {
     window.location.reload();
   }
 };
