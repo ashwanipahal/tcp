@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoInternetPage Component NoInternetPage should render correctly 1`] = `
+<Styled(SafeAreaView)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs22"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        text="No Internet Connection"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fontFamily="secondary"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="Retry"
+      theme={Object {}}
+      url=""
+      width="50%"
+      withNoLineHeight={false}
+    />
+  </Styled(View)>
+</Styled(SafeAreaView)>
+`;

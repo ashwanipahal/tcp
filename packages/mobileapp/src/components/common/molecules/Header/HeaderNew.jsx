@@ -9,6 +9,8 @@ import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProdu
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import { getLocator, navigateToNestedRoute } from '@tcp/core/src/utils';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+
 import {
   updateCartCount,
   updateCartManually,
@@ -27,6 +29,7 @@ import {
 } from './HeaderNew.style';
 import { readCookieMobileApp } from '../../../../utils/utils';
 import { ArrowBackIconPLP } from '../../../features/content/Navigation/molecules/NavMenuLevel2/NavMenuLevel2.style';
+import { INTERNET_OFF } from './Header.constants';
 
 const cartIcon = require('../../../../assets/images/empty-bag.png');
 const Icon = require('../../../../../../core/src/assets/carrot-large-left.png');
@@ -72,6 +75,7 @@ class HeaderNew extends React.PureComponent {
       this.getInitialProps();
       updateCartManuallyAction(false);
     }
+    this.noInterNetHandle(prevProps);
   }
 
   getInitialProps() {
@@ -130,6 +134,23 @@ class HeaderNew extends React.PureComponent {
       navigation.goBack(null);
     }
   };
+
+  noInterNetHandle(prevProps) {
+    const {
+      screenProps: {
+        network: { isConnected },
+      },
+      toastMessage,
+    } = this.props;
+    const {
+      screenProps: {
+        network: { isConnected: PrevIsConnected },
+      },
+    } = prevProps;
+    if (isConnected !== PrevIsConnected && !isConnected) {
+      toastMessage(INTERNET_OFF);
+    }
+  }
 
   render() {
     const { title, showSearch, cartVal, slpLabels, navigation } = this.props;
@@ -209,13 +230,16 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     updateCartCountAction: payload => {
       dispatch(updateCartCount(payload));
     },
     updateCartManuallyAction: payload => {
       dispatch(updateCartManually(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 };
@@ -229,6 +253,8 @@ HeaderNew.propTypes = {
   }),
   cartVal: PropTypes.string,
   slpLabels: PropTypes.shape({}),
+  screenProps: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
 };
 
 HeaderNew.defaultProps = {
@@ -240,6 +266,8 @@ HeaderNew.defaultProps = {
   navigation: {
     navigate: () => {},
   },
+  screenProps: {},
+  toastMessage: () => {},
 };
 
 export default connect(
