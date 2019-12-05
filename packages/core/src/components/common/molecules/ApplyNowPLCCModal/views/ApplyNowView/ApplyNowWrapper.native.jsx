@@ -137,6 +137,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
       isRtpsFlow,
       rtpsOptOutMsg,
       rtpsCongratsMsg,
+      navigation,
     } = this.props;
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
     return isPLCCModalOpen || isModalOpen ? (
@@ -148,6 +149,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
               applyCard={isPLCCModalOpen}
               closePLCCModal={this.closePlccModal}
               isRtpsFlow={isRtpsFlow}
+              navigation={navigation}
             />
           )}
           {isModalOpen && (

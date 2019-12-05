@@ -21,6 +21,8 @@ import {
   updateCartManually,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+
 import {
   getUserLoggedInState,
   getUserName,
@@ -30,6 +32,7 @@ import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
 
 import { readCookieMobileApp } from '../../../../utils/utils';
+import { INTERNET_OFF } from './Header.constants';
 
 import {
   Container,
@@ -93,6 +96,7 @@ class Header extends React.PureComponent {
       this.getInitialProps();
       updateCartManuallyAction(false);
     }
+    this.noInterNetHandle(prevProps);
   }
 
   getInitialProps() {
@@ -209,6 +213,23 @@ class Header extends React.PureComponent {
     }
     return storeTime;
   };
+
+  noInterNetHandle(prevProps) {
+    const {
+      screenProps: {
+        network: { isConnected },
+      },
+      toastMessage,
+    } = this.props;
+    const {
+      screenProps: {
+        network: { isConnected: PrevIsConnected },
+      },
+    } = prevProps;
+    if (isConnected !== PrevIsConnected && !isConnected) {
+      toastMessage(INTERNET_OFF);
+    }
+  }
 
   render() {
     const {
@@ -352,6 +373,8 @@ Header.propTypes = {
   slpLabels: PropTypes.shape({}),
   userName: PropTypes.string,
   headertype: PropTypes.string,
+  screenProps: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
   resetSuggestedStores: PropTypes.func,
 };
 
@@ -368,6 +391,8 @@ Header.defaultProps = {
   slpLabels: {},
   userName: '',
   headertype: '',
+  screenProps: {},
+  toastMessage: () => {},
   resetSuggestedStores: () => {},
 };
 
@@ -383,7 +408,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
     updateCartCountAction: payload => {
@@ -391,6 +416,9 @@ const mapDispatchToProps = dispatch => {
     },
     updateCartManuallyAction: payload => {
       dispatch(updateCartManually(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
     resetSuggestedStores: payload => dispatch(setStoresByCoordinates(payload)),
   };

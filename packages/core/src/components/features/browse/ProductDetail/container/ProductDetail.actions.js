@@ -7,6 +7,13 @@ export const setProductDetails = payload => {
   };
 };
 
+export const setProductDetailsDynamicData = payload => {
+  return {
+    type: PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS_DYNAMIC_DATA,
+    payload,
+  };
+};
+
 export const getProductDetails = payload => {
   return {
     type: PRODUCTDETAIL_CONSTANTS.FETCH_PRODUCT_DETAILS,
