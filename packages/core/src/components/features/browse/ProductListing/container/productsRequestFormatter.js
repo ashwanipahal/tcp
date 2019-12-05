@@ -20,7 +20,7 @@ import {
   getRequiredCategoryData,
   getPlpCutomizersFromUrlQueryString,
 } from './ProductListing.util';
-import isSearched from '../../SearchDetail/container/SearchDetail.util';
+import { isSearched } from '../../SearchDetail/container/SearchDetail.util';
 import PAGES from '../../../../../constants/pages.constants';
 import {
   getLastLoadedPageNumber,

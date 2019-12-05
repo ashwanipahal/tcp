@@ -17,8 +17,14 @@ import {
 export class CheckoutContainer extends React.PureComponent<Props> {
   initialLoad = true;
 
+  constructor(props) {
+    super(props);
+    this.analyticsTriggered = false;
+  }
+
   componentDidMount() {
-    const { router, initCheckout, markBagPageRoutingDone } = this.props;
+    const { router, initCheckout, markBagPageRoutingDone, resetAnalyticsData } = this.props;
+    resetAnalyticsData();
     markBagPageRoutingDone();
     const {
       isRegisteredUserCallDone,
@@ -48,6 +54,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       navigation,
       isRTPSFlow,
       cartOrderItems,
+      currentStage,
     } = this.props;
     /* istanbul ignore else */
     if (
@@ -58,36 +65,39 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       initCheckout(router, getPayPalFlag(navigation), navigation);
     }
 
-    this.startCheckoutAnalytics(cartOrderItems, prevCartOrderItems);
+    this.startCheckoutAnalytics(currentStage, cartOrderItems, prevCartOrderItems);
   }
 
   componentWillUnmount() {
-    const { clearIsBillingVisitedState } = this.props;
+    const { clearIsBillingVisitedState, resetAnalyticsData } = this.props;
     clearIsBillingVisitedState();
+    resetAnalyticsData();
   }
 
   /**
    * Below method for starting load analytics events
    * for all different checkout pages
    */
-  startCheckoutAnalytics = (cartOrderItems, prevCartOrderItems) => {
+  startCheckoutAnalytics = (currentStage, cartOrderItems, prevCartOrderItems) => {
     const {
       setClickAnalyticsDataCheckout,
       trackPageViewCheckout,
-      currentStage,
       currentOrderId,
       paymentMethodId,
       billingAddress,
       orderSubTotal,
+      resetCartCheckoutData,
     } = this.props;
     const { CHECKOUT_PAGE } = constants;
     const events = this.getAnalyticsEvents();
-    if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
+    const isConfirmationPage =
+      currentStage.toLowerCase() === constants.CHECKOUT_STAGES.CONFIRMATION;
+    if ((cartOrderItems !== prevCartOrderItems || isConfirmationPage) && !this.analyticsTriggered) {
       const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
 
       let additionalData;
       /** This additional data only on order confirmation load event */
-      if (currentStage.toLowerCase() === constants.CHECKOUT_STAGES.CONFIRMATION) {
+      if (isConfirmationPage) {
         additionalData = {
           orderId: currentOrderId,
           paymentMethod: paymentMethodId,
@@ -95,6 +105,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
           billingCountry: billingAddress && billingAddress.country,
           orderSubtotal: orderSubTotal,
         };
+        this.analyticsTriggered = true;
       }
       setClickAnalyticsDataCheckout({
         customEvents: events,
@@ -111,6 +122,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
           pageShortName: `${CHECKOUT_PAGE}:${currentStage.toLowerCase()}`,
         },
       });
+
+      if (isConfirmationPage) {
+        resetCartCheckoutData();
+      }
     }
   };
 

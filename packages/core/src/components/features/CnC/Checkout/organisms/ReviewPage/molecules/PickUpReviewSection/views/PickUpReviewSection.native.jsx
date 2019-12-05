@@ -121,55 +121,42 @@ export class PickUpReviewSection extends React.PureComponent {
     const stores = this.generateStoreDetails(pickupStores);
     return (
       <Container>
-        <SectionOne>
-          <TitlePlusContainer>
-            <TitlePlusEditButton
-              title={title}
-              editTitle={edit}
-              onEdit={onEdit}
-              dataLocator="pickup-section"
-            />
-          </TitlePlusContainer>
-          <BodyCopy
-            dataLocator="pickup-section-heading-lbl"
-            fontSize="fs16"
-            mobileFontFamily="secondary"
-            fontWeight="regular"
-            text={text}
-            color="gray.900"
-          />
-        </SectionOne>
-        <SectionTwo>
-          {stores.map(store => {
-            return (
-              store && (
-                <View key={store.storeId}>
-                  <PickupStoreDisplay labels={labels} orderType={store.orderType} store={store} />
-                </View>
-              )
-            );
-          })}
-        </SectionTwo>
         {!bagLoading ? (
-          <SectionThree>
-            <View>
+          <>
+            <SectionOne>
+              <TitlePlusContainer>
+                <TitlePlusEditButton
+                  title={title}
+                  editTitle={edit}
+                  onEdit={onEdit}
+                  dataLocator="pickup-section"
+                />
+              </TitlePlusContainer>
               <BodyCopy
+                dataLocator="pickup-section-heading-lbl"
                 fontSize="fs16"
                 mobileFontFamily="secondary"
-                className="pickupTitle"
-                fontWeight="semibold"
+                fontWeight="regular"
+                text={text}
                 color="gray.900"
-                text={title}
               />
-              <PickUpContactDisplay
-                formData={
-                  pickUpContactPerson.firstName !== ''
-                    ? pickUpContactPerson
-                    : pickUpContactAlternate.pickUpContact
-                }
-              />
-            </View>
-            {!isExpressCheckout && isHasPickUpAlternatePerson && (
+            </SectionOne>
+            <SectionTwo>
+              {stores.map(store => {
+                return (
+                  store && (
+                    <View key={store.storeId}>
+                      <PickupStoreDisplay
+                        labels={labels}
+                        orderType={store.orderType}
+                        store={store}
+                      />
+                    </View>
+                  )
+                );
+              })}
+            </SectionTwo>
+            <SectionThree>
               <View>
                 <BodyCopy
                   fontSize="fs16"
@@ -177,28 +164,50 @@ export class PickUpReviewSection extends React.PureComponent {
                   className="pickupTitle"
                   fontWeight="semibold"
                   color="gray.900"
-                  text={alternate}
+                  text={title}
                 />
-                <PickUpContactDisplay formData={pickUpAlternatePerson} />
+                <PickUpContactDisplay
+                  formData={
+                    pickUpContactPerson.firstName !== ''
+                      ? pickUpContactPerson
+                      : pickUpContactAlternate.pickUpContact
+                  }
+                />
               </View>
-            )}
+              {!isExpressCheckout && isHasPickUpAlternatePerson && (
+                <View>
+                  <BodyCopy
+                    fontSize="fs16"
+                    mobileFontFamily="secondary"
+                    className="pickupTitle"
+                    fontWeight="semibold"
+                    color="gray.900"
+                    text={alternate}
+                  />
+                  <PickUpContactDisplay formData={pickUpAlternatePerson} />
+                </View>
+              )}
 
-            {isExpressCheckout && (
-              <FormSection name="pickUpAlternateExpress">
-                <PickUpAlternateFormPart
-                  isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
-                  isAlternateUpdateChecked={isAlternateUpdateChecked}
-                  showNoteOnToggle
-                  formName="checkoutPickup"
-                  formSection="pickUpAlternateExpress"
-                  labels={pickUpLabels}
-                  isExpressCheckout={isExpressCheckout}
-                />
-              </FormSection>
-            )}
-          </SectionThree>
+              {isExpressCheckout && (
+                <FormSection name="pickUpAlternateExpress">
+                  <PickUpAlternateFormPart
+                    isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
+                    isAlternateUpdateChecked={isAlternateUpdateChecked}
+                    showNoteOnToggle
+                    formName="checkoutPickup"
+                    formSection="pickUpAlternateExpress"
+                    labels={pickUpLabels}
+                    isExpressCheckout={isExpressCheckout}
+                  />
+                </FormSection>
+              )}
+            </SectionThree>
+          </>
         ) : (
           <>
+            <TitlePlusContainer>
+              <TitlePlusEditButton title={title} dataLocator="pickup-section" />
+            </TitlePlusContainer>
             <SkeletonWrapper>
               <GenericSkeleton />
             </SkeletonWrapper>

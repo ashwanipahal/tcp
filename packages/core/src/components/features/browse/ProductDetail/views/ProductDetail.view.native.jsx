@@ -1,8 +1,8 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+import { LAZYLOAD_HOST_NAME, scrollToViewBottom } from '@tcp/core/src/utils';
 import { ScrollView as LazyloadScrollView, View } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
 import {
@@ -32,6 +32,7 @@ import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
 import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
+import ProductDetailViewPropTypes from '../ProductDetailPropTypes';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -50,6 +51,7 @@ class ProductDetailView extends React.PureComponent {
       size: '',
       expanded: true,
     };
+    this.currentScrollValue = 0;
     this.scrollPageToTarget = this.scrollPageToTarget.bind(this);
   }
 
@@ -151,6 +153,21 @@ class ProductDetailView extends React.PureComponent {
     }
   };
 
+  scrollToAccordionBottom = (x, y, width, height, pageX, pageY) => {
+    scrollToViewBottom({
+      width,
+      height,
+      pageX,
+      pageY,
+      callBack: this.scrollRef,
+      currentScrollValue: this.currentScrollValue,
+    });
+  };
+
+  handleScroll = event => {
+    this.currentScrollValue = event.nativeEvent.contentOffset.y;
+  };
+
   scrollPageToTarget = () => {
     this.ratingViewRef.measure((fx, fy, width, height, px, py) => {
       this.scrollRef.scrollTo({ y: py, animated: true });
@@ -249,6 +266,7 @@ class ProductDetailView extends React.PureComponent {
 
     return (
       <LazyloadScrollView
+        onScroll={this.handleScroll}
         name={LAZYLOAD_HOST_NAME.PDP}
         ref={ref => {
           this.scrollRef = ref;
@@ -269,6 +287,7 @@ class ProductDetailView extends React.PureComponent {
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
               skuId={skuId}
+              formName={PRODUCT_ADD_TO_BAG}
             />
 
             <ProductSummary
@@ -328,6 +347,7 @@ class ProductDetailView extends React.PureComponent {
               longDescription={longDescription}
               isShowMore={false}
               pdpLabels={pdpLabels}
+              scrollToAccordionBottom={this.scrollToAccordionBottom}
             />
             {!currentProduct.isGiftCard ? (
               <View
@@ -366,42 +386,7 @@ class ProductDetailView extends React.PureComponent {
   }
 }
 
-ProductDetailView.propTypes = {
-  currentProduct: PropTypes.shape({
-    colorFitsSizesMap: PropTypes.shape({}),
-    offerPrice: PropTypes.string,
-    listPrice: PropTypes.string,
-    generalProductId: PropTypes.string,
-    imagesByColor: PropTypes.shape({}),
-    isGiftCard: PropTypes.bool,
-  }),
-  navigation: PropTypes.shape({}),
-  selectedColorProductId: PropTypes.number.isRequired,
-  clearAddToBagError: PropTypes.func.isRequired,
-  plpLabels: PropTypes.shape({}),
-  handleSubmit: PropTypes.func,
-  isPickupModalOpen: PropTypes.bool,
-  handleFormSubmit: PropTypes.func,
-  addToBagError: PropTypes.string,
-  shortDescription: PropTypes.string,
-  itemPartNumber: PropTypes.string,
-  longDescription: PropTypes.string,
-  pdpLabels: PropTypes.shape({}),
-  currency: PropTypes.string,
-  currencyExchange: PropTypes.number,
-  onAddItemToFavorites: PropTypes.func,
-  isLoggedIn: PropTypes.bool,
-  alternateSizes: PropTypes.shape({
-    key: PropTypes.string,
-  }),
-  AddToFavoriteErrorMsg: PropTypes.string,
-  removeAddToFavoritesErrorMsg: PropTypes.func,
-  toastMessage: PropTypes.func,
-  isKeepAliveEnabled: PropTypes.bool,
-  outOfStockLabels: PropTypes.shape({}),
-  middlePromos: PropTypes.string,
-  bottomPromos: PropTypes.string,
-};
+ProductDetailView.propTypes = ProductDetailViewPropTypes;
 
 ProductDetailView.defaultProps = {
   currentProduct: {

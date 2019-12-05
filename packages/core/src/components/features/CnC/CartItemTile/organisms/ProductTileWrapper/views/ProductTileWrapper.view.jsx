@@ -22,6 +22,9 @@ import CartItemTileSkelton from '../../../molecules/CartItemTile/skelton/CartIte
  * number is greater than zero.
  */
 function CartItemsUXTimer({ orderItems }) {
+  if (isMobileApp) {
+    return null;
+  }
   const [state, setState] = useState(false);
   useEffect(() => {
     if (orderItems.size > 0) setState(true);
@@ -134,7 +137,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
   };
 
   renderEmptyBag = (
-    productSectionData,
+    cartData,
     bagLabels,
     isUserLoggedIn,
     isBagPageSflSection,
@@ -142,8 +145,16 @@ class ProductTileWrapper extends React.PureComponent<props> {
     isBagPage,
     openModalApplyNowModal
   ) => {
-    const { isMiniBag } = this.props;
-    if (productSectionData.size === 0) {
+    const { isMiniBag, isBagLoading } = this.props;
+    if (isBagLoading && isBagPage) {
+      return (
+        <>
+          <CartItemTileSkelton />
+          <CartItemTileSkelton />
+        </>
+      );
+    }
+    if (cartData.size === 0) {
       return (
         <EmptyBag
           bagLabels={bagLabels}
@@ -153,14 +164,6 @@ class ProductTileWrapper extends React.PureComponent<props> {
           onLinkClick={this.onLinkClick}
           openModalApplyNowModal={openModalApplyNowModal}
         />
-      );
-    }
-    if (isBagPage) {
-      return (
-        <>
-          <CartItemTileSkelton />
-          <CartItemTileSkelton />
-        </>
       );
     }
     if (isMiniBag) {
@@ -195,16 +198,17 @@ class ProductTileWrapper extends React.PureComponent<props> {
       openModalApplyNowModal,
       isMiniBag,
       closeMiniBag,
+      isBagLoading,
     } = this.props;
-    const productSectionData = isBagPageSflSection ? sflItems : orderItems;
+    const cartData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
     let isSoldOut;
     const isBagPage = pageView === 'myBag';
     const inheritedStyles = isBagPage ? productTileCss : miniBagCSS;
     const getUnavailableOOSItems = [];
     const { openedTile, swipedElement } = this.state;
-    if (productSectionData && productSectionData.size > 0) {
-      const orderItemsView = productSectionData.map((tile, index) => {
+    if (cartData && cartData.size > 0 && !isBagLoading) {
+      const orderItemsView = cartData.map((tile, index) => {
         const productDetail = getProductDetails(tile);
         if (productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
           getUnavailableOOSItems.push(productDetail.itemInfo.itemId);
@@ -259,7 +263,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
           {orderItemsView}
           {/* UX timer */}
-          <CartItemsUXTimer orderItems={orderItems} />
+          {<CartItemsUXTimer orderItems={orderItems} />}
         </>
       );
     }
@@ -283,7 +287,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
         {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
         {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
         {this.renderEmptyBag(
-          productSectionData,
+          cartData,
           bagLabels,
           isUserLoggedIn,
           isBagPageSflSection,

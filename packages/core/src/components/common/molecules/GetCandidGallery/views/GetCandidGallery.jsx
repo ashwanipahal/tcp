@@ -29,7 +29,7 @@ class GetCandidGallery extends React.Component {
       <div>
         <BodyCopy
           className="heading"
-          fontWeight="semibold"
+          fontWeight="medium"
           fontSize={['fs20', 'fs20', 'fs32']}
           textAlign="center"
           data-locator="get_gallery_page_header_text_1"

@@ -93,7 +93,7 @@ class GetCandid extends React.PureComponent {
     return (
       <div className="get-candid-default-heading">
         <BodyCopy
-          fontWeight="semibold"
+          fontWeight="medium"
           fontSize={['fs20', 'fs20', 'fs32']}
           textAlign="center"
           className="get-candid-main-heading"

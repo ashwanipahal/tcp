@@ -246,6 +246,7 @@ export class AddressVerification extends React.Component<Props> {
           className={`${className} TCPModal__Content`}
           heading={heading}
           fixedWidth
+          contentHeader={verifyAddressLabels.verifyHeader}
           maxWidth={spacing.MODAL_WIDTH.SMALL}
           heightConfig={{ maxHeight: '100%', height: 'auto' }}
         >

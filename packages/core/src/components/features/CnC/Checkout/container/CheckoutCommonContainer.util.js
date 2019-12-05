@@ -4,6 +4,7 @@ import {
   trackClick,
   updatePageData,
   trackPageView,
+  resetClickAnalyticsData,
 } from '@tcp/core/src/analytics/actions';
 import CHECKOUT_ACTIONS, {
   submitShippingSection,
@@ -54,7 +55,6 @@ import GiftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.
 import { getCardListFetchingState } from '../../../account/Payment/container/Payment.selectors';
 import SMSNotificationSelectors from '../../Confirmation/organisms/SMSNotifications/container/SMSNotifications.selectors';
 import { getInitialGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
-import CreditCardSelector from '../organisms/BillingPaymentForm/container/CreditCard.selectors';
 
 const {
   getSmsSignUpLabels,
@@ -193,8 +193,15 @@ export const mapDispatchToProps = dispatch => {
     cartLoading: () => {
       dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
     },
+    resetAnalyticsData: () => {
+      dispatch(resetClickAnalyticsData());
+    },
     trackPageViewCheckout: payload => {
       dispatch(trackPageView(payload));
+    },
+    resetCartCheckoutData: () => {
+      dispatch(CHECKOUT_ACTIONS.resetCheckoutReducer());
+      dispatch(BAG_PAGE_ACTIONS.resetCartReducer());
     },
     dispatch,
   };
@@ -294,7 +301,7 @@ export const mapStateToProps = state => {
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
     currentOrderId: selectors.getCurrentOrderId(state),
-    paymentMethodId: CreditCardSelector.getPaymentMethodId(state),
+    paymentMethodId: BagPageSelector.getBillingPaymentMethod(state),
     orderSubTotal: BagPageSelector.getOrderSubTotal(state),
     billingAddress: selectors.getBillingAddressFields(state),
     titleLabel: BillingSectionSelectors.getReviewPageLabels(state),

@@ -55,15 +55,21 @@ export class AddEditPersonalInformationContainer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const { successMessage, errorMessage, onRequestClose, toastMessage } = this.props;
+    const {
+      successMessage,
+      errorMessage,
+      onRequestClose,
+      toastMessage,
+      personalInfoErrorMessage,
+    } = this.props;
     if (successMessage === 'successMessage') {
       if (isMobileApp()) {
         onRequestClose();
       } else this.goBackToProfile();
     }
 
-    if (errorMessage && isMobileApp()) {
-      toastMessage(errorMessage);
+    if (errorMessage && personalInfoErrorMessage && isMobileApp()) {
+      toastMessage(personalInfoErrorMessage);
     }
   }
 

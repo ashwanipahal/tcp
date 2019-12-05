@@ -280,6 +280,7 @@ exports[`StoreDetail component StoreDetail component renders correctly with prop
         defaultZoom=""
         isCanada={[Function]}
         isMobile={false}
+        onImageLoad={[Function]}
         storesList={
           Array [
             Object {

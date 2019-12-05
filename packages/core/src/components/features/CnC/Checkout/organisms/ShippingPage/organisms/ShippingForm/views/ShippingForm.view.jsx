@@ -392,6 +392,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
+  shouldValidate: () => true,
   onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(ShippingForm, styles));
 export { ShippingForm as ShippingFormVanilla };

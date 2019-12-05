@@ -17,6 +17,7 @@ const renderImage = imageProps => {
     placeholderSrc,
     dataLocator,
     role,
+    onLoad,
     ...other
   } = imageProps;
 
@@ -32,6 +33,7 @@ const renderImage = imageProps => {
       ref={ref}
       role={setRole ? role : null}
       {...other}
+      onLoad={onLoad}
       onError={
         placeholderSrc
           ? event => {
@@ -45,7 +47,19 @@ const renderImage = imageProps => {
 };
 
 const Image = props => {
-  const { link, className, src, url, srcset, sizes, alt, ref, placeholderSrc, ...others } = props;
+  const {
+    link,
+    className,
+    src,
+    url,
+    srcset,
+    sizes,
+    alt,
+    ref,
+    placeholderSrc,
+    onLoad,
+    ...others
+  } = props;
 
   const imageProps = {
     className,
@@ -56,6 +70,7 @@ const Image = props => {
     alt,
     ref,
     placeholderSrc,
+    onLoad,
     ...others,
   };
 
@@ -99,6 +114,7 @@ Image.propTypes = {
   ref: PropTypes.func,
   url: PropTypes.string,
   role: PropTypes.string,
+  onLoad: PropTypes.func,
 };
 
 Image.defaultProps = {
@@ -110,6 +126,7 @@ Image.defaultProps = {
   url: '',
   link: null,
   role: 'img',
+  onLoad() {},
 };
 
 export default withStyles(Image, styles);

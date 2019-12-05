@@ -292,9 +292,8 @@ export function* addOrEditGuestUserAddress({
       },
       {}
     );
+    addOrEditAddressRes = { payload: addOrEditAddressRes };
   }
-  addOrEditAddressRes = { payload: addOrEditAddressRes };
-
   return addOrEditAddressRes;
 }
 
@@ -349,7 +348,10 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoI
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
-  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const isExpress = yield select(isExpressCheckout);
+  // For Venmo, express checkout fromPage flag is returning plcc eligibility as false.
+  // So, updating to process as normal fromPage for Venmo
+  const isExpressCheckoutEnabled = isVenmoInProgress ? false : isExpress;
   if (pageName === BILLING && showRTPSOnBilling) {
     yield call(updateUserRTPSData, {
       prescreen: true,
@@ -358,7 +360,7 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoI
     });
   } else if (
     showRTPSOnReview &&
-    (isPaypalPostBack || isVenmoInProgress || isExpressCheckoutEnabled) &&
+    (isPaypalPostBack || isVenmoInProgress || isExpress) &&
     pageName === REVIEW
   ) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
