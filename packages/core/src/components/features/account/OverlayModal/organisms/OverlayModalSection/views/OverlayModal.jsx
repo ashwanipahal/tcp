@@ -56,7 +56,9 @@ class OverlayModal extends React.Component {
     this.body = body;
     this.isMobile = getViewportInfo().isMobile && isMobileWeb();
     this.handleWindowClick = this.handleWindowClick.bind(this);
+    this.handleWindowMouseDown = this.handleWindowMouseDown.bind(this);
     this.keydownInOverlay = this.keydownInOverlay.bind(this);
+    this.selectOverlay = false;
   }
 
   componentDidMount() {
@@ -66,6 +68,7 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.addEventListener('click', this.handleWindowClick);
+      this.body.addEventListener('mousedown', this.handleWindowMouseDown);
     }
     this.getCustomStyles({ styleModal: true });
     if (this.modalRef) {
@@ -121,6 +124,8 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.removeEventListener('click', this.handleWindowClick);
+      this.body.removeEventListener('click', this.handleWindowMouseDown);
+
       enableBodyScroll(this.body);
     }
     const modal = document.getElementById('dialogContent');
@@ -224,6 +229,14 @@ class OverlayModal extends React.Component {
     this.bodyContainer.style.overflow = 'visible';
   };
 
+  isTargetOutsideOverlay = e => {
+    return (
+      this.modalRef &&
+      !this.modalRef.contains(e.target) &&
+      !e.target.closest('.TCPModal__InnerContent')
+    );
+  };
+
   /**
    * Bind Tab key Down
    */
@@ -236,19 +249,31 @@ class OverlayModal extends React.Component {
   handleWindowClick(e) {
     const { component } = this.props;
     /* istanbul ignore else */
-    if (
-      this.modalRef &&
-      !this.modalRef.contains(e.target) &&
-      !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
-    ) {
+    if (this.isTargetOutsideOverlay(e)) {
+      // TODO: find a better way to handle - prevent close overlay when click on popup modal
+      if (this.selectOverlay) {
+        e.stopImmediatePropagation();
+        this.selectOverlay = false;
+        return this.selectOverlay;
+      }
       this.closeModal();
       const nextComponent = e.target;
-      const componentAttributeValue =
-        nextComponent.getAttribute('data-overlayTarget') ||
-        nextComponent.closest('[data-overlayTarget]').getAttribute('data-overlayTarget');
-      if (component === componentAttributeValue) {
-        e.stopImmediatePropagation();
+      if (nextComponent) {
+        const componentAttributeValue =
+          nextComponent.getAttribute('data-overlayTarget') ||
+          (nextComponent.closest('[data-overlayTarget]') &&
+            nextComponent.closest('[data-overlayTarget]').getAttribute('data-overlayTarget'));
+        if (component === componentAttributeValue) {
+          e.stopImmediatePropagation();
+        }
       }
+    }
+    return null;
+  }
+
+  handleWindowMouseDown(e) {
+    if (!this.isTargetOutsideOverlay(e)) {
+      this.selectOverlay = true;
     }
   }
 
