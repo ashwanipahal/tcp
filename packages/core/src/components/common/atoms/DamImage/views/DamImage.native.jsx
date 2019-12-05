@@ -85,6 +85,7 @@ const DamImage = props => {
   //   autoplay,
   //   controls,
   //   url: videoUri,
+  //   updateVideoUrl:false,
   //   image,
   // };
 

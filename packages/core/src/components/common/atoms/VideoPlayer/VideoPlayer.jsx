@@ -62,7 +62,7 @@ class VideoPlayer extends React.Component {
     player.fluid(true);
 
     player.source({
-      publicId: parseFileName(url, updateVideoUrl),
+      publicId: updateVideoUrl ? parseFileName(url, updateVideoUrl) : url,
     });
   }
 
