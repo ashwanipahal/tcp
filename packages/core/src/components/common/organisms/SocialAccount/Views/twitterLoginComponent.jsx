@@ -6,7 +6,6 @@ import {
   //   getHostName,
   getLocationOrigin,
   handleGenericKeyDown,
-  openWindow,
 } from '../../../../../utils/utils.web';
 import config from './config';
 import { getIconPath } from '../../../../../utils';
@@ -57,10 +56,10 @@ class TwitterLoginComponent extends React.Component {
    */
 
   openChildWindow = () => {
-    openWindow(
+    window.open(
       `${getLocationOrigin()}/${getSiteId()}${config.ACCOUNT_REDIRECT.TWITTER}`,
       '_blank',
-      'noopener,toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
+      'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
     );
   };
 
