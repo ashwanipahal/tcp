@@ -14,7 +14,7 @@ export const EmptyOrdersList = ({ labels, navigation }) => {
   return (
     <>
       <BodyCopy
-        mobileFontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
         data-locator="no_rewards_msg"
