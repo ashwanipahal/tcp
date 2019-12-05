@@ -23,7 +23,6 @@ class ModuleH extends React.PureComponent {
       next: 0,
       uniqueId: Math.random() * 1000,
     };
-    console.log('HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH--');
   }
 
   render() {

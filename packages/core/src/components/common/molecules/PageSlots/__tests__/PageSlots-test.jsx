@@ -107,15 +107,15 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-      <ModuleA
-        key="1"
-        slotData="slot A Data"
-      >
-        <div>
-          Module A
-        </div>
-      </ModuleA>
-    `);
+            <ModuleA
+              key="1"
+              slotData="slot A Data"
+            >
+              <div>
+                Module A
+              </div>
+            </ModuleA>
+        `);
   });
 
   it('Should render slots even if data does not send required slot', () => {
@@ -134,15 +134,15 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-      <ModuleB
-        key="0"
-        slotData="slot B Data"
-      >
-        <div>
-          Module B
-        </div>
-      </ModuleB>
-    `);
+            <ModuleB
+              key="0"
+              slotData="slot B Data"
+            >
+              <div>
+                Module B
+              </div>
+            </ModuleB>
+        `);
   });
 
   it('Should render null if no slot match', () => {
@@ -210,26 +210,26 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-      Array [
-        <ModuleA
-          extraProp="extraProp"
-          key="0"
-          slotData="slot B Data"
-        >
-          <div>
-            Module A
-          </div>
-        </ModuleA>,
-        <ModuleB
-          extraProp="extraProp"
-          key="1"
-          slotData="slot A Data"
-        >
-          <div>
-            Module B
-          </div>
-        </ModuleB>,
-      ]
-    `);
+            Array [
+              <ModuleA
+                extraProp="extraProp"
+                key="0"
+                slotData="slot B Data"
+              >
+                <div>
+                  Module A
+                </div>
+              </ModuleA>,
+              <ModuleB
+                extraProp="extraProp"
+                key="1"
+                slotData="slot A Data"
+              >
+                <div>
+                  Module B
+                </div>
+              </ModuleB>,
+            ]
+        `);
   });
 });
