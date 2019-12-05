@@ -65,7 +65,7 @@ class ImageCarousel extends React.PureComponent {
     const imageUrls = getImagesToDisplay({
       imagesByColor,
       curentColorEntry,
-      isAbTestActive: false,
+      isAbTestActive: true,
       isFavoriteView: isFavorite,
     });
     return (
