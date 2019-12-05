@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "RELEASE-1-RWD"
+    "name": "<BRANCH_NAME>"
   },
   "id": 1,
   "trigger": "manual",
@@ -94,14 +94,6 @@
       "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
     },
     {
-      "name": "RWD_APP_PAYPAL_ENV_TCP",
-      "value": "sandbox"
-    },
-    {
-      "name": "RWD_APP_PAYPAL_STATIC_DOMAIN_TCP",
-      "value": "https://test5.childrensplace.com"
-    },
-    {
       "name": "RWD_APP_BRANDID_GYM",
       "value": "gym"
     },
@@ -175,7 +167,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_ENDPOINT_GYM",
-      "value": "https://47vqlpw4m5bxdphy2adv4tknhq.appsync-api.us-east-2.amazonaws.com"
+      "value": "https://test5.gymboree.com"
     },
     {
       "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_GYM",
@@ -183,7 +175,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_KEY_GYM",
-      "value": "da2-6fg7esay7nck7fgyaj6likgzfy"
+      "value": "da2-mf3uaes3nncszkdir7t4dfj4ya"
     },
     {
       "name": "RWD_APP_CANDID_API_KEY_GYM",
@@ -196,14 +188,6 @@
     {
       "name": "RWD_APP_GOOGLE_MAPS_API_KEY_GYM",
       "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
-    },
-    {
-      "name": "RWD_APP_PAYPAL_ENV_GYM",
-      "value": "sandbox"
-    },
-    {
-      "name": "RWD_APP_PAYPAL_STATIC_DOMAIN_GYM",
-      "value": "https://test5.gymboree.com"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_TCP",
@@ -310,30 +294,6 @@
       "value": ".gymboree.com"
     },
     {
-      "name": "RWD_APP_RAYGUN_API_KEY_TCP",
-      "value": "vhndEXepnCyqDvbXY6Uiqw"
-    },
-    {
-      "name": "isErrorReportingActive",
-      "value": "true"
-    },
-    {
-      "name": "RWD_APP_STYLITICS_USERNAME_TCP",
-      "value": "thechildrensplace"
-    },
-    {
-      "name": "RWD_APP_STYLITICS_USERNAME_GYM",
-      "value": "gymboree"
-    },
-    {
-      "name": "RWD_APP_STYLITICS_REGION_TCP",
-      "value": "country"
-    },
-    {
-      "name": "RWD_APP_STYLITICS_REGION_GYM",
-      "value": ""
-    },
-    {
       "name": "RWD_WEB_APP_DOMAIN_TCP",
       "value": "https://test5.childrensplace.com"
     },
@@ -364,6 +324,10 @@
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
       "value": "https://test5.childrensplace.com/static/bazaarVoice/index.html"
+    },
+    {
+      "name": "RWD_APP_BV_SHARED_KEY",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -372,15 +336,28 @@
   "toolsets": {
     "buildscripts": {
       "packages/mobileapp/package.json": {
-        "postClone": "packages/mobileapp/appcenter-post-clone.sh",
-        "preBuild": "packages/mobileapp/appcenter-pre-build.sh"
+        "postClone": "packages/mobileapp/appcenter-post-clone.sh"
       }
+    },
+    "android": {
+      "module": "app",
+      "buildVariant": "tcpIntRelease",
+      "isRoot": false,
+      "runTests": false,
+      "runLint": false,
+      "keystorePassword": "__protected__",
+      "keyAlias": "__protected__",
+      "keyPassword": "__protected__",
+      "keystoreFilename": "tcp.jks",
+      "automaticSigning": false,
+      "buildBundle": false,
+      "gradleWrapperPath": "packages/mobileapp/android/gradlew"
     },
     "distribution": {
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "ddcf0e8e-dfc5-4b4f-8953-95d3f0a32d2f"
+        "52344d80-b49f-4941-a3d0-d215bae8ee01"
       ],
       "isSilent": false
     },
@@ -388,18 +365,6 @@
       "nodeVersion": "10.x",
       "packageJsonPath": "packages/mobileapp/package.json",
       "runTests": false
-    },
-    "xcode": {
-      "certificatePassword": "__protected__",
-      "certificateFilename": "Dev-Certificates.p12",
-      "provisioningProfileFilename": "ProvisioningProfileDevelopment_TCPAppInt.mobileprovision",
-      "certificateFileId": "2cb0f6c9-355c-4936-ae10-1a1f72869c95",
-      "provisioningProfileFileId": "c43f2701-cddc-4d23-ad45-f414229cfa71",
-      "appExtensionProvisioningProfileFiles": [],
-      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
-      "scheme": "mobileapp_int",
-      "xcodeVersion": "10.2.1",
-      "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },
   "artifactVersioning": {
