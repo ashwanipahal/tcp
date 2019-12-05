@@ -181,7 +181,6 @@ class HomePageView extends React.PureComponent {
       isQVModalOpen,
     } = this.props;
     const { value } = this.state;
-
     return (
       <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <HeaderPromoContainer>
