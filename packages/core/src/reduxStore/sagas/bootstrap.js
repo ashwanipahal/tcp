@@ -164,13 +164,17 @@ function* bootstrap(params) {
 }
 
 function* setTcpSegment(tcpSegment) {
-  const tcpSegmentValue = tcpSegment.payload;
-  yield put(getSetTcpSegment(tcpSegmentValue));
-  const tcpSegmentCookieValue = yield call(readCookie, 'tcpSegment');
+  try {
+    const tcpSegmentValue = tcpSegment.payload;
+    yield put(getSetTcpSegment(tcpSegmentValue));
+    const tcpSegmentCookieValue = yield call(readCookie, 'tcpSegment');
 
-  if ((tcpSegmentValue && tcpSegmentCookieValue !== tcpSegmentValue) || !tcpSegmentCookieValue) {
-    yield call(setCookie, { key: 'tcpSegment', value: tcpSegmentValue });
-    return yield call(setUserGroup);
+    if ((tcpSegmentValue && tcpSegmentCookieValue !== tcpSegmentValue) || !tcpSegmentCookieValue) {
+      yield call(setCookie, { key: 'tcpSegment', value: tcpSegmentValue });
+      return yield call(setUserGroup);
+    }
+  } catch (err) {
+    logger.error(err);
   }
   return null;
 }

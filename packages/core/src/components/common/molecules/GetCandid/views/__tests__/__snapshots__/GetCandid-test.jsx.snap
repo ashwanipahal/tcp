@@ -34,7 +34,7 @@ exports[`GetCandidVanilla component should renders correctly 1`] = `
               "fs32",
             ]
           }
-          fontWeight="semibold"
+          fontWeight="medium"
           letterSpacing="normal"
           lineHeight="normal"
           link={null}
@@ -149,7 +149,7 @@ exports[`GetCandidVanilla component should renders correctly considering selecti
               "fs32",
             ]
           }
-          fontWeight="semibold"
+          fontWeight="medium"
           letterSpacing="normal"
           lineHeight="normal"
           link={null}

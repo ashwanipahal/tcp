@@ -28,13 +28,17 @@ class ApplyCardLayoutContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { plccData, fetchModuleXContent, labels, plccUser } = this.props;
+    const { plccData, fetchModuleXContent, labels, plccUser, navigation } = this.props;
     const { resetPLCCApplicationStatus } = this.props;
     resetPLCCApplicationStatus({ status: null });
     if (plccUser) {
-      routerPush(window.location.href, '/home');
+      if (isMobileApp()) {
+        navigation.navigate('Home');
+      } else {
+        routerPush(window.location.href, '/home');
+      }
     } else if (!plccData && labels && labels.referred) {
-      fetchModuleXContent(labels && labels.referred);
+      fetchModuleXContent(labels.referred);
     }
   }
 
@@ -154,6 +158,7 @@ ApplyCardLayoutContainer.propTypes = {
   isPLCCModalFlow: PropTypes.bool.isRequired,
   submitApplication: PropTypes.func.isRequired,
   applicationStatus: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
   plccUser: PropTypes.bool.isRequired,
   profileInfo: PropTypes.shape({}).isRequired,
   verifyAddressAction: PropTypes.func.isRequired,
