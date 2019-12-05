@@ -338,7 +338,7 @@
       "value": "true"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
@@ -370,7 +370,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "gymboreeInt",
+      "buildVariant": "gymboreeIntRelease",
       "isRoot": false,
       "runTests": false,
       "runLint": false,
