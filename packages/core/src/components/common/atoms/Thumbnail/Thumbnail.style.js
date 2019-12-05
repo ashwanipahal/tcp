@@ -12,7 +12,7 @@ export default css`
   }
   .image-wrapper {
     display: inline-flex;
-    height: 111px;
+    height: 100%;
     width: 90px;
   }
 `;
