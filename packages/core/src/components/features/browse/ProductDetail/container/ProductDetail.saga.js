@@ -17,7 +17,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
 
-const checkSSR = typeof window !== 'undefined' || isMobileApp;
+const checkSSR = () => typeof window !== 'undefined' || isMobileApp;
 
 function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }) {
   try {
@@ -57,7 +57,7 @@ function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }
     }
 
     yield put(setProductDetails({ ...productDetail }));
-    if (typeof window !== 'undefined' && !isMobileApp) {
+    if (typeof window !== 'undefined') {
       yield put(setProductDetailsDynamicData({ ...productDetail }));
     }
     yield put(setPDPLoadingState({ isLoading: false }));

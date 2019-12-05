@@ -18,7 +18,10 @@ const ProductDetailReducer = (state = initialState, action) => {
     case PRODUCTDETAIL_CONSTANTS.SET_ADD_TO_FAVORITE: {
       const productDetailsMap = state.currentProduct;
       const currentProductDynamicDataMap = state.currentProductDynamicData;
-      [productDetailsMap, currentProductDynamicDataMap].map(productInfo => {
+      const productMap = currentProductDynamicDataMap
+        ? [productDetailsMap, currentProductDynamicDataMap]
+        : [productDetailsMap];
+      productMap.map(productInfo => {
         // eslint-disable-next-line no-param-reassign
         productInfo.colorFitsSizesMap = productInfo.colorFitsSizesMap.map(item => {
           if (item.colorProductId === action.payload.pdpColorProductId) {
