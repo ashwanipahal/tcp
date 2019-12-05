@@ -805,3 +805,23 @@ export const formatPhnNumber = phnNumber =>
     .replace(/\n /g, '')
     .replace(/ /g, '')
     .replace(')', ') ');
+
+/**
+ * @method scrollToViewBottom
+ * @desc scroll to view full content
+ * @param {object}
+ */
+export const scrollToViewBottom = ({ height, pageY, callBack, currentScrollValue }) => {
+  const headerHeight = 100;
+  const footerHeight = 100;
+  const windowHeight = getScreenHeight() - (headerHeight + footerHeight);
+  const availableSpaceInBottom = windowHeight - (pageY - footerHeight);
+  const scrollToBottom = height > availableSpaceInBottom;
+  if (scrollToBottom) {
+    callBack.scrollTo({
+      x: 0,
+      y: currentScrollValue + (height - availableSpaceInBottom),
+      animated: true,
+    });
+  }
+};

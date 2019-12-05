@@ -40,13 +40,92 @@ exports[`InputCheckbox component should render correctly 1`] = `
       componentMap={
         Object {
           "a": [Function],
+          "b": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
           "body": [Function],
+          "button": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "col": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
           "div": [Function],
+          "em": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h1": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h2": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h3": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h4": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h5": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
           "head": [Function],
           "html": [Function],
           "img": [Function],
-          "p": [Function],
+          "p": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "row": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "script": [Function],
           "span": [Function],
+          "strike": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "strong": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "sub": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "sup": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "table": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "tbody": [Function],
+          "td": [Function],
+          "th": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "thead": [Function],
+          "tr": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "u": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
         }
       }
       tools={
@@ -100,13 +179,92 @@ exports[`InputCheckbox component should render correctly with checked state fals
       componentMap={
         Object {
           "a": [Function],
+          "b": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
           "body": [Function],
+          "button": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "col": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
           "div": [Function],
+          "em": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h1": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h2": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h3": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h4": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "h5": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
           "head": [Function],
           "html": [Function],
           "img": [Function],
-          "p": [Function],
+          "p": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "row": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "script": [Function],
           "span": [Function],
+          "strike": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "strong": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "sub": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "sup": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "table": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "tbody": [Function],
+          "td": [Function],
+          "th": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "thead": [Function],
+          "tr": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "u": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
         }
       }
       tools={
