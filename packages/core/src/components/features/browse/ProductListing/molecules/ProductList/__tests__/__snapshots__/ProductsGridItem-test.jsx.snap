@@ -142,6 +142,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           },
         ]
       }
+      imagesByColor={Object {}}
       isMobile={
         Object {
           "isMobile": false,
