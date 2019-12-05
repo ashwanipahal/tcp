@@ -1,63 +1,34 @@
 {
   "project_info": {
-    "project_number": "363041168649",
-    "firebase_url": "https://tcp-dev-6548d.firebaseio.com",
-    "project_id": "tcp-dev-6548d",
-    "storage_bucket": "tcp-dev-6548d.appspot.com"
+    "project_number": "673780989117",
+    "firebase_url": "https://gymboree-dev-android.firebaseio.com",
+    "project_id": "gymboree-dev-android",
+    "storage_bucket": "gymboree-dev-android.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:363041168649:android:9e816a1a39c16a5630c7d8",
+        "mobilesdk_app_id": "1:673780989117:android:51ff9c52445303424c4bd4",
         "android_client_info": {
-          "package_name": "com.mobileapp.gymboree.dev"
+          "package_name": "com.childrensplace.gym.dev"
         }
       },
       "oauth_client": [
         {
-          "client_id": "363041168649-k1e0trh7lsh89p2ee27rlp44ksqbgam4.apps.googleusercontent.com",
+          "client_id": "673780989117-jcka9tton1s1k3hdftjecfrqf6n0q8pv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAoh_uBxe0FOs-jWVokNeiF8046A-0zGpA"
+          "current_key": "AIzaSyDPOKErZrh14y9rFw203axi6riOTDIM0l4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "363041168649-k1e0trh7lsh89p2ee27rlp44ksqbgam4.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:363041168649:android:745a3f550005ddb030c7d8",
-        "android_client_info": {
-          "package_name": "com.mobileapp.tcp.dev"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "363041168649-k1e0trh7lsh89p2ee27rlp44ksqbgam4.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAoh_uBxe0FOs-jWVokNeiF8046A-0zGpA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "363041168649-k1e0trh7lsh89p2ee27rlp44ksqbgam4.apps.googleusercontent.com",
+              "client_id": "673780989117-jcka9tton1s1k3hdftjecfrqf6n0q8pv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

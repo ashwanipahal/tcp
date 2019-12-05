@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "361639942167",
-    "firebase_url": "https://gymboree-app.firebaseio.com",
-    "project_id": "gymboree-app",
-    "storage_bucket": "gymboree-app.appspot.com"
+    "project_number": "773298290883",
+    "firebase_url": "https://gymboree-int-android.firebaseio.com",
+    "project_id": "gymboree-int-android",
+    "storage_bucket": "gymboree-int-android.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:361639942167:android:92fbb98591679263776452",
+        "mobilesdk_app_id": "1:773298290883:android:cbd962402827dd794d2276",
         "android_client_info": {
-          "package_name": "com.mobileapp.gymboree.int"
+          "package_name": "com.childrensplace.gym.int"
         }
       },
       "oauth_client": [
         {
-          "client_id": "361639942167-rjsqom09b0t0sltp4990d1s9adhqt79m.apps.googleusercontent.com",
+          "client_id": "773298290883-0jr97ps1v8h3mc9qbj356tso2l2cp2c1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD3xQ-9ee3vu7K32Bu08uOJtEUVgvGppbE"
+          "current_key": "AIzaSyB2YA2kbyDohKUqoytsEdE0RLMuTlrE_VU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "361639942167-rjsqom09b0t0sltp4990d1s9adhqt79m.apps.googleusercontent.com",
+              "client_id": "773298290883-0jr97ps1v8h3mc9qbj356tso2l2cp2c1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

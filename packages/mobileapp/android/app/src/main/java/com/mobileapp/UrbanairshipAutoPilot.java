@@ -27,12 +27,12 @@ public class UrbanairshipAutoPilot extends Autopilot {
                 .setNotificationAccentColor(ContextCompat.getColor(context, R.color.colorAccent))
                 .setNotificationIcon(R.drawable.ic_launcher);
 
-        if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_INT)) {
+        if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_INT) || BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_PREVIEW)) {
             options.setDevelopmentAppKey(AppConstants.DEV_GYMBOREE_INT_APP_KEY)
                     .setDevelopmentAppSecret(AppConstants.DEV_GYMBOREE_INT_SECRET_KEY)
                     .setProductionAppKey(AppConstants.PROD_GYMBOREE_INT_APP_KEY)
                     .setProductionAppSecret(AppConstants.PROD_GYMBOREE_INT_SECRET_KEY);
-        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_INT)) {
+        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_INT) || BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_PREVIEW)) {
             options.setDevelopmentAppKey(AppConstants.DEV_TCP_INT_APP_KEY)
                     .setDevelopmentAppSecret(AppConstants.DEV_TCP_INT_SECRET_KEY)
                     .setProductionAppKey(AppConstants.PROD_TCP_INT_APP_KEY)
@@ -47,32 +47,32 @@ public class UrbanairshipAutoPilot extends Autopilot {
                     .setDevelopmentAppSecret(AppConstants.DEV_TCP_DEV_SECRET_KEY)
                     .setProductionAppKey(AppConstants.PROD_TCP_DEV_APP_KEY)
                     .setProductionAppSecret(AppConstants.PROD_TCP_DEV_SECRET_KEY);
-        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_PREVIEW)) {
-            options.setDevelopmentAppKey(AppConstants.DEV_GYMBOREE_PREVIEW_APP_KEY)
-                    .setDevelopmentAppSecret(AppConstants.DEV_GYMBOREE_PREVIEW_SECRET_KEY)
-                    .setProductionAppKey(AppConstants.PROD_GYMBOREE_PREVIEW_APP_KEY)
-                    .setProductionAppSecret(AppConstants.PROD_GYMBOREE_PREVIEW_SECRET_KEY);
-        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_PREVIEW)) {
-            options.setDevelopmentAppKey(AppConstants.DEV_TCP_PREVIEW_APP_KEY)
-                    .setDevelopmentAppSecret(AppConstants.DEV_TCP_PREVIEW_SECRET_KEY)
-                    .setProductionAppKey(AppConstants.PROD_TCP_PREVIEW_APP_KEY)
-                    .setProductionAppSecret(AppConstants.PROD_TCP_PREVIEW_SECRET_KEY);
-        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_UAT)) {
+        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_UAT) || BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_UAT_PREVIEW)) {
             options.setDevelopmentAppKey(AppConstants.DEV_GYMBOREE_UAT_APP_KEY)
                     .setDevelopmentAppSecret(AppConstants.DEV_GYMBOREE_UAT_SECRET_KEY)
                     .setProductionAppKey(AppConstants.PROD_GYMBOREE_UAT_APP_KEY)
                     .setProductionAppSecret(AppConstants.PROD_GYMBOREE_UAT_SECRET_KEY);
-        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_UAT)) {
+        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_UAT) || BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_UAT_PREVIEW)) {
             options.setDevelopmentAppKey(AppConstants.DEV_TCP_UAT_APP_KEY)
                     .setDevelopmentAppSecret(AppConstants.DEV_TCP_UAT_SECRET_KEY)
                     .setProductionAppKey(AppConstants.PROD_TCP_UAT_APP_KEY)
                     .setProductionAppSecret(AppConstants.PROD_TCP_UAT_SECRET_KEY);
-        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_PROD)) {
+        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_QA) || BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_QA_PREVIEW)) {
+            options.setDevelopmentAppKey(AppConstants.DEV_GYMBOREE_QA_APP_KEY)
+                    .setDevelopmentAppSecret(AppConstants.DEV_GYMBOREE_QA_SECRET_KEY)
+                    .setProductionAppKey(AppConstants.PROD_GYMBOREE_QA_APP_KEY)
+                    .setProductionAppSecret(AppConstants.PROD_GYMBOREE_QA_SECRET_KEY);
+        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_QA) || BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_QA_PREVIEW)) {
+            options.setDevelopmentAppKey(AppConstants.DEV_TCP_QA_APP_KEY)
+                    .setDevelopmentAppSecret(AppConstants.DEV_TCP_QA_SECRET_KEY)
+                    .setProductionAppKey(AppConstants.PROD_TCP_QA_APP_KEY)
+                    .setProductionAppSecret(AppConstants.PROD_TCP_QA_SECRET_KEY);
+        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_PROD) || BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.TCP_PROD_PREVIEW)) {
             options.setDevelopmentAppKey(AppConstants.DEV_TCP_PROD_APP_KEY)
                     .setDevelopmentAppSecret(AppConstants.DEV_TCP_PROD_SECRET_KEY)
                     .setProductionAppKey(AppConstants.PROD_TCP_PROD_APP_KEY)
                     .setProductionAppSecret(AppConstants.PROD_TCP_PROD_SECRET_KEY);
-        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_PROD)) {
+        } else if (BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_PROD) || BuildConfig.FLAVOR.equals(AppConstants.BuildFlavour.GYMBOREE_PROD_PREVIEW)) {
             options.setDevelopmentAppKey(AppConstants.DEV_GYMBOREE_PROD_APP_KEY)
                     .setDevelopmentAppSecret(AppConstants.DEV_GYMBOREE_PROD_SECRET_KEY)
                     .setProductionAppKey(AppConstants.PROD_GYMBOREE_PROD_APP_KEY)
