@@ -1,11 +1,6 @@
-// @flow
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
-// import { Box, Text } from '@fabulas/astly';
-// import {LazyloadScrollView} from 'react-native-lazyload-deux';
-
 import queryString from 'query-string';
-
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import {
   LAZYLOAD_HOST_NAME,
@@ -33,8 +28,8 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
+import ModuleX from '@tcp/core/src/components/common/molecules/ModuleX';
 import LocationAccessPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
-// import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
@@ -65,6 +60,7 @@ const modulesMap = {
   moduleT: ModuleT,
   moduleE: ModuleE,
   moduleG: ModuleG,
+  moduleX: ModuleX,
 };
 
 const modulesMapWithErrorBoundary = Object.keys(modulesMap).reduce((modulesMapObj, key) => {
@@ -195,7 +191,6 @@ class HomePageView extends React.PureComponent {
         </HeaderPromoContainer>
         {loyaltyPromoBanner.length > 0 && <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />}
         <PageSlots slots={slots} modules={modulesMapWithErrorBoundary} navigation={navigation} />
-        {/* <ModuleS {...mockS.moduleS.composites} /> */}
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations
           navigation={navigation}
