@@ -24,7 +24,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
       ]
     }
     title=""
-    to="url"
+    to="/p?pid=undefined"
     unbxdattr="product"
     unbxdparam_prank={1}
     unbxdparam_sku={1}
@@ -39,6 +39,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
         }
       }
       isProductImage={true}
+      itemBrand=""
       lazyLoad={false}
     />
   </Styled(Anchor)>
