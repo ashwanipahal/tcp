@@ -170,7 +170,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
       noBackground={true}
     />
     <Styled(BodyCopy)
-      className="bottom-content"
+      className="bottom-content "
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -356,7 +356,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       noBackground={true}
     />
     <Styled(BodyCopy)
-      className="bottom-content"
+      className="bottom-content "
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -639,7 +639,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       noBackground={true}
     />
     <Styled(BodyCopy)
-      className="bottom-content"
+      className="bottom-content "
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -889,7 +889,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       noBackground={true}
     />
     <Styled(BodyCopy)
-      className="bottom-content"
+      className="bottom-content "
       color="text.primary"
       component="div"
       fontFamily="primary"
