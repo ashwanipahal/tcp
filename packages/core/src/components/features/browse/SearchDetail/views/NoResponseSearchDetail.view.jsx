@@ -33,20 +33,20 @@ class NoResponseSearchDetailView extends React.PureComponent {
     this.getSearchResults = this.getSearchResults.bind(this);
   }
 
-  componentDidMount(prevProps) {
-    const { products, trackPageLoad, searchType, searchedText } = this.props;
-    const productsFormatted = this.formatProductsData(products);
-    if (prevProps.products !== products && productsFormatted.length && searchType && searchedText) {
+  componentDidMount() {
+    const { trackPageLoad, searchType, searchedText } = this.props;
+    if (searchType && searchedText) {
       trackPageLoad({
-        products: productsFormatted,
+        products: [],
         pageSearchType: searchType,
         pageSearchText: searchedText,
-        pageType: 'browse',
-        pageName: 'search',
-        pageSection: `browse:${searchedText}`,
-        pageSubSection: `browse:${searchedText}`,
-        customEvents: ['event91', 'event92', 'event80', 'event20'],
+        pageType: 'search',
+        pageName: 'search:results',
+        pageSection: 'search',
+        pageSubSection: 'search',
+        customEvents: ['event91', 'event92', 'event80', 'event21'],
         internalCampaignId: 'non-internal campaign',
+        listingCount: 'Zero',
       });
     }
   }

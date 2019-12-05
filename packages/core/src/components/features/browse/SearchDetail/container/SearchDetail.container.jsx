@@ -232,6 +232,8 @@ class SearchDetailContainer extends React.PureComponent {
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
                 pdpLabels={pdpLabels}
+                trackPageLoad={trackPageLoad}
+                searchType={searchType}
                 {...otherProps}
               />
             )}
@@ -399,9 +401,6 @@ function mapDispatchToProps(dispatch) {
             },
           })
         );
-        setTimeout(() => {
-          dispatch(setClickAnalyticsData({}));
-        }, 200);
       }, 100);
     },
   };
