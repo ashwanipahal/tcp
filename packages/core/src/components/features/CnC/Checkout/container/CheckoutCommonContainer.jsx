@@ -23,7 +23,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { router, initCheckout, markBagPageRoutingDone } = this.props;
+    const { router, initCheckout, markBagPageRoutingDone, resetAnalyticsData } = this.props;
+    resetAnalyticsData();
     markBagPageRoutingDone();
     const {
       isRegisteredUserCallDone,

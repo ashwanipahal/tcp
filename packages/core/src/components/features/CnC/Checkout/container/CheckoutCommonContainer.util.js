@@ -193,11 +193,14 @@ export const mapDispatchToProps = dispatch => {
     cartLoading: () => {
       dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
     },
+    resetAnalyticsData: () => {
+      dispatch(resetClickAnalyticsData());
+    },
     trackPageViewCheckout: payload => {
       dispatch(trackPageView(payload));
       setTimeout(() => {
         dispatch(resetClickAnalyticsData());
-      }, 200);
+      }, 1000);
     },
     resetCartCheckoutData: () => {
       dispatch(CHECKOUT_ACTIONS.resetCheckoutReducer());

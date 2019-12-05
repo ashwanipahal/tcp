@@ -46,7 +46,13 @@ import BagPageUtils from '../views/Bagpage.utils';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent, placeCashBagContentId } = this.props;
+    const {
+      needHelpContentId,
+      fetchNeedHelpContent,
+      placeCashBagContentId,
+      resetAnalyticsData,
+    } = this.props;
+    resetAnalyticsData();
     fetchNeedHelpContent([needHelpContentId, placeCashBagContentId]);
     const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
@@ -275,11 +281,14 @@ export const mapDispatchToProps = dispatch => {
     setClickAnalyticsDataBag: payload => {
       dispatch(setClickAnalyticsData(payload));
     },
+    resetAnalyticsData: () => {
+      dispatch(resetClickAnalyticsData());
+    },
     trackPageViewBag: payload => {
       dispatch(trackPageView(payload));
       setTimeout(() => {
         dispatch(resetClickAnalyticsData());
-      }, 200);
+      }, 1000);
     },
     updateBagPageData: payload => {
       dispatch(updatePageData(payload));
