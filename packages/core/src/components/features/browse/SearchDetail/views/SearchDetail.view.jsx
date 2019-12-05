@@ -14,6 +14,7 @@ import { isFiltersAvailable } from '../../ProductListing/container/ProductListin
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
+import CONSTANTS from '../../../../common/molecules/SearchBar/SearchBar.constants';
 
 const setDataInLocalStorage = (searchText, url) => {
   updateLocalStorageData(searchText, url);
@@ -39,11 +40,18 @@ class SearchListingView extends React.Component {
         products: productsFormatted,
         pageSearchType: searchType,
         pageSearchText: searchedText,
-        pageType: 'search',
+        pageType: searchType === CONSTANTS.ANALYTICS_TYPEAHEAD_CATEGORY ? 'search' : 'browse',
         pageName: 'search',
-        pageSection: 'search',
-        pageSubSection: 'search',
+        pageSection:
+          searchType === CONSTANTS.ANALYTICS_TYPEAHEAD_CATEGORY
+            ? 'search'
+            : `browse:${searchedText}`,
+        pageSubSection:
+          searchType === CONSTANTS.ANALYTICS_TYPEAHEAD_CATEGORY
+            ? 'search'
+            : `browse:${searchedText}`,
         customEvents: ['event91', 'event92', 'event80', 'event20'],
+        internalCampaignId: 'non-internal campaign',
       });
     }
   }

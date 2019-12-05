@@ -12,7 +12,7 @@ import { getRecentStoreFromLocalStorage, updateLocalStorageData } from '../userR
 import SearchBarPropTypes from '../SearchBar.PropTypes';
 import SearchImageWrapper from './SearchImageWrapper.view';
 import { getLatestSearchResultsExists } from '../../../../features/browse/SearchDetail/container/SearchDetail.util';
-
+import CONSTANTS from '../SearchBar.constants';
 /**
  * This component produces a Search Bar component for Header
  * Expects textItems array consisting of objects in below format
@@ -111,10 +111,14 @@ class SearchBar extends React.PureComponent {
     }
     this.clearModalParams();
     if (url) {
-      routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+      routerPush(
+        `/c?searchQuery=${searchText}&searchType=typeahead:category&cid=${url.split('/c/')[1]}`,
+        `${url}`,
+        { shallow: false }
+      );
     } else {
       routerPush(
-        `/search?searchQuery=${searchText}&searchType=typeahead:keyword`,
+        `/search?searchQuery=${searchText}&searchType=${CONSTANTS.ANALYTICS_TYPEAHEAD_CATEGORY}`,
         `/search/${searchText}`,
         { shallow: true }
       );

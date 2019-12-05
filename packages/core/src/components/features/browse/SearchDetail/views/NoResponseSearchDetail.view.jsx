@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
@@ -31,6 +32,45 @@ class NoResponseSearchDetailView extends React.PureComponent {
     this.changeSearchText = this.changeSearchText.bind(this);
     this.getSearchResults = this.getSearchResults.bind(this);
   }
+
+  componentDidMount(prevProps) {
+    const { products, trackPageLoad, searchType, searchedText } = this.props;
+    const productsFormatted = this.formatProductsData(products);
+    if (prevProps.products !== products && productsFormatted.length && searchType && searchedText) {
+      trackPageLoad({
+        products: productsFormatted,
+        pageSearchType: searchType,
+        pageSearchText: searchedText,
+        pageType: 'browse',
+        pageName: 'search',
+        pageSection: `browse:${searchedText}`,
+        pageSubSection: `browse:${searchedText}`,
+        customEvents: ['event91', 'event92', 'event80', 'event20'],
+        internalCampaignId: 'non-internal campaign',
+      });
+    }
+  }
+
+  formatProductsData = products => {
+    return products.map((tile, index) => {
+      const {
+        productInfo: { listPrice, offerPrice, name, generalProductId, priceRange },
+        miscInfo: { categoryName },
+      } = tile;
+      const productId = generalProductId && generalProductId.split('_')[0];
+      const productName = name;
+      return {
+        id: productId,
+        colorId: generalProductId,
+        name: productName,
+        price: offerPrice,
+        listPrice,
+        extPrice: priceRange.lowOfferPrice,
+        position: index + 1,
+        type: categoryName,
+      };
+    });
+  };
 
   changeSearchText = e => {
     e.preventDefault();
@@ -359,6 +399,9 @@ NoResponseSearchDetailView.propTypes = {
     lbl_search_product_matches: PropTypes.string,
   }),
   pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  trackPageLoad: PropTypes.func,
+  products: PropTypes.arrayOf(PropTypes.shape({})),
+  searchType: PropTypes.string,
 };
 
 NoResponseSearchDetailView.defaultProps = {
@@ -378,6 +421,9 @@ NoResponseSearchDetailView.defaultProps = {
     lbl_search_product_matches: '',
   }),
   pdpLabels: {},
+  searchType: 'keyword',
+  products: [],
+  trackPageLoad: () => {},
 };
 
 const mapStateToProps = state => {
