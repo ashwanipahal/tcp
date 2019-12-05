@@ -19,6 +19,7 @@ import ShareList from '../molecules/ShareList/views';
 import CopyLink from '../molecules/CopyLink/views';
 import ModalWrapper from '../molecules/ModalWrapper';
 import { openWindow } from '../../../../../utils/utils.web';
+import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
@@ -592,6 +593,13 @@ class FavoritesView extends React.PureComponent {
                   onSortSelection={onSortSelection}
                   defaultPlaceholder={getSortsList(labels)[0].displayName}
                   appliedFilterLength={appliedFilterLength}
+                />
+              </Col>
+              <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
+                <LoadedProductsCount
+                  totalProductsCount={filteredItemsList.length}
+                  showingItemsLabel={slpLabels}
+                  isFavoriteView
                 />
               </Col>
             </Row>
