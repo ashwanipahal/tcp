@@ -85,7 +85,7 @@ class LocationAccessPrompt extends React.PureComponent {
   };
 
   /**
-   * @toggleModal : To manage the modal state .
+   * @androidPermissions : To manage the android permissions .
    */
   androidPermissions = async () => {
     try {
@@ -114,6 +114,9 @@ class LocationAccessPrompt extends React.PureComponent {
     }
   };
 
+  /**
+   * @iosPermissions : To manage the ios permissions .
+   */
   iosPermissions = () => {
     Geolocation.getCurrentPosition(
       position => {
@@ -136,7 +139,7 @@ class LocationAccessPrompt extends React.PureComponent {
     } else {
       this.iosPermissions();
     }
-    setValueInAsyncStorage(LOCATION_ACCESS_KEY, LOCATION_ACCESS_VALUE);
+    this.close();
   };
 
   /**
