@@ -15,6 +15,7 @@ import BrandSwitchStack from '../pages/brandSwitch';
 import CheckoutStack from '../pages/checkout';
 import BagStack from '../pages/bag';
 import QRScanner from '../components/common/molecules/QRScanner';
+import NoInternetStack from '../pages/noInternet';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -53,10 +54,16 @@ const RootStack = createStackNavigator(
   }
 );
 
+export const NoInternetNavigator = createAppContainer(
+  createSwitchNavigator({
+    NoInternet: {
+      screen: NoInternetStack,
+    },
+  })
+);
+
 export default createAppContainer(
   createSwitchNavigator({
-    // You could add another route here for authentication.
-    // Read more at https://reactnavigation.org/docs/en/auth-flow.html
     Main: {
       screen: RootStack,
     },

@@ -23,6 +23,7 @@ exports[`PlaceCashBanner should render correctly should match snapshot 1`] = `
         accessibilityText=""
         dataLocator=""
         fontSize="fs18"
+        fontWeight="bold"
         margin={null}
         numberOfLines={null}
         textAlign="center"
