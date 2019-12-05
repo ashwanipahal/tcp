@@ -70,6 +70,7 @@ class ProductBasicInfo extends React.Component {
         component="h1"
         fontFamily="secondary"
         fontWeight="extrabold"
+        itemprop="name"
       >
         {name}
       </BodyCopy>

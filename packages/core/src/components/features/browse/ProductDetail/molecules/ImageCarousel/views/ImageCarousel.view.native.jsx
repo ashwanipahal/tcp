@@ -7,6 +7,7 @@ import { withTheme } from 'styled-components/native';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Notification from '@tcp/core/src/components/common/molecules/Notification/views/Notification.native';
+import { getVideoUrl } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -173,9 +174,10 @@ class ImageCarousel extends React.PureComponent {
     const { activeSlideIndex } = this.state;
 
     const { index } = imgSource;
+    const isVideoUrl = getVideoUrl(imgSource.item.regularSizeImageUrl);
     return (
       <ImageTouchableOpacity
-        onPress={onImageClick}
+        onPress={!isVideoUrl ? onImageClick : null}
         accessible={index === activeSlideIndex}
         accessibilityRole="image"
         accessibilityLabel={`product image ${index + 1}`}

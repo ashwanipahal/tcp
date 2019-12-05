@@ -91,6 +91,7 @@ const PickupSkuSelectionForm = props => {
         </ImageWrapper>
         <ProductDetailSummary>
           <BodyCopyWithSpacing
+            width="100%"
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="extrabold"

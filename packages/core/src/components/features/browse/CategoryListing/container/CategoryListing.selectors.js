@@ -8,3 +8,8 @@ export const getLabels = state => {
     recentlyViewed: getLabelValue(state.Labels, 'lbl_recently_viewed', 'PDP', 'Browse'),
   };
 };
+
+export const getBreadCrumbTrail = state => {
+  const { ProductListing } = state;
+  return ProductListing.breadCrumbTrail;
+};

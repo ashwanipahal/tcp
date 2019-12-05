@@ -245,7 +245,7 @@ class ProductAltImages extends React.PureComponent {
   };
 
   renderDamImage() {
-    const { imageUrls, productName } = this.props;
+    const { imageUrls, productName, itemBrand } = this.props;
     const { currentIndex } = this.state;
     const imgData = {
       alt: productName,
@@ -259,6 +259,7 @@ class ProductAltImages extends React.PureComponent {
           imgData={imgData}
           isProductImage
           lazyLoad={false}
+          itemBrand={itemBrand}
         />
         {this.renderSoldOutSection()}
       </>
