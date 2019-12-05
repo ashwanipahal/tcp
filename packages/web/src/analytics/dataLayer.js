@@ -306,6 +306,13 @@ export default function create(store) {
         return store.getState();
       },
     },
+
+    favStoreId: {
+      get() {
+        const currentState = store.getState();
+        return currentState.User.getIn(['defaultStore', 'basicInfo', 'id'], '');
+      },
+    },
     brandId: {
       get() {
         const { brandId = '' } = store.getState().APIConfig;
