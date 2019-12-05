@@ -8,7 +8,6 @@ import RichText from '../../../../../../common/atoms/RichText';
 import {
   Container,
   RichTextContainer,
-  CashBannerWrapper,
   BorderWrapper,
 } from '../styles/ThankYouComponent.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
@@ -53,18 +52,6 @@ const ThankYouComponent = ({
             labels={labels}
           />
         ))}
-      {isGuest && (
-        <CashBannerWrapper>
-          <BodyCopyWithSpacing
-            textAlign="center"
-            fontSize="fs16"
-            fontWeight="extrabold"
-            mobileFontFamily="secondary"
-            spacingStyles="margin-top-LRG margin-bottom-LRG"
-            text="Place Cash Banner"
-          />
-        </CashBannerWrapper>
-      )}
       {orderNumbersByFullfillmentCenter && (
         <>
           <BorderWrapper />
