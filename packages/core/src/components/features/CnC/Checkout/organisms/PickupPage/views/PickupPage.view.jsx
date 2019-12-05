@@ -14,7 +14,6 @@ import Button from '../../../../../../common/atoms/Button';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import { scrollToFirstError } from '../../../util/utility';
-import PickupAnalytics from './PickupAnalytics.view';
 import EmailSignUpCheckBox from '../../../molecules/EmailSignUpCheckBox';
 
 class PickUpFormPart extends React.Component {
@@ -217,6 +216,7 @@ class PickUpFormPart extends React.Component {
       isBagLoaded,
       emailSignUpFlags,
       updateFromMSG,
+      bagLoading,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
 
@@ -317,7 +317,6 @@ class PickUpFormPart extends React.Component {
                 bagLoading={bagLoading}
               />
             </form>
-            <PickupAnalytics {...this.props} />
           </div>
         )}
       </>
@@ -350,7 +349,6 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   pickupDidMount: PropTypes.func.isRequired,
-  checkoutRoutingDone: PropTypes.bool.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,
@@ -361,6 +359,7 @@ PickUpFormPart.propTypes = {
   ServerErrors: PropTypes.node.isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   emailSignUpFlags: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool,
 };
 
 PickUpFormPart.defaultProps = {
@@ -376,6 +375,7 @@ PickUpFormPart.defaultProps = {
   isVenmoPaymentInProgress: false,
   showAccordian: true,
   isVenmoPickupDisplayed: true,
+  bagLoading: false,
 };
 
 const validateMethod = createValidateMethod({

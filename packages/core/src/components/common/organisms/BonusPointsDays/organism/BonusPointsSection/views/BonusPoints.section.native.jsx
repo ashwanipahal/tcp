@@ -134,7 +134,7 @@ const getContent = ({
   bonusPoints,
   bonusData,
   enableApplyCta,
-  getBonusDaysData,
+  getAvailableBonusDaysData,
   orderDetails,
   isPlcc,
   isPlaceRewardsPage,
@@ -188,7 +188,7 @@ const getContent = ({
         labels={labels}
         bonusPoints={bonusPoints}
         enableApplyCta={enableApplyCta}
-        getBonusDaysData={getBonusDaysData}
+        getAvailableBonusDaysData={getAvailableBonusDaysData}
         orderDetails={orderDetails}
         bonusDayAvailableToday={valueOfbonusDayAvailableToday}
         className="availability-msg"
@@ -199,6 +199,7 @@ const getContent = ({
         fontSizeVariation="medium"
         underline
         href="#"
+        title=""
         anchorVariation="primary"
         dataLocator="detailslink"
         className="details-link"
@@ -214,7 +215,7 @@ const BonusPointsSection = ({
   bonusData,
   toggleBonusPointsModal,
   enableApplyCta,
-  getBonusDaysData,
+  getAvailableBonusDaysData,
   orderDetails,
   isPlcc,
   isBagPage,
@@ -232,7 +233,7 @@ const BonusPointsSection = ({
     bonusPoints,
     bonusData,
     enableApplyCta,
-    getBonusDaysData,
+    getAvailableBonusDaysData,
     orderDetails,
     isPlcc,
     isPlaceRewardsPage,
@@ -256,7 +257,7 @@ BonusPointsSection.propTypes = {
   bonusData: PropTypes.shape({}),
   toggleBonusPointsModal: PropTypes.func,
   enableApplyCta: PropTypes.bool,
-  getBonusDaysData: PropTypes.func,
+  getAvailableBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   isPlcc: PropTypes.bool,
   isBagPage: PropTypes.bool,
@@ -269,7 +270,7 @@ BonusPointsSection.defaultProps = {
   bonusData: {},
   toggleBonusPointsModal: () => {},
   enableApplyCta: false,
-  getBonusDaysData: () => {},
+  getAvailableBonusDaysData: () => {},
   orderDetails: {},
   isPlcc: false,
   isBagPage: false,
@@ -283,7 +284,7 @@ getContent.propTypes = {
   bonusPoints: PropTypes.shape([]),
   bonusData: PropTypes.shape({}),
   enableApplyCta: PropTypes.bool,
-  getBonusDaysData: PropTypes.func,
+  getAvailableBonusDaysData: PropTypes.func,
   orderDetails: PropTypes.shape({}),
   isPlcc: PropTypes.bool,
   isPlaceRewardsPage: PropTypes.bool,
@@ -295,7 +296,7 @@ getContent.defaultProps = {
   toggleBonusPointsModal: () => {},
   bonusData: {},
   enableApplyCta: false,
-  getBonusDaysData: () => {},
+  getAvailableBonusDaysData: () => {},
   orderDetails: {},
   isPlcc: false,
   isPlaceRewardsPage: false,

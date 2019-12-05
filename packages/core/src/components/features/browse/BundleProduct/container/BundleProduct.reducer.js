@@ -12,6 +12,8 @@ const BundleProductReducer = (state = initialState, action) => {
       return { ...state, currentProduct: { ...payload.product }, breadCrumbs: payload.breadCrumbs };
     case BUNDLEPRODUCT_CONSTANTS.SET_BUNDLE_PRODUCTS_DETAILS:
       return { ...state, currentBundle: action.payload };
+    case BUNDLEPRODUCT_CONSTANTS.SET_LOADING_STATE:
+      return { ...state, ...payload };
     case BUNDLEPRODUCT_CONSTANTS.CLEAR_BUNDLE_DETAILS:
       return { ...state, currentProduct: null, currentBundle: null };
     case BUNDLEPRODUCT_CONSTANTS.SET_ADD_TO_FAVORITE:
@@ -21,7 +23,7 @@ const BundleProductReducer = (state = initialState, action) => {
       bundleMap = bundleMap.map(bundles => {
         // eslint-disable-next-line no-param-reassign
         bundles.products.colorFitsSizesMap = bundles.products.colorFitsSizesMap.map(item => {
-          if (item.colorDisplayId === action.payload.colorProductId) {
+          if (item.colorProductId === action.payload.pdpColorProductId) {
             // eslint-disable-next-line no-param-reassign
             item = {
               ...item,

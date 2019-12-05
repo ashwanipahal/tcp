@@ -46,7 +46,7 @@ const CheckoutHeader = ({
           aria-label={exitCheckoutAriaLabel}
           className="exitFromCheckout"
         >
-          <Image src={getIconPath('carrot-large-left')} className="collapsible-icon" />
+          <Image src={getIconPath('carrot-large-left')} alt="" className="collapsible-icon" />
         </button>
 
         <Col
@@ -67,7 +67,7 @@ const CheckoutHeader = ({
             large: 4,
           }}
         >
-          <BodyCopy component="span" fontSize="fs32">
+          <BodyCopy component="h1" fontSize="fs32" className="checkout-header-title">
             {isExpressCheckoutPage && itemsCount > 0
               ? labels.expressCheckoutLbl
               : labels.checkoutHeaderLabel}

@@ -59,7 +59,6 @@ export class CreditCardForm extends React.PureComponent {
     mailingAddress: PropTypes.bool,
     backToPaymentClick: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
-    invalid: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
@@ -100,7 +99,7 @@ export class CreditCardForm extends React.PureComponent {
       value: '',
       title: getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC'),
       content: (
-        <Button fullWidth buttonVariation="variable-width" fill="BLUE">
+        <Button fullWidth buttonVariation="variable-width" fill="BLACK">
           {getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC')}
         </Button>
       ),
@@ -132,7 +131,6 @@ export class CreditCardForm extends React.PureComponent {
       isEdit,
       backToPaymentClick,
       pristine,
-      invalid,
       handleSubmit,
       dispatch,
       initialValues,
@@ -207,6 +205,7 @@ export class CreditCardForm extends React.PureComponent {
                   component={AddressDropdown}
                   dataLocator="payment-billingaddressdd"
                   options={this.getAddressOptions()}
+                  labels={labels}
                 />
               </Col>
               <Col
@@ -270,7 +269,7 @@ export class CreditCardForm extends React.PureComponent {
           >
             <Button
               fill="BLUE"
-              disabled={invalid}
+              disabled={pristine}
               type="submit"
               buttonVariation="fixed-width"
               data-locator="payment-addcardbtn"

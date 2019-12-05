@@ -29,6 +29,7 @@ const getUrl = url => {
 export function* fetchPlpProducts({ payload }) {
   try {
     const { url, formData, sortBySelected, scrollToTop, isKeepModalOpen } = payload;
+    let isBucketing = false;
     yield put(loadLayoutData({}, 'productListingPage'));
     const location = getUrl(url);
     yield put(
@@ -53,6 +54,7 @@ export function* fetchPlpProducts({ payload }) {
         { ...reqObj, location },
         { ...state }
       );
+
       const { layout, modules } = yield call(
         instanceProductListing.parsedModuleData,
         res.bannerInfo
@@ -62,6 +64,7 @@ export function* fetchPlpProducts({ payload }) {
       yield put(setListingFirstProductsPage({ ...res }));
       state = yield select();
       reqObj = operatorInstance.processProductFilterAndCountData(res, { ...state }, reqObj);
+      isBucketing = true;
     }
     if (reqObj && reqObj.categoryId) {
       const plpProducts = yield call(
@@ -70,12 +73,16 @@ export function* fetchPlpProducts({ payload }) {
         { ...state }
       );
       if (plpProducts) {
-        const { layout, modules } = yield call(
-          instanceProductListing.parsedModuleData,
-          plpProducts.bannerInfo
-        );
-        yield put(loadLayoutData(layout, 'productListingPage'));
-        yield put(loadModulesData(modules));
+        // The layout needs to loaded when the first call has not already done it
+        // In case of bucketing, this would have already be done
+        if (!isBucketing) {
+          const { layout, modules } = yield call(
+            instanceProductListing.parsedModuleData,
+            plpProducts.bannerInfo
+          );
+          yield put(loadLayoutData(layout, 'productListingPage'));
+          yield put(loadModulesData(modules));
+        }
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
         const isGuest = !getUserLoggedInState({ ...state });
@@ -98,6 +105,9 @@ export function* fetchPlpProducts({ payload }) {
     );
   } catch (err) {
     logger.error(err);
+    yield put(
+      setPlpLoadingState({ isLoadingMore: false, isScrollToTop: false, isDataLoading: false })
+    );
   }
 }
 

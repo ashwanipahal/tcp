@@ -19,7 +19,6 @@ export {
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,
-  siteRedirect,
   languageRedirect,
   getAsPathWithSlug,
   getMappedPageHref,
@@ -39,6 +38,10 @@ export {
   isMobileWeb,
   removeBodyScrollLocks,
   isAndroidWeb,
+  createLayoutPath,
+  internalCampaignProductAnalyticsList,
+  getQueryParamsFromUrl,
+  getProductListingPageTrackData,
 } from './utils.web';
 
 export {
@@ -49,9 +52,11 @@ export {
   isGymboree,
   isTCP,
   getBrand,
+  getStaticFilePath,
   getIconPath,
   getFlagIconPath,
   getLocator,
+  getVideoUrl,
   getAPIConfig,
   isCanada,
   isUsOnly,
@@ -89,4 +94,5 @@ export {
   calculatePriceValue,
   getProductUrlForDAM,
   plpRoutingHandling,
+  convertNumToBool,
 } from './utils';

@@ -18,6 +18,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getIconPath, isCanada } from '../../../../../../../utils';
 import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
+import constants from '../../../CreateAccount.constants';
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
@@ -121,7 +122,11 @@ let CreateAccountForm = ({
             <span className="hide-show show-hide-icons">
               <span className="info-icon-img-wrapper">
                 <ReactTooltip message={tooltipContent} aligned="right">
-                  <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+                  <Image
+                    className="tcp_carousel__play tooltip"
+                    src={getIconPath('info-icon')}
+                    alt=""
+                  />
                 </ReactTooltip>
               </span>
               <Col
@@ -284,7 +289,7 @@ const validateMethod = createValidateMethod(
 );
 
 CreateAccountForm = reduxForm({
-  form: 'CreateAccountForm', // a unique identifier for this form
+  form: constants.CREATE_ACCOUNT_FORM, // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
 })(CreateAccountForm);

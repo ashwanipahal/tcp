@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import ThankYouTitleDisplay from '../../../molecules/ThankYouTitleDisplay';
@@ -11,6 +12,7 @@ import {
   BorderWrapper,
 } from '../styles/ThankYouComponent.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
+
 /**
  * @function ThankYouComponent
  * @description wrapper for thank you component.
@@ -27,6 +29,8 @@ const ThankYouComponent = ({
   isShowBopisMessage,
   isShowMixedMessage,
   labels,
+  venmoOrderConfirmationContent,
+  isVenmoPaymentInProgress,
 }) => {
   return (
     <>
@@ -39,7 +43,6 @@ const ThankYouComponent = ({
         labels={labels}
       />
       {/* Shipping only and mixed orders are handled from one component */}
-
       {fullfillmentCenterData &&
         fullfillmentCenterData.map((center, index) => (
           <ConfirmationFulfillmentCenterItemDisplay
@@ -50,7 +53,6 @@ const ThankYouComponent = ({
             labels={labels}
           />
         ))}
-
       {isGuest && (
         <CashBannerWrapper>
           <BodyCopyWithSpacing
@@ -63,7 +65,6 @@ const ThankYouComponent = ({
           />
         </CashBannerWrapper>
       )}
-
       {orderNumbersByFullfillmentCenter && (
         <>
           <BorderWrapper />
@@ -90,15 +91,35 @@ const ThankYouComponent = ({
         mobilefontFamily="primary"
         text={labels.updateOrderHeading}
       />
-      <Container>
-        <RichTextContainer>
-          <RichText source={{ html: updateOrderDetailsData }} />
-        </RichTextContainer>
-      </Container>
+      {updateOrderDetailsData && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: updateOrderDetailsData }} />
+          </RichTextContainer>
+        </Container>
+      )}
+      {isVenmoPaymentInProgress && (
+        <View>
+          <BodyCopyWithSpacing
+            spacingStyles="margin-top-XL margin-left-XS"
+            fontSize="fs16"
+            mobilefontFamily="primary"
+            text={labels.venmoHeading}
+          />
+        </View>
+      )}
+      {isVenmoPaymentInProgress && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: venmoOrderConfirmationContent }} />
+          </RichTextContainer>
+        </Container>
+      )}
     </>
   );
 };
 ThankYouComponent.propTypes = {
+  isVenmoPaymentInProgress: PropTypes.bool.isRequired,
   /** Flag indicates whether the user is a guest */
   isGuest: PropTypes.bool,
 
@@ -131,6 +152,7 @@ ThankYouComponent.propTypes = {
   isShowShippingMessage: PropTypes.bool,
   isShowBopisMessage: PropTypes.bool,
   isShowMixedMessage: PropTypes.bool,
+  venmoOrderConfirmationContent: PropTypes.shape({}),
 };
 ThankYouComponent.defaultProps = {
   isGuest: true,
@@ -139,5 +161,6 @@ ThankYouComponent.defaultProps = {
   isShowShippingMessage: false,
   isShowBopisMessage: false,
   isShowMixedMessage: false,
+  venmoOrderConfirmationContent: null,
 };
 export default ThankYouComponent;

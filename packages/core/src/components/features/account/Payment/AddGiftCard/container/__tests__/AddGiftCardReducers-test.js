@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
 import AddGiftCardReducer from '../AddGiftCard.reducer';
 import ADD_GIFT_CARD_CONSTANTS from '../../AddGiftCard.constants';
 
@@ -77,5 +78,27 @@ describe('AddGiftCard Reducer', () => {
         onAddGiftCardPage: false,
       })
     );
+  });
+
+  it('should call SET_SUBMIT_SUCCEEDED ', () => {
+    expect(
+      AddGiftCardReducer(initialState, {
+        type: SET_SUBMIT_SUCCEEDED,
+        meta: {
+          form: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FORM,
+        },
+      })
+    ).toEqual(initialState);
+  });
+
+  it('should call CHANGE but not change error ', () => {
+    expect(
+      AddGiftCardReducer(initialState, {
+        type: CHANGE,
+        meta: {
+          form: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FORM,
+        },
+      })
+    ).toEqual(initialState);
   });
 });

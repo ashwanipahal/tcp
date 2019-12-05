@@ -193,7 +193,7 @@ exports[`StoreAddressTile component Details should render details view - with ti
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -227,7 +227,7 @@ exports[`StoreAddressTile component Details should render details view - with ti
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -426,6 +426,7 @@ exports[`StoreAddressTile component Details should render details view - with ti
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -438,6 +439,7 @@ exports[`StoreAddressTile component Details should render details view - with ti
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -496,11 +498,20 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
     <div
       className="store-details-header"
     >
-      <h4
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h4>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
@@ -642,7 +653,7 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -676,7 +687,7 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -875,6 +886,7 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -887,6 +899,7 @@ exports[`StoreAddressTile component Details should render details view 1`] = `
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -1093,7 +1106,7 @@ exports[`StoreAddressTile component Details should render details view with clic
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -1127,7 +1140,7 @@ exports[`StoreAddressTile component Details should render details view with clic
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -1326,6 +1339,7 @@ exports[`StoreAddressTile component Details should render details view with clic
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -1338,6 +1352,7 @@ exports[`StoreAddressTile component Details should render details view with clic
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -1396,11 +1411,20 @@ exports[`StoreAddressTile component Details should render details view with fav 
     <div
       className="store-details-header"
     >
-      <h4
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h4>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
@@ -1542,7 +1566,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -1576,7 +1600,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -1600,9 +1624,9 @@ exports[`StoreAddressTile component Details should render details view with fav 
         >
           <styled.div>
             <Styled(Image)
-              alt="Your Store"
+              alt=""
               className="favorite-store-icon"
-              src="/static/images/star.png"
+              src="/static/version-not-available/images/star.png"
               title="Your Store"
             />
             <Styled(BodyCopy)
@@ -1798,6 +1822,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -1858,11 +1883,20 @@ exports[`StoreAddressTile component Details should render details view with set 
     <div
       className="store-details-header"
     >
-      <h4
+      <Styled(BodyCopy)
         className="store-name store-name--details"
+        color="text.primary"
+        component="h1"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         86th Street - 3rd Ave.
-      </h4>
+      </Styled(BodyCopy)>
     </div>
   </styled.div>
   <styled.div
@@ -2004,7 +2038,7 @@ exports[`StoreAddressTile component Details should render details view with set 
             <Styled(Image)
               alt="Retail Store"
               className="store-type__marker"
-              src="/static/images/marker-icon.png"
+              src="/static/version-not-available/images/marker-icon.png"
               title="Retail Store"
             />
             <Styled(BodyCopy)
@@ -2038,7 +2072,7 @@ exports[`StoreAddressTile component Details should render details view with set 
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -2237,6 +2271,7 @@ exports[`StoreAddressTile component Details should render details view with set 
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="Get Directions for 86th Street - 3rd Ave."
         buttonVariation="fixed-width"
         fill="BLUE"
         onClick={[Function]}
@@ -2249,6 +2284,7 @@ exports[`StoreAddressTile component Details should render details view with set 
       className="tile-footer__fullwidth"
     >
       <Styled(Button)
+        aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
         buttonVariation="fixed-width"
         data-locator="set-favorite-store"
         onClick={[Function]}
@@ -2312,6 +2348,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
           </Styled(BodyCopy)>
           <Connect(Component)
             anchorVariation="primary"
+            aria-label="86th Street - 3rd Ave. Get Directions"
             as={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
@@ -2417,7 +2454,6 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
             }
             fontSizeVariation="medium"
             target="_blank"
-            title="Get Directions"
             underline={true}
             url="[object Object]"
           >
@@ -2518,7 +2554,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
           <Styled(Image)
             alt="Gymboree"
             className="brand-store__image"
-            src="/static/images/gymboree-logo.svg"
+            src="/static/version-not-available/images/gymboree-logo.svg"
             title="Gymboree Store"
           />
           <Styled(BodyCopy)
@@ -2557,7 +2593,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
         <Styled(Image)
           alt="Gymboree"
           className="brand-store__image"
-          src="/static/images/gymboree-logo.svg"
+          src="/static/version-not-available/images/gymboree-logo.svg"
           title="Gymboree Store"
         />
         <Styled(BodyCopy)
@@ -2577,12 +2613,12 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
       </Styled(BodyCopy)>
       <Styled(Anchor)
         anchorVariation="primary"
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
@@ -2676,6 +2712,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
         </Styled(BodyCopy)>
         <Connect(Component)
           anchorVariation="primary"
+          aria-label="86th Street - 3rd Ave. Get Directions"
           as={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -2781,7 +2818,6 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
           }
           fontSizeVariation="medium"
           target="_blank"
-          title="Get Directions"
           underline={true}
           url="[object Object]"
         >
@@ -3077,239 +3113,34 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
     variation="listing"
   >
     <div>
-      <Connect(Component)
+      <Styled(Anchor)
         anchorVariation="primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event80,event96",
-            ],
-          }
-        }
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
-        Store Details
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
     </div>
     <div>
       <Connect(Component)
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  border: none;
-  border-radius: 0;
-  background: none;
-  position: relative;
-  cursor: ",
-                [Function],
-                ";
-  opacity: ",
-                [Function],
-                ";
-  text-transform: uppercase;
-  min-height: 42px;
-  letter-spacing: 0.93px;
-  font-size: ",
-                [Function],
-                ";
-  color: ",
-                [Function],
-                "
-  ",
-                [Function],
-                "
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  &:focus {
-    background: ",
-                [Function],
-                ";
-  }
-  &:hover:not[disabled] {
-    background: ",
-                [Function],
-                ";
-  }
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                "
-
-  @media ",
-                [Function],
-                " {
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-  }
-  ",
-                [Function],
-                "
-
-  ",
-                [Function],
-                "
-      ",
-                [Function],
-                ";
-      ",
-                [Function],
-                ";
-
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Button)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        buttonVariation="fixed-width"
         clickData={
           Object {
             "customEvents": Array [
@@ -3317,11 +3148,16 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
             ],
           }
         }
-        data-locator="set-favorite-store"
-        onClick={[Function]}
-        type="button"
       >
-        SET AS FAVORITE
+        <Styled(Button)
+          aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
+          buttonVariation="fixed-width"
+          data-locator="set-favorite-store"
+          onClick={[Function]}
+          type="button"
+        >
+          SET AS FAVORITE
+        </Styled(Button)>
       </Connect(Component)>
     </div>
   </styled.div>
@@ -3412,6 +3248,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
         </Styled(BodyCopy)>
         <Connect(Component)
           anchorVariation="primary"
+          aria-label="86th Street - 3rd Ave. Get Directions"
           as={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -3517,7 +3354,6 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
           }
           fontSizeVariation="medium"
           target="_blank"
-          title="Get Directions"
           underline={true}
           url="[object Object]"
         >
@@ -3650,7 +3486,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -3846,239 +3682,34 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
     variation="listing"
   >
     <div>
-      <Connect(Component)
+      <Styled(Anchor)
         anchorVariation="primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event80,event96",
-            ],
-          }
-        }
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
-        Store Details
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
     </div>
     <div>
       <Connect(Component)
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  border: none;
-  border-radius: 0;
-  background: none;
-  position: relative;
-  cursor: ",
-                [Function],
-                ";
-  opacity: ",
-                [Function],
-                ";
-  text-transform: uppercase;
-  min-height: 42px;
-  letter-spacing: 0.93px;
-  font-size: ",
-                [Function],
-                ";
-  color: ",
-                [Function],
-                "
-  ",
-                [Function],
-                "
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  &:focus {
-    background: ",
-                [Function],
-                ";
-  }
-  &:hover:not[disabled] {
-    background: ",
-                [Function],
-                ";
-  }
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                "
-
-  @media ",
-                [Function],
-                " {
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-  }
-  ",
-                [Function],
-                "
-
-  ",
-                [Function],
-                "
-      ",
-                [Function],
-                ";
-      ",
-                [Function],
-                ";
-
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Button)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        buttonVariation="fixed-width"
         clickData={
           Object {
             "customEvents": Array [
@@ -4086,11 +3717,16 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
             ],
           }
         }
-        data-locator="set-favorite-store"
-        onClick={[Function]}
-        type="button"
       >
-        SET AS FAVORITE
+        <Styled(Button)
+          aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
+          buttonVariation="fixed-width"
+          data-locator="set-favorite-store"
+          onClick={[Function]}
+          type="button"
+        >
+          SET AS FAVORITE
+        </Styled(Button)>
       </Connect(Component)>
     </div>
   </styled.div>
@@ -4182,6 +3818,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
         </Styled(BodyCopy)>
         <Connect(Component)
           anchorVariation="primary"
+          aria-label="86th Street - 3rd Ave. Get Directions"
           as={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -4287,7 +3924,6 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
           }
           fontSizeVariation="medium"
           target="_blank"
-          title="Get Directions"
           underline={true}
           url="[object Object]"
         >
@@ -4420,7 +4056,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -4616,128 +4252,38 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
     variation="listing"
   >
     <div>
-      <Connect(Component)
+      <Styled(Anchor)
         anchorVariation="primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event80,event96",
-            ],
-          }
-        }
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
-        Store Details
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
     </div>
     <div>
       <styled.div>
         <Styled(Image)
-          alt="Your Store"
+          alt=""
           className="favorite-store-icon"
-          src="/static/images/star.png"
+          src="/static/version-not-available/images/star.png"
           title="Your Store"
         />
         <Styled(BodyCopy)
@@ -4831,6 +4377,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       >
         <Connect(Component)
           anchorVariation="primary"
+          aria-label="86th Street - 3rd Ave. Get Directions"
           as={
             Object {
               "$$typeof": Symbol(react.forward_ref),
@@ -4936,7 +4483,6 @@ exports[`StoreAddressTile component Listing should render listing view with inde
           }
           fontSizeVariation="medium"
           target="_blank"
-          title="Get Directions"
           underline={true}
           url="[object Object]"
         >
@@ -5069,7 +4615,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
             <Styled(Image)
               alt="Gymboree"
               className="brand-store__image"
-              src="/static/images/gymboree-logo.svg"
+              src="/static/version-not-available/images/gymboree-logo.svg"
               title="Gymboree Store"
             />
             <Styled(BodyCopy)
@@ -5174,239 +4720,34 @@ exports[`StoreAddressTile component Listing should render listing view with inde
     variation="listing"
   >
     <div>
-      <Connect(Component)
+      <Styled(Anchor)
         anchorVariation="primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bdVaJa",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  font-family: ",
-                [Function],
-                ";
-  color: inherit;
-
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  .left-arrow {
-    border: solid ",
-                [Function],
-                ";
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 5px;
-    transform: rotate(135deg);
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Anchor)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bdVaJa",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+        aria-label="86th Street - 3rd Ave. Store Details"
         className="store-details-link"
-        clickData={
-          Object {
-            "customEvents": Array [
-              "event80,event96",
-            ],
-          }
-        }
         fontSizeVariation="medium"
         handleLinkClick={[Function]}
         noLink={true}
         target="_blank"
-        title="Store Details"
         to="/undefined/store/86thstreet-3rdave.-ny-brooklyn-11201-110850"
         underline={true}
       >
-        Store Details
-      </Connect(Component)>
+        <Connect(Component)
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event80,event96",
+              ],
+              "eVar28": "outfit:2625899",
+              "eVar65": "companyinfo:companyinfo",
+            }
+          }
+        >
+          Store Details
+        </Connect(Component)>
+      </Styled(Anchor)>
     </div>
     <div>
       <Connect(Component)
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  border: none;
-  border-radius: 0;
-  background: none;
-  position: relative;
-  cursor: ",
-                [Function],
-                ";
-  opacity: ",
-                [Function],
-                ";
-  text-transform: uppercase;
-  min-height: 42px;
-  letter-spacing: 0.93px;
-  font-size: ",
-                [Function],
-                ";
-  color: ",
-                [Function],
-                "
-  ",
-                [Function],
-                "
-  ",
-                [Function],
-                ";
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  &:focus {
-    background: ",
-                [Function],
-                ";
-  }
-  &:hover:not[disabled] {
-    background: ",
-                [Function],
-                ";
-  }
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                ";
-
-  ",
-                [Function],
-                "
-
-  @media ",
-                [Function],
-                " {
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-  }
-  ",
-                [Function],
-                "
-
-  ",
-                [Function],
-                "
-      ",
-                [Function],
-                ";
-      ",
-                [Function],
-                ";
-
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Button)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        buttonVariation="fixed-width"
         clickData={
           Object {
             "customEvents": Array [
@@ -5414,11 +4755,16 @@ exports[`StoreAddressTile component Listing should render listing view with inde
             ],
           }
         }
-        data-locator="set-favorite-store"
-        onClick={[Function]}
-        type="button"
       >
-        SET AS FAVORITE
+        <Styled(Button)
+          aria-label="86th Street - 3rd Ave. SET AS FAVORITE"
+          buttonVariation="fixed-width"
+          data-locator="set-favorite-store"
+          onClick={[Function]}
+          type="button"
+        >
+          SET AS FAVORITE
+        </Styled(Button)>
       </Connect(Component)>
     </div>
   </styled.div>

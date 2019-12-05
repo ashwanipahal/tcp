@@ -1,5 +1,10 @@
 import { submit } from 'redux-form';
-import { setClickAnalyticsData, trackClick, updatePageData } from '@tcp/core/src/analytics/actions';
+import {
+  setClickAnalyticsData,
+  trackClick,
+  updatePageData,
+  trackPageView,
+} from '@tcp/core/src/analytics/actions';
 import CHECKOUT_ACTIONS, {
   submitShippingSection,
   submitPickupSection,
@@ -32,8 +37,8 @@ import selectors, {
   getPageData,
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+import BillingSectionSelectors from '../organisms/ReviewPage/organisms/BillingSection/container/BillingSection.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
-import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
   getUserPhoneNumber,
   getIsRegisteredUserCallDone,
@@ -57,7 +62,6 @@ const {
   getShippingPhoneNo,
   getIsOrderHasPickup,
   getIsOrderHasShipping,
-  getBillingLabels,
   getEmailSignUpLabels,
   getShipmentMethods,
   getDefaultShipmentID,
@@ -72,9 +76,7 @@ const {
   getSyncError,
   getGiftWrappingValues,
   getReviewLabels,
-  getBillingValues,
   getShippingPhoneAndEmail,
-  getCreditFieldLabels,
   getShipmentLoadingStatus,
   getCurrentCheckoutStage,
   getShippingAddressList,
@@ -190,6 +192,13 @@ export const mapDispatchToProps = dispatch => {
     cartLoading: () => {
       dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
     },
+    trackPageViewCheckout: payload => {
+      dispatch(trackPageView(payload));
+    },
+    resetCartCheckoutData: () => {
+      dispatch(CHECKOUT_ACTIONS.resetCheckoutReducer());
+      dispatch(BAG_PAGE_ACTIONS.resetCartReducer());
+    },
     dispatch,
   };
 };
@@ -238,15 +247,6 @@ export const mapStateToProps = state => {
       bagLoading: BagPageSelector.isBagLoading(state),
       hasSetGiftOptions,
     },
-    billingProps: {
-      labels: getBillingLabels(state),
-      shippingAddress: getShippingAddress(state),
-      billingData: getBillingValues(state),
-      userAddresses: getAddressListState(state),
-      creditFieldLabels: getCreditFieldLabels(state),
-      isFetching: getCardListFetchingState(state),
-      bagLoading: BagPageSelector.isBagLoading(state),
-    },
     activeStep: getCheckoutStage(state),
     //  isPlccOfferModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccPromoModalId,
     // isPlccFormModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccFormModalId,
@@ -276,7 +276,6 @@ export const mapStateToProps = state => {
       defaultShipmentId: getDefaultShipmentID(state),
       cardType: selectors.getCardType(state),
       isFetching: getCardListFetchingState(state),
-      bagLoading: BagPageSelector.isBagLoading(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
     getPayPalSettings: selectors.getPayPalSettings(state),
@@ -297,6 +296,12 @@ export const mapStateToProps = state => {
     subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
     isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
     isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
+    currentOrderId: selectors.getCurrentOrderId(state),
+    paymentMethodId: BagPageSelector.getBillingPaymentMethod(state),
+    orderSubTotal: BagPageSelector.getOrderSubTotal(state),
+    billingAddress: selectors.getBillingAddressFields(state),
+    titleLabel: BillingSectionSelectors.getReviewPageLabels(state),
+    initShippingPage: selectors.getShippingInitialSectionValues(state),
   };
 };
 

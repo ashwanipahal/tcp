@@ -147,8 +147,8 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
           carouselConfig={
             Object {
               "arrow": "small",
-              "customArrowLeft": "/static/images/smallright.svg",
-              "customArrowRight": "/static/images/smallright.svg",
+              "customArrowLeft": "/static/version-not-available/images/smallright.svg",
+              "customArrowRight": "/static/version-not-available/images/smallright.svg",
               "type": "light",
             }
           }
@@ -376,7 +376,6 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
     heading="Help Modal"
     labels={Object {}}
     onRequestClose={[Function]}
-    openState={false}
   />
 </Fragment>
 `;

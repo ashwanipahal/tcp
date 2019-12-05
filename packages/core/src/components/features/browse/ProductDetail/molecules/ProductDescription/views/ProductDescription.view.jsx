@@ -6,6 +6,7 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../ProductDescription.style';
 import { getLocator } from '../../../../../../../utils';
+import { getMapSliceForColor } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class ProductDetailDescription extends React.PureComponent {
   constructor(props) {
@@ -28,7 +29,7 @@ class ProductDetailDescription extends React.PureComponent {
     let generalProductId = '';
     let pageName = '';
     let pageShortName = '';
-    const productName = productInfo && productInfo.name.toLowerCase();
+    const productName = productInfo && productInfo.name && productInfo.name.toLowerCase();
     if (productId) {
       generalProductId = productId && productId.split('_')[0];
       pageName = `product:${generalProductId}:${productName}`;
@@ -100,13 +101,17 @@ class ProductDetailDescription extends React.PureComponent {
   }
 
   render() {
-    const { longDescription, productId, shortDescription, className, pdpLabels } = this.props;
+    const { longDescription, shortDescription, className, pdpLabels, color } = this.props;
+    const {
+      productInfo: { colorFitsSizesMap },
+    } = this.props;
     const { ProductDescription, ClaimMessage, PartNumber } = pdpLabels;
     const { isExpanded, isAccordionOpen, isShowMore } = this.state;
     const descAvail = this.getDescAvailable(shortDescription, longDescription);
     const getButton = this.getButton();
     const accordionToggleClass = this.getAccordionClass(isAccordionOpen);
     const claimMessageClass = this.getClaimMessageClass(!!descAvail);
+    const colorSlice = getMapSliceForColor(colorFitsSizesMap, color);
 
     return (
       <div className={`${className} product-description-list`}>
@@ -170,7 +175,7 @@ class ProductDetailDescription extends React.PureComponent {
                   data-locator={getLocator('pdp_product_part_number')}
                 >
                   {PartNumber}
-                  {productId}
+                  {colorSlice && colorSlice.colorDisplayId}
                 </BodyCopy>
               </div>
             )}
@@ -182,7 +187,7 @@ class ProductDetailDescription extends React.PureComponent {
                 data-locator={getLocator('pdp_product_part_number')}
               >
                 {PartNumber}
-                {productId}
+                {colorSlice && colorSlice.colorDisplayId}
               </BodyCopy>
             )}
           </div>
@@ -198,8 +203,9 @@ ProductDetailDescription.propTypes = {
   isShowMore: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
+  color: PropTypes.string,
   shortDescription: PropTypes.string,
-  productInfo: PropTypes.string,
+  productInfo: PropTypes.shape({}),
 };
 
 ProductDetailDescription.defaultProps = {
@@ -209,7 +215,8 @@ ProductDetailDescription.defaultProps = {
   productId: '',
   pdpLabels: {},
   shortDescription: '',
-  productInfo: '',
+  productInfo: {},
+  color: '',
 };
 
 export default withStyles(errorBoundary(ProductDetailDescription), style);

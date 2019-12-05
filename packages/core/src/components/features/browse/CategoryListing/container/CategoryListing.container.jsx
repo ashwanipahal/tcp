@@ -4,7 +4,8 @@ import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import CategoryListing from './views/CategoryListing';
 import { getCategoryIds, getImagesGrids, getSeoText, getCategoryName } from '../utils/utility';
-import { getLabels } from './CategoryListing.selectors';
+import { getLabels, getBreadCrumbTrail } from './CategoryListing.selectors';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 
 export class CategoryListingContainer extends PureComponent {
   static getInitialProps = async ({ props }) => {
@@ -38,8 +39,13 @@ export class CategoryListingContainer extends PureComponent {
       router: { asPath },
     } = this.props;
 
-    const categoryListingSlots =
-      (layouts[getCategoryName(asPath)] && layouts[getCategoryName(asPath)].slots) || [];
+    const categoryName =
+      getCategoryName(asPath) &&
+      getCategoryName(asPath).replace(/-([a-z])/g, g => {
+        return g && g[1] && g[1].toUpperCase();
+      });
+
+    const categoryListingSlots = (layouts[categoryName] && layouts[categoryName].slots) || [];
 
     const categoryIds = getCategoryIds(categoryListingSlots);
     const categoryPromoModules = getImagesGrids(categoryIds, Modules);
@@ -63,12 +69,40 @@ const mapStateToProps = state => {
     Modules: state.Modules || {},
     navigationData: (state.Navigation && state.Navigation.navigationData) || [],
     labels: getLabels(state),
+    breadCrumbTrail: getBreadCrumbTrail(state),
   };
 };
 
 export const mapDispatchToProps = dispatch => ({
   getLayout: (pageName, layoutName) =>
     dispatch(fetchPageLayout(pageName, layoutName, { clpPage: true })),
+  trackPageLoad: payload => {
+    const { products, customEvents } = payload;
+    dispatch(
+      setClickAnalyticsData({
+        products,
+        customEvents,
+      })
+    );
+    setTimeout(() => {
+      dispatch(
+        trackPageView({
+          props: {
+            initialProps: {
+              pageProps: {
+                pageData: {
+                  ...payload,
+                },
+              },
+            },
+          },
+        })
+      );
+      setTimeout(() => {
+        dispatch(setClickAnalyticsData({}));
+      }, 200);
+    }, 100);
+  },
 });
 
 CategoryListingContainer.propTypes = {

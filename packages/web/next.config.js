@@ -4,7 +4,9 @@ const withTM = require('next-transpile-modules');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const withSourceMaps = require('@zeit/next-source-maps');
 const nextBuildId = require('next-build-id');
+const withProgressBar = require('next-progressbar');
 const path = require('path');
+const webpack = require('webpack');
 
 const isProductionBuild = process.env.NODE_ENV === 'production';
 const isSourceMapsEnabled = process.env.SOURCE_MAPS_ENABLED === 'true';
@@ -27,12 +29,17 @@ let buildConfig = withTM({
     ANALYTICS_SCRIPT_URL:
       '//assets.adobedtm.com/launch-EN2ad1a963f240455f9fff064520345530-development.min.js',
   },
-  webpack(config, { isServer }) {
+  webpack(config, { buildId, isServer }) {
     const newConfig = config;
     newConfig.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
+    newConfig.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.NEXT_BUILD_ID': JSON.stringify(buildId),
+      })
+    );
     newConfig.module.rules.forEach(rule => {
       const newRule = rule;
       if (newRule.use && newRule.use.loader === 'next-babel-loader') {
@@ -90,6 +97,10 @@ if (isAnalyzeBundles) {
     },
     ...buildConfig,
   });
+}
+
+if (!isProductionBuild) {
+  buildConfig = withProgressBar({ ...buildConfig });
 }
 
 module.exports = buildConfig;

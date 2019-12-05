@@ -26,8 +26,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
     carouselConfig={
       Object {
         "autoplay": false,
-        "customArrowLeft": "/static/images/right-carousel-carrot.svg",
-        "customArrowRight": "/static/images/right-carousel-carrot.svg",
+        "customArrowLeft": "/static/version-not-available/images/right-carousel-carrot.svg",
+        "customArrowRight": "/static/version-not-available/images/right-carousel-carrot.svg",
       }
     }
     className="carousel-item"
@@ -136,8 +136,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -158,8 +159,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -180,8 +182,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -202,8 +205,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -224,8 +228,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -243,8 +248,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               </ForwardRef>
             </div>
             <ForwardRef
+              alt=""
               className="style1 plus-icon"
-              src="/static/images/plus.png"
+              src="/static/version-not-available/images/plus.png"
             />
           </div>
           <ForwardRef
@@ -330,8 +336,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -352,8 +359,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -374,8 +382,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -396,8 +405,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -418,8 +428,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -437,8 +448,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               </ForwardRef>
             </div>
             <ForwardRef
+              alt=""
               className="style1 plus-icon"
-              src="/static/images/plus.png"
+              src="/static/version-not-available/images/plus.png"
             />
           </div>
           <ForwardRef
@@ -524,8 +536,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -546,8 +559,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -568,8 +582,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -590,8 +605,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -612,8 +628,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               className="text-line"
             >
               <ForwardRef
+                alt=""
                 className="done-button"
-                src="/static/images/confirmation_check.svg"
+                src="/static/version-not-available/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -631,8 +648,9 @@ exports[`JeanModule component should default variant correctly 1`] = `
               </ForwardRef>
             </div>
             <ForwardRef
+              alt=""
               className="style1 plus-icon"
-              src="/static/images/plus.png"
+              src="/static/version-not-available/images/plus.png"
             />
           </div>
           <ForwardRef

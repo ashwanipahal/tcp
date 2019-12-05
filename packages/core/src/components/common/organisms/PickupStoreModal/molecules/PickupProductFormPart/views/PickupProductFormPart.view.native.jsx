@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import { PRODUCT_VALUES, EDIT, PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
 import { BOPIS_PRODUCT_INFO_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 import withStyles from '../../../../../hoc/withStyles';
@@ -8,11 +9,13 @@ import styles, {
   Container,
   OfferPriceAndBadge3Container,
   OfferPriceAndBadge2Container,
+  PromotionalMsgContainer,
   InnerContainer,
   ModalButton,
 } from '../styles/PickupProductFormPart.style.native';
 import ImageComp from '../../../../../atoms/Image';
 import Anchor from '../../../../../atoms/Anchor';
+import { getPromotionalMessage } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/utility';
 
 class PickupProductFormPart extends React.PureComponent {
   static propTypes = {
@@ -26,11 +29,17 @@ class PickupProductFormPart extends React.PureComponent {
     listPrice: PropTypes.string.isRequired,
 
     offerPrice: PropTypes.string.isRequired,
+    promotionalMessage: PropTypes.string,
+    promotionalPLCCMessage: PropTypes.string,
+    isHasPlcc: PropTypes.bool,
   };
 
   static defaultProps = {
     isPickUpWarningModal: false,
     currencySym: '$',
+    promotionalMessage: '',
+    promotionalPLCCMessage: '',
+    isHasPlcc: false,
   };
 
   renderProductValues = initialValues => {
@@ -60,6 +69,9 @@ class PickupProductFormPart extends React.PureComponent {
       currencySym,
       listPrice,
       offerPrice,
+      promotionalMessage,
+      promotionalPLCCMessage,
+      isHasPlcc,
     } = this.props;
 
     const style = { width: 40 };
@@ -182,6 +194,20 @@ class PickupProductFormPart extends React.PureComponent {
             )}
           </InnerContainer>
         </OfferPriceAndBadge2Container>
+        {!!promotionalMessage && (
+          <PromotionalMsgContainer>
+            <PromotionalMessage
+              text={getPromotionalMessage(isHasPlcc, {
+                promotionalMessage,
+                promotionalPLCCMessage,
+              })}
+              height="24px"
+              fontSize="fs14"
+              marginTop={12}
+              isFullMessage
+            />
+          </PromotionalMsgContainer>
+        )}
       </Container>
     );
   }

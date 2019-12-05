@@ -21,9 +21,10 @@ const renderArrowIcon = hasSubCategories => {
 };
 
 const renderLabel = (classForRedContent, promoBadge, name) => {
+  const labelToPrint = name;
   return (
     <span className={`nav-bar-item-label ${classForRedContent} ${!promoBadge ? 'full-width' : ''}`}>
-      {name}
+      {labelToPrint}
     </span>
   );
 };

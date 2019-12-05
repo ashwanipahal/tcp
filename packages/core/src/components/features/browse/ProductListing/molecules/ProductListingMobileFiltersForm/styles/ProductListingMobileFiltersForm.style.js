@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 export default css`
   &.available-filters-sorting-container {
@@ -242,6 +243,7 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       width: 31%;
+      margin-right: 10px;
     }
   }
 
@@ -258,10 +260,10 @@ export default css`
   }
 
   li.item-common.size-detail-chips:nth-child(2n) {
-    margin-right: 0;
+    margin-right: 4px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-right: inherit;
+      margin-right: 10px;
     }
   }
 
@@ -381,27 +383,27 @@ export default css`
   }
 
   .open-filter-button {
-    background: url('/static/images/carrot-small-up.png') no-repeat;
+    background: url(${getIconPath('up_arrow_icons')}) no-repeat;
     background-position: 95% 18px;
     background-color: #eeeeee;
     font-size: ${props => props.theme.typography.fontSizes.fs16};
 
     &.open-filter-button-expanded {
-      background: url('/static/images/carrot-small-down.png') no-repeat;
+      background: url(${getIconPath('down_arrow_icon')}) no-repeat;
       background-position: 95% 18px;
 
       &:hover:not([disabled]) {
-        background: url('/static/images/carrot-small-down.png') no-repeat;
+        background: url(${getIconPath('down_arrow_icon')}) no-repeat;
         background-position: 95% 18px;
         background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
       }
     }
+  }
 
-    &:hover:not([disabled]) {
-      background: url(/static/images/carrot-small-up.png) no-repeat;
-      background-position: 95% 18px;
-      background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-    }
+  .open-filter-button.close-filter-button {
+    background: url(${getIconPath('down_arrow_icon')}) no-repeat;
+    background-position: 95% 18px;
+    background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   }
 `;
 

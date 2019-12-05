@@ -222,11 +222,11 @@
       "value": "d248ac8ed345ce5d29c9a6a3791db213"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_TCP",
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_ES_TCP",
       "value": "dev1-sp-childrensplace-com800681562071964"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_US_SP_TCP",
+      "name": "RWD_APP_UNBXD_API_KEY_US_ES_TCP",
       "value": "ceda813aeaf523b6a80c2d0d15276445"
     },
     {
@@ -254,11 +254,11 @@
       "value": "4c26a092be20e0a237b91e51087453fa"
     },
     {
-      "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_GYM",
+      "name": "RWD_APP_UNBXD_SITE_KEY_US_ES_GYM",
       "value": "dev1-sp-gymboree-com800681562072181"
     },
     {
-      "name": "RWD_APP_UNBXD_API_KEY_US_SP_GYM",
+      "name": "RWD_APP_UNBXD_API_KEY_US_ES_GYM",
       "value": "430282734ccd287f6bc91a5f9a73b482"
     },
     {
@@ -332,6 +332,42 @@
     {
       "name": "RWD_APP_STYLITICS_REGION_GYM",
       "value": ""
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_TCP",
+      "value": "https://test5.childrensplace.com"
+    },
+    {
+      "name": "RWD_WEB_APP_DOMAIN_GYM",
+      "value": "https://test5.gymboree.com"
+    },
+    {
+      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_TCP",
+      "value": "true"
+    },
+    {
+      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
+      "value": "true"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_TCP",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_GYM",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_URL",
+      "value": "https://stg.api.bazaarvoice.com"
+    },
+    {
+      "name": "RWD_APP_BV_WEB_VIEW_URL",
+      "value": "https://test5.gymboree.com/static/bazaarVoice/index.html"
+    },
+    {
+      "name": "RWD_APP_BV_SHARED_KEY",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -347,7 +383,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "f315f5a5-24c8-4d46-a3a4-d9723e23e126"
+        "f3d3256d-5487-465b-a56e-18bb8a33d74a"
       ],
       "isSilent": false
     },
@@ -360,8 +396,8 @@
       "certificatePassword": "__protected__",
       "certificateFilename": "Dist-Certificates.p12",
       "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
-      "certificateFileId": "4a99762d-6cfa-49c4-bbb2-4ae66abf5ed8",
-      "provisioningProfileFileId": "e880b7bf-3a12-455e-98cf-d8226f597d48",
+      "certificateFileId": "947ca184-cfe9-4d29-b6d2-c5e6b9b87c70",
+      "provisioningProfileFileId": "947ad9b8-a1e6-4916-a6bd-be13b70b5a7a",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "gymboree_preview",

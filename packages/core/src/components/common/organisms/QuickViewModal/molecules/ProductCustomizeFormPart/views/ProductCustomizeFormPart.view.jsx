@@ -19,6 +19,11 @@ import {
   getProductListToPath,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+const handleFormSubmit = (fromBagPage, handleUpdateItem, handleAddToBag, isFavoriteEdit) => {
+  const updateAddedItem = fromBagPage || isFavoriteEdit;
+  return updateAddedItem ? handleUpdateItem : handleAddToBag;
+};
+
 const ProductCustomizeFormPart = props => {
   const {
     className,
@@ -47,8 +52,8 @@ const ProductCustomizeFormPart = props => {
     productInfoFromBag,
     quickViewColorSwatchesCss,
     onCloseClick,
-    alternateSizes,
     isGiftCard,
+    isFavoriteEdit,
     ...otherProps
   } = props;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
@@ -62,7 +67,7 @@ const ProductCustomizeFormPart = props => {
     ...prices,
     isCanada,
     inheritedStyles: customPriceStyles,
-    customFonts: { listPriceFont: 'fs14' },
+    customFonts: { listPriceFont: 'fs14', offerPriceFont: 'fs22' },
     isPlcc: isHasPlcc,
     isInternationalShipping,
   };
@@ -157,7 +162,12 @@ const ProductCustomizeFormPart = props => {
               plpLabels={plpLabels}
               currentProduct={productInfo}
               errorOnHandleSubmit={addToBagError}
-              handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
+              handleFormSubmit={handleFormSubmit(
+                fromBagPage,
+                handleUpdateItem,
+                handleAddToBag,
+                isFavoriteEdit
+              )}
               fromBagPage={fromBagPage}
               productInfoFromBag={productInfoFromBag}
               customSubmitButtonStyle={customSubmitButtonStyle}
@@ -166,8 +176,10 @@ const ProductCustomizeFormPart = props => {
               formEnabled={formEnabled}
               quickViewColorSwatchesCss={quickViewColorSwatchesCss}
               onCloseClick={onCloseClick}
-              alternateSizes={alternateSizes}
               sizeChartLinkVisibility={sizeChartLinkVisibility}
+              isFavoriteEdit={isFavoriteEdit}
+              isMultiItemQVModal={isMultiItemQVModal}
+              hideAlternateSizes
             />
           </div>
         </div>
@@ -196,7 +208,7 @@ ProductCustomizeFormPart.propTypes = {
   isHasPlcc: PropTypes.bool,
   addToBagError: PropTypes.string,
   imageUrl: PropTypes.string,
-  currentColorEntry: PropTypes.func,
+  currentColorEntry: PropTypes.shape({}),
   goToPDPPage: PropTypes.func,
   colorFitsSizesMap: COLOR_FITS_SIZES_MAP_PROP_TYPE.isRequired,
   formRef: PropTypes.shape({}).isRequired,
@@ -206,8 +218,8 @@ ProductCustomizeFormPart.propTypes = {
   quickViewColorSwatchesCss: PropTypes.string,
   productInfoFromBag: PropTypes.shape({}).isRequired,
   onCloseClick: PropTypes.func,
-  alternateSizes: PropTypes.shape({}),
   isGiftCard: PropTypes.bool,
+  isFavoriteEdit: PropTypes.bool,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -217,14 +229,14 @@ ProductCustomizeFormPart.defaultProps = {
   isCanada: false,
   isHasPlcc: false,
   isInternationalShipping: false,
-  currentColorEntry: () => {},
+  currentColorEntry: {},
   goToPDPPage: () => {},
   addToBagError: '',
   imageUrl: '',
   quickViewColorSwatchesCss: '',
   onCloseClick: () => {},
-  alternateSizes: {},
   isGiftCard: false,
+  isFavoriteEdit: false,
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

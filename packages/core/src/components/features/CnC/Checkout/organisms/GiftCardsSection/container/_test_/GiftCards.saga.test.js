@@ -1,4 +1,4 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, call } from 'redux-saga/effects';
 import {
   GiftCardsSaga,
   applyGiftCard,
@@ -6,7 +6,7 @@ import {
   addGiftCardFromBilling,
 } from '../GiftCards.saga';
 import GIFTCARD_CONSTANTS from '../../GiftCards.constants';
-import BAG_PAGE_ACTIONS from '../../../../../BagPage/container/BagPage.actions';
+import { getCartDataSaga } from '../../../../../BagPage/container/BagPage.saga';
 
 describe('GiftCards saga', () => {
   it('should return correct takeLatest effect', () => {
@@ -33,15 +33,13 @@ describe('GiftCards saga', () => {
       applyGiftCardGen.next();
       applyGiftCardGen.next();
       expect(applyGiftCardGen.next(response).value).toEqual(
-        put(
-          BAG_PAGE_ACTIONS.getCartData({
-            isRecalculateTaxes: true,
-            excludeCartItems: false,
-            recalcRewards: true,
-            isCheckoutFlow: true,
-            translation: false,
-          })
-        )
+        call(getCartDataSaga, {
+          isRecalculateTaxes: true,
+          excludeCartItems: false,
+          recalcRewards: true,
+          isCheckoutFlow: true,
+          translation: false,
+        })
       );
     });
   });

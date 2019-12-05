@@ -4,14 +4,11 @@ import { ScrollView } from 'react-native';
 import Espot from '@tcp/core/src/components/common/molecules/Espot';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { getLabelValue } from '@tcp/core/src/utils';
-import { UrlHandler } from '../../../../../utils/utils.app';
-import endpoints from '../../common/externalEndpoints';
 import Anchor from '../../../../common/atoms/Anchor';
 import PointsHistoryList from '../../common/organism/PointsHistory';
 import {
   RichTextWrapper,
   StyledAnchorWrapper,
-  AnchorLeftMargin,
 } from '../styles/PointsHistoryPage.view.style.native';
 
 /**
@@ -40,31 +37,6 @@ export const PointsHistoryPageView = props => {
               });
             }}
           />
-        </StyledAnchorWrapper>
-        <StyledAnchorWrapper>
-          <Anchor
-            fontSizeVariation="medium"
-            underline
-            onPress={() => {
-              UrlHandler(endpoints.myPlaceRewardsPage);
-            }}
-            anchorVariation="primary"
-            dataLocator="my-rewards-program-details"
-            text={getLabelValue(labels, 'lbl_points_history_program_details')}
-          />
-          <AnchorLeftMargin>
-            <Anchor
-              fontSizeVariation="medium"
-              underline
-              noLink
-              onPress={() => {
-                UrlHandler(endpoints.termsAndConditionsPage);
-              }}
-              anchorVariation="primary"
-              dataLocator="my-rewards-tnc"
-              text={getLabelValue(labels, 'lbl_common_tnc')}
-            />
-          </AnchorLeftMargin>
         </StyledAnchorWrapper>
       </ViewWithSpacing>
     </ScrollView>

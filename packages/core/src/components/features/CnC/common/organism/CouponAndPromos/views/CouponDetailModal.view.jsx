@@ -69,8 +69,10 @@ class CouponDetailModal extends React.PureComponent<Props> {
             component="div"
             data-locator={`couponDetailModal_${coupon.status}_BarCode`}
             className="couponModal_modalbarcode"
+            aria-label={coupon.id}
+            role="img"
           >
-            <BodyCopy component="div" className="elem-mt-MED elem-mb-MED">
+            <BodyCopy component="div" className="elem-mt-MED elem-mb-MED" aria-hidden>
               <Barcode value={coupon.id} barcodeId={coupon.id} fontSize={24} />
             </BodyCopy>
           </BodyCopy>
@@ -144,7 +146,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
   };
 
   render() {
-    const { openState, onRequestClose, additionalClassNameModal } = this.props;
+    const { openState, coupon, onRequestClose, additionalClassNameModal } = this.props;
     return (
       <Modal
         isOpen={openState}
@@ -152,6 +154,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         heightConfig={{ height: '90%' }}
+        contentLabel={coupon.title}
         closeIconDataLocator="coupondetailmodalcrossicon"
         customWrapperClassName={additionalClassNameModal}
       >

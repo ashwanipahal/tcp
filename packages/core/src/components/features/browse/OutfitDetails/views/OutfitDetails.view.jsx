@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Row, Col, Image, Anchor } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import OutfitDetailsStyle from '../OutfitDetails.style';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct';
 import { routerPush } from '../../../../../utils';
+import PromoPDPBanners from '../../../../common/organisms/PromoPDPBanners';
 
 const routesBack = e => {
   e.preventDefault();
@@ -16,9 +18,29 @@ const routesBack = e => {
   }
 };
 
+const formatProductsData = outfitProducts => {
+  return outfitProducts.map(tile => {
+    const colorName = tile.colorFitsSizesMap.map(productTile => {
+      return productTile.color.name || '';
+    });
+    const productId = tile.generalProductId && tile.generalProductId.split('_')[0];
+    return {
+      colorId: tile.generalProductId,
+      color: colorName,
+      id: productId,
+      outfitId: tile.categoryId,
+      name: tile.name,
+      price: tile.offerPrice,
+      rating: tile.ratings,
+      reviews: tile.reviewsCount,
+    };
+  });
+};
+
 const OutfitDetailsView = ({
   className,
   outfitImageUrl,
+  unavailableCount,
   outfitProducts,
   plpLabels,
   handleAddToBag,
@@ -35,6 +57,11 @@ const OutfitDetailsView = ({
   outfitId,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  asPathVal,
+  topPromos,
+  trackPageLoad,
+  isKeepAliveEnabled,
+  outOfStockLabels,
 }) => {
   const backLabel = labels && labels.lbl_outfit_back;
   const recommendationAttributes = {
@@ -44,11 +71,30 @@ const OutfitDetailsView = ({
     showLoyaltyPromotionMessage: false,
     headerAlignment: 'left',
   };
+
+  useEffect(() => {
+    const productsFormatted = formatProductsData(outfitProducts);
+    if (outfitProducts.length) {
+      trackPageLoad({
+        products: productsFormatted,
+        pageType: 'outfit',
+        pageName: 'outfit',
+        pageSection: 'outfit',
+        pageSubSection: 'outfit',
+        customEvents: ['prodView', 'event62', 'event75', 'event80'],
+      });
+    }
+  }, [outfitProducts.length]);
+
   return (
-    <>
-      <Row className={className}>
+    <div className={className}>
+      <Row>
         <Col
-          colSize={{ small: 6, medium: 8, large: 12 }}
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
           ignoreGutter={{ small: true }}
           className="outfit-back-button"
         >
@@ -64,12 +110,21 @@ const OutfitDetailsView = ({
             {backLabel}
           </Anchor>
         </Col>
+      </Row>
+      {topPromos && topPromos.length > 0 && (
+        <Row>
+          <Col className="promo-area-top" colSize={{ small: 6, medium: 8, large: 12 }}>
+            <PromoPDPBanners promos={topPromos} asPath={asPathVal} />
+          </Col>
+        </Row>
+      )}
+      <Row>
         <Col
           colSize={{ small: 6, medium: 3, large: 5 }}
           ignoreGutter={{ small: true }}
           className="outfit-image"
         >
-          <Image className="promo-area-0" src={outfitImageUrl} />
+          <Image className="promo-area-0" src={outfitImageUrl} alt="" />
         </Col>
         <hr className="outfit-line-break" />
         <Col
@@ -97,9 +152,23 @@ const OutfitDetailsView = ({
                     currencyAttributes={currencyAttributes}
                     AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
                     removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+                    pageName="OUTFIT"
+                    isKeepAliveEnabled={isKeepAliveEnabled}
+                    outOfStockLabels={outOfStockLabels}
                   />
                 </li>
               ))}
+
+            {unavailableCount && (
+              <BodyCopy
+                textAlign="left"
+                fontFamily="secondary"
+                fontSize="fs16"
+                className="elem-mt-MED elem-mb-MED"
+              >
+                {`${unavailableCount} ${labels.lbl_outfit_unavailable}`}
+              </BodyCopy>
+            )}
           </ul>
         </Col>
         <Col
@@ -119,13 +188,14 @@ const OutfitDetailsView = ({
           />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 
 OutfitDetailsView.propTypes = {
   className: PropTypes.string,
   outfitImageUrl: PropTypes.string,
+  unavailableCount: PropTypes.number,
   outfitProducts: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
   addToBagEcom: PropTypes.func.isRequired,
@@ -142,12 +212,18 @@ OutfitDetailsView.propTypes = {
   outfitId: PropTypes.string,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
+  topPromos: PropTypes.string,
+  trackPageLoad: PropTypes.func,
 };
 
 OutfitDetailsView.defaultProps = {
   className: '',
   outfitImageUrl: '',
   outfitProducts: null,
+  unavailableCount: 0,
   plpLabels: {},
   labels: {},
   addToBagError: '',
@@ -158,6 +234,11 @@ OutfitDetailsView.defaultProps = {
   outfitId: '',
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  trackPageLoad: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
+  asPathVal: '',
+  topPromos: '',
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

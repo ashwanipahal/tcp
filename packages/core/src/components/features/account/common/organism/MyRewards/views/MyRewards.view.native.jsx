@@ -26,7 +26,7 @@ import MyRewardsSkeleton from '../skeleton/MyRewardsSkeleton.view.native';
  * Width can vary as per device width.
  */
 const MODULE_HEIGHT = 220;
-const MODULE_WIDTH = getScreenWidth() - 30;
+const MODULE_WIDTH = getScreenWidth() - 20;
 
 /**
  * This Component return the app reawrd tile
@@ -113,7 +113,7 @@ class MyRewards extends PureComponent {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs16"
-              fontWeight="semibold"
+              fontWeight="extrabold"
               className="my-rewards-heading"
               data-locator="my-rewards-heading"
               text={heading}

@@ -81,8 +81,9 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
           target="_blank"
         >
           <Styled(Image)
+            alt=""
             class="elem-pl-XS"
-            src="/static/images/app-store-logo.png"
+            src="/static/version-not-available/images/app-store-logo.png"
           />
         </Styled(Anchor)>
       </Styled(Col)>
@@ -102,8 +103,9 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
           target="_blank"
         >
           <Styled(Image)
+            alt=""
             class="elem-pl-XS"
-            src="/static/images/google-play-badge.svg"
+            src="/static/version-not-available/images/google-play-badge.svg"
           />
         </Styled(Anchor)>
       </Styled(Col)>

@@ -6,8 +6,7 @@ import {
   enableBodyScroll as enableBodyScrollLib,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
-import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -36,6 +35,21 @@ const MONTH_SHORT_FORMAT = {
 const FIXED_HEADER = {
   LG_HEADER: 70,
   SM_HEADER: 60,
+};
+
+export const setSessionStorage = arg => {
+  const { key, value } = arg;
+  if (isClient()) {
+    return window.sessionStorage.setItem(key, value);
+  }
+  return null;
+};
+
+export const getSessionStorage = key => {
+  if (isClient()) {
+    return window.sessionStorage.getItem(key);
+  }
+  return null;
 };
 
 export const importGraphQLClientDynamically = module => {
@@ -286,6 +300,12 @@ export const scrollTopElement = elem => {
   }
 };
 
+export const refreshPage = () => {
+  if (isClient() && window) {
+    window.location.reload();
+  }
+};
+
 /**
  * 2019-11-05: Hotfix PR needed to address issue with this
  * array of countries increasing in size with each call
@@ -314,13 +334,26 @@ export const getCurrenciesMap = data => {
   );
 };
 
-export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
-  if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
-  }
+export const onlyCurrencyChanged = (
+  newCountry,
+  oldCountry,
+  newLanguage,
+  oldLanguage,
+  newCurrency,
+  oldCurrency
+) => {
+  return newCountry === oldCountry && newLanguage === oldLanguage && newCurrency !== oldCurrency;
 };
 
-export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage, oldLanguage) => {
+export const languageRedirect = (
+  newCountry,
+  oldCountry,
+  newSiteId,
+  newLanguage,
+  oldLanguage,
+  newCurrency,
+  oldCurrency
+) => {
   const { protocol, host } = window.location;
   const baseDomain = host.replace(`${oldLanguage}.`, '');
   let hostURL = '';
@@ -342,6 +375,12 @@ export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage,
       newSiteId || getSiteId()
     )}`;
   }
+
+  if (
+    onlyCurrencyChanged(newCountry, oldCountry, newLanguage, oldLanguage, newCurrency, oldCurrency)
+  ) {
+    refreshPage();
+  }
 };
 
 /*
@@ -358,6 +397,10 @@ export const handleGenericKeyDown = (event, key, method) => {
   }
 };
 
+const getBvSharedKey = (processEnv, apiSiteInfo) => {
+  return processEnv.RWD_WEB_BV_SHARED_KEY || apiSiteInfo.BV_SHARED_KEY;
+};
+
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
   const unbxdApiKeyTCP =
@@ -369,6 +412,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
+    BV_SHARED_KEY: getBvSharedKey(processEnv, apiSiteInfo),
     assetHostTCP: processEnv.RWD_WEB_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
@@ -570,10 +614,27 @@ export const scrollToParticularElement = element => {
   }
 };
 
+/**
+ * openWindow - opens a window with the URL and attributes passed in
+ * @param {string} arg url - URL to open,
+ * @param {string} arg target - where to open the new window; defaults to _blank
+ * @param {string} arg attrs - what attributes to pass to window.open; defaults to empty string
+ * @return {Object} Object handle for the new window
+ */
+export const openWindow = (url, target = '_blank', attrs = '') => {
+  let windowAttributes = attrs;
+  if (target === '_blank') {
+    windowAttributes = windowAttributes.concat('noopener');
+  }
+  logger.info(`Opening ${url} in window with target=${target} and attributes=${windowAttributes}`);
+  return window.open(url, target, windowAttributes);
+};
+
 export const getDirections = address => {
   const { addressLine1, city, state, zipCode } = address;
-  return window.open(
-    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+  return openWindow(
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`,
+    '_blank'
   );
 };
 
@@ -664,6 +725,70 @@ export const constructToPath = url => {
   return toPath;
 };
 
+export const createLayoutPath = path =>
+  path &&
+  path.replace(/-([a-z])/g, g => {
+    return g[1].toUpperCase();
+  });
+
+/* Parse query parameters to an object. For instance, string returned from location.search */
+export const getQueryParamsFromUrl = url => {
+  let queryString = url || '';
+  let keyValPairs = [];
+  const params = {};
+  queryString = queryString.replace(/.*?\?/, '');
+
+  if (queryString.length) {
+    keyValPairs = queryString.split('&');
+    const resultingArray = Object.values(keyValPairs);
+
+    resultingArray.filter((item, index) => {
+      const key = item.split('=')[0];
+      if (typeof params[key] === 'undefined') params[key] = [];
+      params[key].push(resultingArray[index].split('=')[1]);
+      return params;
+    });
+  }
+  return params;
+};
+
+/* Returns an array of icid by querying to dom anchor element which has icid on it. */
+export const internalCampaignProductAnalyticsList = () => {
+  const aTags = document.getElementsByTagName('a') || [];
+  const internalCampaignId = 'icid';
+  return Array.prototype.slice
+    .call(aTags)
+    .filter(tag => {
+      return tag.href.indexOf(internalCampaignId) !== -1;
+    })
+    .map(tag => {
+      return getQueryParamsFromUrl(tag.href)[internalCampaignId].join(',');
+    });
+};
+
+/**
+ * Returns data object for PLP and Category List page view. Should be called in client is available.
+ * @param {Array} breadCrumbTrail An array of breadCrumbs which reside in ProductListing State
+ */
+export const getProductListingPageTrackData = (breadCrumbTrail, extras = {}) => {
+  const { isDesktop } = getViewportInfo();
+  const breadCrumbNames = breadCrumbTrail.map(breadCrumb => breadCrumb.displayName.toLowerCase());
+  const pageName = `browse:${breadCrumbNames.join(':')}`;
+  let pageNavigationText = isDesktop ? 'topmenu-' : 'hamburger-';
+  pageNavigationText = `${pageNavigationText}${breadCrumbNames.join('-')}`;
+
+  return {
+    pageName,
+    pageType: 'browse',
+    pageSection: `browse:${breadCrumbNames[0]}`,
+    pageSubSection: pageName,
+    internalCampaignIdList: internalCampaignProductAnalyticsList(),
+    customEvents: ['event91', 'event92', 'event82', 'event80'],
+    pageNavigationText,
+    ...extras,
+  };
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -680,7 +805,6 @@ export default {
   scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
-  siteRedirect,
   languageRedirect,
   handleGenericKeyDown,
   getLocalStorage,
@@ -695,4 +819,8 @@ export default {
   enableBodyScroll,
   disableBodyScroll,
   isAndroidWeb,
+  createLayoutPath,
+  internalCampaignProductAnalyticsList,
+  getQueryParamsFromUrl,
+  getProductListingPageTrackData,
 };

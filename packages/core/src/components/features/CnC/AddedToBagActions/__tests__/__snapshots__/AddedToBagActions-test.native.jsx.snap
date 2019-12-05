@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddedToBagActions native component AddedToBagActions native component renders correctly 1`] = `
-<Styled(View)
-  isPayPalWebViewEnable={false}
->
+<Styled(View)>
   <Styled(View)
     isPayPalWebViewEnable={false}
   >
@@ -25,14 +23,20 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       />
     </Styled(TouchableOpacity)>
   </Styled(View)>
-  <Connect(AddedToBagContainer) />
+  <Connect(AddedToBagContainer)
+    navigation={
+      Object {
+        "state": Object {
+          "routeName": "BagPage",
+        },
+      }
+    }
+  />
 </Styled(View)>
 `;
 
 exports[`AddedToBagActions native component AddedToBagActions renders correctly with Venmo Button 1`] = `
-<Styled(View)
-  isPayPalWebViewEnable={false}
->
+<Styled(View)>
   <Styled(View)
     isPayPalWebViewEnable={false}
   >
@@ -55,13 +59,64 @@ exports[`AddedToBagActions native component AddedToBagActions renders correctly 
     </Styled(TouchableOpacity)>
   </Styled(View)>
   <Styled(View)
-    isPayPalWebViewEnable={false}
+    isBottomGap={false}
   >
-    <Styled(View)
-      isPayPalWebViewEnable={false}
-    >
-      <Styled(TouchableOpacity)
+    <Styled(View)>
+      <Styled(View)
+        isAddedTobag={true}
+      />
+      <Connect(ClickTracker)
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "displayName": "Styled(TouchableOpacity)",
+            "getDefaultProps": [Function],
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+  background: ",
+                [Function],
+                ";
+  display: flex;
+
+  height: 42px;
+  justify-content: center;
+  align-items: center;
+  ",
+                [Function],
+                "
+",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        clickData={
+          Object {
+            "customEvents": Array [
+              "event8",
+            ],
+            "products": Array [],
+          }
+        }
+        isAddedTobag={true}
+        module="checkout"
+        name="checkout_button"
         onPress={[Function]}
+        pageData={
+          Object {
+            "pageName": "shopping bag",
+            "pageSection": "shopping bag",
+            "pageShortName": "shopping bag",
+            "pageSubSection": "shopping bag",
+            "pageSubSubSection": "shopping bag",
+            "pageType": "shopping bag",
+          }
+        }
       >
         <Styled(BodyCopy)
           accessibilityText=""
@@ -75,9 +130,17 @@ exports[`AddedToBagActions native component AddedToBagActions renders correctly 
           text="CHECKOUT"
           textDecoration={null}
         />
-      </Styled(TouchableOpacity)>
+      </Connect(ClickTracker)>
     </Styled(View)>
   </Styled(View)>
-  <Connect(AddedToBagContainer) />
+  <Connect(AddedToBagContainer)
+    navigation={
+      Object {
+        "state": Object {
+          "routeName": "BagPage",
+        },
+      }
+    }
+  />
 </Styled(View)>
 `;

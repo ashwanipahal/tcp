@@ -110,7 +110,7 @@ exports[`Order Basic Details component  should render correctly for Boss order 1
         link={null}
         textAlign="left"
       >
-        02:21am
+        02:21AM
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
@@ -227,7 +227,7 @@ exports[`Order Basic Details component  should render correctly for ECOM order 1
         link={null}
         textAlign="left"
       >
-        02:21am
+        02:21AM
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>

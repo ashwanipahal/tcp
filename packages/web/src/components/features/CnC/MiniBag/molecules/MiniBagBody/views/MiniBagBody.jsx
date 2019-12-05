@@ -29,20 +29,22 @@ class MiniBagBody extends React.PureComponent {
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { addedToBagError } = this.props;
     const { addedToBagError: prevAddedToBagError } = prevProps;
     const { isShowServerError } = this.state;
-    if (!isShowServerError && addedToBagError !== prevAddedToBagError) this.isShowServerError();
+    if (!isShowServerError && addedToBagError !== prevAddedToBagError) this.setisShowServerError();
   }
 
   componentWillUnmount() {
     const { resetSuccessMessage } = this.props;
     resetSuccessMessage(false);
   }
+
   setisShowServerError = () => {
     this.setState({ isShowServerError: true });
   };
+
   setHeaderErrorState = (state, ...params) => {
     this.setState({ headerError: true, params });
   };
@@ -170,6 +172,17 @@ class MiniBagBody extends React.PureComponent {
     );
   };
 
+  handleViewBag = e => {
+    e.preventDefault();
+    const { closeMiniBag } = this.props;
+    const fromMiniBag = true;
+    closeMiniBag();
+    routerPush(
+      `${CHECKOUT_ROUTES.bagPage.to}?fromMiniBag=${fromMiniBag}`,
+      `${CHECKOUT_ROUTES.bagPage.to}`
+    );
+  };
+
   render() {
     const {
       labels,
@@ -197,10 +210,9 @@ class MiniBagBody extends React.PureComponent {
                     fontSizeVariation="medium"
                     underline
                     anchorVariation="primary"
-                    asPath={CHECKOUT_ROUTES.bagPage.asPath}
-                    to={CHECKOUT_ROUTES.bagPage.to}
+                    noLink
                     dataLocator="addressbook-makedefault"
-                    onClick={() => closeMiniBag()}
+                    onClick={e => this.handleViewBag(e)}
                   >
                     {`${labels.viewBag} (${cartItemCount})`}
                   </Anchor>
@@ -212,10 +224,9 @@ class MiniBagBody extends React.PureComponent {
                     fontSizeVariation="medium"
                     underline
                     anchorVariation="primary"
-                    asPath={CHECKOUT_ROUTES.bagPage.asPath}
-                    to={CHECKOUT_ROUTES.bagPage.to}
+                    noLink
                     data-locator="addressbook-makedefault"
-                    onClick={() => closeMiniBag()}
+                    onClick={e => this.handleViewBag(e)}
                   >
                     {`${labels.viewBag} (${cartItemCount})`}
                   </Anchor>
@@ -223,7 +234,7 @@ class MiniBagBody extends React.PureComponent {
                 </BodyCopy>
               )}
             </Col>
-            {headerError && this.getHeaderError(params[0])}
+            {headerError && this.getHeaderError(cartItemCount ? params[0] : this.props)}
             {this.renderGiftCardError()}
           </Row>
         </div>

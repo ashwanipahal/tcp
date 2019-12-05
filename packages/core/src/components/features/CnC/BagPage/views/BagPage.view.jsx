@@ -19,10 +19,8 @@ import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles, recommendationStyles } from '../styles/BagPage.style';
 import BagPageUtils from './Bagpage.utils';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
 import { isClient } from '../../../../../utils';
-import BagPageAnalytics from './BagPageAnalytics.view';
 
 class BagPageView extends React.PureComponent {
   constructor(props) {
@@ -42,7 +40,7 @@ class BagPageView extends React.PureComponent {
     if (isClient()) {
       window.addEventListener('beforeunload', BagPageUtils.onPageUnload);
     }
-    const { setVenmoPaymentInProgress, totalCount, sflItems } = this.props;
+    const { setVenmoPaymentInProgress } = this.props;
     const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
@@ -157,7 +155,7 @@ class BagPageView extends React.PureComponent {
     const isNoNEmptyBag = orderItemsCount > 0;
     let carouselOptions;
     if (isNoNEmptyBag) {
-      carouselOptions = BagPageUtils.CarouselOptions;
+      carouselOptions = BagPageUtils.CarouselOptions.CAROUSEL_OPTIONS;
     }
     return (
       <>
@@ -179,7 +177,7 @@ class BagPageView extends React.PureComponent {
     const isNoNEmptyBag = orderItemsCount > 0;
     let carouselOptions;
     if (isNoNEmptyBag) {
-      carouselOptions = BagPageUtils.CarouselOptions;
+      carouselOptions = BagPageUtils.CarouselOptions.CAROUSEL_OPTIONS;
     }
     return (
       <div className="recentlyViewed">
@@ -240,7 +238,6 @@ class BagPageView extends React.PureComponent {
             orderItemsCount
           )}
         {this.renderRecommendations()}
-        <BagPageAnalytics {...this.props} />
       </React.Fragment>
     );
   };
@@ -378,7 +375,7 @@ class BagPageView extends React.PureComponent {
               }}
             >
               <Heading
-                component="h2"
+                component="h1"
                 variant="h6"
                 fontSize="fs16"
                 color="text.primary"
@@ -439,7 +436,6 @@ class BagPageView extends React.PureComponent {
           isNonEmptySFL={isNonEmptySFL}
           pageCategory={BAGPAGE_CONSTANTS.BAG_PAGE}
         />
-        <QuickViewModal />
       </div>
     );
   }

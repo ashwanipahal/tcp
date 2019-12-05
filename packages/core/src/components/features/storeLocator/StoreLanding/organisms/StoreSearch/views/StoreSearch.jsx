@@ -49,6 +49,7 @@ export class StoreSearch extends PureComponent {
     setClickAnalyticsData({
       storeSearchCriteria: place,
       customEvents: ['event89'],
+      eVar65: 'storelocator',
     });
     trackClick();
     this.setState({ storeSelected: true });
@@ -163,9 +164,9 @@ export class StoreSearch extends PureComponent {
 
     return (
       <div className={className}>
-        <h3 className="storeLocatorHeading">
+        <h1 className="storeLocatorHeading">
           {getLabelValue(labels, 'lbl_storelanding_findStoreHeading')}
-        </h3>
+        </h1>
         <Row fullBleed>
           <Col colSize={{ large: 6.5, medium: 4, small: 6 }}>
             <div className="currentLocationWrapper">
@@ -186,7 +187,6 @@ export class StoreSearch extends PureComponent {
               <div className="searchBar">
                 <Field
                   id="storeAddressLocator"
-                  title={getLabelValue(labels, 'lbl_storelanding_storeSearchPlaceholder')}
                   placeholder={getLabelValue(labels, 'lbl_storelanding_storeSearchPlaceholder')}
                   component={AutoCompleteComponent}
                   name="storeAddressLocator"

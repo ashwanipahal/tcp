@@ -19,6 +19,7 @@ import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import { getExpirationRequiredFlag } from '../../../util/utility';
+import { getPaymentMethods } from '../../BillingPaymentForm/views/BillingPaymentForm.util';
 
 /**
  * @class GuestBillingForm
@@ -53,7 +54,8 @@ class GuestBillingForm extends React.Component {
     isPayPalWebViewEnable: PropTypes.func,
     bagLoading: PropTypes.bool.isRequired,
     isVenmoEnabled: PropTypes.bool,
-    venmoError: PropTypes.string,
+    onVenmoError: PropTypes.func,
+    isVenmoAppInstalled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -75,7 +77,8 @@ class GuestBillingForm extends React.Component {
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
     isVenmoEnabled: false,
-    venmoError: '',
+    onVenmoError: () => {},
+    isVenmoAppInstalled: true,
   };
 
   /**
@@ -161,23 +164,15 @@ class GuestBillingForm extends React.Component {
       isPayPalWebViewEnable,
       bagLoading,
       isVenmoEnabled,
-      venmoError,
+      onVenmoError,
+      isVenmoAppInstalled,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
     const isExpirationRequired = getExpirationRequiredFlag({ cardType });
-    const {
-      PAYMENT_METHOD_CREDIT_CARD,
-      PAYMENT_METHOD_PAY_PAL,
-      PAYMENT_METHOD_VENMO,
-    } = CREDIT_CARD_CONSTANTS;
-    const paymentMethods = [
-      { id: PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
-      { id: PAYMENT_METHOD_PAY_PAL, displayName: labels.payPal },
-      { id: PAYMENT_METHOD_VENMO, displayName: labels.venmo },
-    ];
+    const paymentMethods = getPaymentMethods(labels, isVenmoEnabled, isVenmoAppInstalled);
     return (
       <>
         {!isPayPalWebViewEnable && !isPaymentDisabled && (
@@ -256,7 +251,9 @@ class GuestBillingForm extends React.Component {
           showVenmoSubmit={paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit(onSubmit)}
-          venmoError={venmoError}
+          onVenmoError={onVenmoError}
+          pageName="checkout"
+          pageSection="billing"
         />
       </>
     );

@@ -7,7 +7,6 @@ import ButtonCTA from '@tcp/core/src/components/common/molecules/ButtonCTA';
 import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import config from './config';
 import constant from './Recommendations.constant';
 import style from './Recommendations.style';
@@ -65,6 +64,9 @@ class Recommendations extends Component {
     window.removeEventListener('load', loadRecommendations);
   }
 
+  isPromoAvailable = products =>
+    products.map(product => product.productInfo && product.productInfo.promotionalMessage);
+
   loadVariation(variation) {
     const {
       products,
@@ -76,10 +78,11 @@ class Recommendations extends Component {
       currency,
       currencyAttributes,
       onQuickViewOpenClick,
+      ...otherProps
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
-
+    const isPromoAvailable = this.isPromoAvailable(products);
     return products.map((product, index) => {
       const { generalProductId } = product;
 
@@ -100,6 +103,8 @@ class Recommendations extends Component {
           currencySymbol={currency}
           currencyExchange={currencyAttributes.exchangevalue}
           viaModule={RECOMMENDATION}
+          isPromoAvailable={isPromoAvailable}
+          {...otherProps}
         />
       );
     });
@@ -117,6 +122,8 @@ class Recommendations extends Component {
       ctaUrl,
       carouselConfigProps,
       headerAlignment,
+      isFavoriteRecommendation,
+      isSuggestedItem,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -124,18 +131,21 @@ class Recommendations extends Component {
     const headerLabel =
       variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
     const carouselProps = { ...config.CAROUSEL_OPTIONS, ...carouselConfigProps };
+    const showHeader = !isFavoriteRecommendation && !isSuggestedItem;
     return (
       products &&
       products.length > 0 && (
         <React.Fragment>
-          <Heading
-            variant="h4"
-            className={`recommendations-header ${priceOnlyClass}`}
-            textAlign={headerAlignment || 'center'}
-            dataLocator={params.dataLocator}
-          >
-            {headerLabel}
-          </Heading>
+          {showHeader && (
+            <Heading
+              variant="h4"
+              className={`recommendations-header ${priceOnlyClass}`}
+              textAlign={headerAlignment || 'center'}
+              dataLocator={params.dataLocator}
+            >
+              {headerLabel}
+            </Heading>
+          )}
           <Row fullBleed className="recommendations-section-row">
             <Col
               colSize={{
@@ -225,7 +235,6 @@ class Recommendations extends Component {
             </section>
           );
         })}
-        <QuickViewModal />
       </div>
     );
   }
@@ -256,6 +265,10 @@ Recommendations.propTypes = {
   categoryName: PropTypes.string,
   headerAlignment: PropTypes.string,
   reduxKey: PropTypes.string.isRequired,
+  ariaPrevious: PropTypes.string,
+  ariaNext: PropTypes.string,
+  isFavoriteRecommendation: PropTypes.bool,
+  isSuggestedItem: PropTypes.bool,
 };
 
 Recommendations.defaultProps = {
@@ -275,6 +288,10 @@ Recommendations.defaultProps = {
   partNumber: '',
   categoryName: '',
   headerAlignment: '',
+  ariaPrevious: '',
+  ariaNext: '',
+  isFavoriteRecommendation: false,
+  isSuggestedItem: false,
 };
 
 export { Recommendations as RecommendationsVanilla };

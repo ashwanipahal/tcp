@@ -72,6 +72,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             customFonts={
               Object {
                 "listPriceFont": "fs14",
+                "offerPriceFont": "fs22",
               }
             }
             inheritedStyles={
@@ -120,6 +121,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             customFonts={
               Object {
                 "listPriceFont": "fs14",
+                "offerPriceFont": "fs22",
               }
             }
             inheritedStyles={
@@ -141,7 +143,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           />
         </div>
         <Connect(ProductAddToBagContainer)
-          alternateSizes={Object {}}
           colorFitsSizesMap={
             Array [
               Object {
@@ -429,6 +430,8 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             ]
           }
           errorOnHandleSubmit=""
+          hideAlternateSizes={true}
+          isFavoriteEdit={false}
           onCloseClick={[Function]}
           plpLabels={Object {}}
           quickViewColorSwatchesCss=""

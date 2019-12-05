@@ -7,13 +7,17 @@ import CarouselConfig from '@tcp/web/src/config/carousel';
 import { getLocator } from '@tcp/core/src/utils';
 import style from '../PromotionalArea.style';
 
-const PromotionalArea = ({ className, data, mobile }) => {
+const PromotionalArea = ({ className, data, mobile, maxLoopCount }) => {
   const carouselConfig = mobile
     ? CarouselConfig.CAROUSEL_OPTIONS
     : CarouselConfig.CAROUSEL_FADE_OPTIONS;
   const wrapperClass = mobile
     ? 'header-topnav__promo-area--mobile'
     : 'header-topnav__promo-area--tablet';
+
+  if (maxLoopCount) {
+    carouselConfig.maxLoopCount = maxLoopCount;
+  }
 
   return (
     <div className={className}>
@@ -48,10 +52,12 @@ PromotionalArea.propTypes = {
   className: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   mobile: PropTypes.bool,
+  maxLoopCount: PropTypes.number,
 };
 
 PromotionalArea.defaultProps = {
   mobile: PropTypes.bool,
+  maxLoopCount: 0,
 };
 
 export default withStyles(PromotionalArea, style);

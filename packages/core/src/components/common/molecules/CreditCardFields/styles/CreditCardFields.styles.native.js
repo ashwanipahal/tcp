@@ -13,7 +13,7 @@ const ExpiryContainer = styled.View`
 `;
 
 const ExpiryMonth = styled.View`
-  width: 30%;
+  width: 32%;
   margin-right: ${props => (props.showCvv ? 0 : props.theme.spacing.ELEM_SPACING.MED)};
 `;
 

@@ -7,6 +7,7 @@ export const QuickViewAddToBagButton = ({
   onClickActn,
   quickViewLabels,
   showAddProductValidation,
+  dataLocator,
 }) => {
   return (
     <>
@@ -24,6 +25,7 @@ export const QuickViewAddToBagButton = ({
           </BodyCopy>
         )}
         <Button
+          data-locator={dataLocator || 'SINGLE_QV_ATB'}
           className="add-to-bag-button"
           type="submit"
           buttonVariation="fixed-width"
@@ -42,6 +44,11 @@ QuickViewAddToBagButton.propTypes = {
   onClickActn: PropTypes.func.isRequired,
   quickViewLabels: PropTypes.string.isRequired,
   showAddProductValidation: PropTypes.bool.isRequired,
+  dataLocator: PropTypes.string,
+};
+
+QuickViewAddToBagButton.defaultProps = {
+  dataLocator: '',
 };
 
 export default QuickViewAddToBagButton;

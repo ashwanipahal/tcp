@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const StyledEmptyBag = styled.View`
   padding: 24px 10px;
   align-items: center;
+  background: ${props => props.theme.colors.WHITE};
+  margin-top: 6px;
 `;
 
 const ViewBagButton = styled.TouchableOpacity`

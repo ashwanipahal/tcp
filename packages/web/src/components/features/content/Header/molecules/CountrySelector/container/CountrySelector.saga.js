@@ -50,7 +50,7 @@ export function* fetchCountryListData() {
   }
 }
 
-export function* submitCountrySelectionData({ payload: data }) {
+export function* submitCountrySelectionData({ payload: dataToSubmit }) {
   try {
     const { ca } = sites;
     const {
@@ -59,12 +59,14 @@ export function* submitCountrySelectionData({ payload: data }) {
       US_CONFIG_OPTIONS,
     } = API_CONFIG;
     const storeId =
-      data.country === ca.countryCode ? CA_CONFIG_OPTIONS.storeId : US_CONFIG_OPTIONS.storeId;
+      dataToSubmit.country === ca.countryCode
+        ? CA_CONFIG_OPTIONS.storeId
+        : US_CONFIG_OPTIONS.storeId;
     let catalogId;
     if (isGymboree()) {
-      catalogId = data.country === ca.countryCode ? Gymboree.Canada : Gymboree.USA;
+      catalogId = dataToSubmit.country === ca.countryCode ? Gymboree.Canada : Gymboree.USA;
     } else {
-      catalogId = data.country === ca.countryCode ? TCP.Canada : TCP.USA;
+      catalogId = dataToSubmit.country === ca.countryCode ? TCP.Canada : TCP.USA;
     }
     const { addShipToStore } = endpoints;
     const { sitesInfo } = API_CONFIG;
@@ -73,32 +75,43 @@ export function* submitCountrySelectionData({ payload: data }) {
         storeId,
         catalogId,
         langId: sitesInfo.langId,
-        ccd: data.country,
-        languageTCP: getModifiedLanguageCode(data.language),
-        curr: data.currency,
-        cc: data.savedCountry,
-        selLanguage: getModifiedLanguageCode(data.savedLanguage),
-        er: data.value || '1.0',
-        mm: data.merchantMargin || '1.0',
+        ccd: dataToSubmit.country,
+        languageTCP: getModifiedLanguageCode(dataToSubmit.language),
+        curr: dataToSubmit.currency,
+        cc: dataToSubmit.savedCountry,
+        selLanguage: getModifiedLanguageCode(dataToSubmit.savedLanguage),
+        er: dataToSubmit.value || '1.0',
+        mm: dataToSubmit.merchantMargin || '1.0',
         orderId: '.',
         USA: 'USD',
         CA: 'CAD',
-        URL: 'http://www.childrensplace.com/',
+        URL: '//www.childrensplace.com/',
       },
       webService: addShipToStore,
     };
     const { submitData } = countryListAbstractor;
     const res = yield call(submitData, payload);
     if (!res) logger.error('Error occurered!');
-    const { country: newCountry, language: newLanguage } = data;
+    const { country: newCountry, language: newLanguage, currency: newCurrency } = dataToSubmit;
     const oldCountry = yield select(state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country);
+    const oldCurrency = yield select(
+      state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.currency
+    );
     const oldLanguage = yield select(
       state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language
     );
     const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
     yield put(udpateSiteId(newSiteId));
     yield call(NavigateXHR, '');
-    languageRedirect(newCountry, oldCountry, newSiteId, newLanguage, oldLanguage);
+    languageRedirect(
+      newCountry,
+      oldCountry,
+      newSiteId,
+      newLanguage,
+      oldLanguage,
+      newCurrency,
+      oldCurrency
+    );
   } catch (error) {
     yield null;
   }

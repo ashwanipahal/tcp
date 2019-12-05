@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { PropTypes } from 'prop-types';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 import { BodyCopy, Button, Image } from '../../../../../atoms';
@@ -17,6 +17,7 @@ import {
 import { toTimeString, capitalize, getIconPath } from '../../../../../../../utils';
 import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/PickupStoreListItem.style';
+import { setFavStoreToLocalStorage } from '../../../../../../features/storeLocator/StoreLanding/container/utils/userFavStore';
 
 const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosingTimeTomorrow) => {
   const storeName = capitalize(basicInfo.storeName);
@@ -158,7 +159,7 @@ const displayStoreTitle = basicInfo => {
   );
 };
 
-class PickupStoreListItem extends React.Component {
+class PickupStoreListItem extends PureComponent {
   static propTypes = {
     /** Error message when add to cart */
     addToCartError: PropTypes.string.isRequired,
@@ -214,14 +215,24 @@ class PickupStoreListItem extends React.Component {
     updateCartItemStore: PropTypes.bool.isRequired,
     currentProduct: PropTypes.string,
     pageNameProp: PropTypes.string,
-    setClickAnalyticsData: PropTypes.func.isRequired,
-    trackClick: PropTypes.func.isRequired,
+    setClickAnalyticsData: PropTypes.func,
+    trackClick: PropTypes.func,
+    storeSearchCriteria: PropTypes.string,
+    storeSearchDistance: PropTypes.string,
+    setFavoriteStore: PropTypes.func,
+    getDefaultStore: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
     currentProduct: '',
     pageNameProp: '',
+    setClickAnalyticsData: () => {},
+    trackClick: () => {},
+    storeSearchCriteria: '',
+    storeSearchDistance: '',
+    setFavoriteStore: () => {},
+    getDefaultStore: () => {},
   };
 
   constructor(props) {
@@ -229,6 +240,12 @@ class PickupStoreListItem extends React.Component {
     this.handleStoreSelect = this.handleStoreSelect.bind(this);
     this.handleStoreUpdate = this.handleStoreUpdate.bind(this);
     this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
+    this.isBossSelected = props.isBossSelected;
+  }
+
+  componentDidUpdate() {
+    const { isBossSelected } = this.props;
+    this.isBossSelected = isBossSelected;
   }
 
   getStoreCloseTime() {
@@ -274,6 +291,8 @@ class PickupStoreListItem extends React.Component {
       isBopisSelected,
       storeSearchCriteria,
       storeSearchDistance,
+      setFavoriteStore,
+      getDefaultStore,
     } = this.props;
     let pageName = '';
     const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
@@ -288,12 +307,20 @@ class PickupStoreListItem extends React.Component {
     if (isBossSelected) {
       customEventsVal = 'event133';
     }
+    if (store && store.basicInfo) {
+      setFavoriteStore(store);
+      getDefaultStore(store);
+      setFavStoreToLocalStorage(store);
+    }
+
     // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call
     setClickAnalyticsData({
       customEvents: [customEventsVal],
       storeSearchCriteria,
       storeSearchDistance,
       pageName,
+      eventName: 'cart add',
+      products: [{ id: `${productId}` }],
     });
     trackClick();
 
@@ -304,6 +331,8 @@ class PickupStoreListItem extends React.Component {
         storeSearchCriteria,
         storeSearchDistance,
         pageName,
+        eventName: 'cart add',
+        products: [{ id: `${productId}` }],
       });
       trackClick();
     }, 0);
@@ -325,6 +354,8 @@ class PickupStoreListItem extends React.Component {
       currentProduct,
       isBossSelected,
       isBopisSelected,
+      storeSearchCriteria,
+      storeSearchDistance,
     } = this.props;
 
     const isBoss = this.isBossSelected;
@@ -348,6 +379,8 @@ class PickupStoreListItem extends React.Component {
       storeSearchCriteria,
       storeSearchDistance,
       pageName,
+      eventName: 'cart add',
+      products: [{ id: `${productId}` }],
     });
     trackClick();
 
@@ -358,6 +391,8 @@ class PickupStoreListItem extends React.Component {
         customEvents: ['scAdd,scOpen,event85,event61'],
         storeSearchCriteria,
         storeSearchDistance,
+        eventName: 'cart add',
+        products: [{ id: `${productId}` }],
       });
       trackClick();
     }, 0);

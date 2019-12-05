@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Image } from '@tcp/core/src/components/common/atoms';
+import { Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue, isGymboree } from '@tcp/core/src/utils/utils';
 import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -80,16 +80,24 @@ class SearchImageWrapper extends React.PureComponent {
                 </div>
               </div>
             ) : (
-              <Image
-                alt="search-image"
+              <Anchor
+                noLink
                 className="search-image icon"
-                onClick={openSearchBar}
-                src={getIconPath(
-                  fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
-                )}
                 data-locator="search-icon"
-                height="25px"
-              />
+                onClick={openSearchBar}
+                fontSizeVariation="large"
+                anchorVariation="primary"
+              >
+                <Image
+                  alt="search-image"
+                  src={getIconPath(
+                    fromCondensedHeader && !isGymboree()
+                      ? `${SEARCH_BLUE_IMAGE}`
+                      : `${SEARCH_IMAGE}`
+                  )}
+                  height="25px"
+                />
+              </Anchor>
             )}
           </div>
         )}

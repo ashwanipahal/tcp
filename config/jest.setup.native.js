@@ -49,9 +49,24 @@ jest.mock('react-native-keychain', () => {
   };
 });
 
+jest.mock('react-native-permissions', () => {
+  return {
+    checkNotifications: jest.fn(() => Promise.resolve('granted')),
+  };
+});
+
+jest.mock('react-native-gesture-handler', () => {
+  return {
+    gestureHandlerRootHOC: jest.fn(),
+  };
+});
+
 // Mock NetInfo for react-native modules
 NativeModules.RNCNetInfo = {
   getCurrentState: jest.fn(() => Promise.resolve()),
   addListener: jest.fn(),
   removeListeners: jest.fn(),
 };
+
+// Mock permission for react-native modules
+NativeModules.RNPermissions = {};

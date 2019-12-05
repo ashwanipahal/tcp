@@ -15,9 +15,12 @@ import CHECKOUT_ACTIONS, {
 } from '../../Checkout/container/Checkout.action';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.selectors';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
+    const { onRequestClose } = this.props;
+    onRequestClose();
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
   };
 
@@ -26,11 +29,15 @@ export class AddedToBagContainer extends React.Component<Props> {
    * @param {object} payload - checkout payload for app and web
    */
   onCartCheckout = payload => {
-    const { handleCartCheckout, setVenmoInProgress } = this.props;
+    const { handleCartCheckout, setVenmoInProgress, toastMessage } = this.props;
     if (payload && !payload.isVenmoProgress) {
       setVenmoInProgress(false);
     }
-    handleCartCheckout(payload);
+    if (payload && payload.venmoErrorMessage) {
+      toastMessage(payload.venmoErrorMessage);
+    } else {
+      handleCartCheckout(payload);
+    }
   };
 
   render() {
@@ -67,6 +74,8 @@ export class AddedToBagContainer extends React.Component<Props> {
       isPayPalEnabled,
       setIsPaypalBtnHidden,
       bagLoading,
+      resetTimerStatus,
+      isVenmoAppInstalled,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -104,6 +113,8 @@ export class AddedToBagContainer extends React.Component<Props> {
         setIsPaypalBtnHidden={setIsPaypalBtnHidden}
         bagLoading={bagLoading}
         isPayPalEnabled={isPayPalEnabled}
+        resetTimerStatus={resetTimerStatus}
+        isVenmoAppInstalled={isVenmoAppInstalled}
       />
     );
   }
@@ -139,6 +150,9 @@ const mapDispatchToProps = dispatch => {
     setIsPaypalBtnHidden: payload => {
       dispatch(bagPageActions.setIsPaypalBtnHidden(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
   };
 };
 
@@ -157,6 +171,7 @@ const mapStateToProps = state => {
     cartOrderItems: BagPageSelectors.getOrderItems(state),
     bagLoading: BagPageSelectors.isBagLoading(state),
     isPayPalEnabled: getIsPayPalEnabled(state),
+    isVenmoAppInstalled: checkoutSelectors.isVenmoAppInstalled(state),
   };
 };
 

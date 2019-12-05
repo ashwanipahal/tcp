@@ -24,6 +24,7 @@ renderTitle.defaultProps = {
   title: '',
 };
 
+// eslint-disable-next-line complexity
 const SelectBox = ({
   className,
   id,
@@ -38,7 +39,8 @@ const SelectBox = ({
   title,
   ...otherProps
 }) => {
-  const errorMessagea11yLbl = name ? `selectbox__error__${name}` : 'selectbox__error';
+  const elementID = id || name;
+  const errorMessagea11yLbl = elementID ? `selectbox__error__${elementID}` : 'selectbox__error';
   return (
     <div className={className}>
       <select
@@ -51,7 +53,7 @@ const SelectBox = ({
         data-locator={dataLocator}
         {...otherProps}
         disabled={disabled}
-        aria-describedby={errorMessagea11yLbl}
+        aria-describedby={touched && errorMessagea11yLbl}
       >
         {!input.value && placeholder && <option value="">{placeholder}</option>}
         {options &&
@@ -59,7 +61,7 @@ const SelectBox = ({
             return (
               <option
                 value={option.id || option.get('id')}
-                id={option.id || option.get('id')}
+                id={`${elementID}_${option.id || option.get('id')}`} // When month and day dropdown is on same page id from 10 - 12 was getting duplicate
                 key={option.id || option.get('id')}
               >
                 {option.displayName || option.get('displayName')}

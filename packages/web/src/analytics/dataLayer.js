@@ -1,6 +1,7 @@
-import { readCookie } from '@tcp/core/src/utils/cookie.util';
+import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import {
   generateBrowseDataLayer,
   generateHomePageDataLayer,
@@ -46,7 +47,8 @@ export default function create(store) {
            to override the pageName value. For instance, onClick event.
          */
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        // We need both the default object and || fallback because Immutable only defaults for `undefined` and not `null`
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         const pageName = clickActionAnalyticsData.pageName
           ? clickActionAnalyticsData.pageName
           : pageData.pageName;
@@ -54,7 +56,51 @@ export default function create(store) {
         return `gl:${pageName}`;
       },
     },
-
+    orderId: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderId
+          ? clickActionAnalyticsData.orderId
+          : pageData.orderId;
+      },
+    },
+    paymentMethod: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.paymentMethod
+          ? clickActionAnalyticsData.paymentMethod
+          : pageData.paymentMethod;
+      },
+    },
+    billingCountry: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingCountry
+          ? clickActionAnalyticsData.billingCountry
+          : pageData.billingCountry;
+      },
+    },
+    billingZip: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.billingZip
+          ? clickActionAnalyticsData.billingZip
+          : pageData.billingZip;
+      },
+    },
+    orderSubtotal: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        return clickActionAnalyticsData && clickActionAnalyticsData.orderSubtotal
+          ? clickActionAnalyticsData.orderSubtotal
+          : pageData.orderSubtotal;
+      },
+    },
     isCurrentRoute: () => false,
 
     pageShortName: {
@@ -66,24 +112,33 @@ export default function create(store) {
          */
         const { pageData, AnalyticsDataKey } = store.getState();
 
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         const pageShortName = clickActionAnalyticsData.pageShortName
           ? clickActionAnalyticsData.pageShortName
           : pageData.pageShortName;
         const pageName = clickActionAnalyticsData.pageName
           ? clickActionAnalyticsData.pageName
           : pageData.pageName;
-        return `gl:${pageShortName || pageName}`;
+        return `${pageShortName || pageName}`;
       },
     },
 
     pageType: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
-        return clickActionAnalyticsData.pageType
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        const pageType = clickActionAnalyticsData.pageType
           ? clickActionAnalyticsData.pageType
           : pageData.pageType;
+        const pageName = clickActionAnalyticsData.pageName
+          ? clickActionAnalyticsData.pageName
+          : pageData.pageName;
+        return `${pageType || pageName}`;
+      },
+    },
+    pageUrl: {
+      get() {
+        return `https://${document.location.hostname}${document.location.pathname}`;
       },
     },
 
@@ -95,15 +150,15 @@ export default function create(store) {
 
     pageLocale: {
       get() {
-        return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+        return 'US:en';
       },
     },
 
     pageSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
-        return clickActionAnalyticsData.pageSection
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData && clickActionAnalyticsData.pageSection
           ? clickActionAnalyticsData.pageSection
           : pageData.pageSection;
       },
@@ -112,10 +167,20 @@ export default function create(store) {
     pageSubSubSection: {
       get() {
         const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData');
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
         return clickActionAnalyticsData.pageSubSection
           ? clickActionAnalyticsData.pageSubSection
           : pageData.pageSubSection;
+      },
+    },
+
+    pageTertiarySection: {
+      get() {
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageTertiarySection
+          ? clickActionAnalyticsData.pageTertiarySection
+          : pageData.pageTertiarySection;
       },
     },
 
@@ -127,20 +192,23 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store.getState().User.getIn(['personalData', 'isGuest'])
-          ? 'no rewards:guest'
-          : 'no rewards:logged in';
+        return getUserLoggedInState(store.getState()) ? 'no rewards:logged in' : 'no rewards:guest';
       },
     },
 
     checkoutType: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('isGuest')
-          ? 'guest'
-          : 'registered';
+        const { pageType = '' } = store.getState().pageData;
+        let userType = '';
+        if (pageType === 'checkout') {
+          userType = store
+            .getState()
+            .User.get('personalData')
+            .get('isGuest')
+            ? 'guest'
+            : 'registered';
+        }
+        return userType;
       },
     },
 
@@ -152,7 +220,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency.toUpperCase();
+        return store.getState().session.siteDetails.currency.toUpperCase();
       },
     },
 
@@ -182,9 +250,13 @@ export default function create(store) {
 
     pageNavigationText: {
       get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'pageNavigationText'], '');
+        const { pageData, AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        const pageNavigationText = clickActionAnalyticsData.pageNavigationText
+          ? clickActionAnalyticsData.pageNavigationText
+          : pageData.pageNavigationText;
+
+        return pageNavigationText || '';
       },
     },
 
@@ -196,27 +268,61 @@ export default function create(store) {
     },
     cartType: {
       get() {
-        const orderDetails = store.getState().CartPageReducer.get('orderDetails');
-        let typeCart = 'standard';
-        const isBopisOrder = orderDetails.get('isBopisOrder');
-        const isBossOrder = orderDetails.get('isBossOrder');
-        const isPickupOrder = orderDetails.get('isPickupOrder');
-        const isShippingOrder = orderDetails.get('isShippingOrder');
-        if (isShippingOrder && (isBopisOrder || isBossOrder || isPickupOrder)) {
-          typeCart = 'mix';
-        } else if (isBopisOrder && !isBossOrder) {
-          typeCart = 'bopis';
-        } else if (isBossOrder && !isBopisOrder) {
-          typeCart = 'boss';
+        const { pageType = '' } = store.getState().pageData;
+        let typeCart = '';
+        if (pageType === 'checkout') {
+          const orderDetails = store.getState().CartPageReducer.get('orderDetails');
+          typeCart = 'standard';
+          const isBopisOrder = orderDetails.get('isBopisOrder');
+          const isBossOrder = orderDetails.get('isBossOrder');
+          const isPickupOrder = orderDetails.get('isPickupOrder');
+          const isShippingOrder = orderDetails.get('isShippingOrder');
+          if (isShippingOrder && (isBopisOrder || isBossOrder || isPickupOrder)) {
+            typeCart = 'mix';
+          } else if (isBopisOrder && !isBossOrder) {
+            typeCart = 'bopis';
+          } else if (isBossOrder && !isBopisOrder) {
+            typeCart = 'boss';
+          }
         }
         return typeCart;
       },
     },
     products: {
       get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], '');
+        const { AnalyticsDataKey, pageData } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+
+        const pageProducts = clickActionAnalyticsData.products
+          ? clickActionAnalyticsData.products
+          : pageData.products;
+
+        return pageProducts || [];
+      },
+    },
+
+    currentState: {
+      get() {
+        return store.getState();
+      },
+    },
+    brandId: {
+      get() {
+        const { brandId = '' } = store.getState().APIConfig;
+        return brandId.toUpperCase();
+      },
+    },
+    landingSiteBrandId: {
+      get() {
+        const { landingSite } = API_CONFIG;
+        if (!readCookie(landingSite) && readCookie(pageCountCookieKey) === '1') {
+          const { brandId = '' } = store.getState().APIConfig;
+          setCookie({
+            key: landingSite,
+            value: brandId.toUpperCase(),
+          });
+        }
+        return readCookie(landingSite);
       },
     },
   });

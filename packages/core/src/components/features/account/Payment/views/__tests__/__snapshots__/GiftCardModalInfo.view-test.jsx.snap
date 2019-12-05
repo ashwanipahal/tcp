@@ -48,9 +48,10 @@ exports[`GiftCardModalInfo Component should render correctly 1`] = `
         textAlign="center"
       >
         <Styled(Image)
+          alt=""
           className="deleteCardModal__img"
           data-locator="deletegcmodalicon"
-          src="/static/images/TCP-gift.svg"
+          src="/static/version-not-available/images/TCP-gift.svg"
         />
       </Styled(BodyCopy)>
     </Styled(Col)>

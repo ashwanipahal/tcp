@@ -1,83 +1,234 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBar native should render correctly should match snapshot 1`] = `
-<StyledNativeComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "labels": [Function],
-        "openSearchProductPage": null,
-        "showCustomizedSearch": false,
-      },
-      "attrs": Array [],
-      "displayName": "Styled(SearchBar)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          "
-  margin: -",
-          [Function],
-          " 0px ",
-          [Function],
-          ";
-  justify-content: center;
-",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
+exports[`SearchBar native should render correctly onclick function check onSearchFocus 1`] = `
+<Styled(View)
+  labels={[Function]}
+  openSearchProductPage={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
     }
   }
-  forwardedRef={null}
+  showCustomizedSearch={false}
+>
+  <Styled(TouchableOpacity)
+    activeOpacity={1}
+    onPress={[Function]}
+    width="95%"
+  >
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator=""
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margins={null}
+      name="mag-glass"
+      onPress={[Function]}
+      size="fs16"
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_looking_for"
+      textDecoration={null}
+    />
+    <Styled(TouchableOpacity)
+      activeOpacity={1}
+      width="50px"
+    >
+      <QRScannerIcon
+        closeModal={[Function]}
+        size="fs16"
+        style={Object {}}
+      />
+    </Styled(TouchableOpacity)>
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;
+
+exports[`SearchBar native should render correctly should match snapshot 1`] = `
+<Styled(View)
   labels={[Function]}
   openSearchProductPage={null}
   showCustomizedSearch={false}
-/>
+>
+  <Styled(TouchableOpacity)
+    activeOpacity={1}
+    onPress={[Function]}
+    width="95%"
+  >
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator=""
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margins={null}
+      name="mag-glass"
+      onPress={[Function]}
+      size="fs16"
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_looking_for"
+      textDecoration={null}
+    />
+    <Styled(TouchableOpacity)
+      activeOpacity={1}
+      width="50px"
+    >
+      <QRScannerIcon
+        closeModal={[Function]}
+        size="fs16"
+        style={Object {}}
+      />
+    </Styled(TouchableOpacity)>
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;
+
+exports[`SearchBar native should render correctly with passed props render showCustomizedSearch on validation false 1`] = `
+<Styled(View)
+  labels={
+    Object {
+      "lbl_looking_for": "I am Looking For",
+    }
+  }
+  openSearchProductPage={null}
+  showCustomizedSearch={false}
+>
+  <Styled(TouchableOpacity)
+    activeOpacity={1}
+    onPress={[Function]}
+    width="95%"
+  >
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator=""
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margins={null}
+      name="mag-glass"
+      onPress={[Function]}
+      size="fs16"
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="I am Looking For"
+      textDecoration={null}
+    />
+    <Styled(TouchableOpacity)
+      activeOpacity={1}
+      width="50px"
+    >
+      <QRScannerIcon
+        closeModal={[Function]}
+        size="fs16"
+        style={Object {}}
+      />
+    </Styled(TouchableOpacity)>
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;
+
+exports[`SearchBar native should render correctly with passed props render showCustomizedSearch on validation true 1`] = `
+<Styled(View)>
+  <Styled(TouchableOpacity)
+    activeOpacity={1}
+    onPress={[Function]}
+    width="200px"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="I am Looking For"
+      textDecoration={null}
+    />
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator=""
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margins={null}
+      name="mag-glass"
+      onPress={[Function]}
+      size="fs16"
+    />
+  </Styled(TouchableOpacity)>
+</Styled(View)>
 `;
 
 exports[`SearchBar native should render correctly with showCustomizedSearch should match snapshot 1`] = `
-<StyledNativeComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "labels": [Function],
-        "openSearchProductPage": null,
-        "showCustomizedSearch": false,
-      },
-      "attrs": Array [],
-      "displayName": "Styled(SearchBar)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          "
-  margin: -",
-          [Function],
-          " 0px ",
-          [Function],
-          ";
-  justify-content: center;
-",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labels={[Function]}
-  openSearchProductPage={null}
-  showCustomizedSearch={true}
-/>
+<Styled(View)>
+  <Styled(TouchableOpacity)
+    activeOpacity={1}
+    onPress={[Function]}
+    width="200px"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_looking_for"
+      textDecoration={null}
+    />
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator=""
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margins={null}
+      name="mag-glass"
+      onPress={[Function]}
+      size="fs16"
+    />
+  </Styled(TouchableOpacity)>
+</Styled(View)>
 `;

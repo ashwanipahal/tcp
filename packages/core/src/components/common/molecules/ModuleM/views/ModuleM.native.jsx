@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getLocator } from '../../../../../utils';
+import { getLocator, isGymboree } from '../../../../../utils';
 import { getScreenWidth } from '../../../../../utils/index.native';
 import { Anchor, BodyCopy } from '../../../atoms';
 import {
@@ -84,6 +84,41 @@ class ModuleM extends React.PureComponent {
       return { id: `tablList-${index}`, smallCompImage, linkClass };
     });
   };
+  /**
+   * To Render the Dam Image or Video Component
+   */
+
+  renderDamImage = (link, imgData, videoData, navigation, index, imageDimension) => {
+    const { IMG_DATA } = config;
+    const damImageComp = (
+      <StyledDamImage
+        alt={imgData && imgData.alt}
+        url={imgData && imgData.url}
+        testID={`${getLocator('moduleM_image')}${index}`}
+        height={imageDimension}
+        width={imageDimension}
+        videoData={videoData}
+        imgConfig={IMG_DATA.productImgConfig[0]}
+      />
+    );
+    if (imgData && Object.keys(imgData).length > 0) {
+      return (
+        <Anchor url={link.url} navigation={navigation}>
+          {damImageComp}
+        </Anchor>
+      );
+    }
+    return videoData && Object.keys(videoData).length > 0 ? (
+      <React.Fragment>{damImageComp}</React.Fragment>
+    ) : null;
+  };
+
+  getConfig = () => {
+    return {
+      headerfontSize: isGymboree() ? 'fs20' : 'fs32',
+      headerFontWeight: isGymboree() ? 'regular' : 'black',
+    };
+  };
 
   render() {
     const { headerText, promoBanner, divTabs, navigation } = this.props;
@@ -97,6 +132,7 @@ class ModuleM extends React.PureComponent {
     const { smallCompImage, linkClass } = currentTabData;
     const totalImages = smallCompImage && smallCompImage.length;
     const imageDimension = this.getImageDimension(totalImages);
+    const { headerfontSize, headerFontWeight } = this.getConfig();
     return (
       <Container>
         <HeaderContainer>
@@ -106,10 +142,10 @@ class ModuleM extends React.PureComponent {
               headerText={[headerText[0]]}
               testID={getLocator('moduleM_header_text_0')}
               fontFamily="primary"
-              fontSize="fs32"
+              fontSize={headerfontSize}
               textAlign="center"
               color="text.primary"
-              fontWeight="black"
+              fontWeight={headerFontWeight}
               type="heading"
             />
           )}
@@ -120,7 +156,6 @@ class ModuleM extends React.PureComponent {
               navigation={navigation}
               headerText={[headerText[1]]}
               testID={getLocator('moduleM_header_text_1')}
-              renderComponentInNewLine
               useStyle
             />
           )}
@@ -148,26 +183,15 @@ class ModuleM extends React.PureComponent {
         {smallCompImage && smallCompImage.length > 0 ? (
           <ImageContainer>
             {smallCompImage.map(({ image, link, video }, index) => {
-              const { IMG_DATA } = config;
               const videoData = video && {
                 ...video,
                 videoWidth: imageDimension,
                 videoHeight: imageDimension,
               };
+              const imgData = image || {};
               return (
                 <Tile tileIndex={index} imageCount={totalImages} key={index.toString()}>
-                  <Anchor url={link.url} navigation={navigation}>
-                    <StyledDamImage
-                      alt={image.alt}
-                      url={image.url}
-                      testID={`${getLocator('moduleM_image')}${index}`}
-                      height={imageDimension}
-                      width={imageDimension}
-                      imgData={image}
-                      imgConfig={IMG_DATA.productImgConfig[0]}
-                      videoData={videoData}
-                    />
-                  </Anchor>
+                  {this.renderDamImage(link, imgData, videoData, navigation, index, imageDimension)}
                   <Anchor
                     url={link.url}
                     navigation={navigation}

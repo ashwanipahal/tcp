@@ -56,26 +56,24 @@ export const HeaderContainer = styled.View`
 export const MessageContainer = styled.View`
   ${props => (props.position === 'store' ? `flex-direction: row;` : null)};
   align-items: flex-start;
-  position: absolute;
   z-index: ${props => props.theme.zindex.zOverlay};
   justify-content: space-between;
-  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  width: 70%;
+  display: flex;
 `;
 
 export const BackContainer = styled.View`
   flex-direction: row;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  width: 60%;
-  position: absolute;
+  width: 70%;
 `;
 
 export const CartContainer = styled.View`
   align-items: flex-end;
   align-self: flex-end;
-  flex-basis: 85%;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-  margin-left: 60px;
+  width: 30%;
 `;
 
 export const StoreContainer = styled.TouchableOpacity`
@@ -137,19 +135,17 @@ export const Touchable = styled.TouchableOpacity`
 `;
 
 export const CheckoutHeaderContainer = styled.View`
-  flex-direction: row;
   display: flex;
+  flex-direction: row;
   background: ${props => props.theme.colorPalette.white};
 `;
 
 export const CheckoutHeaderTextSection = styled.View`
   height: 54px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
   border-bottom-width: 1;
 `;
@@ -221,7 +217,6 @@ export const ArrowBackIcon = styled.Image`
 export const MiddleSection = styled.View`
   justify-content: center;
   align-items: center;
-  height: 100%;
 `;
 
 export const TitleText = styled.Text`

@@ -14,6 +14,7 @@ import WalletStack from '../pages/login';
 import BrandSwitchStack from '../pages/brandSwitch';
 import CheckoutStack from '../pages/checkout';
 import BagStack from '../pages/bag';
+import QRScanner from '../components/common/molecules/QRScanner';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -41,6 +42,9 @@ const RootStack = createStackNavigator(
     },
     ApplyNow: {
       screen: ApplyNowWrapper,
+    },
+    QRScanner: {
+      screen: QRScanner,
     },
   },
   {

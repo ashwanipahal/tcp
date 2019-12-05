@@ -21,6 +21,7 @@ class ModuleH extends React.PureComponent {
     this.state = {
       current: 0,
       next: 0,
+      uniqueId: Math.random(),
     };
   }
 
@@ -31,15 +32,16 @@ class ModuleH extends React.PureComponent {
       headerText,
       moduleWidth,
       accessibility: { playIconButton, pauseIconButton } = {},
+      moduleClassName,
     } = this.props;
     const { CAROUSEL_OPTIONS, getColSize, FULL_BLEED, OFFSET_LEFT, IMG_DATA } = config;
     const COL_SIZE = getColSize(moduleWidth);
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ current, next });
     };
-    const { current, next } = this.state;
+    const { current, next, uniqueId } = this.state;
     return (
-      <Row fullBleed={FULL_BLEED} className={`${className} moduleH`}>
+      <Row fullBleed={FULL_BLEED} className={`${className} ${moduleClassName} moduleH`}>
         <Col colSize={COL_SIZE} offsetLeft={OFFSET_LEFT} className="moduleH__header--wrapper">
           {headerText && (
             <LinkText
@@ -56,7 +58,7 @@ class ModuleH extends React.PureComponent {
         </Col>
         <Col colSize={COL_SIZE} className="moduleH_carousel_wrapper">
           <Carousel
-            options={CAROUSEL_OPTIONS}
+            options={{ ...CAROUSEL_OPTIONS, key: uniqueId }}
             className="moduleH_carousel"
             carouselConfig={{
               autoplay: true,
@@ -88,6 +90,7 @@ class ModuleH extends React.PureComponent {
 ModuleH.defaultProps = {
   accessibility: {},
   moduleWidth: 'full',
+  moduleClassName: '',
 };
 
 ModuleH.propTypes = {
@@ -110,6 +113,7 @@ ModuleH.propTypes = {
     })
   ).isRequired,
   moduleWidth: PropTypes.string,
+  moduleClassName: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleH), style);

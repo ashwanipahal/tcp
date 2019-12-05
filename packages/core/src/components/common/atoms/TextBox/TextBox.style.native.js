@@ -20,8 +20,8 @@ const TextBoxStyle = css`
 
 const StyledTextBox = styled.TextInput`
   border-bottom-width: 1px;
-  height: 40px;
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  height: ${props => (props.isCVVField ? '28px' : '40px')};
+  padding-top: ${props => (props.isCVVField ? '0' : props.theme.spacing.ELEM_SPACING.MED)};
   padding-bottom: 0;
   padding-left: 0;
   border-bottom-color: ${props =>
@@ -59,7 +59,8 @@ const StyledErrorWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  width: 90%;
 `;
 
 const StyledSuccessIcon = styled.View`

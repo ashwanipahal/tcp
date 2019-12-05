@@ -2,7 +2,12 @@ import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import dynamic from 'next/dynamic';
-import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getAPIConfig,
+  getBrand,
+  getVideoUrl,
+} from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
 
@@ -53,12 +58,17 @@ const getBreakpointImgUrl = (type, props) => {
 
   const brandId = brandName && brandName.toUpperCase();
   const apiConfigObj = getAPIConfig();
-  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  let assetHost = apiConfigObj[`assetHost${brandId}`];
   const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
 
+  const isVideoUrl = getVideoUrl(imgPath);
+  if (isVideoUrl) {
+    assetHost = assetHost.replace('/image/', '/video/');
+  }
+  const configUrl = config === '' ? '' : `${config}/`;
   return isProductImage
-    ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
-    : `${basePath}/${config}/${imgPath}`;
+    ? `${assetHost}/${configUrl}${productAssetPath}/${imgPath}`
+    : `${basePath}/${configUrl}${imgPath}`;
 };
 
 const RenderVideo = videoProps => {
@@ -88,21 +98,28 @@ const RenderImage = forwardRef((imgProps, ref) => {
     link,
     itemBrand,
     showPlaceHolder,
+    isProductImage,
+    xsOnly,
     ...other
   } = imgProps;
 
   const { alt } = imgData;
+
   return (
     <picture>
-      <source
-        media={`(min-width: ${breakpoints.values.lg}px)`}
-        data-srcset={getBreakpointImgUrl('lg', imgProps)}
-      />
+      {!xsOnly && (
+        <source
+          media={`(min-width: ${breakpoints.values.lg}px)`}
+          data-srcset={getBreakpointImgUrl('lg', imgProps)}
+        />
+      )}
 
-      <source
-        media={`(min-width: ${breakpoints.values.sm}px)`}
-        data-srcset={getBreakpointImgUrl('sm', imgProps)}
-      />
+      {!xsOnly && (
+        <source
+          media={`(min-width: ${breakpoints.values.sm}px)`}
+          data-srcset={getBreakpointImgUrl('sm', imgProps)}
+        />
+      )}
 
       {lazyLoad ? (
         <LazyLoadImage
@@ -142,11 +159,13 @@ const DamImage = props => {
     itemBrand,
     showPlaceHolder,
     videoData,
+    isProductImage,
+    xsOnly,
     ...other
   } = props;
 
   if (videoData) {
-    return <RenderVideo video={videoData} image={imgData} />;
+    return <RenderVideo video={videoData} image={imgData} dataLocator={dataLocator} />;
   }
 
   const imgProps = {
@@ -159,9 +178,17 @@ const DamImage = props => {
     link,
     itemBrand,
     showPlaceHolder,
+    isProductImage,
+    xsOnly,
     ...other,
   };
 
+  if (imgData && imgData.url && getVideoUrl(imgData.url) && isProductImage) {
+    const videoDataOptions = {
+      url: getBreakpointImgUrl('lg', imgProps),
+    };
+    return <RenderVideo video={videoDataOptions} dataLocator={dataLocator} />;
+  }
   if (!link) {
     return <RenderImage {...imgProps} ref={forwardedRef} />;
   }
@@ -189,6 +216,7 @@ const DamImage = props => {
 
 DamImage.defaultProps = {
   lazyLoad: true,
+  xsOnly: false,
   theme: {},
   imgConfigs: [],
   imgData: {
@@ -205,11 +233,14 @@ DamImage.defaultProps = {
   itemBrand: '',
   showPlaceHolder: true,
   videoData: null,
+  isProductImage: false,
 };
 
 DamImage.propTypes = {
   /* Load the image laziliy or not */
   lazyLoad: PropTypes.bool,
+  /* Flag to load only small image */
+  xsOnly: PropTypes.bool,
   /* StyleComponent theme, will come from context */
   theme: PropTypes.shape({ breakpoints: PropTypes.object }),
 
@@ -251,10 +282,13 @@ DamImage.propTypes = {
     target: PropTypes.string,
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
+    actualUrl: PropTypes.string,
+    className: PropTypes.string,
   }),
   forwardedRef: PropTypes.shape({ current: PropTypes.any }),
   itemBrand: PropTypes.string,
   showPlaceHolder: PropTypes.bool,
+  isProductImage: PropTypes.bool,
 };
 
 export default withTheme(DamImage);

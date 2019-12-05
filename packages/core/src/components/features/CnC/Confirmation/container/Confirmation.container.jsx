@@ -11,7 +11,7 @@ import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.s
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import SMSNotificationSelectors from '../organisms/SMSNotifications/container/SMSNotifications.selectors';
 
-const { getVenmoUserName } = checkoutSelectors;
+const { getVenmoOrderUserId, getVenmoPayment, isVenmoOrderPayment } = checkoutSelectors;
 /**
  * @class ConfirmationContainer
  * @description container component to render confirmation component.
@@ -20,7 +20,9 @@ class ConfirmationContainer extends React.Component {
   static propTypes = {
     /** Flag indicates whether the user is a guest */
     isGuestUser: PropTypes.bool,
-
+    venmoOrderConfirmationId: PropTypes.string,
+    venmoPayment: PropTypes.shape({}),
+    venmoOrderConfirmationContent: PropTypes.string,
     /** indicates order payment is processing */
     isOrderPending: PropTypes.bool,
 
@@ -76,6 +78,9 @@ class ConfirmationContainer extends React.Component {
     placeCashConfirmationContentId: '',
     notificationMsgContentId: '',
     subscribeSuccessMsgContentId: '',
+    venmoOrderConfirmationContent: '',
+    venmoOrderConfirmationId: null,
+    venmoPayment: {},
   };
 
   /**
@@ -94,6 +99,7 @@ class ConfirmationContainer extends React.Component {
       fetchModuleXContent,
       notificationMsgContentId,
       subscribeSuccessMsgContentId,
+      venmoOrderConfirmationId,
     } = this.props;
     /* istanbul ignore else */
     if (fetchUpdateOrderDetails) {
@@ -103,13 +109,14 @@ class ConfirmationContainer extends React.Component {
           store => store.orderType === CONFIRMATION_CONSTANTS.ORDER_ITEM_TYPE.BOSS
         );
       const moduleXId = isBossInList ? updateOrderDetailsBossId : updateOrderDetailsBopisId;
-      fetchUpdateOrderDetails([moduleXId, placeCashConfirmationContentId]);
+      fetchUpdateOrderDetails([moduleXId]);
     }
     // Call for notification adn Subscribe content needs to be removed from SMS component now
     fetchModuleXContent([
       placeCashConfirmationContentId,
       notificationMsgContentId,
       subscribeSuccessMsgContentId,
+      venmoOrderConfirmationId,
     ]);
   }
 
@@ -132,10 +139,11 @@ class ConfirmationContainer extends React.Component {
       isUsSiteId,
       orderNumbersByFullfillmentCenter,
       venmoUserName,
-      isVenmoPaymentInProgress,
       pageCategory,
       navigation,
       isGymboreeCanadaSite,
+      venmoOrderConfirmationContent,
+      isVenmoPaymentInProgress,
     } = this.props;
     return (
       <ConfirmationView
@@ -155,6 +163,7 @@ class ConfirmationContainer extends React.Component {
         pageCategory={pageCategory}
         navigation={navigation}
         isGymboreeCanadaSite={isGymboreeCanadaSite}
+        venmoOrderConfirmationContent={venmoOrderConfirmationContent}
       />
     );
   }
@@ -207,7 +216,7 @@ export const mapStateToProps = state => {
     ),
     updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
-    venmoUserName: getVenmoUserName(state),
+    venmoUserName: getVenmoOrderUserId(state),
     isGymboreeCanadaSite: selectors.isGymboreeCanadaSite(state),
     placeCashConfirmationContentId: PlaceCashSelector.getPlaceDetailsContentId(
       state,
@@ -215,6 +224,16 @@ export const mapStateToProps = state => {
     ),
     notificationMsgContentId: SMSNotificationSelectors.getNotificationMsgContentId(state),
     subscribeSuccessMsgContentId: SMSNotificationSelectors.getSubscribeSuccessMsgContentId(state),
+    venmoPayment: getVenmoPayment(state),
+    venmoOrderConfirmationId: selectors.getVenmoOrderConfirmationContentId(
+      state,
+      'Venmo_Order_Confirmation'
+    ),
+    venmoOrderConfirmationContent: selectors.getVenmoOrderConfirmationContent(
+      state,
+      'Venmo_Order_Confirmation'
+    ),
+    isVenmoPaymentInProgress: isVenmoOrderPayment(state),
   };
 };
 

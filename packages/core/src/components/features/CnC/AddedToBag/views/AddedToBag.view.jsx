@@ -33,7 +33,7 @@ class AddedToBag extends React.PureComponent {
   }
 
   renderProductInfo() {
-    const { addedToBagData, labels, quantity } = this.props;
+    const { addedToBagData, labels, quantity, pointsSummary, bagLoading } = this.props;
     if (Array.isArray(addedToBagData)) {
       return addedToBagData.map(item => {
         return (
@@ -42,6 +42,8 @@ class AddedToBag extends React.PureComponent {
               data={item}
               labels={labels}
               inheritedStyles={productInfoStyles}
+              isDoubleAddedToBag
+              bagLoading={bagLoading}
             />
           </div>
         );
@@ -49,7 +51,7 @@ class AddedToBag extends React.PureComponent {
     }
     return (
       <ProductInformationView
-        data={addedToBagData}
+        data={{ ...addedToBagData, ...pointsSummary }}
         labels={labels}
         quantity={quantity}
         inheritedStyles={productInfoStyles}
@@ -96,6 +98,7 @@ class AddedToBag extends React.PureComponent {
           />
           <AddedToBagActions
             labels={labels}
+            onRequestClose={onRequestClose}
             handleCartCheckout={handleCartCheckout}
             showVenmo={false}
             containerId="paypal-button-container-added-to-bag"
@@ -149,6 +152,8 @@ AddedToBag.propTypes = {
   handleCartCheckout: PropTypes.func.isRequired,
   addedToBagLoaderState: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
+  pointsSummary: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);

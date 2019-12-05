@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import { BodyCopy, RichText } from '@tcp/core/src/components/common/atoms';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth, UrlHandler, getLocator } from '@tcp/core/src/utils';
@@ -101,8 +102,7 @@ class HeaderPromo extends React.PureComponent {
         {promoHtmlBannerCarousel && (
           <RichText
             source={{
-              html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${promoHtmlBannerCarousel &&
-                promoHtmlBannerCarousel[0].text}</body></html>`,
+              html: promoHtmlBannerCarousel && promoHtmlBannerCarousel[0].text,
             }}
           />
         )}
@@ -110,6 +110,16 @@ class HeaderPromo extends React.PureComponent {
     );
   }
 }
+
+HeaderPromo.propTypes = {
+  headerPromo: PropTypes.shape({}),
+  promoHtmlBannerCarousel: PropTypes.shape([]),
+};
+
+HeaderPromo.defaultProps = {
+  headerPromo: {},
+  promoHtmlBannerCarousel: [],
+};
 
 export default HeaderPromo;
 export { HeaderPromo as HeaderPromoVanilla };

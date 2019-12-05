@@ -13,8 +13,8 @@ export default css`
   border: 3px solid ${props => applyBrandSpecificBorder(props)};
   background-color: ${props => props.theme.colorPalette.white};
   position: fixed;
-  bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
-  right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+  bottom: 20%;
+  right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   z-index: 99;
   outline: none;
   cursor: pointer;

@@ -3,6 +3,7 @@
 exports[`ProductDetailView component should renders correctly 1`] = `
 <ScrollViewMock
   name="lazyload-pdp"
+  onScroll={[Function]}
 >
   <Styled(View)>
     <Styled(View)>
@@ -15,6 +16,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         }
         currentProduct={
           Object {
+            "bazaarVoice": Object {
+              "totalReviewCount": 3,
+            },
             "colorFitsSizesMap": Array [
               Object {
                 "favoritedCount": 0,
@@ -24,6 +28,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
             "shortDescription": "",
           }
         }
+        formName="ProductAddToBag"
         imageUrls={null}
         isLoggedIn={false}
         keepAlive={false}
@@ -31,6 +36,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         onImageClick={[Function]}
         outOfStockLabels={Object {}}
         removeAddToFavoritesErrorMsg={[Function]}
+        skuId={null}
       />
       <Styled(ProductSummary)
         currencyExchange={1}
@@ -43,6 +49,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         pdpLabels={Object {}}
         productData={
           Object {
+            "bazaarVoice": Object {
+              "totalReviewCount": 3,
+            },
             "colorFitsSizesMap": Array [
               Object {
                 "favoritedCount": 0,
@@ -52,6 +61,8 @@ exports[`ProductDetailView component should renders correctly 1`] = `
             "shortDescription": "",
           }
         }
+        renderRatingReview={true}
+        scrollToTarget={[Function]}
         selectedColorProductId=""
         showCompleteTheLook={false}
       />
@@ -61,6 +72,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         alternateSizes={Object {}}
         currentProduct={
           Object {
+            "bazaarVoice": Object {
+              "totalReviewCount": 3,
+            },
             "colorFitsSizesMap": Array [
               Object {
                 "favoritedCount": 0,
@@ -89,6 +103,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         outOfStockLabels={Object {}}
         productInfo={
           Object {
+            "bazaarVoice": Object {
+              "totalReviewCount": 3,
+            },
             "colorFitsSizesMap": Array [
               Object {
                 "favoritedCount": 0,
@@ -113,14 +130,17 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         longDescription=""
         margins={null}
         pdpLabels={Object {}}
+        scrollToAccordionBottom={[Function]}
         shortDescription=""
       />
-      <RelatedOutfits
-        navigation={Object {}}
-        pdpLabels={Object {}}
-        selectedColorProductId=""
-        setShowCompleteTheLook={[Function]}
-      />
+      <View>
+        <RelatedOutfits
+          navigation={Object {}}
+          pdpLabels={Object {}}
+          selectedColorProductId=""
+          setShowCompleteTheLook={[Function]}
+        />
+      </View>
       <Styled(View)>
         <Connect(Recommendations)
           isHeaderAccordion={true}
@@ -139,6 +159,14 @@ exports[`ProductDetailView component should renders correctly 1`] = `
           variation="moduleO"
         />
       </Styled(View)>
+      <View
+        collapsable={false}
+      >
+        <Connect(ProductReviews)
+          expanded={true}
+          reviewsCount={3}
+        />
+      </View>
     </Styled(View)>
   </Styled(View)>
 </ScrollViewMock>

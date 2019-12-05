@@ -692,6 +692,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
     defaultZoom=""
     isCanada={true}
     isMobile={false}
+    onImageLoad={[Function]}
     storesList={
       Array [
         Object {
@@ -3925,6 +3926,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
     >
       <Styled(Image)
         alt="Google Map"
+        onLoad={[Function]}
         title="Stores"
         url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x600&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
       >
@@ -3961,6 +3963,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
             }
           }
           forwardedRef={null}
+          onLoad={[Function]}
           title="Stores"
           url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x600&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
         >
@@ -3968,8 +3971,10 @@ exports[`StoreStaticMap component canada specific should mount for canada region
             alt="Google Map"
             className="sc-bwzfXH cFBjof"
             link={null}
+            onLoad={[Function]}
             placeholderSrc=""
             ref={[Function]}
+            role="img"
             sizes=""
             srcset=""
             title="Stores"
@@ -3979,6 +3984,8 @@ exports[`StoreStaticMap component canada specific should mount for canada region
               alt="Google Map"
               className="sc-bwzfXH cFBjof"
               onError={null}
+              onLoad={[Function]}
+              role={null}
               sizes={null}
               src="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x600&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
               srcSet=""
@@ -4672,6 +4679,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
     defaultZoom=""
     isCanada={false}
     isMobile={false}
+    onImageLoad={[Function]}
     storesList={
       Array [
         Object {
@@ -7901,11 +7909,13 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
     }
   >
     <Styled(Image)
+      alt=""
       height="400px"
       url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=346x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
       width="100%"
     >
       <StyledComponent
+        alt=""
         forwardedComponent={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -7942,20 +7952,26 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         width="100%"
       >
         <Image
+          alt=""
           className="sc-bwzfXH cFBjof"
           height="400px"
           link={null}
+          onLoad={[Function]}
           placeholderSrc=""
           ref={[Function]}
+          role="img"
           sizes=""
           srcset=""
           url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=346x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
           width="100%"
         >
           <img
+            alt=""
             className="sc-bwzfXH cFBjof"
             height="400px"
             onError={null}
+            onLoad={[Function]}
+            role={null}
             sizes={null}
             src="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=346x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
             srcSet=""
@@ -8648,6 +8664,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
     defaultZoom=""
     isCanada={false}
     isMobile={true}
+    onImageLoad={[Function]}
     storesList={
       Array [
         Object {
@@ -11881,6 +11898,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
     >
       <Styled(Image)
         alt="Google Map"
+        onLoad={[Function]}
         title="Stores"
         url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
       >
@@ -11917,6 +11935,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
             }
           }
           forwardedRef={null}
+          onLoad={[Function]}
           title="Stores"
           url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
         >
@@ -11924,8 +11943,10 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
             alt="Google Map"
             className="sc-bwzfXH cFBjof"
             link={null}
+            onLoad={[Function]}
             placeholderSrc=""
             ref={[Function]}
+            role="img"
             sizes=""
             srcset=""
             title="Stores"
@@ -11935,6 +11956,8 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
               alt="Google Map"
               className="sc-bwzfXH cFBjof"
               onError={null}
+              onLoad={[Function]}
+              role={null}
               sizes={null}
               src="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
               srcSet=""
@@ -12627,6 +12650,7 @@ exports[`StoreStaticMap component resize window should update component on windo
     defaultZoom=""
     isCanada={false}
     isMobile={false}
+    onImageLoad={[Function]}
     storesList={Array []}
   >
     <div
@@ -12634,6 +12658,7 @@ exports[`StoreStaticMap component resize window should update component on windo
     >
       <Styled(Image)
         alt="Google Map"
+        onLoad={[Function]}
         title="Stores"
         url="https://maps.googleapis.com/maps/api/staticmap?center=40.963784,-97.2160505&zoom=3&size=630x600&key=undefined"
       >
@@ -12670,6 +12695,7 @@ exports[`StoreStaticMap component resize window should update component on windo
             }
           }
           forwardedRef={null}
+          onLoad={[Function]}
           title="Stores"
           url="https://maps.googleapis.com/maps/api/staticmap?center=40.963784,-97.2160505&zoom=3&size=630x600&key=undefined"
         >
@@ -12677,8 +12703,10 @@ exports[`StoreStaticMap component resize window should update component on windo
             alt="Google Map"
             className="sc-bwzfXH cFBjof"
             link={null}
+            onLoad={[Function]}
             placeholderSrc=""
             ref={[Function]}
+            role="img"
             sizes=""
             srcset=""
             title="Stores"
@@ -12688,6 +12716,8 @@ exports[`StoreStaticMap component resize window should update component on windo
               alt="Google Map"
               className="sc-bwzfXH cFBjof"
               onError={null}
+              onLoad={[Function]}
+              role={null}
               sizes={null}
               src="https://maps.googleapis.com/maps/api/staticmap?center=40.963784,-97.2160505&zoom=3&size=630x600&key=undefined"
               srcSet=""
@@ -13380,6 +13410,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
     defaultZoom=""
     isCanada={false}
     isMobile={false}
+    onImageLoad={[Function]}
     storesList={Array []}
   >
     <div
@@ -13387,6 +13418,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
     >
       <Styled(Image)
         alt="Google Map"
+        onLoad={[Function]}
         title="Stores"
         url="https://maps.googleapis.com/maps/api/staticmap?center=40.963784,-97.2160505&zoom=3&size=630x600&key=undefined"
       >
@@ -13423,6 +13455,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
             }
           }
           forwardedRef={null}
+          onLoad={[Function]}
           title="Stores"
           url="https://maps.googleapis.com/maps/api/staticmap?center=40.963784,-97.2160505&zoom=3&size=630x600&key=undefined"
         >
@@ -13430,8 +13463,10 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
             alt="Google Map"
             className="sc-bwzfXH cFBjof"
             link={null}
+            onLoad={[Function]}
             placeholderSrc=""
             ref={[Function]}
+            role="img"
             sizes=""
             srcset=""
             title="Stores"
@@ -13441,6 +13476,8 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
               alt="Google Map"
               className="sc-bwzfXH cFBjof"
               onError={null}
+              onLoad={[Function]}
+              role={null}
               sizes={null}
               src="https://maps.googleapis.com/maps/api/staticmap?center=40.963784,-97.2160505&zoom=3&size=630x600&key=undefined"
               srcSet=""

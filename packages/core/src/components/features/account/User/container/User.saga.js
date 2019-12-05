@@ -9,6 +9,7 @@ import {
   setCurrency,
   setLanguage,
   setBossBopisFlags,
+  setCountryName,
 } from '../../../../../reduxStore/actions';
 import CONSTANTS from '../User.constants';
 import { setUserInfo, setIsRegisteredUserCallDone } from './User.actions';
@@ -27,7 +28,7 @@ export function* getUserInfoSaga() {
       source: 'login',
     });
     const siteId = getSiteId();
-    const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
+    const { CA_CONFIG_OPTIONS: apiConfig, siteIds } = API_CONFIG;
     const { country, currency, language, bossBopisFlags } = response;
     const dataSetActions = [];
     const [us, ca] = defaultCountries;
@@ -38,6 +39,7 @@ export function* getUserInfoSaga() {
     }
 
     dataSetActions.push(
+      put(setCurrency({ currency })),
       put(setUserInfo(response)),
       put(setAddressList(response.contactList, true)),
       put(setBossBopisFlags(bossBopisFlags)),
@@ -52,16 +54,21 @@ export function* getUserInfoSaga() {
      */
     if (!isMobileApp()) {
       let currencyAttributes = {};
+      let countryAttributes = {};
       if (country === us.id) {
         currencyAttributes = currencyAttributesUS;
+        countryAttributes = us;
       } else if (country === ca.id) {
         currencyAttributes = currencyAttributesCA;
+        countryAttributes = ca;
       } else {
         const res = yield call(countryListAbstractor.getData, country);
         const countryList = res && res.data.countryList;
         const currentCountry = countryList.length && countryList[0];
-        const { currency: currencyObj, exchangeRate } = currentCountry;
+
+        const { country: countryObj, currency: currencyObj, exchangeRate } = currentCountry;
         currencyAttributes = { ...currencyObj, ...exchangeRate };
+        countryAttributes = countryObj;
       }
 
       yield put(
@@ -70,13 +77,14 @@ export function* getUserInfoSaga() {
           currencyAttributes,
         })
       );
+      yield put(setCountryName((countryAttributes && countryAttributes.displayName) || ''));
     }
 
     if (language) {
       yield put(setLanguage(language));
     }
 
-    if (country === sites.ca.toUpperCase() && siteId !== apiConfig.siteId) {
+    if (!isMobileApp() && country === siteIds.ca.toUpperCase() && siteId !== apiConfig.siteId) {
       routerPush(window.location, '/home', null, siteId);
     }
   } catch (err) {

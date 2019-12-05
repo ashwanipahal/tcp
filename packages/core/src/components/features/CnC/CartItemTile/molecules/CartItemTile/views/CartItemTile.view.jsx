@@ -248,6 +248,7 @@ class CartItemTile extends PureComponent {
     const {
       itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
       productInfo: { skuId, generalProductId, upc, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
@@ -270,6 +271,9 @@ class CartItemTile extends PureComponent {
       size,
       upc,
       sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
     };
     setClickAnalyticsData({
       customEvents: ['event134', 'event136'],
@@ -295,8 +299,9 @@ class CartItemTile extends PureComponent {
   moveToBagSflItem = () => {
     const { productDetail, startSflDataMoveToBag, setClickAnalyticsData } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
-      productInfo: { skuId, generalProductId, upc, productPartNumber },
+      itemInfo: { itemId, isGiftItem, color, name, offerPrice },
+      productInfo: { skuId, generalProductId, productPartNumber },
+      miscInfo: { store },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
 
@@ -308,12 +313,12 @@ class CartItemTile extends PureComponent {
       name,
       price: offerPrice,
       extPrice: offerPrice,
-      sflExtPrice: offerPrice,
-      listPrice,
+      offerPrice,
       partNumber: productPartNumber,
-      size,
-      upc,
       sku: skuId.toString(),
+      pricingState: 'full price',
+      colorId: generalProductId,
+      storeId: store,
     };
     setClickAnalyticsData({
       customEvents: ['event135', 'event137'],
@@ -383,19 +388,24 @@ class CartItemTile extends PureComponent {
     ) {
       return (
         <ClickTracker name="Save_for_Later">
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            component="p"
-            fontWeight={['semibold']}
+          <Anchor
             dataLocator="saveForLaterLink"
-            className="sflActions"
-            onClick={() => {
+            onClick={e => {
+              e.preventDefault();
               this.handleMoveItemtoSaveList();
             }}
+            noLink
+            className="sflActions"
           >
-            {labels.saveForLaterLink}
-          </BodyCopy>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              component="span"
+              fontWeight={['semibold']}
+            >
+              {labels.saveForLaterLink}
+            </BodyCopy>
+          </Anchor>
         </ClickTracker>
       );
     }
@@ -405,19 +415,24 @@ class CartItemTile extends PureComponent {
     ) {
       return (
         <ClickTracker name="Move_to_Bag">
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            component="p"
-            fontWeight={['semibold']}
+          <Anchor
             dataLocator="moveToBagLink"
-            className="sflActions"
-            onClick={() => {
+            onClick={e => {
+              e.preventDefault();
               this.moveToBagSflItem();
             }}
+            noLink
+            className="sflActions"
           >
-            {labels.moveToBagLink}
-          </BodyCopy>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              component="span"
+              fontWeight={['semibold']}
+            >
+              {labels.moveToBagLink}
+            </BodyCopy>
+          </Anchor>
         </ClickTracker>
       );
     }
@@ -484,19 +499,26 @@ class CartItemTile extends PureComponent {
           !isBagPageSflSection &&
           isEditAllowed &&
           !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs12"
-              component="div"
+            <Anchor
               role="button"
-              tabIndex="0"
               dataLocator={getLocator('cart_item_edit_link')}
               className="padding-left-10 responsive-edit-css"
-              onClick={this.callEditMethod}
+              onClick={e => {
+                e.preventDefault();
+                this.callEditMethod(e);
+              }}
               onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
+              noLink
             >
-              {labels.edit}
-            </BodyCopy>
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs12"
+                component="span"
+                fontWeight={['semibold']}
+              >
+                {labels.edit}
+              </BodyCopy>
+            </Anchor>
           )}
       </>
     );
@@ -505,8 +527,12 @@ class CartItemTile extends PureComponent {
   // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { isBagPageSflSection } = this.props;
+    const { isBagPageSflSection, currencyExchange } = this.props;
     const { offerPrice } = productDetail.itemInfo;
+    const { price } = getPrices({
+      productDetail,
+      currencyExchange,
+    });
     // SFL prices
     const isBagPage = pageView === 'myBag';
     const topPaddingClass = isBagPageSflSection ? 'padding-top-40' : 'padding-top-15';
@@ -554,7 +580,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            <PriceCurrency price={offerPrice} />
+            <PriceCurrency price={isBagPageSflSection ? price : offerPrice} />
           </BodyCopy>
         )}
       </Row>
@@ -629,16 +655,18 @@ class CartItemTile extends PureComponent {
             >
               <PriceCurrency price={Number(price)} />
             </BodyCopy>
-            <BodyCopy
-              fontFamily="secondary"
-              component="span"
-              fontSize="fs12"
-              dataLocator={getLocator('sfl_was_price')}
-              fontWeight={['regular']}
-              className="was-price"
-            >
-              <PriceCurrency price={Number(listPrice)} />
-            </BodyCopy>
+            {listPrice !== price && (
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs12"
+                dataLocator={getLocator('sfl_was_price')}
+                fontWeight={['regular']}
+                className="was-price"
+              >
+                <PriceCurrency price={Number(listPrice)} />
+              </BodyCopy>
+            )}
           </Col>
         </>
       );

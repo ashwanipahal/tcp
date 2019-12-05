@@ -28,7 +28,7 @@ class Espot extends PureComponent {
    * @returns {function} calls function received from prop to open a modal
    */
   handleModal = action => {
-    const { togglePlccModal, openOverlay } = this.props;
+    const { togglePlccModal, openOverlay, toggleNeedHelpModal } = this.props;
     switch (action) {
       case 'plccModal':
         togglePlccModal(true);
@@ -45,7 +45,9 @@ class Espot extends PureComponent {
           variation: 'primary',
         });
         break;
-
+      case 'isCouponHelpModalOpen':
+        toggleNeedHelpModal();
+        break;
       default:
         break;
     }
@@ -61,14 +63,14 @@ class Espot extends PureComponent {
     const { assetHost } = getAPIConfig();
 
     if (externalUrl.test(link)) {
-      window.open(link, '_blank');
+      window.open(link, '_blank', 'noopener');
     } else {
       switch (target) {
         case '_self':
           this.richTextInternalRoute(link);
           break;
         case '_blank':
-          window.open(`${assetHost}${link}`, '_blank');
+          window.open(`${assetHost}${link}`, '_blank', 'noopener');
           break;
         default:
           break;
@@ -104,6 +106,7 @@ Espot.propTypes = {
   togglePlccModal: PropTypes.func.isRequired,
   richTextHtml: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  toggleNeedHelpModal: PropTypes.func.isRequired,
 };
 
 export default Espot;

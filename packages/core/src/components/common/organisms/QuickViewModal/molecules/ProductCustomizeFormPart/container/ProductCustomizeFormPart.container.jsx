@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import ProductCustomizeFormPart from '../views/ProductCustomizeFormPart.view';
-import { routerPush } from '../../../../../../../utils';
+import { routerPush, getBrand } from '../../../../../../../utils';
+import { APP_TYPE } from '../../../../../../features/CnC/Checkout/Checkout.constants';
 import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
@@ -45,19 +46,41 @@ class ProductCustomizeFormPartContainer extends React.Component {
   };
 
   goToPDPPageMobile = (pdpUrl, selectedColorProductId) => {
-    const { navigation, onCloseClick } = this.props;
+    const { navigation, onCloseClick, updateAppTypeHandler, productInfoFromBag } = this.props;
+    const currentAppBrand = getBrand();
+    const isProductBrandOfSameDomain =
+      currentAppBrand.toUpperCase() === productInfoFromBag.itemBrand.toUpperCase();
     const title = navigation && navigation.getParam('title');
+
     onCloseClick();
-    navigation.navigate('ProductDetail', {
-      title,
-      pdpUrl,
-      selectedColorProductId,
-      reset: true,
-    });
+    if (!isProductBrandOfSameDomain) {
+      updateAppTypeHandler({
+        type: currentAppBrand.toLowerCase() === APP_TYPE.TCP ? APP_TYPE.GYMBOREE : APP_TYPE.TCP,
+        params: {
+          title,
+          pdpUrl,
+          selectedColorProductId,
+          reset: true,
+        },
+      });
+    } else {
+      navigation.navigate('ProductDetail', {
+        title,
+        pdpUrl,
+        selectedColorProductId,
+        reset: true,
+      });
+    }
   };
 
   render() {
-    const { productInfo, formRef, currencyAttributes, onCloseClick } = this.props;
+    const {
+      productInfo,
+      formRef,
+      currencyAttributes,
+      onCloseClick,
+      isMultiItemQVModal,
+    } = this.props;
     const { currentColorEntry, formEnabled } = this.state;
     const imageUrl = currentColorEntry
       ? productInfo.imagesByColor[currentColorEntry.color.name] &&
@@ -77,6 +100,7 @@ class ProductCustomizeFormPartContainer extends React.Component {
         formEnabled={formEnabled}
         currencyAttributes={currencyAttributes}
         onCloseClick={onCloseClick}
+        isMultiItemQVModal={isMultiItemQVModal}
       />
     );
   }
@@ -99,6 +123,9 @@ ProductCustomizeFormPartContainer.propTypes = {
   addToBagError: PropTypes.string,
   currencyAttributes: PropTypes.shape({}),
   changeQuickViewState: PropTypes.bool.isRequired,
+  isMultiItemQVModal: PropTypes.bool.isRequired,
+  updateAppTypeHandler: PropTypes.func.isRequired,
+  productInfoFromBag: PropTypes.shape({}).isRequired,
 };
 
 ProductCustomizeFormPartContainer.defaultProps = {

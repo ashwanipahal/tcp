@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { RichText, Anchor, BodyCopy, Button, Row, Col } from '../../../../../atoms';
 import Modal from '../../../../Modal';
 import withStyles from '../../../../../hoc/withStyles';
@@ -25,7 +27,9 @@ const StyledApplyNowModal = ({
   rtpsCongratsMsg,
   rtpsOptOutMsg,
   rtpsTextTerms,
+  cartOrderItems,
 }) => {
+  const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
   return !isPLCCModalOpen ? (
     <Modal
       fixedWidth
@@ -41,6 +45,7 @@ const StyledApplyNowModal = ({
       shouldCloseOnOverlayClick={false}
       innerContentClassName="innerContent"
       shouldCloseOnEsc={!isRtpsFlow}
+      contentLabel={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
     >
       <div className="Modal__Content__Wrapper">
         <BodyCopy
@@ -60,7 +65,7 @@ const StyledApplyNowModal = ({
             colSize={{ large: 12, medium: 8, small: 6 }}
             className="submit_button_plcc_form_container"
           >
-            <div className="header-image" />
+            <div className="header-image" aria-hidden />
           </Col>
         </Row>
         <Row fullBleed className="submit_plcc_form">
@@ -95,9 +100,17 @@ const StyledApplyNowModal = ({
               onClick={openPLCCModal}
               data-locator={getLocator('plcc_apply_btn')}
             >
-              {!isRtpsFlow
-                ? getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')
-                : getLabelValue(labels, 'lbl_PLCC_interested')}
+              <ClickTracker
+                clickData={{
+                  customEvents: isRtpsFlow ? ['event47'] : [],
+                  eventName: 'plcc checkout invite accepted',
+                  products: productsData,
+                }}
+              >
+                {!isRtpsFlow
+                  ? getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')
+                  : getLabelValue(labels, 'lbl_PLCC_interested')}
+              </ClickTracker>
             </Button>
           </Col>
         </Row>
@@ -139,7 +152,15 @@ const StyledApplyNowModal = ({
                   closeModal();
                 }}
               >
-                {getLabelValue(labels, 'lbl_PLCC_noThanks')}
+                <ClickTracker
+                  clickData={{
+                    customEvents: ['event48'],
+                    eventName: 'plcc checkout invite declined',
+                    products: productsData,
+                  }}
+                >
+                  {getLabelValue(labels, 'lbl_PLCC_noThanks')}
+                </ClickTracker>
               </Anchor>
             </Col>
           )}
@@ -151,6 +172,7 @@ const StyledApplyNowModal = ({
             </Col>
           </Row>
         )}
+        <div className="separator" />
         <div
           className="offer_info_icon"
           data-locator="plcc_modal_logo"
@@ -167,7 +189,7 @@ const StyledApplyNowModal = ({
         </BodyCopy>
         <RichText className="rewards__benefits" richTextHtml={plccBenefitsList} />
         <div className="footerLinks">
-          <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
+          <BodyCopy component="span" fontSize="fs10" fontFamily="secondary">
             {getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
           </BodyCopy>
           <Anchor
@@ -203,6 +225,7 @@ const StyledApplyNowModal = ({
             {getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
           </Anchor>
         </div>
+        <div className="separator" />
         {isRtpsFlow && (
           <Row>
             <Col colSize={{ large: 12, medium: 8, small: 6 }}>
@@ -218,6 +241,7 @@ const StyledApplyNowModal = ({
       isPLCCModalOpen={isPLCCModalOpen}
       closePLCCModal={closePLCCModal}
       isRtpsFlow={isRtpsFlow}
+      labels={labels}
     />
   );
 };
@@ -250,6 +274,7 @@ StyledApplyNowModal.propTypes = {
     apply_now_rewardTerms: PropTypes.string.isRequired,
     oneequalstwopointsoffer: PropTypes.bool.isRequired,
   }).isRequired,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default withStyles(StyledApplyNowModal, styles);

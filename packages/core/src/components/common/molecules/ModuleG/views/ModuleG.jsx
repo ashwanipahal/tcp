@@ -14,7 +14,6 @@ import {
   getProductUrlForDAM,
   configureInternalNavigationFromCMSUrl,
 } from '../../../../../utils';
-import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import moduleGConfig from '../moduleG.config';
 
 const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = moduleGConfig;
@@ -128,12 +127,11 @@ class ModuleG extends React.PureComponent {
             >
               <span className="shopall_footerlink">{currentSingleCTAButton.title}</span>
               <span className="right_chevron_arrow">
-                <Image src={getIconPath('smallright')} />
+                <Image src={getIconPath('smallright')} alt="" />
               </span>
             </Anchor>
           </Col>
         </Row>
-        <QuickViewModal />
       </>
     ) : null;
   };
@@ -255,6 +253,7 @@ class ModuleG extends React.PureComponent {
       // mediaLinkedList,
       // layout,
       divTabs,
+      moduleClassName,
     } = this.props;
     firstCarouselOption.afterChange = current => {
       this.setState({ firstCarouselNext: current });
@@ -281,7 +280,7 @@ class ModuleG extends React.PureComponent {
     }
 
     return (
-      <Grid className={`${className} moduleG`}>
+      <Grid className={`${className} ${moduleClassName} moduleG`}>
         <Row>
           <Col
             colSize={{
@@ -304,7 +303,7 @@ class ModuleG extends React.PureComponent {
 
           <div className="focusAreaView">
             <span className="focusArea-plus">
-              {showPlusButton ? <Image src={getIconPath('plus-icon')} /> : null}
+              {showPlusButton ? <Image src={getIconPath('plus-icon')} alt="" /> : null}
             </span>
           </div>
           {/* carousel bottom */}
@@ -320,6 +319,7 @@ ModuleG.defaultProps = {
   // mediaLinkedList: [],
   promoBanner: [],
   layout: 'default',
+  moduleClassName: '',
 };
 
 ModuleG.propTypes = {
@@ -362,6 +362,7 @@ ModuleG.propTypes = {
       singleCTAButton: PropTypes.object,
     })
   ).isRequired,
+  moduleClassName: PropTypes.string,
 };
 
 const styledModuleG = withStyles(errorBoundary(ModuleG), moduleGStyle);

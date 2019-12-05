@@ -91,6 +91,7 @@ const LoyaltyBannerSection = props => {
     openApplyNowModal,
     bagLoading,
     footerLabels,
+    cartOrderItems,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -166,7 +167,11 @@ const LoyaltyBannerSection = props => {
   return (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
-        {isProductDetailView || !bagLoading ? (
+        {(!isConfirmationPage ? (
+          isProductDetailView || !bagLoading
+        ) : (
+          true
+        )) ? (
           <BodyCopy
             className="loyalty-banner-section-wrapper"
             component="div"
@@ -197,6 +202,7 @@ const LoyaltyBannerSection = props => {
                 closeAddedToBagModal={closeAddedToBagModal}
                 openApplyNowModal={openApplyNowModal}
                 isProductDetailView={isProductDetailView}
+                cartOrderItems={cartOrderItems}
               />
             </div>
           </BodyCopy>
@@ -229,6 +235,7 @@ LoyaltyBannerSection.propTypes = {
   closeAddedToBagModal: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
   bagLoading: PropTypes.bool,
+  cartOrderItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 LoyaltyBannerSection.defaultProps = {

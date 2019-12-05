@@ -632,14 +632,19 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="billing"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -1019,14 +1024,19 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="billing"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -1081,14 +1091,19 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="billing"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -1432,14 +1447,19 @@ exports[`ButtonList component renders correctly without props 1`] = `
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="billing"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -1815,14 +1835,19 @@ exports[`ButtonList component renders correctly without props 2`] = `
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="billing"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -2399,14 +2424,19 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="billing"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -2419,14 +2449,19 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    onVenmoError={false}
     onVenmoSubmit={[Function]}
     pageCategory="billing"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoPayment={null}
   />
 </Fragment>
 `;

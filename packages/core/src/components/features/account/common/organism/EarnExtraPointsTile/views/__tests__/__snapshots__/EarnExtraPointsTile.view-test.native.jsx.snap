@@ -59,7 +59,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
         renderItem={[Function]}
         showDots={true}
         variation="show-arrow"
-        width={720}
+        width={775}
       />
     </View>
   </Styled(View)>

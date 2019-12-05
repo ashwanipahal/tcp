@@ -26,6 +26,7 @@ export {
   createGoogleMapUrl,
   mapHandler,
   formatPhnNumber,
+  scrollToViewBottom,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -36,6 +37,7 @@ export {
   isMobileApp,
   getIconPath,
   getLocator,
+  getVideoUrl,
   getAPIConfig,
   isCanada,
   resetApiConfig,
@@ -69,6 +71,9 @@ export {
   calculatePriceValue,
   getProductUrlForDAM,
   isTCP,
+  formatDate,
+  isValidDate,
+  convertNumToBool,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

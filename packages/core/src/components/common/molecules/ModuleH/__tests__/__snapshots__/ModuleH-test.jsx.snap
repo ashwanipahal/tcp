@@ -2,7 +2,7 @@
 
 exports[`ModuleH component renders correctly 1`] = `
 <StyledComponent
-  className="undefined moduleH"
+  className="undefined  moduleH"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -230,6 +230,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "autoplaySpeed": 4000,
           "beforeChange": [Function],
           "fade": true,
+          "key": 0.5,
           "responsive": Array [
             Object {
               "breakpoint": 767,

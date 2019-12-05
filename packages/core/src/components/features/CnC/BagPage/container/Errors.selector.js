@@ -374,6 +374,12 @@ const getErrorList = state => {
       'errorMessages',
       'global'
     ),
+    _ERR_MORE_THAN_300_TOTAL_IN_CART_ERROR: getLabelValue(
+      state.Labels,
+      'lbl_errorMessages_ERR_MORE_THAN_300_TOTAL_IN_CART_ERROR',
+      'errorMessages',
+      'global'
+    ),
     _ERR_GIFTLIST_ITEM_CATALOGENTRY_NOT_FOUND: getLabelValue(
       state.Labels,
       'lbl_errorMessages_ERR_GIFTLIST_ITEM_CATALOGENTRY_NOT_FOUND',
@@ -533,6 +539,12 @@ const getErrorList = state => {
     ERR_REQUEST_TIMEOUT: getLabelValue(
       state.Labels,
       'lbl_errorMessages_PROCESS_REQUEST_ERROR',
+      'errorMessages',
+      'global'
+    ),
+    _PLACE_CASH_ERROR: getLabelValue(
+      state.Labels,
+      'lbl_errorMessages_PLACE_CASH_ERROR',
       'errorMessages',
       'global'
     ),

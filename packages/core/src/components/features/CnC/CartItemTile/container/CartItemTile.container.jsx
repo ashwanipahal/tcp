@@ -27,7 +27,6 @@ import {
   getEditableProductInfo,
   getCartToggleError,
   getCartBossBopisToggleError,
-  getCurrencyExchange,
 } from './CartItemTile.selectors';
 import {
   getSaveForLaterSwitch,
@@ -43,6 +42,7 @@ import {
 } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import CONSTANTS from '../../Checkout/Checkout.constants';
+import { getCurrencyAttributes } from '../../../browse/ProductDetail/container/ProductDetail.selectors';
 import { addItemsToWishlist } from '../../../browse/Favorites/container/Favorites.actions';
 
 /* eslint-disable no-shadow */
@@ -52,6 +52,7 @@ export class CartItemTileContainer extends React.Component {
     this.state = {
       generalProductId: '',
       productDataforDelete: null,
+      showLoginModal: false,
     };
   }
 
@@ -82,8 +83,18 @@ export class CartItemTileContainer extends React.Component {
     if (isLoggedIn) {
       startSflItemDelete({ ...payloadData });
     } else {
-      this.setState({ generalProductId: generalProductIdState, productDataforDelete: payloadData });
+      this.setState({
+        generalProductId: generalProductIdState,
+        productDataforDelete: payloadData,
+        showLoginModal: true,
+      });
     }
+  };
+
+  toggleLoginModal = () => {
+    this.setState(state => ({
+      showLoginModal: !state.showLoginModal,
+    }));
   };
 
   render() {
@@ -137,7 +148,10 @@ export class CartItemTileContainer extends React.Component {
       disableProductRedirect,
       setClickAnalyticsData,
       closeMiniBag,
+      isLoggedIn,
+      cartOrderItems,
     } = this.props;
+    const { showLoginModal } = this.state;
     return (
       <CartItemTile
         labels={labels}
@@ -190,6 +204,10 @@ export class CartItemTileContainer extends React.Component {
         setClickAnalyticsData={setClickAnalyticsData}
         closeMiniBag={closeMiniBag}
         handleAddToWishlist={this.handleAddToWishlist}
+        isLoggedIn={isLoggedIn}
+        showLoginModal={showLoginModal}
+        toggleLoginModal={this.toggleLoginModal}
+        cartOrderItems={cartOrderItems}
       />
     );
   }
@@ -324,10 +342,11 @@ export function mapStateToProps(state) {
     orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state) || '',
     toggleError: getCartToggleError(state),
     toggleBossBopisError: getCartBossBopisToggleError(state),
-    currencyExchange: getCurrencyExchange(state),
+    currencyExchange: [getCurrencyAttributes(state)],
     pickupStoresInCart: BAGPAGE_SELECTORS.getCartStores(state),
     isMiniBagOpen: getIsMiniBagOpen(state),
     isLoggedIn: getUserLoggedInState(state),
+    cartOrderItems: BAGPAGE_SELECTORS.getOrderItems(state),
   };
 }
 
@@ -385,6 +404,7 @@ CartItemTileContainer.propTypes = {
   isMiniBagOpen: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 
 CartItemTileContainer.defaultProps = {

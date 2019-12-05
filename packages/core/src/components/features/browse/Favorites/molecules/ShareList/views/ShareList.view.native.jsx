@@ -1,22 +1,16 @@
 import React from 'react';
-import { reduxForm, Field, change } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import { Container, InputBoxWrapper } from '../styles/ShareList.style.native';
-import withStyles from '../../../../../../common/hoc/withStyles.native';
+import { Container } from '../styles/ShareList.style.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import TextArea from '../../../../../../common/atoms/TextArea';
 
 class ShareList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: '',
-    };
-  }
   submitHandler = () => {
     const { handleSubmit, onHandleSubmit } = this.props;
     handleSubmit(data => {
@@ -27,8 +21,7 @@ class ShareList extends React.PureComponent {
   };
 
   render() {
-    const { labels, margins, onCloseModal, dispatch } = this.props;
-    const { message } = this.state;
+    const { labels, margins, onCloseModal } = this.props;
     return (
       <Container margins={margins}>
         <BodyCopy
@@ -74,32 +67,14 @@ class ShareList extends React.PureComponent {
           maxLength={50}
           bottomBorderColor="gray.600"
         />
-        <BodyCopy
-          margin="0 0 6px 0"
-          dataLocator="fav_brand_title"
-          mobileFontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          color="gray.900"
-          text={getLabelValue(labels, 'lbl_fav_message')}
-        />
         <Field
-          label={getLabelValue(labels, 'lbl_fav_subject')}
+          label={getLabelValue(labels, 'lbl_fav_message')}
           name="message"
           id="message"
-          type="text"
-          value={message}
-          onChangeText={text => {
-            this.setState({ message: text });
-            dispatch(change('ShareListForm', `message`, text));
-          }}
-          autoCapitalize="none"
-          component={InputBoxWrapper}
-          dataLocator="message"
-          maxLength={100}
+          component={TextArea}
           bottomBorderColor="gray.600"
           multiline
-          textAlign="left"
+          numberOfLines={4}
         />
         <Button
           margin="40px 0 0 0"
@@ -127,7 +102,6 @@ ShareList.propTypes = {
   onHandleSubmit: PropTypes.func.isRequired,
   margins: PropTypes.string,
   onCloseModal: PropTypes.func,
-  dispatch: PropTypes.func,
 };
 
 ShareList.defaultProps = {
@@ -135,7 +109,6 @@ ShareList.defaultProps = {
   handleSubmit: () => {},
   margins: null,
   onCloseModal: () => {},
-  dispatch: () => {},
 };
 
 const validateMethod = createValidateMethod(

@@ -27,8 +27,10 @@ const { getIsPaymentDisabled } = CheckoutSelectors;
 export class GiftCardsContainer extends React.PureComponent<Props> {
   /* eslint-disable-next-line */
   UNSAFE_componentWillMount() {
-    const { getCardListAction } = this.props;
-    getCardListAction();
+    const { getCardListAction, isGuestUser } = this.props;
+    if (!isGuestUser) {
+      getCardListAction({ ignoreCache: true });
+    }
   }
 
   componentDidUpdate(prevProps) {

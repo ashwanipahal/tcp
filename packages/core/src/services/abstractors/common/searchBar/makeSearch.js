@@ -2,7 +2,6 @@ import filter from 'lodash/filter';
 import { getLabelValue } from '@tcp/core/src/utils';
 import processHelpers from '../../productListing/processHelpers';
 import { parseBoolean } from '../../productListing/productParser';
-import { extractAttributeValue } from '../../../../utils/badge.util';
 import { executeUnbxdAPICall } from '../../../handler';
 import endpoints from '../../../endpoints';
 
@@ -130,7 +129,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
             highOfferPrice: parseFloat(product.high_offer_price) || 0,
             isBundleProduct: bundleProduct,
             productUrl: `${bundleProduct ? '/b' : '/p'}/${pdpURLID}`,
-            keepAlive: parseBoolean(extractAttributeValue(product, productAttributes.keepAlive)),
+            keepAlive: parseBoolean(product[productAttributes.keepAlive]),
           };
         });
 

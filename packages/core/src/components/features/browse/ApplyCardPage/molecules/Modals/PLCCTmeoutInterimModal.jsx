@@ -95,6 +95,7 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
           minHeight="392px"
           inheritedStyles={modalStyles}
           shouldCloseOnOverlayClick={false}
+          contentLabel={getLabelValue(labels, 'lbl_PLCCTimeoutModal_stillThere')}
         >
           <div className="Modal__Content__Wrapper">
             <Row fullBleed className="modal_content">

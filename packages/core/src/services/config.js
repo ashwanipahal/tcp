@@ -28,6 +28,12 @@ export const awsAppSync = {
   aws_appsync_graphqlEndpoint: endpoints.graphQL.int,
 };
 
+export const moduleNames = {
+  accountNavigation: 'AccountNavigation',
+  navigation: 'navigation',
+  subNavigation: 'subNavigation',
+};
+
 // TODO - to move it in env config file
 export const API_CONFIG = {
   sites: ['us', 'ca'],
@@ -80,6 +86,8 @@ export const API_CONFIG = {
     assetHost: '/',
     domain: '/',
     unbxd: 'https://search.unbxd.io',
+    BV_SHARED_KEY: 'Fca3yih00AVeVDFvmaDwnwlWM',
+    BV_WEB_VIEW_URL: 'https://test5.childrensplace.com/static/bazaarVoice/index.html',
   },
   US_CONFIG_OPTIONS: {
     storeId: '10151',
@@ -107,6 +115,7 @@ export const API_CONFIG = {
   sessionCookieKey: 'QuantumMetricSessionID',
   pageCountCookieKey: 'pv',
   apiContentType: 'application/json',
+  landingSite: 'ls',
 };
 
 export default {

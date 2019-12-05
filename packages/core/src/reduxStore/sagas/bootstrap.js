@@ -2,9 +2,10 @@
 import { all, call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { setPlpProductsDataOnServer } from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.actions';
-import { getAPIConfig } from '@tcp/core/src/utils';
+import { getAPIConfig, createLayoutPath } from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { getNavigationData } from '@tcp/core/src/services/abstractors/common/subNavigation';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
 import setUserGroup from '../../services/abstractors/common/setUserGroup';
 import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
@@ -101,6 +102,9 @@ function* bootstrap(params) {
       yield put(loadXappConfigDataOtherBrand(xappConfigOtherBrand));
     }
     const state = yield select();
+    if (isMobileApp()) {
+      yield put(setLoaderState(true));
+    }
     const result = yield call(
       bootstrapAbstractor,
       pageName,
@@ -110,6 +114,11 @@ function* bootstrap(params) {
       originalUrl,
       deviceType
     );
+    if (isMobileApp()) {
+      yield put(setLoaderState(false));
+    }
+    const layoutPageName =
+      pageName && pageName.match(/-([a-z])/g) ? createLayoutPath(pageName) : pageName;
     if (result.PLP) {
       const { layout, modules: plpModules, pageName: layoutName, res } = result.PLP;
       yield put(loadLayoutData(layout, layoutName));
@@ -117,7 +126,7 @@ function* bootstrap(params) {
       yield put(setPlpProductsDataOnServer(res));
     }
     if (pageName) {
-      yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
+      yield put(loadLayoutData(result[layoutPageName].items[0].layout, layoutPageName));
       /**
        * Fetching the placholder content Ids so that sub navigation call can be made
        * By fetching sub navigation sub category stored in placeholder module key val.

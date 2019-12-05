@@ -25,11 +25,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             </Styled(View)>
           </Styled(View)>
         </Styled(TouchableOpacity)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View) />
-        </Styled(TouchableOpacity)>
       </Styled(View)>
     </AnimatedComponent>
     <Styled(ScrollViewMock)
@@ -56,9 +51,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           </Styled(View)>
         </Styled(View)>
       </Styled(View)>
-      <Connect(QuickViewModalContainer)
-        navigation={[MockFunction]}
-      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -86,11 +78,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               <Styled(Text) />
             </Styled(View)>
           </Styled(View)>
-        </Styled(TouchableOpacity)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View) />
         </Styled(TouchableOpacity)>
       </Styled(View)>
     </AnimatedComponent>
@@ -132,9 +119,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           </Styled(View)>
         </Styled(View)>
       </Styled(View)>
-      <Connect(QuickViewModalContainer)
-        navigation={[MockFunction]}
-      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -164,11 +148,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               <Styled(Text) />
             </Styled(View)>
           </Styled(View)>
-        </Styled(TouchableOpacity)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View) />
         </Styled(TouchableOpacity)>
       </Styled(View)>
     </AnimatedComponent>
@@ -210,9 +189,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           </Styled(View)>
         </Styled(View)>
       </Styled(View)>
-      <Connect(QuickViewModalContainer)
-        navigation={[MockFunction]}
-      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -240,11 +216,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               <Styled(Text) />
             </Styled(View)>
           </Styled(View)>
-        </Styled(TouchableOpacity)>
-        <Styled(TouchableOpacity)
-          onPress={[Function]}
-        >
-          <Styled(View) />
         </Styled(TouchableOpacity)>
       </Styled(View)>
     </AnimatedComponent>
@@ -285,6 +256,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Connect(CouponContainer)
+            pageName="shopping bag"
             showAccordian={false}
           />
         </Styled(View)>
@@ -304,9 +276,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           </Styled(View)>
         </Styled(View)>
       </Styled(View)>
-      <Connect(QuickViewModalContainer)
-        navigation={[MockFunction]}
-      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
   <Styled(View)>

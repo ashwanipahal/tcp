@@ -1,12 +1,7 @@
-import { put } from 'redux-saga/effects';
+import { putResolve } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
-import {
-  getCurrentStore,
-  getNearByStore,
-  fetchModuleX,
-  calculateDistance,
-} from '../StoreDetail.saga';
-import { setCurrentStoreInfo, setNearByStore, setDistance } from '../StoreDetail.actions';
+import { getCurrentStore, getNearByStore, fetchModuleX } from '../StoreDetail.saga';
+import { setCurrentStoreInfo, setNearByStore } from '../StoreDetail.actions';
 import moduleXMock from '../__mocks__/moduleX.mock';
 
 describe('StoreDetail saga', () => {
@@ -17,7 +12,9 @@ describe('StoreDetail saga', () => {
     });
     it('should return correct takeLatest effect', () => {
       const received = currentStoreGen.next().value;
-      expect(currentStoreGen.next(received).value).toEqual(put(setCurrentStoreInfo(received)));
+      expect(currentStoreGen.next(received).value).toEqual(
+        putResolve(setCurrentStoreInfo(received))
+      );
     });
   });
   describe('#getNearByStore', () => {
@@ -38,7 +35,7 @@ describe('StoreDetail saga', () => {
     });
     it('should return correct takeLatest effect', () => {
       const received = nearByStoreGen.next().value;
-      expect(nearByStoreGen.next(received).value).toEqual(put(setNearByStore(received)));
+      expect(nearByStoreGen.next(received).value).toEqual(putResolve(setNearByStore(received)));
     });
   });
   describe('#fetchModuleX', () => {
@@ -50,16 +47,6 @@ describe('StoreDetail saga', () => {
       let moduleXResponses = moduleXGen.next().value;
       moduleXResponses = moduleXGen.next().value;
       expect(moduleXResponses).toEqual(null);
-    });
-  });
-  describe('#calculateDistance', () => {
-    let distanceGen;
-    beforeEach(() => {
-      distanceGen = calculateDistance({ payload: { destination: '' } });
-    });
-    it('should return distance calculation latest effect', () => {
-      const received = distanceGen.next().value;
-      expect(distanceGen.next(received).value).toEqual(put(setDistance(received)));
     });
   });
 });

@@ -22,7 +22,10 @@ const styles = css`
   }
 
   .cartPageTitleHeader {
+    display: flex;
+    justify-content: center;
     @media ${props => props.theme.mediaQuery.medium} {
+      justify-content: initial;
       pointer-events: none;
     }
   }
@@ -250,6 +253,10 @@ export const recommendationStyles = css`
       .recommendations-section-row {
         padding-left: 6px;
       }
+    }
+    .added-to-bag {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 `;

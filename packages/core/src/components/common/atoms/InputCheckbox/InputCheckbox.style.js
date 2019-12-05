@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const CHECKBOX_SIZE = '25px';
 
@@ -11,7 +12,6 @@ const styles = css`
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ${CHECKBOX_SIZE};
     width: ${CHECKBOX_SIZE};
@@ -73,7 +73,7 @@ const styles = css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   & .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(${getIconPath('circle-alert-fill')}) no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};

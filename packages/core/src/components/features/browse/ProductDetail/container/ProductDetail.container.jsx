@@ -7,6 +7,7 @@ import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
 import ProductDetailView from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   removeAddToFavoriteErrorState,
   addItemsToWishlist,
@@ -37,6 +38,8 @@ import {
   getGeneralProductId,
   getAlternateSizes,
   getPLPPromos,
+  getSizeChartDetails,
+  getPDPLoadingState,
 } from './ProductDetail.selectors';
 
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
@@ -49,6 +52,7 @@ import {
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 import PRODUCTDETAIL_CONSTANTS from './ProductDetail.constants';
+import ProductDetailSkeleton from '../molecules/ProductDetailSkeleton';
 
 /**
  * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
@@ -180,9 +184,13 @@ class ProductDetailContainer extends React.PureComponent {
       topPromos,
       middlePromos,
       bottomPromos,
+      isLoading,
       router: { asPath: asPathVal },
+      trackPageLoad,
+      sizeChartDetails,
       ...otherProps
     } = this.props;
+
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
       <>
@@ -219,8 +227,12 @@ class ProductDetailContainer extends React.PureComponent {
               topPromos={topPromos}
               middlePromos={middlePromos}
               bottomPromos={bottomPromos}
+              trackPageLoad={trackPageLoad}
+              sizeChartDetails={sizeChartDetails}
+              isMatchingFamily // TODO: Need to add kill switch for this
             />
           ) : null}
+          {isLoading ? <ProductDetailSkeleton /> : null}
         </React.Fragment>
       </>
     );
@@ -232,12 +244,15 @@ ProductDetailContainer.pageInfo = {
   pageData: {
     pageName: 'product',
     pageSection: 'product',
+    pageSubSection: 'product',
+    loadAnalyticsOnload: false,
   },
 };
 
 function mapStateToProps(state) {
   return {
     navTree: getNavTree(state),
+    isLoading: getPDPLoadingState(state),
     productDetails: prodDetails(state),
     breadCrumbs: getBreadCrumbs(state),
     longDescription: getDescription(state),
@@ -263,6 +278,7 @@ function mapStateToProps(state) {
     topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
     middlePromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_MIDDLE),
     bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
+    sizeChartDetails: getSizeChartDetails(state),
     store: state,
   };
 }
@@ -283,6 +299,33 @@ function mapDispatchToProps(dispatch) {
     },
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
+    },
+    trackPageLoad: payload => {
+      const { products, customEvents } = payload;
+      dispatch(
+        setClickAnalyticsData({
+          products,
+          customEvents,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          trackPageView({
+            props: {
+              initialProps: {
+                pageProps: {
+                  pageData: {
+                    ...payload,
+                  },
+                },
+              },
+            },
+          })
+        );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
+      }, 100);
     },
   };
 }
@@ -321,6 +364,12 @@ ProductDetailContainer.propTypes = {
   outOfStockLabels: PropTypes.shape({}).isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  sizeChartDetails: PropTypes.shape([]),
+  topPromos: PropTypes.string,
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
+  isLoading: PropTypes.bool,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -345,6 +394,12 @@ ProductDetailContainer.defaultProps = {
   alternateSizes: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  sizeChartDetails: [],
+  topPromos: '',
+  middlePromos: '',
+  bottomPromos: '',
+  isLoading: false,
+  trackPageLoad: () => {},
 };
 
 export default withIsomorphicRenderer({

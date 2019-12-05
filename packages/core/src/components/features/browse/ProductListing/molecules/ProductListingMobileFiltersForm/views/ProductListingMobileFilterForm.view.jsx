@@ -7,7 +7,6 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListingMobileFiltersFormStyle from '../styles/ProductListingMobileFiltersForm.style';
 import CustomSelect from '../../CustomSelect/views';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Image from '../../../../../../common/atoms/Image';
 import cssClassName from '../../utils/cssClassName';
 import AccordionList from '../../../../../../common/molecules/AccordionList';
 import { Row, Col, Button } from '../../../../../../common/atoms';
@@ -116,6 +115,14 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       show: false,
       isSortOpenModal: false,
     };
+    this.customSelect = null;
+  }
+
+  componentDidMount() {
+    this.customSelect = document.querySelector('.available-filters-sorting-container');
+    this.filterSelect = document.querySelector('.filter-row');
+    this.filterBySection = document.querySelector('.filtered-by-section');
+    window.addEventListener('click', this.closeDropdownIfClickOutside);
   }
 
   /**
@@ -143,6 +150,21 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
     const { filtersLength } = this.props;
     return (filtersLength && Object.keys(filtersLength) > 0 && this.sumValues(filtersLength)) || 0;
   }
+
+  closeDropdownIfClickOutside = e => {
+    const { isSortOpenModal, show } = this.state;
+    if (
+      (isSortOpenModal || show) &&
+      !this.customSelect.contains(e.target) &&
+      !this.filterSelect.contains(e.target) &&
+      !this.filterBySection.contains(e.target)
+    ) {
+      this.setState({
+        isSortOpenModal: false,
+        show: false,
+      });
+    }
+  };
 
   sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
 
@@ -244,6 +266,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         onFilterSelection={onFilterSelection}
         onOptionSelected={handleSubmitOnChange}
         isLoadingMore={isLoadingMore}
+        isFavoriteView={isFavoriteView}
       />
     );
   };
@@ -311,11 +334,11 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             onChange={
               !isFavoriteView
                 ? handleSubmit(formValues => {
-                    this.hideModal(true);
+                    this.showSortModal(true);
                     handleSubmitOnChange(formValues);
                   })
                 : selectedOption => {
-                    this.hideModal(true);
+                    this.showSortModal(true);
                     onSortSelection(selectedOption);
                   }
             }
@@ -510,7 +533,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             <Button
               buttonVariation="fixed-width"
               type="button"
-              className={classNames}
+              className={show ? `${classNames} close-filter-button` : classNames}
               data-locator="view_gallery_button"
               onClick={this.showModal}
               id="filter-open"
@@ -530,7 +553,9 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             <Button
               buttonVariation="fixed-width"
               type="button"
-              className="open-filter-button"
+              className={
+                isSortOpenModal ? 'open-filter-button close-filter-button' : 'open-filter-button'
+              }
               data-locator="view_gallery_button"
               onClick={this.showSortModal}
             >

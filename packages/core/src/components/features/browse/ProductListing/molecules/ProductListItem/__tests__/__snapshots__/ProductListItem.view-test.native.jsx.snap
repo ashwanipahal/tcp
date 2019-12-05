@@ -10,6 +10,10 @@ exports[`ProductListItem component should render correctly 1`] = `
   <RenderTopBadge1
     text=""
   />
+  <RenderCloseIcon
+    isSuggestedItem={false}
+    outOfStockColorProductId=""
+  />
   <ImageSection
     isFavorite={true}
     item={
@@ -31,8 +35,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -67,8 +73,9 @@ exports[`ProductListItem component should render correctly 1`] = `
   <RenderPricesSection
     accessibilityLabel="Price Section"
     hideFavorite={false}
-    isFavorite=""
+    isFavorite={true}
     isLoggedIn={false}
+    isSuggestedItem={false}
     item={
       Object {
         "colorsMap": Array [
@@ -88,8 +95,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -102,10 +111,12 @@ exports[`ProductListItem component should render correctly 1`] = `
         "quantity": 1,
       }
     }
+    itemOutOfStock={false}
     miscInfo={Object {}}
     onFavorite={[MockFunction]}
     productInfo={
       Object {
+        "keepAlive": true,
         "name": "tcp",
         "pdpUrl": "",
       }
@@ -145,8 +156,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -156,12 +169,17 @@ exports[`ProductListItem component should render correctly 1`] = `
     onGoToPDPPage={[MockFunction]}
     productInfo={
       Object {
+        "keepAlive": true,
         "name": "tcp",
         "pdpUrl": "",
       }
     }
     selectedColorIndex={0}
     text="tcp"
+  />
+  <RenderSuggestedLabel
+    isSuggestedItem={false}
+    labelsPlpTiles={Object {}}
   />
   <RenderColorSwitch
     colorsMap={
@@ -177,6 +195,7 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
       ]
     }
+    isSuggestedItem={false}
     setSelectedColorIndex={[Function]}
   />
   <RenderSizeFit
@@ -199,8 +218,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -210,6 +231,7 @@ exports[`ProductListItem component should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(CustomButton)
+      accessibilityLabel="lbl_add_to_bag"
       active={false}
       buttonVariation="variable-width"
       color=""
@@ -223,20 +245,25 @@ exports[`ProductListItem component should render correctly 1`] = `
       iconName="chevron-down"
       iconSize="fs12"
       locator=""
-      margin="0 6px 0 0"
+      margin="0 0 0 0"
       navigation={Object {}}
       onPress={[Function]}
-      paddings="12px 8px 12px 8px"
+      paddings="12px 4px 12px 4px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_add_to_bag"
       theme={Object {}}
       type="button"
       url=""
       withNoLineHeight={false}
     />
   </Styled(View)>
+  <RenderDismissLink
+    isSuggestedItem={false}
+    labelsPlpTiles={Object {}}
+    outOfStockColorProductId=""
+  />
   <RenderPurchasedQuantity
     item={
       Object {
@@ -257,8 +284,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -286,8 +315,10 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
         "miscInfo": Object {
           "isInDefaultWishlist": "",
+          "keepAlive": true,
         },
         "productInfo": Object {
+          "keepAlive": true,
           "name": "tcp",
           "pdpUrl": "",
         },
@@ -295,6 +326,8 @@ exports[`ProductListItem component should render correctly 1`] = `
       }
     }
     labelsPlpTiles={Object {}}
+    onSeeSuggestedItems={[Function]}
+    renderMoveToList={[Function]}
   />
 </Styled(View)>
 `;

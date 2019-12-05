@@ -48,6 +48,44 @@ const createRowForGiftServiceTotal = (className, giftServiceTotal, labels) => {
   );
 };
 
+const renderEstimatedTaxes = (labels, taxesTotal) => {
+  return (
+    <Row
+      className="tax-total rowMargin"
+      data-locator={getLocator('order_ledger_estimated_tax_label')}
+    >
+      {taxesTotal > 0 ? (
+        <>
+          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+            <BodyCopy
+              bodySize="one"
+              tag="span"
+              color="primary"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              fontSize="fs16"
+            >
+              {`${labels.taxLabel}:`}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+            <BodyCopy
+              bodySize="one"
+              color="primary"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              fontSize="fs16"
+              textAlign="right"
+            >
+              <PriceCurrency price={taxesTotal} />
+            </BodyCopy>
+          </Col>
+        </>
+      ) : null}
+    </Row>
+  );
+};
+
 const renderLoyaltyBanner = pageCategory => {
   return (
     <div className="orderLedgerLoyalty">
@@ -129,13 +167,20 @@ const orderHasShipping = (isOrderHasShipping, labels, shippingTotal) => {
   );
 };
 
+const conditionForSkeleton = (isConfirmationPage, ledgerSummaryData, bagLoading) => {
+  return !isConfirmationPage
+    ? !bagLoading && (ledgerSummaryData && ledgerSummaryData.itemsCount > 0)
+    : true;
+};
+
 const getBody = (
   className,
   ledgerSummaryData,
   labels,
   pageCategory,
   orderLedgerAfterView,
-  bagLoading
+  bagLoading,
+  isConfirmationPage
 ) => {
   const {
     itemsCount,
@@ -155,7 +200,7 @@ const getBody = (
   return (
     <React.Fragment>
       <Grid className={`${''} elem-mb-MED`} data-locator={getLocator('order_ledger_section_label')}>
-        {!bagLoading && (ledgerSummaryData && ledgerSummaryData.itemsCount > 0) ? (
+        {conditionForSkeleton(isConfirmationPage, ledgerSummaryData, bagLoading) ? (
           <>
             <Row
               className="items-total rowMargin"
@@ -198,7 +243,7 @@ const getBody = (
                     color="primary"
                     fontFamily="secondary"
                     fontWeight="semibold"
-                    fontSize="fs13"
+                    fontSize="fs16"
                   >
                     {`${labels.couponsLabel}:`}
                   </BodyCopy>
@@ -209,7 +254,7 @@ const getBody = (
                     color="primary"
                     fontFamily="secondary"
                     fontWeight="semibold"
-                    fontSize="fs13"
+                    fontSize="fs16"
                     textAlign="right"
                   >
                     -
@@ -288,35 +333,7 @@ const getBody = (
               </Row>
             )} */}
             {orderHasShipping(isOrderHasShipping, labels, shippingTotal)}
-            <Row
-              className="tax-total rowMargin"
-              data-locator={getLocator('order_ledger_estimated_tax_label')}
-            >
-              <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-                <BodyCopy
-                  bodySize="one"
-                  tag="span"
-                  color="primary"
-                  fontFamily="secondary"
-                  fontWeight="semibold"
-                  fontSize="fs16"
-                >
-                  {`${labels.taxLabel}:`}
-                </BodyCopy>
-              </Col>
-              <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-                <BodyCopy
-                  bodySize="one"
-                  color="primary"
-                  fontFamily="secondary"
-                  fontWeight="semibold"
-                  fontSize="fs16"
-                  textAlign="right"
-                >
-                  <PriceCurrency price={taxesTotal} />
-                </BodyCopy>
-              </Col>
-            </Row>
+            {renderEstimatedTaxes(labels, taxesTotal)}
             {giftCardsTotal > 0 ? (
               <React.Fragment>
                 <Row

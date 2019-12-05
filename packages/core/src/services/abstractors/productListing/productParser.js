@@ -222,6 +222,7 @@ const getColorsMap = ({
     {
       colorProductId: uniqueId,
       imageName: product.imagename,
+      productImage: product.productimage,
       miscInfo: {
         isClearance: extractAttributeValue(product, attributesNames.clearance),
         isBopisEligible: isBOPIS && !processHelpers.isGiftCard(product),
@@ -241,7 +242,7 @@ const getColorsMap = ({
         ),
         listPrice: product.min_list_price,
         offerPrice: product.min_offer_price,
-        keepAlive: parseBoolean(extractAttributeValue(product, attributesNames.keepAlive)),
+        keepAlive: parseBoolean(product[attributesNames.keepAlive]),
       },
       color: {
         name: defaultColor,
@@ -296,6 +297,28 @@ const setPriceRange = product => {
   };
 };
 
+const checkIfL3Matches = (product, requiredL3) =>
+  product.categoryPath3.find(category => category === requiredL3);
+
+const getL3Category = (shouldApplyUnbxdLogic, bucketingSeqConfig, product, catMap, childLength) => {
+  let categoryName;
+  for (let idx = 0; idx < childLength; idx += 1) {
+    // DTN-7945: The product can be tagged in two L3's but as now we are triggering mutiple l3 calls in new UNBXD approach
+    // The product will get tagged to the first match it finds in its own categoryPath3_fq. but ideally it should match the
+    // current l3 for which the products are bieng fetched.
+    const requiredL3 = processHelpers.getRequiredL3(shouldApplyUnbxdLogic, bucketingSeqConfig, idx);
+    const temp = checkIfL3Matches(product, requiredL3);
+    if (catMapExists(temp, catMap, bucketingSeqConfig)) {
+      categoryName = temp;
+    }
+    // if category name is found then break the loop.
+    if (categoryName) {
+      break;
+    }
+  }
+  return categoryName;
+};
+
 export const parseProductInfo = (
   productArr,
   {
@@ -324,6 +347,7 @@ export const parseProductInfo = (
     bossProductDisabled: isBossProductDisabled(product),
     bossCategoryDisabled: isBopisProductDisabled(product),
   };
+  const imageExtension = product.productimage || '';
   const imagesByColor = extractExtraImages(
     rawColors,
     product.alt_img,
@@ -331,7 +355,8 @@ export const parseProductInfo = (
     uniqueId,
     defaultColor,
     false,
-    hasShortImage
+    hasShortImage,
+    imageExtension
   );
   const colorsMap = getColorsMap({
     uniqueId,
@@ -345,7 +370,7 @@ export const parseProductInfo = (
     getImgPath,
     isBundleProduct,
   });
-  if (!!Array.isArray(colors) === true) {
+  if (Array.isArray(colors)) {
     colors.forEach(color => {
       const colorDetails = color.split('#');
       // the default/selected one is already there
@@ -374,9 +399,7 @@ export const parseProductInfo = (
             badge3: extractAttributeValue(swatchOfAvailableProduct, attributesNames.merchant),
             listPrice: getListPrice(swatchOfAvailableProduct),
             offerPrice: processHelpers.getOfferPrice(swatchOfAvailableProduct),
-            keepAlive: parseBoolean(
-              extractAttributeValue(swatchOfAvailableProduct, attributesNames.keepAlive)
-            ),
+            keepAlive: parseBoolean(swatchOfAvailableProduct[attributesNames.keepAlive]),
           },
           color: {
             name: colorDetails[1],
@@ -391,24 +414,13 @@ export const parseProductInfo = (
   const catMap = processHelpers.getCatMap(product, bucketingSeqConfig);
   // Check if the current product has a category path attribute which containes the categories it is the part of.
   if (product.categoryPath3) {
-    for (let idx = 0; idx < childLength; idx += 1) {
-      // DTN-7945: The product can be tagged in two L3's but as now we are triggering mutiple l3 calls in new UNBXD approach
-      // The product will get tagged to the first match it finds in its own categoryPath3_fq. but ideally it should match the
-      // current l3 for which the products are bieng fetched.
-      const requiredL3 = processHelpers.getRequiredL3(
-        shouldApplyUnbxdLogic,
-        bucketingSeqConfig,
-        idx
-      );
-      const temp = product.categoryPath3.find(category => category === requiredL3);
-      if (catMapExists(temp, catMap, bucketingSeqConfig)) {
-        categoryName = temp;
-      }
-      // if category name is found then break the loop.
-      if (categoryName) {
-        break;
-      }
-    }
+    categoryName = getL3Category(
+      shouldApplyUnbxdLogic,
+      bucketingSeqConfig,
+      product,
+      catMap,
+      childLength
+    );
   }
   response.loadedProductsPages[0].push({
     productInfo: {
@@ -438,5 +450,7 @@ export const parseProductInfo = (
     },
     colorsMap,
     imagesByColor,
+    relatedSwatchImages:
+      product.relatedProductSwatchImages && product.relatedProductSwatchImages.split(','),
   });
 };

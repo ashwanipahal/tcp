@@ -17,73 +17,79 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
         <BodyCopy component="h2" className="title">
           {getLabelValue(labels, 'lbl_PLCCForm_personalInfo')}
         </BodyCopy>
-        <BodyCopy
-          fontSize="fs10"
-          fontFamily="secondary"
-          fontWeight="extrabold"
-          className="free_dropdown_label"
-        >
-          {getLabelValue(labels, 'lbl_PLCCForm_dob')}
-        </BodyCopy>
-        <Row fullBleed>
+        <Row fullBleed className="row-personal-information">
           <Col
             className="contact_information_form"
             key="contact_information_form"
             colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
-            <Row fullBleed>
-              <Col
-                className="table_contact_month"
-                key="contact_information_month"
-                colSize={{ large: 4, medium: 2, small: 2 }}
+            <fieldset className="date_of_birth">
+              <BodyCopy
+                fontSize="fs10"
+                fontFamily="secondary"
+                fontWeight="extrabold"
+                className="free_dropdown_label"
+                component="legend"
               >
-                <Field
-                  id="month"
-                  name="month"
-                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_month')}
-                  title={getLabelValue(labels, 'lbl_PLCCForm_month')}
-                  component={Select}
-                  options={months}
-                  dataLocator={getLocator('plcc_date')}
-                  className="field_dob"
-                  enableSuccessCheck={false}
-                />
-              </Col>
-              <Col
-                className="table_contact_day"
-                key="personal_info_day"
-                colSize={{ large: 4, medium: 2, small: 2 }}
-              >
-                <Field
-                  id="date"
-                  name="date"
-                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_day')}
-                  title={getLabelValue(labels, 'lbl_PLCCForm_day')}
-                  component={Select}
-                  options={calendarDaysMap()}
-                  dataLocator={getLocator('plcc_month')}
-                  className="field_dob"
-                  enableSuccessCheck={false}
-                />
-              </Col>
-              <Col
-                className="table_contact_year"
-                key="personal_info_year"
-                colSize={{ large: 4, medium: 2, small: 2 }}
-              >
-                <Field
-                  id="year"
-                  name="year"
-                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_year')}
-                  title={getLabelValue(labels, 'lbl_PLCCForm_year')}
-                  component={Select}
-                  options={calendarYearsMap()}
-                  dataLocator={getLocator('plcc_year')}
-                  className="field_dob"
-                  enableSuccessCheck={false}
-                />
-              </Col>
-            </Row>
+                {getLabelValue(labels, 'lbl_PLCCForm_dob')}
+              </BodyCopy>
+              <Row fullBleed>
+                <Col
+                  className="table_contact_month"
+                  key="contact_information_month"
+                  colSize={{ large: 4, medium: 2, small: 2 }}
+                >
+                  <Field
+                    id="month"
+                    name="month"
+                    aria-label={getLabelValue(labels, 'lbl_PLCC_month')}
+                    placeholder={getLabelValue(labels, 'lbl_PLCCForm_month')}
+                    title={getLabelValue(labels, 'lbl_PLCCForm_month')}
+                    component={Select}
+                    options={months}
+                    dataLocator={getLocator('plcc_date')}
+                    className="field_dob"
+                    enableSuccessCheck={false}
+                  />
+                </Col>
+                <Col
+                  className="table_contact_day"
+                  key="personal_info_day"
+                  colSize={{ large: 4, medium: 2, small: 2 }}
+                >
+                  <Field
+                    id="date"
+                    name="date"
+                    aria-label={getLabelValue(labels, 'lbl_PLCC_day')}
+                    placeholder={getLabelValue(labels, 'lbl_PLCCForm_day')}
+                    title={getLabelValue(labels, 'lbl_PLCCForm_day')}
+                    component={Select}
+                    options={calendarDaysMap()}
+                    dataLocator={getLocator('plcc_month')}
+                    className="field_dob"
+                    enableSuccessCheck={false}
+                  />
+                </Col>
+                <Col
+                  className="table_contact_year"
+                  key="personal_info_year"
+                  colSize={{ large: 4, medium: 2, small: 2 }}
+                >
+                  <Field
+                    id="year"
+                    name="year"
+                    aria-label={getLabelValue(labels, 'lbl_PLCC_year')}
+                    placeholder={getLabelValue(labels, 'lbl_PLCCForm_year')}
+                    title={getLabelValue(labels, 'lbl_PLCCForm_year')}
+                    component={Select}
+                    options={calendarYearsMap()}
+                    dataLocator={getLocator('plcc_year')}
+                    className="field_dob"
+                    enableSuccessCheck={false}
+                  />
+                </Col>
+              </Row>
+            </fieldset>
           </Col>
           <Col
             className="contact_information_form"
@@ -97,6 +103,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
               name="ssNumber"
               maxLength="4"
               id="ssNumber"
+              type="password"
               data-locator={getLocator('plcc_SSN')}
             />
           </Col>

@@ -94,6 +94,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                 setClickAnalyticsDataCheckout({
                   customEvents: ['event8'],
                   products: productsData,
+                  eventName: 'checkout login click',
                 });
                 handleCartCheckout({ isEditingItem, isAddedToBag, isBagPage, isMiniBag });
               }}
@@ -110,7 +111,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </Button>
           </ClickTracker>
         ) : (
-          <div className="checkout">
+          <div className="checkoutSkeleton">
             <LoaderSkelton />
           </div>
         )}

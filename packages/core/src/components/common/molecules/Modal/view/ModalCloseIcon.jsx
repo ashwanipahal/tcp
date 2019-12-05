@@ -1,10 +1,11 @@
 import React from 'react';
 import { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
 
 const CloseButtonStyle = css`
-  background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;
+  background: transparent url(${getIconPath('modal-close')}) no-repeat 0 0;
   border: none;
   cursor: pointer;
   position: absolute;
@@ -23,7 +24,6 @@ const CloseButtonStyle = css`
 const ModalCloseIcon = ({ className, closeFunc, closeIconDataLocator, closeIconLeftAligned }) => (
   <button
     aria-label="close"
-    tabIndex="0"
     className={`${className} ${'alignTop'} ${closeIconLeftAligned ? 'alignLeft' : 'alignRight'}`}
     onClick={e => closeFunc(e)}
     data-locator={closeIconDataLocator}

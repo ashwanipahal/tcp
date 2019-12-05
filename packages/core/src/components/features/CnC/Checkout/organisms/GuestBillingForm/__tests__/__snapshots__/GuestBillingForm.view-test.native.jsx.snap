@@ -30,10 +30,6 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
             "displayName": undefined,
             "id": "payPal",
           },
-          Object {
-            "displayName": undefined,
-            "id": "venmo",
-          },
         ]
       }
       selectedPaymentId={null}
@@ -45,14 +41,18 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
+    onVenmoError={[Function]}
     onVenmoSubmit={[Function]}
     pageCategory="guestBilling"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
-    venmoError=""
+    venmoPayment={null}
   />
 </Fragment>
 `;
@@ -110,10 +110,6 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           Object {
             "displayName": undefined,
             "id": "payPal",
-          },
-          Object {
-            "displayName": undefined,
-            "id": "venmo",
           },
         ]
       }
@@ -243,14 +239,18 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     getPayPalSettings={Object {}}
     isConfirmationPage={false}
     isPayPalWebViewEnable={false}
+    isVenmoPaymentInProgress={false}
     onBackLinkPress={[Function]}
+    onVenmoError={[Function]}
     onVenmoSubmit={[Function]}
     pageCategory="guestBilling"
+    pageName="checkout"
+    pageSection="billing"
     routeToPage=""
     showAccordian={true}
     showPayPalButton={false}
     showVenmoSubmit={false}
-    venmoError=""
+    venmoPayment={null}
   />
 </Fragment>
 `;

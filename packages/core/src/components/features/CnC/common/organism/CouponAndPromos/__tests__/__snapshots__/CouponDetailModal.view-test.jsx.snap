@@ -4,6 +4,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
 <Styled(Modal)
   className="TCPModal__Content"
   closeIconDataLocator="coupondetailmodalcrossicon"
+  contentLabel="$10 OFF On $80"
   heightConfig={
     Object {
       "height": "90%",
@@ -30,11 +31,14 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       undefined 8/10/19
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
+      aria-label="Y00105578"
       className="couponModal_modalbarcode"
       component="div"
       data-locator="couponDetailModal_applied_BarCode"
+      role="img"
     >
       <Styled(BodyStyle)
+        aria-hidden={true}
         className="elem-mt-MED elem-mb-MED"
         component="div"
       >

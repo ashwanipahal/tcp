@@ -15,20 +15,15 @@ export default css`
   }
 
   @media print {
-    .ReactModal__Body--open {
-      position: fixed !important;
-      visibility: hidden !important;
-    }
-    .TCPModal__InnerContent {
-      top: 75% !important;
-      visibility: visible !important;
-    }
     a {
       text-decoration: none !important;
     }
     .couponModal_btnWrapper,
     .couponModal_print {
       display: none !important;
+    }
+    .content-wrapper {
+      display: none;
     }
   }
 
@@ -186,6 +181,7 @@ export default css`
     width: 100%;
     display: inline-block;
   }
+
   .img-placeholder {
     width: 100%;
     height: 100%;

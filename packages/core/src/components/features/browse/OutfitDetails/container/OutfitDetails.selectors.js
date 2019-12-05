@@ -29,6 +29,18 @@ export const getOutfitProducts = state => {
   );
 };
 
+export const getUnavailableCount = state => {
+  return (
+    state[OUTFIT_DETAILS_REDUCER_KEY] &&
+    state[OUTFIT_DETAILS_REDUCER_KEY].currentOutfit &&
+    state[OUTFIT_DETAILS_REDUCER_KEY].currentOutfit.unavailableCount
+  );
+};
+
 export const getAddedToBagErrorCatId = state => {
-  return state.AddedToBagReducer.errorCatId;
+  return state.AddedToBagReducer.get('errorCatId');
+};
+
+export const getLoadingState = state => {
+  return state[OUTFIT_DETAILS_REDUCER_KEY] && state[OUTFIT_DETAILS_REDUCER_KEY].isLoading;
 };

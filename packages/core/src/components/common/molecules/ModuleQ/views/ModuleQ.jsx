@@ -160,6 +160,7 @@ class ModuleQ extends React.PureComponent {
       showRelatedOutfitHeader,
       isRelatedOutfit,
       fullBleed,
+      moduleClassName,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
@@ -180,7 +181,7 @@ class ModuleQ extends React.PureComponent {
     }
 
     return (
-      <Grid className={showBg}>
+      <Grid className={`${showBg} ${moduleClassName}`}>
         <Row centered>
           <Col
             colSize={{
@@ -251,7 +252,7 @@ class ModuleQ extends React.PureComponent {
             ) : null}
           </Col>
         </Row>
-        {showCarousel ? this.getCurrentCtaButton() : null}
+        {showCarousel && !isRelatedOutfit && this.getCurrentCtaButton()}
       </Grid>
     );
   }
@@ -267,6 +268,7 @@ ModuleQ.defaultProps = {
   showRelatedOutfitHeader: null,
   isRelatedOutfit: false,
   fullBleed: false,
+  moduleClassName: '',
 };
 
 ModuleQ.propTypes = {
@@ -308,6 +310,7 @@ ModuleQ.propTypes = {
   showRelatedOutfitHeader: PropTypes.func,
   isRelatedOutfit: PropTypes.bool,
   fullBleed: PropTypes.bool,
+  moduleClassName: PropTypes.string,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);

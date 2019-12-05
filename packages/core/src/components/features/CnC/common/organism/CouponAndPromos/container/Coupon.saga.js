@@ -19,6 +19,22 @@ import {
   BUTTON_LABEL_STATUS,
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
+const getTrackingObj = (formData, productsData, coupon) => {
+  return {
+    customEvents: ['event28'],
+    products: productsData,
+    eventName:
+      formData.analyticsData && formData.analyticsData.eventName
+        ? formData.analyticsData.eventName
+        : 'coupon applied',
+    couponCode: coupon.id,
+    pageNavigationText:
+      formData.analyticsData && formData.analyticsData.pageNavigationText
+        ? formData.analyticsData.pageNavigationText
+        : null,
+  };
+};
+
 export function* applyCoupon({ payload }) {
   const {
     formData,
@@ -27,39 +43,42 @@ export function* applyCoupon({ payload }) {
     coupon,
     fullPageInfo,
   } = payload;
+
+  const cartOrderItems = yield select(BagPageSelectors.getOrderItems);
+  const productsData = [];
+  if (cartOrderItems) {
+    cartOrderItems.map(tile => {
+      const productDetail = getProductDetails(tile);
+      const {
+        itemInfo: { itemId, color, name, offerPrice, size, listPrice, qty },
+        productInfo: { skuId, generalProductId, upc, productPartNumber },
+      } = productDetail;
+
+      const prodData = {
+        color,
+        id: itemId,
+        name,
+        price: offerPrice,
+        extPrice: offerPrice,
+        listPrice,
+        partNumber: productPartNumber,
+        size,
+        upc,
+        sku: skuId.toString(),
+        quantity: qty,
+        colorId: generalProductId,
+      };
+      productsData.push(prodData);
+      return prodData;
+    });
+  }
+
   if (coupon) {
     let oldStatus = coupon.status;
     if (coupon.status === COUPON_STATUS.AVAILABLE) {
       oldStatus = BUTTON_LABEL_STATUS.APPLY;
     } else if (coupon.status === COUPON_STATUS.APPLIED) {
       oldStatus = BUTTON_LABEL_STATUS.REMOVE;
-    }
-    const cartOrderItems = yield select(BagPageSelectors.getOrderItems);
-    const productsData = [];
-    if (cartOrderItems) {
-      cartOrderItems.map(tile => {
-        const productDetail = getProductDetails(tile);
-        const {
-          itemInfo: { itemId, color, name, offerPrice, size, listPrice },
-          productInfo: { skuId, upc, productPartNumber },
-        } = productDetail;
-
-        const prodData = {
-          color,
-          id: itemId,
-          name,
-          price: offerPrice,
-          extPrice: offerPrice,
-          sflExtPrice: offerPrice,
-          listPrice,
-          partNumber: productPartNumber,
-          size,
-          upc,
-          sku: skuId.toString(),
-        };
-        productsData.push(prodData);
-        return prodData;
-      });
     }
 
     try {
@@ -69,15 +88,13 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
+      yield put(setClickAnalyticsData(getTrackingObj(formData, productsData, coupon)));
       yield put(
-        setClickAnalyticsData({
-          customEvents: ['event28'],
-          products: productsData,
-          eventName: 'coupon applied',
-          couponCode: coupon.id,
+        trackClick({
+          name: 'coupon_success',
+          module: 'checkout',
         })
       );
-      yield put(trackClick('coupon applied'));
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
       yield call(getCartDataSaga, {
         payload: {
@@ -97,11 +114,16 @@ export function* applyCoupon({ payload }) {
           eventName: 'invalid coupon code used',
         })
       );
-      yield put(trackClick('invalid coupon applied'));
+      yield put(
+        trackClick({
+          name: 'coupon_fails',
+          module: 'checkout',
+        })
+      );
       yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
       yield put(setLoaderState(false));
       yield put(hideLoader());
-      if (source !== 'form') {
+      if (source !== 'form' && e.errors) {
         // eslint-disable-next-line
         yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
       }
@@ -113,7 +135,13 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-
+      yield put(setClickAnalyticsData(getTrackingObj(formData, productsData)));
+      yield put(
+        trackClick({
+          name: 'coupon_success',
+          module: 'checkout',
+        })
+      );
       yield call(getCartDataSaga, {
         payload: {
           recalcRewards: true,
@@ -126,7 +154,19 @@ export function* applyCoupon({ payload }) {
       resolve();
     } catch (e) {
       yield put(setLoaderState(false));
-
+      yield put(
+        setClickAnalyticsData({
+          customEvents: ['event27'],
+          products: productsData,
+          eventName: 'invalid coupon code used',
+        })
+      );
+      yield put(
+        trackClick({
+          name: 'coupon_fails',
+          module: 'checkout',
+        })
+      );
       yield put(hideLoader());
       reject(e);
     }
@@ -159,10 +199,17 @@ export function* removeCoupon({ payload }) {
         excludeCartItems: !fullPageInfo,
       },
     });
-    yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
+    yield put(setStatus({ promoCode: coupon.id, status: BUTTON_LABEL_STATUS.APPLY }));
 
     yield put(hideLoader());
     yield put(setLoaderState(false));
+    yield put(
+      setClickAnalyticsData({
+        pageNavigationText: 'my account-my wallet-remove from bag',
+        eventName: 'walletlinksclickevent',
+      })
+    );
+    yield put(trackClick('coupon removed'));
     resolve();
   } catch (e) {
     yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));

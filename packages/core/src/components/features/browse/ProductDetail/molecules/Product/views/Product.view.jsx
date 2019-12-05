@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductPrice from '../../ProductPrice/ProductPrice';
 import ProductBasicInfo from '../../ProductBasicInfo/ProductBasicInfo';
 import {
@@ -9,6 +10,7 @@ import {
   getPricesWithRange,
   getMapSliceForColorProductId,
   checkIsSelectedSizeDisabled,
+  getMapSliceForSizeSkuID,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 // eslint-disable-next-line complexity
@@ -36,6 +38,7 @@ const Product = props => {
     removeAddToFavoritesErrorMsg,
   } = props;
 
+  const { fit, size } = formValues;
   const productInfo = productDetails.currentProduct;
   if (!productInfo) {
     return <div />; // TODO - maybe add loader later
@@ -49,24 +52,24 @@ const Product = props => {
 
   const isShowPriceRange = isShowPriceRangeKillSwitch;
 
+  let skuId = null;
+  if (typeof size === 'string' && size) {
+    skuId = getMapSliceForSizeSkuID(colorProduct, size);
+  }
+
+  const colorProductName = colorProduct && colorProduct.color && colorProduct.color.name;
+
   if (isShowPriceRange) {
-    const { fit, size } = formValues;
     const isSelectedSizeDisabled = checkIsSelectedSizeDisabled(productInfo, formValues);
-    prices = getPricesWithRange(
-      productInfo,
-      colorProduct.color.name,
-      fit,
-      size,
-      isSelectedSizeDisabled
-    );
+    prices = getPricesWithRange(productInfo, colorProductName, fit, size, isSelectedSizeDisabled);
   }
   if (isBundleProduct) {
-    prices = getPricesWithRange(productInfo, colorProduct.color.name);
+    prices = getPricesWithRange(productInfo, colorProductName);
   }
 
   return (
     <>
-      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop hide-on-tablet'}>
         <ProductBasicInfo
           keepAlive={keepAlive}
           outOfStockLabels={outOfStockLabels}
@@ -88,9 +91,11 @@ const Product = props => {
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           pageName="PDP"
+          skuId={skuId}
+          formName={PRODUCT_ADD_TO_BAG}
         />
       </div>
-      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
+      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop hide-on-tablet' : ''}>
         {!isGiftCard ? (
           <>
             <ProductPrice

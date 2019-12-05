@@ -8,6 +8,7 @@ const getActiveTitle = (options, value) => {
 };
 
 export const AddressDropdown = ({
+  labels,
   options,
   input,
   selectListTitle,
@@ -16,6 +17,7 @@ export const AddressDropdown = ({
 }) => {
   return (
     <CustomSelect
+      labels={labels}
       options={options}
       activeValue={input.value}
       activeTitle={getActiveTitle(options, input.value)}
@@ -33,6 +35,7 @@ AddressDropdown.propTypes = {
   selectListTitle: PropTypes.string.isRequired,
   customSelectClassName: PropTypes.string,
   dataLocatorObj: PropTypes.shape({}),
+  labels: PropTypes.shape({}),
 };
 AddressDropdown.defaultProps = {
   customSelectClassName: '',
@@ -40,6 +43,7 @@ AddressDropdown.defaultProps = {
     heading: 'drop-down-heading',
     dropDownList: 'drop-down-list',
   },
+  labels: {},
 };
 
 export default AddressDropdown;

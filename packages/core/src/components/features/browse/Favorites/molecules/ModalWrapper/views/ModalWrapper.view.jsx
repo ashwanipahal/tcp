@@ -15,7 +15,14 @@ class ModalWrapper extends React.PureComponent {
   renderCheckBox = () => {};
 
   render() {
-    const { isOpenModal, children, heading, widthConfig, heightConfig } = this.props;
+    const {
+      isOpenModal,
+      children,
+      heading,
+      widthConfig,
+      heightConfig,
+      standardHeight,
+    } = this.props;
     return (
       <Modal
         isOpen={isOpenModal}
@@ -32,6 +39,7 @@ class ModalWrapper extends React.PureComponent {
         stickyCloseIcon
         horizontalBar={false}
         inheritedStyles={styles}
+        standardHeight={standardHeight}
       >
         {children}
       </Modal>
@@ -46,6 +54,7 @@ ModalWrapper.propTypes = {
   heading: PropTypes.string.isRequired,
   widthConfig: PropTypes.shape({}),
   heightConfig: PropTypes.shape({}),
+  standardHeight: PropTypes.string,
 };
 
 ModalWrapper.defaultProps = {
@@ -53,6 +62,7 @@ ModalWrapper.defaultProps = {
   onCloseModal: null,
   widthConfig: {},
   heightConfig: {},
+  standardHeight: '',
 };
 
 export default withStyles(ModalWrapper, styles);

@@ -28,7 +28,7 @@ import {
   toastMessageInfo,
   toastMessagePosition,
 } from '../../../../common/atoms/Toast/container/Toast.actions.native';
-import utils, { isClient, scrollToParticularElement } from '../../../../../utils';
+import utils, { isClient, scrollToParticularElement, isMobileApp } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
 import {
   getGrandTotal,
@@ -36,6 +36,8 @@ import {
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import BagPageUtils from '../views/Bagpage.utils';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -69,6 +71,9 @@ export class BagPageContainer extends React.Component<Props> {
         }, 100);
       }
     }
+    const { cartOrderItems: prevCartOrderItems } = prevProps;
+    const { cartOrderItems } = this.props;
+    this.startBagAnalytics(cartOrderItems, prevCartOrderItems);
   }
 
   componentWillUnmount() {
@@ -77,6 +82,33 @@ export class BagPageContainer extends React.Component<Props> {
   }
 
   closeModal = () => {};
+
+  startBagAnalytics = (cartOrderItems, prevCartOrderItems) => {
+    const { setClickAnalyticsDataBag, trackPageViewBag, router } = this.props;
+    const events = ['scView', 'scOpen', 'event80'];
+    let fromMiniBag = false;
+    if (!isMobileApp()) {
+      fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    }
+    if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
+      const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+      setClickAnalyticsDataBag({
+        customEvents: events,
+        products: productsData,
+      });
+      trackPageViewBag({
+        currentScreen: 'bagPage',
+        pageData: {
+          pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageNavigationText: fromMiniBag ? 'header-cart' : '',
+        },
+      });
+    }
+  };
 
   fetchInitialActions() {
     const { isRegisteredUserCallDone, initialActions, fetchSflData } = this.props;
@@ -121,10 +153,15 @@ export class BagPageContainer extends React.Component<Props> {
       isPayPalEnabled,
       isCartLoaded,
       trackPageViewBag,
+      router,
       bagLoading,
     } = this.props;
 
     const showAddTobag = false;
+    let fromMiniBag = false;
+    if (!isMobileApp()) {
+      fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    }
     return (
       <BagPage
         isMobile={isMobile}
@@ -159,6 +196,7 @@ export class BagPageContainer extends React.Component<Props> {
         setClickAnalyticsDataBag={setClickAnalyticsDataBag}
         isCartLoaded={isCartLoaded}
         trackPageViewBag={trackPageViewBag}
+        fromMiniBag={fromMiniBag}
         bagLoading={bagLoading}
         isVenmoEnabled={isVenmoEnabled}
         isPayPalEnabled={isPayPalEnabled}
@@ -180,9 +218,11 @@ BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
     ...pageProps,
     ...{
       pageData: {
-        pageName: 'shopping bag',
+        pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         pageSection: loadedComponent,
-        pageNavigationText: 'header-cart',
+        pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
         loadAnalyticsOnload: false,
       },
     },

@@ -51,9 +51,14 @@ export const CouponAndPromosWrapper = styled.View`
 const applyPositionClassStyle = props => {
   if (props.isPayPalWebViewEnable) {
     return `
-    top: 0px;
-    position: absolute;
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
+    position:absolute;
+    height:100%;
     width:100%;
+    z-index:997;
     margin:0px;
     padding:0px;
     `;
@@ -98,6 +103,16 @@ export const ButtonWrapper = styled.View`
   ${applyPositionClassStyle}
 `;
 
+export const VenmoPaidContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const VenmoPaidTextContainer = styled.View`
+  margin: ${props => props.theme.spacing.ELEM_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export default {
   ButtonWrapper,
   CheckoutButton,
@@ -110,4 +125,6 @@ export default {
   CnContainer,
   CnContent,
   PayPalButtonContainer,
+  VenmoPaidContainer,
+  VenmoPaidTextContainer,
 };

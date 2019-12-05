@@ -7,9 +7,10 @@ const initialState = fromJS({
   wishlistsSummaries: [],
   activeWishList: null,
   lastDeletedItemId: '',
-  isDataLoading: false,
+  isDataLoading: true,
   isAddToFavError: '',
   isWishListShared: false,
+  errorMessages: {},
 });
 
 const getDefaultState = state => {
@@ -20,6 +21,17 @@ const getDefaultState = state => {
   return state;
 };
 
+const mergedErrorMessages = (state, payload) => {
+  const currentValue = state.getIn(['errorMessages']);
+  const updatedValue = {
+    ...currentValue,
+    ...payload,
+  };
+  return state.set('errorMessages', updatedValue);
+};
+
+/* eslint-disable sonarjs/cognitive-complexity */
+/* eslint complexity: ["error", 15] */
 const FavoritesReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
@@ -39,6 +51,10 @@ const FavoritesReducer = (state = initialState, action) => {
       return state.set('isAddToFavError', payload);
     case FAVORITES_CONSTANTS.FAVORITES_SET_WISHLIST_SHARE_SUCCESS:
       return state.set('isWishListShared', payload);
+    case FAVORITES_CONSTANTS.MAXIMUM_PRODUCT_ADDED_ERROR:
+      return mergedErrorMessages(state, payload);
+    case FAVORITES_CONSTANTS.RESET_MAXIMUM_PRODUCT_ADDED_ERROR:
+      return state.set('errorMessages', payload);
     default:
       return getDefaultState(state);
   }

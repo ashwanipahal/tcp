@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, FlatList, Dimensions } from 'react-native';
+import { getVideoUrl } from '@tcp/core/src/utils';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -10,9 +11,8 @@ import { DamImage } from '../../../../../../common/atoms';
 import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
-const paddingAroundImage = 24;
 const numberOfColumn = 2;
-const imageWidth = win.width / numberOfColumn - paddingAroundImage;
+const imageWidth = win.width / numberOfColumn;
 const imageHeight = '205px';
 
 class ImageCarousel extends React.PureComponent {
@@ -84,9 +84,14 @@ class ImageCarousel extends React.PureComponent {
         listKey={(_, index) => index.toString()}
         renderItem={imgSource => {
           const { index } = imgSource;
+          const isVideoUrl = getVideoUrl(imgSource.item);
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}
+              onPress={() =>
+                !isVideoUrl
+                  ? onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)
+                  : null
+              }
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}

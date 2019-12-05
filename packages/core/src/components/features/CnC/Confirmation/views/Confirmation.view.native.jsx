@@ -10,6 +10,7 @@ import {
 } from './Confirmation.util';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import SMSNotifications from '../organisms/SMSNotifications';
+import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
 /**
@@ -28,6 +29,9 @@ const ConfirmationView = ({
   orderNumbersByFullfillmentCenter,
   navigation,
   isGymboreeCanadaSite,
+  isVenmoPaymentInProgress,
+  venmoOrderConfirmationContent,
+  venmoUserName,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
 
@@ -47,6 +51,15 @@ const ConfirmationView = ({
   }
   const { address, orderTotal, itemsCount } = orderShippingDetails || {};
   let fullfillmentCenterData = [];
+  let venmoPayment = {};
+  if (isVenmoPaymentInProgress) {
+    venmoPayment = {
+      userName: venmoUserName,
+      ccBrand: VenmoConstants.VENMO,
+      ccType: VenmoConstants.VENMO,
+      defaultInd: true,
+    };
+  }
   if (orderNumber) {
     fullfillmentCenterData = [
       {
@@ -80,6 +93,8 @@ const ConfirmationView = ({
           updateOrderDetailsData={updateOrderDetailsData}
           orderNumbersByFullfillmentCenter={orderNumbersByFullfillmentCenter}
           isBossInList={isBossInList}
+          venmoOrderConfirmationContent={venmoOrderConfirmationContent}
+          isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         />
       </InnerWrapper>
       <CnCTemplate
@@ -87,6 +102,10 @@ const ConfirmationView = ({
         isGuest={isGuest}
         navigation={navigation}
         pageCategory="confirmation"
+        isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+        venmoPayment={venmoPayment}
+        pageName="checkout"
+        pageSection="confirmation"
       />
     </Wrapper>
   );
@@ -129,6 +148,9 @@ ConfirmationView.propTypes = {
   }).isRequired,
   navigation: PropTypes.shape({}),
   isGymboreeCanadaSite: PropTypes.bool,
+  venmoUserName: PropTypes.string,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  venmoOrderConfirmationContent: PropTypes.shape({}),
 };
 ConfirmationView.defaultProps = {
   isGuest: true,
@@ -136,5 +158,8 @@ ConfirmationView.defaultProps = {
   encryptedEmailAddress: '',
   navigation: null,
   isGymboreeCanadaSite: false,
+  venmoUserName: '',
+  isVenmoPaymentInProgress: false,
+  venmoOrderConfirmationContent: null,
 };
 export default ConfirmationView;

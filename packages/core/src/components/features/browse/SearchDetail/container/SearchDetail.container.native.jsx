@@ -7,7 +7,6 @@ import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.sele
 import { getIsKeepAliveProductApp } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
-import { getProductsAndTitleBlocks } from './SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
@@ -22,10 +21,10 @@ import {
   getSelectedFilter,
   getLabelsOutOfStock,
 } from '../../ProductListing/container/ProductListing.selectors';
+import { fetchErrorMessages } from '../../Favorites/container/Favorites.selectors';
 import { setFilter } from '../../ProductListing/container/ProductListing.actions';
 import {
   getLoadedProductsCount,
-  getLoadedProductsPages,
   getTotalProductsCount,
   getCurrentSearchForText,
   getLabels,
@@ -38,6 +37,8 @@ import {
   getScrollToTopValue,
   getPDPLabels,
   getModalState,
+  getPLPGridPromos,
+  getPlpHorizontalPromo,
 } from './SearchDetail.selectors';
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
@@ -46,7 +47,7 @@ import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
-import { PLPSkeleton } from '../../../../common/atoms/index.native';
+import { getProductsWithPromo } from '../../ProductListing/container/ProductListing.util';
 
 class SearchDetailContainer extends React.PureComponent {
   constructor(props) {
@@ -126,7 +127,6 @@ class SearchDetailContainer extends React.PureComponent {
   render() {
     const {
       formValues,
-      productsBlock,
       products,
       currentNavIds,
       navTree,
@@ -160,78 +160,81 @@ class SearchDetailContainer extends React.PureComponent {
 
     return (
       <React.Fragment>
-        {isSearchResultsAvailable || isLoadingMore ? (
-          <View>
-            {this.searchQuery && products && products.length > 0 ? (
-              <SearchDetail
-                margins="0 12px 0 12px"
-                filters={filters}
-                formValues={formValues}
-                filtersLength={filtersLength}
-                getProducts={getProducts}
-                isLoadingMore={isLoadingMore}
-                initialValues={initialValues}
-                onSubmit={this.onSubmitFilters}
-                products={products}
-                productsBlock={productsBlock}
-                totalProductsCount={totalProductsCount}
-                labels={labels}
-                labelsFilter={labelsFilter}
-                slpLabels={slpLabels}
-                searchedText={searchedText}
-                sortLabels={sortLabels}
-                searchResultSuggestions={searchResultSuggestions}
-                onGoToPDPPage={this.onGoToPDPPage}
-                onLoadMoreProducts={this.onLoadMoreProducts}
-                onAddItemToFavorites={onAddItemToFavorites}
-                isLoggedIn={isLoggedIn}
-                labelsLogin={labelsLogin}
-                navigation={navigation}
-                pdpLabels={pdpLabels}
-                isKeepModalOpen={isKeepModalOpen}
-                {...otherProps}
-              />
-            ) : (
-              <NoResponseSearchDetail
-                totalProductsCount={totalProductsCount}
-                labels={labels}
-                slpLabels={slpLabels}
-                searchedText={this.searchQuery}
-                sortLabels={sortLabels}
-                searchResultSuggestions={searchResultSuggestions}
-                navigation={navigation}
-                pdpLabels={pdpLabels}
-                {...otherProps}
-              />
-            )}
-          </View>
-        ) : (
-          <PLPSkeleton col={20} />
-        )}
+        <View>
+          {(this.searchQuery && (products && products.length > 0)) ||
+          (filtersLength && Object.keys(filtersLength).length > 0) ? (
+            <SearchDetail
+              margins="0 12px 0 12px"
+              filters={filters}
+              formValues={formValues}
+              filtersLength={filtersLength}
+              getProducts={getProducts}
+              isLoadingMore={isLoadingMore}
+              initialValues={initialValues}
+              onSubmit={this.onSubmitFilters}
+              products={products}
+              totalProductsCount={totalProductsCount}
+              labels={labels}
+              labelsFilter={labelsFilter}
+              slpLabels={slpLabels}
+              searchedText={searchedText}
+              sortLabels={sortLabels}
+              searchResultSuggestions={searchResultSuggestions}
+              onGoToPDPPage={this.onGoToPDPPage}
+              onLoadMoreProducts={this.onLoadMoreProducts}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              labelsLogin={labelsLogin}
+              navigation={navigation}
+              pdpLabels={pdpLabels}
+              isKeepModalOpen={isKeepModalOpen}
+              {...otherProps}
+            />
+          ) : (
+            <NoResponseSearchDetail
+              totalProductsCount={totalProductsCount}
+              labels={labels}
+              slpLabels={slpLabels}
+              searchedText={this.searchQuery}
+              sortLabels={sortLabels}
+              searchResultSuggestions={searchResultSuggestions}
+              navigation={navigation}
+              pdpLabels={pdpLabels}
+              {...otherProps}
+            />
+          )}
+        </View>
       </React.Fragment>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const productBlocks = getLoadedProductsPages(state);
   const appliedFilters = getAppliedFilters(state);
+  const plpGridPromos = getPLPGridPromos(state);
+  const plpHorizontalPromo = getPlpHorizontalPromo(state);
+  const products = getAllProductsSelect(state);
 
-  // eslint-disable-next-line
-  let filtersLength = {};
+  const filtersLength = {};
+  let filterCount = 0;
 
   // eslint-disable-next-line
   for (let key in appliedFilters) {
     if (appliedFilters[key]) {
       filtersLength[`${key}Filters`] = appliedFilters[key].length;
+      filterCount += appliedFilters[key].length;
     }
   }
-
+  const productWithGrid = getProductsWithPromo(
+    products,
+    plpGridPromos,
+    plpHorizontalPromo,
+    filterCount
+  );
   const filters = updateAppliedFiltersInState(state);
 
   return {
-    productsBlock: getProductsAndTitleBlocks(state, productBlocks),
-    products: getAllProductsSelect(state),
+    products: productWithGrid,
     filters,
     categoryId: getCategoryId(state),
     loadedProductCount: getLoadedProductsCount(state),
@@ -266,6 +269,7 @@ function mapStateToProps(state) {
     isKeepModalOpen: getModalState(state),
     isKeepAliveEnabled: getIsKeepAliveProductApp(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
@@ -296,7 +300,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 SearchDetailContainer.propTypes = {
-  productsBlock: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   router: PropTypes.shape({
     query: PropTypes.shape({
       searchQuery: PropTypes.string,

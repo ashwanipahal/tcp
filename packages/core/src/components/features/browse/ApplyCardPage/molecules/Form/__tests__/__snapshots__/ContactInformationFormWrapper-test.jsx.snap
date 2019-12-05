@@ -5,7 +5,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   <Styled(Heading)
     className="contactFormTitle"
     color="text.primary"
-    component={null}
+    component="h2"
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
@@ -178,7 +178,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -353,7 +355,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -530,7 +534,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -738,7 +744,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -917,7 +925,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -970,6 +980,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           key="container_state"
         >
           <Field
+            aria-label="state"
             className="field stateField"
             component={
               Object {
@@ -989,7 +1000,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   .select__input {
     appearance: none;
     background: url(",
-                    "/static/images/carrot-small-down.png",
+                    "/static/version-not-available/images/carrot-small-down.png",
                     ") no-repeat right 0px bottom
       ",
                     [Function],
@@ -1047,7 +1058,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   }
 
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1295,7 +1308,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1476,7 +1491,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1650,7 +1667,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1677,6 +1696,21 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         name="altPhoneNumber"
         placeholder="alternate phone"
       />
+      <Styled(BodyCopy)
+        className="columnWrapper plcc_min_phone"
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs10"
+        fontWeight="regular"
+        id="plcc_min_phone"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        min phone
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1829,7 +1863,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 ";
   }
   .warning-icon {
-    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background: transparent url(",
+                "/static/version-not-available/images/circle-alert-fill.svg",
+                ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 14px;
@@ -1858,20 +1894,5 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(BodyCopy)
-    className="columnWrapper plcc_min_phone"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs10"
-    fontWeight="regular"
-    id="plcc_min_phone"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    min phone
-  </Styled(BodyCopy)>
 </styled.div>
 `;

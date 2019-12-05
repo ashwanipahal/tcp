@@ -1,14 +1,13 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-// import { LazyloadScrollView } from 'react-native-lazyload-deux';
-import { ScrollView as LazyloadScrollView } from 'react-native';
-import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
+import { getLoading, scrollToViewBottom } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { OUTFIT_LISTING_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import { PageContainer, RecommendationWrapper } from '../styles/BundleProduct.style.native';
 import {
@@ -26,11 +25,27 @@ class ProductBundle extends React.PureComponent {
     this.state = {
       showCarousel: false,
     };
+    this.currentScrollValue = 0;
   }
 
   onImageClick = () => {
     const { showCarousel } = this.state;
     this.setState({ showCarousel: !showCarousel });
+  };
+
+  scrollToAccordionBottom = (x, y, width, height, pageX, pageY) => {
+    scrollToViewBottom({
+      width,
+      height,
+      pageX,
+      pageY,
+      callBack: this.scrollView,
+      currentScrollValue: this.currentScrollValue,
+    });
+  };
+
+  handleScroll = event => {
+    this.currentScrollValue = event.nativeEvent.contentOffset.y;
   };
 
   render() {
@@ -80,7 +95,12 @@ class ProductBundle extends React.PureComponent {
         isHeaderAccordion: true,
       };
       return (
-        <ScrollView>
+        <ScrollView
+          ref={ref => {
+            this.scrollView = ref;
+          }}
+          onScroll={this.handleScroll}
+        >
           {AddToFavoriteErrorMsg !== '' && (
             <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
           )}
@@ -96,6 +116,7 @@ class ProductBundle extends React.PureComponent {
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               currentColorEntry={this.currentColorEntry}
               isBundleProduct
+              formName={OUTFIT_LISTING_FORM}
             />
             <ProductSummary
               productData={currentProduct}
@@ -110,6 +131,7 @@ class ProductBundle extends React.PureComponent {
               longDescription={longDescription}
               isShowMore={false}
               pdpLabels={pdpLabels}
+              scrollToAccordionBottom={this.scrollToAccordionBottom}
             />
             <BundleProductItems
               currentBundle={currentBundle}
@@ -125,6 +147,8 @@ class ProductBundle extends React.PureComponent {
               toastMessage={toastMessage}
               isKeepAliveEnabled={isKeepAliveEnabled}
               outOfStockLabels={outOfStockLabels}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             />
             <RecommendationWrapper>
               <Recommendations {...recommendationAttributes} />

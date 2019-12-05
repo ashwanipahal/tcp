@@ -5,7 +5,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   styles,
   PageContainer,
@@ -14,10 +13,13 @@ import {
   EmptyView,
   RowContainer,
   ItemCountContainer,
+  DisplaySkeleton,
+  DisplayPlp,
 } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
+import PLPQRScannerAnimation from '../molecules/PLPQRScannerAnimation';
 import PromoModules from '../../../../common/organisms/PromoModules';
 
 const renderItemCountView = (itemCount, labelsFavorite, isBothTcpAndGymProductAreAvailable) => {
@@ -82,10 +84,19 @@ const onRenderHeader = data => {
     isLoadingMore,
     labelsFavorite,
     isBothTcpAndGymProductAreAvailable,
+    filtersLength,
   } = data;
+
+  let appliedfilters = false;
+  appliedfilters =
+    filtersLength &&
+    Object.keys(filtersLength).some(key => {
+      return filtersLength[key] > 0;
+    });
+
   return (
     <ListHeaderContainer>
-      {(totalProductsCount > 1 || isFavorite) && (
+      {(totalProductsCount > 1 || appliedfilters || isFavorite) && (
         <FilterModal
           filters={filters}
           labelsFilter={labelsFilter}
@@ -106,6 +117,19 @@ const onRenderHeader = data => {
       {renderItemCountView(totalProductsCount, labelsFavorite, isBothTcpAndGymProductAreAvailable)}
       {renderBrandFilter && renderBrandFilter()}
     </ListHeaderContainer>
+  );
+};
+
+const renderPromModules = (isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn) => {
+  return (
+    !isSearchListing && (
+      <PromoModules
+        plpTopPromos={plpTopPromos}
+        navigation={navigation}
+        isPlcc={isPlcc}
+        isLoggedIn={isLoggedIn}
+      />
+    )
   );
 };
 
@@ -135,6 +159,7 @@ const ProductListView = ({
   paddings,
   onAddItemToFavorites,
   isLoggedIn,
+  isPlcc,
   isLoadingMore,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
@@ -143,12 +168,18 @@ const ProductListView = ({
   plpTopPromos,
   isSearchListing,
   isKeepModalOpen,
+  showCustomLoader,
   labelsFavorite,
   isBothTcpAndGymProductAreAvailable,
+  renderMoveToList,
+  filtersLength,
+  updateAppTypeHandler,
+  QRAnimationURL,
+  resetCustomLoader,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
-  if (isDataLoading && !isKeepModalOpen) return <PLPSkeleton col={20} />;
+  if (isDataLoading && !isKeepModalOpen && !showCustomLoader) return <PLPSkeleton col={20} />;
   const headerData = {
     filters,
     labelsFilter,
@@ -169,32 +200,46 @@ const ProductListView = ({
     isLoadingMore,
     labelsFavorite,
     isBothTcpAndGymProductAreAvailable,
+    filtersLength,
   };
-  return (
+  return showCustomLoader ? (
+    <PLPQRScannerAnimation
+      url={QRAnimationURL}
+      navigation={navigation}
+      resetCustomLoader={resetCustomLoader}
+      isOpen={showCustomLoader}
+    />
+  ) : (
     <ScrollView>
-      {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
+      {renderPromModules(isSearchListing, plpTopPromos, navigation, isPlcc, isLoggedIn)}
       <PageContainer margins={margins} paddings={paddings}>
         <FilterContainer>{onRenderHeader(headerData)}</FilterContainer>
-        {!isLoadingMore && (
-          <ProductList
-            getProducts={getProducts}
-            navigation={navigation}
-            products={products}
-            title={title}
-            scrollToTop={scrollToTop}
-            totalProductsCount={totalProductsCount}
-            isFavorite={isFavorite}
-            onAddItemToFavorites={onAddItemToFavorites}
-            isLoggedIn={isLoggedIn}
-            labelsLogin={labelsLogin}
-            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-            isSearchListing={isSearchListing}
-            {...otherProps}
-          />
-        )}
-        {isLoadingMore ? <PLPSkeleton col={20} /> : null}
-        <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
+        <>
+          <DisplayPlp renderskeleton={!isLoadingMore} renderplp={isLoadingMore}>
+            <ProductList
+              getProducts={getProducts}
+              navigation={navigation}
+              products={products}
+              title={title}
+              scrollToTop={scrollToTop}
+              totalProductsCount={totalProductsCount}
+              isFavorite={isFavorite}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              labelsLogin={labelsLogin}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              isSearchListing={isSearchListing}
+              renderMoveToList={renderMoveToList}
+              updateAppTypeHandler={updateAppTypeHandler}
+              {...otherProps}
+            />
+          </DisplayPlp>
+
+          <DisplaySkeleton renderskeleton={isLoadingMore} renderplp={!isLoadingMore}>
+            <PLPSkeleton col={20} />
+          </DisplaySkeleton>
+        </>
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
     </ScrollView>
@@ -237,6 +282,14 @@ ProductListView.propTypes = {
   isKeepModalOpen: PropTypes.bool,
   labelsFavorite: PropTypes.shape({}),
   isBothTcpAndGymProductAreAvailable: PropTypes.bool,
+  renderMoveToList: PropTypes.func,
+  addToBagEcom: PropTypes.func,
+  isPlcc: PropTypes.bool,
+  filtersLength: PropTypes.number,
+  showCustomLoader: PropTypes.bool,
+  QRAnimationURL: PropTypes.string.isRequired,
+  resetCustomLoader: PropTypes.func,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 ProductListView.defaultProps = {
@@ -264,6 +317,12 @@ ProductListView.defaultProps = {
   isKeepModalOpen: false,
   labelsFavorite: {},
   isBothTcpAndGymProductAreAvailable: false,
+  renderMoveToList: () => {},
+  addToBagEcom: () => {},
+  isPlcc: false,
+  filtersLength: 0,
+  showCustomLoader: false,
+  resetCustomLoader: () => {},
 };
 
 export default withStyles(ProductListView, styles);

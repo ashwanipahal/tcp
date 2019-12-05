@@ -7,6 +7,7 @@ import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -99,11 +100,12 @@ class Header extends React.PureComponent {
       isPickupModalOpen,
       loyaltyPromoBanner,
       setClickAnalyticsData,
+      isQVModalOpen,
     } = this.props;
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
     return (
-      <header className={className}>
+      <header className={`${className} header-global`}>
         {topPromoBanner ? (
           <LoyaltyPromoBanner
             richTextList={[{ richText: topPromoBanner[0], link: null }]}
@@ -145,7 +147,7 @@ class Header extends React.PureComponent {
           labels={labels}
           setClickAnalyticsData={setClickAnalyticsData}
         />
-        <OverlayModal showCondensedHeader={showCondensedHeader} />
+        <OverlayModal showCondensedHeader={showCondensedHeader} isLoggedIn={isLoggedIn} />
         <HeaderPromo
           mobileMarkup
           className="header__promo-area--mobile"
@@ -181,6 +183,7 @@ class Header extends React.PureComponent {
         )}
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
+        {isQVModalOpen ? <QuickViewModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
       </header>
     );
@@ -223,6 +226,7 @@ Header.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   isRememberedUser: PropTypes.bool,
   setClickAnalyticsData: PropTypes.func.isRequired,
+  isQVModalOpen: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -247,6 +251,7 @@ Header.defaultProps = {
   },
   isPickupModalOpen: false,
   isRememberedUser: false,
+  isQVModalOpen: false,
 };
 
 export default withStyles(errorBoundary(Header), style);

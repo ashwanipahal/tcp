@@ -7,6 +7,11 @@ import internalEndpoints from '../../../internalEndpoints';
 import EarnExtraPointsTileContainer from '../../EarnExtraPointsTile';
 import { getLabelValue } from '../../../../../../../utils';
 
+const clickEventdata = {
+  customEvents: [],
+  eventName: 'earnextrapointclickevent',
+  pageNavigationText: 'my account-earn extra points-view points history',
+};
 /**
  *
  * @function EarnExtraPointsOverview
@@ -20,6 +25,7 @@ const EarnExtraPointsOverview = ({ labels }) => {
       ctaLink={internalEndpoints.extraPointsPage.link}
       ctaPath={internalEndpoints.extraPointsPage.path}
       dataLocatorPrefix="earnExtaPointTitle"
+      clickEventdata={clickEventdata}
     >
       <section className="elem-pb-MED">
         <BodyCopy

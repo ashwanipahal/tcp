@@ -40,17 +40,36 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   getButtonLabel = () => {
-    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels } = this.props;
-    const { addToBag, update } = plpLabels;
-    const addToBagLabel = fromBagPage ? update : addToBag;
+    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels, isFavoriteEdit } = this.props;
+    const { addToBag, update, saveProduct } = plpLabels;
+    let addToBagLabel = addToBag;
+    if (fromBagPage) {
+      addToBagLabel = update;
+    } else if (isFavoriteEdit) {
+      addToBagLabel = saveProduct;
+    }
     return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
   };
 
-  componentDidUpdate = () => {
-    const { errorOnHandleSubmit } = this.props;
-    if (errorOnHandleSubmit) {
-      this.onToastMessage(errorOnHandleSubmit);
+  componentDidUpdate = prevProps => {
+    const {
+      errorOnHandleSubmit,
+      isErrorMessageDisplayed,
+      plpLabels: { errorMessage },
+      toastMessage,
+      displayErrorMessage,
+    } = this.props;
+    const changeInFormValidationError =
+      isErrorMessageDisplayed && isErrorMessageDisplayed !== prevProps.isErrorMessageDisplayed;
+    if (errorOnHandleSubmit || changeInFormValidationError) {
+      if (changeInFormValidationError) {
+        // This is to provide functionality to trigger error from container as well.
+        toastMessage(errorMessage); // calling this method directly as state's showToastMessage is never reset and toast message is not displayed second time
+        return displayErrorMessage(false); // calling this method to call didUpdate when isErrorMessageDisplayed is set true again
+      }
+      return this.onToastMessage(errorOnHandleSubmit);
     }
+    return null;
   };
 
   /**
@@ -60,14 +79,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
-    const {
-      handleFormSubmit,
-      fitChanged,
-      displayErrorMessage,
-      plpLabels: { errorMessage },
-      toastMessage,
-      keepAlive,
-    } = this.props;
+    const { handleFormSubmit, fitChanged, displayErrorMessage, keepAlive } = this.props;
     return (
       <Button
         margin="16px 0 0 0"
@@ -81,7 +93,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
         onPress={() => {
           if (fitChanged) {
             displayErrorMessage(fitChanged);
-            toastMessage(errorMessage);
           } else {
             handleFormSubmit();
           }
@@ -93,9 +104,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderAlternateSizes = alternateSizes => {
-    const { className, navigation, plpLabels } = this.props;
+    const { className, navigation, plpLabels, hideAlternateSizes } = this.props;
     const sizeAvailable = plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
-    const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
+    const visibleAlternateSizes =
+      !hideAlternateSizes && alternateSizes && Object.keys(alternateSizes).length > 0;
     return (
       visibleAlternateSizes && (
         <AlternateSizes
@@ -185,6 +197,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       alternateSizes,
       isPickup,
       keepAlive,
+      quickViewPickup,
       isFromBagProductSfl,
     } = this.props;
     const qunatityText = `${quantity}: `;
@@ -254,7 +267,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </SizeViewContainer>
         {!isPickup && this.renderAlternateSizes(alternateSizes)}
-        {this.renderUnavailableLink()}
+        {quickViewPickup() && this.renderUnavailableLink()}
         {!isFromBagProductSfl && (
           <RowViewContainer style={quantityDropDownStyle} margins={this.getQtyMarginStyle()}>
             <BodyCopy
@@ -304,6 +317,7 @@ ProductAddToBag.propTypes = {
   toastMessage: PropTypes.func,
   isBundleProduct: PropTypes.bool,
   isFromBagProductSfl: PropTypes.bool,
+  isFavoriteEdit: PropTypes.bool,
 };
 
 ProductAddToBag.defaultProps = {
@@ -322,6 +336,7 @@ ProductAddToBag.defaultProps = {
   toastMessage: () => {},
   isBundleProduct: false,
   isFromBagProductSfl: false,
+  isFavoriteEdit: false,
 };
 
 /* export view with redux form */

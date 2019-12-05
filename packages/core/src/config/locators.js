@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 export default {
   // Brand Tabs
   'header__brand-tab--tcp': 'global_TCPimg',
@@ -189,6 +190,38 @@ export default {
   cart_item_ship_to_home_radio_button: 'ItemShipToHomeRadioButton',
   cart_item_ship_to_home: 'cartShipToHome',
   cart_item_cross_button: 'cartItemCrossButton',
+
+  // Category Loyalty Banner
+  category_loyalty_txt_lbl: 'category-loyalty-banner-label',
+  category_loyalty_banner_img: 'category-loyalty-banner-slideImage',
+  carousel_wrapper: 'tcp-carousel-wrapper-outfits-image',
+
+  // Outfit PLP
+  outfitplp_firstday: 'outfitplp-firstdayoutfit-heading',
+  outfitplp_title: 'outfitplp-outfits-title',
+  outfitplp_tile_image: 'outfitplp-outfits Tile-Image',
+  ourfitplp_shopthislook_lbl: 'outfitplp-shop-this-look-label',
+
+  // Outfit PDP
+  outfitpdp_outfit_img: 'outfitpdp-outfit-image',
+  outfitpdp_back_link: 'outfitpdp-Back-link',
+  outfitpdp_productcount_lbl: 'outfitpdp-productcount-label',
+  outfitpdp_product_img: 'outfit-product-Image',
+  outfitpdp_product_title: 'outfitpdp-product-title-link',
+  outfitpdp_unavailable_item: 'pdp-unavailableItem-text',
+  outfitpdp_complete_look: 'pdp-completeThislook',
+  pdp_product_title_heading: 'pdp-product-title-heading',
+  pdp_product_price: 'pdp-product-price',
+  pdp_product_promotion_txt: 'pdp-product-loyalty-promotion-txt',
+  pdp_color_lbl: 'pdp-color-label',
+  pdp_color_selector_lbl: 'pdp-color-selector-label',
+  pdp_colors_list: 'pdp-colors-list',
+  pdp_size_lbl: 'pdp-size-label',
+  pdp_size_selctor_lbl: 'pdp-size-selector-label',
+  pdp_size_list: 'pdp-size-list',
+  pdp_sizechart_link: 'pdp-sizechart-link',
+  pdp_view_product_detail: 'pdp-view-product-detail-link',
+  pdp_add_to_bag_btn: 'pdp-addToBag-button',
 
   // Empty Bag Locator
   empty_bag_Msg: 'cartEmptyBagMessage',
@@ -409,6 +442,9 @@ export default {
   store_USCanadagymboreetstorelabel: 'store_USCanadagymboreetstorelabel',
   store_USCanadastatelabel: 'store_USCanadastatelabel',
   store_USCanadastateaccordion: 'store_USCanadastateaccordion',
+  store_USCanada_link: 'store_US&Canada_link',
+  store_International_link: 'store_international_link',
+  store_InternationalSearch_lbl: 'store_InternationalSearchlabel',
 
   // gift services
   gift_service: 'gift-service',
@@ -425,6 +461,38 @@ export default {
   fav_brand_gym_lbl: 'Gymboree',
   fav_lbl_myFavorites: 'My Favorites',
   fav_lbl_editListSettings: 'Edit List Settings',
+  fav_heading: 'favorite-heading',
+  fav_dropdown_heart_icon: 'favorite-dropdown-heart-icon',
+  fav_dropdown: 'favorite-dropdown',
+  fav_list_lbl: 'favorite-list-heading-label',
+  fav_list_name_lbl: 'favorite-list-name',
+  fav_list_name_count: 'favorite-list-count',
+  fav_create_new_list_cta: 'favorite-list-create-new-list-cta',
+  fav_create_list_modal_heading: 'favorite-createnewlistmodal-heading',
+  fav_list_name_txtfield: 'favorite-listname-textfield',
+  fav_edit_list_heading: 'favorite-editlist-heading',
+  email_link: 'sharing-email Link',
+  facebook_link: 'sharing-Facebook-link',
+  copy_link: 'sharing-copy-link',
+  recently_added: 'sortby-recentlyadded-link',
+  price_low_to_high: 'sortby-pricelowtohigh-link',
+  price_high_to_low: 'sortby-pricehightolow-link',
+  new_arrivals: 'sortby-newarrivals-link',
+  clearance: 'sortby-clearance-link',
+  brand_heading: 'brand-label',
+  brand_TCP_checkbox: 'brandtcp-checkbox',
+  brand_gym_checkbox: 'brandgymboree-checkbox',
+  display_by_heading: 'displayby-heading',
+  all_dropdown_options: 'displayby-all-link',
+  available_dropdown_options: 'displayby-available-link',
+  soldout_dropdown_options: 'displayby-soldout-link',
+  purchased_dropdown_options: 'displayby-purchased-link',
+  product_image: 'product-images',
+  edit_links: 'edit-links',
+  product_tile: 'product-tile',
+  purchased_count: 'purchased-count',
+  purchased_count_lbl: 'purchased-count-label',
+  move_to_another_list: 'movetoanother-link',
 
   // module M
   moduleM_header_text: 'moduleM_header_text',
@@ -432,4 +500,9 @@ export default {
   moduleM_image: 'moduleM_image',
   moduleM_cta_btn: 'moduleM_cta_btn',
   moduleM_cta_links: 'moduleM_cta_links',
+
+  global_bagpagebackbutton: 'global_bagpagebackbutton',
+
+  // QRScanner
+  qrscanner_plp_gif_animation: 'qrscanner_plp_gif_animation',
 };

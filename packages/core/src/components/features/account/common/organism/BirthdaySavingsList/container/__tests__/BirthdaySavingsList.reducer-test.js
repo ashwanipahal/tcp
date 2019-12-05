@@ -1,4 +1,6 @@
 import { fromJS } from 'immutable';
+import { SET_SUBMIT_SUCCEEDED, CHANGE } from 'redux-form/lib/actionTypes';
+import constants from '../../BirthdaySavingsList.constants';
 import BirthdaySavingsListReducer from '../BirthdaySavingsList.reducer';
 import {
   getChildrenAction,
@@ -51,5 +53,27 @@ describe('BirthdaySavingsListReducer', () => {
       getChildrenAction()
     );
     expect(state.get('success')).toBeNull();
+  });
+
+  it('should call SET_SUBMIT_SUCCEEDED ', () => {
+    expect(
+      BirthdaySavingsListReducer(initialState, {
+        type: SET_SUBMIT_SUCCEEDED,
+        meta: {
+          form: constants.ADD_CHILD_BIRTHDAY_FORM,
+        },
+      })
+    ).toEqual(initialState);
+  });
+
+  it('should call CHANGE but not change error ', () => {
+    expect(
+      BirthdaySavingsListReducer(initialState, {
+        type: CHANGE,
+        meta: {
+          form: constants.ADD_CHILD_BIRTHDAY_FORM,
+        },
+      })
+    ).toEqual(initialState);
   });
 });

@@ -11,7 +11,10 @@ import {
   getLabelValue,
 } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
-import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
+import {
+  getFavoriteStoreActn,
+  setStoresByCoordinates,
+} from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import {
   updateCartCount,
@@ -81,10 +84,6 @@ class Header extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    this.getInitialProps();
-  }
-
   componentDidUpdate(prevProps) {
     const { isUpdateCartCount, updateCartManuallyAction, isUserLoggedIn } = this.props;
     if (
@@ -109,8 +108,9 @@ class Header extends React.PureComponent {
    * This function validate the iconView.
    */
   validateIcon = () => {
-    const { navigation, labels } = this.props;
+    const { navigation, labels, resetSuggestedStores } = this.props;
     const { isDownIcon } = this.state;
+    resetSuggestedStores([]);
     navigation.navigate({
       routeName: 'StoreLanding',
       params: {
@@ -159,18 +159,23 @@ class Header extends React.PureComponent {
   };
 
   renderSearchBar = () => {
-    const { showSearch, slpLabels } = this.props;
+    const { showSearch, slpLabels, navigation } = this.props;
     const { showSearchModal } = this.state;
     if (!showSearch) return null;
     return (
       <SearchContainer>
         {showSearch && (
-          <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+          <SearchBar
+            openSearchProductPage={this.openSearchProductPage}
+            navigation={navigation}
+            labels={slpLabels}
+          />
         )}
         {showSearchModal && (
           <SearchProduct
             closeSearchModal={this.closeSearchProductPage}
             goToSearchResultsPage={this.goToSearchResultsPage}
+            navigation={navigation}
           />
         )}
       </SearchContainer>
@@ -241,7 +246,7 @@ class Header extends React.PureComponent {
         <Container>
           <HeaderContainer data-locator={getLocator('global_headerpanel')}>
             {headertype === STORE_TYPE ? (
-              <BackContainer position="row">
+              <BackContainer>
                 <TouchableOpacity
                   accessible
                   onPress={() => onBack(navigation)}
@@ -339,6 +344,15 @@ Header.propTypes = {
   cartVal: PropTypes.number.isRequired,
   showSearch: PropTypes.bool,
   title: PropTypes.string,
+  isUpdateCartCount: PropTypes.bool,
+  updateCartManuallyAction: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
+  updateCartCountAction: PropTypes.func,
+  navigation: PropTypes.shape({}),
+  slpLabels: PropTypes.shape({}),
+  userName: PropTypes.string,
+  headertype: PropTypes.string,
+  resetSuggestedStores: PropTypes.func,
 };
 
 Header.defaultProps = {
@@ -346,6 +360,15 @@ Header.defaultProps = {
   loadFavoriteStore: () => null,
   showSearch: false,
   title: '',
+  isUpdateCartCount: false,
+  updateCartManuallyAction: () => {},
+  isUserLoggedIn: false,
+  updateCartCountAction: () => {},
+  navigation: {},
+  slpLabels: {},
+  userName: '',
+  headertype: '',
+  resetSuggestedStores: () => {},
 };
 
 const mapStateToProps = state => {
@@ -369,6 +392,7 @@ const mapDispatchToProps = dispatch => {
     updateCartManuallyAction: payload => {
       dispatch(updateCartManually(payload));
     },
+    resetSuggestedStores: payload => dispatch(setStoresByCoordinates(payload)),
   };
 };
 

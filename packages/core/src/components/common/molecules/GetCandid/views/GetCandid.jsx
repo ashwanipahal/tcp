@@ -1,12 +1,17 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { withTheme } from 'styled-components';
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
 import { Button, Row, Col, BodyCopy } from '../../../atoms';
 import style from '../styles/GetCandid.style';
 import withStyles from '../../../hoc/withStyles';
-import { getAPIConfig, routerPush } from '../../../../../utils';
+import { getAPIConfig, routerPush, getViewportInfo } from '../../../../../utils';
 import withLazyLoad from '../../../hoc/withLazyLoad';
+
+import config from '../config';
+
+const { carouselConfig } = config;
 
 class GetCandid extends React.PureComponent {
   static propTypes = {
@@ -17,6 +22,7 @@ class GetCandid extends React.PureComponent {
     className: PropTypes.string,
     /* Labels */
     labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+    theme: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -35,16 +41,33 @@ class GetCandid extends React.PureComponent {
   }
 
   componentDidMount() {
+    const {
+      theme: {
+        breakpoints: { maxWidth: maxViewportWidth },
+      },
+    } = this.props;
+    const { isDesktop, isTablet, width } = getViewportInfo();
+    let candidViewportSetting = carouselConfig.mobile;
+
+    if (isTablet) {
+      candidViewportSetting = carouselConfig.tablet;
+    } else if (isDesktop) {
+      candidViewportSetting = carouselConfig.desktop;
+    }
+
+    if (width >= maxViewportWidth) {
+      candidViewportSetting = carouselConfig.largeDesktop;
+    }
+
     const candidSlot = 'tcp-get-candid-image-container';
     const apiKey = this.candidConfig.CANDID_API_KEY;
-
-    const pageTag = 'homepage';
 
     requireNamedOnlineModule('getCandid').then(() => {
       window.candid.init({
         id: apiKey,
-        tag: pageTag,
         containerId: candidSlot,
+        useDescription: false,
+        ...candidViewportSetting,
         ready: () => this.setState({ getCandidDataLoaded: true }),
       });
     });
@@ -167,5 +190,5 @@ export const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(withStyles(withLazyLoad(GetCandid), style));
+export default connect(mapStateToProps)(withStyles(withLazyLoad(withTheme(GetCandid)), style));
 export { GetCandid as GetCandidVanilla };

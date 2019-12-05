@@ -1,17 +1,19 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue, getLocator } from '@tcp/core/src/utils/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import FormPageHeading from '../../common/molecule/FormPageHeading';
 import { BodyCopy, Button, Anchor, Row, Col } from '../../../../common/atoms';
 import styles from '../styles/MyPlaceRewardsCreditCard.style';
 import withStyles from '../../../../common/hoc/withStyles';
 import ApplyNowPLCCModal from '../../../../common/molecules/ApplyNowPLCCModal';
+import { openWindow } from '../../../../../utils/utils.web';
 
 export class MyPlaceRewardsCreditCard extends PureComponent {
   openManageCreditCardLink = e => {
     e.preventDefault();
     const { labels } = this.props;
-    window.open(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'), '_blank');
+    openWindow(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'), '_blank', 'noopener');
   };
 
   render() {
@@ -68,29 +70,53 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
               </BodyCopy>
               <BodyCopy component="div" className="button_wrapper elem-mt-XL elem-mb-XL">
-                <Button
-                  buttonVariation="fixed-width"
-                  fill="BLUE"
-                  type="submit"
-                  fontSize="fs14"
-                  onClick={openPLCCModal}
-                  fontWeight="semibold"
-                  data-locator="mprcc-applyCTA"
+                <ClickTracker
+                  clickData={{
+                    eventName: 'loyaltyclick',
+                    pageType: 'myplace',
+                    pageSection: 'myplace',
+                    pageSubSection: 'myplace',
+                    pageName: 'myplace:rewardscreditcard',
+                    customEvents: ['event112'],
+                    pageNavigationText: 'my account-my place rewards credit card',
+                  }}
                 >
-                  {getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
-                </Button>
-                <Button
-                  buttonVariation="fixed-width"
-                  fill="WHITE"
-                  type="submit"
-                  fontSize="fs14"
-                  className="elem-mt-MED"
-                  onClick={this.openManageCreditCardLink}
-                  fontWeight="semibold"
-                  data-locator="mprcc-managecreditcardCTA"
+                  <Button
+                    buttonVariation="fixed-width"
+                    fill="BLUE"
+                    type="submit"
+                    fontSize="fs14"
+                    onClick={openPLCCModal}
+                    fontWeight="semibold"
+                    data-locator="mprcc-applyCTA"
+                  >
+                    {getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
+                  </Button>
+                </ClickTracker>
+
+                <ClickTracker
+                  clickData={{
+                    eventName: 'loyaltyclick',
+                    pageName: 'myplace:rewardscreditcard',
+                    pageType: 'myplace',
+                    pageSection: 'myplace',
+                    pageSubSection: 'myplace',
+                    customEvents: ['event113'],
+                  }}
                 >
-                  {getLabelValue(labels, 'lbl_PLCCForm_manageCreditCardAccount')}
-                </Button>
+                  <Button
+                    buttonVariation="fixed-width"
+                    fill="WHITE"
+                    type="submit"
+                    fontSize="fs14"
+                    className="elem-mt-MED"
+                    onClick={this.openManageCreditCardLink}
+                    fontWeight="semibold"
+                    data-locator="mprcc-managecreditcardCTA"
+                  >
+                    {getLabelValue(labels, 'lbl_PLCCForm_manageCreditCardAccount')}
+                  </Button>
+                </ClickTracker>
               </BodyCopy>
               <BodyCopy
                 fontFamily="primary"

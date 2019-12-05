@@ -8,6 +8,20 @@ import Image from '../../Image';
 
 const errorIcon = require('../../../../../assets/alert-triangle.png');
 
+const displayHeading = (input, placeholder, heading) => {
+  const isFocussed = !!input.value || !!placeholder;
+  return (
+    !!input.value && (
+      <StyledHeading
+        isFocussed={isFocussed}
+        fontSize={isFocussed ? 'fs10' : 'fs14'}
+        fontWeight={isFocussed ? 'extrabold' : 'regular'}
+        text={heading}
+      />
+    )
+  );
+};
+
 const SelectBox = ({
   id,
   name,
@@ -17,9 +31,9 @@ const SelectBox = ({
   onValueChange,
   placeholder,
   meta: { touched, error },
+  isAddNewCC,
   ...otherProps
 }) => {
-  const isFocussed = !!input.value;
   if (placeholder && !input.value && options && options[0].displayName !== placeholder) {
     options.unshift({
       displayName: placeholder,
@@ -27,13 +41,8 @@ const SelectBox = ({
     });
   }
   return (
-    <Container>
-      <StyledHeading
-        isFocussed={isFocussed}
-        fontSize={isFocussed ? 'fs10' : 'fs14'}
-        fontWeight={isFocussed ? 'extrabold' : 'regular'}
-        text={heading}
-      />
+    <Container isAddNewCC={isAddNewCC}>
+      {displayHeading(input, placeholder, heading)}
       <NativeDropdown
         onValueChange={value => {
           input.onChange(value);
@@ -51,7 +60,7 @@ const SelectBox = ({
       {touched && error && (
         <StyledErrorWrapper>
           <ViewWithSpacing spacingStyles="margin-right-XS">
-            <Image source={errorIcon} width="16px" height="14px" />
+            <Image source={errorIcon} alt="" width="16px" height="14px" />
           </ViewWithSpacing>
           <BodyCopy
             fontWeight="extrabold"
@@ -78,6 +87,7 @@ SelectBox.propTypes = {
     touched: PropTypes.bool,
     error: PropTypes.bool,
   }),
+  isAddNewCC: PropTypes.bool,
 };
 
 SelectBox.defaultProps = {
@@ -86,6 +96,7 @@ SelectBox.defaultProps = {
   onValueChange: () => {},
   heading: '',
   meta: {},
+  isAddNewCC: false,
 };
 
 export default SelectBox;
