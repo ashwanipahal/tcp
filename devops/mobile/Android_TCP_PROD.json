@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
@@ -357,7 +357,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "tcpUatRelease",
+      "buildVariant": "tcpProd",
       "isRoot": false,
       "runTests": false,
       "runLint": false,
@@ -373,7 +373,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "c6d91041-0ebb-48cd-b8e9-f71470f2f6dd"
+        "649778cf-fc2c-4d51-b63a-bfc596fb3f29"
       ],
       "isSilent": false
     },
