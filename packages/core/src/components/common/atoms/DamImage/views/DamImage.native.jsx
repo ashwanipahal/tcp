@@ -65,13 +65,16 @@ const DamImage = props => {
     videoData,
     width,
     height,
+    // updateVideoUrl,
     ...otherProps
   } = props;
 
   const ImageComponent = Image;
 
   if (videoData) {
-    return null; // <VideoPlayer {...videoData} />;
+    return null;
+    // const updatedVideoData = { ...videoData, updateVideoUrl }
+    // return <VideoPlayer {...updatedVideoData} />;
   }
 
   // const RenderVideo = videoProps => {
@@ -128,6 +131,7 @@ DamImage.propTypes = {
   videoData: PropTypes.shape({}),
   isProductImage: PropTypes.bool,
   checkBrand: PropTypes.string,
+  updateVideoUrl: PropTypes.bool,
 };
 
 DamImage.defaultProps = {
@@ -142,6 +146,7 @@ DamImage.defaultProps = {
   videoData: null,
   isProductImage: false,
   checkBrand: '',
+  updateVideoUrl: true,
 };
 
 export default withStyles(DamImage, style);

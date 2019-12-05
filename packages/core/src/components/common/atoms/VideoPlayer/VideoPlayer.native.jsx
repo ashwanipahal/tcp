@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Video from 'react-native-video';
-import { getScreenWidth, convertNumToBool } from '@tcp/core/src/utils';
+import { getScreenWidth, convertNumToBool, cropVideoUrl } from '@tcp/core/src/utils';
 
 class VideoPlayer extends React.Component {
   render() {
@@ -14,6 +14,7 @@ class VideoPlayer extends React.Component {
       loop,
       autoplay,
       controls,
+      updateVideoUrl,
     } = this.props;
     const autoPlayOption = autoplay ? convertNumToBool(autoplay) : false;
     const muteOption = muted ? convertNumToBool(muted) : false;
@@ -21,7 +22,7 @@ class VideoPlayer extends React.Component {
     const loopOption = loop ? convertNumToBool(loop) : false;
     return (
       <Video
-        source={{ uri: url }}
+        source={{ uri: updateVideoUrl ? cropVideoUrl(url) : url }}
         ref={ref => {
           this.player = ref;
         }}
@@ -53,6 +54,7 @@ VideoPlayer.propTypes = {
   loop: PropTypes.string,
   autoplay: PropTypes.string,
   controls: PropTypes.string,
+  updateVideoUrl: PropTypes.bool,
 };
 
 VideoPlayer.defaultProps = {
@@ -63,6 +65,7 @@ VideoPlayer.defaultProps = {
   loop: '1',
   autoplay: '1',
   controls: '1',
+  updateVideoUrl: true,
 };
 
 export default VideoPlayer;

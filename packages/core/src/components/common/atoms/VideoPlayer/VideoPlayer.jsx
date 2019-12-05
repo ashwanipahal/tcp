@@ -12,11 +12,12 @@ import { VIDEO_BASE_PATH } from './VideoPlayer.config';
  * @param {String} url
  */
 const parseFileName = (url, updateVideoUrl) => {
+  const tempUrl = url && url.replace(/^\//, '');
   if (updateVideoUrl) {
-    const urlFragments = url.split('/');
+    const urlFragments = tempUrl.split('/');
     return urlFragments[urlFragments.length - 1].split('.')[0];
   }
-  return url;
+  return tempUrl;
 };
 
 /**

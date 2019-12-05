@@ -26,6 +26,7 @@ export {
   createGoogleMapUrl,
   mapHandler,
   formatPhnNumber,
+  cropVideoUrl,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
