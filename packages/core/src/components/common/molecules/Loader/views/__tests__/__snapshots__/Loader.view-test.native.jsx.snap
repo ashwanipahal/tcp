@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Loader Component should render correctly 1`] = `
-<Styled(View)>
-  <SpinnerView />
-</Styled(View)>
+<Component
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <Styled(View)>
+    <SpinnerView />
+  </Styled(View)>
+</Component>
 `;
 
 exports[`Loader Component should render correctly 2`] = `""`;

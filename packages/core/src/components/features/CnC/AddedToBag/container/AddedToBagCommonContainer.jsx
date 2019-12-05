@@ -33,6 +33,7 @@ type Props = {
   pointsSummary: any,
   isPayPalButtonRendered: boolean,
   isPayPalEnabled: boolean,
+  bagLoading: boolean,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -77,6 +78,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       addedToBagInterval,
       totalBagItems,
       pointsSummary,
+      bagLoading,
     } = this.props;
     return (
       <AddedToBag
@@ -98,6 +100,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         addedToBagInterval={addedToBagInterval}
         totalBagItems={totalBagItems}
         pointsSummary={pointsSummary}
+        bagLoading={bagLoading}
       />
     );
   }
@@ -126,6 +129,7 @@ const mapStateToProps = state => {
     addedToBagInterval: getAddedToBagInterval(state),
     totalBagItems: BagPageSelectors.getTotalItems(state),
     isPayPalEnabled: getIsPayPalEnabled(state),
+    bagLoading: BagPageSelectors.isBagLoading(state),
   };
 
   if (state.Labels.global) {

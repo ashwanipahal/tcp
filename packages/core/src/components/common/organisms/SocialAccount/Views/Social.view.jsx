@@ -91,6 +91,7 @@ class Socialview extends React.PureComponent {
               className={`${className} TCPModal__Content`}
               maxWidth="450px"
               minHeight="520px"
+              contentLabel={getLabelValue(labels, 'lbl_prefrence_social_points_heading')}
             >
               <BodyCopy
                 fontSize="fs22"

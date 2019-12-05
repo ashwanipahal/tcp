@@ -23,6 +23,7 @@ type Props = {
 
 type State = {
   autoplay: boolean,
+  uniqueId: number,
 };
 
 /**
@@ -39,6 +40,8 @@ class Carousel extends React.PureComponent<Props, State> {
     (this: any).pause = this.pause.bind(this);
     this.state = {
       autoplay: true,
+      uniqueId: Math.random(),
+      loopCompleted: 0,
     };
   }
 
@@ -155,10 +158,30 @@ class Carousel extends React.PureComponent<Props, State> {
    */
   render() {
     const { options, children, carouselConfig, className } = this.props;
+    const { maxLoopCount, ...otherOptions } = options;
+    let { loopCompleted } = this.state;
+    const { autoplay } = this.state;
+
+    if (maxLoopCount && autoplay) {
+      otherOptions.afterChange = i => {
+        if (loopCompleted === maxLoopCount) {
+          this.pause();
+          this.setState({
+            autoplay: false,
+          });
+        }
+        if (i === this.slider.props.children.length - 1) {
+          loopCompleted += 1;
+          this.setState({
+            loopCompleted,
+          });
+        }
+      };
+    }
     const settings = {
       appendDots: this.appendDots,
       ...defaults,
-      ...options,
+      ...otherOptions,
       /*
          The dots will be created on both cases. we need this as we are putting custom play/pause
          inside the slick-dots container. So, if some cases if dots not required and we will be able
@@ -167,13 +190,15 @@ class Carousel extends React.PureComponent<Props, State> {
       dots: options.dots || options.autoplay,
     };
 
+    const { uniqueId } = this.state;
+
     return (
       <div
         className={`${className} tcp_carousel_wrapper`}
         carouselConfig={carouselConfig}
         data-locator={carouselConfig.dataLocatorCarousel}
       >
-        <Slider className="tcp_carousel" ref={this.getSlider} {...settings}>
+        <Slider className="tcp_carousel" ref={this.getSlider} key={uniqueId} {...settings}>
           {!children ? null : children}
         </Slider>
       </div>

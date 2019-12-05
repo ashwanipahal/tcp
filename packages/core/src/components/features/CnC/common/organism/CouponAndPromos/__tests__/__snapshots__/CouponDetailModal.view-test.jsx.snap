@@ -4,6 +4,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
 <Styled(Modal)
   className="TCPModal__Content"
   closeIconDataLocator="coupondetailmodalcrossicon"
+  contentLabel="$10 OFF On $80"
   heightConfig={
     Object {
       "height": "90%",

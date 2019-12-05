@@ -9,6 +9,8 @@ import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
 import PropTypes from 'prop-types';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
+import get from 'lodash/get';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 // import { isClient, isTouchClient } from 'routing/routingHelper';
 // import { isTouchClient } from '../../../../../../../utils';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
@@ -205,11 +207,7 @@ export function PromotionalMessage(props) {
         )}
       </BodyCopy>
     </Dotdotdot>
-  ) : (
-    <>
-      <div className="loyalty-text-container" />
-    </>
-  );
+  ) : null;
 }
 
 const renderWishListItem = (item, labels, activeWishListId) => (
@@ -243,6 +241,12 @@ const renderWishListItem = (item, labels, activeWishListId) => (
   </div>
 );
 
+const moveToListErrorDisplay = error => {
+  return error ? (
+    <Notification status="error" colSize={{ large: 12, medium: 8, small: 6 }} message={error} />
+  ) : null;
+};
+
 export const CreateWishList = props => {
   const {
     labels,
@@ -253,8 +257,12 @@ export const CreateWishList = props => {
     getActiveWishlist,
     activeWishListId,
     openAddNewList,
+    favoriteErrorMessages,
   } = props;
   const activateCreateButton = (wishlistsSummaries && wishlistsSummaries.length === 5) || false;
+  const errorMsg = favoriteErrorMessages
+    ? get(favoriteErrorMessages[itemId], 'errorMessage', null)
+    : '';
   return (
     <div className="create-wish-list-section">
       <h4 className="create-wish-list-header">{labels.lbl_fav_myFavWishList}</h4>
@@ -279,6 +287,7 @@ export const CreateWishList = props => {
           </li>
         ))}
       </ul>
+      {moveToListErrorDisplay(errorMsg)}
       <Button
         onClick={() => openAddNewList(itemId)}
         buttonVariation="fixed-width"
@@ -415,6 +424,7 @@ CreateWishList.propTypes = {
   itemId: PropTypes.string.isRequired,
   getActiveWishlist: PropTypes.func,
   activeWishListId: PropTypes.string.isRequired,
+  favoriteErrorMessages: PropTypes.shape({}).isRequired,
 };
 
 CreateWishList.defaultProps = {

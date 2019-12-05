@@ -146,7 +146,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
   };
 
   render() {
-    const { openState, onRequestClose, additionalClassNameModal } = this.props;
+    const { openState, coupon, onRequestClose, additionalClassNameModal } = this.props;
     return (
       <Modal
         isOpen={openState}
@@ -154,6 +154,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         heightConfig={{ height: '90%' }}
+        contentLabel={coupon.title}
         closeIconDataLocator="coupondetailmodalcrossicon"
         customWrapperClassName={additionalClassNameModal}
       >
