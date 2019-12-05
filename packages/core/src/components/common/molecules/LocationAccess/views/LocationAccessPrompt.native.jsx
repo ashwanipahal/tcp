@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable react-native/split-platform-components */
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { PermissionsAndroid } from 'react-native';
+import { Linking, PermissionsAndroid } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import {
   getScreenWidth,
@@ -120,13 +121,16 @@ class LocationAccessPrompt extends React.PureComponent {
   iosPermissions = () => {
     Geolocation.getCurrentPosition(
       position => {
-        console.log(position);
+        this.close();
       },
       error => {
-        // See error code charts below.
-        console.log(error.code, error.message);
+        Linking.openURL('app-settings:');
       },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 10000,
+      }
     );
   };
 
@@ -136,10 +140,10 @@ class LocationAccessPrompt extends React.PureComponent {
   requestPermission = () => {
     if (isAndroid()) {
       this.androidPermissions();
+      this.close();
     } else {
       this.iosPermissions();
     }
-    this.close();
   };
 
   /**
