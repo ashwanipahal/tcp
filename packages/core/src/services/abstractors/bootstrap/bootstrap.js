@@ -9,9 +9,7 @@ import handler from '../../handler';
 import { getAPIConfig, isMobileApp, createLayoutPath } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
 // import { LABELS } from '../../../reduxStore/constants';
-import CACHED_KEYS from '../../../constants/cache.config';
 import { defaultBrand, defaultChannel, defaultCountry, MobileChannel } from '../../api.constants';
-import { setDataInRedis } from '../../../utils/redis.util';
 
 /**
  * Asynchronous function to fetch data from service for given array of moduleIds
@@ -129,21 +127,6 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   }
 
   logger.info(`BOOTSTRAP CACHE MISS: ${key}`);
-  Object.keys(CACHED_KEYS).forEach(async item => {
-    if (CACHED_KEYS[item] === key) {
-      const globalRedisClient = global.redisClient;
-      if (globalRedisClient && globalRedisClient.connected) {
-        try {
-          await setDataInRedis({
-            data: bootstrapData[key],
-            CACHE_IDENTIFIER: item,
-          });
-        } catch (err) {
-          logger.error(err);
-        }
-      }
-    }
-  });
   return bootstrapData[key];
 };
 
