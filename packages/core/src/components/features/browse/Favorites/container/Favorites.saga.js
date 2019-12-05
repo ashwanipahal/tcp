@@ -17,7 +17,9 @@ import {
   setWishListShareSuccess,
   setMaximumProductAddedErrorState,
   resetMaximumProductAddedErrorState,
+  getSetDefaultWishListActn,
 } from './Favorites.actions';
+import { defaultWishListFromState } from './Favorites.selectors';
 import addItemsToWishlistAbstractor, {
   getUserWishLists,
   getWishListbyId,
@@ -40,6 +42,7 @@ import { setAddToFavoritePDP } from '../../ProductDetail/container/ProductDetail
 import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.actions';
 import { setAddToFavoriteOUTFIT } from '../../OutfitDetails/container/OutfitDetails.actions';
 import { setAddToFavoriteBUNDLE } from '../../BundleProduct/container/BundleProduct.actions';
+import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
 
 export function* loadActiveWishlistByGuestKey({ payload }) {
   const { wishListId, guestAccessKey } = payload;
@@ -109,6 +112,8 @@ export function* addItemsToWishlist({ payload }) {
         uniqueId: colorProductId,
         errorMapping,
       });
+
+      yield call(getProductsUserCustomInfo);
 
       if (res && res.errorMessage) {
         yield put(setAddToFavoriteErrorState(res));
@@ -313,6 +318,7 @@ export function* deleteWishListItemById({ payload }, isByPallLoadSummary = false
     if (!deleteItemResponse.success) {
       throw deleteItemResponse;
     }
+    yield call(getProductsUserCustomInfo);
     yield put(setDeletedItemAction(payload.itemId));
     if (!isByPallLoadSummary) {
       yield* loadWishlistsSummaries(activeWishlistId);
@@ -393,6 +399,22 @@ export function* replaceWishlistItem(payload) {
   }
 }
 
+export function* getDefaultWishList(payload) {
+  try {
+    let defaultWishListItems = yield select(defaultWishListFromState);
+    defaultWishListItems = yield call(
+      getProductsUserCustomInfo,
+      payload.generalProductIdsList,
+      payload.products
+    );
+    yield put(getSetDefaultWishListActn({ ...defaultWishListItems }));
+    return defaultWishListItems;
+  } catch (err) {
+    yield null;
+    return [];
+  }
+}
+
 function* FavoriteSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.SET_FAVORITES, addItemsToWishlist);
   yield takeLatest(FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST, loadWishlistsSummaries);
@@ -409,6 +431,7 @@ function* FavoriteSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.UPDATE_WISHLIST_ITEM, updateWishListItem);
   yield takeLatest(FAVORITES_CONSTANTS.SEND_WISHLIST_EMAIL, sendWishListMail);
   yield takeLatest(FAVORITES_CONSTANTS.FAVORITES_REPLACE_WISHLIST_ITEM, replaceWishlistItem);
+  yield takeLatest('CALL_DEFAULT_WISHLIST_METHOD', getDefaultWishList);
 }
 
 export default FavoriteSaga;

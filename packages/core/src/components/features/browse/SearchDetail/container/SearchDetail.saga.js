@@ -20,6 +20,8 @@ import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
+import { getDefaultWishList } from '../../Favorites/container/Favorites.actions';
+import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
@@ -63,9 +65,15 @@ export function* fetchSlpProducts({ payload }) {
       const generalProductIdsList = res.loadedProductsPages[0].map(
         product => product.productInfo.generalProductId
       );
-      res.loadedProductsPages[0] = yield call(
-        getProductsUserCustomInfo,
-        generalProductIdsList,
+      const defaultWishList = yield put(
+        getDefaultWishList({
+          generalProductIdsList,
+          products: res.loadedProductsPages[0],
+          ignoreCache: false,
+        })
+      );
+      res.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
+        defaultWishList,
         res.loadedProductsPages[0]
       );
     }

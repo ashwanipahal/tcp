@@ -9,11 +9,12 @@ import {
 } from './ProductListing.actions';
 import ProductAbstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
-import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
 import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
+import { getDefaultWishList } from '../../Favorites/container/Favorites.actions';
+import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
 
 const instanceProductListing = new ProductAbstractor();
 const operatorInstance = new ProductsOperator();
@@ -91,9 +92,11 @@ export function* fetchPlpProducts({ payload }) {
           const generalProductIdsList = products.map(
             product => product.productInfo.generalProductId
           );
-          plpProducts.loadedProductsPages[0] = yield call(
-            getProductsUserCustomInfo,
-            generalProductIdsList,
+          const defaultWishList = yield put(
+            getDefaultWishList({ generalProductIdsList, products })
+          );
+          plpProducts.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
+            defaultWishList,
             products
           );
         }
@@ -135,9 +138,11 @@ export function* fetchMoreProducts({ payload = {} }) {
           const generalProductIdsList = products.map(
             product => product.productInfo.generalProductId
           );
-          plpProducts.loadedProductsPages[0] = yield call(
-            getProductsUserCustomInfo,
-            generalProductIdsList,
+          const defaultWishList = yield put(
+            getDefaultWishList({ generalProductIdsList, products })
+          );
+          plpProducts.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
+            defaultWishList,
             products
           );
         }

@@ -42,6 +42,20 @@ export const setActiveWishlistAction = payload => {
   };
 };
 
+export function getSetDefaultWishListActn(wishList) {
+  return {
+    payload: wishList,
+    type: 'FAVORITES_SET_DEFAULT_WISHLIST',
+  };
+}
+
+export function getDefaultWishList(wishList) {
+  return {
+    payload: wishList,
+    type: 'CALL_DEFAULT_WISHLIST_METHOD',
+  };
+}
+
 export const getActiveWishlistAction = wishListId => {
   return {
     type: FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST,

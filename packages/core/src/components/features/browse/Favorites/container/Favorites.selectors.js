@@ -19,6 +19,10 @@ export const selectWishListShareStatus = state => {
   return state.Favorites && state.Favorites.get('isWishListShared');
 };
 
+export const defaultWishListFromState = state => {
+  return state.Favorites && state.Favorites.get('defaultWishList');
+};
+
 export const selectActiveWishlistProducts = state => {
   const activeWishList = selectActiveWishList(state);
   return activeWishList && activeWishList.items;

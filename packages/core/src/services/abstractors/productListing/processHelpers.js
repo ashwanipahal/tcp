@@ -384,6 +384,26 @@ const getOfferPriceResponse = product => {
   return product.min_offer_price || { value: null }.value || 0;
 };
 
+const addingExtraProductInfo = (favProductsMap, products, isPDP = false) => {
+  try {
+    return products.map(product => {
+      const { miscInfo, ...otherAttributes } = product;
+      const extraProductInfo =
+        favProductsMap[isPDP ? product.colorProductId : product.productInfo.generalProductId];
+      return {
+        ...otherAttributes,
+        miscInfo: {
+          ...miscInfo,
+          isInDefaultWishlist: !!extraProductInfo && extraProductInfo.isInDefaultWishlist,
+        },
+      };
+    });
+  } catch (err) {
+    console.log('err->', err);
+    return err;
+  }
+};
+
 const processHelpers = {
   getCategoryMap,
   isGiftCard,
@@ -416,5 +436,6 @@ const processHelpers = {
   getRequiredL3,
   getListPriceResponse,
   getOfferPriceResponse,
+  addingExtraProductInfo,
 };
 export default processHelpers;

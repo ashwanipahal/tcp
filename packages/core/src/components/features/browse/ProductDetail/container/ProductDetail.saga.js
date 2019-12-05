@@ -11,7 +11,8 @@ import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
-import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
+import { getDefaultWishList } from '../../Favorites/container/Favorites.actions';
+import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
 
 function* fetchProductDetail({ payload: { productColorId } }) {
   try {
@@ -34,13 +35,20 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     }
     const isGuest = !getUserLoggedInState({ ...state });
     const isRemembered = isRememberedUser({ ...state });
+
     if (!isGuest && !isRemembered) {
       const generalProductIdsList = productDetail.product.colorFitsSizesMap.map(
         product => product.colorProductId
       );
-      productDetail.product.colorFitsSizesMap = yield call(
-        getProductsUserCustomInfo,
-        generalProductIdsList,
+      const defaultWishList = yield put(
+        getDefaultWishList({
+          generalProductIdsList,
+          products: productDetail.product.colorFitsSizesMap,
+          ignoreCache: false,
+        })
+      );
+      productDetail.product.colorFitsSizesMap = processHelpers.addingExtraProductInfo(
+        defaultWishList,
         productDetail.product.colorFitsSizesMap,
         true
       );
