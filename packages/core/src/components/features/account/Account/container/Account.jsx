@@ -46,11 +46,11 @@ export class Account extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     const { componentToLoad } = this.state;
-    // const { isUserLoggedIn, router } = this.props;
+    const { isUserLoggedIn, router } = this.props;
 
-    // if (isUserLoggedIn === false && !excludeRouteMapping.includes(router.route)) {
-    //   routerPush('/home?target=login', '/home/login');
-    // }
+    if (isUserLoggedIn === false && !excludeRouteMapping.includes(router.route)) {
+      routerPush('/home?target=login', '/home/login');
+    }
 
     if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
       this.activePageRef.blur();
@@ -130,24 +130,24 @@ export class Account extends React.PureComponent {
     // so rendering MyAccountLayout only when labels are present
     // later on we can either need to add loader or we can prevent rendering from
     // _app.jsx itself.
-    // if (typeof labels === 'object' && isUserLoggedIn !== null) {
-    return (
-      <>
-        <MyAccountLayout
-          mainContent={AccountComponentMapping[componentToLoad]}
-          active={activeComponent}
-          activeSubComponent={componentToLoad}
-          navData={navData}
-          router={router}
-          labels={labels}
-          pageContentRef={this.setPageRef}
-          isUserLoggedIn={isUserLoggedIn}
-        />
-      </>
-    );
-    // }
+    if (typeof labels === 'object' && isUserLoggedIn !== null) {
+      return (
+        <>
+          <MyAccountLayout
+            mainContent={AccountComponentMapping[componentToLoad]}
+            active={activeComponent}
+            activeSubComponent={componentToLoad}
+            navData={navData}
+            router={router}
+            labels={labels}
+            pageContentRef={this.setPageRef}
+            isUserLoggedIn={isUserLoggedIn}
+          />
+        </>
+      );
+    }
 
-    // return null;
+    return null;
   }
 }
 

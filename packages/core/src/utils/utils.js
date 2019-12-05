@@ -1170,6 +1170,15 @@ export const convertNumToBool = val => {
   return !!parseInt(val, 10);
 };
 
+/**
+ * This function returns the true if the browser is IE11
+ */
+export const isIE11 = () => {
+  // true on IE11
+  // false on Edge and other IEs/browsers.
+  return !!window.MSInputMethodContext && !!document.documentMode;
+};
+
 export default {
   getVideoUrl,
   getOrderStatusForNotification,
@@ -1221,4 +1230,5 @@ export default {
   calculatePriceValue,
   getProductUrlForDAM,
   convertNumToBool,
+  isIE11,
 };

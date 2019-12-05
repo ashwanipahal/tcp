@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getLabelValue, isIE11 } from '@tcp/core/src/utils/utils';
 import styles from '../styles/DetailedCouponTile.style';
 import {
   COUPON_REDEMPTION_TYPE,
@@ -133,6 +133,7 @@ export class DetailedCouponTile extends React.Component {
     return status === COUPON_STATUS.APPLIED ? 'overlap-text' : '';
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const { className, coupon, labels, isMobile, isDisabled } = this.props;
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
@@ -216,7 +217,10 @@ export class DetailedCouponTile extends React.Component {
             noBackground
             isEspot={isPlaceCash}
           />
-          <BodyCopy component="div" className="bottom-content">
+          <BodyCopy
+            component="div"
+            className={`bottom-content ${isIE11() ? 'IE_bottom-content' : ''}`}
+          >
             <BodyCopy component="div" className="coupon-desc elem-mb-SM">
               <BodyCopy component="div" data-locator="myrewards-usebylabel">
                 <BodyCopy fontSize="fs14" fontFamily="secondary">
