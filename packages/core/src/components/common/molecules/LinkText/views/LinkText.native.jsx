@@ -156,7 +156,8 @@ const getTextItems = (textItems, icon, useStyle, compProps) => {
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
-        const StyleBodyCopy = style ? bodyCopyStyles[style] : () => null;
+        const StyleBodyCopy = bodyCopyStyles[style] ? bodyCopyStyles[style] : BodyCopy;
+
         return (
           <StyleBodyCopy
             accessibilityRole="text"
