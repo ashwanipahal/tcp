@@ -347,7 +347,7 @@ class ProductDetailView extends PureComponent {
               initialValues={this.formValues}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
-              ratingsProductId={productInfo.ratingsProductId}
+              ratingsProductId={ratingsProductId}
             />
           </Col>
           <Col
@@ -455,7 +455,7 @@ class ProductDetailView extends PureComponent {
             <ProductReviewsContainer
               expanded={false}
               reviewsCount={productInfo.reviewsCount}
-              ratingsProductId={ratingsProductId}
+              ratingsProductId={productInfo.ratingsProductId}
               isClient={isClient()}
             />
           </Col>
