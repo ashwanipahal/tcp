@@ -16,9 +16,9 @@ exports[`AccountHeader Component should render correctly 1`] = `
     isNotInlineBlock={true}
   >
     <Styled(BodyCopy)
-      className={null}
+      className="user-welcome"
       color="text.primary"
-      component="p"
+      component="h1"
       fontFamily="secondary"
       fontSize="fs20"
       fontWeight="extrabold"

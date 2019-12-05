@@ -1,8 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import LineComp from '../../../../../../common/atoms/Line';
 import {
+  OrderSummarySkeletonWrapper,
   PricePointsWrapper,
   PriceSubText,
   PriceSubValue,
@@ -20,7 +20,7 @@ import {
 
 const OrderSummarySkeleton = () => {
   return (
-    <View>
+    <OrderSummarySkeletonWrapper>
       <PricePointsWrapper>
         <PriceSubText>
           <LoaderSkelton />
@@ -70,7 +70,7 @@ const OrderSummarySkeleton = () => {
           <LoaderSkelton />
         </PriceSubValue6>
       </PricePointsWrapper>
-    </View>
+    </OrderSummarySkeletonWrapper>
   );
 };
 

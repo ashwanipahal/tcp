@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductPrice from '../../ProductPrice/ProductPrice';
 import ProductBasicInfo from '../../ProductBasicInfo/ProductBasicInfo';
 import {
@@ -95,6 +96,7 @@ const Product = props => {
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           pageName="PDP"
           skuId={skuId}
+          formName={PRODUCT_ADD_TO_BAG}
         />
       </div>
       <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop hide-on-tablet' : ''}>

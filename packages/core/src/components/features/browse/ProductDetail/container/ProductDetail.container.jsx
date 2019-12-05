@@ -198,6 +198,7 @@ class ProductDetailContainer extends React.PureComponent {
               trackPageLoad={trackPageLoad}
               sizeChartDetails={sizeChartDetails}
               isLoading={typeof window === 'undefined' || isLoading}
+              isMatchingFamily // TODO: Need to add kill switch for this
             />
           ) : null}
           {isLoading ? <ProductDetailSkeleton /> : null}
