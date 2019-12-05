@@ -697,6 +697,15 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  getIsProductBrandSameDomain = () => {
+    const { item } = this.props;
+    const currentSiteBrand = getBrand();
+    const isTCP =
+      item && item.itemInfo ? item.itemInfo.isTCP : currentSiteBrand.toUpperCase() === 'TCP';
+    const itemBrand = isTCP ? 'TCP' : 'GYM';
+    return currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
+  };
+
   renderFavouriteIcon = (
     bundleProduct,
     isFavoriteView,
@@ -775,7 +784,7 @@ class ProductsGridItem extends React.PureComponent {
         offerPrice: itemOfferPrice,
         long_product_title: longProductTitle,
       },
-      itemInfo: { itemId, quantity, availability, isTCP } = {},
+      itemInfo: { itemId, quantity, availability } = {},
       quantityPurchased,
       colorsMap,
       imagesByColor,
@@ -843,6 +852,8 @@ class ProductsGridItem extends React.PureComponent {
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
     const videoUrl = getVideoUrl(curentColorEntry);
+
+    const isProductBrandOfSameDomain = this.getIsProductBrandSameDomain();
     return (
       <li
         className={className}
@@ -882,7 +893,7 @@ class ProductsGridItem extends React.PureComponent {
             keepAlive={keepAlive}
             isSoldOut={itemNotAvailable}
             soldOutLabel={outOfStockLabels.outOfStockCaps}
-            itemBrand={isTCP ? 'TCP' : 'GYM'}
+            isProductBrandOfSameDomain={isProductBrandOfSameDomain}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels, item },
