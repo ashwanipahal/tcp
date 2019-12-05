@@ -308,6 +308,14 @@
 		411904DA23991E9000927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */; };
 		411904DB23991E9700927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */; };
 		411904DC23991E9F00927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */; };
+		4119050B239935AC00927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411905052399359E00927BBB /* AirshipConfig.plist */; };
+		4119050C239935B000927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411905052399359E00927BBB /* AirshipConfig.plist */; };
+		4119050D239935BB00927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411905032399359E00927BBB /* AirshipConfig.plist */; };
+		4119050E239935BC00927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411905032399359E00927BBB /* AirshipConfig.plist */; };
+		4119050F239935C300927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411905012399359E00927BBB /* AirshipConfig.plist */; };
+		41190510239935C400927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411905012399359E00927BBB /* AirshipConfig.plist */; };
+		41190511239935DB00927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411904FF2399359E00927BBB /* AirshipConfig.plist */; };
+		41190512239935DC00927BBB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411904FF2399359E00927BBB /* AirshipConfig.plist */; };
 		41BE1589238BBE11000B8963 /* VenmoPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1587238BBE11000B8963 /* VenmoPayment.m */; };
 		41BE158B238BBE11000B8963 /* VenmoPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1587238BBE11000B8963 /* VenmoPayment.m */; };
 		41BE158C238BBE11000B8963 /* VenmoPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1587238BBE11000B8963 /* VenmoPayment.m */; };
@@ -785,6 +793,22 @@
 		411904D323991D4A00927BBB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		411904D623991D6800927BBB /* mobileapp_qa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_qa.entitlements; sourceTree = "<group>"; };
 		411904E32399298E00927BBB /* mobileapp_prod.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = mobileapp_prod.entitlements; sourceTree = "<group>"; };
+		411904FF2399359E00927BBB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		411905012399359E00927BBB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		411905032399359E00927BBB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		411905052399359E00927BBB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		41190513239936B300927BBB /* gymboree_int.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gymboree_int.entitlements; sourceTree = "<group>"; };
+		41190514239936B800927BBB /* gymboree_qa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gymboree_qa.entitlements; sourceTree = "<group>"; };
+		41190515239936BC00927BBB /* gymboree_uat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gymboree_uat.entitlements; sourceTree = "<group>"; };
+		41190516239936C000927BBB /* gymboree_prod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gymboree_prod.entitlements; sourceTree = "<group>"; };
+		4119051723993E8200927BBB /* gymboree_prod_preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gymboree_prod_preview.entitlements; sourceTree = "<group>"; };
+		4119051823993E8B00927BBB /* gymboree_uat_preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gymboree_uat_preview.entitlements; sourceTree = "<group>"; };
+		4119051923993E9500927BBB /* gymboree_qa_preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gymboree_qa_preview.entitlements; sourceTree = "<group>"; };
+		4119051A23993E9A00927BBB /* Gymboree-Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gymboree-Preview.entitlements"; sourceTree = "<group>"; };
+		4119051B239940FF00927BBB /* mobileapp_prod_preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_prod_preview.entitlements; sourceTree = SOURCE_ROOT; };
+		4119051C2399411200927BBB /* mobileapp_qa_preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_qa_preview.entitlements; sourceTree = SOURCE_ROOT; };
+		4119051D2399411F00927BBB /* My Place - Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "My Place - Preview.entitlements"; sourceTree = SOURCE_ROOT; };
+		4119051E2399413500927BBB /* mobileapp_uat_preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobileapp_uat_preview.entitlements; sourceTree = SOURCE_ROOT; };
 		41BE1586238BBE11000B8963 /* VenmoPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VenmoPayment.h; path = mobileapp/VenmoPayment.h; sourceTree = "<group>"; };
 		41BE1587238BBE11000B8963 /* VenmoPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VenmoPayment.m; path = mobileapp/VenmoPayment.m; sourceTree = "<group>"; };
 		41BE1588238BBE11000B8963 /* VenmoPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenmoPayment.swift; path = mobileapp/VenmoPayment.swift; sourceTree = "<group>"; };
@@ -1246,10 +1270,51 @@
 		411904D223991D4A00927BBB /* mobileapp_QA */ = {
 			isa = PBXGroup;
 			children = (
+				4119051C2399411200927BBB /* mobileapp_qa_preview.entitlements */,
 				411904D623991D6800927BBB /* mobileapp_qa.entitlements */,
 				411904D323991D4A00927BBB /* AirshipConfig.plist */,
 			);
 			path = mobileapp_QA;
+			sourceTree = "<group>";
+		};
+		411904FE2399359E00927BBB /* Gym_prod */ = {
+			isa = PBXGroup;
+			children = (
+				41190516239936C000927BBB /* gymboree_prod.entitlements */,
+				4119051723993E8200927BBB /* gymboree_prod_preview.entitlements */,
+				411904FF2399359E00927BBB /* AirshipConfig.plist */,
+			);
+			path = Gym_prod;
+			sourceTree = "<group>";
+		};
+		411905002399359E00927BBB /* Gym_QA */ = {
+			isa = PBXGroup;
+			children = (
+				4119051923993E9500927BBB /* gymboree_qa_preview.entitlements */,
+				41190514239936B800927BBB /* gymboree_qa.entitlements */,
+				411905012399359E00927BBB /* AirshipConfig.plist */,
+			);
+			path = Gym_QA;
+			sourceTree = "<group>";
+		};
+		411905022399359E00927BBB /* Gym_uat */ = {
+			isa = PBXGroup;
+			children = (
+				4119051823993E8B00927BBB /* gymboree_uat_preview.entitlements */,
+				41190515239936BC00927BBB /* gymboree_uat.entitlements */,
+				411905032399359E00927BBB /* AirshipConfig.plist */,
+			);
+			path = Gym_uat;
+			sourceTree = "<group>";
+		};
+		411905042399359E00927BBB /* Gym_Int */ = {
+			isa = PBXGroup;
+			children = (
+				41190513239936B300927BBB /* gymboree_int.entitlements */,
+				4119051A23993E9A00927BBB /* Gymboree-Preview.entitlements */,
+				411905052399359E00927BBB /* AirshipConfig.plist */,
+			);
+			path = Gym_Int;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -1273,6 +1338,7 @@
 		82FA4101238BE4E1009ECD1F /* mobileapp_prod */ = {
 			isa = PBXGroup;
 			children = (
+				4119051B239940FF00927BBB /* mobileapp_prod_preview.entitlements */,
 				411904E32399298E00927BBB /* mobileapp_prod.entitlements */,
 				82FA4102238BE4E1009ECD1F /* AirshipConfig.plist */,
 			);
@@ -1282,6 +1348,7 @@
 		82FA4104238BE4E2009ECD1F /* mobileapp_uat */ = {
 			isa = PBXGroup;
 			children = (
+				4119051E2399413500927BBB /* mobileapp_uat_preview.entitlements */,
 				82FA4105238BE4E2009ECD1F /* mobileapp_uat.entitlements */,
 				82FA4106238BE4E2009ECD1F /* AirshipConfig.plist */,
 			);
@@ -1293,6 +1360,7 @@
 			children = (
 				82FA4108238BE4E2009ECD1F /* AirshipConfig.plist */,
 				82FA4109238BE4E2009ECD1F /* mobileapp_int.entitlements */,
+				4119051D2399411F00927BBB /* My Place - Preview.entitlements */,
 			);
 			path = mobileapp_int;
 			sourceTree = "<group>";
@@ -1329,6 +1397,10 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				411905042399359E00927BBB /* Gym_Int */,
+				411904FE2399359E00927BBB /* Gym_prod */,
+				411905002399359E00927BBB /* Gym_QA */,
+				411905022399359E00927BBB /* Gym_uat */,
 				411904D223991D4A00927BBB /* mobileapp_QA */,
 				82FA4107238BE4E2009ECD1F /* mobileapp_int */,
 				82FA4101238BE4E1009ECD1F /* mobileapp_prod */,
@@ -2481,6 +2553,7 @@
 				16C65C5423979882009559D2 /* Montserrat-ExtraBold.ttf in Resources */,
 				16C65C5523979882009559D2 /* Images.xcassets in Resources */,
 				16C65C5623979882009559D2 /* Montserrat.ttf in Resources */,
+				4119050F239935C300927BBB /* AirshipConfig.plist in Resources */,
 				16C65C5723979882009559D2 /* Nunito-Black.ttf in Resources */,
 				16C65C5823979882009559D2 /* icomoon.ttf in Resources */,
 			);
@@ -2504,6 +2577,7 @@
 				16C65C7923979891009559D2 /* Images.xcassets in Resources */,
 				169EF4ED23990ACE003AEF10 /* Nunito-ExtraBold.ttf in Resources */,
 				16C65C7A23979891009559D2 /* Montserrat.ttf in Resources */,
+				41190510239935C400927BBB /* AirshipConfig.plist in Resources */,
 				16C65C7B23979891009559D2 /* Nunito-Black.ttf in Resources */,
 				16C65C7C23979891009559D2 /* icomoon.ttf in Resources */,
 			);
@@ -2527,6 +2601,7 @@
 				16C65C9E2397989F009559D2 /* Montserrat.ttf in Resources */,
 				169EF4EF23990ACE003AEF10 /* Nunito-ExtraBold.ttf in Resources */,
 				16C65C9F2397989F009559D2 /* Montserrat-ExtraBold.ttf in Resources */,
+				4119050E239935BC00927BBB /* AirshipConfig.plist in Resources */,
 				16C65CA02397989F009559D2 /* Nunito-Black.ttf in Resources */,
 				16C65CA12397989F009559D2 /* icomoon.ttf in Resources */,
 			);
@@ -2550,6 +2625,7 @@
 				16C65CC1239798AC009559D2 /* Images.xcassets in Resources */,
 				16C65CE823979B99009559D2 /* gymboree-prod-Info.plist in Resources */,
 				16C65CC3239798AC009559D2 /* Montserrat.ttf in Resources */,
+				41190512239935DC00927BBB /* AirshipConfig.plist in Resources */,
 				16C65CC4239798AC009559D2 /* Nunito-Black.ttf in Resources */,
 				16C65CC5239798AC009559D2 /* icomoon.ttf in Resources */,
 			);
@@ -2573,6 +2649,7 @@
 				16C47551238D4F7400B6959B /* Montserrat-ExtraBold.ttf in Resources */,
 				3973AC792387D12B00538E85 /* Images.xcassets in Resources */,
 				3973AC7A2387D12B00538E85 /* Montserrat.ttf in Resources */,
+				4119050C239935B000927BBB /* AirshipConfig.plist in Resources */,
 				3973AC7B2387D12B00538E85 /* Nunito-Black.ttf in Resources */,
 				3973AC7C2387D12B00538E85 /* icomoon.ttf in Resources */,
 			);
@@ -2692,6 +2769,7 @@
 				84677B2D230BCECC001F5301 /* Images.xcassets in Resources */,
 				16C65CDE23979B68009559D2 /* gymboree-int-Info.plist in Resources */,
 				84677B30230BCECC001F5301 /* Montserrat.ttf in Resources */,
+				4119050B239935AC00927BBB /* AirshipConfig.plist in Resources */,
 				84677B31230BCECC001F5301 /* Nunito-Black.ttf in Resources */,
 				3656A58A2337836800EF9714 /* icomoon.ttf in Resources */,
 			);
@@ -2715,6 +2793,7 @@
 				16820477239916DE00E276F5 /* Montserrat.ttf in Resources */,
 				16820478239916DE00E276F5 /* Montserrat-Black.ttf in Resources */,
 				84677B52230BCF01001F5301 /* GymboreeLaunchScreen.xib in Resources */,
+				4119050D239935BB00927BBB /* AirshipConfig.plist in Resources */,
 				4C945DD1233E6F5000825846 /* AppCenter-Config.plist in Resources */,
 				16C65CE423979B88009559D2 /* gymboree-uat-Info.plist in Resources */,
 			);
@@ -2738,6 +2817,7 @@
 				84677B87230BCF37001F5301 /* Images.xcassets in Resources */,
 				16C65CE723979B99009559D2 /* gymboree-prod-Info.plist in Resources */,
 				84677B8A230BCF37001F5301 /* Montserrat.ttf in Resources */,
+				41190511239935DB00927BBB /* AirshipConfig.plist in Resources */,
 				84677B8B230BCF37001F5301 /* Nunito-Black.ttf in Resources */,
 				3656A58C2337836800EF9714 /* icomoon.ttf in Resources */,
 			);
@@ -5578,6 +5658,7 @@
 				APP_ENV = INT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_qa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5613,6 +5694,7 @@
 				APP_ENV = INT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_qa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5647,6 +5729,7 @@
 				APP_ENV = INT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_qa_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5682,6 +5765,7 @@
 				APP_ENV = INT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_qa_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5716,6 +5800,7 @@
 				APP_ENV = UAT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_uat_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5750,6 +5835,7 @@
 				APP_ENV = UAT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_uat_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5782,6 +5868,7 @@
 			buildSettings = {
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_prod_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5815,6 +5902,7 @@
 			buildSettings = {
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_prod_preview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5848,8 +5936,9 @@
 				APP_ENV = LOCAL;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vasu Nagpal (JKR6X9J6G9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vasu Nagpal (JKR6X9J6G9)";
+				CODE_SIGN_ENTITLEMENTS = "Gymboree-Preview.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -5868,9 +5957,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.gymboree-ios.int";
 				PRODUCT_NAME = "Gymboree-Preview";
-				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_GymboreeAppInt;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5884,7 +5973,8 @@
 				APP_ENV = LOCAL;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vasu Nagpal (JKR6X9J6G9)";
+				CODE_SIGN_ENTITLEMENTS = "Gymboree-Preview.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9N3QW4M4N3;
@@ -5902,9 +5992,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.gymboree-ios.int";
 				PRODUCT_NAME = "Gymboree-Preview";
-				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_GymboreeAppInt;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -6302,6 +6392,7 @@
 				APP_ENV = INT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_int.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -6321,9 +6412,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.gymboree-ios.int";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_GymboreeAppInt;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -6337,6 +6428,7 @@
 				APP_ENV = INT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_int.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -6355,9 +6447,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.childrensplace.gymboree-ios.int";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
+				PROVISIONING_PROFILE_SPECIFIER = ProvisioningProfileDevelopment_GymboreeAppInt;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -6371,6 +6463,7 @@
 				APP_ENV = UAT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_uat.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -6405,6 +6498,7 @@
 				APP_ENV = UAT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_uat.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -6437,6 +6531,7 @@
 			buildSettings = {
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_prod.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -6470,6 +6565,7 @@
 			buildSettings = {
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
+				CODE_SIGN_ENTITLEMENTS = gymboree_prod.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
