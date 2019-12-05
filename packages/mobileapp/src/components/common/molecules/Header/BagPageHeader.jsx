@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getLocator, isGymboree } from '@tcp/core/src/utils';
 import { TouchableOpacity } from 'react-native';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import {
   SafeAreaViewStyle,
   BrandIcon,
@@ -16,6 +17,7 @@ import {
 } from './Header.style';
 
 import { BagPageBackContainer } from './BagPageHeader.style';
+import { INTERNET_OFF } from './Header.constants';
 
 // @flow
 type Props = {
@@ -40,6 +42,23 @@ const gymIcon = require('../../../../assets/images/gymboree/gymboreeLaunchImage.
  *     and shoe the name fro register user
  */
 class BagPageHeader extends React.PureComponent<Props> {
+  componentDidUpdate(prevProps) {
+    const {
+      screenProps: {
+        network: { isConnected },
+      },
+      toastMessage,
+    } = this.props;
+    const {
+      screenProps: {
+        network: { isConnected: PrevIsConnected },
+      },
+    } = prevProps;
+    if (isConnected !== PrevIsConnected && !isConnected) {
+      toastMessage(INTERNET_OFF);
+    }
+  }
+
   closeIconAction = () => {
     const { navigation } = this.props;
     navigation.goBack();
@@ -107,6 +126,8 @@ BagPageHeader.propTypes = {
   showCloseButton: PropTypes.bool,
   showGobackIcon: PropTypes.bool,
   isPayPalWebViewEnable: PropTypes.shape({}),
+  screenProps: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
 };
 
 BagPageHeader.defaultProps = {
@@ -114,7 +135,20 @@ BagPageHeader.defaultProps = {
   showCloseButton: true,
   showGobackIcon: false,
   isPayPalWebViewEnable: false,
+  screenProps: {},
+  toastMessage: () => {},
 };
 
-export default connect(mapStateToProps)(BagPageHeader);
+const mapDispatchToProps = dispatch => {
+  return {
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BagPageHeader);
 export { BagPageHeader as BagPageHeaderVanilla };

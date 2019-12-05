@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, getLocator } from '@tcp/core/src/utils';
 import { Button, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '../../../../../common/hoc/withStyles';
 import { CreateWishList } from '../../../ProductListing/molecules/ProductList/views/ProductItemComponents';
@@ -67,13 +67,18 @@ class SelectWishListDropdown extends React.PureComponent {
       wishlistsSummaries.length > 0 && (
         <>
           <div className="choose-list-container">
-            <Button className="choose-list-button" onClick={this.openMoveItem}>
+            <Button
+              className="choose-list-button"
+              onClick={this.openMoveItem}
+              dataLocator={getLocator('fav_dropdown')}
+            >
               {(activeWishList && activeWishList.displayName) || ''}
               {showDefaultHeartIcon ? (
                 <Image
                   alt="Default Favourite List"
                   src={getIconPath('added-to-favorite')}
                   className="fav-list-heart-icon"
+                  dataLocator={getLocator('fav_dropdown_heart_icon')}
                 />
               ) : (
                 ''
