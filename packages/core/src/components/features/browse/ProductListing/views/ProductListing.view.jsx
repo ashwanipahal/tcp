@@ -93,8 +93,6 @@ const ProductListView = ({
   pageSectionProp,
   pageSubSectionProp,
   trackPageLoad,
-  searchType,
-  searchedText,
   ...otherProps
 }) => {
   // State needed to trigger UX timer once initial product results have rendered

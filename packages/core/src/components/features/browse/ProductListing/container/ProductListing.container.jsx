@@ -64,8 +64,6 @@ import {
 } from '../../Favorites/container/Favorites.selectors';
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
-import { getCurrentSearchForText } from '../../SearchDetail/container/SearchDetail.selectors';
-
 const defaultResolver = mod => mod.default;
 
 const CategoryListing = dynamic(() =>
@@ -202,10 +200,7 @@ class ProductListingContainer extends React.PureComponent {
       plpTopPromos,
       plpGridPromos,
       plpHorizontalPromos,
-      router: {
-        asPath: asPathVal,
-        query: { searchType },
-      },
+      router: { asPath: asPathVal },
       isSearchListing,
       navigation,
       AddToFavoriteErrorMsg,
@@ -214,7 +209,6 @@ class ProductListingContainer extends React.PureComponent {
       pageSectionProp,
       pageSubSectionProp,
       trackPageLoad,
-      searchedText,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -267,8 +261,6 @@ class ProductListingContainer extends React.PureComponent {
         pageSectionProp={pageSectionProp}
         pageSubSectionProp={pageSubSectionProp}
         trackPageLoad={trackPageLoad}
-        searchType={searchType}
-        searchedText={searchedText}
         {...otherProps}
       />
     ) : (
@@ -370,7 +362,6 @@ function mapStateToProps(state) {
     pageSectionProp: getPageSection(state),
     pageSubSectionProp: getPageSubSection(state),
     errorMessages: fetchErrorMessages(state),
-    searchedText: getCurrentSearchForText(state),
   };
 }
 
@@ -400,13 +391,11 @@ function mapDispatchToProps(dispatch) {
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
     trackPageLoad: payload => {
-      const { products, customEvents, pageSearchType, pageSearchText } = payload;
+      const { products, customEvents } = payload;
       dispatch(
         setClickAnalyticsData({
           products,
           customEvents,
-          pageSearchType,
-          pageSearchText,
         })
       );
       setTimeout(() => {
@@ -474,7 +463,6 @@ ProductListingContainer.propTypes = {
   pageSectionProp: PropTypes.string,
   pageSubSectionProp: PropTypes.string,
   trackPageLoad: PropTypes.func,
-  searchedText: PropTypes.string,
 };
 
 ProductListingContainer.defaultProps = {
@@ -512,7 +500,6 @@ ProductListingContainer.defaultProps = {
   pageSectionProp: '',
   pageSubSectionProp: '',
   trackPageLoad: () => {},
-  searchedText: '',
 };
 
 const IsomorphicProductListingContainer = withIsomorphicRenderer({

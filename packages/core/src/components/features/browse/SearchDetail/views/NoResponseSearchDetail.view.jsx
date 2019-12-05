@@ -51,27 +51,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
     }
   }
 
-  formatProductsData = products => {
-    return products.map((tile, index) => {
-      const {
-        productInfo: { listPrice, offerPrice, name, generalProductId, priceRange },
-        miscInfo: { categoryName },
-      } = tile;
-      const productId = generalProductId && generalProductId.split('_')[0];
-      const productName = name;
-      return {
-        id: productId,
-        colorId: generalProductId,
-        name: productName,
-        price: offerPrice,
-        listPrice,
-        extPrice: priceRange.lowOfferPrice,
-        position: index + 1,
-        type: categoryName,
-      };
-    });
-  };
-
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, slpLabels, searchResults } = this.props;
@@ -400,7 +379,6 @@ NoResponseSearchDetailView.propTypes = {
   }),
   pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   trackPageLoad: PropTypes.func,
-  products: PropTypes.arrayOf(PropTypes.shape({})),
   searchType: PropTypes.string,
 };
 
@@ -422,7 +400,6 @@ NoResponseSearchDetailView.defaultProps = {
   }),
   pdpLabels: {},
   searchType: 'keyword',
-  products: [],
   trackPageLoad: () => {},
 };
 
