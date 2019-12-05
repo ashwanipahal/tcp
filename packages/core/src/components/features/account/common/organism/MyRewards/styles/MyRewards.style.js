@@ -50,6 +50,7 @@ const styles = css`
 
   .rewards-container {
     display: grid;
+    display: -ms-grid;
     grid-template-columns: 100%;
     grid-row-gap: 24px;
     grid-auto-rows: minmax(345px, auto);
