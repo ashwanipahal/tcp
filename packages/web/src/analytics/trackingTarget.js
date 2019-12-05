@@ -19,7 +19,7 @@ function transformEvent(event) {
 
 function setCommonProps() {
   const { _dataLayer } = global;
-  if (_dataLayer) {
+  if (_dataLayer && _dataLayer.favStoreId) {
     setProp('prop29', _dataLayer.favStoreId);
   }
 }

@@ -310,7 +310,7 @@ export default function create(store) {
     favStoreId: {
       get() {
         const currentState = store.getState();
-        return currentState.User.getIn(['defaultStore', 'basicInfo', 'id'], '');
+        return currentState.User.getIn(['personalData', 'hobbies'], '');
       },
     },
     brandId: {
