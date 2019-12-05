@@ -1,9 +1,15 @@
 import { css } from 'styled-components';
 
 export default css`
+  outline: none;
+
   .title {
     text-align: center;
     margin-bottom: 14px;
+    outline: none;
+    font-size: ${props => props.theme.typography.fontSizes.fs22};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-family: ${props => props.theme.typography.fonts.secondary};
   }
 
   &.seo-text {
@@ -43,6 +49,10 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs18};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
     cursor: pointer;
+
+    p {
+      outline: none;
+    }
   }
 
   .read-more-state:checked ~ .read-more {
