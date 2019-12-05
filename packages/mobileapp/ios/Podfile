@@ -59,22 +59,15 @@ def all_env_pods
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
   pod 'Braintree'
   pod 'Braintree/Venmo'
-
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
   pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
-
   pod 'React-ART', :path => '../node_modules/react-native/Libraries/ART'
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
   use_native_modules!
 end
 
 target 'mobileapp' do
-  all_env_pods
-  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
-
-end
-
-target 'mobileapp_dev' do
   all_env_pods
 end
 
@@ -82,11 +75,23 @@ target 'mobileapp_int' do
   all_env_pods
 end
 
+target 'mobileapp_preview' do
+  all_env_pods
+end
+
+target 'mobileapp_qa' do
+  all_env_pods
+end
+
+target 'mobileapp_qa_preview' do
+  all_env_pods
+end
+
 target 'mobileapp_uat' do
   all_env_pods
 end
 
-target 'mobileapp_preview' do
+target 'mobileapp_uat_preview' do
   all_env_pods
 end
 
@@ -94,11 +99,11 @@ target 'mobileapp_prod' do
   all_env_pods
 end
 
-target 'gymboree' do
+target 'mobileapp_prod_preview' do
   all_env_pods
 end
 
-target 'gymboree_dev' do
+target 'gymboree' do
   all_env_pods
 end
 
@@ -106,15 +111,31 @@ target 'gymboree_int' do
   all_env_pods
 end
 
-target 'gymboree_uat' do
-  all_env_pods
-end
-
 target 'gymboree_preview' do
   all_env_pods
 end
 
+target 'gymboree_qa' do
+  all_env_pods
+end
+
+target 'gymboree_qa_preview' do
+  all_env_pods
+end
+
+target 'gymboree_uat' do
+  all_env_pods
+end
+
+target 'gymboree_uat_preview' do
+  all_env_pods
+end
+
 target 'gymboree_prod' do
+  all_env_pods
+end
+
+target 'gymboree_prod_preview' do
   all_env_pods
 end
 

@@ -12,9 +12,10 @@ import {
 } from '../../../../../styles/globalStyles/StyledText.style';
 
 const getAdditionalStyle = props => {
-  const { margin, textDecoration } = props;
+  const { margin, textDecoration, width } = props;
   return {
     ...(margin && { margin }),
+    ...(width && { width }),
     ...(textDecoration && { 'text-decoration-line': textDecoration }),
   };
 };
@@ -73,6 +74,7 @@ export const ButtonWrapperStyle = styled.View`
 
 export const BodyCopyWithSpacing = styled(BodyCopy)`
   ${getSpacingStyles}
+  ${getAdditionalStyle};
 `;
 
 export const ViewWithSpacing = styled.View`
