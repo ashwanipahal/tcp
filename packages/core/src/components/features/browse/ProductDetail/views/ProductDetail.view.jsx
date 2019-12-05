@@ -263,6 +263,7 @@ class ProductDetailView extends PureComponent {
       ...otherProps
     } = this.props;
 
+    const { ratingsProductId } = otherProps;
     const { currentProduct } = productDetails;
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
@@ -341,6 +342,7 @@ class ProductDetailView extends PureComponent {
               initialValues={this.formValues}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              ratingsProductId={productInfo.ratingsProductId}
             />
           </Col>
           <Col
@@ -442,7 +444,7 @@ class ProductDetailView extends PureComponent {
             <ProductReviewsContainer
               expanded={false}
               reviewsCount={productInfo.reviewsCount}
-              ratingsProductId={productInfo.ratingsProductId}
+              ratingsProductId={ratingsProductId}
               isClient={isClient()}
             />
           </Col>
