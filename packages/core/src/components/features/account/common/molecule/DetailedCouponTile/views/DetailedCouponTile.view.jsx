@@ -144,7 +144,11 @@ export class DetailedCouponTile extends React.Component {
     const overlapCls = this.overlapClass(coupon.status);
     const overlapTxtCls = this.overlapTxtClass(coupon.status);
     return (
-      <BodyCopy component="div" className={className} data-locator="myrewards-tile">
+      <BodyCopy
+        component="div"
+        className={`${className} ${isIE11() ? 'IE_my_rewards' : ''}`}
+        data-locator="myrewards-tile"
+      >
         {showOverlow && (
           <BodyCopy component="div" data-locator="coupon-overlay" className="overlay">
             <BodyCopy

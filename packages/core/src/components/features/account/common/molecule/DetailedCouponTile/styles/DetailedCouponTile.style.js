@@ -1,10 +1,6 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  -ms-grid-row: ${props => Math.floor(props.index / 5) + 1};
-  -ms-grid-column: ${props => (props.index % 5) + 1};
-  margin-right: 24px;
-  width: calc(100% - 24px);
   border: 1px solid
     ${props =>
       props.coupon.error ? props.theme.colorPalette.red[500] : props.theme.colorPalette.gray[500]};
@@ -72,6 +68,13 @@ const styles = css`
   .IE_bottom-content {
     position: absolute;
     bottom: 0;
+    width: calc(100% - 24px);
+  }
+
+  .IE_my_rewards {
+    -ms-grid-row: ${props => Math.floor(props.index / 5) + 1};
+    -ms-grid-column: ${props => (props.index % 5) + 1};
+    margin-right: 24px;
     width: calc(100% - 24px);
   }
 

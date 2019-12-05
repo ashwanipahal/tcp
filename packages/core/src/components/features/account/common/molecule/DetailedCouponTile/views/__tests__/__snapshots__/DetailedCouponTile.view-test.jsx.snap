@@ -2,7 +2,7 @@
 
 exports[`DetailedCouponTile should display overlay 1`] = `
 <Styled(BodyCopy)
-  className=""
+  className=" "
   color="text.primary"
   component="div"
   data-locator="myrewards-tile"
@@ -284,7 +284,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
 
 exports[`DetailedCouponTile should render correctly 1`] = `
 <Styled(BodyCopy)
-  className=""
+  className=" "
   color="text.primary"
   component="div"
   data-locator="myrewards-tile"
@@ -471,7 +471,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
 
 exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
 <Styled(BodyCopy)
-  className=""
+  className=" "
   color="text.primary"
   component="div"
   data-locator="myrewards-tile"
@@ -753,7 +753,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
 
 exports[`DetailedCouponTile should render expiring soon notification if coupon isExpiring is true 1`] = `
 <Styled(BodyCopy)
-  className=""
+  className=" "
   color="text.primary"
   component="div"
   data-locator="myrewards-tile"
