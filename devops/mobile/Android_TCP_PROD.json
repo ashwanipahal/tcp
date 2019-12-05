@@ -326,7 +326,7 @@
       "value": "https://test6.gymboree.com"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
@@ -357,7 +357,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "tcpProd",
+      "buildVariant": "tcpProdRelease",
       "isRoot": false,
       "runTests": false,
       "runLint": false,

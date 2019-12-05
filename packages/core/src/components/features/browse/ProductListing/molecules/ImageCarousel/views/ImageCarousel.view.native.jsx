@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, FlatList, Dimensions } from 'react-native';
+import { getVideoUrl } from '@tcp/core/src/utils';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -83,9 +84,14 @@ class ImageCarousel extends React.PureComponent {
         listKey={(_, index) => index.toString()}
         renderItem={imgSource => {
           const { index } = imgSource;
+          const isVideoUrl = getVideoUrl(imgSource.item);
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)}
+              onPress={() =>
+                !isVideoUrl
+                  ? onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)
+                  : null
+              }
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}
