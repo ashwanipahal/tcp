@@ -4,6 +4,7 @@ import { BodyCopy, Image, Row, Col, Anchor } from '@tcp/core/src/components/comm
 
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/PromoListTile.style';
+import EspotContainer from '../../Espot';
 
 /**
  * This class component returns the Extra Points Promo List Tiles
@@ -21,6 +22,14 @@ export class PromoListTile extends React.PureComponent {
     className: '',
   };
 
+  ctaHandler = (e, target, action) => {
+    if (target === '_modal' && action === 'plccModal') {
+      e.nativeEvent.preventDefault();
+      const { openPLCCModal } = this.props;
+      openPLCCModal(e);
+    }
+  };
+
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -28,7 +37,7 @@ export class PromoListTile extends React.PureComponent {
    */
 
   render() {
-    const { className, tileData, openPLCCModal } = this.props;
+    const { className, tileData } = this.props;
     return (
       <BodyCopy component="div" className={className}>
         <BodyCopy className="border-padding">
@@ -71,7 +80,7 @@ export class PromoListTile extends React.PureComponent {
                 fontSizeVariation="large"
                 data-locator="privacyLnk"
                 target="_blank"
-                onClick={tileData.buttonList[0].action === 'plccModal' ? openPLCCModal : () => {}}
+                onClick={evt => this.ctaHandler(evt, tileData.buttonList[0].target, 'plccModal')}
               >
                 {tileData.buttonList[0].text}
               </Anchor>
