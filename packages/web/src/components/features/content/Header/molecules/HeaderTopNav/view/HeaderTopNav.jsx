@@ -28,7 +28,7 @@ const HeaderTopNav = ({
           <BrandTabs data={brandTabs} />
         </div>
         <div className="header-topnav__promo-area">
-          <PromotionalArea mobile={false} data={promoMessageWrapper} maxLoopCount={1} />
+          <PromotionalArea mobile={false} data={promoMessageWrapper} />
         </div>
         <div className="header-topnav__track-order">
           <CountrySelector />

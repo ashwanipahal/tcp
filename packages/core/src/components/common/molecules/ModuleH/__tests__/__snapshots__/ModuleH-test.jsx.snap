@@ -211,7 +211,7 @@ exports[`ModuleH component renders correctly 1`] = `
       }
     }
   >
-    <Styled(Carousel)
+    <Connect(Styled(Carousel))
       carouselConfig={
         Object {
           "autoplay": true,
@@ -332,7 +332,7 @@ exports[`ModuleH component renders correctly 1`] = `
         }
         key="4"
       />
-    </Styled(Carousel)>
+    </Connect(Styled(Carousel))>
   </Styled(Col)>
 </StyledComponent>
 `;
