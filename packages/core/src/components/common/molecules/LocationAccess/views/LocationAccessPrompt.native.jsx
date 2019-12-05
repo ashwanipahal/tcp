@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable react-native/split-platform-components */
 import React from 'react';
-import { Linking, PermissionsAndroid } from 'react-native';
+import { PermissionsAndroid } from 'react-native';
+import Geolocation from 'react-native-geolocation-service';
 import {
   getScreenWidth,
   getScreenHeight,
@@ -113,13 +114,27 @@ class LocationAccessPrompt extends React.PureComponent {
     }
   };
 
+  iosPermissions = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        console.log(position);
+      },
+      error => {
+        // See error code charts below.
+        console.log(error.code, error.message);
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+    );
+  };
+
   /**
    * @requestPermission : To manage location permission in android and ios .
    */
   requestPermission = () => {
-    Linking.openURL('app-settings:');
     if (isAndroid()) {
       this.androidPermissions();
+    } else {
+      this.iosPermissions();
     }
     setValueInAsyncStorage(LOCATION_ACCESS_KEY, LOCATION_ACCESS_VALUE);
   };
@@ -142,7 +157,7 @@ class LocationAccessPrompt extends React.PureComponent {
           <Container>
             <Wrapper width={PROPMT_WIDTH}>
               <StyledImage source={locationImage} width="35px" height="35px" marginTop="15px" />
-              <Touchable accessibilityRole="button" onPress={this.close}>
+              <Touchable accessibilityRole="button" onPress={this.toggleModal}>
                 <StyledImage source={closeImage} width="15px" height="15px" />
               </Touchable>
               <MessageContainer>
