@@ -13,5 +13,10 @@ const ModuleX = props => {
 
 ModuleX.propTypes = {
   richTextList: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string)).isRequired,
+  navigation: PropTypes.shape({}),
+};
+
+ModuleX.defaultProps = {
+  navigation: {},
 };
 export default ModuleX;
