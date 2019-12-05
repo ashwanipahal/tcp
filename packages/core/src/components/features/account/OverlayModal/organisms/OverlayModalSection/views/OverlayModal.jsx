@@ -271,6 +271,11 @@ class OverlayModal extends React.Component {
     return null;
   }
 
+  /**
+   * this function used against Defect RWD-17344
+   * on MouseDown set selectOverlay to true so that in case of dragging outside of overlay, we can prevent overlay close
+   */
+
   handleWindowMouseDown(e) {
     if (!this.isTargetOutsideOverlay(e)) {
       this.selectOverlay = true;
