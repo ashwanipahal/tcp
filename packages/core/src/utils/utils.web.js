@@ -300,6 +300,12 @@ export const scrollTopElement = elem => {
   }
 };
 
+export const refreshPage = () => {
+  if (isClient() && window) {
+    window.location.reload();
+  }
+};
+
 /**
  * 2019-11-05: Hotfix PR needed to address issue with this
  * array of countries increasing in size with each call
@@ -328,13 +334,26 @@ export const getCurrenciesMap = data => {
   );
 };
 
-export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
-  if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
-  }
+export const onlyCurrencyChanged = (
+  newCountry,
+  oldCountry,
+  newLanguage,
+  oldLanguage,
+  newCurrency,
+  oldCurrency
+) => {
+  return newCountry === oldCountry && newLanguage === oldLanguage && newCurrency !== oldCurrency;
 };
 
-export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage, oldLanguage) => {
+export const languageRedirect = (
+  newCountry,
+  oldCountry,
+  newSiteId,
+  newLanguage,
+  oldLanguage,
+  newCurrency,
+  oldCurrency
+) => {
   const { protocol, host } = window.location;
   const baseDomain = host.replace(`${oldLanguage}.`, '');
   let hostURL = '';
@@ -355,6 +374,12 @@ export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage,
       ROUTE_PATH.home,
       newSiteId || getSiteId()
     )}`;
+  }
+
+  if (
+    onlyCurrencyChanged(newCountry, oldCountry, newLanguage, oldLanguage, newCurrency, oldCurrency)
+  ) {
+    refreshPage();
   }
 };
 
@@ -757,7 +782,6 @@ export default {
   scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
-  siteRedirect,
   languageRedirect,
   handleGenericKeyDown,
   getLocalStorage,
