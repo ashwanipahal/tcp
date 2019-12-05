@@ -328,8 +328,8 @@ const PromoBanner = props => {
       {textItems && (
         <Anchor url={link ? link.url : ''} navigation={navigation}>
           {textItems.map(({ text, style }, index) => {
+            // In PromoBanner upcomming style not match from listed style then show the default style .
             const StyleBodyCopy = bodyCopyStyles[style] ? bodyCopyStyles[style] : BodyCopy;
-
             return StyleBodyCopy ? (
               <StyleBodyCopy
                 text={index ? `${text}` : text}
