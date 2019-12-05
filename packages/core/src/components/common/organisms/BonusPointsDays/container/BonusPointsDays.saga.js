@@ -1,4 +1,4 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select, takeEvery } from 'redux-saga/effects';
 import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import BONUS_POINTS_DAYS_CONSTANTS from '../BonusPointsDays.constants';
 
@@ -13,14 +13,19 @@ import {
   showLoader,
   setModuleX,
 } from './BonusPointsDays.actions';
+import { getIsFetching } from './BonusPointsDays.selectors';
+import { isCanada } from '../../../../../utils';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 import BAG_PAGE_ACTIONS from '../../../../features/CnC/BagPage/container/BagPage.actions';
 
 export function* getBonusDaysData() {
   try {
+    const isAlreadyFetching = yield select(getIsFetching);
     yield put(showLoader());
-    const res = yield call(getBonusPointsData);
-    yield put(setBonusDaysSuccess(res));
+    if (!isCanada() && !isAlreadyFetching) {
+      const res = yield call(getBonusPointsData);
+      yield put(setBonusDaysSuccess(res));
+    }
   } catch (err) {
     yield put(setBonusDaysError(err));
   }
@@ -50,7 +55,7 @@ export function* fetchModuleX({ payload = '' }) {
 
 export function* BonusPointsSaga() {
   const cachedBonusDaysData = validateReduxCache(getBonusDaysData);
-  yield takeLatest(BONUS_POINTS_DAYS_CONSTANTS.GET_BONUS_DAYS, cachedBonusDaysData);
+  yield takeEvery(BONUS_POINTS_DAYS_CONSTANTS.GET_BONUS_DAYS, cachedBonusDaysData);
   yield takeLatest(BONUS_POINTS_DAYS_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
   yield takeLatest(BONUS_POINTS_DAYS_CONSTANTS.APPLY_BONUS_DAYS, applyBonusDaysData);
 }

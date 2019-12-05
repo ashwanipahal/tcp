@@ -12,4 +12,9 @@ const PlaceCashTextWrapper = styled.View`
 `;
 const PlaceCashTncContainer = styled.View``;
 
-export { PlaceCashContainer, PlaceCashTextWrapper, PlaceCashTncContainer };
+const RichTextContainer = styled.View`
+  width: 100%;
+  min-height: 560px;
+`;
+
+export { PlaceCashContainer, PlaceCashTextWrapper, PlaceCashTncContainer, RichTextContainer };

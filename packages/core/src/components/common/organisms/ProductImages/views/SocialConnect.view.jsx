@@ -13,6 +13,7 @@ class SocialConnect extends React.PureComponent {
     isFacebookEnabled: PropTypes.bool,
     isPinterestEnabled: PropTypes.bool,
     isTwitterEnabled: PropTypes.bool,
+    ratingsProductId: PropTypes.string.isRequired,
   };
 
   constructor(props, context) {
@@ -45,12 +46,24 @@ class SocialConnect extends React.PureComponent {
   };
 
   render() {
-    const { isFacebookEnabled, isPinterestEnabled, isTwitterEnabled, className } = this.props;
+    const {
+      isFacebookEnabled,
+      isPinterestEnabled,
+      isTwitterEnabled,
+      className,
+      ratingsProductId,
+    } = this.props;
 
     return (
       <span className={`${className} social-connect-sub-wrapper`}>
         {isTwitterEnabled && (
-          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}>
+          <ClickTracker
+            clickData={{
+              customEvents: ['event84'],
+              productId: ratingsProductId,
+              socialNetwork: 'twitter',
+            }}
+          >
             <Anchor
               url="http://twitter.com/childrensplace"
               target="_blank"
@@ -70,7 +83,13 @@ class SocialConnect extends React.PureComponent {
         )}
 
         {isFacebookEnabled && (
-          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'facebook' }}>
+          <ClickTracker
+            clickData={{
+              customEvents: ['event84'],
+              productId: ratingsProductId,
+              socialNetwork: 'facebook',
+            }}
+          >
             <Anchor
               url="https://www.facebook.com/childrensplace"
               target="_blank"
@@ -88,7 +107,13 @@ class SocialConnect extends React.PureComponent {
           </ClickTracker>
         )}
         {isPinterestEnabled && (
-          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'pinterest' }}>
+          <ClickTracker
+            clickData={{
+              customEvents: ['event84'],
+              productId: ratingsProductId,
+              socialNetwork: 'pinterest',
+            }}
+          >
             <Anchor
               url="http://www.pinterest.com/childrensplace"
               target="_blank"

@@ -34,6 +34,11 @@ export default css`
   .product-summary-mobile-view {
     display: flex;
   }
+  div.product-property-section {
+    margin: 0;
+    padding: 10px 0 20px;
+    width: 100%;
+  }
   .product-summary-desktop-view {
     display: none;
   }
@@ -46,6 +51,12 @@ export default css`
   }
   .promo-area-bottom {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .preview-and-social-media-icons {
+    display: none;
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
+    }
   }
   .product-summary-wrapper {
     display: flex;

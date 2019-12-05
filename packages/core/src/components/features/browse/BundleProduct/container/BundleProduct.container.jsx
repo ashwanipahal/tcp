@@ -164,6 +164,7 @@ export class ProductBundleContainer extends React.PureComponent {
             outOfStockLabels={outOfStockLabels}
             toastMessage={toastMessage}
             topPromos={topPromos}
+            isMatchingFamily // TODO: Need to add kill switch for this
           />
         ) : (
           <BundleProductItemsSkeleton />

@@ -86,7 +86,7 @@ class EmailSignupModal extends React.PureComponent {
 EmailSignupModal.propTypes = {
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
-  clearEmailSignupForm: PropTypes.shape({}).isRequired,
+  clearEmailSignupForm: PropTypes.func.isRequired,
   closeModal: PropTypes.func,
   reset: PropTypes.func,
   subscription: PropTypes.shape({}),
