@@ -4,6 +4,7 @@ import {
   PRODUCT_SKU_SELECTION_FORM,
 } from '@tcp/core/src/constants/reducer.constants';
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+import { setDefaultStore } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import PickUpStoreModalView from '../views/PickUpStoreModal.view';
 import * as PickupSelectors from './PickUpStoreModal.selectors';
 import * as sessionSelectors from '../../../../../reduxStore/selectors/session.selectors';
@@ -16,7 +17,6 @@ import {
   setStoreSearchError,
   getUserCartStores,
 } from './PickUpStoreModal.actions';
-import { setDefaultStore } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { addItemToCartBopis } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import {
   getCurrentCurrency,
@@ -29,6 +29,7 @@ import {
 
 import { getAddedToPickupError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
+import { updateAppTypeWithParams } from '../../QuickViewModal/container/QuickViewModal.actions';
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -58,6 +59,9 @@ export const mapDispatchToProps = dispatch => {
     },
     getFavoriteStore: payload => {
       dispatch(getFavoriteStoreActn(payload));
+    },
+    updateAppTypeHandler: payload => {
+      dispatch(updateAppTypeWithParams(payload));
     },
     getDefaultStore: payload => {
       dispatch(setDefaultStore(payload));

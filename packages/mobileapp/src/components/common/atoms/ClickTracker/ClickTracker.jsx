@@ -11,11 +11,12 @@ export class ClickTracker extends React.PureComponent {
       trackClickAction,
       setClickAnalyticsDataAction,
       clickData,
+      pageData,
       name,
       module,
     } = this.props;
     setClickAnalyticsDataAction(clickData);
-    trackClickAction({ name, module });
+    trackClickAction({ name, module, pageData });
     onPress();
     setClickAnalyticsDataAction({});
   };
@@ -56,6 +57,9 @@ ClickTracker.propTypes = {
   pageData: PropTypes.shape({}),
   dispatch: PropTypes.func.isRequired,
   onPress: PropTypes.func.isRequired,
+  trackClickAction: PropTypes.func,
+  setClickAnalyticsDataAction: PropTypes.func,
+  module: PropTypes.shape({}),
 };
 
 ClickTracker.defaultProps = {
@@ -64,6 +68,9 @@ ClickTracker.defaultProps = {
   children: null,
   clickData: null,
   pageData: null,
+  trackClickAction: () => {},
+  setClickAnalyticsDataAction: () => {},
+  module: null,
 };
 
 export default connect(

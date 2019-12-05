@@ -56,6 +56,7 @@ class ContactInformationFormWrapper extends React.Component {
           fontWeight="semiBold"
           className="contactFormTitle"
           tabIndex="0"
+          component="h2"
         >
           {getLabelValue(labels, 'lbl_PLCCForm_contactInfoHeader')}
         </Heading>
@@ -233,6 +234,14 @@ class ContactInformationFormWrapper extends React.Component {
               dataLocator={getLocator('plcc_alt_mobile_no')}
               className="field"
             />
+            <BodyCopy
+              className="columnWrapper plcc_min_phone"
+              fontSize="fs10"
+              fontFamily="secondary"
+              id="plcc_min_phone"
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_minPhone')}
+            </BodyCopy>
           </Col>
         </Row>
         <Row fullBleed>
@@ -252,14 +261,6 @@ class ContactInformationFormWrapper extends React.Component {
             />
           </Col>
         </Row>
-        <BodyCopy
-          className="columnWrapper plcc_min_phone"
-          fontSize="fs10"
-          fontFamily="secondary"
-          id="plcc_min_phone"
-        >
-          {getLabelValue(labels, 'lbl_PLCCForm_minPhone')}
-        </BodyCopy>
       </StyeldContactInfoFormWrapper>
     );
   }

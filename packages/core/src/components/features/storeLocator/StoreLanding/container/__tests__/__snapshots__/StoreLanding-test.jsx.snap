@@ -512,9 +512,13 @@ exports[`StoreSearch Container should call openStoreDetails 1`] = `
               updateUnregisteredFields={false}
               validate={[Function]}
             />
+            <Measure
+              name="call_to_action_visible"
+            />
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
+          aria-live="polite"
           className="storeView__List"
           fullBleed={true}
         >
@@ -1108,6 +1112,7 @@ exports[`StoreSearch Container should call openStoreDetails 1`] = `
           geoLocationEnabled={false}
           isCanada={false}
           isMobile={false}
+          onImageLoad={[Function]}
           searchDone={false}
           storesList={
             Array [
@@ -1763,9 +1768,13 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
               updateUnregisteredFields={false}
               validate={[Function]}
             />
+            <Measure
+              name="call_to_action_visible"
+            />
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
+          aria-live="polite"
           className="storeView__List"
           fullBleed={true}
         />
@@ -1926,6 +1935,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
           geoLocationEnabled={false}
           isCanada={false}
           isMobile={false}
+          onImageLoad={[Function]}
           searchDone={false}
           storesList={Array []}
         />
@@ -2447,9 +2457,13 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
               updateUnregisteredFields={false}
               validate={[Function]}
             />
+            <Measure
+              name="call_to_action_visible"
+            />
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
+          aria-live="polite"
           className="storeView__List storeView__ListAndMap"
           fullBleed={true}
         >
@@ -2494,6 +2508,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
                   isCanada={false}
                   isMobile={false}
                   labels={Object {}}
+                  onImageLoad={[Function]}
                   storesList={Array []}
                   suggestedStoreList={
                     Array [
@@ -2811,6 +2826,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
           geoLocationEnabled={false}
           isCanada={false}
           isMobile={false}
+          onImageLoad={[Function]}
           searchDone={false}
           storesList={Array []}
         />

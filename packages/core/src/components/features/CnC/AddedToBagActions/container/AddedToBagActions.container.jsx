@@ -74,6 +74,8 @@ export class AddedToBagContainer extends React.Component<Props> {
       isPayPalEnabled,
       setIsPaypalBtnHidden,
       bagLoading,
+      resetTimerStatus,
+      isVenmoAppInstalled,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -111,6 +113,8 @@ export class AddedToBagContainer extends React.Component<Props> {
         setIsPaypalBtnHidden={setIsPaypalBtnHidden}
         bagLoading={bagLoading}
         isPayPalEnabled={isPayPalEnabled}
+        resetTimerStatus={resetTimerStatus}
+        isVenmoAppInstalled={isVenmoAppInstalled}
       />
     );
   }
@@ -167,6 +171,7 @@ const mapStateToProps = state => {
     cartOrderItems: BagPageSelectors.getOrderItems(state),
     bagLoading: BagPageSelectors.isBagLoading(state),
     isPayPalEnabled: getIsPayPalEnabled(state),
+    isVenmoAppInstalled: checkoutSelectors.isVenmoAppInstalled(state),
   };
 };
 

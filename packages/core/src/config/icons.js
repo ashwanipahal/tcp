@@ -133,4 +133,5 @@ export default {
   'mobile-close-dark': 'images/mobile-close-dark.svg',
   'grey-menu': 'images/grey-menu.svg',
   menu: 'images/menu.svg',
+  'down-arrow-sitemap': 'images/down-arrow-sitemap.png',
 };

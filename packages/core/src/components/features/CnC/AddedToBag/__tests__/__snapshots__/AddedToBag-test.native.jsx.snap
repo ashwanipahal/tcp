@@ -48,6 +48,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       >
         <Styled(ProductInformation)
           data={Object {}}
+          isDoubleAddedToBag={false}
           labels={Object {}}
           quantity=""
         />
@@ -68,6 +69,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
               },
             }
           }
+          resetTimerStatus={[Function]}
           showAddTobag={true}
         />
         <Styled(BossBanner)

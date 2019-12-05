@@ -55,6 +55,7 @@ export const getPlpLabels = state => {
       quantity: '',
       sizeUnavalaible: '',
       sizeAvailable: '',
+      saveProduct: '',
     };
 
   const {
@@ -69,6 +70,7 @@ export const getPlpLabels = state => {
         lbl_pdp_quantity: quantity,
         lbl_size_unavailable_online: sizeUnavalaible,
         lbl_other_sizes_available: sizeAvailable,
+        lbl_fav_save_product: saveProduct,
       },
     },
   } = state.Labels;
@@ -83,6 +85,7 @@ export const getPlpLabels = state => {
     update,
     sizeUnavalaible,
     sizeAvailable,
+    saveProduct,
   };
 };
 
@@ -170,6 +173,7 @@ export const getPDPLabels = state => {
 
 export const getPLPPromos = (state, type) => {
   // TODO: Dynamic the productID generation logic
+  // eslint-disable-next-line extra-rules/no-commented-out-code
   let productID = 'global'; // 'global'; '54520|489117';
   const { Layouts, Modules } = state;
   let result = null;
@@ -194,7 +198,7 @@ const getRefinedNavTree = (catId, navigationTree) => {
 };
 
 const getRefinedNavTreeL2orL3 = (catId, navigationTree) => {
-  return navigationTree.find(L2 => L2.categoryContent.id === catId);
+  return (navigationTree && navigationTree.find(L2 => L2.categoryContent.id === catId)) || [];
 };
 
 const getCatMapL1Params = catMapL1 => {
@@ -206,6 +210,10 @@ const getCatMapL1Params = catMapL1 => {
   return menuItems.flat(2);
 };
 
+const getCatMapL2 = (catMapL2Id, catMapL1Params) => {
+  return (catMapL2Id && getRefinedNavTreeL2orL3(catMapL2Id, catMapL1Params)) || [];
+};
+
 const getNavTreeFromCatMap = (navTree, categoryPath) => {
   if (!categoryPath) return '';
   const catMapL1Id = categoryPath[0] && categoryPath[0].split('|')[0].split('>')[0];
@@ -213,8 +221,11 @@ const getNavTreeFromCatMap = (navTree, categoryPath) => {
   const catMapL3Id = (categoryPath[0] && categoryPath[0].split('|')[0].split('>')[2]) || null;
   const catMapL1 = catMapL1Id && getRefinedNavTree(catMapL1Id, navTree);
   const catMapL1Params = getCatMapL1Params(catMapL1);
-  const catMapL2 = catMapL2Id && getRefinedNavTreeL2orL3(catMapL2Id, catMapL1Params);
-  return (catMapL3Id && getRefinedNavTreeL2orL3(catMapL3Id, catMapL2.subCategories)) || catMapL2;
+  const catMapL2 = getCatMapL2(catMapL2Id, catMapL1Params);
+  return (
+    (catMapL3Id && getRefinedNavTreeL2orL3(catMapL3Id, catMapL2 && catMapL2.subCategories)) ||
+    catMapL2
+  );
 };
 
 const getCatMapFromBreadCrump = (categoryPath, breadCrumbs) => {
@@ -222,6 +233,14 @@ const getCatMapFromBreadCrump = (categoryPath, breadCrumbs) => {
     categoryPath &&
     breadCrumbs[1] &&
     categoryPath.find(_catMap => _catMap.split('|')[0].includes(breadCrumbs[1].categoryId))
+  );
+};
+
+const getSizeChartSel = l3CatFromString => {
+  return (
+    l3CatFromString &&
+    l3CatFromString.categoryContent &&
+    l3CatFromString.categoryContent.sizeChartSelection
   );
 };
 
@@ -236,7 +255,7 @@ const getNavTreeFromBreadCrumb = (breadCrumbs, categoryPath, navTree) => {
     });
 
   return (
-    (l3CatFromString && l3CatFromString.categoryContent.sizeChartSelection) ||
+    getSizeChartSel(l3CatFromString) ||
     (navTree && navTree.categoryContent && navTree.categoryContent.sizeChartSelection) ||
     ''
   );
@@ -262,9 +281,11 @@ const fetchL2andL3Category = (navTree, breadCrumbs, isBundleProduct, categoryPat
   } else {
     l3Cat = getNavTreeFromCatMap(navTree, categoryPath);
   }
-  return { l2Cat: l2Cat, l3Cat: l3Cat };
+  return { l2Cat, l3Cat };
 };
 
+// Disabling eslint for temporary fix
+// eslint-disable-next-line no-unused-vars
 const fetchSizeChartDetails = (navTree, breadCrumbs, categoryPath, isBundleProduct) => {
   // Return empty if Navigation Tree not available/passed
   if (!navTree) {
@@ -273,7 +294,7 @@ const fetchSizeChartDetails = (navTree, breadCrumbs, categoryPath, isBundleProdu
   const payload = fetchL2andL3Category(navTree, breadCrumbs, isBundleProduct, categoryPath);
   if (payload.l3Cat) {
     return (
-      payload.l3Cat.categoryContent.sizeChartSelection ||
+      (payload.l3Cat.categoryContent && payload.l3Cat.categoryContent.sizeChartSelection) ||
       (payload.l2Cat &&
         payload.l2Cat.categoryContent &&
         payload.l2Cat.categoryContent.sizeChartSelection) ||
@@ -283,6 +304,8 @@ const fetchSizeChartDetails = (navTree, breadCrumbs, categoryPath, isBundleProdu
   return getNavTreeFromBreadCrumb(breadCrumbs, categoryPath, payload.l2Cat);
 };
 
+// Disabling eslint for temporary fix
+// eslint-disable-next-line no-unused-vars
 export const getSizeChartDetails = state => {
   const breadCrumbs = processBreadCrumbs(state.ProductDetail && state.ProductDetail.breadCrumbs);
   const navigationTree = state.Navigation && state.Navigation.navigationData;

@@ -8,17 +8,7 @@ import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
 import Footer from '../../Footer';
 import style from '../Navigation.style';
-import { filterParams, clearAll } from '../../../../../constants/constants';
-
-const {
-  FILTER_CATAGORY,
-  FILTER_COLOR,
-  FILTER_SIZE,
-  FILTER_PRICE_RANGE,
-  FILTER_FIT,
-  FILTER_GENDER,
-  FILTER_AGE,
-} = filterParams;
+import { clearAll } from '../../../../../constants/constants';
 
 const { CLEAR_ALL_SEARCH_FILTER, CLEAR_ALL_PLP_FILTER } = clearAll;
 /**

@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// Disabling eslint for temporary file
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
@@ -16,7 +18,6 @@ import { Row, Col, PLPSkeleton } from '../../../../common/atoms';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
 import withStyles from '../../../../common/hoc/withStyles';
-import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 import ProductListingStyle from '../ProductListing.style';
 
@@ -43,7 +44,7 @@ const formatProductsData = products => {
       colorId: generalProductId,
       name: productName,
       price: offerPrice,
-      listPrice: listPrice,
+      listPrice,
       extPrice: priceRange.lowOfferPrice,
       position: index + 1,
       type: categoryName,
@@ -113,6 +114,7 @@ const ProductListView = ({
         pageSection: 'browse',
         pageSubSection: 'browse',
         products: productsFormatted,
+        customEvents: ['event91', 'event92', 'event82', 'event80'],
       });
     }
   }, [products.length]);
@@ -211,7 +213,6 @@ const ProductListView = ({
           </Col>
         </Col>
       </Row>
-      <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
     </div>
   );
 };
@@ -253,6 +254,8 @@ ProductListView.propTypes = {
   plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -281,6 +284,8 @@ ProductListView.defaultProps = {
   plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
+  isPlcc: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

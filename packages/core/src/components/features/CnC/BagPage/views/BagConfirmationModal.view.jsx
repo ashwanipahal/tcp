@@ -22,6 +22,7 @@ const BagConfirmationModal = ({
       overlayClassName="TCPModal__Overlay"
       className={`${className} TCPModal__Content`}
       fixedWidth
+      contentLabel={continueCheckout}
       closeIconDataLocator="coupondetailmodalcrossicon"
     >
       <div className="modal-content">

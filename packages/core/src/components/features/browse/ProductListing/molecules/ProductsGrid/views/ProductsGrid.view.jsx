@@ -36,6 +36,7 @@ class ProductsGrid extends React.Component {
     isGridView: PropTypes.bool,
     className: PropTypes.string,
     labels: PropTypes.string,
+    labelsPlpTiles: PropTypes.shape({}),
     productTileVariation: PropTypes.string,
     currency: PropTypes.string,
     currencyAttributes: PropTypes.shape({}).isRequired,
@@ -51,6 +52,14 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: PropTypes.func,
     openAddNewList: PropTypes.func,
     activeWishListId: PropTypes.number,
+    addToBagEcom: PropTypes.func,
+    isFavoriteView: PropTypes.bool,
+    removeFavItem: PropTypes.func.isRequired,
+    pageNameProp: PropTypes.string,
+    pageSectionProp: PropTypes.string,
+    pageSubSectionProp: PropTypes.string,
+    onSeeSuggestedItems: PropTypes.func,
+    favoriteErrorMessages: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -61,6 +70,7 @@ class ProductsGrid extends React.Component {
     isGridView: false,
     className: '',
     labels: '',
+    labelsPlpTiles: {},
     productTileVariation: '',
     currency: 'USD',
     isLoggedIn: false,
@@ -73,6 +83,13 @@ class ProductsGrid extends React.Component {
     removeAddToFavoritesErrorMsg: () => {},
     openAddNewList: () => {},
     activeWishListId: '',
+    addToBagEcom: () => {},
+    isFavoriteView: false,
+    pageNameProp: '',
+    pageSectionProp: '',
+    pageSubSectionProp: '',
+    onSeeSuggestedItems: () => {},
+    favoriteErrorMessages: {},
   };
 
   constructor(props, context) {
@@ -127,7 +144,10 @@ class ProductsGrid extends React.Component {
       const offsetY =
         findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
 
-      if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY) {
+      if (
+        window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY &&
+        getMoreProducts
+      ) {
         this.isLoadingMoreState = true;
         getMoreProducts();
       }
@@ -140,6 +160,7 @@ class ProductsGrid extends React.Component {
       productsBlock,
       className,
       labels,
+      labelsPlpTiles,
       isFavoriteView,
       isLoadingMore,
       onPickUpOpenClick,
@@ -163,6 +184,7 @@ class ProductsGrid extends React.Component {
       pageNameProp,
       pageSectionProp,
       pageSubSectionProp,
+      onSeeSuggestedItems,
       ...otherProps
     } = this.props;
 
@@ -191,6 +213,7 @@ class ProductsGrid extends React.Component {
                         onPickUpOpenClick={onPickUpOpenClick}
                         className={`${className} product-list`}
                         labels={labels}
+                        labelsPlpTiles={labelsPlpTiles}
                         isFavoriteView={isFavoriteView}
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
@@ -212,6 +235,7 @@ class ProductsGrid extends React.Component {
                         pageNameProp={pageNameProp}
                         pageSectionProp={pageNameProp}
                         pageSubSectionProp={pageNameProp}
+                        onSeeSuggestedItems={onSeeSuggestedItems}
                         {...otherProps}
                       />
                     );

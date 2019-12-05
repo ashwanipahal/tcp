@@ -300,10 +300,11 @@ function mapDispatchToProps(dispatch) {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
     trackPageLoad: payload => {
-      const { products } = payload;
+      const { products, customEvents } = payload;
       dispatch(
         setClickAnalyticsData({
           products,
+          customEvents,
         })
       );
       setTimeout(() => {
@@ -363,6 +364,11 @@ ProductDetailContainer.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   sizeChartDetails: PropTypes.shape([]),
+  topPromos: PropTypes.string,
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
+  isLoading: PropTypes.bool,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -388,6 +394,11 @@ ProductDetailContainer.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   sizeChartDetails: [],
+  topPromos: '',
+  middlePromos: '',
+  bottomPromos: '',
+  isLoading: false,
+  trackPageLoad: () => {},
 };
 
 export default withIsomorphicRenderer({

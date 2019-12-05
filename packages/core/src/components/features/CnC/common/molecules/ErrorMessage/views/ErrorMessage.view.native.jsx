@@ -21,7 +21,7 @@ class ErrorMessage extends React.PureComponent {
       <>
         {!!error && (
           <ErrorView showAccordian={showAccordian} bagPage={bagPage} {...restProps}>
-            <Image source={alertTriangleIcon} style={ErrorIcon} />
+            <Image source={alertTriangleIcon} alt="" style={ErrorIcon} />
             {isEspot ? (
               <Espot richTextHtml={error} />
             ) : (
@@ -47,6 +47,7 @@ ErrorMessage.propTypes = {
   bagPage: PropTypes.bool,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
+  isEspot: PropTypes.bool,
 };
 
 ErrorMessage.defaultProps = {
@@ -54,6 +55,7 @@ ErrorMessage.defaultProps = {
   bagPage: false,
   fontSize: '',
   fontWeight: '',
+  isEspot: false,
 };
 
 export default ErrorMessage;

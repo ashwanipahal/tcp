@@ -58,7 +58,10 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../ProductDetail/container/ProductDetail.selectors';
-import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import {
+  fetchAddToFavoriteErrorMsg,
+  fetchErrorMessages,
+} from '../../Favorites/container/Favorites.selectors';
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 const defaultResolver = mod => mod.default;
@@ -358,6 +361,7 @@ function mapStateToProps(state) {
     pageNameProp: getPageName(state),
     pageSectionProp: getPageSection(state),
     pageSubSectionProp: getPageSubSection(state),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
@@ -387,10 +391,11 @@ function mapDispatchToProps(dispatch) {
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
     trackPageLoad: payload => {
-      const { products } = payload;
+      const { products, customEvents } = payload;
       dispatch(
         setClickAnalyticsData({
           products,
+          customEvents,
         })
       );
       setTimeout(() => {
@@ -443,6 +448,7 @@ ProductListingContainer.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoggedIn: PropTypes.bool,
+  isPlcc: PropTypes.bool,
   currencyAttributes: PropTypes.shape({}),
   currency: PropTypes.string,
   plpTopPromos: PropTypes.shape({}),
@@ -453,6 +459,10 @@ ProductListingContainer.propTypes = {
   plpHorizontalPromos: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  pageNameProp: PropTypes.string,
+  pageSectionProp: PropTypes.string,
+  pageSubSectionProp: PropTypes.string,
+  trackPageLoad: PropTypes.func,
 };
 
 ProductListingContainer.defaultProps = {
@@ -485,6 +495,11 @@ ProductListingContainer.defaultProps = {
   plpHorizontalPromos: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isPlcc: false,
+  pageNameProp: '',
+  pageSectionProp: '',
+  pageSubSectionProp: '',
+  trackPageLoad: () => {},
 };
 
 const IsomorphicProductListingContainer = withIsomorphicRenderer({

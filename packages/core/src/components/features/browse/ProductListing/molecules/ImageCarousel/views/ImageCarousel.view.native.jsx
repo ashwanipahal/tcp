@@ -10,7 +10,6 @@ import { DamImage } from '../../../../../../common/atoms';
 import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
 
 const win = Dimensions.get('window');
-const paddingAroundImage = 24;
 const numberOfColumn = 2;
 const imageWidth = win.width / numberOfColumn;
 const imageHeight = '205px';
@@ -86,7 +85,7 @@ class ImageCarousel extends React.PureComponent {
           const { index } = imgSource;
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}
+              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)}
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}

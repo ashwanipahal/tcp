@@ -1,12 +1,10 @@
 import React from 'react';
 import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
 import { Box } from '@fabulas/astly';
-import { Provider } from 'react-redux';
 import codePush from 'react-native-code-push';
 import CookieManager from 'react-native-cookies';
 import AsyncStorage from '@react-native-community/async-storage';
 import { PropTypes } from 'prop-types';
-import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
 import { SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
 import { initAppErrorReporter } from '@tcp/core/src/utils/errorReporter.util.native';
 import {
@@ -19,13 +17,13 @@ import {
 import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
+import { UrbanAirship } from 'urbanairship-react-native';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import NavigationService from '../navigation/NavigationService';
 import AppSplash from '../navigation/AppSplash';
-import { initializeStore } from '../reduxStore/store/initializeStore';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 import AnimatedBrandChangeIcon from '../components/common/atoms/AnimatedBrandChangeIcon/AnimatedBrandChangeIcon.container';
 import { updateBrandName } from '../utils/utils';
@@ -39,7 +37,7 @@ import {
 } from '../context';
 import { getOnNavigationStateChange } from '../navigation/helpers';
 import constants from '../constants/config.constants';
-import { UrbanAirship } from 'urbanairship-react-native';
+import withErrorBoundary from '../components/common/hoc/ErrorBoundary';
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
@@ -199,13 +197,16 @@ export class App extends React.PureComponent {
 App.propTypes = {
   appType: PropTypes.string,
   navigation: PropTypes.shape({}).isRequired,
+  context: PropTypes.shape({}).isRequired,
 };
 
 App.defaultProps = {
   appType: APP_TYPE.TCP,
 };
 
-App = codePush(App);
+// @anup_mankar to look into this assignment
+// eslint-disable-next-line no-class-assign
+App = codePush(withErrorBoundary(App));
 
 function RenderApp(props) {
   const info = useInfoState();
@@ -218,8 +219,8 @@ function RenderApp(props) {
     location,
     error,
   };
-  // console.log(context);
-  const { appName } = context.device;
+  const { device } = context;
+  const { appName } = device;
   const appType = appName === 'Gymboree' ? 'gymboree' : 'tcp';
 
   return <App context={context} appType={appType} {...props} />;

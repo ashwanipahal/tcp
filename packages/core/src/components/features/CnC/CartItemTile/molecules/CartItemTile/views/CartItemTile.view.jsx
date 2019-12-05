@@ -651,16 +651,18 @@ class CartItemTile extends PureComponent {
             >
               <PriceCurrency price={Number(price)} />
             </BodyCopy>
-            <BodyCopy
-              fontFamily="secondary"
-              component="span"
-              fontSize="fs12"
-              dataLocator={getLocator('sfl_was_price')}
-              fontWeight={['regular']}
-              className="was-price"
-            >
-              <PriceCurrency price={Number(listPrice)} />
-            </BodyCopy>
+            {listPrice !== price && (
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs12"
+                dataLocator={getLocator('sfl_was_price')}
+                fontWeight={['regular']}
+                className="was-price"
+              >
+                <PriceCurrency price={Number(listPrice)} />
+              </BodyCopy>
+            )}
           </Col>
         </>
       );
@@ -688,7 +690,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            <PriceCurrency price={Number(salePrice)} />
+            <PriceCurrency price={Number(price)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy

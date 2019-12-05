@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
-import { toggleEmailSignupModal } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
-import { toggleSmsSignupModal } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
+import { getIsRegisteredUserCallDone } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import HomePageView from '../views/HomePage.view';
 import { initActions } from './HomePage.actions';
-import { setCampaignId } from '../../../../../../../core/src/analytics/actions';
+import {
+  setCampaignId,
+  setClickAnalyticsData,
+  trackPageView,
+} from '../../../../../../../core/src/analytics/actions';
 import { toggleCountrySelectorModal } from '../../Header/molecules/CountrySelector/container/CountrySelector.actions';
 
 HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
@@ -20,7 +23,7 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
         pageSection: 'homepage',
         pageSubSection: 'home page',
         pageType: 'home page',
-        eVar15: 'D-Vo',
+        loadAnalyticsOnload: false,
       },
     },
   };
@@ -69,15 +72,30 @@ const mapStateToProps = state => {
         data: Modules[slot.contentId],
       };
     }),
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     openCountrySelectorModal: () => dispatch(toggleCountrySelectorModal({ isModalOpen: true })),
-    openEmailSignUpModal: () => dispatch(toggleEmailSignupModal({ isModalOpen: true })),
-    openSmsSignUpModal: () => dispatch(toggleSmsSignupModal({ isModalOpen: true })),
     setCampaignId: campaignId => dispatch(setCampaignId(campaignId)),
+    setClickAnalyticsData: payload => dispatch(setClickAnalyticsData(payload)),
+    trackHomepageView: payload => {
+      dispatch(
+        trackPageView({
+          props: {
+            initialProps: {
+              pageProps: {
+                pageData: {
+                  ...payload,
+                },
+              },
+            },
+          },
+        })
+      );
+    },
   };
 };
 

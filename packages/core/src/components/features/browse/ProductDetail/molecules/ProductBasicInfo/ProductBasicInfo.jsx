@@ -5,6 +5,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductRating from '../ProductRating/ProductRating';
 import { Anchor, BodyCopy } from '../../../../../common/atoms';
 import withStyles from '../../../../../common/hoc/withStyles';
@@ -21,6 +22,7 @@ class ProductBasicInfo extends React.Component {
     this.state = {
       clickedProdutId: '',
       errorProductId: '',
+      isLoggedIn: props.isLoggedIn,
     };
   }
 
@@ -32,18 +34,19 @@ class ProductBasicInfo extends React.Component {
       productMiscInfo: { colorProductId },
       pageName,
       skuId,
+      formName,
     } = props;
 
-    const { clickedProdutId } = state;
-
-    if (isLoggedIn && clickedProdutId === productId) {
+    const { clickedProdutId, isLoggedIn: wasLoggedIn } = state;
+    if (isLoggedIn && isLoggedIn !== wasLoggedIn && clickedProdutId === productId) {
       onAddItemToFavorites({
         colorProductId: productId,
         productSkuId: (skuId && skuId.skuId) || null,
         pdpColorProductId: colorProductId,
+        formName: formName || PRODUCT_ADD_TO_BAG,
         page: pageName || 'PDP',
       });
-      return { clickedProdutId: '' };
+      return { clickedProdutId: '', isLoggedIn };
     }
     return null;
   }
@@ -80,12 +83,14 @@ class ProductBasicInfo extends React.Component {
       productMiscInfo: { colorProductId },
       pageName,
       skuId,
+      formName,
     } = this.props;
 
     onAddItemToFavorites({
       colorProductId: productId,
       productSkuId: (skuId && skuId.skuId) || null,
       pdpColorProductId: colorProductId,
+      formName: formName || PRODUCT_ADD_TO_BAG,
       page: pageName || 'PDP',
     });
     this.setState({
@@ -108,7 +113,6 @@ class ProductBasicInfo extends React.Component {
       outOfStockLabels,
       productMiscInfo,
       AddToFavoriteErrorMsg,
-      AddToFavoriteErrorMsgID,
     } = this.props;
     const { errorProductId } = this.state;
     const isFavorite =
@@ -193,8 +197,11 @@ ProductBasicInfo.propTypes = {
     isInDefaultWishlist: PropTypes.bool,
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
-  AddToFavoriteErrorMsgID: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  pageName: PropTypes.string,
+  skuId: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
+  formName: PropTypes.string,
 };
 
 ProductBasicInfo.defaultProps = {
@@ -211,8 +218,11 @@ ProductBasicInfo.defaultProps = {
     isInDefaultWishlist: false,
   },
   AddToFavoriteErrorMsg: '',
-  AddToFavoriteErrorMsgID: '',
+  pageName: '',
+  skuId: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isLoggedIn: false,
+  formName: PRODUCT_ADD_TO_BAG,
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);

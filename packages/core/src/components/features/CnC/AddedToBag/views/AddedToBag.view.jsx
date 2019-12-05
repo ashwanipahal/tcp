@@ -33,7 +33,7 @@ class AddedToBag extends React.PureComponent {
   }
 
   renderProductInfo() {
-    const { addedToBagData, labels, quantity, pointsSummary } = this.props;
+    const { addedToBagData, labels, quantity, pointsSummary, bagLoading } = this.props;
     if (Array.isArray(addedToBagData)) {
       return addedToBagData.map(item => {
         return (
@@ -42,6 +42,8 @@ class AddedToBag extends React.PureComponent {
               data={item}
               labels={labels}
               inheritedStyles={productInfoStyles}
+              isDoubleAddedToBag
+              bagLoading={bagLoading}
             />
           </div>
         );
@@ -68,7 +70,6 @@ class AddedToBag extends React.PureComponent {
       isInternationalShipping,
       hideHeader,
       addedToBagLoaderState,
-      pointsSummary,
     } = this.props;
     return (
       <Modal
@@ -152,6 +153,7 @@ AddedToBag.propTypes = {
   addedToBagLoaderState: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   pointsSummary: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);

@@ -36,6 +36,7 @@ function* fetchProductDetail({ payload }) {
         orderInfo,
         fromBagPage: !!payload.fromBagPage,
         isSflProduct: payload.isSflProduct,
+        isFavoriteEdit: payload.isFavoriteEdit,
       })
     );
 

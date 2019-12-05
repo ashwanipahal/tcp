@@ -8,9 +8,11 @@ const Loader = props => {
   const { loaderState } = props;
   if (loaderState) {
     return (
-      <SpinnerWrapper>
-        <Spinner />
-      </SpinnerWrapper>
+      <Modal transparent visible>
+        <SpinnerWrapper>
+          <Spinner />
+        </SpinnerWrapper>
+      </Modal>
     );
   }
   return null;

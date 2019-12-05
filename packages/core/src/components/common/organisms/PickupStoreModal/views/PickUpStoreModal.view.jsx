@@ -166,6 +166,9 @@ class PickUpStoreModalView extends React.Component {
     updatePickUpCartItem: PropTypes.func.isRequired,
     initialValuesFromBagPage: PropTypes.shape({}).isRequired,
     toastMessage: PropTypes.func,
+    setFavoriteStore: PropTypes.func,
+    getDefaultStore: PropTypes.func,
+    updateAppTypeHandler: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -199,6 +202,8 @@ class PickUpStoreModalView extends React.Component {
       exchangevalue: 1,
     },
     toastMessage: () => {},
+    setFavoriteStore: () => {},
+    getDefaultStore: () => {},
   };
 
   constructor(props) {
@@ -435,6 +440,7 @@ class PickUpStoreModalView extends React.Component {
       isGetUserStoresLoaded,
       toastMessage,
       setFavoriteStore,
+      updateAppTypeHandler,
       getDefaultStore,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
@@ -509,6 +515,7 @@ class PickUpStoreModalView extends React.Component {
           toastMessage={toastMessage}
           setFavoriteStore={setFavoriteStore}
           getDefaultStore={getDefaultStore}
+          updateAppTypeHandler={updateAppTypeHandler}
         />
         <PickupStoreSelectionFormContainer
           setFavoriteStore={setFavoriteStore}
@@ -560,6 +567,7 @@ class PickUpStoreModalView extends React.Component {
           isItemShipToHome={isItemShipToHome}
           currencyAttributes={currencyAttributes}
           openRestrictedModalForBopis={openRestrictedModalForBopis}
+          updateAppTypeHandler={updateAppTypeHandler}
         />
       </>
     );

@@ -47,6 +47,8 @@ import {
 } from '../../../../../reduxStore/selectors/session.selectors';
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import BundleProductItemsSkeleton from '../molecules/BundleProductItemsSkeleton';
+import { getPLPPromos } from '../../ProductDetail/container/ProductDetail.selectors';
+import PRODUCTDETAIL_CONSTANTS from '../../ProductDetail/container/ProductDetail.constants';
 
 export class ProductBundleContainer extends React.PureComponent {
   selectedColorProductId;
@@ -127,6 +129,7 @@ export class ProductBundleContainer extends React.PureComponent {
       outOfStockLabels,
       toastMessage,
       isLoading,
+      topPromos,
     } = this.props;
     return (
       <>
@@ -160,6 +163,7 @@ export class ProductBundleContainer extends React.PureComponent {
             isKeepAliveEnabled={isKeepAliveEnabled}
             outOfStockLabels={outOfStockLabels}
             toastMessage={toastMessage}
+            topPromos={topPromos}
           />
         ) : (
           <BundleProductItemsSkeleton />
@@ -199,6 +203,7 @@ function mapStateToProps(state) {
       ? getIsKeepAliveProductApp(state)
       : getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
+    topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
   };
 }
 
@@ -259,6 +264,8 @@ ProductBundleContainer.propTypes = {
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
   toastMessage: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  topPromos: PropTypes.shape({}),
 };
 
 ProductBundleContainer.defaultProps = {
@@ -287,6 +294,8 @@ ProductBundleContainer.defaultProps = {
   clearBundleDetails: () => {},
   isKeepAliveEnabled: false,
   outOfStockLabels: {},
+  isLoading: false,
+  topPromos: null,
 };
 
 export default connect(

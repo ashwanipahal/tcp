@@ -38,7 +38,8 @@ class CouponCard extends React.Component<Props> {
             className="couponCard__header_expired"
             component="p"
             fontSize="fs10"
-            fontFamily="secondary"
+            fontFamily="primary"
+            fontWeight="regular"
           >
             {labels.EXPIRING_SOON}
           </BodyCopy>
@@ -219,7 +220,8 @@ class CouponCard extends React.Component<Props> {
           {isCarouselView && (
             <ErrorMessage
               className="transparent-box"
-              fontSize="fs10"
+              fontSize="fs12"
+              fontWeight="extrabold"
               error={coupon.error}
               isEspot={coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH}
             />

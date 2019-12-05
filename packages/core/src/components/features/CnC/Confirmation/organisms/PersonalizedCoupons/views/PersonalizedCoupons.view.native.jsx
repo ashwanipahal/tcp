@@ -50,20 +50,24 @@ export const PersonalizedCoupons = ({ coupons, couponLabels, labels, couponLoadi
   const renderCoupons = () => {
     return couponsList ? (
       <CouponSectionWrapper>
-        <BodyCopy
-          mobilefontFamily="secondary"
-          fontSize="fs12"
-          color="gray[800]"
-          textAlign="center"
-          text={labels.heading1}
-        />
-        <BodyCopy
-          mobilefontFamily="secondary"
-          fontSize="fs12"
-          color="gray[800]"
-          textAlign="center"
-          text={labels.heading2}
-        />
+        {couponsList.size > 0 && (
+          <>
+            <BodyCopy
+              mobilefontFamily="secondary"
+              fontSize="fs12"
+              color="gray[800]"
+              textAlign="center"
+              text={labels.heading1}
+            />
+            <BodyCopy
+              mobilefontFamily="secondary"
+              fontSize="fs12"
+              color="gray[800]"
+              textAlign="center"
+              text={labels.heading2}
+            />
+          </>
+        )}
         {couponsList.map(coupon => (
           <PersonalizedCoupon
             key={coupon.code}

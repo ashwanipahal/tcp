@@ -37,15 +37,26 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
           className="no-carousel-container moduleO-variation"
         >
           <LoadableComponent
+            ariaNext=""
+            ariaPrevious=""
+            carouselConfigProps={null}
+            categoryName=""
             className="test class product-list price-only"
+            ctaText=""
+            ctaTitle=""
+            ctaUrl=""
             currencyExchange={1}
             currencySymbol="USD"
+            headerAlignment=""
+            headerLabel="You May Also Like"
+            isFavoriteRecommendation={false}
             isPerfectBlock={true}
             isPromoAvailable={
               Array [
                 undefined,
               ]
             }
+            isSuggestedItem={false}
             item={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -56,6 +67,37 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
               }
             }
             key="recommended_products_moduleO_undefined"
+            loadRecommendations={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            page=""
+            partNumber=""
+            portalValue=""
             productsBlock={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -66,14 +108,15 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
               }
             }
             sequenceNumber={1}
+            showButton={false}
             variation="moduleO"
+            variations="moduleO"
             viaModule="Recommendation"
           />
         </div>
       </Styled(Col)>
     </Styled(Row)>
   </section>
-  <Connect(QuickViewModalContainer) />
 </div>
 `;
 
@@ -114,15 +157,26 @@ exports[`Recommendations Module O show button variation Recommendations Module O
           className="no-carousel-container moduleO-variation"
         >
           <LoadableComponent
+            ariaNext=""
+            ariaPrevious=""
+            carouselConfigProps={null}
+            categoryName=""
             className="test class product-list "
+            ctaText=""
+            ctaTitle=""
+            ctaUrl=""
             currencyExchange={1}
             currencySymbol="USD"
+            headerAlignment=""
+            headerLabel="You May Also Like"
+            isFavoriteRecommendation={false}
             isPerfectBlock={true}
             isPromoAvailable={
               Array [
                 undefined,
               ]
             }
+            isSuggestedItem={false}
             item={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -133,6 +187,47 @@ exports[`Recommendations Module O show button variation Recommendations Module O
               }
             }
             key="recommended_products_moduleO_undefined"
+            loadRecommendations={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            page=""
+            partNumber=""
+            portalValue=""
             productsBlock={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -143,7 +238,9 @@ exports[`Recommendations Module O show button variation Recommendations Module O
               }
             }
             sequenceNumber={1}
+            showButton={true}
             variation="moduleO"
+            variations="moduleO"
             viaModule="Recommendation"
           />
         </div>
@@ -174,7 +271,6 @@ exports[`Recommendations Module O show button variation Recommendations Module O
       />
     </div>
   </section>
-  <Connect(QuickViewModalContainer) />
 </div>
 `;
 
@@ -215,15 +311,26 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
           className="no-carousel-container moduleO-variation"
         >
           <LoadableComponent
+            ariaNext=""
+            ariaPrevious=""
+            carouselConfigProps={null}
+            categoryName=""
             className="test class product-list "
+            ctaText=""
+            ctaTitle=""
+            ctaUrl=""
             currencyExchange={1}
             currencySymbol="USD"
+            headerAlignment=""
+            headerLabel="You May Also Like"
+            isFavoriteRecommendation={false}
             isPerfectBlock={true}
             isPromoAvailable={
               Array [
                 undefined,
               ]
             }
+            isSuggestedItem={false}
             item={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -234,6 +341,27 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
               }
             }
             key="recommended_products_moduleO_undefined"
+            loadRecommendations={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            page=""
+            partNumber=""
+            portalValue=""
             productsBlock={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -244,14 +372,15 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
               }
             }
             sequenceNumber={1}
+            showButton={false}
             variation="moduleO"
+            variations="moduleO"
             viaModule="Recommendation"
           />
         </div>
       </Styled(Col)>
     </Styled(Row)>
   </section>
-  <Connect(QuickViewModalContainer) />
 </div>
 `;
 
@@ -292,15 +421,26 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
           className="no-carousel-container moduleP-variation"
         >
           <LoadableComponent
+            ariaNext=""
+            ariaPrevious=""
+            carouselConfigProps={null}
+            categoryName=""
             className="test class product-list "
+            ctaText=""
+            ctaTitle=""
+            ctaUrl=""
             currencyExchange={1}
             currencySymbol="USD"
+            headerAlignment=""
+            headerLabel="You May Also Like"
+            isFavoriteRecommendation={false}
             isPerfectBlock={true}
             isPromoAvailable={
               Array [
                 undefined,
               ]
             }
+            isSuggestedItem={false}
             item={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -311,6 +451,57 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
               }
             }
             key="recommended_products_moduleP_undefined"
+            loadRecommendations={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "page": "homepageTest",
+                      "reduxKey": undefined,
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            page=""
+            partNumber=""
+            portalValue=""
             productsBlock={
               Object {
                 "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
@@ -321,7 +512,9 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
               }
             }
             sequenceNumber={1}
+            showButton={true}
             variation="moduleP"
+            variations="moduleP"
             viaModule="Recommendation"
           />
         </div>
@@ -352,6 +545,5 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
       />
     </div>
   </section>
-  <Connect(QuickViewModalContainer) />
 </div>
 `;

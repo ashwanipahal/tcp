@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { bootstrapData, setPreviewDate } from '@tcp/core/src/reduxStore/actions';
 import { fetchNavigationData } from '@tcp/core/src/components/features/content/Navigation/container/Navigation.actions';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { getModalState } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.selectors';
 import HomePageView from '../views';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../../../common/hoc/ThemeWrapper.constants';
 
@@ -29,6 +30,7 @@ const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state) || false,
     labels,
     promoHtmlBannerCarousel,
+    isQVModalOpen: getModalState(state),
   };
 };
 

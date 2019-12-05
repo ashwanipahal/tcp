@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
+import { getLabelValue } from '@tcp/core/src/utils';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import CreateAccount from '../../CreateAccount';
 
@@ -46,12 +47,14 @@ class OpenLoginModal extends React.Component<Props> {
       handleContinueAsGuest,
       handleAfterLogin,
       isLoading,
+      labels,
     } = this.props;
     const { currentForm, component } = this.state;
     return (
       <Modal
         fixedWidth
         isOpen={openState}
+        contentLabel={getLabelValue(labels, 'lbl_login_loginCTA', 'login', 'global')}
         onRequestClose={this.onClose}
         heading=""
         overlayClassName="TCPModal__Overlay"
