@@ -269,6 +269,7 @@ class ProductDetailView extends PureComponent {
       ...otherProps
     } = this.props;
 
+    const { ratingsProductId } = otherProps;
     const { currentProduct, currentProductDynamicData } = productDetails;
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -346,6 +347,7 @@ class ProductDetailView extends PureComponent {
               initialValues={this.formValues}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              ratingsProductId={ratingsProductId}
             />
           </Col>
           <Col
