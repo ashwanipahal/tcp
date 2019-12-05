@@ -65,7 +65,7 @@ const DamImage = props => {
     videoData,
     width,
     height,
-    // updateVideoUrl,
+    updateVideoUrl,
     ...otherProps
   } = props;
 
