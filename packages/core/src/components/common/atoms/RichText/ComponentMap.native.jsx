@@ -72,7 +72,12 @@ export const RenderImage = (props, className) => {
 
   return (
     <ImageWrapperView>
-      <StyledImage style={{ ...style }} resizeMode="stretch" alt={alt} source={{ uri: source }} />
+      <StyledImage
+        style={{ ...style }}
+        resizeMode="stretch"
+        alt={alt}
+        source={{ uri: source.uri }}
+      />
     </ImageWrapperView>
   );
 };
@@ -93,29 +98,27 @@ RenderImage.defaultProps = {
 export const RenderView = props => {
   const { children, className } = props;
   const StyledView = className ? getStyledViewComponent(StyledComponents, className) : View;
-
   return children ? (
     <StyledView>
       {children.map(child => {
+        console.log(child.type.name);
         switch (child.type.name) {
           case 'Text':
             return RenderText(child.props, className);
           case 'div':
             return RenderView(child.props);
           case 'img':
+            console.log(child.props);
             return RenderImage(child.props, className);
           case 'a':
             return RenderAnchor(child.props, className);
-          default: {
-            if (child.type === 'script') {
-              return null;
-            }
-            if (child.type === 'style') {
-              parseStyle(child.props.children);
-              return null;
-            }
+          case 'style':
+            parseStyle(child.props.children);
+            return null;
+          case 'Script':
+            return null;
+          default:
             return RenderText(child.props, className);
-          }
         }
       })}
     </StyledView>
