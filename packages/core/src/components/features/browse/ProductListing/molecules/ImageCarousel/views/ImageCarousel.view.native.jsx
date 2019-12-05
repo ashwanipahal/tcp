@@ -8,6 +8,7 @@ import {
 } from '../../ProductList/utils/productsCommonUtils';
 import { DamImage } from '../../../../../../common/atoms';
 import OutOfStockWaterMark from '../../../../ProductDetail/molecules/OutOfStockWaterMark';
+import { getVideoUrl } from '../../../../../../../utils/index.native';
 
 const win = Dimensions.get('window');
 const numberOfColumn = 2;
@@ -83,9 +84,14 @@ class ImageCarousel extends React.PureComponent {
         listKey={(_, index) => index.toString()}
         renderItem={imgSource => {
           const { index } = imgSource;
+          const isVideoUrl = getVideoUrl(imgSource.item);
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)}
+              onPress={() =>
+                !isVideoUrl
+                  ? onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo, item)
+                  : null
+              }
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}

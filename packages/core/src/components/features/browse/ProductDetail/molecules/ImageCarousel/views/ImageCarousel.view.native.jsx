@@ -24,6 +24,7 @@ import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/Log
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
 import OutOfStockWaterMark from '../../OutOfStockWaterMark';
+import { getVideoUrl } from '../../../../../../../utils/index.native';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -173,9 +174,10 @@ class ImageCarousel extends React.PureComponent {
     const { activeSlideIndex } = this.state;
 
     const { index } = imgSource;
+    const isVideoUrl = getVideoUrl(imgSource.item.regularSizeImageUrl);
     return (
       <ImageTouchableOpacity
-        onPress={onImageClick}
+        onPress={!isVideoUrl ? onImageClick : null}
         accessible={index === activeSlideIndex}
         accessibilityRole="image"
         accessibilityLabel={`product image ${index + 1}`}
