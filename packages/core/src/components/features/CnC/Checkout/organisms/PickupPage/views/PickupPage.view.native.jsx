@@ -4,14 +4,16 @@ import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
 import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
-
 import PickupPageSkeleton from './PickupPageSkeleton.native';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
-import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import { getNextCTAText, renderSmsUpdatedEnabled } from './PickupPage.view.utils';
+import {
+  getNextCTAText,
+  renderSmsUpdatedEnabled,
+  renderPickupAlternateForm,
+} from './PickupPage.view.utils';
 
 import {
   FormStyle,
@@ -19,7 +21,6 @@ import {
   PickupContainer,
   PickUpForm,
   EmailSignupForm,
-  PickUpAlternateForm,
   PickupError,
   CheckBoxWrapper,
   CheckBoxColOne,
@@ -28,6 +29,7 @@ import {
   CheckBoxSubWrapper,
   TextWrapper,
   PickUpHeading,
+  PickupPageSkeletonWrapper,
 } from '../styles/PickupPage.style.native';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 import ContactFormFields from '../../../molecules/ContactFormFields';
@@ -254,7 +256,16 @@ class PickUpFormPart extends React.Component {
                     />
                   )}
                   {bagLoading ? (
-                    <PickupPageSkeleton />
+                    <PickupPageSkeletonWrapper>
+                      <BodyCopy
+                        dataLocator="pickup-email-signUp-heading-lbl"
+                        fontSize="fs26"
+                        mobileFontFamily="primary"
+                        fontWeight="regular"
+                        text={pickUpLabels.pickupContactText}
+                      />
+                      <PickupPageSkeleton />
+                    </PickupPageSkeletonWrapper>
                   ) : (
                     <PickUpForm>
                       <FormSection name="pickUpContact">
@@ -345,19 +356,7 @@ class PickUpFormPart extends React.Component {
                       </CheckBoxSubWrapper>
                     </EmailSignupForm>
                   )}
-
-                  <PickUpAlternateForm>
-                    <FormSection name="pickUpAlternate">
-                      <PickUpAlternateFormPart
-                        isAlternateUpdateChecked={isAlternateUpdateChecked}
-                        showNoteOnToggle
-                        formName="checkoutPickup"
-                        formSection="pickUpAlternate"
-                        labels={pickUpLabels}
-                        isEditing={isEditing}
-                      />
-                    </FormSection>
-                  </PickUpAlternateForm>
+                  {renderPickupAlternateForm(isAlternateUpdateChecked, pickUpLabels, isEditing)}
                 </PickupContainer>
               </Container>
               <CnCTemplate
@@ -368,6 +367,9 @@ class PickUpFormPart extends React.Component {
                 onPress={handleSubmit(this.pickupSubmit)}
                 pageCategory="pickupPage"
                 showAccordian
+                bagLoading={bagLoading}
+                pageName="checkout"
+                pageSection="pickup"
               />
             </ScrollView>
           </>

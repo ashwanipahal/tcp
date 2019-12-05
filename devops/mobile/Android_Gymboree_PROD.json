@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
@@ -358,7 +358,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "gymboreeUatRelease",
+      "buildVariant": "gymboreeProdRelease",
       "isRoot": false,
       "runTests": false,
       "runLint": false,
@@ -374,7 +374,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "6e3e916a-9419-478e-84b9-59425bf108f2"
+        "4d604ae0-48f5-4b33-939d-b89963bde465"
       ],
       "isSilent": false
     },

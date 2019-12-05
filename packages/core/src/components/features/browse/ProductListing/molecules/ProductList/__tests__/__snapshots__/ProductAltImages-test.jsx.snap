@@ -39,6 +39,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
         }
       }
       isProductImage={true}
+      itemBrand=""
       lazyLoad={false}
     />
   </Styled(Anchor)>

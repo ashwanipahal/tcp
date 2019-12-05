@@ -15,16 +15,10 @@ const StoreDetail = ({ router }) => {
 
 StoreDetail.getInitActions = () => initActions;
 
-StoreDetail.getInitialProps = pageProps => {
+StoreDetail.getInitialProps = () => {
   return {
-    ...pageProps,
-    ...{
-      pageData: {
-        pageName: 'companyinfo:companyinfo',
-        pageType: 'companyinfo',
-        pageSection: 'companyinfo',
-        pageSubSection: 'companyinfo',
-      },
+    pageData: {
+      loadAnalyticsOnload: false,
     },
   };
 };

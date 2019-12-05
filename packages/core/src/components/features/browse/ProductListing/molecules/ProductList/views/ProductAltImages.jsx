@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { isClient, getLocator } from '@tcp/core/src/utils';
+import { isClient, getLocator, getVideoUrl } from '@tcp/core/src/utils';
 import { getProductListToPath } from '../utils/productsCommonUtils';
 // import cssClassName from '../utils/cssClassName';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
@@ -36,6 +36,8 @@ class ProductAltImages extends React.PureComponent {
     keepAlive: PropTypes.bool.isRequired,
     isSoldOut: PropTypes.bool,
     soldOutLabel: PropTypes.string,
+    isProductBrandOfSameDomain: PropTypes.bool,
+    itemBrand: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -45,6 +47,7 @@ class ProductAltImages extends React.PureComponent {
     isShowVideoOnPlp: PropTypes.bool,
     isSoldOut: false,
     soldOutLabel: '',
+    isProductBrandOfSameDomain: true,
   };
 
   constructor(props, context) {
@@ -136,10 +139,12 @@ class ProductAltImages extends React.PureComponent {
       analyticsData,
       isPLPredesign,
       className,
+      isProductBrandOfSameDomain,
     } = this.props;
     const { currentIndex, videoHeight } = this.state;
     const unbxdData = analyticsData || {};
-    const pdpToPath = getProductListToPath(pdpUrl);
+
+    const pdpToPath = isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : pdpUrl;
     return isMobile ? (
       <figure
         // eslint-disable-next-line no-return-assign
@@ -234,48 +239,70 @@ class ProductAltImages extends React.PureComponent {
     return isSoldOut || keepAlive ? <OutOfStockWaterMark label={soldOutLabel} /> : null;
   };
 
-  renderImageContent() {
-    const {
-      imageUrls,
-      pdpUrl,
-      productName,
-      loadedProductCount,
-      analyticsData,
-      className,
-    } = this.props;
+  renderDamImage() {
+    const { imageUrls, productName, itemBrand } = this.props;
     const { currentIndex } = this.state;
-    const unbxdData = analyticsData || {};
-    const pdpToPath = getProductListToPath(pdpUrl);
     const imgData = {
       alt: productName,
       url: imageUrls[currentIndex],
     };
+    return (
+      <>
+        <DamImage
+          className="loadImage"
+          dataLocator={getLocator('global_productimg_imagelink')}
+          imgData={imgData}
+          isProductImage
+          lazyLoad={false}
+          itemBrand={itemBrand}
+        />
+        {this.renderSoldOutSection()}
+      </>
+    );
+  }
+
+  renderDamWrapper(isVideoUrl) {
+    const {
+      pdpUrl,
+      productName,
+      loadedProductCount,
+      analyticsData,
+      isProductBrandOfSameDomain,
+    } = this.props;
+    const unbxdData = analyticsData || {};
+
+    const pdpToPath = isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : pdpUrl;
+
+    return isVideoUrl ? (
+      <div className="video-container">{this.renderDamImage()}</div>
+    ) : (
+      <Anchor
+        handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
+        to={pdpToPath}
+        asPath={pdpUrl}
+        title={productName}
+        unbxdattr="product"
+        unbxdparam_sku={unbxdData && unbxdData.pId}
+        unbxdparam_prank={unbxdData && unbxdData.prank}
+        inheritedStyles={imageAnchorInheritedStyles}
+      >
+        {this.renderDamImage()}
+      </Anchor>
+    );
+  }
+
+  renderImageContent() {
+    const { imageUrls, productName, className } = this.props;
+    const { currentIndex } = this.state;
+
+    const isVideoUrl = getVideoUrl(imageUrls[currentIndex]);
     return imageUrls.length < 2 ? (
       <figure
-        className="product-image-container full-height"
+        className="product-image-container"
         itemScope
         itemType="http://schema.org/ImageObject"
       >
-        <Anchor
-          handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
-          to={pdpToPath}
-          asPath={pdpUrl}
-          title={productName}
-          unbxdattr="product"
-          unbxdparam_sku={unbxdData && unbxdData.pId}
-          unbxdparam_prank={unbxdData && unbxdData.prank}
-          inheritedStyles={imageAnchorInheritedStyles}
-          className="full-height"
-        >
-          <DamImage
-            className="loadImage"
-            dataLocator={getLocator('global_productimg_imagelink')}
-            imgData={imgData}
-            isProductImage
-            lazyLoad={false}
-          />
-          {this.renderSoldOutSection()}
-        </Anchor>
+        {this.renderDamWrapper(isVideoUrl)}
       </figure>
     ) : (
       <figure
@@ -293,26 +320,7 @@ class ProductAltImages extends React.PureComponent {
         >
           prev
         </button>
-
-        <Anchor
-          handleLinkClick={e => this.productLink(loadedProductCount, pdpUrl, e)}
-          to={pdpToPath}
-          asPath={pdpUrl}
-          title={productName}
-          unbxdattr="product"
-          unbxdparam_sku={unbxdData && unbxdData.pId}
-          unbxdparam_prank={unbxdData && unbxdData.prank}
-          inheritedStyles={imageAnchorInheritedStyles}
-        >
-          <DamImage
-            className="loadImage"
-            dataLocator={getLocator('global_productimg_imagelink')}
-            imgData={imgData}
-            isProductImage
-            lazyLoad={false}
-          />
-          {this.renderSoldOutSection()}
-        </Anchor>
+        {this.renderDamWrapper(isVideoUrl)}
         <button
           data-locator={getLocator('global_imagecursors_arrows')}
           type="button"

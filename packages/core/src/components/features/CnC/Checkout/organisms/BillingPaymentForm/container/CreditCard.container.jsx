@@ -340,6 +340,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       getPayPalSettings,
       isPayPalWebViewEnable,
       bagLoading,
+      isVenmoAppInstalled,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -383,6 +384,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         getPayPalSettings={getPayPalSettings}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         bagLoading={bagLoading}
+        isVenmoAppInstalled={isVenmoAppInstalled}
       />
     );
   }
@@ -409,6 +411,7 @@ const mapStateToProps = (state, ownProps) => {
     isPLCCEnabled: CreditCardSelector.getIsPLCCEnabled(state),
     isVenmoEnabled: CheckoutSelectors.getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
     getPayPalSettings: CheckoutSelectors.getPayPalSettings(state),
+    isVenmoAppInstalled: CheckoutSelectors.isVenmoAppInstalled(state),
   };
 };
 

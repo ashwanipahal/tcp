@@ -8,6 +8,7 @@ import {
   PAGE_NAVIGATION_VISIBLE,
   RESULTS_VISIBLE,
 } from '@tcp/core/src/constants/rum.constants';
+import { getProductListingPageTrackData } from '@tcp/core/src/utils';
 import PromoModules from '../../../../common/organisms/PromoModules';
 
 // Changes as per RWD-9852. Keeping this for future reference.
@@ -108,13 +109,7 @@ const ProductListView = ({
   useEffect(() => {
     const productsFormatted = formatProductsData(products);
     if (products.length) {
-      trackPageLoad({
-        pageType: 'browse',
-        pageName: 'browse',
-        pageSection: 'browse',
-        pageSubSection: 'browse',
-        products: productsFormatted,
-      });
+      trackPageLoad(getProductListingPageTrackData(breadCrumbs, { products: productsFormatted }));
     }
   }, [products.length]);
 

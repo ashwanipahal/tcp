@@ -32,7 +32,14 @@ export const AccountHeader = ({
         isNotInlineBlock
         className="hide-on-mobile hide-on-tablet"
       >
-        <BodyCopy fontSize="fs20" fontWeight="extrabold" fontFamily="secondary" textAlign="right">
+        <BodyCopy
+          fontSize="fs20"
+          className="user-welcome"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          textAlign="right"
+          component="h1"
+        >
           {`${getLabelValue(labels, 'lbl_overview_greeting')} ${name || ''}`}
         </BodyCopy>
       </Col>

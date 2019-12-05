@@ -30,22 +30,23 @@ const componentMap = {
 
 export const COMPONENTS_US = [
   'profileInfoTile',
-  'addressOverviewTile',
-  'earnExtraPointsOverview',
-  'paymentOverviewTile',
   'myPlaceRewardsOverviewTile',
-  'myPlaceRewardsCreditCardTile',
+  'earnExtraPointsOverview',
   'myWalletTile',
   'ordersTile',
+  'myPlaceRewardsCreditCardTile',
   'myPreferencesTile',
+  'addressOverviewTile',
+  'paymentOverviewTile',
 ];
+
 export const COMPONENTS_CA = [
   'profileInfoTile',
-  'addressOverviewTile',
-  'paymentOverviewTile',
   'myWalletTile',
   'ordersTile',
   'myPreferencesTile',
+  'addressOverviewTile',
+  'paymentOverviewTile',
 ];
 
 export const AccountOverviewTileList = ({ className, ...otherProps }) => {

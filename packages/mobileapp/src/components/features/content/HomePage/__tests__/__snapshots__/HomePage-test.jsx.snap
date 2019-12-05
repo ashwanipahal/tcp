@@ -28,6 +28,7 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleR": [Function],
         "moduleS": [Function],
         "moduleT": [Function],
+        "moduleX": [Function],
       }
     }
     navigation={
@@ -59,13 +60,6 @@ exports[`HomePageView should render correctly 1`] = `
     variation="moduleO,moduleP"
   />
   <View>
-    <Connect(QuickViewModalContainer)
-      navigation={
-        Object {
-          "getParam": [Function],
-        }
-      }
-    />
     <Connect(AddedToBagContainer)
       navigation={
         Object {

@@ -323,7 +323,7 @@ class ProductsGridItem extends React.PureComponent {
   getColorChipContainer = curentColorEntry => {
     const {
       isMobile,
-      item: { colorsMap, skuInfo },
+      item: { colorsMap, skuInfo, relatedSwatchImages, imagesByColor },
       isPLPredesign,
       isFavoriteView,
       isSuggestedItem,
@@ -354,6 +354,8 @@ class ProductsGridItem extends React.PureComponent {
         maxVisibleItems={5}
         selectedColorId={curentColorEntry.color.name}
         colorsMap={colorsMap}
+        imagesByColor={imagesByColor}
+        relatedSwatchImages={relatedSwatchImages}
         {...ChipProps}
       />
     ) : (
@@ -445,8 +447,8 @@ class ProductsGridItem extends React.PureComponent {
 
     const {
       productInfo: { generalProductId },
-      skuInfo: { skuId, size },
-      itemInfo: { isTCP },
+      skuInfo: { skuId, size } = {},
+      itemInfo: { isTCP } = {},
     } = item;
 
     const { selectedColorProductId } = this.state;
@@ -502,6 +504,7 @@ class ProductsGridItem extends React.PureComponent {
       gridIndex,
       openAddNewList,
       activeWishListId,
+      favoriteErrorMessages,
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
@@ -531,6 +534,7 @@ class ProductsGridItem extends React.PureComponent {
                 gridIndex={gridIndex}
                 openAddNewList={openAddNewList}
                 activeWishListId={activeWishListId}
+                favoriteErrorMessages={favoriteErrorMessages}
               />
             </div>
           )}
@@ -593,14 +597,15 @@ class ProductsGridItem extends React.PureComponent {
 
   errorMsgDisplay = () => {
     const {
+      errorMessages,
       AddToFavoriteErrorMsg,
       item: {
         productInfo: { generalProductId },
       },
     } = this.props;
-    const { errorProductId } = this.state;
+    const errorMsg = errorMessages && errorMessages[generalProductId];
 
-    return errorProductId === generalProductId && AddToFavoriteErrorMsg ? (
+    return errorMsg && errorMsg.itemId === generalProductId && AddToFavoriteErrorMsg ? (
       <Notification
         status="error"
         colSize={{ large: 12, medium: 8, small: 6 }}
@@ -694,6 +699,15 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  getIsProductBrandSameDomain = () => {
+    const { item } = this.props;
+    const currentSiteBrand = getBrand();
+    const isTCP =
+      item && item.itemInfo ? item.itemInfo.isTCP : currentSiteBrand.toUpperCase() === 'TCP';
+    const itemBrand = isTCP ? 'TCP' : 'GYM';
+    return currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
+  };
+
   renderFavouriteIcon = (
     bundleProduct,
     isFavoriteView,
@@ -712,6 +726,35 @@ class ProductsGridItem extends React.PureComponent {
         isSuggestedItem
       )
     );
+  };
+
+  renderBadgeItem = (isShowBadges, topBadge) => {
+    const { isSuggestedItem } = this.props;
+    return !isSuggestedItem ? (
+      <BadgeItem
+        isShowBadges={isShowBadges}
+        className="top-badge-container"
+        text={topBadge}
+        haveSpace
+      />
+    ) : null;
+  };
+
+  renderBadgeTwo = badge2 => {
+    const { isSuggestedItem } = this.props;
+    return !isSuggestedItem ? (
+      <Col colSize={{ small: 12 }}>
+        <BodyCopy
+          dataLocator={getLocator('global_Extended_sizes_text')}
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize={['fs10', 'fs12', 'fs14']}
+          className="extended-sizes-text elem-mb-SM"
+        >
+          {badge2 && badge2.toUpperCase()}
+        </BodyCopy>
+      </Col>
+    ) : null;
   };
 
   getPriceForProduct = (listPrice, offerPrice, currencyAttributes) => {
@@ -840,6 +883,8 @@ class ProductsGridItem extends React.PureComponent {
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
     const videoUrl = getVideoUrl(curentColorEntry);
+
+    const isProductBrandOfSameDomain = this.getIsProductBrandSameDomain();
     return (
       <li
         className={className}
@@ -850,14 +895,7 @@ class ProductsGridItem extends React.PureComponent {
         ref={forwardedRef}
       >
         <div className="item-container-inner">
-          {
-            <BadgeItem
-              isShowBadges={isShowBadges}
-              className="top-badge-container"
-              text={topBadge}
-              haveSpace
-            />
-          }
+          {this.renderBadgeItem(isShowBadges, topBadge)}
           {this.crossIcon()}
           <ProductAltImages
             className="product-image-container"
@@ -879,6 +917,7 @@ class ProductsGridItem extends React.PureComponent {
             keepAlive={keepAlive}
             isSoldOut={itemNotAvailable}
             soldOutLabel={outOfStockLabels.outOfStockCaps}
+            isProductBrandOfSameDomain={isProductBrandOfSameDomain}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels, item },
@@ -887,18 +926,7 @@ class ProductsGridItem extends React.PureComponent {
           )}
           {
             <Row fullBleed className="product-wishlist-container">
-              <Col colSize={{ small: 12 }}>
-                <BodyCopy
-                  dataLocator={getLocator('global_Extended_sizes_text')}
-                  fontWeight="extrabold"
-                  fontFamily="secondary"
-                  fontSize={['fs10', 'fs12', 'fs14']}
-                  className="extended-sizes-text elem-mb-SM"
-                >
-                  {badge2 && badge2.toUpperCase()}
-                </BodyCopy>
-              </Col>
-
+              {this.renderBadgeTwo(badge2)}
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
                 {this.getProductPriceSection(
                   listPriceForColor,
@@ -932,10 +960,11 @@ class ProductsGridItem extends React.PureComponent {
 
           {this.getColorChipContainer(curentColorEntry)}
 
-          {this.getPromotionalMessageComponent(
-            promotionalMessageModified,
-            promotionalPLCCMessageModified
-          )}
+          {!isSuggestedItem &&
+            this.getPromotionalMessageComponent(
+              promotionalMessageModified,
+              promotionalPLCCMessageModified
+            )}
           <div className="fulfillment-section">
             {this.renderSubmitButton(keepAlive, itemNotAvailable)}
           </div>

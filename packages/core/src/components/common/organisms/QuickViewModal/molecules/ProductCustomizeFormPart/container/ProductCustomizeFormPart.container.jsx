@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import ProductCustomizeFormPart from '../views/ProductCustomizeFormPart.view';
-import { routerPush } from '../../../../../../../utils';
+import { routerPush, getBrand } from '../../../../../../../utils';
+import { APP_TYPE } from '../../../../../../features/CnC/Checkout/Checkout.constants';
 import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
@@ -45,15 +46,42 @@ class ProductCustomizeFormPartContainer extends React.Component {
   };
 
   goToPDPPageMobile = (pdpUrl, selectedColorProductId) => {
-    const { navigation, onCloseClick } = this.props;
+    const {
+      navigation,
+      onCloseClick,
+      updateAppTypeHandler,
+      productInfoFromBag,
+      fromBagPage,
+    } = this.props;
+    const currentAppBrand = getBrand();
+    let isProductBrandOfSameDomain = true;
+    if (fromBagPage) {
+      isProductBrandOfSameDomain =
+        currentAppBrand.toUpperCase() ===
+        (productInfoFromBag.itemBrand && productInfoFromBag.itemBrand.toUpperCase());
+    }
+
     const title = navigation && navigation.getParam('title');
+
     onCloseClick();
-    navigation.navigate('ProductDetail', {
-      title,
-      pdpUrl,
-      selectedColorProductId,
-      reset: true,
-    });
+    if (!isProductBrandOfSameDomain) {
+      updateAppTypeHandler({
+        type: currentAppBrand.toLowerCase() === APP_TYPE.TCP ? APP_TYPE.GYMBOREE : APP_TYPE.TCP,
+        params: {
+          title,
+          pdpUrl,
+          selectedColorProductId,
+          reset: true,
+        },
+      });
+    } else {
+      navigation.navigate('ProductDetail', {
+        title,
+        pdpUrl,
+        selectedColorProductId,
+        reset: true,
+      });
+    }
   };
 
   render() {
@@ -107,6 +135,9 @@ ProductCustomizeFormPartContainer.propTypes = {
   currencyAttributes: PropTypes.shape({}),
   changeQuickViewState: PropTypes.bool.isRequired,
   isMultiItemQVModal: PropTypes.bool.isRequired,
+  updateAppTypeHandler: PropTypes.func.isRequired,
+  productInfoFromBag: PropTypes.shape({}).isRequired,
+  fromBagPage: PropTypes.bool.isRequired,
 };
 
 ProductCustomizeFormPartContainer.defaultProps = {

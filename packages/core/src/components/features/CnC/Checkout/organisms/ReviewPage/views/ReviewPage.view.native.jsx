@@ -181,6 +181,9 @@ class ReviewPage extends React.PureComponent {
             footerBody={this.renderFooter()}
             showAccordian
             pageCategory="review"
+            bagLoading={bagLoading}
+            pageName="checkout"
+            pageSection="review"
           />
         </ScrollView>
       </>

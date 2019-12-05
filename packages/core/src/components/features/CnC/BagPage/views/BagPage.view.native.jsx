@@ -277,7 +277,7 @@ export class BagPage extends React.Component {
     if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
-          <CouponAndPromos showAccordian={false} />
+          <CouponAndPromos pageName="shopping bag" showAccordian={false} />
         </RowSectionStyle>
       );
     }
@@ -313,6 +313,10 @@ export class BagPage extends React.Component {
   renderPickupModal = () => {
     const { isPickupModalOpen, navigation } = this.props;
     return <>{isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}</>;
+  };
+
+  renderPlaceCashBanner = isBagStage => {
+    return isBagStage ? <PlaceCashBanner /> : null;
   };
 
   render() {
@@ -384,7 +388,7 @@ export class BagPage extends React.Component {
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
-              <PlaceCashBanner />
+              {this.renderPlaceCashBanner(isBagStage)}
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
               {this.renderRecommendations()}

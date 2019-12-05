@@ -49,7 +49,10 @@ import {
   getPlpHorizontalPromo,
   getPLPGridPromos,
 } from './SearchDetail.selectors';
-import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import {
+  fetchAddToFavoriteErrorMsg,
+  fetchErrorMessages,
+} from '../../Favorites/container/Favorites.selectors';
 
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
@@ -349,6 +352,7 @@ function mapStateToProps(state) {
     pageNameProp: getPageName(state),
     pageSectionProp: getPageSection(state),
     pageSubSectionProp: getPageSubSection(state),
+    errorMessages: fetchErrorMessages(state),
   };
 }
 
@@ -370,10 +374,11 @@ function mapDispatchToProps(dispatch) {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
     trackPageLoad: payload => {
-      const { products } = payload;
+      const { products, customEvents } = payload;
       dispatch(
         setClickAnalyticsData({
           products,
+          customEvents,
         })
       );
       setTimeout(() => {

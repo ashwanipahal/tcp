@@ -31,6 +31,16 @@ export default function create(store) {
   const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
   const { pageCountCookieKey } = API_CONFIG;
+  const getStatePropValue = propName => {
+    const { pageData, AnalyticsDataKey } = store.getState();
+    const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+    const propValue = clickActionAnalyticsData[propName]
+      ? clickActionAnalyticsData[propName]
+      : pageData[propName];
+
+    return propValue || '';
+  };
+
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
@@ -119,7 +129,7 @@ export default function create(store) {
         const pageName = clickActionAnalyticsData.pageName
           ? clickActionAnalyticsData.pageName
           : pageData.pageName;
-        return `gl:${pageShortName || pageName}`;
+        return `${pageShortName || pageName}`;
       },
     },
 
@@ -220,7 +230,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency.toUpperCase();
+        return store.getState().session.siteDetails.currency.toUpperCase();
       },
     },
 
@@ -248,15 +258,15 @@ export default function create(store) {
       },
     },
 
+    productId: {
+      get() {
+        return getStatePropValue('productId');
+      },
+    },
+
     pageNavigationText: {
       get() {
-        const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        const pageNavigationText = clickActionAnalyticsData.pageNavigationText
-          ? clickActionAnalyticsData.pageNavigationText
-          : pageData.pageNavigationText;
-
-        return pageNavigationText || '';
+        return getStatePropValue('pageNavigationText');
       },
     },
 

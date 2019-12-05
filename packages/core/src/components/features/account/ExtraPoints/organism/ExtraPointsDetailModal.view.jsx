@@ -105,7 +105,8 @@ class ExtraPointsDetailModal extends React.PureComponent {
    */
 
   render() {
-    const { openState } = this.props;
+    const { openState, waysToEarnRow } = this.props;
+    const activeActivity = waysToEarnRow.activityModal;
     return (
       <Modal
         isOpen={openState}
@@ -115,6 +116,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
         maxWidth="615px"
         minHeight="600px"
         fixedWidth
+        contentLabel={activeActivity.activityModalTitle}
         closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
       >
         {this.getModalMarkup()}

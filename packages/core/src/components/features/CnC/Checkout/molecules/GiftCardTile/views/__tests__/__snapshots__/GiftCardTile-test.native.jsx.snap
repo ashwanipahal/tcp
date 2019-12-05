@@ -25,31 +25,125 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
       <Styled(View)
         flex={1}
       >
-        <Styled(CustomButton)
-          active={false}
-          buttonVariation="fixed-width"
-          color=""
-          customStyle={Object {}}
-          customTextStyle={null}
+        <Connect(ClickTracker)
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "active": false,
+                "buttonVariation": "fixed-width",
+                "color": "",
+                "customStyle": Object {},
+                "customTextStyle": null,
+                "disableButton": false,
+                "fill": "",
+                "fullWidth": "",
+                "iconColor": "gray.800",
+                "iconName": "chevron-down",
+                "iconSize": "fs12",
+                "locator": "",
+                "navigation": Object {},
+                "onPress": null,
+                "paddings": "12px 32px 12px 32px",
+                "selected": false,
+                "selectedIcon": "chevron-up",
+                "showIcon": false,
+                "text": "",
+                "theme": Object {},
+                "url": "",
+                "withNoLineHeight": false,
+              },
+              "attrs": Array [],
+              "displayName": "Styled(CustomButton)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  justify-content: center;
+  min-height: 32px;
+  border: 1px solid ",
+                  [Function],
+                  ";
+  opacity: ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  "
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event65",
+              ],
+            }
+          }
           data-locator=""
           disableButton={true}
           fill="DARK"
-          fullWidth=""
-          iconColor="gray.800"
-          iconName="chevron-down"
-          iconSize="fs12"
-          locator=""
-          navigation={Object {}}
+          module="checkout"
+          name="apply_gift_card"
           onPress={[Function]}
-          paddings="12px 32px 12px 32px"
-          selected={false}
-          selectedIcon="chevron-up"
-          showIcon={false}
+          pageData={
+            Object {
+              "pageName": "checkout:payment",
+              "pageSection": "checkout",
+              "pageShortName": "checkout",
+              "pageSubSection": "checkout",
+              "pageSubSubSection": "checkout",
+              "pageType": "checkout",
+            }
+          }
           text="lbl_giftcard_applyBtn"
-          theme={Object {}}
           type="submit"
-          url=""
-          withNoLineHeight={false}
         />
       </Styled(View)>
     </Styled(View)>
@@ -82,31 +176,125 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
       <Styled(View)
         flex={1}
       >
-        <Styled(CustomButton)
-          active={false}
-          buttonVariation="fixed-width"
-          color=""
-          customStyle={Object {}}
-          customTextStyle={null}
+        <Connect(ClickTracker)
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "active": false,
+                "buttonVariation": "fixed-width",
+                "color": "",
+                "customStyle": Object {},
+                "customTextStyle": null,
+                "disableButton": false,
+                "fill": "",
+                "fullWidth": "",
+                "iconColor": "gray.800",
+                "iconName": "chevron-down",
+                "iconSize": "fs12",
+                "locator": "",
+                "navigation": Object {},
+                "onPress": null,
+                "paddings": "12px 32px 12px 32px",
+                "selected": false,
+                "selectedIcon": "chevron-up",
+                "showIcon": false,
+                "text": "",
+                "theme": Object {},
+                "url": "",
+                "withNoLineHeight": false,
+              },
+              "attrs": Array [],
+              "displayName": "Styled(CustomButton)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  justify-content: center;
+  min-height: 32px;
+  border: 1px solid ",
+                  [Function],
+                  ";
+  opacity: ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  "
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event65",
+              ],
+            }
+          }
           data-locator=""
           disableButton={true}
           fill="DARK"
-          fullWidth=""
-          iconColor="gray.800"
-          iconName="chevron-down"
-          iconSize="fs12"
-          locator=""
-          navigation={Object {}}
+          module="checkout"
+          name="apply_gift_card"
           onPress={[Function]}
-          paddings="12px 32px 12px 32px"
-          selected={false}
-          selectedIcon="chevron-up"
-          showIcon={false}
+          pageData={
+            Object {
+              "pageName": "checkout:payment",
+              "pageSection": "checkout",
+              "pageShortName": "checkout",
+              "pageSubSection": "checkout",
+              "pageSubSubSection": "checkout",
+              "pageType": "checkout",
+            }
+          }
           text="lbl_giftcard_applyBtn"
-          theme={Object {}}
           type="submit"
-          url=""
-          withNoLineHeight={false}
         />
       </Styled(View)>
     </Styled(View)>
@@ -139,31 +327,125 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
       <Styled(View)
         flex={1}
       >
-        <Styled(CustomButton)
-          active={false}
-          buttonVariation="fixed-width"
-          color=""
-          customStyle={Object {}}
-          customTextStyle={null}
+        <Connect(ClickTracker)
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "active": false,
+                "buttonVariation": "fixed-width",
+                "color": "",
+                "customStyle": Object {},
+                "customTextStyle": null,
+                "disableButton": false,
+                "fill": "",
+                "fullWidth": "",
+                "iconColor": "gray.800",
+                "iconName": "chevron-down",
+                "iconSize": "fs12",
+                "locator": "",
+                "navigation": Object {},
+                "onPress": null,
+                "paddings": "12px 32px 12px 32px",
+                "selected": false,
+                "selectedIcon": "chevron-up",
+                "showIcon": false,
+                "text": "",
+                "theme": Object {},
+                "url": "",
+                "withNoLineHeight": false,
+              },
+              "attrs": Array [],
+              "displayName": "Styled(CustomButton)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  justify-content: center;
+  min-height: 32px;
+  border: 1px solid ",
+                  [Function],
+                  ";
+  opacity: ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  "
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event65",
+              ],
+            }
+          }
           data-locator=""
           disableButton={false}
           fill="DARK"
-          fullWidth=""
-          iconColor="gray.800"
-          iconName="chevron-down"
-          iconSize="fs12"
-          locator=""
-          navigation={Object {}}
+          module="checkout"
+          name="apply_gift_card"
           onPress={[Function]}
-          paddings="12px 32px 12px 32px"
-          selected={false}
-          selectedIcon="chevron-up"
-          showIcon={false}
+          pageData={
+            Object {
+              "pageName": "checkout:payment",
+              "pageSection": "checkout",
+              "pageShortName": "checkout",
+              "pageSubSection": "checkout",
+              "pageSubSubSection": "checkout",
+              "pageType": "checkout",
+            }
+          }
           text="lbl_giftcard_applyBtn"
-          theme={Object {}}
           type="submit"
-          url=""
-          withNoLineHeight={false}
         />
       </Styled(View)>
     </Styled(View)>
@@ -196,31 +478,125 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
       <Styled(View)
         flex={1}
       >
-        <Styled(CustomButton)
-          active={false}
-          buttonVariation="fixed-width"
-          color=""
-          customStyle={Object {}}
-          customTextStyle={null}
+        <Connect(ClickTracker)
+          as={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "active": false,
+                "buttonVariation": "fixed-width",
+                "color": "",
+                "customStyle": Object {},
+                "customTextStyle": null,
+                "disableButton": false,
+                "fill": "",
+                "fullWidth": "",
+                "iconColor": "gray.800",
+                "iconName": "chevron-down",
+                "iconSize": "fs12",
+                "locator": "",
+                "navigation": Object {},
+                "onPress": null,
+                "paddings": "12px 32px 12px 32px",
+                "selected": false,
+                "selectedIcon": "chevron-up",
+                "showIcon": false,
+                "text": "",
+                "theme": Object {},
+                "url": "",
+                "withNoLineHeight": false,
+              },
+              "attrs": Array [],
+              "displayName": "Styled(CustomButton)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  justify-content: center;
+  min-height: 32px;
+  border: 1px solid ",
+                  [Function],
+                  ";
+  opacity: ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  ";
+
+  ",
+                  [Function],
+                  "
+
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          clickData={
+            Object {
+              "customEvents": Array [
+                "event65",
+              ],
+            }
+          }
           data-locator=""
           disableButton={true}
           fill="DARK"
-          fullWidth=""
-          iconColor="gray.800"
-          iconName="chevron-down"
-          iconSize="fs12"
-          locator=""
-          navigation={Object {}}
+          module="checkout"
+          name="apply_gift_card"
           onPress={[Function]}
-          paddings="12px 32px 12px 32px"
-          selected={false}
-          selectedIcon="chevron-up"
-          showIcon={false}
+          pageData={
+            Object {
+              "pageName": "checkout:payment",
+              "pageSection": "checkout",
+              "pageShortName": "checkout",
+              "pageSubSection": "checkout",
+              "pageSubSubSection": "checkout",
+              "pageType": "checkout",
+            }
+          }
           text="lbl_giftcard_applyBtn"
-          theme={Object {}}
           type="submit"
-          url=""
-          withNoLineHeight={false}
         />
       </Styled(View)>
     </Styled(View)>

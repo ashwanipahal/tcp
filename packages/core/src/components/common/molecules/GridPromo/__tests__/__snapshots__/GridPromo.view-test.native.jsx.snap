@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridPromo component renders correctly 1`] = `
+<ImageBackground
+  source={
+    Object {
+      "uri": "https://test1.theplace.com/image/upload",
+    }
+  }
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <View>
+    <View
+      marginBottom={12}
+    >
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          className=" highlighted-text"
+          color="black"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs28"
+          fontWeight="black"
+          margin="-12px 0 0 0"
+          numberOfLines={null}
+          text="one"
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </View>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="black"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs18"
+      margin={null}
+      numberOfLines={null}
+      text="two"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="black"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs24"
+      margin={null}
+      numberOfLines={null}
+      text="three"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="black"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs10"
+      margin={null}
+      numberOfLines={null}
+      text=""
+      textAlign="center"
+      textDecoration={null}
+    />
+    <View
+      marginTop={30}
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        accessibilityRole="link"
+        anchorVariation="white"
+        centered={true}
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        justifyContent=""
+        key="0"
+        locator=""
+        margins={null}
+        navigation={null}
+        onPress={null}
+        text=""
+        url=""
+        visible={false}
+      />
+    </View>
+  </View>
+</ImageBackground>
+`;

@@ -93,15 +93,18 @@ class QuickViewModal extends React.Component {
     const {
       plpLabels: { addToBag },
       quickViewLabels,
+      toastMessage,
     } = this.props;
     const { showAddProductValidation } = this.state;
     return (
       <QuickViewAddToBagButton
         dataLocator="MULTI_QV_ATB"
         onClickActn={this.handleMultipleItemsAddToBagClick}
+        toastMessage={toastMessage}
         buttonLabel={addToBag}
         quickViewLabels={quickViewLabels}
         showAddProductValidation={showAddProductValidation}
+        changeQuickViewState={this.changeQuickViewState}
       />
     );
   };

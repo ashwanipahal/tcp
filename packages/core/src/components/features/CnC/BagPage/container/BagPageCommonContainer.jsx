@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
-import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
+import {
+  setClickAnalyticsData,
+  trackPageView,
+  resetClickAnalyticsData,
+  updatePageData,
+} from '@tcp/core/src/analytics/actions';
 import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
@@ -37,10 +42,17 @@ import {
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import BagPageUtils from '../views/Bagpage.utils';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent, placeCashBagContentId } = this.props;
+    const {
+      needHelpContentId,
+      fetchNeedHelpContent,
+      placeCashBagContentId,
+      resetAnalyticsData,
+    } = this.props;
+    resetAnalyticsData();
     fetchNeedHelpContent([needHelpContentId, placeCashBagContentId]);
     const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
@@ -70,14 +82,54 @@ export class BagPageContainer extends React.Component<Props> {
         }, 100);
       }
     }
+    const { cartOrderItems: prevCartOrderItems } = prevProps;
+    const { cartOrderItems } = this.props;
+    this.startBagAnalytics(cartOrderItems, prevCartOrderItems);
   }
 
   componentWillUnmount() {
-    const { resetBagLoadedState } = this.props;
+    const { resetBagLoadedState, resetAnalyticsData } = this.props;
     resetBagLoadedState();
+    resetAnalyticsData();
   }
 
   closeModal = () => {};
+
+  startBagAnalytics = (cartOrderItems, prevCartOrderItems) => {
+    const { setClickAnalyticsDataBag, trackPageViewBag, router, updateBagPageData } = this.props;
+    const events = ['scView', 'scOpen', 'event80'];
+    let fromMiniBag = false;
+    if (!isMobileApp()) {
+      fromMiniBag = utils.getObjectValue(router, false, 'query', 'fromMiniBag');
+    }
+    if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
+      const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+      const { SHOPPING_BAG, HEADER_CART } = BAGPAGE_CONSTANTS;
+      updateBagPageData({
+        pageName: SHOPPING_BAG,
+        pageSection: SHOPPING_BAG,
+        pageSubSection: SHOPPING_BAG,
+        pageType: SHOPPING_BAG,
+        pageShortName: SHOPPING_BAG,
+        pageNavigationText: fromMiniBag ? HEADER_CART : '',
+      });
+      setClickAnalyticsDataBag({
+        customEvents: events,
+        products: productsData,
+      });
+      trackPageViewBag({
+        currentScreen: 'bagPage',
+        pageData: {
+          pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+          pageNavigationText: fromMiniBag ? 'header-cart' : '',
+        },
+      });
+    }
+  };
 
   fetchInitialActions() {
     const { isRegisteredUserCallDone, initialActions, fetchSflData } = this.props;
@@ -230,8 +282,14 @@ export const mapDispatchToProps = dispatch => {
     setClickAnalyticsDataBag: payload => {
       dispatch(setClickAnalyticsData(payload));
     },
+    resetAnalyticsData: () => {
+      dispatch(resetClickAnalyticsData());
+    },
     trackPageViewBag: payload => {
       dispatch(trackPageView(payload));
+    },
+    updateBagPageData: payload => {
+      dispatch(updatePageData(payload));
     },
     resetBagLoadedState: () => {
       dispatch(BAG_PAGE_ACTIONS.resetBagLoadedState());

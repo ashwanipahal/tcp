@@ -179,12 +179,6 @@ exports[`ProductItemComponents component ProductWishlistIcon render Text 1`] = `
 </Styled(BodyCopy)>
 `;
 
-exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `
-<React.Fragment>
-  <div
-    className="loyalty-text-container"
-  />
-</React.Fragment>
-`;
+exports[`ProductItemComponents component PromotionalMessage render Text 1`] = `null`;
 
 exports[`ProductItemComponents component productLink called correctly 1`] = `undefined`;

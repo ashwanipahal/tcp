@@ -198,7 +198,7 @@ const getRefinedNavTree = (catId, navigationTree) => {
 };
 
 const getRefinedNavTreeL2orL3 = (catId, navigationTree) => {
-  return navigationTree.find(L2 => L2.categoryContent.id === catId);
+  return (navigationTree && navigationTree.find(L2 => L2.categoryContent.id === catId)) || [];
 };
 
 const getCatMapL1Params = catMapL1 => {
@@ -207,7 +207,17 @@ const getCatMapL1Params = catMapL1 => {
   Object.keys(mainObj).forEach(key => {
     menuItems.push(mainObj[key].items);
   });
-  return menuItems.flat(2);
+  let returnValue;
+  try {
+    returnValue = menuItems.flat(2);
+  } catch (err) {
+    returnValue = [];
+  }
+  return returnValue;
+};
+
+const getCatMapL2 = (catMapL2Id, catMapL1Params) => {
+  return (catMapL2Id && getRefinedNavTreeL2orL3(catMapL2Id, catMapL1Params)) || [];
 };
 
 const getNavTreeFromCatMap = (navTree, categoryPath) => {
@@ -217,8 +227,11 @@ const getNavTreeFromCatMap = (navTree, categoryPath) => {
   const catMapL3Id = (categoryPath[0] && categoryPath[0].split('|')[0].split('>')[2]) || null;
   const catMapL1 = catMapL1Id && getRefinedNavTree(catMapL1Id, navTree);
   const catMapL1Params = getCatMapL1Params(catMapL1);
-  const catMapL2 = catMapL2Id && getRefinedNavTreeL2orL3(catMapL2Id, catMapL1Params);
-  return (catMapL3Id && getRefinedNavTreeL2orL3(catMapL3Id, catMapL2.subCategories)) || catMapL2;
+  const catMapL2 = getCatMapL2(catMapL2Id, catMapL1Params);
+  return (
+    (catMapL3Id && getRefinedNavTreeL2orL3(catMapL3Id, catMapL2 && catMapL2.subCategories)) ||
+    catMapL2
+  );
 };
 
 const getCatMapFromBreadCrump = (categoryPath, breadCrumbs) => {
@@ -226,6 +239,14 @@ const getCatMapFromBreadCrump = (categoryPath, breadCrumbs) => {
     categoryPath &&
     breadCrumbs[1] &&
     categoryPath.find(_catMap => _catMap.split('|')[0].includes(breadCrumbs[1].categoryId))
+  );
+};
+
+const getSizeChartSel = l3CatFromString => {
+  return (
+    l3CatFromString &&
+    l3CatFromString.categoryContent &&
+    l3CatFromString.categoryContent.sizeChartSelection
   );
 };
 
@@ -240,7 +261,7 @@ const getNavTreeFromBreadCrumb = (breadCrumbs, categoryPath, navTree) => {
     });
 
   return (
-    (l3CatFromString && l3CatFromString.categoryContent.sizeChartSelection) ||
+    getSizeChartSel(l3CatFromString) ||
     (navTree && navTree.categoryContent && navTree.categoryContent.sizeChartSelection) ||
     ''
   );
@@ -279,7 +300,7 @@ const fetchSizeChartDetails = (navTree, breadCrumbs, categoryPath, isBundleProdu
   const payload = fetchL2andL3Category(navTree, breadCrumbs, isBundleProduct, categoryPath);
   if (payload.l3Cat) {
     return (
-      payload.l3Cat.categoryContent.sizeChartSelection ||
+      (payload.l3Cat.categoryContent && payload.l3Cat.categoryContent.sizeChartSelection) ||
       (payload.l2Cat &&
         payload.l2Cat.categoryContent &&
         payload.l2Cat.categoryContent.sizeChartSelection) ||

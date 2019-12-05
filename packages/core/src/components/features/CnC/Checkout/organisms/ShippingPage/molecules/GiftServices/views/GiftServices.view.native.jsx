@@ -45,11 +45,12 @@ class GiftServices extends React.PureComponent {
 
   handleChange = () => {
     const { isChecked } = this.state;
-    const { dispatch, giftWrapOptions } = this.props;
+    const { dispatch, giftWrapOptions, handleAnalytics } = this.props;
     this.setState({
       isChecked: !isChecked,
       message: '',
     });
+    handleAnalytics();
     const parsedDefaultSelectedGiftService = JSON.parse(giftWrapOptions);
     const defaultSelectedGiftService = parsedDefaultSelectedGiftService.giftOptions[0].catEntryId;
     if (!isChecked && dispatch) {
@@ -351,6 +352,7 @@ GiftServices.propTypes = {
   currencySymbol: PropTypes.string.isRequired,
   handleToggle: PropTypes.func.isRequired,
   SelectedBrand: PropTypes.string.isRequired,
+  handleAnalytics: PropTypes.func.isRequired,
 };
 
 GiftServices.defaultProps = {
