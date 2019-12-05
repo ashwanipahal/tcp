@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { isClient, getLocator, getVideoUrl, getBrand } from '@tcp/core/src/utils';
+import { isClient, getLocator, getVideoUrl } from '@tcp/core/src/utils';
 import { getProductListToPath } from '../utils/productsCommonUtils';
 // import cssClassName from '../utils/cssClassName';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
@@ -36,7 +36,7 @@ class ProductAltImages extends React.PureComponent {
     keepAlive: PropTypes.bool.isRequired,
     isSoldOut: PropTypes.bool,
     soldOutLabel: PropTypes.string,
-    itemBrand: PropTypes.string,
+    isProductBrandOfSameDomain: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -46,7 +46,7 @@ class ProductAltImages extends React.PureComponent {
     isShowVideoOnPlp: PropTypes.bool,
     isSoldOut: false,
     soldOutLabel: '',
-    itemBrand: '',
+    isProductBrandOfSameDomain: true,
   };
 
   constructor(props, context) {
@@ -72,11 +72,6 @@ class ProductAltImages extends React.PureComponent {
       this.setState({ videoHeight: rect.width });
     }
   }
-
-  getIsProductBrandSameDomain = itemBrand => {
-    const currentSiteBrand = getBrand();
-    return currentSiteBrand && currentSiteBrand.toUpperCase() === itemBrand;
-  };
 
   // onVideoError = () => this.setState({ videoError: true });
 
@@ -143,11 +138,10 @@ class ProductAltImages extends React.PureComponent {
       analyticsData,
       isPLPredesign,
       className,
-      itemBrand,
+      isProductBrandOfSameDomain,
     } = this.props;
     const { currentIndex, videoHeight } = this.state;
     const unbxdData = analyticsData || {};
-    const isProductBrandOfSameDomain = this.getIsProductBrandSameDomain(itemBrand);
 
     const pdpToPath = isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : pdpUrl;
     return isMobile ? (
@@ -267,9 +261,14 @@ class ProductAltImages extends React.PureComponent {
   }
 
   renderDamWrapper(isVideoUrl) {
-    const { pdpUrl, productName, loadedProductCount, analyticsData, itemBrand } = this.props;
+    const {
+      pdpUrl,
+      productName,
+      loadedProductCount,
+      analyticsData,
+      isProductBrandOfSameDomain,
+    } = this.props;
     const unbxdData = analyticsData || {};
-    const isProductBrandOfSameDomain = this.getIsProductBrandSameDomain(itemBrand);
 
     const pdpToPath = isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : pdpUrl;
 
