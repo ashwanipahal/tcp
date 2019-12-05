@@ -11,6 +11,7 @@ import styles from '../../../../QuickViewModal/molecules/ProductCustomizeFormPar
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import PickupProductFormPart from '../../PickupProductFormPart';
 import PickupSkuSelectionForm from '../views/PickupSkuSelectionForm.view';
+import { routerPush } from '../../../../../../../utils';
 import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
@@ -59,8 +60,10 @@ class PickupSkuSelectionFormContainer extends React.Component {
     };
   };
 
-  navigateToPDP = () => {
+  navigateToPDP = (e, pdpToPath, currentColorPdpUrl) => {
+    e.preventDefault();
     const { onCloseClick } = this.props;
+    routerPush(pdpToPath, currentColorPdpUrl);
     onCloseClick();
   };
 
