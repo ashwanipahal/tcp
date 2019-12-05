@@ -186,6 +186,7 @@ export class AddressFields extends React.PureComponent {
               dataLocator="addnewaddress-addressl1"
               className="address-field"
               enableSuccessCheck={false}
+              types={['address']}
             />
           </Col>
           <Col colSize={{ small: 6, medium: variation === 'secondary' ? 8 : 4, large: 6 }}>
