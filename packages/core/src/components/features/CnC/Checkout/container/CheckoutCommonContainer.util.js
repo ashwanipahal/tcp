@@ -4,6 +4,7 @@ import {
   trackClick,
   updatePageData,
   trackPageView,
+  resetClickAnalyticsData,
 } from '@tcp/core/src/analytics/actions';
 import CHECKOUT_ACTIONS, {
   submitShippingSection,
@@ -194,6 +195,9 @@ export const mapDispatchToProps = dispatch => {
     },
     trackPageViewCheckout: payload => {
       dispatch(trackPageView(payload));
+      setTimeout(() => {
+        dispatch(resetClickAnalyticsData());
+      }, 200);
     },
     resetCartCheckoutData: () => {
       dispatch(CHECKOUT_ACTIONS.resetCheckoutReducer());

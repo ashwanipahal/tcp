@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
-import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
+import {
+  setClickAnalyticsData,
+  trackPageView,
+  resetClickAnalyticsData,
+  updatePageData,
+} from '@tcp/core/src/analytics/actions';
 import { getIsPayPalEnabled } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
@@ -84,7 +89,7 @@ export class BagPageContainer extends React.Component<Props> {
   closeModal = () => {};
 
   startBagAnalytics = (cartOrderItems, prevCartOrderItems) => {
-    const { setClickAnalyticsDataBag, trackPageViewBag, router } = this.props;
+    const { setClickAnalyticsDataBag, trackPageViewBag, router, updateBagPageData } = this.props;
     const events = ['scView', 'scOpen', 'event80'];
     let fromMiniBag = false;
     if (!isMobileApp()) {
@@ -92,6 +97,14 @@ export class BagPageContainer extends React.Component<Props> {
     }
     if (cartOrderItems !== prevCartOrderItems && events.length > 0) {
       const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+      updateBagPageData({
+        pageName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageSubSection: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageType: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageShortName: BAGPAGE_CONSTANTS.SHOPPING_BAG,
+        pageNavigationText: fromMiniBag ? 'header-cart' : '',
+      });
       setClickAnalyticsDataBag({
         customEvents: events,
         products: productsData,
@@ -263,6 +276,12 @@ export const mapDispatchToProps = dispatch => {
     },
     trackPageViewBag: payload => {
       dispatch(trackPageView(payload));
+      setTimeout(() => {
+        dispatch(resetClickAnalyticsData());
+      }, 200);
+    },
+    updateBagPageData: payload => {
+      dispatch(updatePageData(payload));
     },
     resetBagLoadedState: () => {
       dispatch(BAG_PAGE_ACTIONS.resetBagLoadedState());
