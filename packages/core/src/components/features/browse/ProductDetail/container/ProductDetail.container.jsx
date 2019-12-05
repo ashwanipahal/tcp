@@ -229,6 +229,7 @@ class ProductDetailContainer extends React.PureComponent {
               bottomPromos={bottomPromos}
               trackPageLoad={trackPageLoad}
               sizeChartDetails={sizeChartDetails}
+              isMatchingFamily // TODO: Need to add kill switch for this
             />
           ) : null}
           {isLoading ? <ProductDetailSkeleton /> : null}

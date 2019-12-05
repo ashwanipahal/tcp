@@ -366,7 +366,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "gymboreeUatRelease",
+      "buildVariant": "gymboreeQAPreviewRelease",
       "isRoot": false,
       "runTests": false,
       "runLint": false,
@@ -382,7 +382,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "02151f85-54c0-4b93-af4f-66e1e162afe8"
+        "e6e90787-aac0-49d6-a52b-1276f01f3b56"
       ],
       "isSilent": false
     },
