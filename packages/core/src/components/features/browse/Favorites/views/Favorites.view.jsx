@@ -166,6 +166,7 @@ class FavoritesView extends React.PureComponent {
       activeWishList,
       addToBagEcom,
       errorMessages,
+      currencyAttributes,
     } = this.props;
 
     const { seeSuggestedDictionary } = this.state;
@@ -194,6 +195,7 @@ class FavoritesView extends React.PureComponent {
             seeSuggestedDictionary={seeSuggestedDictionary}
             addToBagEcom={addToBagEcom}
             favoriteErrorMessages={errorMessages}
+            currencyAttributes={currencyAttributes}
           />
         </>
       )
@@ -689,6 +691,7 @@ FavoritesView.propTypes = {
   onReplaceWishlistItem: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
   errorMessages: PropTypes.shape({}).isRequired,
+  currencyAttributes: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -710,6 +713,7 @@ FavoritesView.defaultProps = {
   activeWishListId: '',
   labelsPlpTiles: {},
   navigation: {},
+  currencyAttributes: {},
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);
