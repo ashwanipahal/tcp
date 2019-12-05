@@ -54,6 +54,7 @@ ModalWrapper.propTypes = {
   heading: PropTypes.string.isRequired,
   widthConfig: PropTypes.shape({}),
   heightConfig: PropTypes.shape({}),
+  standardHeight: PropTypes.string,
 };
 
 ModalWrapper.defaultProps = {
@@ -61,6 +62,7 @@ ModalWrapper.defaultProps = {
   onCloseModal: null,
   widthConfig: {},
   heightConfig: {},
+  standardHeight: '',
 };
 
 export default withStyles(ModalWrapper, styles);

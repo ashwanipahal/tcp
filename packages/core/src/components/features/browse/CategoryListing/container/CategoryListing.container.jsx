@@ -38,8 +38,13 @@ export class CategoryListingContainer extends PureComponent {
       router: { asPath },
     } = this.props;
 
-    const categoryListingSlots =
-      (layouts[getCategoryName(asPath)] && layouts[getCategoryName(asPath)].slots) || [];
+    const categoryName =
+      getCategoryName(asPath) &&
+      getCategoryName(asPath).replace(/-([a-z])/g, g => {
+        return g && g[1] && g[1].toUpperCase();
+      });
+
+    const categoryListingSlots = (layouts[categoryName] && layouts[categoryName].slots) || [];
 
     const categoryIds = getCategoryIds(categoryListingSlots);
     const categoryPromoModules = getImagesGrids(categoryIds, Modules);

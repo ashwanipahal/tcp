@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, all, select, put } from 'redux-saga/effects';
-import moment from 'moment';
+import { format, differenceInMilliseconds } from 'date-fns';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
 import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { isCanada, sanitizeEntity } from '../../../../../utils/utils';
@@ -29,14 +29,13 @@ import {
 } from '../../Confirmation/container/Confirmation.actions';
 import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import CHECKOUT_ACTIONS from './Checkout.action';
+import CHECKOUT_ACTIONS, { getSetCheckoutStage } from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import {
   resetCouponReducer,
   getCouponList,
 } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 
-import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
@@ -61,10 +60,11 @@ function extractCouponInfo(personalizedOffersResponse) {
       /* istanbul ignore else */
       if (promotion) {
         const { categoryType: catType } = promotion;
-        const proStartDate = promotion.startDate;
-        startDate = proStartDate && moment(proStartDate).format('MMM Do, YYYY');
-        isPastStartDate = proStartDate && moment().diff(proStartDate) > 0; // check user browser date to server date
-        endDate = promotion.endDate && moment(promotion.endDate).format('MMM Do, YYYY');
+        const proStartDate = new Date(promotion.startDate);
+        startDate = promotion.startDate && format(proStartDate, 'MMM do, yyyy');
+        isPastStartDate =
+          promotion.startDate && differenceInMilliseconds(new Date(), proStartDate) > 0; // check user browser date to server date
+        endDate = promotion.endDate && format(new Date(promotion.endDate), 'MMM do, yyyy');
         categoryType = catType;
         description = promotion.shortDescription;
       }
@@ -361,10 +361,9 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     // const vendorId =
     //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
     yield put(getSetOrderProductDetails(cartItems));
-    yield put(CHECKOUT_ACTIONS.resetCheckoutReducer());
     yield put(resetAirmilesReducer());
     yield put(resetCouponReducer());
-    yield put(BagActions.resetCartReducer());
+    yield put(getSetCheckoutStage(constants.CHECKOUT_STAGES.CONFIRMATION));
     yield call(fetchCoupons, isCouponAppliedInOrder);
     // getProductsOperator(this.store).loadProductRecommendations(
     //   RECOMMENDATIONS_SECTIONS.CHECKOUT,

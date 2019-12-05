@@ -16,6 +16,7 @@ class CouponHelpModal extends React.PureComponent<Props> {
         heightConfig={{ height: '90%' }}
         closeIconDataLocator="helpmodalcrossicon"
         fixedWidth
+        contentLabel="Coupon Apply Help"
         customWrapperClassName={additionalClassNameModal}
       >
         <RichText richTextHtml={labels.NEED_HELP_RICH_TEXT} />

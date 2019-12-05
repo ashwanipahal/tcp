@@ -76,6 +76,9 @@ export default css`
   }
 
   .btn-list-color {
-    color: ${props => props.theme.colorPalette.text.primary};
+    color: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.white
+        : props.theme.colorPalette.text.primary};
   }
 `;

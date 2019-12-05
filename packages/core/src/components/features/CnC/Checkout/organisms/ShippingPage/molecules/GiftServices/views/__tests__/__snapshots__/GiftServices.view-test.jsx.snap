@@ -23,44 +23,40 @@ exports[`GiftServices component renders correctly 1`] = `
         <div
           className="checkbox-header"
         >
-          <Connect(Component)
-            name="Gift_Services"
-          >
-            <Field
-              className="giftServicesField"
-              component={
-                Object {
-                  "$$typeof": Symbol(react.forward_ref),
-                  "attrs": Array [],
-                  "componentStyle": ComponentStyle {
-                    "componentId": "sc-jTzLTM",
-                    "isStatic": false,
-                    "rules": Array [
-                      "
+          <Field
+            className="giftServicesField"
+            component={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-ifAKCX",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
   ",
-                      "
+                    "
   display: block;
   align-items: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
 
   & .CheckBox__input {
     flex: 0 0 auto;
     position: relative;
     top: 0;
     appearance: none;
-    outline: 0;
     border: 0;
     height: ",
-                      "25px",
-                      ";
+                    "25px",
+                    ";
     width: ",
-                      "25px",
-                      ";
+                    "25px",
+                    ";
     margin: 0;
     margin-right: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
     display: inline-block;
     vertical-align: top;
   }
@@ -72,31 +68,31 @@ exports[`GiftServices component renders correctly 1`] = `
     width: 100%;
     left: 0;
     border: 1px solid ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
   }
 
   & .CheckBox__input:checked:before {
     background: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
     border: 1px solid ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
   }
 
   & .CheckBox__input:checked:after {
     transform: rotate(225deg);
     content: '';
     border: 2px solid ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
     font-size: ",
-                      [Function],
-                      "px;
+                    [Function],
+                    "px;
     width: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
     height: 10px;
     border-right: 0;
     border-bottom: 0;
@@ -109,41 +105,41 @@ exports[`GiftServices component renders correctly 1`] = `
     width: calc(100% - 45px);
     display: inline-block;
     ",
-                      [Function],
-                      "
+                    [Function],
+                    "
   }
 
   & .CheckBox__text a {
     color: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
   }
 
   & .disabled {
     opacity: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
   }
 
   & .Checkbox__error {
     display: flex;
     flex-direction: row;
     padding-left: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
   }
   & .warning-icon {
     background: transparent url(",
-                      "/static/version-not-available/images/circle-alert-fill.svg",
-                      ") no-repeat 0 0;
+                    "/static/version-not-available/images/circle-alert-fill.svg",
+                    ") no-repeat 0 0;
     background-size: contain;
     border: none;
     height: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
     width: ",
-                      [Function],
-                      ";
+                    [Function],
+                    ";
     margin-right: 4px;
     margin-top: 2px;
   }
@@ -151,41 +147,40 @@ exports[`GiftServices component renders correctly 1`] = `
     margin-top: 4px;
   }
 ",
-                      ";
+                    ";
 ",
-                    ],
-                  },
-                  "displayName": "Styled(InputCheckbox)",
-                  "foldedComponentIds": Array [],
-                  "render": [Function],
-                  "styledComponentId": "sc-jTzLTM",
-                  "target": [Function],
-                  "toString": [Function],
-                  "warnTooManyClasses": [Function],
-                  "withComponent": [Function],
-                }
+                  ],
+                },
+                "displayName": "Styled(InputCheckbox)",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-ifAKCX",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
               }
-              dataLocator="gift-service"
-              enableSuccessCheck={false}
-              name="hasGiftWrapping"
-              onChange={[Function]}
+            }
+            dataLocator="gift-service"
+            enableSuccessCheck={false}
+            name="hasGiftWrapping"
+            onChange={[Function]}
+          >
+            <Styled(BodyCopy)
+              className="elem-mb-XXS"
+              color="text.primary"
+              component="p"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
             >
-              <Styled(BodyCopy)
-                className="elem-mb-XXS"
-                color="text.primary"
-                component="p"
-                fontFamily="secondary"
-                fontSize="fs16"
-                fontWeight="extrabold"
-                letterSpacing="normal"
-                lineHeight="normal"
-                link={null}
-                textAlign="left"
-              >
-                giftServices
-              </Styled(BodyCopy)>
-            </Field>
-          </Connect(Component)>
+              giftServices
+            </Styled(BodyCopy)>
+          </Field>
           <Styled(BodyCopy)
             className="giftServicesDetailsLink"
             color="text.primary"
@@ -257,7 +252,7 @@ exports[`GiftServices component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-EHOje",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -385,7 +380,7 @@ exports[`GiftServices component renders correctly 1`] = `
               "foldedComponentIds": Array [],
               "labeledRadioButtonCounter": 0,
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-EHOje",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -437,7 +432,7 @@ exports[`GiftServices component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-EHOje",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -565,7 +560,7 @@ exports[`GiftServices component renders correctly 1`] = `
               "foldedComponentIds": Array [],
               "labeledRadioButtonCounter": 0,
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-EHOje",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

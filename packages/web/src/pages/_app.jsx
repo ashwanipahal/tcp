@@ -197,7 +197,7 @@ class TCPWebApp extends App {
     };
   };
 
-  static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
+  static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
     const initialProps = pageProps;
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
@@ -317,8 +317,7 @@ class TCPWebApp extends App {
               {Component.pageInfo && Component.pageInfo.pageId
                 ? this.getSEOTags(Component.pageInfo.pageId, store, router)
                 : null}
-              <Header />
-              <CheckoutHeader />
+              {isNonCheckoutPage ? <Header /> : <CheckoutHeader />}
               <Loader />
               {/* Provider for global hotfixes object */}
               <HotfixBrowserContext.Provider value={global.TCP_HOTFIX_BROWSER || {}}>

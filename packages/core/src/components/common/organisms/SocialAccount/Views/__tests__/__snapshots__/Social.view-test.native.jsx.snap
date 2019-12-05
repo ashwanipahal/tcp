@@ -72,9 +72,9 @@ exports[`Social component should render with connected 1`] = `
       heading=" "
       horizontalBar={false}
       inheritedStyles=""
+      isOpen={true}
       isOverlay={false}
       onRequestClose={[Function]}
-      visible={true}
     >
       <Styled(BodyCopy)
         accessibilityText=""
@@ -308,9 +308,9 @@ exports[`Social component should renders correctly 1`] = `
       heading=" "
       horizontalBar={false}
       inheritedStyles=""
+      isOpen={true}
       isOverlay={false}
       onRequestClose={[Function]}
-      visible={true}
     >
       <Styled(BodyCopy)
         accessibilityText=""

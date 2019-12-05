@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BundleProductItemsVanilla should render correctly 1`] = `
-<Styled(View)
-  margins={null}
->
+<Styled(View)>
   <ModalNative
     childrenMargins="36px 0 0 0"
     closeIconDataLocator=""
@@ -25,7 +23,6 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
     isOverlay={true}
     margins={null}
     modalHeadingMargin="24px 0 0 0"
-    noscroll={true}
     onRequestClose={[Function]}
     stickyCloseIcon={true}
     stickyHeader={true}

@@ -72,7 +72,7 @@ export const updateAddress = args => {
     state: args.state,
     zipCode: args.zip,
     xcont_addressField2: args.isCommercialAddress ? '2' : '1',
-    email1: args.email,
+    email1: args.email || args.emailAddress,
     xcont_addressField3: args.zip,
     fromPage: args.applyToOrder ? 'checkout' : '',
   };

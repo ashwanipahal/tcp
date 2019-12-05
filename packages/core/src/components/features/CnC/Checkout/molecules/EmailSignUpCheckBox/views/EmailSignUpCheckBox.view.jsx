@@ -46,7 +46,7 @@ class EmailSignUpCheckBox extends React.PureComponent {
             <div className="email-checkbox-list">
               <Field
                 dataLocator="signUp-checkbox-field"
-                name={fieldName}
+                name={`${fieldName}TCP`}
                 component={InputCheckbox}
                 className="email-signup-tcp"
                 defaultChecked={emailSignUpTCP}

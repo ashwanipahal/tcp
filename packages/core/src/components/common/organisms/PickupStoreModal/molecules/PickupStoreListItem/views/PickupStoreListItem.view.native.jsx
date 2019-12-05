@@ -267,6 +267,13 @@ class PickupStoreListItem extends React.Component {
     buttonLabel: PropTypes.string.isRequired,
     onStoreUpdate: PropTypes.func.isRequired,
     updateCartItemStore: PropTypes.bool.isRequired,
+    setFavoriteStore: PropTypes.func,
+    getDefaultStore: PropTypes.func,
+  };
+
+  static defaultProps = {
+    setFavoriteStore: () => {},
+    getDefaultStore: () => {},
   };
 
   constructor(props) {

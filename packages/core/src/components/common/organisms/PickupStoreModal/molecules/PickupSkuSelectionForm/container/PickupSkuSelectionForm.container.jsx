@@ -84,6 +84,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
       prices,
       currencyAttributes,
       toastMessage,
+      updateAppTypeHandler,
     } = this.props;
     const { currentColorEntry, selectedColor } = this.state;
 
@@ -128,6 +129,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
         currencyAttributes={currencyAttributes}
         initialValues={this.formValues}
         toastMessage={toastMessage}
+        updateAppTypeHandler={updateAppTypeHandler}
       />
     );
   }
@@ -199,6 +201,7 @@ PickupSkuSelectionFormContainer.propTypes = {
 
   onCloseClick: PropTypes.func,
   toastMessage: PropTypes.func,
+  updateAppTypeHandler: PropTypes.func.isRequired,
 };
 
 PickupSkuSelectionFormContainer.defaultProps = {

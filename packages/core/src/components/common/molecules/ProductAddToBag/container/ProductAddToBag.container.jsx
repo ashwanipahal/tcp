@@ -3,6 +3,11 @@ import React from 'react';
 import { change } from 'redux-form';
 import { connect } from 'react-redux';
 import ProductAddToBag from '../views/ProductAddToBag.view';
+import {
+  getPageName,
+  getPageSection,
+  getPageSubSection,
+} from '../../../organisms/PickupStoreModal/molecules/PickupStoreSelectionForm/container/PickupStoreSelectionForm.selectors';
 
 /**
  * This class is a container of Product Add to bag view
@@ -143,6 +148,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     );
   };
 
+  // eslint-disable-next-line complexity
   getInitialAddToBagFormValues = (currentProduct, selectedColorProductId, nextProps) => {
     const colorFitsSizesMapEntry = currentProduct
       ? this.getMapSliceForColorProductId(
@@ -154,9 +160,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     this.initialColorFitsSizesMapEntry = colorFitsSizesMapEntry;
     let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
 
-    const { fromBagPage } = this.props;
+    const { fromBagPage, isFavoriteEdit } = this.props;
 
-    if (fromBagPage) {
+    if (fromBagPage || isFavoriteEdit) {
       const { productInfoFromBag } = this.props;
       initialFormValues = {
         color: productInfoFromBag.selectedColor,
@@ -168,7 +174,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return {
       color: {
-        name: this.getColor(),
+        name: this.getColor(colorFitsSizesMapEntry),
       },
       Fit:
         colorFitsSizesMapEntry && colorFitsSizesMapEntry.hasFits
@@ -444,8 +450,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   quickViewPickup = () => {
-    const { isPickup, isMultiItemQVModal, isBundleProduct } = this.props;
-    return !isPickup && !isBundleProduct && !isMultiItemQVModal;
+    const { isPickup, isMultiItemQVModal, isBundleProduct, isFavoriteEdit } = this.props;
+    const isQuickViewPickup = !isPickup && !isBundleProduct && !isMultiItemQVModal;
+    if (isFavoriteEdit) {
+      return isFavoriteEdit && !isFavoriteEdit;
+    }
+    return isQuickViewPickup;
   };
 
   /**
@@ -483,8 +493,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isBundleProduct,
       outOfStockLabels,
       isKeepAliveEnabled,
+      isFavoriteEdit,
       sizeChartDetails,
       isMultiItemQVModal,
+      pageNameProp,
+      pageSectionProp,
+      pageSubSectionProp,
       ...otherProps
     } = this.props;
     const {
@@ -554,16 +568,28 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         isBundleProduct={isBundleProduct}
         keepAlive={isKeepAliveEnabled && keepAlive}
         outOfStockLabels={outOfStockLabels}
+        isFavoriteEdit={isFavoriteEdit}
         sizeChartDetails={sizeChartDetails}
         isMultiItemQVModal={isMultiItemQVModal}
         quickViewPickup={this.quickViewPickup}
+        pageNameProp={pageNameProp}
+        pageSectionProp={pageSectionProp}
+        pageSubSectionProp={pageSubSectionProp}
       />
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    pageNameProp: getPageName(state),
+    pageSectionProp: getPageSection(state),
+    pageSubSectionProp: getPageSubSection(state),
+  };
+}
+
 /* Export container */
 
-export default connect()(ProductAddToBagContainer);
+export default connect(mapStateToProps)(ProductAddToBagContainer);
 
 export { ProductAddToBagContainer as ProductAddToBagContainerVanilla };

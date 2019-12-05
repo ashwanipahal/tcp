@@ -5,7 +5,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   <Styled(Heading)
     className="contactFormTitle"
     color="text.primary"
-    component={null}
+    component="h2"
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
@@ -1696,6 +1696,21 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
         name="altPhoneNumber"
         placeholder="alternate phone"
       />
+      <Styled(BodyCopy)
+        className="columnWrapper plcc_min_phone"
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs10"
+        fontWeight="regular"
+        id="plcc_min_phone"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        min phone
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1879,20 +1894,5 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(BodyCopy)
-    className="columnWrapper plcc_min_phone"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs10"
-    fontWeight="regular"
-    id="plcc_min_phone"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    min phone
-  </Styled(BodyCopy)>
 </styled.div>
 `;

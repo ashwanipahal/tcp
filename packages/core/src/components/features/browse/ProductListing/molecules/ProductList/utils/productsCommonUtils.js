@@ -131,9 +131,9 @@ export function getMapSliceForColorProductId(colorFitsSizesMap, colorProductId) 
 export function getMapSliceForSizeSkuID(colorProduct, size) {
   let skuId;
   if (colorProduct && colorProduct.fits && Array.isArray(colorProduct.fits)) {
-    for (let i = 0; i < colorProduct.fits.length; i++) {
+    for (let i = 0; i < colorProduct.fits.length; i += 1) {
       const fitsMap = colorProduct.fits[i];
-      for (let j = 0; j < fitsMap.sizes.length; j++) {
+      for (let j = 0; j < fitsMap.sizes.length; j += 1) {
         const sizesMap = fitsMap.sizes[j];
         if (sizesMap.sizeName === size) {
           skuId = sizesMap;

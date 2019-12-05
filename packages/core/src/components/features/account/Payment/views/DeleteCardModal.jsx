@@ -133,6 +133,7 @@ class DeleteCardModal extends React.Component {
         className={`TCPModal__Content, ${className}`}
         widthConfig={{ small: '100%', medium: '546px', large: '690px' }}
         minHeight="340px"
+        contentLabel={getLabelValue(labels, 'lbl_payment_errorMsg', 'paymentGC')}
       >
         {showUpdatedNotificationOnModal && (
           <Notification

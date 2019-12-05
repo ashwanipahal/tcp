@@ -56,7 +56,9 @@ const mapConfig = ({ storesList, centeredStore, defaultZoom, centeredStoreId }) 
   return config;
 };
 
-const renderForMobileApp = mapImageUrl => <Image url={mapImageUrl} height="400px" width="100%" />;
+const renderForMobileApp = mapImageUrl => (
+  <Image url={mapImageUrl} alt="" height="400px" width="100%" />
+);
 
 /**
  *
@@ -69,7 +71,15 @@ const renderForMobileApp = mapImageUrl => <Image url={mapImageUrl} height="400px
  * @param {string} props.apiKey - google api key
  */
 const StoreStaticMap = props => {
-  const { storesList, centeredStoreId, defaultZoom, isCanada, isMobile, apiKey } = props;
+  const {
+    storesList,
+    centeredStoreId,
+    defaultZoom,
+    isCanada,
+    isMobile,
+    apiKey,
+    onImageLoad,
+  } = props;
   const mapSize = constants.MAP_DIMENSION_ON_LOAD[isMobile || isMobileApp() ? 'mobile' : 'desktop'];
   const [mapUpdatedSize, setMapUpdateSize] = useState(mapSize);
   const [imageLoaded, setImageLoadingState] = useState(false);
@@ -99,6 +109,7 @@ const StoreStaticMap = props => {
       resizeMapOnClientWidth();
     }
   });
+
   const centeredStore =
     storesList && storesList.find(store => store.basicInfo.id === centeredStoreId);
   let coordinates = isCanada ? constants.MAP_DEFAULT_LAT_LNG_CA : constants.MAP_DEFAULT_LAT_LNG_US;
@@ -106,7 +117,7 @@ const StoreStaticMap = props => {
   const googleApiKey = apiKey;
   let markers = '';
 
-  if (storesList && storesList.length > 0) {
+  if (storesList.length > 0) {
     const { mapCoordinates, mapZoomLevel, mapMarkers } = mapConfig({
       storesList,
       centeredStore,
@@ -130,7 +141,9 @@ const StoreStaticMap = props => {
     renderForMobileApp(staticmapUrl)
   ) : (
     <div ref={refMapContainer} className="google-map">
-      {imageLoaded ? <Image url={staticmapUrl} alt="Google Map" title="Stores" /> : null}
+      {imageLoaded ? (
+        <Image url={staticmapUrl} alt="Google Map" title="Stores" onLoad={onImageLoad} />
+      ) : null}
     </div>
   );
 };
@@ -142,6 +155,7 @@ StoreStaticMap.propTypes = {
   isCanada: PropTypes.bool,
   isMobile: PropTypes.bool,
   apiKey: PropTypes.string.isRequired,
+  onImageLoad: PropTypes.func,
 };
 
 StoreStaticMap.defaultProps = {
@@ -150,6 +164,7 @@ StoreStaticMap.defaultProps = {
   defaultZoom: '',
   isMobile: false,
   isCanada: false,
+  onImageLoad() {},
 };
 
 export default StoreStaticMap;

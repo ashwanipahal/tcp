@@ -28,7 +28,7 @@ export function* getUserInfoSaga() {
       source: 'login',
     });
     const siteId = getSiteId();
-    const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
+    const { CA_CONFIG_OPTIONS: apiConfig, siteIds } = API_CONFIG;
     const { country, currency, language, bossBopisFlags } = response;
     const dataSetActions = [];
     const [us, ca] = defaultCountries;
@@ -39,6 +39,7 @@ export function* getUserInfoSaga() {
     }
 
     dataSetActions.push(
+      put(setCurrency({ currency })),
       put(setUserInfo(response)),
       put(setAddressList(response.contactList, true)),
       put(setBossBopisFlags(bossBopisFlags)),
@@ -83,7 +84,7 @@ export function* getUserInfoSaga() {
       yield put(setLanguage(language));
     }
 
-    if (country === sites.ca.toUpperCase() && siteId !== apiConfig.siteId) {
+    if (!isMobileApp() && country === siteIds.ca.toUpperCase() && siteId !== apiConfig.siteId) {
       routerPush(window.location, '/home', null, siteId);
     }
   } catch (err) {

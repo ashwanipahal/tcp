@@ -259,7 +259,7 @@ export default css`
 
     .stacked-button,
     .scroll-button {
-      min-width: 210px;
+      min-width: ${props => (props.buttonsData.length === 6 ? '198px' : '210px')};
       margin: 0 15px;
     }
 
@@ -303,6 +303,10 @@ export default css`
     &.wrapped-button-text .stacked-button,
     &.wrapped-button-text .scroll-button {
       margin: 0 15px;
+      .cta-button-text,
+      button {
+        width: ${props => (props.buttonsData.length === 6 ? '198px' : '')};
+      }
     }
     &.is-desktop-visible {
       display: block;

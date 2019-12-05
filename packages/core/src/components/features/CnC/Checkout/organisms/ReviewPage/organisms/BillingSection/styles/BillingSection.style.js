@@ -88,4 +88,20 @@ export default css`
     width: 30px;
     top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .cardImage-card-number {
+      width: 100%;
+      padding: 0px;
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.small} {
+    .cardImage-card-number {
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
+    }
+  }
 `;

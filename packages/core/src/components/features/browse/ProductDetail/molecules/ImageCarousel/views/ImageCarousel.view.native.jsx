@@ -77,7 +77,7 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { onAddItemToFavorites, skuId, currentColorEntry, isLoggedIn } = props;
+    const { onAddItemToFavorites, skuId, currentColorEntry, isLoggedIn, formName } = props;
     const { colorProductId } = currentColorEntry;
     const { productId, showModal } = state;
     if (isLoggedIn && showModal) {
@@ -86,6 +86,7 @@ class ImageCarousel extends React.PureComponent {
           colorProductId: productId,
           productSkuId: (skuId && skuId.skuId) || null,
           pdpColorProductId: colorProductId,
+          formName,
           page: 'PDP',
         });
       }
@@ -100,7 +101,7 @@ class ImageCarousel extends React.PureComponent {
   };
 
   onFavorite = productId => {
-    const { isLoggedIn, onAddItemToFavorites, skuId, currentColorEntry } = this.props;
+    const { isLoggedIn, onAddItemToFavorites, skuId, currentColorEntry, formName } = this.props;
     const { colorProductId } = currentColorEntry;
 
     if (!isLoggedIn) {
@@ -111,6 +112,7 @@ class ImageCarousel extends React.PureComponent {
         colorProductId: productId,
         productSkuId: (skuId && skuId.skuId) || null,
         pdpColorProductId: colorProductId,
+        formName,
         page: 'PDP',
       });
     }
@@ -192,7 +194,7 @@ class ImageCarousel extends React.PureComponent {
 
   renderFavoriteIcon = () => {
     const { currentColorEntry, isBundleProduct, currentProduct } = this.props;
-    const { favoritedCount, colorProductId, isFavorite, miscInfo } = currentColorEntry;
+    const { favoritedCount, isFavorite, miscInfo } = currentColorEntry;
     const { productId } = currentProduct;
     if (!isBundleProduct) {
       return (
@@ -331,9 +333,11 @@ ImageCarousel.propTypes = {
   currentColorEntry: PropTypes.string,
   isBundleProduct: PropTypes.bool,
   keepAlive: PropTypes.bool,
+  skuId: PropTypes.string,
   outOfStockLabels: PropTypes.shape({
     outOfStockCaps: PropTypes.string,
   }),
+  formName: PropTypes.string,
 };
 
 ImageCarousel.defaultProps = {
@@ -351,6 +355,8 @@ ImageCarousel.defaultProps = {
   outOfStockLabels: {
     outOfStockCaps: '',
   },
+  skuId: '',
+  formName: '',
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

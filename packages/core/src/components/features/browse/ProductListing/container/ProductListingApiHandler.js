@@ -43,6 +43,7 @@ export const fetchPlpProductsInfo = async ({
   let modules;
   let res = {};
   let pageName;
+  let isBucketing = false;
   if (!getListingPageType(navigationData, location.pathname)) {
     reqObj = operatorInstance.getProductListingBucketedData(
       { ...state, Navigation: { navigationData } },
@@ -64,6 +65,7 @@ export const fetchPlpProductsInfo = async ({
         { ...state, Navigation: { navigationData } },
         reqObj
       );
+      isBucketing = true;
     }
     if (reqObj.categoryId) {
       const plpProducts = await instanceProductListing.getProducts(
@@ -71,9 +73,11 @@ export const fetchPlpProductsInfo = async ({
         { ...state, Navigation: { navigationData } }
       );
       if (plpProducts) {
-        ({ layout, modules } = await instanceProductListing.parsedModuleData(
-          plpProducts.bannerInfo
-        ));
+        if (!isBucketing) {
+          ({ layout, modules } = await instanceProductListing.parsedModuleData(
+            plpProducts.bannerInfo
+          ));
+        }
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
         if (isCustomInfo({ ...state, Navigation: { navigationData } })) {
