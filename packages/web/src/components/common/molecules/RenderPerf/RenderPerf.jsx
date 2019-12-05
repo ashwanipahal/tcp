@@ -2,9 +2,11 @@
 import React from 'react';
 import { string } from 'prop-types';
 import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
+import { isMobileApp } from '@tcp/core/src/utils';
 import { usePerfMark, usePerfMeasure } from '../../../../hooks/performance';
 
-const isEnabled = Boolean(process.env.PERF_TIMING);
+const isWeb = !isMobileApp();
+const isEnabled = Boolean(process.env.PERF_TIMING) && isWeb;
 
 function ServerOnlyScript({ children, ...props }) {
   // This may be unnecessary since react-dom will not execute the contents.
