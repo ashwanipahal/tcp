@@ -135,9 +135,11 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={true}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source=""
             thirdPartyCookiesEnabled={false}
           />

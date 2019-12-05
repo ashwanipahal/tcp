@@ -47,9 +47,11 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -62,9 +64,11 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -144,9 +148,11 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -160,9 +166,11 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": "abc",
@@ -278,9 +286,11 @@ exports[`ApplicationInProgress component should renders correctly while having n
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -293,9 +303,11 @@ exports[`ApplicationInProgress component should renders correctly while having n
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": "xyz",

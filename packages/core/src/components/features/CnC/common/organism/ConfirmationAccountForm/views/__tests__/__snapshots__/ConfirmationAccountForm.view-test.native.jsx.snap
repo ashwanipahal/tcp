@@ -236,9 +236,11 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": " ",
@@ -572,9 +574,11 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": " ",
@@ -1115,9 +1119,11 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": " ",
@@ -1676,9 +1682,11 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": " ",
@@ -2016,9 +2024,11 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": " ",

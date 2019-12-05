@@ -173,9 +173,11 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": Object {},
@@ -323,9 +325,11 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": "congrats msg",
@@ -384,9 +388,11 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": "opt out msg",
@@ -431,9 +437,11 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": Object {},
@@ -511,9 +519,11 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
           <RichText
             actionHandler={[Function]}
             domStorageEnabled={false}
+            injectedJavaScript=""
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
+            onMessage={[Function]}
             source={
               Object {
                 "html": undefined,

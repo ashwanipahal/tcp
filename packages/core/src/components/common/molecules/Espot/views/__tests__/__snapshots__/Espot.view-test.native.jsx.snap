@@ -5,9 +5,11 @@ exports[`Espot component should renders correctly 1`] = `
   <RichText
     actionHandler={[Function]}
     domStorageEnabled={false}
+    injectedJavaScript=""
     isApplyDeviceHeight={false}
     isNativeView={true}
     javaScriptEnabled={false}
+    onMessage={[Function]}
     source="<b>test</b>"
     thirdPartyCookiesEnabled={false}
   />

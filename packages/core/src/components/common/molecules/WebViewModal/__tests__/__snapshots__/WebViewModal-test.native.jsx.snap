@@ -16,9 +16,11 @@ exports[`WebViewModal component WebViewModal component renders correctly without
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source=""
       thirdPartyCookiesEnabled={false}
     />

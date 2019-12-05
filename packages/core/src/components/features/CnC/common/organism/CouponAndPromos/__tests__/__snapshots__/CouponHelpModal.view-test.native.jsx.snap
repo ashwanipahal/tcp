@@ -20,9 +20,11 @@ exports[`Help Coupon Modal should call correctly 1`] = `
   <RichText
     actionHandler={[Function]}
     domStorageEnabled={false}
+    injectedJavaScript=""
     isApplyDeviceHeight={true}
     isNativeView={false}
     javaScriptEnabled={false}
+    onMessage={[Function]}
     source={
       Object {
         "html": undefined,

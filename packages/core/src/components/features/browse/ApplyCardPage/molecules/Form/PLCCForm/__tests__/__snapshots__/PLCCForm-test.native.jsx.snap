@@ -21,9 +21,11 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
+        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
+        onMessage={[Function]}
         source={
           Object {
             "html": undefined,
@@ -1001,9 +1003,11 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -1688,9 +1692,11 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -1705,9 +1711,11 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -1738,9 +1746,11 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
@@ -1829,9 +1839,11 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
+        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
+        onMessage={[Function]}
         source={
           Object {
             "html": undefined,
@@ -2787,9 +2799,11 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -3474,9 +3488,11 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -3491,9 +3507,11 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -3524,9 +3542,11 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
@@ -3615,9 +3635,11 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
+        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
+        onMessage={[Function]}
         source={
           Object {
             "html": undefined,
@@ -4595,9 +4617,11 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -5282,9 +5306,11 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -5299,9 +5325,11 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -5332,9 +5360,11 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
@@ -5423,9 +5453,11 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
+        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
+        onMessage={[Function]}
         source={
           Object {
             "html": undefined,
@@ -6432,9 +6464,11 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -7119,9 +7153,11 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -7136,9 +7172,11 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -7169,9 +7207,11 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",

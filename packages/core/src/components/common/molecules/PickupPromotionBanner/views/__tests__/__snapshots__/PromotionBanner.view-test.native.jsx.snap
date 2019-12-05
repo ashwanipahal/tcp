@@ -6,9 +6,11 @@ exports[`ProductAddToBagVanilla should render correctly should call modifiedBann
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": "PICK UP IN STORE AND SAVE AN EXTRA 5%",
@@ -28,9 +30,11 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
+        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
+        onMessage={[Function]}
         source={
           Object {
             "html": "EXTRA 5% OFF",

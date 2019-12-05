@@ -5,15 +5,20 @@ exports[`RichText should render correctly 1`] = `
   actionHandler={[Function]}
   cacheEnabled={true}
   domStorageEnabled={false}
-  isApplyDeviceHeight={false}
+  injectedJavaScript=""
   isNativeView={false}
   javaScriptEnabled={false}
+  onMessage={[Function]}
   originWhitelist={
     Array [
       "*",
     ]
   }
-  source="<div><p>Hello <b>World</b></p><br /><img source=\\"/\\" /></div>"
+  source={
+    Object {
+      "html": undefined,
+    }
+  }
   style={
     Object {
       "backgroundColor": "transparent",

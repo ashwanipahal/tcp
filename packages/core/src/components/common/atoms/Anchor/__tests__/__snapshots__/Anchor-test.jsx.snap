@@ -11,6 +11,7 @@ exports[`Anchor component renders correctly 1`] = `
     className="sample-anchor"
     data-locator=""
     href="/undefined"
+    onClick={[Function]}
     target="_self"
     title=""
   >

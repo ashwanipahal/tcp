@@ -125,9 +125,11 @@ exports[`SMSNotificationsVanilla should render correctly with props 1`] = `
       actionHandler={[Function]}
       dataLocator="success-message"
       domStorageEnabled={false}
+      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": "",
