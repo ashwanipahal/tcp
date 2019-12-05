@@ -101,7 +101,6 @@ export const RenderView = props => {
   return children ? (
     <StyledView>
       {children.map(child => {
-        console.log(child.type.name);
         switch (child.type.name) {
           case 'Text':
             return RenderText(child.props, className);
