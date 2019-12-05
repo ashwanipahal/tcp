@@ -37,6 +37,7 @@ class ProductAltImages extends React.PureComponent {
     isSoldOut: PropTypes.bool,
     soldOutLabel: PropTypes.string,
     isProductBrandOfSameDomain: PropTypes.bool,
+    itemBrand: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
