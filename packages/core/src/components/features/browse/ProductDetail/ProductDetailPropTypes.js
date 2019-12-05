@@ -1,0 +1,38 @@
+import PropTypes from 'prop-types';
+
+export default {
+  currentProduct: PropTypes.shape({
+    colorFitsSizesMap: PropTypes.shape({}),
+    offerPrice: PropTypes.string,
+    listPrice: PropTypes.string,
+    generalProductId: PropTypes.string,
+    imagesByColor: PropTypes.shape({}),
+    isGiftCard: PropTypes.bool,
+  }),
+  navigation: PropTypes.shape({}),
+  selectedColorProductId: PropTypes.number.isRequired,
+  clearAddToBagError: PropTypes.func.isRequired,
+  plpLabels: PropTypes.shape({}),
+  handleSubmit: PropTypes.func,
+  isPickupModalOpen: PropTypes.bool,
+  handleFormSubmit: PropTypes.func,
+  addToBagError: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
+  longDescription: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
+  currency: PropTypes.string,
+  currencyExchange: PropTypes.number,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  alternateSizes: PropTypes.shape({
+    key: PropTypes.string,
+  }),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
+  toastMessage: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
+  middlePromos: PropTypes.string,
+  bottomPromos: PropTypes.string,
+};
