@@ -35,6 +35,7 @@ describe('GiftServices component', () => {
     cartOrderItems: [{}],
     setClickAnalyticsDataGC: jest.fn(),
     dispatch: jest.fn(),
+    handleAnalytics: jest.fn(),
   };
 
   it('renders correctly', () => {

@@ -19,7 +19,6 @@ export {
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,
-  siteRedirect,
   languageRedirect,
   getAsPathWithSlug,
   getMappedPageHref,
@@ -42,6 +41,7 @@ export {
   createLayoutPath,
   internalCampaignProductAnalyticsList,
   getQueryParamsFromUrl,
+  getProductListingPageTrackData,
 } from './utils.web';
 
 export {

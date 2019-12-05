@@ -16,6 +16,7 @@ const renderText = (headerText, bodyText) => {
         {headerText}
       </BodyCopy>
       <BodyCopy
+        margin="0 0 12px 0"
         className="no-favorite-text"
         fontFamily="secondary"
         fontSize="fs16"

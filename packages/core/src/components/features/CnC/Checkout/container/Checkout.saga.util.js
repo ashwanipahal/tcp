@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
 import {
@@ -16,6 +17,7 @@ import {
   updateRTPSData,
   getServerErrorMessage,
   acceptOrDeclinePreScreenOffer,
+  getGiftWrappingOptions,
 } from '../../../../../services/abstractors/CnC/index';
 // eslint-disable-next-line
 import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
@@ -35,6 +37,7 @@ import CHECKOUT_ACTIONS, {
   setSmsNumberForUpdates,
   getSetCheckoutStage,
   toggleCheckoutRouting,
+  getSetGiftWrapOptionsActn,
 } from './Checkout.action';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
@@ -45,6 +48,7 @@ import {
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
+import { getGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
 
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
@@ -288,9 +292,8 @@ export function* addOrEditGuestUserAddress({
       },
       {}
     );
+    addOrEditAddressRes = { payload: addOrEditAddressRes };
   }
-  addOrEditAddressRes = { payload: addOrEditAddressRes };
-
   return addOrEditAddressRes;
 }
 
@@ -345,7 +348,10 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoI
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
-  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const isExpress = yield select(isExpressCheckout);
+  // For Venmo, express checkout fromPage flag is returning plcc eligibility as false.
+  // So, updating to process as normal fromPage for Venmo
+  const isExpressCheckoutEnabled = isVenmoInProgress ? false : isExpress;
   if (pageName === BILLING && showRTPSOnBilling) {
     yield call(updateUserRTPSData, {
       prescreen: true,
@@ -354,7 +360,7 @@ export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack, isVenmoI
     });
   } else if (
     showRTPSOnReview &&
-    (isPaypalPostBack || isVenmoInProgress || isExpressCheckoutEnabled) &&
+    (isPaypalPostBack || isVenmoInProgress || isExpress) &&
     pageName === REVIEW
   ) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
@@ -447,4 +453,18 @@ export function* redirectFromExpress() {
     return utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
   }
   return yield put(getSetCheckoutStage(constants.SHIPPING_DEFAULT_PARAM));
+}
+
+export function* getGiftWrapOptionsData() {
+  const giftWrap = yield select(getGiftWrapOptions);
+  if (!giftWrap) {
+    try {
+      const res = yield call(getGiftWrappingOptions);
+      yield put(getSetGiftWrapOptionsActn(res));
+    } catch (e) {
+      // logErrorAndServerThrow(store, 'CheckoutOperator.loadGiftWrappingOptions', e);
+      // throw e;
+      logger.error(e);
+    }
+  }
 }

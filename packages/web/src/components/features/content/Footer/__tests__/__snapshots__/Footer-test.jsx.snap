@@ -17,6 +17,8 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
       isNavigationFooter={false}
       legalLinks={Array []}
       navLinks={Array []}
+      openEmailSignUpModal={[Function]}
+      openSmsSignUpModal={[Function]}
       pageName=""
       referenceID=""
     />
@@ -154,6 +156,8 @@ exports[`Footer component Footer component renders correctly without props 1`] =
       isNavigationFooter={false}
       legalLinks={Array []}
       navLinks={Array []}
+      openEmailSignUpModal={[Function]}
+      openSmsSignUpModal={[Function]}
       pageName=""
       referenceID=""
     />

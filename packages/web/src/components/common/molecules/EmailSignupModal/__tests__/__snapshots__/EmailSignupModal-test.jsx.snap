@@ -102,11 +102,11 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       closeModal={[Function]}
       formType="email_signup"
       formViewConfig={Object {}}
-      isEmailValid="invalid"
+      isEmailValid="valid"
       isModalOpen={true}
       isSubscriptionValid={
         Object {
-          "success": true,
+          "success": false,
         }
       }
       reset={[Function]}
@@ -117,16 +117,16 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
 </Fragment>
 `;
 
-exports[`EmailSignupModal component renders correctly when button is clicked 2`] = `
+exports[`EmailSignupModal component renders correctly when button is clicked and show confirmation view 1`] = `
 <Fragment>
   <Styled(Modal)
     aria={
       Object {
-        "describedby": "sign-up-modal-form-intro-view",
+        "describedby": "sign-up-modal-confirm-view",
       }
     }
     className=""
-    closeIconDataLocator="email_signup_modal_close_btn"
+    closeIconDataLocator="thank_you_modal_close_btn"
     colSet={
       Object {
         "large": 8,
@@ -161,15 +161,14 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       closeModal={[Function]}
       formType="email_signup"
       formViewConfig={Object {}}
-      isEmailValid="valid"
+      isEmailValid="invalid"
       isModalOpen={true}
-      isSubscriptionValid={
+      reset={[Function]}
+      subscription={
         Object {
-          "success": false,
+          "success": true,
         }
       }
-      reset={[Function]}
-      subscription={Object {}}
       trackSubscriptionSuccess={[Function]}
     />
   </Styled(Modal)>

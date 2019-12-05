@@ -3,6 +3,7 @@
 exports[`ProductDetailView component should renders correctly 1`] = `
 <ScrollViewMock
   name="lazyload-pdp"
+  onScroll={[Function]}
 >
   <Styled(View)>
     <Styled(View)>
@@ -27,6 +28,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
             "shortDescription": "",
           }
         }
+        formName="ProductAddToBag"
         imageUrls={null}
         isLoggedIn={false}
         keepAlive={false}
@@ -128,6 +130,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         longDescription=""
         margins={null}
         pdpLabels={Object {}}
+        scrollToAccordionBottom={[Function]}
         shortDescription=""
       />
       <View>
@@ -156,7 +159,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
           variation="moduleO"
         />
       </Styled(View)>
-      <View>
+      <View
+        collapsable={false}
+      >
         <Connect(ProductReviews)
           expanded={true}
           reviewsCount={3}

@@ -189,6 +189,9 @@ const ShippingForm = ({
         onBackLinkPress={() => setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)}
         pageCategory="shippingPage"
         showAccordian
+        bagLoading={bagLoading}
+        pageName="checkout"
+        pageSection="shipping"
       />
     </>
   );
@@ -262,6 +265,7 @@ export default reduxForm({
   form: 'checkoutShipping',
   ...validateMethod, // a unique identifier for this form
   destroyOnUnmount: false,
+  shouldValidate: () => true,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true,
 })(ShippingForm);

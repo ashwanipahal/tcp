@@ -41,9 +41,9 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
         "small": true,
       }
     }
-    key="addressOverviewTile"
+    key="myPlaceRewardsOverviewTile"
   >
-    <Connect(AddressOverviewTile) />
+    <Connect(MyPlaceRewardsOverviewTile) />
   </Styled(Col)>
   <Styled(Col)
     className="overviewCol elem-mb-XL"
@@ -81,9 +81,9 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
         "small": true,
       }
     }
-    key="paymentOverviewTile"
+    key="myWalletTile"
   >
-    <Connect(PaymentOverviewTile) />
+    <Connect(MyWalletTile) />
   </Styled(Col)>
   <Styled(Col)
     className="overviewCol elem-mb-XL"
@@ -101,9 +101,9 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
         "small": true,
       }
     }
-    key="myPlaceRewardsOverviewTile"
+    key="ordersTile"
   >
-    <Connect(MyPlaceRewardsOverviewTile) />
+    <Connect(OrdersTile) />
   </Styled(Col)>
   <Styled(Col)
     className="overviewCol elem-mb-XL"
@@ -141,9 +141,9 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
         "small": true,
       }
     }
-    key="myWalletTile"
+    key="myPreferencesTile"
   >
-    <Connect(MyWalletTile) />
+    <Connect(MyPreferencesTile) />
   </Styled(Col)>
   <Styled(Col)
     className="overviewCol elem-mb-XL"
@@ -161,9 +161,9 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
         "small": true,
       }
     }
-    key="ordersTile"
+    key="addressOverviewTile"
   >
-    <Connect(OrdersTile) />
+    <Connect(AddressOverviewTile) />
   </Styled(Col)>
   <Styled(Col)
     className="overviewCol elem-mb-XL"
@@ -181,9 +181,9 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
         "small": true,
       }
     }
-    key="myPreferencesTile"
+    key="paymentOverviewTile"
   >
-    <Connect(MyPreferencesTile) />
+    <Connect(PaymentOverviewTile) />
   </Styled(Col)>
 </Styled(Row)>
 `;

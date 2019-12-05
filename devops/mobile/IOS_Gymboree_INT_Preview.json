@@ -348,6 +348,26 @@
     {
       "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
       "value": "true"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_TCP",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_KEY_GYM",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_URL",
+      "value": "https://stg.api.bazaarvoice.com"
+    },
+    {
+      "name": "RWD_APP_BV_WEB_VIEW_URL",
+      "value": "https://test5.gymboree.com/static/bazaarVoice/index.html"
+    },
+    {
+      "name": "RWD_APP_BV_SHARED_KEY",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -363,7 +383,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "228981af-576c-4457-a21b-8a2caf5a9cce"
+        "f3d3256d-5487-465b-a56e-18bb8a33d74a"
       ],
       "isSilent": false
     },
@@ -376,8 +396,8 @@
       "certificatePassword": "__protected__",
       "certificateFilename": "Dist-Certificates.p12",
       "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
-      "certificateFileId": "4a99762d-6cfa-49c4-bbb2-4ae66abf5ed8",
-      "provisioningProfileFileId": "e880b7bf-3a12-455e-98cf-d8226f597d48",
+      "certificateFileId": "947ca184-cfe9-4d29-b6d2-c5e6b9b87c70",
+      "provisioningProfileFileId": "947ad9b8-a1e6-4916-a6bd-be13b70b5a7a",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "gymboree_preview",

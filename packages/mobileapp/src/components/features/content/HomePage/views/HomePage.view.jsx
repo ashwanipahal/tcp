@@ -1,11 +1,6 @@
-// @flow
 import React from 'react';
 import { ScrollView, Linking, View } from 'react-native';
-// import { Box, Text } from '@fabulas/astly';
-// import {LazyloadScrollView} from 'react-native-lazyload-deux';
-
 import queryString from 'query-string';
-
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import {
   LAZYLOAD_HOST_NAME,
@@ -33,8 +28,8 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
+import ModuleX from '@tcp/core/src/components/common/molecules/ModuleX';
 import LocationAccessPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
-// import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
@@ -65,6 +60,7 @@ const modulesMap = {
   moduleT: ModuleT,
   moduleE: ModuleE,
   moduleG: ModuleG,
+  moduleX: ModuleX,
 };
 
 const modulesMapWithErrorBoundary = Object.keys(modulesMap).reduce((modulesMapObj, key) => {
@@ -122,10 +118,10 @@ class HomePageView extends React.PureComponent {
     );
   };
 
-  renderGlobalModal = (navigation, isUserLoggedIn, labels) => {
+  renderGlobalModal = (navigation, isUserLoggedIn, labels, isQVModalOpen) => {
     return (
       <View>
-        <QuickViewModal navigation={navigation} />
+        {isQVModalOpen && <QuickViewModal navigation={navigation} />}
         <AddedToBagContainer navigation={navigation} />
         <LocationAccessPrompt
           navigation={navigation}
@@ -182,6 +178,7 @@ class HomePageView extends React.PureComponent {
       labels,
       headerPromo,
       promoHtmlBannerCarousel,
+      isQVModalOpen,
     } = this.props;
     const { value } = this.state;
     return (
@@ -194,7 +191,6 @@ class HomePageView extends React.PureComponent {
         </HeaderPromoContainer>
         {loyaltyPromoBanner.length > 0 && <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />}
         <PageSlots slots={slots} modules={modulesMapWithErrorBoundary} navigation={navigation} />
-        {/* <ModuleS {...mockS.moduleS.composites} /> */}
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations
           navigation={navigation}
@@ -221,7 +217,7 @@ class HomePageView extends React.PureComponent {
             />
           </>
         ) : null}
-        {this.renderGlobalModal(navigation, isUserLoggedIn, labels)}
+        {this.renderGlobalModal(navigation, isUserLoggedIn, labels, isQVModalOpen)}
         <UserOnBoardingScreen navigation={navigation} />
       </ScrollView>
     );
@@ -247,6 +243,7 @@ HomePageView.propTypes = {
   isUserLoggedIn: PropTypes.bool,
   headerPromo: PropTypes.shape({}),
   promoHtmlBannerCarousel: PropTypes.shape([]),
+  isQVModalOpen: PropTypes.bool,
 };
 
 HomePageView.defaultProps = {
@@ -257,6 +254,7 @@ HomePageView.defaultProps = {
   isUserLoggedIn: false,
   headerPromo: {},
   promoHtmlBannerCarousel: [],
+  isQVModalOpen: false,
 };
 
 export { HomePageView };

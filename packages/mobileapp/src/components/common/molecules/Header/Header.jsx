@@ -11,13 +11,18 @@ import {
   getLabelValue,
 } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
-import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
+import {
+  getFavoriteStoreActn,
+  setStoresByCoordinates,
+} from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import {
   updateCartCount,
   updateCartManually,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+
 import {
   getUserLoggedInState,
   getUserName,
@@ -27,6 +32,7 @@ import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
 
 import { readCookieMobileApp } from '../../../../utils/utils';
+import { INTERNET_OFF } from './Header.constants';
 
 import {
   Container,
@@ -90,6 +96,7 @@ class Header extends React.PureComponent {
       this.getInitialProps();
       updateCartManuallyAction(false);
     }
+    this.noInterNetHandle(prevProps);
   }
 
   getInitialProps() {
@@ -105,8 +112,9 @@ class Header extends React.PureComponent {
    * This function validate the iconView.
    */
   validateIcon = () => {
-    const { navigation, labels } = this.props;
+    const { navigation, labels, resetSuggestedStores } = this.props;
     const { isDownIcon } = this.state;
+    resetSuggestedStores([]);
     navigation.navigate({
       routeName: 'StoreLanding',
       params: {
@@ -206,6 +214,23 @@ class Header extends React.PureComponent {
     return storeTime;
   };
 
+  noInterNetHandle(prevProps) {
+    const {
+      screenProps: {
+        network: { isConnected },
+      },
+      toastMessage,
+    } = this.props;
+    const {
+      screenProps: {
+        network: { isConnected: PrevIsConnected },
+      },
+    } = prevProps;
+    if (isConnected !== PrevIsConnected && !isConnected) {
+      toastMessage(INTERNET_OFF);
+    }
+  }
+
   render() {
     const {
       favStore,
@@ -242,7 +267,7 @@ class Header extends React.PureComponent {
         <Container>
           <HeaderContainer data-locator={getLocator('global_headerpanel')}>
             {headertype === STORE_TYPE ? (
-              <BackContainer position="row">
+              <BackContainer>
                 <TouchableOpacity
                   accessible
                   onPress={() => onBack(navigation)}
@@ -348,6 +373,9 @@ Header.propTypes = {
   slpLabels: PropTypes.shape({}),
   userName: PropTypes.string,
   headertype: PropTypes.string,
+  screenProps: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
+  resetSuggestedStores: PropTypes.func,
 };
 
 Header.defaultProps = {
@@ -363,6 +391,9 @@ Header.defaultProps = {
   slpLabels: {},
   userName: '',
   headertype: '',
+  screenProps: {},
+  toastMessage: () => {},
+  resetSuggestedStores: () => {},
 };
 
 const mapStateToProps = state => {
@@ -377,7 +408,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
     updateCartCountAction: payload => {
@@ -386,6 +417,10 @@ const mapDispatchToProps = dispatch => {
     updateCartManuallyAction: payload => {
       dispatch(updateCartManually(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
+    resetSuggestedStores: payload => dispatch(setStoresByCoordinates(payload)),
   };
 };
 

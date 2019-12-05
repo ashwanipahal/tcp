@@ -22,7 +22,7 @@ import {
 } from './StoreDetail.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
-import { trackPageView } from '../../../../../analytics/actions';
+import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 
 export class StoreDetailContainer extends PureComponent {
   static routesBack(e) {
@@ -49,11 +49,19 @@ export class StoreDetailContainer extends PureComponent {
 
   componentDidMount() {
     const { getModuleX, referredContentList, trackStoreDetailPageView } = this.props;
+    const pageName = 'companyinfo:companyinfo';
 
-    trackStoreDetailPageView({
-      customEvents: ['event80', 'event96'],
-      internalCampaignIdList: internalCampaignProductAnalyticsList(),
-    });
+    if (!isMobileApp()) {
+      trackStoreDetailPageView({
+        customEvents: ['event80', 'event96'],
+        pageName,
+        pageShortName: pageName,
+        pageType: 'companyinfo',
+        pageSection: 'companyinfo',
+        pageSubSection: 'companyinfo',
+        internalCampaignIdList: internalCampaignProductAnalyticsList(),
+      });
+    }
 
     this.loadCurrentStoreInitialInfo();
     getModuleX(referredContentList);
@@ -175,6 +183,14 @@ export class StoreDetailContainer extends PureComponent {
   }
 }
 
+StoreDetailContainer.getInitialProps = () => {
+  return {
+    pageData: {
+      loadAnalyticsOnload: false,
+    },
+  };
+};
+
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),
   formatStore: PropTypes.func.isRequired,
@@ -259,19 +275,31 @@ export const mapDispatchToProps = dispatch => ({
   },
   fetchCurrentStoreInfo: payload => dispatch(getCurrentStoreInfo(payload)),
   trackStoreDetailPageView: payload => {
+    const { customEvents, ...restPayload } = payload;
+
+    dispatch(
+      setClickAnalyticsData({
+        customEvents,
+      })
+    );
+
     dispatch(
       trackPageView({
         props: {
           initialProps: {
             pageProps: {
               pageData: {
-                ...payload,
+                ...restPayload,
               },
             },
           },
         },
       })
     );
+
+    setTimeout(() => {
+      dispatch(setClickAnalyticsData({}));
+    }, 600);
   },
 });
 

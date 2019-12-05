@@ -1,13 +1,13 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
   "environmentVariables": [
     {
       "name": "ENV",
-      "value": "int"
+      "value": "prod"
     },
     {
       "name": "RWD_APP_BRANDID_TCP",
@@ -50,12 +50,12 @@
       "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
-      "name": "RWD_APP_API_DOMAIN_TCP",
-      "value": "https://test5.childrensplace.com"
-    },
-    {
       "name": "RWD_APP_DAM_HOST_TCP",
       "value": "https://test1.theplace.com/image/upload"
+    },
+    {
+      "name": "RWD_APP_API_DOMAIN_TCP",
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_APP_API_IDENTIFIER_TCP",
@@ -79,11 +79,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_ENDPOINT_TCP",
-      "value": "https://test5.childrensplace.com"
-    },
-    {
-      "name": "RWD_WEB_GRAPHQL_API_KEY",
-      "value": "da2-4rbmhsi7t5emdiqukl2cfzuypu"
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_APP_CANDID_API_KEY_TCP",
@@ -103,7 +99,7 @@
     },
     {
       "name": "RWD_APP_PAYPAL_STATIC_DOMAIN_TCP",
-      "value": "https://test5.childrensplace.com"
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_APP_BRANDID_GYM",
@@ -159,7 +155,7 @@
     },
     {
       "name": "RWD_APP_API_DOMAIN_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test6.gymboree.com"
     },
     {
       "name": "RWD_APP_API_IDENTIFIER_GYM",
@@ -179,7 +175,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_ENDPOINT_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://47vqlpw4m5bxdphy2adv4tknhq.appsync-api.us-east-2.amazonaws.com"
     },
     {
       "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_GYM",
@@ -187,7 +183,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_KEY_GYM",
-      "value": "da2-mf3uaes3nncszkdir7t4dfj4ya"
+      "value": "da2-6fg7esay7nck7fgyaj6likgzfy"
     },
     {
       "name": "RWD_APP_CANDID_API_KEY_GYM",
@@ -207,7 +203,7 @@
     },
     {
       "name": "RWD_APP_PAYPAL_STATIC_DOMAIN_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test6.gymboree.com"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_TCP",
@@ -274,12 +270,12 @@
       "value": "948cee6a142678762564f9ec4e02e91c"
     },
     {
-      "name": "RWD_APP_INSTAGRAM_GYM",
-      "value": "f0eaf419384f43a0acd059c4f87163c1"
-    },
-    {
       "name": "RWD_APP_INSTAGRAM_TCP",
       "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_GYM",
+      "value": "f0eaf419384f43a0acd059c4f87163c1"
     },
     {
       "name": "RWD_APP_ASSETHOST_TCP",
@@ -314,20 +310,56 @@
       "value": ".gymboree.com"
     },
     {
+      "name": "RWD_APP_RAYGUN_API_KEY_TCP",
+      "value": "gEzYmTNVR3IdQgwiw2T0xQ"
+    },
+    {
+      "name": "isErrorReportingActive",
+      "value": "true"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_TCP",
+      "value": "thechildrensplace"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_GYM",
+      "value": "gymboree"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_TCP",
+      "value": "country"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_GYM",
+      "value": ""
+    },
+    {
       "name": "RWD_WEB_APP_DOMAIN_TCP",
-      "value": "https://test5.childrensplace.com"
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_WEB_APP_DOMAIN_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test6.gymboree.com"
     },
     {
-      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_TCP",
-      "value": "true"
+      "name": "RWD_APP_BV_API_KEY_TCP",
+      "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
-      "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
-      "value": "true"
+      "name": "RWD_APP_BV_API_KEY_GYM",
+      "value": "huf0yvc1po48wng2wumt1zav3"
+    },
+    {
+      "name": "RWD_APP_BV_API_URL",
+      "value": "https://api.bazaarvoice.com"
+    },
+    {
+      "name": "RWD_APP_BV_WEB_VIEW_URL",
+      "value": "https://childrensplace.com/static/bazaarVoice/index.html"
+    },
+    {
+      "name": "RWD_APP_BV_SHARED_KEY",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -340,25 +372,11 @@
         "preBuild": "packages/mobileapp/appcenter-pre-build.sh"
       }
     },
-    "android": {
-      "module": "app",
-      "buildVariant": "gymboreeIntRelease",
-      "isRoot": false,
-      "runTests": false,
-      "runLint": false,
-      "keystorePassword": "__protected__",
-      "keyAlias": "__protected__",
-      "keyPassword": "__protected__",
-      "keystoreFilename": "tcp.jks",
-      "automaticSigning": false,
-      "buildBundle": false,
-      "gradleWrapperPath": "packages/mobileapp/android/gradlew"
-    },
     "distribution": {
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "e1a1bd2c-bf4e-444f-beb2-40c909b37d7d"
+        "dde913df-f96f-455a-98f4-6a16e611676f"
       ],
       "isSilent": false
     },
@@ -366,6 +384,18 @@
       "nodeVersion": "10.x",
       "packageJsonPath": "packages/mobileapp/package.json",
       "runTests": false
+    },
+    "xcode": {
+      "certificatePassword": "__protected__",
+      "certificateFilename": "Dev-Certificates.p12",
+      "provisioningProfileFilename": "ProvisioningProfileDevelopment_TcpAppUATProd.mobileprovision",
+      "certificateFileId": "d83c966a-cf7a-46cb-91a1-9bca11196d42",
+      "provisioningProfileFileId": "b2dd0c1c-0d28-4ff5-a4bf-2ebfe5bd6faf",
+      "appExtensionProvisioningProfileFiles": [],
+      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
+      "scheme": "mobileapp_prod_preview",
+      "xcodeVersion": "10.2.1",
+      "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },
   "artifactVersioning": {

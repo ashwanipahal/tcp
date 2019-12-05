@@ -100,6 +100,7 @@ const renderImageContainer = ({
           onImageClick={() => navigateToPdp(navigation, outfitProduct)}
           imageWidth="134"
           imageHeight="165"
+          formName={OUTFIT_LISTING_FORM}
         />
         <TouchableOpacity
           onPress={() => navigateToPdp(navigation, outfitProduct)}

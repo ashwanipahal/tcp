@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles';
 import Modal from '../../../../common/molecules/Modal';
 import TrackOrderViewTemplate from '../molecules/TrackOrderView';
@@ -47,6 +48,7 @@ class TrackOrderModal extends React.Component {
         data-locator="track_order_modal"
         ariaLabelledby="trackorder__modal__heading"
         ariaDescribedby="trackorder__modal__subheading"
+        contentLabel={getLabelValue(labels, 'lbl_trackOrder_header', 'trackOrder')}
       >
         <TrackOrderViewTemplate
           labels={labels}

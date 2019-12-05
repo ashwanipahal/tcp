@@ -3,6 +3,7 @@
 exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 <Styled(Modal)
   className="abc TCPModal__Content"
+  contentLabel="undefined for undefined"
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}

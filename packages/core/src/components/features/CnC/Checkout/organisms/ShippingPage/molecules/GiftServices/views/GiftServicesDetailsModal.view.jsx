@@ -20,6 +20,7 @@ class GiftServicesDetailsModal extends React.PureComponent<Props> {
         heightConfig={{ height: '90%' }}
         closeIconDataLocator="details-cross-icon"
         fixedWidth
+        contentLabel="Gift Services Help"
         inheritedStyles={modalStyles}
       >
         <RichText richTextHtml={modalContent} />

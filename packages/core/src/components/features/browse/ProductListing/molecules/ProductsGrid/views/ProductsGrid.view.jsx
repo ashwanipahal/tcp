@@ -59,6 +59,7 @@ class ProductsGrid extends React.Component {
     pageSectionProp: PropTypes.string,
     pageSubSectionProp: PropTypes.string,
     onSeeSuggestedItems: PropTypes.func,
+    favoriteErrorMessages: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -88,6 +89,7 @@ class ProductsGrid extends React.Component {
     pageSectionProp: '',
     pageSubSectionProp: '',
     onSeeSuggestedItems: () => {},
+    favoriteErrorMessages: {},
   };
 
   constructor(props, context) {

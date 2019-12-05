@@ -5,6 +5,7 @@ exports[`TrackOrderModal component should renders correctly 1`] = `
   ariaDescribedby="trackorder__modal__subheading"
   ariaLabelledby="trackorder__modal__heading"
   className="TCPModal__Content TrackOrder__Modal__content"
+  contentLabel="lbl_trackOrder_header"
   data-locator="track_order_modal"
   fixedWidth={true}
   isOpen={true}
