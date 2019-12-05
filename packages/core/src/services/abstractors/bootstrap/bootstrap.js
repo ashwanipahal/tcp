@@ -155,7 +155,7 @@ export const shouldInitiateSSRCall = (originalUrl, deviceType) =>
  * @param {*} bootstrapData Response from API call
  * @param {*} pageName Page Name
  */
-const checkAndLogErrors = (bootstrapData, pageName) => {
+export const checkAndLogErrors = (bootstrapData, pageName) => {
   const { labels, header, footer, navigation } = bootstrapData;
   const { errorMessage: headerErrorMessage } = header;
   const errorObject = {
