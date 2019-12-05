@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
-import { getLabelValue, getAPIConfig } from '@tcp/core/src/utils';
+import { getLabelValue, getAPIConfig, getLocator } from '@tcp/core/src/utils';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import { Row, Col, BodyCopy, InputCheckBox, FavoriteSkeleton } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -523,7 +523,12 @@ class FavoritesView extends React.PureComponent {
             colSize={{ small: 6, medium: 8, large: 12 }}
             ignoreGutter={{ small: true, medium: true, large: true }}
           >
-            <BodyCopy fontWeight="extrabold" fontSize="fs16" className="favorite-title">
+            <BodyCopy
+              fontWeight="extrabold"
+              fontSize="fs16"
+              className="favorite-title"
+              dataLocator={getLocator('fav_heading')}
+            >
               {guestAccessKey ? activeDisplayName : myFavLabel}
             </BodyCopy>
           </Col>
