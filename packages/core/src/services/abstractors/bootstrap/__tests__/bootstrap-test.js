@@ -81,7 +81,8 @@ describe('checkAndLogErrors', () => {
       header_error_message: 'error',
       labels_error: 1,
       labels_error_message: 'error',
-      layout_error: 0,
+      layout_error: 1,
+      layout_error_message: 'error',
       navigation_error: 1,
       navigation_error_message: 'error',
     };
