@@ -161,8 +161,8 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       </Styled(View)>
       <Connect(GetCandid)
         apiConfig={Object {}}
-        isPlpStack={true}
         navigation={Object {}}
+        openedFromStack="PlpStack"
       />
       <View
         collapsable={false}

@@ -373,7 +373,11 @@ class ProductDetailView extends React.PureComponent {
                 portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
               />
             </RecommendationWrapper>
-            <GetCandid apiConfig={candidConfig} navigation={navigation} isPlpStack />
+            <GetCandid
+              apiConfig={candidConfig}
+              navigation={navigation}
+              openedFromStack="PlpStack"
+            />
             {this.renderProductReview({
               renderRatingReview,
               productId: currentProduct.ratingsProductId,
