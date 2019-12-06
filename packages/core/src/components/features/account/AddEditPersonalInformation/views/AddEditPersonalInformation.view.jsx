@@ -33,7 +33,7 @@ export const AddEditPersonalInformation = ({
         </Anchor>
       </BodyCopy>
       <FormPageHeadingComponent
-        heading={getLabelValue(labels, 'lbl_profile_heading')}
+        heading={getLabelValue(labels, 'lbl_profile_personal_information')}
         className="margin-none myAccountRightView"
         dataLocator="pi-profileinformationheading"
       />
@@ -56,7 +56,7 @@ export const AddEditPersonalInformation = ({
 AddEditPersonalInformation.propTypes = {
   labels: PropTypes.shape({
     lbl_profile_personal_info_back: PropTypes.string,
-    lbl_profile_heading: PropTypes.string,
+    lbl_profile_personal_information: PropTypes.string,
   }),
   successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
@@ -72,7 +72,7 @@ AddEditPersonalInformation.propTypes = {
 AddEditPersonalInformation.defaultProps = {
   labels: {
     lbl_profile_personal_info_back: '',
-    lbl_profile_heading: '',
+    lbl_profile_personal_information: '',
   },
   initialValues: {},
   personalInfoErrorMessage: '',
