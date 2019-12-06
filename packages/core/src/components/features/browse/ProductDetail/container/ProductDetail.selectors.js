@@ -329,3 +329,26 @@ export const getSizeChartDetails = state => {
     state.ProductDetail.currentProduct.categoryPathMap;
   return fetchSizeChartDetails(navigationTree, breadCrumbs, categoryPathMap, isBundleProduct);
 };
+
+export const getAccessibilityLabels = state => {
+  return {
+    lbl_social_twitter: getLabelValue(
+      state.Labels,
+      'lbl_social_twitter',
+      'accessibility',
+      'global'
+    ),
+    lbl_social_facebook: getLabelValue(
+      state.Labels,
+      'lbl_social_facebook',
+      'accessibility',
+      'global'
+    ),
+    lbl_social_pinterest: getLabelValue(
+      state.Labels,
+      'lbl_social_pinterest',
+      'accessibility',
+      'global'
+    ),
+  };
+};
