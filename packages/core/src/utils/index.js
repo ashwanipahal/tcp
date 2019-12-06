@@ -42,6 +42,7 @@ export {
   internalCampaignProductAnalyticsList,
   getQueryParamsFromUrl,
   getProductListingPageTrackData,
+  getFontsURL,
 } from './utils.web';
 
 export {
