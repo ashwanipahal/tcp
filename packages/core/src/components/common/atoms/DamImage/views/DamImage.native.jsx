@@ -65,7 +65,6 @@ const DamImage = props => {
     videoData,
     width,
     height,
-    updateVideoUrl,
     ...otherProps
   } = props;
 
@@ -85,7 +84,6 @@ const DamImage = props => {
   //   autoplay,
   //   controls,
   //   url: videoUri,
-  //   updateVideoUrl:false,
   //   image,
   // };
 
@@ -132,7 +130,6 @@ DamImage.propTypes = {
   videoData: PropTypes.shape({}),
   isProductImage: PropTypes.bool,
   checkBrand: PropTypes.string,
-  updateVideoUrl: PropTypes.bool,
 };
 
 DamImage.defaultProps = {
@@ -147,7 +144,6 @@ DamImage.defaultProps = {
   videoData: null,
   isProductImage: false,
   checkBrand: '',
-  updateVideoUrl: true,
 };
 
 export default withStyles(DamImage, style);

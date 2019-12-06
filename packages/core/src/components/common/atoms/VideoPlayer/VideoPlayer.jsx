@@ -4,22 +4,8 @@ import PropTypes from 'prop-types';
 import cloudinary from 'cloudinary-core';
 import cloudinaryVideoPlayer from 'cloudinary-video-player'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getAPIConfig, convertNumToBool } from '@tcp/core/src/utils';
+import { getAPIConfig, convertNumToBool, cropVideoUrl } from '@tcp/core/src/utils';
 import styles from './VideoPlayer.style';
-import { VIDEO_BASE_PATH } from './VideoPlayer.config';
-
-/**
- * This function return the page video name when updateVideoUrl is true
- * @param {String} url
- */
-const parseFileName = (url, updateVideoUrl) => {
-  const tempUrl = url && url.replace(/^\//, '');
-  if (updateVideoUrl) {
-    const urlFragments = tempUrl.split('/');
-    return urlFragments[urlFragments.length - 1].split('.')[0];
-  }
-  return tempUrl;
-};
 
 /**
  * To Generate the unique ids based on the timestap for multiple video players
@@ -44,14 +30,11 @@ class VideoPlayer extends React.Component {
   }
 
   componentDidMount() {
-    const { autoplay, url, muted, loop, controls, updateVideoUrl } = this.props;
+    const { autoplay, url, muted, loop, controls } = this.props;
     const { uniqueId } = this.state;
     const apiConfig = getAPIConfig();
     const cloudinaryCore = cloudinary.Cloudinary.new({
       cloud_name: apiConfig.damCloudName,
-      secure: true,
-      private_cdn: true,
-      secure_distribution: VIDEO_BASE_PATH,
     });
 
     const player = cloudinaryCore.videoPlayer(uniqueId, {
@@ -63,7 +46,7 @@ class VideoPlayer extends React.Component {
     player.fluid(true);
 
     player.source({
-      publicId: updateVideoUrl ? parseFileName(url, updateVideoUrl) : url,
+      publicId: cropVideoUrl(url),
     });
   }
 
@@ -94,7 +77,6 @@ VideoPlayer.propTypes = {
   className: PropTypes.string,
   controls: PropTypes.string,
   dataLocator: PropTypes.string,
-  updateVideoUrl: PropTypes.bool,
 };
 
 VideoPlayer.defaultProps = {
@@ -104,7 +86,6 @@ VideoPlayer.defaultProps = {
   muted: '0',
   className: '',
   controls: '1',
-  updateVideoUrl: true,
 };
 
 export default withStyles(VideoPlayer, styles);
