@@ -216,15 +216,18 @@ class NoResponseSearchDetailView extends React.PureComponent {
               className="empty-search-inputBox-container"
             >
               <form className={className} noValidate onSubmit={this.initiateSearchBySubmit}>
-                <input
-                  id="emptySearchInput"
-                  className={`${emptySearchInputClassName}`}
-                  maxLength="150"
-                  placeholder={slpLabels.lbl_looking_for}
-                  onChange={this.changeSearchText}
-                  ref={this.searchInput}
-                  autoComplete="off"
-                />
+                <label htmlFor="search-input" className="visuallyhidden">
+                  <input
+                    id="emptySearchInput"
+                    className={`${emptySearchInputClassName}`}
+                    maxLength="150"
+                    placeholder={slpLabels.lbl_looking_for}
+                    onChange={this.changeSearchText}
+                    ref={this.searchInput}
+                    autoComplete="off"
+                  />
+                  <p>{slpLabels.lbl_looking_for}</p>
+                </label>
               </form>
 
               <Image

@@ -258,17 +258,20 @@ class SearchLayoutWrapper extends React.PureComponent {
               noValidate
               onSubmit={this.initiateSearchBySubmit}
             >
-              <input
-                id="search-input"
-                ref={this.searchInput}
-                onChange={this.changeSearchText}
-                className="search-input"
-                placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
-                // eslint-disable-next-line jsx-a11y/no-autofocus
-                autoFocus
-                maxLength="50"
-                autoComplete="off"
-              />
+              <label htmlFor="search-input" className="visuallyhidden">
+                <input
+                  id="search-input"
+                  ref={this.searchInput}
+                  onChange={this.changeSearchText}
+                  className="search-input"
+                  placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
+                  // eslint-disable-next-line jsx-a11y/no-autofocus
+                  autoFocus
+                  maxLength="50"
+                  autoComplete="off"
+                />
+                <p>{getLabelValue(labels, 'lbl_what_looking_for')}</p>
+              </label>
             </form>
             <Anchor
               id="search-image-typeAhead"
