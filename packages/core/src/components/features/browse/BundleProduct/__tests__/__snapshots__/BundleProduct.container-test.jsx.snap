@@ -4,6 +4,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
 <Fragment>
   <Styled(BundleProduct)
     AddToFavoriteErrorMsg=""
+    accessibilityLabels={Object {}}
     addToBagEcom={[MockFunction]}
     addToBagError=""
     addToBagErrorId=""
@@ -20,6 +21,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
     handleAddToBag={[Function]}
     isKeepAliveEnabled={false}
     isLoggedIn={false}
+    isMatchingFamily={true}
     isPickupModalOpen={false}
     isPlcc={false}
     itemPartNumber=""

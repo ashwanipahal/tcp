@@ -140,7 +140,7 @@ describe('OutfitCarouselModule', () => {
     expect(component.find('Styled(View)')).toHaveLength(1);
   });
 
-  it('should return WithTheme(SnapCarousel) component value one', () => {
-    expect(component.find('WithTheme(SnapCarousel)')).toHaveLength(1);
+  it('should return Connect(WithTheme(SnapCarousel)) component value one', () => {
+    expect(component.find('Connect(WithTheme(SnapCarousel))')).toHaveLength(1);
   });
 });

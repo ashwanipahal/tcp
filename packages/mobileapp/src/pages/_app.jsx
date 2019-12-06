@@ -1,5 +1,9 @@
 import React from 'react';
+import NetInfo from '@react-native-community/netinfo';
 import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
+import NetworkProvider, {
+  useNetworkState,
+} from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
 import { Box } from '@fabulas/astly';
 import codePush from 'react-native-code-push';
 import CookieManager from 'react-native-cookies';
@@ -21,7 +25,7 @@ import { UrbanAirship } from 'urbanairship-react-native';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
-import AppNavigator from '../navigation/AppNavigator';
+import AppNavigator, { NoInternetNavigator } from '../navigation/AppNavigator';
 import NavigationService from '../navigation/NavigationService';
 import AppSplash from '../navigation/AppSplash';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
@@ -52,6 +56,7 @@ export class App extends React.PureComponent {
     isSplashVisible: true,
     showBrands: false,
     apiConfig: null,
+    onLoadCheckInternet: false,
   };
 
   /* eslint-disable-next-line */
@@ -71,17 +76,13 @@ export class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (Platform.OS === 'ios') {
-      this.setCooKies();
-    } else {
-      this.store.dispatch(getUserInfo());
-    }
-
     UrbanAirship.setUserNotificationsEnabled(true);
     const { apiConfig } = this.state;
     const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
     codePush.sync({ installMode: codePush.InstallMode.ON_NEXT_RESUME });
-    this.store.dispatch(SetTcpSegmentMethodCall()); // this method needs to be exposed and will be called by Adobe target if required. and in fututr a payload neess to be passed in it , for reference please check _app.jsx of web.
+    /* this method needs to be exposed and will be called by Adobe target if required. and in fututr a payload neess to be passed in it , for reference please check _app.jsx of web.
+     */
+    this.store.dispatch(SetTcpSegmentMethodCall());
     if (isErrorReportingActive) {
       initAppErrorReporter({
         isDevelopment: false,
@@ -90,6 +91,7 @@ export class App extends React.PureComponent {
         envId: RWD_APP_VERSION,
       });
     }
+    this.getConnectionInfo();
   }
 
   setCooKies = () => {
@@ -159,10 +161,43 @@ export class App extends React.PureComponent {
     this.setState({ apiConfig });
   };
 
+  getConnectionInfo = () => {
+    NetInfo.getConnectionInfo().then(connectionInfo => {
+      if (connectionInfo.type !== 'none') {
+        this.setState({
+          onLoadCheckInternet: true,
+        });
+        if (Platform.OS === 'ios') {
+          this.setCooKies();
+        } else {
+          this.store.dispatch(getUserInfo());
+        }
+      }
+    });
+  };
+
+  retryNetwork = () => {
+    const {
+      context: {
+        network: { isConnected },
+      },
+    } = this.props;
+    if (isConnected) {
+      this.setState({
+        onLoadCheckInternet: true,
+      });
+      if (Platform.OS === 'ios') {
+        this.setCooKies();
+      } else {
+        this.store.dispatch(getUserInfo());
+      }
+    }
+  };
+
   render() {
     const { appType, context } = this.props;
-    const { device, platform, location } = context;
-    const { isSplashVisible, showBrands, apiConfig } = this.state;
+    const { device, platform, location, network } = context;
+    const { isSplashVisible, showBrands, apiConfig, onLoadCheckInternet } = this.state;
     return (
       <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
         <Loader />
@@ -172,20 +207,29 @@ export class App extends React.PureComponent {
           ) : (
             <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
           )}
-
-          <AppNavigator
-            {...getOnNavigationStateChange({
-              store: this.store,
-              context: { device, platform, location },
-            })}
-            ref={navigatorRef => {
-              NavigationService.setTopLevelNavigator(navigatorRef);
-            }}
-            screenProps={{
-              toggleBrandAction: this.toggleBrandAction,
-              apiConfig,
-            }}
-          />
+          {onLoadCheckInternet ? (
+            <AppNavigator
+              {...getOnNavigationStateChange({
+                store: this.store,
+                context: { device, platform, location },
+              })}
+              ref={navigatorRef => {
+                NavigationService.setTopLevelNavigator(navigatorRef);
+              }}
+              screenProps={{
+                toggleBrandAction: this.toggleBrandAction,
+                apiConfig,
+                network,
+              }}
+            />
+          ) : (
+            <NoInternetNavigator
+              screenProps={{
+                retryNetwork: this.retryNetwork,
+                network,
+              }}
+            />
+          )}
           {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
           {showBrands && <AnimatedBrandChangeIcon toggleBrandAction={this.toggleBrandAction} />}
         </Box>
@@ -213,23 +257,26 @@ function RenderApp(props) {
   const { permissions, request, ...rest } = usePermissionState();
   const location = useLocationState();
   const error = useErrorReporter();
+  const network = useNetworkState();
   const context = {
     ...info,
     permissions: { ...rest },
     location,
     error,
+    network,
   };
   const { device } = context;
   const { appName } = device;
-  const appType = appName === 'Gymboree' ? 'gymboree' : 'tcp';
-
+  const appType = appName.toLowerCase().includes('gymboree') ? 'gymboree' : 'tcp';
   return <App context={context} appType={appType} {...props} />;
 }
 
 export default props => {
   return (
     <AppProvider>
-      <RenderApp {...props} />
+      <NetworkProvider>
+        <RenderApp {...props} />
+      </NetworkProvider>
     </AppProvider>
   );
 };

@@ -16,7 +16,7 @@ export const getLabels = state => {
 
 export const getUserToken = (userId, mprId) => {
   const apiConfig = getAPIConfig();
-  const sharedKey = apiConfig.BV_SHARED_KEY;
+  const sharedKey = apiConfig.BV_API_KEY;
 
   // obtain current date in the format of yyyyMMdd
   const rightNow = new Date();

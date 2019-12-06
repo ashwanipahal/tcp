@@ -43,7 +43,7 @@ export default css`
     }
     a {
       @media ${props => props.theme.mediaQuery.medium} {
-        padding: 8px 32px 8px 0;
+        padding: 8px 45px 8px 0;
       }
     }
     img {

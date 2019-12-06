@@ -36,7 +36,7 @@ const styles = css`
       color: ${props => props.theme.colorPalette.gray[900]};
       border-radius: 6px;
       text-align: center;
-      width: 54px;
+      width: auto;
       @media ${props => props.theme.mediaQuery.medium} {
         padding: 3.5px ${props => props.theme.spacing.ELEM_SPACING.SM};
       }

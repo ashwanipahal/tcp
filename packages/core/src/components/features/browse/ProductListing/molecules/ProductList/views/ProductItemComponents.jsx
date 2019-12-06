@@ -156,17 +156,15 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
                 }
               />
             </button>
-            {favoritedCount && (
-              <BodyCopy
-                dataLocator="pdp_favorite_icon_count"
-                className="favorite-count"
-                fontSize="fs10"
-                fontWeight="regular"
-                color="gray.600"
-              >
-                {favoritedCount}
-              </BodyCopy>
-            )}
+            <BodyCopy
+              dataLocator="pdp_favorite_icon_count"
+              className="favorite-count"
+              fontSize="fs10"
+              fontWeight="regular"
+              color="gray.600"
+            >
+              {favoritedCount}
+            </BodyCopy>
           </>
         )}
       </BodyCopy>
@@ -265,7 +263,9 @@ export const CreateWishList = props => {
     : '';
   return (
     <div className="create-wish-list-section">
-      <h4 className="create-wish-list-header">{labels.lbl_fav_myFavWishList}</h4>
+      <h4 className="create-wish-list-header" dataLocator={getLocator('fav_list_lbl')}>
+        {labels.lbl_fav_myFavWishList}
+      </h4>
       <ul>
         {wishlistsSummaries.map(item => (
           <li className="wish-list-item">

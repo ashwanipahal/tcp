@@ -57,16 +57,19 @@ class SearchImageWrapper extends React.PureComponent {
                     noValidate
                     onSubmit={initiateSearchBySubmit}
                   >
-                    <input
-                      id="searchBar-input"
-                      ref={this.searchBarInput}
-                      onClick={openSearchBar}
-                      className="searchBar-input"
-                      maxLength="50"
-                      autoComplete="off"
-                      placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
-                      readOnly
-                    />
+                    <label htmlFor="searchBar-input" className="visuallyhidden">
+                      <input
+                        id="searchBar-input"
+                        ref={this.searchBarInput}
+                        onClick={openSearchBar}
+                        className="searchBar-input"
+                        maxLength="50"
+                        autoComplete="off"
+                        placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
+                        readOnly
+                      />
+                      <p>{getLabelValue(labels, 'lbl_what_looking_for')}</p>
+                    </label>
                   </form>
                   <Image
                     alt="search"

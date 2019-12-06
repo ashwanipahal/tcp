@@ -12,7 +12,7 @@ export default css`
     height: 100%;
   }
   .profileInfoSeparator {
-    border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
   }
 
   .profileInformationAddress {

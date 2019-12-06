@@ -9,6 +9,11 @@ describe('#Checkout Header Selectors', () => {
         lbl_checkoutHeader_expressCheckout: 'Express Checkout',
       },
     },
+    global: {
+      accessibility: {
+        lbl_caret_icon: 'Exit from checkout',
+      },
+    },
   };
 
   const state = {
@@ -20,6 +25,7 @@ describe('#Checkout Header Selectors', () => {
       checkoutHeaderLabel: 'Checkout',
       returnBagLabel: 'Return to Bag',
       expressCheckoutLbl: 'Express Checkout',
+      carotIconLbl: 'Exit from checkout',
     });
   });
 });

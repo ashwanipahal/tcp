@@ -19,7 +19,6 @@ export {
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,
-  siteRedirect,
   languageRedirect,
   getAsPathWithSlug,
   getMappedPageHref,
@@ -42,6 +41,8 @@ export {
   createLayoutPath,
   internalCampaignProductAnalyticsList,
   getQueryParamsFromUrl,
+  getProductListingPageTrackData,
+  getFontsURL,
 } from './utils.web';
 
 export {
@@ -95,4 +96,5 @@ export {
   getProductUrlForDAM,
   plpRoutingHandling,
   convertNumToBool,
+  isIE11,
 } from './utils';

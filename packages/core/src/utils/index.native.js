@@ -26,6 +26,7 @@ export {
   createGoogleMapUrl,
   mapHandler,
   formatPhnNumber,
+  scrollToViewBottom,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
