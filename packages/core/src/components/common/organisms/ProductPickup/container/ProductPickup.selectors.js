@@ -1,3 +1,4 @@
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   USER_REDUCER_KEY,
   PRODUCT_PICKUP_REDUCER_KEY,
@@ -56,4 +57,11 @@ export const getDefaultStore = state => {
 
 export const getGeoDefaultStore = state => {
   return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].get('geoDefaultStore')) || null;
+};
+
+export const getAccessibilityLabels = state => {
+  return {
+    lbl_shipping_icon: getLabelValue(state.Labels, 'lbl_shipping_icon', 'accessibility', 'global'),
+    lbl_pickup_icon: getLabelValue(state.Labels, 'lbl_pickup_icon', 'accessibility', 'global'),
+  };
 };

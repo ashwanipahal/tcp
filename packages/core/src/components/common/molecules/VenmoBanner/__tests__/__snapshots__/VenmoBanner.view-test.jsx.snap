@@ -8,7 +8,6 @@ exports[`Venmo Banner component should render correctly 1`] = `
     className="venmo-banner-container"
   >
     <Styled(Image)
-      alt="venmo-logo"
       className="venmo-logo"
       src="/static/version-not-available/images/venmo_logo_blue.png"
     />

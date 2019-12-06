@@ -239,7 +239,7 @@ exports[`ModuleH component renders correctly 1`] = `
       </Styled(View)>
     </View>
   </Styled(View)>
-  <WithTheme(SnapCarousel)
+  <Connect(WithTheme(SnapCarousel))
     carouselConfig={
       Object {
         "autoplay": true,

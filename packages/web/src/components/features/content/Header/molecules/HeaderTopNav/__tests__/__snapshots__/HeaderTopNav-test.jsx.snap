@@ -133,7 +133,6 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
             },
           ]
         }
-        maxLoopCount={1}
         mobile={false}
       />
     </div>
@@ -312,7 +311,6 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
             },
           ]
         }
-        maxLoopCount={1}
         mobile={false}
       />
     </div>
