@@ -57,7 +57,8 @@ class ModuleJ extends React.PureComponent {
     return headerText && layout !== 'alt' ? (
       <div className="promo-header-wrapper">
         <LinkText
-          component="div"
+          component="h2"
+          type="heading"
           headerText={headerText}
           className="promo-header"
           dataLocator={getLocator('moduleJ_header_text')}
