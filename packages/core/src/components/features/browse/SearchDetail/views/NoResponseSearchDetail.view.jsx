@@ -216,7 +216,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
               className="empty-search-inputBox-container"
             >
               <form className={className} noValidate onSubmit={this.initiateSearchBySubmit}>
-                <label htmlFor="search-input" className="visuallyhidden">
+                <label htmlFor="emptySearchInput" className="visuallyhidden">
                   <input
                     id="emptySearchInput"
                     className={`${emptySearchInputClassName}`}
