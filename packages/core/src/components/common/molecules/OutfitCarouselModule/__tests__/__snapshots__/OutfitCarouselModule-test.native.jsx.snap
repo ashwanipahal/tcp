@@ -30,7 +30,7 @@ exports[`OutfitCarouselModule should render correctly 1`] = `
     textDecoration={null}
     width="125"
   />
-  <WithTheme(SnapCarousel)
+  <Connect(WithTheme(SnapCarousel))
     activeSlideAlignment="start"
     autoplay={false}
     data={
