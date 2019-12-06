@@ -14,7 +14,11 @@ describe('ProductReviews component as guest', () => {
     bazaarvoiceApiUrl: '',
     ratingsProductId: '234234',
     isGuest: true,
-    ratingsAndReviewsLabel: 'RATINGS & REVIEWS',
+    ratingsAndReviewsLabel: {
+      lbl_ratings_and_reviews: 'RATINGS & REVIEWS',
+      lbl_login_modal_title: 'Login',
+      lbl_rating_form_title: 'Write A Review',
+    },
     getSecurityToken: () => {},
     onLoginClick: () => {},
   };
@@ -43,7 +47,11 @@ describe('ProductReviews component as logged in user', () => {
     bazaarvoiceApiUrl: '',
     ratingsProductId: '34545',
     isGuest: true,
-    ratingsAndReviewsLabel: 'RATINGS & REVIEWS',
+    ratingsAndReviewsLabel: {
+      lbl_ratings_and_reviews: 'RATINGS & REVIEWS',
+      lbl_login_modal_title: 'Login',
+      lbl_rating_form_title: 'Write A Review',
+    },
     getSecurityToken: () => {},
     onLoginClick: () => {},
   };

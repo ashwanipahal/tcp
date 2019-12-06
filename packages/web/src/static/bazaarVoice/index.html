@@ -3,83 +3,105 @@
 <head>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
     <title>BazaarVoice Integration</title>
-    <script charset="utf-8" src="https://display.ugc.bazaarvoice.com/static/ChildrensPlace/en_US/bvapi.js">
-    </script>
 </head>
+<!-- bazaarVoiceContainer UI is rendered based on this container ID -->
 <body id="bazaarVoiceContainer">
-    <div id='BVRRContainer' class="ratings-and-reviews-container"></div>
+  <!-- placeholder container to add summary UI
+  data-bv-product-id is replaced from URL query param in script below-->
+    <div id='BVRRContainer'
+        data-bv-show="reviews"
+        data-bv-product-id="">
+    </div>
 
-    <script type='text/javascript'>
-      function getUrlVars() {
-        var vars = {};
-        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+    <script type="text/javascript">
+      // Utility to get params from query string
+      const getUrlVars = () => {
+        const vars = {};
+        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (
           m,
           key,
           value
-        ) {
+        ) => {
           vars[key] = value;
         });
         return vars;
       }
+      const queryParams = getUrlVars();
+      const {
+        productId: ratingsProductId,
+        env: environment,
+        instance: deploymentZone,
+      } = queryParams;
+      const bvContainer =  'BVRRContainer';
 
-      function handleWriteReviewClick(event) {
-        if(!securityToken && window.ReactNativeWebView) {
+      // replace product ID dynamically in HTML
+      document.getElementById(bvContainer).setAttribute('data-bv-product-id', ratingsProductId);
+
+      // create main BV js URL based on brand
+      const scriptUrl = `https://apps.bazaarvoice.com/deployments/childrensplace/${deploymentZone}/${environment}/en_US/bv.js`;
+
+      const loadScript = (url, callback) => {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+
+        if (script.readyState){  // IE
+            script.onreadystatechange = () => {
+              if (script.readyState === "loaded" ||
+                      script.readyState === "complete"){
+                  script.onreadystatechange = null;
+                  callback();
+              }
+            };
+        } else {  // Others
+          script.onload = () => {
+            callback();
+          };
+        }
+
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+      }
+
+      // load BV js synchronously and invoke BV code
+      loadScript(scriptUrl, (() => {
+
+      // override BV write a review click behavior
+      const handleWriteReviewClick = event => {
+        if(window.ReactNativeWebView) {
+          // communicate with App to notify user clicked on write a review cta
           event.preventDefault();
           event.stopPropagation();
-          window.ReactNativeWebView.postMessage("openLogin");
+          window.ReactNativeWebView.postMessage("writeReview");
         }
       }
 
-      function handleCloseClick(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        window.ReactNativeWebView && window.ReactNativeWebView.postMessage("closeRating");
-      }
-
-      var securityToken = getUrlVars()['securityToken'];
-      const bvContainer =  'BVRRContainer';
-      const ratingsProductId = getUrlVars()['productId'];
-      const brand = getUrlVars()['brand'];
-      const options = {
-          contentContainerDiv: bvContainer,
-          productId: ratingsProductId,
-      };
-
+      // *** code to observe DOM mutation and add custom handlers start ***
       const targetNode = document.getElementById('bazaarVoiceContainer');
-
       // Options for the observer (which mutations to observe)
       const config = { attributes: true, childList: true, subtree: true };
-
       // Callback function to execute when mutations are observed
-      const callback = function(mutationsList, observer) {
-          // Use traditional 'for loops' for IE
-          for(let mutation of mutationsList) {
-              if (mutation.type === 'childList') {
-                  // console.log(mutation.addedNodes[0]);
-                  if(document.querySelector('button.bv-mbox-close')) {
-                    document.querySelector('button.bv-mbox-close').addEventListener('click', handleCloseClick);
-                  }
-                  if(document.querySelector('button.bv-write-review')) {
-                    document.querySelector('button.bv-write-review').addEventListener('click', handleWriteReviewClick);
-                  }
-              }
+      const callback = mutationsList =>  {
+        for(let mutation of mutationsList) {
+          if (mutation.type === 'childList') {
+            if(document.querySelector('button.bv-write-review')) {
+              document.querySelector('button.bv-write-review').addEventListener('click', handleWriteReviewClick);
+            }
+            if(document.querySelector('div.bv-content-placeholder')) {
+              document.querySelector('div.bv-content-placeholder').addEventListener('click', handleWriteReviewClick);
+            }
           }
+        }
       };
-
       // Create an observer instance linked to the callback function
       const observer = new MutationObserver(callback);
-
       // Start observing the target node for configured mutations
       observer.observe(targetNode, config);
+      // *** code to observe DOM mutation and add custom handlers end ***
 
-      window.$BV.configure('global', {
-        productId: ratingsProductId,
-        userToken: securityToken,
-        brandcode: brand,
-      });
-      window.$BV.ui('rr', 'show_reviews',options);
+    }));
+
     </script>
 
 </body>
 </html>
-<!-- test Url: http://test5.childrensplace.com/static/bazaarVoice/index.html?securityToken=354tggrwt445w354545=&brand=tcp&productId=2043572 -->
+<!-- test Url: http://test5.childrensplace.com/static/bazaarVoice/index.html?productId=2043572&env=staging&instance=main_site -->
