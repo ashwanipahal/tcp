@@ -1183,6 +1183,25 @@ export const triggerPostMessage = url => {
   }
 };
 /*
+ * @function cropVideoUrl function appends or replaces the cropping value in the URL
+ * @param {string} url the image url
+ * @return {string} function returns new Url with the crop value
+ */
+export const cropVideoUrl = url => {
+  const basePath = 'https://test1.theplace.com/video/upload';
+  let URL = url;
+  // Video path transformation in case of absolute image URL
+  if (/^http/.test(url)) {
+    const [urlPath = '', urlData = ''] = url && url.split('/upload');
+    const imgPath = urlPath && urlPath.replace(/^\//, '');
+    URL = `${imgPath}/upload/${urlData.replace(/^\//, '')}`;
+  } else {
+    // Video path transformation in case of relative image URL
+    URL = `${basePath}/${url}`;
+  }
+  return URL;
+};
+/*
  * This function returns the true if the browser is IE11
  */
 export const isIE11 = () => {
@@ -1243,5 +1262,6 @@ export default {
   getProductUrlForDAM,
   convertNumToBool,
   triggerPostMessage,
+  cropVideoUrl,
   isIE11,
 };

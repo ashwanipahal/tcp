@@ -97,5 +97,6 @@ export {
   plpRoutingHandling,
   convertNumToBool,
   triggerPostMessage,
+  cropVideoUrl,
   isIE11,
 } from './utils';

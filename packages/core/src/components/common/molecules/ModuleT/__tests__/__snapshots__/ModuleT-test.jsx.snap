@@ -39,7 +39,7 @@ exports[`ModuleT component renders correctly 1`] = `
   >
     <Styled(LinkText)
       className="header"
-      component="div"
+      component="h2"
       dataLocator="moduleT_header_text"
       headerText={
         Array [
@@ -66,6 +66,7 @@ exports[`ModuleT component renders correctly 1`] = `
         ]
       }
       headingClass="moduleT-header"
+      type="heading"
     />
     <Styled(PromoBanner)
       className="promoBanner"
@@ -174,7 +175,7 @@ exports[`ModuleT component renders correctly 1`] = `
     >
       <Styled(LinkText)
         className="header"
-        component="div"
+        component="h2"
         dataLocator="moduleT_header_text"
         headerText={
           Array [
@@ -201,6 +202,7 @@ exports[`ModuleT component renders correctly 1`] = `
           ]
         }
         headingClass="moduleT-header"
+        type="heading"
       />
       <Styled(PromoBanner)
         className="promoBanner"
