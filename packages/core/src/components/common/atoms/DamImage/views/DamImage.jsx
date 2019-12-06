@@ -41,7 +41,7 @@ const getImgData = props => {
 const getBreakpointImgUrl = (type, props) => {
   const { breakpoints, isProductImage, itemBrand } = props;
 
-  const { basePath, imgPath, imgConfigs } = getImgData(props);
+  const { imgPath, imgConfigs } = getImgData(props);
 
   const breakpointTypeIndex = breakpoints.keys.indexOf(type);
   const breakpoint = breakpoints.values[breakpoints.keys[breakpointTypeIndex + 1]];
@@ -60,7 +60,6 @@ const getBreakpointImgUrl = (type, props) => {
   const apiConfigObj = getAPIConfig();
   let assetHost = apiConfigObj[`assetHost${brandId}`];
   const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
-
   const isVideoUrl = getVideoUrl(imgPath);
   if (isVideoUrl) {
     assetHost = assetHost.replace('/image/', '/video/');
@@ -68,7 +67,7 @@ const getBreakpointImgUrl = (type, props) => {
   const configUrl = config === '' ? '' : `${config}/`;
   return isProductImage
     ? `${assetHost}/${configUrl}${productAssetPath}/${imgPath}`
-    : `${basePath}/${configUrl}${imgPath}`;
+    : `${assetHost}/${configUrl}${imgPath}`;
 };
 
 const RenderVideo = videoProps => {
