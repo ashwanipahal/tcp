@@ -81,7 +81,7 @@ describe('Checkout Selectors', () => {
   it('#getPickUpContactFormLabels', () => {
     const State = {
       Labels: {
-        global: {},
+        global: { accessibility: { lbl_venmo_icon: '' } },
         checkout: {
           pickup: { lbl_pickup_title: '', lbl_pickup_nextToBilling: 'NEXT: SHIPPING' },
           shipping: {},
@@ -116,6 +116,7 @@ describe('Checkout Selectors', () => {
       title: '',
       titleEditPickup: undefined,
       nextToBilling: 'NEXT: SHIPPING',
+      venmoIconAltText: '',
     });
   });
 
