@@ -57,7 +57,7 @@ class ShippingContainer extends React.Component {
   componentDidUpdate(prevProps) {
     const { onFileAddressKey } = this.props;
     const { onFileAddressKey: prevFileAddressKey } = prevProps;
-    if (onFileAddressKey !== prevFileAddressKey) {
+    if (prevFileAddressKey && onFileAddressKey !== prevFileAddressKey) {
       this.getShipmentMethods(prevProps);
     }
   }
