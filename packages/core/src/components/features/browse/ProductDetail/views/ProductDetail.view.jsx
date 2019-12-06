@@ -47,7 +47,8 @@ class ProductDetailView extends PureComponent {
     const { productInfo, trackPageLoad } = this.props;
     const { name, ratingsProductId } = productInfo;
     const productsFormatted = this.formatProductsData(productInfo);
-    const pageName = `product:${ratingsProductId}:${name.toLowerCase()}`;
+    const nameParam = name && name.toLowerCase();
+    const pageName = `product:${ratingsProductId}:${nameParam}`;
 
     if (productsFormatted) {
       trackPageLoad({
@@ -265,6 +266,7 @@ class ProductDetailView extends PureComponent {
       middlePromos,
       bottomPromos,
       sizeChartDetails,
+      accessibilityLabels,
       isLoading,
       ...otherProps
     } = this.props;
@@ -347,6 +349,7 @@ class ProductDetailView extends PureComponent {
               initialValues={this.formValues}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              accessibilityLabels={accessibilityLabels}
               ratingsProductId={ratingsProductId}
             />
           </Col>
@@ -410,7 +413,7 @@ class ProductDetailView extends PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row fullBleed={{ small: true, medium: false, large: false }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="product-detail-section">
               <ProductDescription
@@ -450,7 +453,7 @@ class ProductDetailView extends PureComponent {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row fullBleed={{ small: true, medium: false, large: false }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductReviewsContainer
               expanded={false}
@@ -498,6 +501,7 @@ ProductDetailView.propTypes = {
   middlePromos: PropTypes.string,
   bottomPromos: PropTypes.string,
   trackPageLoad: PropTypes.func,
+  accessibilityLabels: PropTypes.shape({}),
   isLoading: PropTypes.bool.isRequired,
 };
 
@@ -526,6 +530,7 @@ ProductDetailView.defaultProps = {
   topPromos: '',
   middlePromos: '',
   bottomPromos: '',
+  accessibilityLabels: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

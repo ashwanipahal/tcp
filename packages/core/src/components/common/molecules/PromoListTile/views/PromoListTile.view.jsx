@@ -14,10 +14,19 @@ export class PromoListTile extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     tileData: PropTypes.shape({}).isRequired,
+    openPLCCModal: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     className: '',
+  };
+
+  ctaHandler = (e, target, action) => {
+    if (target === '_modal' && action === 'plccModal') {
+      e.nativeEvent.preventDefault();
+      const { openPLCCModal } = this.props;
+      openPLCCModal(e);
+    }
   };
 
   /**
@@ -69,6 +78,10 @@ export class PromoListTile extends React.PureComponent {
                 to={tileData.buttonList[0].url}
                 fontSizeVariation="large"
                 data-locator="privacyLnk"
+                target="_blank"
+                onClick={evt =>
+                  this.ctaHandler(evt, tileData.buttonList[0].target, tileData.buttonList[0].action)
+                }
               >
                 {tileData.buttonList[0].text}
               </Anchor>

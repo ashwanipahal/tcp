@@ -97,9 +97,12 @@ export const getOrderHistory = (siteId, currentSiteId) => {
 
       return {
         totalPages: 1,
-        orders: orders.sort(
-          (prev, next) => parseInt(next.orderNumber, 10) - parseInt(prev.orderNumber, 10)
-        ),
+        orders:
+          orders &&
+          orders.length > 0 &&
+          orders.sort(
+            (prev, next) => parseInt(next.orderNumber, 10) - parseInt(prev.orderNumber, 10)
+          ),
       };
     })
     .catch(err => {

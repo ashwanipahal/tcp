@@ -25,8 +25,18 @@ const ImageStyleWrapper = styled.View`
   align-items: center;
 `;
 
+const SubmissionFormWrapper = styled.View`
+  height: ${props => props.height}px;
+`;
+
 const ProductRatingsContainer = styled.View`
   ${getAdditionalStyle}
 `;
 
-export { RichTextContainer, AccordionHeader, ImageStyleWrapper, ProductRatingsContainer };
+export {
+  RichTextContainer,
+  AccordionHeader,
+  ImageStyleWrapper,
+  ProductRatingsContainer,
+  SubmissionFormWrapper,
+};

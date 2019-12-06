@@ -144,7 +144,18 @@ class Footer extends React.Component {
 
     return (
       <footer className={`${className} footer-global`}>
-        <Row className="footer-candidate-wrapper" fullBleed>
+        <Row className="footer-candidate-wrapper" fullBleed={!isNavigationFooter}>
+          {isNavigationFooter && (
+            <Col
+              colSize={{
+                large: 12,
+                medium: 8,
+                small: 6,
+              }}
+            >
+              <div className="divider hide-in-large-up" />
+            </Col>
+          )}
           {showFooterTopCandidateB ? (
             <FooterTopCandidateB isNavigationFooter={isNavigationFooter} {...props} />
           ) : (

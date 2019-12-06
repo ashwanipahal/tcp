@@ -3,14 +3,17 @@ import { PropTypes } from 'prop-types';
 
 const PageSlots = props => {
   const { slots = [], modules, ...others } = props;
-
-  return slots.map(slot => {
-    const Module = modules[slot.moduleName];
-    const { data: slotData, contentId, accessibility } = slot;
-    return (
-      Module &&
-      slotData && <Module key={contentId} accessibility={accessibility} {...slotData} {...others} />
-    );
+  return slots.map((slot, index) => {
+    const key = index;
+    if (slot && slot.moduleName) {
+      const Module = modules[slot.moduleName];
+      const { data: slotData, accessibility } = slot;
+      return (
+        Module &&
+        slotData && <Module key={key} accessibility={accessibility} {...slotData} {...others} />
+      );
+    }
+    return null;
   });
 };
 

@@ -16,6 +16,7 @@ import {
   getErrorMessage,
   getPasswordLabels,
   getLoadingState,
+  getAccessibilityLabels,
 } from './CreateAccount.selectors';
 import {
   getUserLoggedInState,
@@ -187,7 +188,10 @@ export const mapStateToProps = state => {
     userplccCardNumber: getplccCardNumber(state),
     userplccCardId: getplccCardId(state),
     error: getErrorMessage(state),
-    labels: getLabels(state),
+    labels: {
+      ...getLabels(state),
+      ...getAccessibilityLabels(state),
+    },
     formErrorMessage: getFormValidationErrorMessages(state),
     passwordLabels: getPasswordLabels(state),
     isLoading: getLoadingState(state),

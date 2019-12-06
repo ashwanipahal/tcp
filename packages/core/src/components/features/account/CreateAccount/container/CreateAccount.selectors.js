@@ -39,6 +39,12 @@ export const getCreateAccountLabels = createSelector(
   labels => labels && labels.registration
 );
 
+export const getAccessibilityLabels = state => {
+  return {
+    lbl_info_icon: getLabelValue(state.Labels, 'lbl_info_icon', 'accessibility', 'global'),
+  };
+};
+
 export const getErrorMessage = createSelector(
   [getError, getCreateAccountLabels],
   (error, labels) => {

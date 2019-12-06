@@ -84,27 +84,6 @@ export default css`
   && .tooltip-bubble {
     min-width: 238px;
   }
-  @media ${props => props.theme.mediaQuery.smallMax} {
-    .TCPModal__Content_Modal .custom-select-dropDownList {
-      position: relative;
-    }
-    .TCPModal__Content_Modal .dropdownDivOverFlow {
-      max-height: none;
-    }
-    .TCPModal__Content_Modal .dropDownListwrapper {
-      border: 0px;
-    }
-    .TCPModal__Content_Modal .dropdownliBottomBorder {
-      border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
-      margin: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS}
-        ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
-    }
-    .TCPModal__Content_Modal .ulBorderWithLastRow li:last-child {
-      border: none;
-      padding: 0px;
-      width: 95%;
-    }
-  }
   .hideOnMobile {
     @media ${props => props.theme.mediaQuery.smallOnly} {
       display: none;
@@ -124,52 +103,9 @@ export default css`
   .default-payment .CheckBox__text {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
-
-  && .dropdownliBottomBorder {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    position: relative;
-    border: 0px;
+  .ulBorderWithLastRow li:last-child div {
+    bottom: 13px;
   }
-  &&& .dropdownliBottomBorder::after {
-    position: absolute;
-    content: '';
-    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-    width: 93%;
-    transform: translateX(-50%);
-    bottom: 0px;
-    left: 50%;
-  }
-  &&&.dropdownliBottomBorder::after + .dropdownActiveClass {
-    border: 0;
-  }
-  .dropDownTop {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    position: absolute;
-    width: 100%;
-    height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    z-index: 1;
-  }
-  .dropDownBottom {
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    position: absolute;
-    width: 100%;
-    height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    bottom: 70px;
-    z-index: 1;
-    margin-bottom: 6px;
-  }
-
-  && ul:last-child li:last-child::after {
-    border-bottom: 0px;
-  }
-  && ul:last-child li:nth-child(1)::after {
-    border-bottom: 0px;
-  }
-  .ulBorderWithLastRow li:last-child {
-    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.MED}
-      ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  }
-
   .payment-container {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     border-top: 1px solid ${props => props.theme.colors.TEXT.DARKGRAY};
@@ -180,7 +116,6 @@ export default css`
   }
 
   .addCreditCardBtn {
-    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XL};
     min-height: 42px;
   }
   .card-edit-buttons {
@@ -261,13 +196,6 @@ export default css`
       img {
         padding-left: 0;
       }
-    }
-  }
-
-  @media ${props => props.theme.mediaQuery.smallOnly} {
-    .ulBorderWithLastRow li:last-child {
-      padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM}
-        ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 `;

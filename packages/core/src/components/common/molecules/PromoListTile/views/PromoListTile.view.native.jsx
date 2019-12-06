@@ -6,8 +6,6 @@ import {
   BodyCopyWithSpacing,
 } from '@tcp/core/src/components/common/atoms/styledWrapper';
 
-import { UrlHandler } from '@tcp/core/src/utils/utils.app';
-import endpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 import { TileWrapper, PromoTileImage } from '../styles/PromoListTile.style.native';
 
 /**
@@ -16,7 +14,14 @@ import { TileWrapper, PromoTileImage } from '../styles/PromoListTile.style.nativ
  * @param - Received object of label from cms
  */
 
-const PromoListTile = ({ tileData }) => {
+const ctaHandler = (target, action, navigation, toggleModal) => {
+  if (target === '_modal' && action === 'plccModal') {
+    navigation.navigate('ApplyNow');
+    toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
+  }
+};
+
+const PromoListTile = ({ tileData, navigation, toggleModal }) => {
   return (
     <TileWrapper>
       <PromoTileImage>
@@ -47,7 +52,12 @@ const PromoListTile = ({ tileData }) => {
             noLink
             anchorVariation="primary"
             onPress={() => {
-              UrlHandler(endpoints.myPlaceRewardsPage);
+              ctaHandler(
+                tileData.buttonList[0].target,
+                tileData.buttonList[0].action,
+                navigation,
+                toggleModal
+              );
             }}
             text={tileData.buttonList[0].text}
           />
@@ -59,6 +69,8 @@ const PromoListTile = ({ tileData }) => {
 
 PromoListTile.propTypes = {
   tileData: PropTypes.shape({}),
+  navigation: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };
 
 PromoListTile.defaultProps = {

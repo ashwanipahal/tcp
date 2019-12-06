@@ -277,7 +277,7 @@ exports[`ModuleJ component renders correctly 1`] = `
         removeLastMargin={true}
         showArrows={true}
       />
-      <Styled(Carousel)
+      <Connect(Styled(Carousel))
         carouselConfig={
           Object {
             "autoplay": false,

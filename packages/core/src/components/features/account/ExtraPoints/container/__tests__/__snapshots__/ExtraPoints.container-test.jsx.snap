@@ -10,6 +10,8 @@ exports[`ExtraPointsContainer View should render ExtraPointsContainer Correctly 
     isPromoListFetching={false}
     labels={Object {}}
     onViewActivityDetails={[Function]}
+    openModal={[Function]}
+    openPLCCModal={[Function]}
     promoListData={Array []}
     waysToEarn={Array []}
   />

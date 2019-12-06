@@ -236,7 +236,7 @@ class ProductCustomizeForm extends React.PureComponent<Props> {
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
-          <Col colSize={{ small: 10, medium: 10, large: 10 }}>
+          <Col colSize={{ small: 6, medium: 8, large: 10 }}>
             <div className="select-value-wrapper">
               <div className="color-selector">
                 <Field

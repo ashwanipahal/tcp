@@ -21,6 +21,7 @@ const FullSizeImageWithQuickViewModal = props => {
     isThumbnailListVisible,
     images,
     colorChipSelector,
+    accessibilityLabels,
     ratingsProductId,
   } = props;
   const { selectColor } = colorChipSelector;
@@ -73,6 +74,7 @@ const FullSizeImageWithQuickViewModal = props => {
           isFullSizeForTab
           isZoomEnabled={false}
           isThumbnailListVisible={isThumbnailListVisible}
+          accessibilityLabels={accessibilityLabels}
           ratingsProductId={ratingsProductId}
         />
       </div>
@@ -104,12 +106,14 @@ FullSizeImageWithQuickViewModal.propTypes = {
       selectColor: PropTypes.func,
     })
   ),
+  accessibilityLabels: PropTypes.shape({}),
 };
 
 FullSizeImageWithQuickViewModal.defaultProps = {
   isMobile: true,
   isThumbnailListVisible: true,
   colorChipSelector: {},
+  accessibilityLabels: {},
 };
 
 export default compose(

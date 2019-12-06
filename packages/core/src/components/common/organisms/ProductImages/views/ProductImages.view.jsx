@@ -68,6 +68,7 @@ class ProductImages extends React.Component {
       outOfStockCaps: PropTypes.string,
     }),
     keepAlive: PropTypes.bool,
+    accessibilityLabels: PropTypes.shape({}),
     ratingsProductId: PropTypes.string,
   };
 
@@ -109,6 +110,7 @@ class ProductImages extends React.Component {
       isGiftCard,
       keepAlive,
       outOfStockLabels,
+      accessibilityLabels,
       ratingsProductId,
     } = this.props;
     const { currentImageIndex } = this.state;
@@ -192,10 +194,11 @@ class ProductImages extends React.Component {
               )}
               {isFullSizeVisible && (
                 <SocialConnect
-                  ratingsProductId={ratingsProductId}
                   isFacebookEnabled
                   isPinterestEnabled
                   isTwitterEnabled
+                  accessibilityLabels={accessibilityLabels}
+                  ratingsProductId={ratingsProductId}
                 />
               )}
             </div>
@@ -210,6 +213,7 @@ class ProductImages extends React.Component {
           (isMobile ? (
             <FullSizeImageModal
               name={productName}
+              modalLabel={pdpLabels.fullSize}
               image={images[currentImageIndex] && images[currentImageIndex][imageSizePropertyName]}
               onCloseClick={onCloseClick}
             />
@@ -231,6 +235,7 @@ ProductImages.defaultProps = {
     outOfStockCaps: '',
   },
   keepAlive: false,
+  accessibilityLabels: {},
   ratingsProductId: '',
 };
 

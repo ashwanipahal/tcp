@@ -42,6 +42,7 @@ export {
   internalCampaignProductAnalyticsList,
   getQueryParamsFromUrl,
   getProductListingPageTrackData,
+  getFontsURL,
 } from './utils.web';
 
 export {
@@ -95,4 +96,5 @@ export {
   getProductUrlForDAM,
   plpRoutingHandling,
   convertNumToBool,
+  isIE11,
 } from './utils';

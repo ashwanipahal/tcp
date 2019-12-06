@@ -14,7 +14,7 @@ exports[`ProductReviews component as guest should render correctly 1`] = `
       isAccordionOpen={true}
       margin={null}
       numberOfLines={null}
-      text="undefined (231)"
+      text="RATINGS & REVIEWS (231)"
       textAlign="center"
       textDecoration={null}
     />
@@ -58,7 +58,7 @@ exports[`ProductReviews component as guest should render correctly 1`] = `
       scrollEnabled={true}
       source={
         Object {
-          "uri": "undefined?securityToken=&brand=undefined&productId=2323",
+          "uri": "undefined?productId=2323&env=undefined&instance=undefined",
         }
       }
       startInLoadingState={true}
@@ -84,7 +84,7 @@ exports[`ProductReviews component as logged in user should render correctly 1`] 
       isAccordionOpen={true}
       margin={null}
       numberOfLines={null}
-      text="undefined (231)"
+      text="RATINGS & REVIEWS (231)"
       textAlign="center"
       textDecoration={null}
     />
@@ -128,7 +128,7 @@ exports[`ProductReviews component as logged in user should render correctly 1`] 
       scrollEnabled={true}
       source={
         Object {
-          "uri": "undefined?securityToken=undefined&brand=undefined&productId=42323",
+          "uri": "undefined?productId=42323&env=undefined&instance=undefined",
         }
       }
       startInLoadingState={true}

@@ -13,6 +13,7 @@ const styles = css`
     display: flex;
     justify-content: space-between;
   }
+
   .venmo-tile {
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;

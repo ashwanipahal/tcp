@@ -3,7 +3,7 @@
 exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <WithTheme(SnapCarousel)
+    <Connect(WithTheme(SnapCarousel))
       carouselConfig={
         Object {
           "autoplay": true,

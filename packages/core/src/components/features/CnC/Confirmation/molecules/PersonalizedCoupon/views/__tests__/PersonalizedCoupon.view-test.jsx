@@ -31,6 +31,9 @@ describe('PersonalizedCoupon View', () => {
         validTill: 'Valid',
         nowThrough: 'Now through',
         detailsLink: 'details',
+        upArrowAltText: 'Up arrow icon',
+        downArrowAltText: 'Down arrow icon',
+        printIconAltText: 'Print icon',
       },
     };
   });

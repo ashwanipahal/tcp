@@ -44,7 +44,7 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
   >
     Build her head-to-toe party outfit sprinkled with all the extra-sweet details!
   </ForwardRef>
-  <ForwardRef
+  <Connect(Styled(Carousel))
     carouselConfig={
       Object {
         "autoplay": false,
@@ -248,6 +248,6 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         </ForwardRef>
       </ForwardRef>
     </div>
-  </ForwardRef>
+  </Connect(Styled(Carousel))>
 </div>
 `;

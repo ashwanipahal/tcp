@@ -156,17 +156,15 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
                 }
               />
             </button>
-            {favoritedCount && (
-              <BodyCopy
-                dataLocator="pdp_favorite_icon_count"
-                className="favorite-count"
-                fontSize="fs10"
-                fontWeight="regular"
-                color="gray.600"
-              >
-                {favoritedCount}
-              </BodyCopy>
-            )}
+            <BodyCopy
+              dataLocator="pdp_favorite_icon_count"
+              className="favorite-count"
+              fontSize="fs10"
+              fontWeight="regular"
+              color="gray.600"
+            >
+              {favoritedCount}
+            </BodyCopy>
           </>
         )}
       </BodyCopy>

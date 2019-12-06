@@ -22,7 +22,7 @@ const PromotionalArea = ({ className, data, mobile, maxLoopCount }) => {
   return (
     <div className={className}>
       {/* eslint-disable-next-line */}
-      <div className={wrapperClass} tabIndex="0">
+      <div className={wrapperClass}>
         <Carousel options={carouselConfig} carouselConfig={{ type: 'dark', arrow: 'small' }}>
           {data &&
             data.map(promotion => {

@@ -46,10 +46,6 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_DAM_HOST_TCP",
       "value": "https://test1.theplace.com/image/upload"
     },
@@ -136,10 +132,6 @@
     {
       "name": "RWD_APP_ACQUISITION_ID_GYM",
       "value": "ikhNl0Te"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
@@ -386,14 +378,14 @@
     },
     "xcode": {
       "certificatePassword": "__protected__",
-      "certificateFilename": "Dist-Certificates.p12",
-      "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
-      "certificateFileId": "ee6008de-5256-4366-8ec4-86084606ee62",
+      "certificateFilename": "TCP_DevelopmentCertificate.p12",
+      "provisioningProfileFilename": "ProvisioningProfileDevelopment_GymAppUATProd.mobileprovision",
+      "certificateFileId": "04167d3e-1143-4c1b-9bc3-fcf141886815",
       "provisioningProfileFileId": "5d650252-eada-4a6b-a973-e5da14307a0e",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "gymboree_prod_preview",
-      "xcodeVersion": "10.2.1",
+      "xcodeVersion": "11.2.1",
       "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },

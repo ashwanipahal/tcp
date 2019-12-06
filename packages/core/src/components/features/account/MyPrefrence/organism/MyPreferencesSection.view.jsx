@@ -11,6 +11,7 @@ import Anchor from '../../../../common/atoms/Anchor';
 import SocialContainer from '../../../../common/organisms/SocialAccount/container/Social.container';
 import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 import MyPreferenceSubscription from '../../MyPreferenceSubscription';
+import externalEndpoints from '../../common/externalEndpoints';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
@@ -75,7 +76,7 @@ class MyPrefrenceSection extends React.PureComponent {
           >
             <BodyCopy textAlign="center">
               <Anchor
-                url="learn_more_link"
+                href={externalEndpoints.myPlaceRewardsPage}
                 fontSizeVariation="large"
                 anchorVariation="primary"
                 underline
@@ -86,7 +87,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 {getLabelValue(labels, 'lbl_prefrence_program_details')}
               </Anchor>
               <Anchor
-                url="learn_more_link"
+                href={externalEndpoints.termsAndConditionsPage}
                 fontSizeVariation="large"
                 anchorVariation="primary"
                 underline

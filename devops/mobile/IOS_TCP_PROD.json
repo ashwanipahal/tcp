@@ -46,10 +46,6 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_DAM_HOST_TCP",
       "value": "https://test1.theplace.com/image/upload"
     },
@@ -136,10 +132,6 @@
     {
       "name": "RWD_APP_ACQUISITION_ID_GYM",
       "value": "ikhNl0Te"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
@@ -343,11 +335,11 @@
     },
     {
       "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_URL",
@@ -358,8 +350,8 @@
       "value": "https://childrensplace.com/static/bazaarVoice/index.html"
     },
     {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
+      "name": "RWD_APP_BV_ENV",
+      "value": "production"
     }
   ],
   "signed": true,
@@ -387,14 +379,14 @@
     },
     "xcode": {
       "certificatePassword": "__protected__",
-      "certificateFilename": "Dev-Certificates.p12",
+      "certificateFilename": "TCP_DevelopmentCertificate.p12",
       "provisioningProfileFilename": "ProvisioningProfileDevelopment_TcpAppUATProd.mobileprovision",
-      "certificateFileId": "d83c966a-cf7a-46cb-91a1-9bca11196d42",
-      "provisioningProfileFileId": "b2dd0c1c-0d28-4ff5-a4bf-2ebfe5bd6faf",
+      "certificateFileId": "60f0e104-7343-49c7-bd23-6b77db422f73",
+      "provisioningProfileFileId": "fc9ceed4-656f-448f-8e0a-0fdfa5769849",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_prod",
-      "xcodeVersion": "10.2.1",
+      "xcodeVersion": "11.2.1",
       "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },

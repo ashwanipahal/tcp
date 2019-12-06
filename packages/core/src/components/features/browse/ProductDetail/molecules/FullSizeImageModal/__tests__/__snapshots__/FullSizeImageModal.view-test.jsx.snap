@@ -4,7 +4,7 @@ exports[`FullSizeImageModal component should renders correctly 1`] = `
 <Styled(Modal)
   className=" TCPModal__Content"
   closeIconDataLocator="pdp_zoomed_image_closed_btn"
-  contentLabel="Image preview"
+  contentLabel=" "
   dataLocator="pdp_full_size_image_modal"
   fixedWidth={true}
   isOpen={true}
