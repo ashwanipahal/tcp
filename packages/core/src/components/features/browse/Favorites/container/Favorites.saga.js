@@ -1,5 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import isEmpty from 'lodash/isEmpty';
 import processHelperUtil from '@tcp/core/src/services/abstractors/productListing/ProductDetail.util';
 import { FAVORITES_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import getErrorList from '@tcp/core/src/components/features/CnC/BagPage/container/Errors.selector';
@@ -113,7 +114,7 @@ export function* addItemsToWishlist({ payload }) {
         errorMapping,
       });
 
-      yield call(getProductsUserCustomInfo);
+      yield call(getProductsUserCustomInfo); // calling this method directly as we need to update default favorite list in redux state, need not to check whether its already in state or not.
 
       if (res && res.errorMessage) {
         yield put(setAddToFavoriteErrorState(res));
@@ -318,7 +319,7 @@ export function* deleteWishListItemById({ payload }, isByPallLoadSummary = false
     if (!deleteItemResponse.success) {
       throw deleteItemResponse;
     }
-    yield call(getProductsUserCustomInfo);
+    yield call(getProductsUserCustomInfo); // calling this method directly as we need to update default favorite list in redux state, need not to check whether its already in state or not.
     yield put(setDeletedItemAction(payload.itemId));
     if (!isByPallLoadSummary) {
       yield* loadWishlistsSummaries(activeWishlistId);
@@ -402,11 +403,10 @@ export function* replaceWishlistItem(payload) {
 export function* getDefaultWishList(payload) {
   try {
     let defaultWishListItems = yield select(defaultWishListFromState);
-    defaultWishListItems = yield call(
-      getProductsUserCustomInfo,
-      payload.generalProductIdsList,
-      payload.products
-    );
+    defaultWishListItems =
+      (defaultWishListItems && defaultWishListItems.size === 0) || isEmpty(defaultWishListItems)
+        ? yield call(getProductsUserCustomInfo, payload.products)
+        : defaultWishListItems;
     yield put(getSetDefaultWishListActn({ ...defaultWishListItems }));
     return defaultWishListItems;
   } catch (err) {
@@ -431,7 +431,6 @@ function* FavoriteSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.UPDATE_WISHLIST_ITEM, updateWishListItem);
   yield takeLatest(FAVORITES_CONSTANTS.SEND_WISHLIST_EMAIL, sendWishListMail);
   yield takeLatest(FAVORITES_CONSTANTS.FAVORITES_REPLACE_WISHLIST_ITEM, replaceWishlistItem);
-  yield takeLatest('CALL_DEFAULT_WISHLIST_METHOD', getDefaultWishList);
 }
 
 export default FavoriteSaga;

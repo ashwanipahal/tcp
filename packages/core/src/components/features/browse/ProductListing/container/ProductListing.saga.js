@@ -13,7 +13,7 @@ import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
-import { getDefaultWishList } from '../../Favorites/container/Favorites.actions';
+import { getDefaultWishList } from '../../Favorites/container/Favorites.saga';
 import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
 
 const instanceProductListing = new ProductAbstractor();
@@ -89,12 +89,7 @@ export function* fetchPlpProducts({ payload }) {
         const isGuest = !getUserLoggedInState({ ...state });
         const isRemembered = isRememberedUser({ ...state });
         if (!isGuest && !isRemembered) {
-          const generalProductIdsList = products.map(
-            product => product.productInfo.generalProductId
-          );
-          const defaultWishList = yield put(
-            getDefaultWishList({ generalProductIdsList, products })
-          );
+          const defaultWishList = yield call(getDefaultWishList, products);
           plpProducts.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
             defaultWishList,
             products
@@ -135,12 +130,7 @@ export function* fetchMoreProducts({ payload = {} }) {
         const isGuest = !getUserLoggedInState(state);
         const isRemembered = isRememberedUser(state);
         if (!isGuest && !isRemembered) {
-          const generalProductIdsList = products.map(
-            product => product.productInfo.generalProductId
-          );
-          const defaultWishList = yield put(
-            getDefaultWishList({ generalProductIdsList, products })
-          );
+          const defaultWishList = yield call(getDefaultWishList, products);
           plpProducts.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
             defaultWishList,
             products

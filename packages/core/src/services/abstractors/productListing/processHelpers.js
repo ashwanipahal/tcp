@@ -389,7 +389,7 @@ const addingExtraProductInfo = (favProductsMap, products, isPDP = false) => {
     return products.map(product => {
       const { miscInfo, ...otherAttributes } = product;
       const extraProductInfo =
-        favProductsMap[isPDP ? product.colorProductId : product.productInfo.generalProductId];
+        favProductsMap[isPDP ? product.colorDisplayId : product.productInfo.generalProductId];
       return {
         ...otherAttributes,
         miscInfo: {
@@ -399,7 +399,6 @@ const addingExtraProductInfo = (favProductsMap, products, isPDP = false) => {
       };
     });
   } catch (err) {
-    console.log('err->', err);
     return err;
   }
 };

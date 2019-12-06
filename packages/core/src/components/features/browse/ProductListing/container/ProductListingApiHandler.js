@@ -9,6 +9,7 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
+import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
 
 const instanceProductListing = new ProductAbstractor();
 const operatorInstance = new ProductsOperator();
@@ -81,11 +82,9 @@ export const fetchPlpProductsInfo = async ({
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
         if (isCustomInfo({ ...state, Navigation: { navigationData } })) {
-          const generalProductIdsList = products.map(
-            product => product.productInfo.generalProductId
-          );
-          plpProducts.loadedProductsPages[0] = await getProductsUserCustomInfo(
-            generalProductIdsList,
+          const defaultWishList = await getProductsUserCustomInfo(products);
+          plpProducts.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
+            defaultWishList,
             products
           );
         }

@@ -45,14 +45,7 @@ export const setActiveWishlistAction = payload => {
 export function getSetDefaultWishListActn(wishList) {
   return {
     payload: wishList,
-    type: 'FAVORITES_SET_DEFAULT_WISHLIST',
-  };
-}
-
-export function getDefaultWishList(wishList) {
-  return {
-    payload: wishList,
-    type: 'CALL_DEFAULT_WISHLIST_METHOD',
+    type: FAVORITES_CONSTANTS.FAVORITES_SET_DEFAULT_WISHLIST,
   };
 }
 
@@ -150,7 +143,7 @@ export const getSetIsWishlistReadOnlyAction = isReadOnly => {
 export const getSetActiveWishlistAction = activeWishlist => {
   return {
     activeWishlist,
-    type: 'FAVORITES_SET_ACTIVE_WISHLIST',
+    type: FAVORITES_CONSTANTS.FAVORITES_SET_ACTIVE_WISHLIST,
   };
 };
 

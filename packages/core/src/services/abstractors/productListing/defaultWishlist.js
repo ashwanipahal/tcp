@@ -1,7 +1,7 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
-const getProductsUserCustomInfo = (generalProductIdsList, products = [], isPDP = false) => {
+const getProductsUserCustomInfo = (products = [], isPDP = false) => {
   const payload = {
     webService: endpoints.getListofDefaultWishlist,
   };
