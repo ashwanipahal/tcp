@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ModuleH from '../views/ModuleH.native';
-import Carousel from '../../Carousel/views/Carousel.native';
 import { BodyCopy, Heading } from '../../../atoms';
 import mock from '../../../../../services/abstractors/common/moduleH/mock';
 
@@ -23,7 +22,7 @@ describe('ModuleH component', () => {
     expect(ModuleHComponent.find(BodyCopy)).toHaveLength(5);
   });
 
-  it('should render Carousel', () => {
-    expect(ModuleHComponent.find(Carousel)).toHaveLength(1);
+  it('should return Connect(WithTheme(SnapCarousel)) component value one', () => {
+    expect(ModuleHComponent.find('Connect(WithTheme(SnapCarousel))')).toHaveLength(1);
   });
 });

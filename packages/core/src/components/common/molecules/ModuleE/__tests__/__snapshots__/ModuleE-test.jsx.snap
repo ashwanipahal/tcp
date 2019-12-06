@@ -236,7 +236,7 @@ exports[`ModuleE component Should render component 1`] = `
           }
         }
       >
-        <Styled(Styled(Carousel))
+        <Styled(Connect(Styled(Carousel)))
           carouselConfig={
             Object {
               "autoplay": true,
@@ -341,7 +341,7 @@ exports[`ModuleE component Should render component 1`] = `
               }
             />
           </div>
-        </Styled(Styled(Carousel))>
+        </Styled(Connect(Styled(Carousel)))>
         <Styled(Row)
           fullBleed={
             Object {

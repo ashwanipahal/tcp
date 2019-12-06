@@ -223,7 +223,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
 <div
   className="header-promo__container header-promo-mobile content-wrapper"
 >
-  <Styled(Carousel)
+  <Connect(Styled(Carousel))
     carouselConfig={
       Object {
         "arrow": "small",
@@ -256,6 +256,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           "autoplaySpeed": 6000,
           "speed": 500,
         },
+        "maxLoopCount": 1,
       }
     }
   >
@@ -436,6 +437,6 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
         </Styled(BodyCopy)>
       </div>
     </Styled(Anchor)>
-  </Styled(Carousel)>
+  </Connect(Styled(Carousel))>
 </div>
 `;

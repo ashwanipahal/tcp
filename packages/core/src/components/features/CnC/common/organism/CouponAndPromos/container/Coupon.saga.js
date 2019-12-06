@@ -27,7 +27,7 @@ const getTrackingObj = (formData, productsData, coupon) => {
       formData.analyticsData && formData.analyticsData.eventName
         ? formData.analyticsData.eventName
         : 'coupon applied',
-    couponCode: coupon.id,
+    couponCode: coupon && coupon.id,
     pageNavigationText:
       formData.analyticsData && formData.analyticsData.pageNavigationText
         ? formData.analyticsData.pageNavigationText
