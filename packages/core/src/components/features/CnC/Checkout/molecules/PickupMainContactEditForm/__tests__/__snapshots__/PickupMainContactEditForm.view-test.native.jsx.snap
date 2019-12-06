@@ -102,6 +102,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
         margins={null}
         noLink={true}
         onPress={[Function]}
+        openWebView={false}
         target="_blank"
         text=""
         underline={true}
@@ -143,6 +144,7 @@ exports[`PickupMainContactEditFormVanilla component should renders on click 1`] 
         margins={null}
         noLink={true}
         onPress={[Function]}
+        openWebView={false}
         target="_blank"
         text=""
         underline={true}

@@ -83,6 +83,7 @@ exports[`ConfirmationItemTitleDisplay should render correctly 1`] = `
           locator=""
           margins={null}
           onPress={null}
+          openWebView={false}
           text="union"
           title="union"
           url="/"
@@ -299,6 +300,7 @@ exports[`ConfirmationItemTitleDisplay should render correctly without shipping f
           locator=""
           margins={null}
           onPress={null}
+          openWebView={false}
           text="union"
           title="union"
           url="/"

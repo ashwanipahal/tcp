@@ -147,6 +147,7 @@ An online account has been created with your email! Click here to reset your pas
           locator=""
           margins={null}
           onPress={[Function]}
+          openWebView={false}
           text="lbl_createAccount_resetPassword"
           underline={true}
           visible={false}

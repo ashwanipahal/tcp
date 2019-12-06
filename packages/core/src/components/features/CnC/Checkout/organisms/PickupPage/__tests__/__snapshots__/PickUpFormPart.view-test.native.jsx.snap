@@ -112,6 +112,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
                 margins={null}
                 noLink={true}
                 onPress={null}
+                openWebView={false}
                 target="_blank"
                 text=""
                 underline={true}
@@ -273,6 +274,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
                 margins={null}
                 noLink={true}
                 onPress={null}
+                openWebView={false}
                 target="_blank"
                 text=""
                 underline={true}

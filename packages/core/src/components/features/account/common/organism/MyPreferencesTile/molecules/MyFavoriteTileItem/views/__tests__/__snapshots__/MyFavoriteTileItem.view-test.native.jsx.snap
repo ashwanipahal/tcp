@@ -30,6 +30,7 @@ exports[`MyFavoriteTileItem component should render correctly 1`] = `
         margins={null}
         noLink={true}
         onPress={[Function]}
+        openWebView={false}
         text="lbl_preference_tileAdd"
         underline={true}
         visible={false}

@@ -11,6 +11,7 @@ exports[`LinkText component renders correctly 1`] = `
   locator=""
   margins={null}
   onPress={null}
+  openWebView={false}
   text=""
   url="http://example.com3367"
   visible={false}

@@ -132,6 +132,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         margins={null}
         noLink={true}
         onPress={null}
+        openWebView={false}
         target="_blank"
         text=""
         title=""
@@ -251,6 +252,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         margins={null}
         noLink={true}
         onPress={null}
+        openWebView={false}
         target="_blank"
         text=""
         title=""

@@ -12,6 +12,7 @@ exports[`LoyaltyPromoBanner should render correctly 1`] = `
     margins={null}
     navigation={Object {}}
     onPress={null}
+    openWebView={false}
     text=""
     visible={false}
   >

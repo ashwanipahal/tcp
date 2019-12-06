@@ -53,6 +53,7 @@ exports[`PromoListTile component should renders correctly with anchor in list 1`
       margins={null}
       noLink={true}
       onPress={[Function]}
+      openWebView={false}
       text="Apply Today"
       underline={true}
       visible={false}

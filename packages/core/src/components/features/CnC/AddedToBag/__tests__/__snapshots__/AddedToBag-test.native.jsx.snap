@@ -119,6 +119,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
             margins={null}
             noLink={true}
             onPress={[Function]}
+            openWebView={false}
             text=""
             to=""
             underline={true}

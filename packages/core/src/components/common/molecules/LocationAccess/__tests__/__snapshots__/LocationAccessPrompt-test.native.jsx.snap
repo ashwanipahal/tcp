@@ -122,6 +122,7 @@ exports[`LocationAccessPromptVanilla native component should match snapshot 1`] 
             marginTop="18px"
             margins={null}
             onPress={[Function]}
+            openWebView={false}
             text="lbl_locationAccess_maybelater"
             underline={true}
             visible={false}

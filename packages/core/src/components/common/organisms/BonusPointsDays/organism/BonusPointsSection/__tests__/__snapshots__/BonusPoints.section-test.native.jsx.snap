@@ -83,6 +83,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           locator=""
           margins={null}
           onPress={[Function]}
+          openWebView={false}
           text="lbl_bonusPoints_details"
           title=""
           underline={true}
@@ -242,6 +243,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           locator=""
           margins={null}
           onPress={[Function]}
+          openWebView={false}
           text="lbl_bonusPoints_details"
           title=""
           underline={true}
@@ -401,6 +403,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           locator=""
           margins={null}
           onPress={[Function]}
+          openWebView={false}
           text="lbl_bonusPoints_details"
           title=""
           underline={true}
@@ -560,6 +563,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           locator=""
           margins={null}
           onPress={[Function]}
+          openWebView={false}
           text="lbl_bonusPoints_details"
           title=""
           underline={true}
@@ -692,6 +696,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           locator=""
           margins={null}
           onPress={[Function]}
+          openWebView={false}
           text="lbl_bonusPoints_details"
           title=""
           underline={true}

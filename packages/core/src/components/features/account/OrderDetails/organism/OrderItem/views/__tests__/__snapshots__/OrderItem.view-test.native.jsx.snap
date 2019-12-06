@@ -202,6 +202,7 @@ exports[`Order Items component should renders correctly 1`] = `
             margins={null}
             noLink={true}
             onPress={[Function]}
+            openWebView={false}
             text="lbl_orderDetails_writeReview"
             underline={true}
             url="test"

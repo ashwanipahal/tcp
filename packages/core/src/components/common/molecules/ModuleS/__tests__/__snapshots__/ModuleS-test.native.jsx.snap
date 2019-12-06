@@ -11,6 +11,7 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
     locator=""
     margins={null}
     onPress={null}
+    openWebView={false}
     text=""
     url="/c/boys-clothess"
     visible={false}

@@ -160,6 +160,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
     locator="btn_fav_delete_list"
     margins="22px 0 0 0"
     onPress={[Function]}
+    openWebView={false}
     text="btn_fav_delete_list"
     underline={true}
     visible={false}

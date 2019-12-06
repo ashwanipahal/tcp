@@ -111,6 +111,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -251,6 +252,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -450,6 +452,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -649,6 +652,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -848,6 +852,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -1103,6 +1108,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -1206,6 +1212,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -1380,6 +1387,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -1554,6 +1562,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >
@@ -1737,6 +1746,7 @@ exports[`CartItemRadioButtons native Component should open change store popup fo
               locator=""
               margins={null}
               onPress={[Function]}
+              openWebView={false}
               text=""
               visible={false}
             >

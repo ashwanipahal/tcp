@@ -60,6 +60,7 @@ exports[`PlaceCashBanner should render correctly should match snapshot 1`] = `
           margins={null}
           noLink={true}
           onPress={[Function]}
+          openWebView={false}
           text=""
           to=""
           underline={true}

@@ -28,6 +28,7 @@ exports[`LoyaltyFooterSection isProductDetailView && isGuest should render corre
       locator=""
       margins={null}
       onPress={[Function]}
+      openWebView={false}
       text="CreateAccountAction"
       underline={true}
       visible={false}
@@ -56,6 +57,7 @@ exports[`LoyaltyFooterSection isProductDetailView && isGuest should render corre
       locator=""
       margins={null}
       onPress={[Function]}
+      openWebView={false}
       text="loginAction"
       underline={true}
       visible={false}
@@ -92,6 +94,7 @@ exports[`LoyaltyFooterSection isProductDetailView && plcc && isGuest should rend
       locator=""
       margins={null}
       onPress={[Function]}
+      openWebView={false}
       text="ApplyNowAction"
       underline={true}
       visible={false}
@@ -120,6 +123,7 @@ exports[`LoyaltyFooterSection isProductDetailView && plcc && isGuest should rend
       locator=""
       margins={null}
       onPress={[Function]}
+      openWebView={false}
       text="LearnMoreAction"
       underline={true}
       visible={false}

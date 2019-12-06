@@ -94,6 +94,7 @@ exports[`TrackOrderView component should renders correctly with generic error me
           locator=""
           margins={null}
           onPress={null}
+          openWebView={false}
           text="lbl_trackOrder_genericErrorLinkText"
           underline={true}
           url="lbl_trackOrder_genericErrorLinkHref"

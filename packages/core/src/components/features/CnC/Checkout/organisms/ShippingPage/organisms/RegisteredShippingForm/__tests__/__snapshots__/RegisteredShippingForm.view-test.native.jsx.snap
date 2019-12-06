@@ -620,6 +620,7 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
       margins={null}
       noLink={true}
       onPress={[Function]}
+      openWebView={false}
       target="_blank"
       text="lbl_shipping_edit"
       underline={true}
