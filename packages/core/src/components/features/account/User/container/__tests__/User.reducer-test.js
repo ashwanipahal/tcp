@@ -108,19 +108,5 @@ describe('User reducer', () => {
         .set('isRegisteredUserCallDone', false);
       expect(updatedState).toStrictEqual(returnValue);
     });
-
-    // it('setting default store correctly', () => {
-    //   const storeData = {
-    //     name: 'new jersey',
-    //   };
-    //   const originalState = fromJS({});
-    //   const action = {
-    //     payload: storeData,
-    //     type: USER_CONSTANTS.SET_DEFAULT_STORE,
-    //   };
-    //   const updatedState = UserReducer(originalState, action);
-    //   const returnValue = originalState.set('defaultStore', storeData);
-    //   expect(updatedState).toStrictEqual(returnValue);
-    // });
   });
 });
