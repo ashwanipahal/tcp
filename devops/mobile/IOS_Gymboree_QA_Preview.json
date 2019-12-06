@@ -386,14 +386,14 @@
     },
     "xcode": {
       "certificatePassword": "__protected__",
-      "certificateFilename": "Dist-Certificates.p12",
-      "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
-      "certificateFileId": "f965e2b2-4101-411a-a4dd-ff1388a8389d",
-      "provisioningProfileFileId": "9a4a586a-b087-492c-a12d-b83e94536c30",
+      "certificateFilename": "TCP_DevelopmentCertificate.p12",
+      "provisioningProfileFilename": "ProvisioningProfileDevelopment_GymAppQA.mobileprovision",
+      "certificateFileId": "07e8e11c-0c37-4858-a5cc-c8b71b4f445b",
+      "provisioningProfileFileId": "dad15362-78b1-4fdb-9629-7f72e8e6b5e7",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "gymboree_qa_preview",
-      "xcodeVersion": "10.2.1",
+      "xcodeVersion": "11.2.1",
       "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },

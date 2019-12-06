@@ -64,7 +64,9 @@ export class CouponContainer extends React.PureComponent {
       toggleNeedHelpModal,
       isFetchingCouponState,
     } = this.props;
-    const isFetching = isFetchingCouponState || bagLoading;
+
+    // isCarouselView flag is only passed when coupon component is included from account
+    const isFetching = isFetchingCouponState || (!isCarouselView && bagLoading);
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
       <>

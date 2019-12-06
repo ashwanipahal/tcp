@@ -383,14 +383,14 @@
     },
     "xcode": {
       "certificatePassword": "__protected__",
-      "certificateFilename": "Dev-Certificates.p12",
+      "certificateFilename": "TCP_DevelopmentCertificate.p12",
       "provisioningProfileFilename": "ProvisioningProfileDevelopment_TcpAppUATProd.mobileprovision",
-      "certificateFileId": "d83c966a-cf7a-46cb-91a1-9bca11196d42",
-      "provisioningProfileFileId": "b2dd0c1c-0d28-4ff5-a4bf-2ebfe5bd6faf",
+      "certificateFileId": "60f0e104-7343-49c7-bd23-6b77db422f73",
+      "provisioningProfileFileId": "fc9ceed4-656f-448f-8e0a-0fdfa5769849",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_prod_preview",
-      "xcodeVersion": "10.2.1",
+      "xcodeVersion": "11.2.1",
       "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },

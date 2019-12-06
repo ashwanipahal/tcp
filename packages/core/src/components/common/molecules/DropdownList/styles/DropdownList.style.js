@@ -25,7 +25,10 @@ const dropDownlist = css`
   }
 
   .dropdownActiveClass {
-    background-color: ${props => props.theme.colors.PRIMARY.COLOR1};
+    background-color: ${props =>
+      props.theme.isGymboree
+        ? props.theme.colorPalette.orange[50]
+        : props.theme.colorPalette.blue[50]};
     position: relative;
   }
 
@@ -39,7 +42,7 @@ const dropDownlist = css`
 
   .dropDownListwrapper {
     position: relative;
-    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
     background-color: ${props => props.theme.colors.WHITE};
   }
@@ -55,10 +58,16 @@ const dropDownlist = css`
   }
 
   .ulBorderWithLastRow li:hover {
-    background: ${props => props.theme.colors.PRIMARY.COLOR1};
+    background: ${props =>
+      !props.theme.isGymboree
+        ? props.theme.colorPalette.blue[50]
+        : props.theme.colorPalette.orange[50]};
   }
 
   .ulBorderWithLastRow li:last-child div {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 24px);
     border-bottom: none;
   }
 
@@ -73,6 +82,22 @@ const dropDownlist = css`
 
   .dropdown--disabled {
     pointer-events: none;
+  }
+  .dropDownTop {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    position: absolute;
+    width: 100%;
+    height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    z-index: 1;
+  }
+  .dropDownBottom {
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    position: absolute;
+    width: 100%;
+    height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    bottom: 57px;
+    z-index: 1;
+    margin-bottom: 6px;
   }
 `;
 

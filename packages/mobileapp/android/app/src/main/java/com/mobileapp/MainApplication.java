@@ -10,6 +10,10 @@ import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+
 import com.facebook.soloader.SoLoader;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -17,6 +21,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 
+import com.google.firebase.FirebaseApp;
 import com.microsoft.codepush.react.CodePush;
 import com.microsoft.codepush.react.ReactInstanceHolder;
 
@@ -64,6 +69,8 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new FBSDKPackage());
           packages.add(new VenmoPackage());
           packages.add(new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG));
+          packages.add(new RNFirebaseMessagingPackage());
+          packages.add(new RNFirebaseNotificationsPackage());
           return packages;
         }
 
@@ -84,6 +91,7 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     // initializeFlipper(this); // Remove this line if you don't want Flipper enabled
+    FirebaseApp.initializeApp(this);
   }
 
   /**
