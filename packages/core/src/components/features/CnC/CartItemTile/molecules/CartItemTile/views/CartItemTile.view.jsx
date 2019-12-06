@@ -1197,7 +1197,7 @@ class CartItemTile extends PureComponent {
                 <Row className="product-detail-row padding-top-10 color-map-size-fit">
                   <Col
                     className={!isBagPage ? this.getProductDetailClass() : 'product-detail-bag'}
-                    colSize={{ medium: 12, large: 12 }}
+                    colSize={{ medium: 8, large: 12 }}
                   >
                     <div className="product-detail-section">
                       <div className="color-size-fit-label">
