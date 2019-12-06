@@ -6,6 +6,7 @@ import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
+import { getSetIsPaypalPaymentSettings } from '../../../../Checkout/container/Checkout.action';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   componentDidMount() {
@@ -22,7 +23,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
     const {
       startPaypalCheckout,
       paypalAuthorizationHandle,
-      clearPaypalSettings,
+      clearPaypalSettingsWeb,
       isBillingPage,
     } = this.props;
 
@@ -47,7 +48,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
         );
       },
       onAuthorize: paypalAuthorizationHandle,
-      onCancel: clearPaypalSettings,
+      onCancel: clearPaypalSettingsWeb,
       onError: error => {
         throw new ServiceResponseError(error);
       },
@@ -114,6 +115,9 @@ export const mapDispatchToProps = dispatch => {
     },
     paypalAuthorizationHandle: payload => {
       dispatch(bagPageActions.paypalAuthorization(payload));
+    },
+    clearPaypalSettingsWeb: () => {
+      dispatch(getSetIsPaypalPaymentSettings(null));
     },
     clearPaypalSettings: isBillingPage => {
       dispatch(bagPageActions.startPaypalNativeCheckout({ isBillingPage }));

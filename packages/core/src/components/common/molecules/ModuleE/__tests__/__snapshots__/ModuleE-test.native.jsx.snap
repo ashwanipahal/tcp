@@ -112,7 +112,7 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
     </View>
   </Styled(View)>
   <Styled(View)>
-    <WithTheme(SnapCarousel)
+    <Connect(WithTheme(SnapCarousel))
       carouselConfig={
         Object {
           "autoplay": true,
@@ -545,7 +545,7 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
     </View>
   </Styled(View)>
   <Styled(View)>
-    <WithTheme(SnapCarousel)
+    <Connect(WithTheme(SnapCarousel))
       carouselConfig={
         Object {
           "autoplay": true,
@@ -978,7 +978,7 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
     </View>
   </Styled(View)>
   <Styled(View)>
-    <WithTheme(SnapCarousel)
+    <Connect(WithTheme(SnapCarousel))
       carouselConfig={
         Object {
           "autoplay": true,

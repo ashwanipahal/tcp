@@ -34,7 +34,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
       viewHeight="65%"
     >
       <Styled(View)>
-        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)
@@ -102,7 +101,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           sflItems={Object {}}
         />
-        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)
@@ -172,7 +170,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           sflItems={Object {}}
         />
-        <Connect(Styled(PlaceCashBanner)) />
         <Styled(View)>
           <Styled(View)>
             <Connect(Recommendations)

@@ -25,21 +25,10 @@ export default class ShippingPage extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      shippingDidMount,
-      isRegisteredUserCallDone,
-      onFileAddressKey,
-      shippingDidUpdate,
-    } = this.props;
-    const {
-      isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
-      onFileAddressKey: prevFileAddressKey,
-    } = prevProps;
+    const { shippingDidMount, isRegisteredUserCallDone, shippingDidUpdate } = this.props;
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
     if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
       shippingDidMount();
-    }
-    if (onFileAddressKey !== prevFileAddressKey) {
-      this.getShipmentMethods(prevProps);
     }
     shippingDidUpdate(prevProps);
   }
@@ -50,19 +39,6 @@ export default class ShippingPage extends React.PureComponent {
       clearCheckoutServerError({});
     }
   }
-
-  /**
-   * @description - get shipment methods with the updated address state
-   */
-  getShipmentMethods = () => {
-    const { loadShipmentMethods, onFileAddressKey, userAddresses } = this.props;
-    if (userAddresses && userAddresses.size > 0) {
-      const address = userAddresses.find(add => add.addressId === onFileAddressKey);
-      if (address && address.state) {
-        loadShipmentMethods({ state: address.state, formName: 'checkoutShipping' });
-      }
-    }
-  };
 
   setDefaultAddressId = id => {
     this.setState({ defaultAddressId: id });

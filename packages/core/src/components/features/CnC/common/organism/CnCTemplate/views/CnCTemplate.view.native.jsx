@@ -169,6 +169,7 @@ const CnCCommonTemplate = ({
             showVenmoSubmit,
             onVenmoSubmit,
             onVenmoError,
+            navigation,
           })}
         </CnContent>
       ) : (

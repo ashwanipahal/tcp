@@ -45,7 +45,8 @@ const getColorsChipsOptionsMap = (
         value: name,
         title: name,
         content: (
-          <span className="color-title-container" title={name}>
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          <span className="color-title-container" title={name} tabIndex="0">
             <span className="color-name">{name}</span>
             <DamImage
               className="color-image"

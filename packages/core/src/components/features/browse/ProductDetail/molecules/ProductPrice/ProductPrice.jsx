@@ -46,7 +46,6 @@ class ProductPrice extends React.Component {
     highOfferPrice: PropTypes.number,
     highListPrice: PropTypes.number,
     itemPartNumber: PropTypes.string,
-    priceCurrency: PropTypes.string.isRequired,
     currencyExchange: PropTypes.shape({}),
     promotionalMessage: PropTypes.string,
     isPlcc: PropTypes.bool.isRequired,
@@ -120,6 +119,7 @@ class ProductPrice extends React.Component {
             fontFamily="secondary"
             fontWeight="black"
             color="red.500"
+            itemprop="price"
           >
             <PriceCurrency price={offerPrice} />
             {offerPricePostFix}
@@ -151,6 +151,7 @@ class ProductPrice extends React.Component {
           fontFamily="secondary"
           fontWeight="black"
           color="red.500"
+          itemprop="price"
         >
           <PriceCurrency price={offerPrice} />
           {offerPricePostFix}
@@ -164,6 +165,7 @@ class ProductPrice extends React.Component {
         fontFamily="secondary"
         fontWeight="black"
         color="red.500"
+        itemprop="price"
       >
         <PriceCurrency price={listPrice} />
         {listPricePostFix}
@@ -175,11 +177,11 @@ class ProductPrice extends React.Component {
     const {
       isItemPartNumberVisible,
       itemPartNumber,
-      priceCurrency,
       promotionalMessage,
       // isCanada,
       promotionalPLCCMessage,
       isPlcc,
+      currencySymbol,
       // isInternationalShipping,
       // isBundleProduct,
       className,
@@ -202,7 +204,7 @@ class ProductPrice extends React.Component {
             </strong>
           )}
         </div>
-        <meta itemProp="priceCurrency" content={priceCurrency} />
+        <meta itemProp="priceCurrency" content={currencySymbol} />
         <link itemProp="availability" href="http://schema.org/InStock" />
 
         {/* TODO - bundle logic check */}

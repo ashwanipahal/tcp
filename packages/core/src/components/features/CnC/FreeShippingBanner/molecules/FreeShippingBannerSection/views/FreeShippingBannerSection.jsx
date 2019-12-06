@@ -36,7 +36,11 @@ const FreeShippingBannerSection = props => {
           fontFamily="secondary"
           fontWeight="extrabold"
         >
-          <Image src={fastShippingPath} alt="" className="fast-shipping" />
+          <Image
+            src={fastShippingPath}
+            alt={getLabelValue(labels, 'lbl_fast_shipping')}
+            className="fast-shipping"
+          />
           {freeShippingLabel}
           <span className="free-shipping-details">
             <Anchor
