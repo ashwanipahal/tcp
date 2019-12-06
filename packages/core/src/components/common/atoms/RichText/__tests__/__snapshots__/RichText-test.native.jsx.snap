@@ -5,7 +5,6 @@ exports[`RichText should render correctly 1`] = `
   actionHandler={[Function]}
   cacheEnabled={true}
   domStorageEnabled={false}
-  injectedJavaScript=""
   isNativeView={false}
   javaScriptEnabled={false}
   onMessage={[Function]}

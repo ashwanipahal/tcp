@@ -21,7 +21,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
-        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
@@ -1003,7 +1002,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -1692,7 +1690,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -1711,7 +1708,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -1746,7 +1742,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -1839,7 +1834,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
-        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
@@ -2799,7 +2793,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -3488,7 +3481,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -3507,7 +3499,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -3542,7 +3533,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -3635,7 +3625,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
-        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
@@ -4617,7 +4606,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -5306,7 +5294,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -5325,7 +5312,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -5360,7 +5346,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -5453,7 +5438,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
-        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
@@ -6464,7 +6448,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -7153,7 +7136,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -7172,7 +7154,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
@@ -7207,7 +7188,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
     <RichText
       actionHandler={[Function]}
       domStorageEnabled={false}
-      injectedJavaScript=""
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}

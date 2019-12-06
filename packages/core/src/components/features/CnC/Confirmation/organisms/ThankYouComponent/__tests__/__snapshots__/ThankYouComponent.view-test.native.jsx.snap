@@ -71,7 +71,6 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
-        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
@@ -159,7 +158,6 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
-        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
@@ -247,7 +245,6 @@ exports[`ThankYouComponentVanilla should render correctly with venmo payment 1`]
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
-        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
@@ -278,7 +275,6 @@ exports[`ThankYouComponentVanilla should render correctly with venmo payment 1`]
       <RichText
         actionHandler={[Function]}
         domStorageEnabled={false}
-        injectedJavaScript=""
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}

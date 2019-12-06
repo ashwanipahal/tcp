@@ -376,7 +376,6 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
             <RichText
               actionHandler={[Function]}
               domStorageEnabled={false}
-              injectedJavaScript=""
               isApplyDeviceHeight={false}
               isNativeView={true}
               javaScriptEnabled={false}
@@ -784,7 +783,6 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             <RichText
               actionHandler={[Function]}
               domStorageEnabled={false}
-              injectedJavaScript=""
               isApplyDeviceHeight={false}
               isNativeView={true}
               javaScriptEnabled={false}
@@ -1390,7 +1388,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 <RichText
                   actionHandler={[Function]}
                   domStorageEnabled={false}
-                  injectedJavaScript=""
                   isApplyDeviceHeight={false}
                   isNativeView={true}
                   javaScriptEnabled={false}
@@ -1780,7 +1777,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 <RichText
                   actionHandler={[Function]}
                   domStorageEnabled={false}
-                  injectedJavaScript=""
                   isApplyDeviceHeight={false}
                   isNativeView={true}
                   javaScriptEnabled={false}
