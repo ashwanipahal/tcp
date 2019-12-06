@@ -21,7 +21,7 @@ class ModuleH extends React.PureComponent {
     this.state = {
       current: 0,
       next: 0,
-      uniqueId: Math.random(),
+      uniqueId: Math.random() * 1000,
     };
   }
 

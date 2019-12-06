@@ -7,8 +7,4 @@ describe('LegalLinks component', () => {
     const component = shallow(<LegalLink />);
     expect(component).toMatchSnapshot();
   });
-  it('Web view modal should be close initially', () => {
-    const component = shallow(<LegalLink />);
-    expect(component.instance().state.toggleModal).toBeFalsy();
-  });
 });

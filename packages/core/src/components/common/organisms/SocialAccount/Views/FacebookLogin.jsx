@@ -13,14 +13,29 @@ export class FacebookLoginComponent extends React.Component {
     this.elem = null;
     this.saveAccountInfo = null;
     this.closeModal = null;
+    this.state = {
+      fbInitialised: false,
+    };
   }
 
   componentDidMount() {
-    const { urlParams } = this.props;
-    if (urlParams.socialAccount === 'facebook' && urlParams.id === 'my-preference') {
+    if (this.fromEarnExtraPoints()) {
       this.openLogin();
     }
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { fbInitialised } = this.state;
+    // if FB is initialised after mount, then check for earn extra points url params and call openLogin again
+    if (!prevState.fbInitialised && fbInitialised && this.fromEarnExtraPoints()) {
+      this.openLogin();
+    }
+  }
+
+  fromEarnExtraPoints = () => {
+    const { urlParams } = this.props;
+    return urlParams.socialAccount === 'facebook' && urlParams.id === 'my-preference';
+  };
 
   /**
    * @function facebookSDK This function puts the facebook SDK on to the DOM
@@ -59,6 +74,9 @@ export class FacebookLoginComponent extends React.Component {
         status: true,
         cookie: true,
       });
+      this.setState({
+        fbInitialised: true,
+      });
     };
     /* istanbul ignore next */
     return (
@@ -88,6 +106,9 @@ export class FacebookLoginComponent extends React.Component {
 
   openLogin = () => {
     /* istanbul ignore next */
+    if (!window.FB) {
+      return null;
+    }
     window.FB.login(
       response => {
         if (response.status === 'connected') {

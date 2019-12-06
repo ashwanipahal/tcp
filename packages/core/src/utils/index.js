@@ -97,4 +97,5 @@ export {
   plpRoutingHandling,
   convertNumToBool,
   triggerPostMessage,
+  isIE11,
 } from './utils';

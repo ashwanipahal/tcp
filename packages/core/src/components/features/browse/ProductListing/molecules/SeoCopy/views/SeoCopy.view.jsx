@@ -5,7 +5,6 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLocator } from '../../../../../../../utils';
 import style from '../SeoCopy.style';
-import { Heading } from '../../../../../../common/atoms';
 import Espot from '../../../../../../common/molecules/Espot';
 
 class SeoCopy extends React.PureComponent {
@@ -34,9 +33,18 @@ class SeoCopy extends React.PureComponent {
         tabIndex="0"
       >
         {copyTitle && (
-          <Heading component="h1" variant="h1" className="title" dataLocator="seo_title">
+          <BodyCopy
+            className="title"
+            fontSize="fs22"
+            component="div"
+            color="text.primary"
+            fontFamily="secondary"
+            fontWeight="black"
+            textAlign="center"
+            data-locator={getLocator('seo_title')}
+          >
             {copyTitle}
-          </Heading>
+          </BodyCopy>
         )}
         {copyBody && (
           <BodyCopy
