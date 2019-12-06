@@ -84,8 +84,8 @@ class GetCandid extends React.Component {
    * Get Candid Gallery page.
    */
   navigateToGallery = index => {
-    const { navigation, labels } = this.props;
-    navigateToNestedRoute(navigation, 'HomeStack', 'GetCandidGallery', {
+    const { navigation, labels, openedFromStack } = this.props;
+    navigateToNestedRoute(navigation, openedFromStack, 'GetCandidGallery', {
       activeIndex: index,
       title: labels.lbl_getCandid_title.toUpperCase(),
     });
@@ -156,6 +156,7 @@ GetCandid.defaultProps = {
   labels: {},
   fetchCandidData: () => {},
   navigation: {},
+  openedFromStack: 'HomeStack',
 };
 
 GetCandid.propTypes = {
@@ -164,6 +165,7 @@ GetCandid.propTypes = {
   fetchCandidData: PropTypes.func,
   labels: PropTypes.shape({}),
   navigation: PropTypes.shape({}),
+  openedFromStack: PropTypes.string,
 };
 
 export default GetCandid;

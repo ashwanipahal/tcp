@@ -191,7 +191,7 @@ class HomePageView extends React.PureComponent {
         </HeaderPromoContainer>
         {loyaltyPromoBanner.length > 0 && <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />}
         <PageSlots slots={slots} modules={modulesMapWithErrorBoundary} navigation={navigation} />
-        <GetCandid apiConfig={apiConfig} navigation={navigation} />
+        <GetCandid apiConfig={apiConfig} navigation={navigation} openedFromStack="HomeStack" />
         <Recommendations
           navigation={navigation}
           showButton
