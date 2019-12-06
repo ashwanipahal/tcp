@@ -38,6 +38,11 @@ export default css`
     margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
       ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
+  .show-count-section {
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
 
   .render-mobile-view {
     width: auto;

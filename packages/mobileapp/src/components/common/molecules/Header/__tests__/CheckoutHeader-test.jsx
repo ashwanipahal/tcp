@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CheckoutHeaderVanilla } from '../CheckoutHeader';
+import { CheckoutHeaderVanilla, mapDispatchToProps } from '../CheckoutHeader';
 import {
   MessageContainer,
   SafeAreaViewStyle,
@@ -12,7 +12,14 @@ import {
 describe('CheckoutHeader Component', () => {
   let component;
   const props = {
-    navigation: {},
+    navigation: {
+      goBack: jest.fn(),
+    },
+    screenProps: {
+      network: {
+        isConnected: true,
+      },
+    },
   };
 
   beforeEach(() => {
@@ -45,5 +52,37 @@ describe('CheckoutHeader Component', () => {
 
   it('Header should return BackIconTouchable component value one', () => {
     expect(component.find(BackIconTouchable)).toHaveLength(1);
+  });
+
+  it(' Checkout Header should render correctly', () => {
+    const componentInstance = component.instance();
+    componentInstance.onBackPress();
+  });
+
+  it('Header noInterNetHandle to be called', () => {
+    const mock = jest.fn();
+    const prop = {
+      screenProps: { network: { isConnected: false } },
+      toastMessage: mock,
+    };
+    component.setState({ isIconIn: false });
+    component.setProps(prop);
+    expect(prop.toastMessage).toHaveBeenCalled();
+  });
+
+  describe('#mapDispatchToProps', () => {
+    it('should return an action setCheckoutStage which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.setCheckoutStage();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action toastMessage which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.toastMessage();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
   });
 });

@@ -46,10 +46,6 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_DAM_HOST_TCP",
       "value": "https://test1.theplace.com/image/upload"
     },
@@ -342,12 +338,12 @@
       "value": "https://test6.gymboree.com"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "name": "RWD_APP_BV_API_KEY_TCP",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_URL",
@@ -358,8 +354,8 @@
       "value": "https://gymboree.com/static/bazaarVoice/index.html"
     },
     {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
+      "name": "RWD_APP_BV_ENV",
+      "value": "production"
     }
   ],
   "signed": true,

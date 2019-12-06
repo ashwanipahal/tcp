@@ -38,6 +38,7 @@ const styles = css`
     text-decoration: line-through;
   }
   .product-title-container {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     box-sizing: border-box;
     height: 36px;
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};

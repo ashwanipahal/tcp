@@ -46,10 +46,6 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_DAM_HOST_TCP",
       "value": "https://test1.theplace.com/image/upload"
     },
@@ -334,7 +330,7 @@
       "value": "false"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
@@ -365,7 +361,7 @@
     },
     "android": {
       "module": "app",
-      "buildVariant": "tcpUatPreview",
+      "buildVariant": "tcpUatPreviewRelease",
       "isRoot": false,
       "runTests": false,
       "runLint": false,

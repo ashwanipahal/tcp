@@ -56,6 +56,7 @@ export const getPlpLabels = state => {
       sizeUnavalaible: '',
       sizeAvailable: '',
       saveProduct: '',
+      sizeChart: '',
     };
 
   const {
@@ -71,6 +72,7 @@ export const getPlpLabels = state => {
         lbl_size_unavailable_online: sizeUnavalaible,
         lbl_other_sizes_available: sizeAvailable,
         lbl_fav_save_product: saveProduct,
+        lbl_size_chart: sizeChart,
       },
     },
   } = state.Labels;
@@ -86,6 +88,7 @@ export const getPlpLabels = state => {
     sizeUnavalaible,
     sizeAvailable,
     saveProduct,
+    sizeChart,
   };
 };
 
@@ -207,7 +210,13 @@ const getCatMapL1Params = catMapL1 => {
   Object.keys(mainObj).forEach(key => {
     menuItems.push(mainObj[key].items);
   });
-  return menuItems.flat(2);
+  let returnValue;
+  try {
+    returnValue = menuItems.flat(2);
+  } catch (err) {
+    returnValue = [];
+  }
+  return returnValue;
 };
 
 const getCatMapL2 = (catMapL2Id, catMapL1Params) => {
@@ -319,4 +328,27 @@ export const getSizeChartDetails = state => {
     state.ProductDetail.currentProduct &&
     state.ProductDetail.currentProduct.categoryPathMap;
   return fetchSizeChartDetails(navigationTree, breadCrumbs, categoryPathMap, isBundleProduct);
+};
+
+export const getAccessibilityLabels = state => {
+  return {
+    lbl_social_twitter: getLabelValue(
+      state.Labels,
+      'lbl_social_twitter',
+      'accessibility',
+      'global'
+    ),
+    lbl_social_facebook: getLabelValue(
+      state.Labels,
+      'lbl_social_facebook',
+      'accessibility',
+      'global'
+    ),
+    lbl_social_pinterest: getLabelValue(
+      state.Labels,
+      'lbl_social_pinterest',
+      'accessibility',
+      'global'
+    ),
+  };
 };

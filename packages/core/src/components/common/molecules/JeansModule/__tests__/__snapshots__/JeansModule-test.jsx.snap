@@ -22,7 +22,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
       Your Denim Place
     </ForwardRef>
   </div>
-  <ForwardRef
+  <Connect(Styled(Carousel))
     carouselConfig={
       Object {
         "autoplay": false,
@@ -666,6 +666,6 @@ exports[`JeanModule component should default variant correctly 1`] = `
         </div>
       </ForwardRef>
     </div>
-  </ForwardRef>
+  </Connect(Styled(Carousel))>
 </div>
 `;

@@ -44,6 +44,7 @@ const BAGPAGE_CONSTANTS = {
   UPDATE_SFL_ITEM: 'UPDATE_SFL_ITEM',
   BAG_PAGE: 'bagPage',
   SHOPPING_BAG: 'shopping bag',
+  HEADER_CART: 'header-cart',
 };
 
 export default BAGPAGE_CONSTANTS;

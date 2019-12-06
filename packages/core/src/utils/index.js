@@ -41,6 +41,8 @@ export {
   createLayoutPath,
   internalCampaignProductAnalyticsList,
   getQueryParamsFromUrl,
+  getProductListingPageTrackData,
+  getFontsURL,
 } from './utils.web';
 
 export {

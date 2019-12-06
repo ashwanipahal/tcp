@@ -1429,6 +1429,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             >
               lbl_add_child_privacy
             </Styled(Anchor)>
+             | 
             <Styled(Anchor)
               data-locator="faqLnk"
               noLink={true}

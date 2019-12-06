@@ -28,7 +28,12 @@ const FreeShippingBannerSection = props => {
       {freeShippingLabel && (
         <FreeShippingLabel>
           <FreeShippingIconWrapper>
-            <Image source={fastShipping} alt="" height={18} width={20} />
+            <Image
+              source={fastShipping}
+              alt={getLabelValue(labels, 'lbl_fast_shipping')}
+              height={18}
+              width={20}
+            />
           </FreeShippingIconWrapper>
           <View>
             <BodyCopy

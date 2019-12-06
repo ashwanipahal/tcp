@@ -8,6 +8,7 @@ import {
   getIsBopisClearanceProductEnabled,
   getIsRadialInventoryEnabled,
   getIsBossAppEnabled,
+  getIsInternationalShipping,
 } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getIsMiniBagOpen } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { isMobileApp } from '@tcp/core/src/utils';
@@ -150,6 +151,7 @@ export class CartItemTileContainer extends React.Component {
       closeMiniBag,
       isLoggedIn,
       cartOrderItems,
+      isInternationalShipping,
     } = this.props;
     const { showLoginModal } = this.state;
     return (
@@ -208,6 +210,7 @@ export class CartItemTileContainer extends React.Component {
         showLoginModal={showLoginModal}
         toggleLoginModal={this.toggleLoginModal}
         cartOrderItems={cartOrderItems}
+        isInternationalShipping={isInternationalShipping}
       />
     );
   }
@@ -231,18 +234,9 @@ const createSetShipToHomePayload = (orderItemId, orderItemType) => {
   };
 };
 
-const createBossBopisTogglePayload = ({
-  itemId,
-  quantity,
-  skuId,
-  itemPartNumber,
-  variantNo,
-  orderItemType,
-  targetOrderType,
-  orderId,
-  store,
-  storeId,
-}) => {
+const createBossBopisTogglePayload = props => {
+  const { itemId, quantity, skuId, targetOrderType, orderId, store, storeId } = props;
+  const { itemPartNumber, variantNo, orderItemType } = props;
   return {
     apiPayload: {
       orderId: `${orderId}`,
@@ -347,6 +341,7 @@ export function mapStateToProps(state) {
     isMiniBagOpen: getIsMiniBagOpen(state),
     isLoggedIn: getUserLoggedInState(state),
     cartOrderItems: BAGPAGE_SELECTORS.getOrderItems(state),
+    isInternationalShipping: getIsInternationalShipping(state),
   };
 }
 
@@ -403,6 +398,7 @@ CartItemTileContainer.propTypes = {
   isRadialInventoryEnabled: PropTypes.bool.isRequired,
   isMiniBagOpen: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
+  isInternationalShipping: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
 };

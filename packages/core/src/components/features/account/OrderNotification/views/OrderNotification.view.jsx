@@ -25,7 +25,7 @@ const OrderNotification = ({ className, labels, order, closedOverlay }) => {
   const orderStatus = order ? getOrderStatusForNotification(order.orderStatus) : '';
   return (
     <>
-      {order && (
+      {order && order.orderNumber && (
         <BodyCopy component="div" className={className}>
           <BodyCopy
             component="div"
