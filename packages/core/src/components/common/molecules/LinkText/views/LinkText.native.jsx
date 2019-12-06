@@ -146,6 +146,7 @@ const finalText = (str, placement, icon) => {
  * type="heading" if Heading is required
  * type="bodycopy" if BodyCopy is required
  * accepts all parameters for BodyCopy and Heading atom
+ *
  */
 
 const getTextItems = (textItems, icon, useStyle, compProps) => {
@@ -154,9 +155,10 @@ const getTextItems = (textItems, icon, useStyle, compProps) => {
     textItems &&
     // eslint-disable-next-line complexity
     textItems.map(({ text, style }, index) => {
+      // use embedded style to render BodyCopy if useStyle is true
       if (style && useStyle) {
-        // use embedded style to render BodyCopy if useStyle is true
-        const StyleBodyCopy = style ? bodyCopyStyles[style] : () => null;
+        // In LinkText upcomming style not match from listed style then show the default style .
+        const StyleBodyCopy = bodyCopyStyles[style] ? bodyCopyStyles[style] : BodyCopy;
         return (
           <StyleBodyCopy
             accessibilityRole="text"

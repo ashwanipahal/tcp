@@ -1,3 +1,5 @@
+/* eslint-disable extra-rules/no-commented-out-code */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Image } from 'react-native';
 // import { LazyloadImage } from 'react-native-lazyload-deux';
@@ -70,11 +72,9 @@ const DamImage = props => {
 
   const ImageComponent = Image;
 
-  if (videoData) {
-    return null;
-    // const updatedVideoData = { ...videoData, updateVideoUrl }
-    // return <VideoPlayer {...updatedVideoData} />;
-  }
+  // if (videoData) {
+  //   return null; // <VideoPlayer {...videoData} />;
+  // }
 
   // const RenderVideo = videoProps => {
   // const { video, image } = videoProps;
@@ -92,17 +92,17 @@ const DamImage = props => {
 
   const uri = createURI(props);
 
-  const uriParam = getVideoUrl(uri.uri);
+  // const uriParam = getVideoUrl(uri.uri);
 
-  if (uriParam) {
-    // const { uri: videoUri } = uri;
-    // const VideoUri = videoUri.replace('/image/', '/video/');
-    // const videoDataOptions = {
-    //   url: VideoUri,
-    // };
+  // if (uriParam) {
+  //   // const { uri: videoUri } = uri;
+  //   // const VideoUri = videoUri.replace('/image/', '/video/');
+  //   // const videoDataOptions = {
+  //   //   url: VideoUri,
+  //   // };
 
-    return null; // <RenderVideo video={videoDataOptions} />;
-  }
+  //   return null; // <RenderVideo video={videoDataOptions} />;
+  // }
 
   return (
     <ImageComponent

@@ -24,19 +24,21 @@ const SearchDetailReducer = (state = initialState, action) => {
       return { ...state };
     case SLP_CONSTANTS.SET_ADD_TO_FAVORITE:
       if (state.loadedProductsPages) {
-        state.loadedProductsPages[0].forEach(item => {
-          if (
-            item.miscInfo &&
-            item.productInfo &&
-            item.productInfo.generalProductId === action.payload.colorProductId
-          ) {
-            // eslint-disable-next-line no-param-reassign
-            item.miscInfo = {
-              ...item.miscInfo,
-              isInDefaultWishlist: true,
-              favoriteCounter: action.payload.res && action.payload.res.favoritedCount,
-            };
-          }
+        state.loadedProductsPages.forEach(products => {
+          products.forEach(item => {
+            if (
+              item.miscInfo &&
+              item.productInfo &&
+              item.productInfo.generalProductId === action.payload.colorProductId
+            ) {
+              // eslint-disable-next-line no-param-reassign
+              item.miscInfo = {
+                ...item.miscInfo,
+                isInDefaultWishlist: true,
+                favoriteCounter: action.payload.res && action.payload.res.favoritedCount,
+              };
+            }
+          });
         });
       }
       return { ...state };

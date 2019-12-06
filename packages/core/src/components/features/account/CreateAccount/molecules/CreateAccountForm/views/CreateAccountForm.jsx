@@ -125,7 +125,7 @@ let CreateAccountForm = ({
                   <Image
                     className="tcp_carousel__play tooltip"
                     src={getIconPath('info-icon')}
-                    alt=""
+                    alt={labels.lbl_info_icon}
                   />
                 </ReactTooltip>
               </span>

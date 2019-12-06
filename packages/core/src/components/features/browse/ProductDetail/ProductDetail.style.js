@@ -34,11 +34,19 @@ export default css`
   .product-summary-mobile-view {
     display: flex;
   }
+  div.product-property-section {
+    margin: 0;
+    padding: 10px 0 20px;
+    width: 100%;
+  }
   .product-summary-desktop-view {
     display: none;
   }
   .promo-area-top {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  }
+  .pdp-qty {
+    padding-top: 5px;
   }
   .promo-area-middle {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -47,22 +55,32 @@ export default css`
   .promo-area-bottom {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
+  .preview-and-social-media-icons {
+    display: none;
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
+    }
+  }
   .product-summary-wrapper {
     display: flex;
     flex-direction: column;
     flex: 1;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      border: 2px solid ${props => props.theme.colorPalette.gray[300]};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
+      border-left: 0;
+      border-right: 0;
+    }
+    .actual-price {
+      font-size: ${props => props.theme.typography.fontSizes.fs22};
+    }
 
+    .original-price {
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+    }
     @media ${props => props.theme.mediaQuery.medium} {
       .product-details-header-container {
-        margin-top: 13px;
-      }
-
-      .actual-price {
-        font-size: ${props => props.theme.typography.fontSizes.fs22};
-      }
-
-      .original-price {
-        font-size: ${props => props.theme.typography.fontSizes.fs13};
+        margin-top: ${props => props.theme.typography.fontSizes.fs13};
       }
     }
   }
@@ -70,6 +88,7 @@ export default css`
     border: none;
     background: transparent;
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    padding-bottom: 0;
     width: 35px;
   }
   .product-price-mobile-view {

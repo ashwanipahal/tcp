@@ -7,8 +7,12 @@ import { BUTTON_VARIATION } from '.';
 const getAdditionalStyle = props => {
   const { margin, paddings } = props;
   return {
-    ...(margin && { margin }),
-    ...(paddings && { padding: paddings }),
+    ...(margin && {
+      margin,
+    }),
+    ...(paddings && {
+      padding: paddings,
+    }),
   };
 };
 
@@ -246,7 +250,9 @@ const style = css`
 
   ${props =>
     props.buttonVariation === 'cautionary'
-      ? `border: 1px solid ${props.theme.colorPalette.secondary.dark};`
+      ? `border: 1px solid ${props.theme.colorPalette.secondary.dark}; background: ${
+          props.theme.colorPalette.white
+        }`
       : ''};
 
   ${props =>
@@ -296,6 +302,7 @@ const CustomStyleText = styled(StyledText)`
       ? `
    color: ${props.theme.colorPalette.secondary.dark};
    font-weight: ${props.theme.typography.fontWeights.extrabold};
+
    `
       : ''};
 

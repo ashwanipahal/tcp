@@ -5,19 +5,19 @@ import PageSlots from '..';
 
 const slotsCmsDataMock = [
   {
-    contentId: 'id-3',
+    key: '0',
     data: { slotData: 'slot C Data' },
     moduleName: 'moduleC',
     name: 'slot_3',
   },
   {
-    contentId: 'id-1',
+    key: '1',
     data: { slotData: 'slot A Data' },
     moduleName: 'moduleA',
     name: 'slot_1',
   },
   {
-    contentId: 'id-2',
+    key: '2',
     data: { slotData: 'slotB Data' },
     moduleName: 'moduleB',
     name: 'slot_2',
@@ -38,7 +38,7 @@ const modulesDataMock = {
 const snapshot = `
       Array [
         <ModuleC
-          key="id-3"
+          key="0"
           slotData="slot C Data"
         >
           <div>
@@ -46,7 +46,7 @@ const snapshot = `
           </div>
         </ModuleC>,
         <ModuleA
-          key="id-1"
+          key="1"
           slotData="slot A Data"
         >
           <div>
@@ -54,7 +54,7 @@ const snapshot = `
           </div>
         </ModuleA>,
         <ModuleB
-          key="id-2"
+          key="2"
           slotData="slotB Data"
         >
           <div>
@@ -71,36 +71,33 @@ describe('PageSlots component', () => {
     expect(component.children()).toMatchInlineSnapshot(
       snapshot,
       `
-            Array [
-              <ModuleC
-                key="id-3"
-                moduleName="moduleC"
-                slotData="slot C Data"
-              >
-                <div>
-                  Module C
-                </div>
-              </ModuleC>,
-              <ModuleA
-                key="id-1"
-                moduleName="moduleA"
-                slotData="slot A Data"
-              >
-                <div>
-                  Module A
-                </div>
-              </ModuleA>,
-              <ModuleB
-                key="id-2"
-                moduleName="moduleB"
-                slotData="slotB Data"
-              >
-                <div>
-                  Module B
-                </div>
-              </ModuleB>,
-            ]
-        `
+      Array [
+        <ModuleC
+          key="0"
+          slotData="slot C Data"
+        >
+          <div>
+            Module C
+          </div>
+        </ModuleC>,
+        <ModuleA
+          key="1"
+          slotData="slot A Data"
+        >
+          <div>
+            Module A
+          </div>
+        </ModuleA>,
+        <ModuleB
+          key="2"
+          slotData="slotB Data"
+        >
+          <div>
+            Module B
+          </div>
+        </ModuleB>,
+      ]
+    `
     );
   });
 
@@ -110,15 +107,15 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-      <ModuleA
-        key="id-1"
-        slotData="slot A Data"
-      >
-        <div>
-          Module A
-        </div>
-      </ModuleA>
-    `);
+                        <ModuleA
+                          key="1"
+                          slotData="slot A Data"
+                        >
+                          <div>
+                            Module A
+                          </div>
+                        </ModuleA>
+                `);
   });
 
   it('Should render slots even if data does not send required slot', () => {
@@ -126,7 +123,7 @@ describe('PageSlots component', () => {
       <PageSlots
         slots={[
           {
-            contentId: 'id-1',
+            key: '0',
             data: { slotData: 'slot B Data' },
             moduleName: 'moduleB',
             name: 'slot_1',
@@ -137,15 +134,15 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-      <ModuleB
-        key="id-1"
-        slotData="slot B Data"
-      >
-        <div>
-          Module B
-        </div>
-      </ModuleB>
-    `);
+                        <ModuleB
+                          key="0"
+                          slotData="slot B Data"
+                        >
+                          <div>
+                            Module B
+                          </div>
+                        </ModuleB>
+                `);
   });
 
   it('Should render null if no slot match', () => {
@@ -153,7 +150,7 @@ describe('PageSlots component', () => {
       <PageSlots
         slots={[
           {
-            contentId: 'id-1',
+            key: '0',
             data: { slotData: 'slot X Data' },
             moduleName: 'moduleX',
             name: 'slot_1',
@@ -172,7 +169,7 @@ describe('PageSlots component', () => {
       <PageSlots
         slots={[
           {
-            contentId: 'id-1',
+            key: '0',
             moduleName: 'moduleA',
             name: 'slot_1',
           },
@@ -196,13 +193,13 @@ describe('PageSlots component', () => {
         extraProp="extraProp"
         slots={[
           {
-            contentId: 'id-1',
+            key: '0',
             data: { slotData: 'slot B Data' },
             moduleName: 'moduleA',
             name: 'slot_1',
           },
           {
-            contentId: 'id-2',
+            key: '1',
             data: { slotData: 'slot A Data' },
             moduleName: 'moduleB',
             name: 'slot_2',
@@ -213,26 +210,26 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-      Array [
-        <ModuleA
-          extraProp="extraProp"
-          key="id-1"
-          slotData="slot B Data"
-        >
-          <div>
-            Module A
-          </div>
-        </ModuleA>,
-        <ModuleB
-          extraProp="extraProp"
-          key="id-2"
-          slotData="slot A Data"
-        >
-          <div>
-            Module B
-          </div>
-        </ModuleB>,
-      ]
-    `);
+                        Array [
+                          <ModuleA
+                            extraProp="extraProp"
+                            key="0"
+                            slotData="slot B Data"
+                          >
+                            <div>
+                              Module A
+                            </div>
+                          </ModuleA>,
+                          <ModuleB
+                            extraProp="extraProp"
+                            key="1"
+                            slotData="slot A Data"
+                          >
+                            <div>
+                              Module B
+                            </div>
+                          </ModuleB>,
+                        ]
+                `);
   });
 });

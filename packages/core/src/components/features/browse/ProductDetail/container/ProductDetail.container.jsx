@@ -1,12 +1,13 @@
 import React from 'react';
-import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import { connect } from 'react-redux';
+import { withRouter } from 'next/router'; // eslint-disable-line
 import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import SEOTags from '@tcp/web/src/components/common/atoms';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
 import ProductDetailView from '../views';
-import { getProductDetails } from './ProductDetail.actions';
+import { getProductDetails, setProductDetailsDynamicData } from './ProductDetail.actions';
 import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/actions';
 import {
   removeAddToFavoriteErrorState,
@@ -40,6 +41,7 @@ import {
   getPLPPromos,
   getSizeChartDetails,
   getPDPLoadingState,
+  getAccessibilityLabels,
 } from './ProductDetail.selectors';
 
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
@@ -83,44 +85,10 @@ class ProductDetailContainer extends React.PureComponent {
     return productId;
   };
 
-  static getInitialProps = async ({ props, query, isServer }) => {
-    const { getDetails } = props;
-    let pid;
-    if (isServer) {
-      ({ pid } = query);
-    } else {
-      ({
-        router: {
-          query: { pid },
-        },
-      } = props);
-    }
-    // TODO - fix this to extract the product ID from the page.
-    const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
-    await getDetails({ productColorId: productId });
-
-    // Build a page name for tracking
-    let pageName = '';
-    if (productId) {
-      const productIdParts = productId.split('_');
-      pageName = `product:${productIdParts[0]}:${pid
-        .replace(productIdParts[0], '')
-        .replace(productIdParts[1], '')
-        .split('-')
-        .join(' ')
-        .trim()
-        .toLowerCase()}`;
-    }
-
-    return {
-      pageProps: {
-        pageName,
-      },
-    };
-  };
-
   componentDidMount() {
+    const { props } = this;
     window.scrollTo(0, 100);
+    ProductDetailContainer.getInitialProps({ props });
   }
 
   componentDidUpdate(prevProps) {
@@ -139,8 +107,9 @@ class ProductDetailContainer extends React.PureComponent {
   }
 
   componentWillUnmount = () => {
-    const { clearAddToBagError } = this.props;
+    const { clearAddToBagError, resetProductDetailsDynamicData } = this.props;
     clearAddToBagError();
+    resetProductDetailsDynamicData();
   };
 
   getSEOTags = pageId => {
@@ -188,6 +157,7 @@ class ProductDetailContainer extends React.PureComponent {
       router: { asPath: asPathVal },
       trackPageLoad,
       sizeChartDetails,
+      accessibilityLabels,
       ...otherProps
     } = this.props;
 
@@ -229,6 +199,8 @@ class ProductDetailContainer extends React.PureComponent {
               bottomPromos={bottomPromos}
               trackPageLoad={trackPageLoad}
               sizeChartDetails={sizeChartDetails}
+              accessibilityLabels={accessibilityLabels}
+              isLoading={typeof window === 'undefined' || isLoading}
               isMatchingFamily // TODO: Need to add kill switch for this
             />
           ) : null}
@@ -280,11 +252,13 @@ function mapStateToProps(state) {
     bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
     sizeChartDetails: getSizeChartDetails(state),
     store: state,
+    accessibilityLabels: getAccessibilityLabels(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    resetProductDetailsDynamicData: () => dispatch(setProductDetailsDynamicData({ product: {} })),
     getDetails: payload => {
       dispatch(getProductDetails(payload));
     },
@@ -330,6 +304,45 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+ProductDetailContainer.getInitialProps = async ({ props: passedProps, store, isServer, query }) => {
+  const props = passedProps || {
+    ...mapStateToProps(store.getState()),
+    ...mapDispatchToProps(store.dispatch),
+  };
+  const { getDetails } = props;
+  let pid;
+  if (isServer) {
+    ({ pid } = query);
+  } else {
+    ({
+      router: {
+        query: { pid },
+      },
+    } = props);
+  }
+  // TODO - fix this to extract the product ID from the page.
+  const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
+  await getDetails({ productColorId: productId, escapeEmptyProduct: true });
+  // Build a page name for tracking
+  let pageName = '';
+  if (productId) {
+    const productIdParts = productId.split('_');
+    pageName = `product:${productIdParts[0]}:${(pid || '')
+      .replace(productIdParts[0], '')
+      .replace(productIdParts[1], '')
+      .split('-')
+      .join(' ')
+      .trim()
+      .toLowerCase()}`;
+  }
+
+  return {
+    pageProps: {
+      pageName,
+    },
+  };
+};
+
 ProductDetailContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
@@ -370,6 +383,8 @@ ProductDetailContainer.propTypes = {
   bottomPromos: PropTypes.string,
   isLoading: PropTypes.bool,
   trackPageLoad: PropTypes.func,
+  accessibilityLabels: PropTypes.shape({}),
+  resetProductDetailsDynamicData: PropTypes.func.isRequired,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -400,10 +415,12 @@ ProductDetailContainer.defaultProps = {
   bottomPromos: '',
   isLoading: false,
   trackPageLoad: () => {},
+  accessibilityLabels: {},
 };
 
-export default withIsomorphicRenderer({
-  WrappedComponent: ProductDetailContainer,
-  mapStateToProps,
-  mapDispatchToProps,
-});
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProductDetailContainer)
+);

@@ -1186,6 +1186,14 @@ export const cropVideoUrl = url => {
   }
   return URL;
 };
+/*
+ * This function returns the true if the browser is IE11
+ */
+export const isIE11 = () => {
+  // true on IE11
+  // false on Edge and other IEs/browsers.
+  return !!window.MSInputMethodContext && !!document.documentMode;
+};
 
 export default {
   getVideoUrl,
@@ -1239,4 +1247,5 @@ export default {
   getProductUrlForDAM,
   convertNumToBool,
   cropVideoUrl,
+  isIE11,
 };

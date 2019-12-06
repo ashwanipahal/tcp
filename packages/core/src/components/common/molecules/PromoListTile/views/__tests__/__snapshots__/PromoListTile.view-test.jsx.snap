@@ -90,6 +90,8 @@ exports[`PromoListTile component should renders correctly 1`] = `
         data-locator="privacyLnk"
         fontSizeVariation="large"
         noLink={true}
+        onClick={[Function]}
+        target="_blank"
         underline={true}
       >
         Apply now

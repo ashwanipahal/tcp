@@ -48,6 +48,7 @@ import {
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
 import { addToCartEcom } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
+import { getCurrencyAttributes } from '../../ProductDetail/container/ProductDetail.selectors';
 
 class FavoritesContainer extends React.PureComponent {
   constructor(props) {
@@ -198,6 +199,7 @@ class FavoritesContainer extends React.PureComponent {
       updateAppTypeHandler,
       addToBagEcom,
       errorMessages,
+      currencyAttributes,
     } = this.props;
     const { selectedColorProductId } = this.state;
     return (
@@ -243,6 +245,7 @@ class FavoritesContainer extends React.PureComponent {
         onReplaceWishlistItem={this.onReplaceWishlistItem}
         updateAppTypeHandler={updateAppTypeHandler}
         errorMessages={errorMessages}
+        currencyAttributes={currencyAttributes}
         {...this.state}
       />
     );
@@ -258,6 +261,7 @@ const mapStateToProps = state => {
     activeWishListProducts: selectActiveWishlistProducts(state),
     activeDisplayName: selectActiveDisplayName(state),
     currencySymbol: fetchCurrencySymbol(state),
+    currencyAttributes: getCurrencyAttributes(state),
     labels: getLabelsFavorites(state),
     slpLabels: getSLPLabels(state),
     totalProductsCount: selectTotalProductsCount(state),
@@ -347,6 +351,7 @@ FavoritesContainer.propTypes = {
   formErrorMessage: PropTypes.shape({}),
   errorMessages: PropTypes.string,
   updateAppTypeHandler: PropTypes.func.isRequired,
+  currencyAttributes: PropTypes.shape({}),
 };
 
 FavoritesContainer.defaultProps = {
@@ -365,6 +370,7 @@ FavoritesContainer.defaultProps = {
   isLoggedIn: false,
   errorMessages: '',
   formErrorMessage: {},
+  currencyAttributes: {},
 };
 
 export default connect(

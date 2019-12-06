@@ -97,6 +97,7 @@ exports[`FullSizeImageWithQuickViewModal component should renders correctly 1`] 
       </Styled(Row)>
     </form>
     <Styled(ProductImages)
+      accessibilityLabels={Object {}}
       images={
         Array [
           Object {
