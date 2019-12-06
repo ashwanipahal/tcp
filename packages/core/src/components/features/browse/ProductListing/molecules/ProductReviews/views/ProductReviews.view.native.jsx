@@ -37,20 +37,20 @@ class ProductReviews extends React.PureComponent {
   };
 
   getWriteReviewFormattedUrl = ratingsProductId => {
-    return `${this.apiConfig.BV_WEB_VIEW_URL}?productId=${ratingsProductId}&env=${
+    return `${this.apiConfig.BV_WEB_VIEW_URL}?bvproductId=${ratingsProductId}&env=${
       this.apiConfig.BV_ENVIRONMENT
-    }&instance=${this.apiConfig.BV_INSTANCE}`;
+    }&instance=${this.apiConfig.BV_INSTANCE}&token=tcprwd`;
   };
 
   getSubmissionFormUrl = (userId, mprId, productId) => {
     const { getSecurityToken } = this.props;
     const securityToken = getSecurityToken(userId, mprId);
 
-    const bvFormUrl = this.apiConfig.BV_SUBMISSION_URL.replace(
-      '#INSTANCE#',
-      this.apiConfig.BV_INSTANCE
-    );
-    return bvFormUrl.replace('#PRODUCTID#', productId).replace('#TOKEN#', securityToken);
+    return this.apiConfig.BV_SUBMISSION_URL.replace('#INSTANCE#', this.apiConfig.BV_INSTANCE)
+      .replace('#PRODUCTID#', productId)
+      .replace('#TOKEN#', securityToken)
+      .replace('#DEPLOYMENT_ZONE#', this.apiConfig.BV_INSTANCE)
+      .replace('#ENV#', this.apiConfig.BV_ENVIRONMENT);
   };
 
   handleWebViewEvents = event => {

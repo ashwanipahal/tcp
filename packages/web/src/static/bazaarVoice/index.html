@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="container.htm"/>
     <title>BazaarVoice Integration</title>
 </head>
 <!-- bazaarVoiceContainer UI is rendered based on this container ID -->
@@ -9,8 +11,7 @@
   <!-- placeholder container to add summary UI
   data-bv-product-id is replaced from URL query param in script below-->
     <div id='BVRRContainer'
-        data-bv-show="reviews"
-        data-bv-product-id="">
+        data-bv-show="reviews">
     </div>
 
     <script type="text/javascript">
@@ -28,17 +29,24 @@
       }
       const queryParams = getUrlVars();
       const {
-        productId: ratingsProductId,
+        bvaction,
+        bvproductId: ratingsProductId,
         env: environment,
         instance: deploymentZone,
       } = queryParams;
       const bvContainer =  'BVRRContainer';
 
-      // replace product ID dynamically in HTML
-      document.getElementById(bvContainer).setAttribute('data-bv-product-id', ratingsProductId);
-
-      // create main BV js URL based on brand
+      let isSubmitPage = false;
       const scriptUrl = `https://apps.bazaarvoice.com/deployments/childrensplace/${deploymentZone}/${environment}/en_US/bv.js`;
+
+      if(bvaction === 'rr_submit_review') {
+        isSubmitPage = true;
+      }
+
+      if(!isSubmitPage) {
+        // replace product ID dynamically in HTML
+        document.getElementById(bvContainer).setAttribute('data-bv-product-id', ratingsProductId);
+      }
 
       const loadScript = (url, callback) => {
         const script = document.createElement("script");
@@ -65,6 +73,7 @@
       // load BV js synchronously and invoke BV code
       loadScript(scriptUrl, (() => {
 
+
       // override BV write a review click behavior
       const handleWriteReviewClick = event => {
         if(window.ReactNativeWebView) {
@@ -83,25 +92,35 @@
       const callback = mutationsList =>  {
         for(let mutation of mutationsList) {
           if (mutation.type === 'childList') {
-            if(document.querySelector('button.bv-write-review')) {
-              document.querySelector('button.bv-write-review').addEventListener('click', handleWriteReviewClick);
+              if(document.querySelector('button.bv-mbox-close')) {
+                document.querySelector('button.bv-mbox-close').style.visibility = 'hidden';
+              }
             }
-            if(document.querySelector('div.bv-content-placeholder')) {
-              document.querySelector('div.bv-content-placeholder').addEventListener('click', handleWriteReviewClick);
+             else {
+              if(document.querySelector('button.bv-write-review')) {
+                document.querySelector('button.bv-write-review').addEventListener('click', handleWriteReviewClick);
+              }
+              if(document.querySelector('div.bv-content-placeholder')) {
+                document.querySelector('div.bv-content-placeholder').addEventListener('click', handleWriteReviewClick);
+              }
             }
           }
         }
-      };
       // Create an observer instance linked to the callback function
       const observer = new MutationObserver(callback);
       // Start observing the target node for configured mutations
       observer.observe(targetNode, config);
       // *** code to observe DOM mutation and add custom handlers end ***
 
+      if(isSubmitPage) {
+        $BV.container('global', {} );
+      }
     }));
 
     </script>
 
 </body>
 </html>
-<!-- test Url: http://test5.childrensplace.com/static/bazaarVoice/index.html?productId=2043572&env=staging&instance=main_site -->
+<!-- test Url: http://test5.childrensplace.com/static/bazaarVoice/index.html?bvproductId=2043572&env=staging&instance=main_implementation_app -->
+<!-- https://display.ugc.bazaarvoice.com/static/ChildrensPlace/main_implementation_app/en_US/container.htm?bvaction=rr_submit_review&bvproductId=2043572&bvuserToken=dfdsfsdfsdfsf&bvproductId=2043572&env=staging&instance=main_implementation_app -->
+<!-- &pageType=submit?productId=2043572&env=staging&instance=main_implementation_app -->
