@@ -409,18 +409,6 @@ export default css`
     }
   }
 
-  .gymboree_description {
-    color: ${props => props.theme.colorPalette.white};
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-weight: ${props => props.theme.typography.fontWeights.regular};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
-    display: block;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs28};
-    }
-  }
-
   /*
   * Module J Promo Banner styles
   *********************************/
