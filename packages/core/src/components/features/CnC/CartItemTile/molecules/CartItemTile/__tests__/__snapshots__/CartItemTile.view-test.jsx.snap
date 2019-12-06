@@ -129,7 +129,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -569,7 +569,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -1005,7 +1005,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -1466,7 +1466,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -1902,7 +1902,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -2338,7 +2338,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -2800,7 +2800,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -3250,7 +3250,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -3712,7 +3712,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -4162,7 +4162,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -4612,7 +4612,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -5048,7 +5048,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -5509,7 +5509,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -5970,7 +5970,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
@@ -6457,7 +6457,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           colSize={
             Object {
               "large": 12,
-              "medium": 12,
+              "medium": 8,
             }
           }
         >
