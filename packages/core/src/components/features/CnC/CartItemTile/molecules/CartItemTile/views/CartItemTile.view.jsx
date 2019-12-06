@@ -396,6 +396,7 @@ class CartItemTile extends PureComponent {
             }}
             noLink
             className="sflActions"
+            aria-label={`Save for later ${productDetail.itemInfo.name}`}
           >
             <BodyCopy
               fontFamily="secondary"
@@ -423,6 +424,7 @@ class CartItemTile extends PureComponent {
             }}
             noLink
             className="sflActions"
+            aria-label={`Move to bag ${productDetail.itemInfo.name}`}
           >
             <BodyCopy
               fontFamily="secondary"
@@ -474,6 +476,7 @@ class CartItemTile extends PureComponent {
       showOnReviewPage,
       isBagPageSflSection,
       isEditAllowed,
+      productDetail,
       productDetail: {
         miscInfo: { orderItemType, availability },
         itemInfo: { itemBrand },
@@ -503,6 +506,7 @@ class CartItemTile extends PureComponent {
               role="button"
               dataLocator={getLocator('cart_item_edit_link')}
               className="padding-left-10 responsive-edit-css"
+              aria-label={`Edit ${productDetail.itemInfo.name}`}
               onClick={e => {
                 e.preventDefault();
                 this.callEditMethod(e);
