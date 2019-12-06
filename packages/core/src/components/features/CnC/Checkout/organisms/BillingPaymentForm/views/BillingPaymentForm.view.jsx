@@ -178,7 +178,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { dispatch } = this.props;
     const restCardParam = { addNewCC: () => onAddNewCreditCardClick(this), selectedCard };
     const cardParams = { creditCardList, labels, onFileCardKey, addNewCCState, ...restCardParam };
-    const colSize = { large: 6, small: 6, medium: 10 };
+    const colSize = { large: 6, small: 6, medium: 8 };
     if (onFileCardKey) {
       onCCDropUpdateChange(onFileCardKey, selectedCard, dispatch);
     }

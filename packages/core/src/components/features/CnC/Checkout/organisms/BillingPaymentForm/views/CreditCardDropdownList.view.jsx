@@ -35,9 +35,9 @@ const CreditCardDropdownList = ({ className, optionsMap, clickHandler, activeVal
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className={`${nthChild ? 'dropDownListwrapper' : ''}`}>
+        <span className="dropDownTop" />
+        <span className="dropDownBottom" />
         <BodyCopy component="div" className="dropdownDivOverFlow">
-          <span className="dropDownTop" />
-          <span className="dropDownBottom" />
           <ul className={`${nthChild ? 'ulBorderWithLastRow' : 'dropdownUlBorder'}`}>
             {optionsMap.map(item => itemLists(item, activeValue, clickHandler))}
           </ul>

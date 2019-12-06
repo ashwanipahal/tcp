@@ -52,6 +52,8 @@ class DropdownList extends React.PureComponent {
     return (
       <BodyCopy component="div" className={className}>
         <BodyCopy component="div" className={`${nthChild ? 'dropDownListwrapper' : ''}`}>
+          <span className="dropDownTop" />
+          <span className="dropDownBottom" />
           <BodyCopy component="div" className="dropdownDivOverFlow">
             <ul
               className={`${nthChild ? 'ulBorderWithLastRow' : 'dropdownUlBorder'}`}
