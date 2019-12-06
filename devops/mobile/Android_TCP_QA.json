@@ -46,10 +46,6 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_DAM_HOST_TCP",
       "value": "https://test1.theplace.com/image/upload"
     },
@@ -347,11 +343,7 @@
     },
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
-      "value": "https://test6.childrensplace.com/static/bazaarVoice/index.html"
-    },
-    {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
+      "value": "https://test5.childrensplace.com/static/bazaarVoice/index.html"
     }
   ],
   "signed": true,
