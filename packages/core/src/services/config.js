@@ -86,7 +86,7 @@ export const API_CONFIG = {
     assetHost: '/',
     domain: '/',
     unbxd: 'https://search.unbxd.io',
-    BV_WEB_VIEW_URL: 'https://local.childrensplace.com:3000/static/bazaarVoice/index.html',
+    BV_WEB_VIEW_URL: 'https://test5.childrensplace.com/static/bazaarVoice/index.html',
     BV_ENV: 'staging',
     BV_SUBMISSION_URL:
       'https://display.ugc.bazaarvoice.com/static/ChildrensPlace/#INSTANCE#/en_US/container.htm?bvaction=rr_submit_review&bvproductId=#PRODUCTID#&bvuserToken=#TOKEN#&env=#ENV#&instance=#DEPLOYMENT_ZONE#&token=tcprwd',
