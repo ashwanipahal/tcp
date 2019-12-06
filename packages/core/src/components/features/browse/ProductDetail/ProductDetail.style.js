@@ -40,6 +40,9 @@ export default css`
   .promo-area-top {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   }
+  .pdp-qty {
+    padding-top: 5px;
+  }
   .promo-area-middle {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};

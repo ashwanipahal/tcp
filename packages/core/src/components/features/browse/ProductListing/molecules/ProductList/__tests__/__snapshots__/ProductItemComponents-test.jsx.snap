@@ -142,6 +142,19 @@ exports[`ProductItemComponents component ProductWishlistIcon render Image 1`] = 
       title="addToFavorite"
     />
   </button>
+  <Styled(BodyCopy)
+    className="favorite-count"
+    color="gray.600"
+    component="p"
+    dataLocator="pdp_favorite_icon_count"
+    fontFamily="primary"
+    fontSize="fs10"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
 </Styled(BodyCopy)>
 `;
 
