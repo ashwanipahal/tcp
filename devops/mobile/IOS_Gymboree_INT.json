@@ -46,10 +46,6 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_API_DOMAIN_TCP",
       "value": "https://test5.childrensplace.com"
     },
@@ -140,10 +136,6 @@
     {
       "name": "RWD_APP_ACQUISITION_ID_GYM",
       "value": "ikhNl0Te"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
@@ -354,7 +346,7 @@
       "value": "true"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
@@ -368,10 +360,6 @@
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
       "value": "https://test5.gymboree.com/static/bazaarVoice/index.html"
-    },
-    {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -387,7 +375,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "f5f3392e-6407-4e44-8368-3025c0962543"
+        "d3093048-0be7-4bd9-86a5-afb908a0593a"
       ],
       "isSilent": false
     },
@@ -400,8 +388,8 @@
       "certificatePassword": "__protected__",
       "certificateFilename": "Dist-Certificates.p12",
       "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
-      "certificateFileId": "4a99762d-6cfa-49c4-bbb2-4ae66abf5ed8",
-      "provisioningProfileFileId": "e880b7bf-3a12-455e-98cf-d8226f597d48",
+      "certificateFileId": "947ca184-cfe9-4d29-b6d2-c5e6b9b87c70",
+      "provisioningProfileFileId": "947ad9b8-a1e6-4916-a6bd-be13b70b5a7a",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "gymboree_int",

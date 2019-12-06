@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Platform, Image, SafeAreaView } from 'react-native';
-import { getBrand, getAPIConfig } from '@tcp/core/src/utils';
+import { getBrand, getAPIConfig, getScreenHeight } from '@tcp/core/src/utils';
 import { WebView } from 'react-native-webview';
 
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
@@ -10,6 +10,7 @@ import {
   AccordionHeader,
   ImageStyleWrapper,
   ProductRatingsContainer,
+  SubmissionFormWrapper,
 } from '../styles/ProductReviews.style.native';
 import ModalNative from '../../../../../../common/molecules/Modal/index';
 import LoginPageContainer from '../../../../../account/LoginPage/index';
@@ -22,10 +23,12 @@ class ProductReviews extends React.PureComponent {
     super(props);
     this.state = {
       isAccordionOpen: props.expanded,
-      showModal: false,
+      showLoginModal: false,
+      openSubmissionForm: false,
     };
     this.handleWebViewEvents = this.handleWebViewEvents.bind(this);
     this.apiConfig = getAPIConfig();
+    this.brand = getBrand();
   }
 
   handleAccordionToggle = () => {
@@ -33,33 +36,55 @@ class ProductReviews extends React.PureComponent {
     this.setState({ isAccordionOpen: !isAccordionOpen });
   };
 
-  getFormattedUrl = (isGuest, userId, mprId, ratingsProductId) => {
-    const { getSecurityToken } = this.props;
-    const brand = getBrand();
-    const bvBrand = brand && brand.toUpperCase();
-    const securityToken = !isGuest ? getSecurityToken(userId, mprId) : '';
+  getWriteReviewFormattedUrl = ratingsProductId => {
+    return `${this.apiConfig.BV_WEB_VIEW_URL}?productId=${ratingsProductId}&env=${
+      this.apiConfig.BV_ENVIRONMENT
+    }&instance=${this.apiConfig.BV_INSTANCE}`;
+  };
 
-    return `${
-      this.apiConfig.BV_WEB_VIEW_URL
-    }?securityToken=${securityToken}&brand=${bvBrand}&productId=${ratingsProductId}`;
+  getSubmissionFormUrl = (userId, mprId, productId) => {
+    const { getSecurityToken } = this.props;
+    const securityToken = getSecurityToken(userId, mprId);
+
+    const bvFormUrl = this.apiConfig.BV_SUBMISSION_URL.replace(
+      '#INSTANCE#',
+      this.apiConfig.BV_INSTANCE
+    );
+    return bvFormUrl.replace('#PRODUCTID#', productId).replace('#TOKEN#', securityToken);
   };
 
   handleWebViewEvents = event => {
     switch (event.nativeEvent.data) {
-      case 'openLogin':
-        this.toggleModal();
+      case 'writeReview':
+        this.handleWriteReviewClick();
         break;
       case 'closeRating':
         this.handleAccordionToggle();
         break;
       default:
-        this.handleAccordionToggle();
+        this.handleWriteReviewClick();
     }
   };
 
-  toggleModal = () => {
+  handleWriteReviewClick = () => {
+    const { isGuest } = this.props;
+    if (isGuest) {
+      this.toggleLoginModal();
+    } else {
+      this.toggleSubmissionForm();
+    }
+  };
+
+  toggleLoginModal = () => {
     this.setState(state => ({
-      showModal: !state.showModal,
+      showLoginModal: !state.showLoginModal,
+    }));
+  };
+
+  toggleSubmissionForm = () => {
+    this.setState(state => ({
+      openSubmissionForm: !state.openSubmissionForm,
+      isAccordionOpen: false,
     }));
   };
 
@@ -68,10 +93,10 @@ class ProductReviews extends React.PureComponent {
     if (isGuest) {
       componentContainer = (
         <LoginPageContainer
-          onRequestClose={this.toggleModal}
+          onRequestClose={this.toggleLoginModal}
           isUserLoggedIn={!isGuest}
           showLogin={this.showloginModal}
-          handleAfterLogin={this.toggleModal}
+          handleAfterLogin={this.toggleLoginModal}
         />
       );
     }
@@ -87,10 +112,12 @@ class ProductReviews extends React.PureComponent {
       mprId,
       reviewsCount,
     } = this.props;
-    const { isAccordionOpen, margins, showModal } = this.state;
+    const { isAccordionOpen, margins, showLoginModal, openSubmissionForm } = this.state;
 
-    const bvFormHTML =
-      isAccordionOpen && this.getFormattedUrl(isGuest, userId, mprId, ratingsProductId);
+    const bvReviewHtmlUrl = isAccordionOpen && this.getWriteReviewFormattedUrl(ratingsProductId);
+
+    const bvSubmissionFormHtmlUrl =
+      openSubmissionForm && this.getSubmissionFormUrl(userId, mprId, ratingsProductId);
 
     return (
       <ProductRatingsContainer margins={margins}>
@@ -116,7 +143,7 @@ class ProductReviews extends React.PureComponent {
             <WebView
               originWhitelist={['*']}
               source={{
-                uri: bvFormHTML,
+                uri: bvReviewHtmlUrl,
               }}
               mixedContentMode="always"
               useWebKit={Platform.OS === 'ios'}
@@ -132,17 +159,48 @@ class ProductReviews extends React.PureComponent {
           </RichTextContainer>
         ) : null}
 
-        {showModal && (
+        {showLoginModal && (
           <ModalNative
-            isOpen={showModal}
-            onRequestClose={this.toggleModal}
-            heading="LOG IN"
+            isOpen={showLoginModal}
+            onRequestClose={this.toggleLoginModal}
+            heading={ratingsAndReviewsLabel.lbl_login_modal_title}
             headingFontFamily="secondary"
             fontSize="fs16"
           >
             <SafeAreaView>{this.renderComponent(isGuest)}</SafeAreaView>
           </ModalNative>
         )}
+
+        {openSubmissionForm ? (
+          <ModalNative
+            isOpen={openSubmissionForm}
+            onRequestClose={this.toggleSubmissionForm}
+            heading={ratingsAndReviewsLabel.lbl_rating_form_title}
+            headingFontFamily="secondary"
+            fontSize="fs16"
+          >
+            <SafeAreaView>
+              <SubmissionFormWrapper height={getScreenHeight()}>
+                <WebView
+                  originWhitelist={['*']}
+                  source={{
+                    uri: bvSubmissionFormHtmlUrl,
+                  }}
+                  mixedContentMode="always"
+                  useWebKit={Platform.OS === 'ios'}
+                  scrollEnabled
+                  domStorageEnabled
+                  thirdPartyCookiesEnabled
+                  startInLoadingState
+                  allowUniversalAccessFromFileURLs
+                  javaScriptEnabled
+                  onMessage={this.handleWebViewEvents}
+                  automaticallyAdjustContentInsets={false}
+                />
+              </SubmissionFormWrapper>
+            </SafeAreaView>
+          </ModalNative>
+        ) : null}
       </ProductRatingsContainer>
     );
   }
@@ -155,7 +213,7 @@ ProductReviews.propTypes = {
   userId: PropTypes.string,
   mprId: PropTypes.string,
   reviewsCount: PropTypes.number,
-  ratingsAndReviewsLabel: PropTypes.string,
+  ratingsAndReviewsLabel: PropTypes.shape({}).isRequired,
   getSecurityToken: PropTypes.func.isRequired,
 };
 
@@ -163,7 +221,6 @@ ProductReviews.defaultProps = {
   userId: '',
   mprId: '',
   reviewsCount: 0,
-  ratingsAndReviewsLabel: '',
   expanded: false,
 };
 

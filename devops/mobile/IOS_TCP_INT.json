@@ -46,10 +46,6 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_API_DOMAIN_TCP",
       "value": "https://test5.childrensplace.com"
     },
@@ -140,10 +136,6 @@
     {
       "name": "RWD_APP_ACQUISITION_ID_GYM",
       "value": "ikhNl0Te"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
@@ -354,7 +346,7 @@
       "value": "true"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
@@ -368,10 +360,6 @@
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
       "value": "https://test5.childrensplace.com/static/bazaarVoice/index.html"
-    },
-    {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -388,7 +376,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "646b5ec2-377d-45da-a130-472c3014c6c0"
+        "ddcf0e8e-dfc5-4b4f-8953-95d3f0a32d2f"
       ],
       "isSilent": false
     },
@@ -401,8 +389,8 @@
       "certificatePassword": "__protected__",
       "certificateFilename": "Dev-Certificates.p12",
       "provisioningProfileFilename": "ProvisioningProfileDevelopment_TCPAppInt.mobileprovision",
-      "certificateFileId": "b5771e8c-c74e-4eba-b6ff-f098a41fd68f",
-      "provisioningProfileFileId": "0f59cc4c-f591-4df4-96fd-7c2a62691e08",
+      "certificateFileId": "2cb0f6c9-355c-4936-ae10-1a1f72869c95",
+      "provisioningProfileFileId": "c43f2701-cddc-4d23-ad45-f414229cfa71",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_int",

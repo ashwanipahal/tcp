@@ -1,13 +1,13 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
   "environmentVariables": [
     {
       "name": "ENV",
-      "value": "int"
+      "value": "uat"
     },
     {
       "name": "RWD_APP_BRANDID_TCP",
@@ -46,16 +46,12 @@
       "value": "63987687"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
+      "name": "RWD_APP_DAM_HOST_TCP",
+      "value": "https://test1.theplace.com/image/upload"
     },
     {
       "name": "RWD_APP_API_DOMAIN_TCP",
-      "value": "https://test5.childrensplace.com"
-    },
-    {
-      "name": "RWD_APP_DAM_HOST_TCP",
-      "value": "https://test1.theplace.com/image/upload"
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_APP_API_IDENTIFIER_TCP",
@@ -79,11 +75,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_ENDPOINT_TCP",
-      "value": "https://test5.childrensplace.com"
-    },
-    {
-      "name": "RWD_WEB_GRAPHQL_API_KEY",
-      "value": "da2-4rbmhsi7t5emdiqukl2cfzuypu"
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_APP_CANDID_API_KEY_TCP",
@@ -103,7 +95,7 @@
     },
     {
       "name": "RWD_APP_PAYPAL_STATIC_DOMAIN_TCP",
-      "value": "https://test5.childrensplace.com"
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_APP_BRANDID_GYM",
@@ -142,10 +134,6 @@
       "value": "ikhNl0Te"
     },
     {
-      "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
-    },
-    {
       "name": "RWD_APP_DAM_HOST_GYM",
       "value": "https://test1.theplace.com/image/upload"
     },
@@ -159,7 +147,7 @@
     },
     {
       "name": "RWD_APP_API_DOMAIN_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test6.gymboree.com"
     },
     {
       "name": "RWD_APP_API_IDENTIFIER_GYM",
@@ -179,7 +167,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_ENDPOINT_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://47vqlpw4m5bxdphy2adv4tknhq.appsync-api.us-east-2.amazonaws.com"
     },
     {
       "name": "RWD_APP_GRAPHQL_API_AUTH_TYPE_GYM",
@@ -187,7 +175,7 @@
     },
     {
       "name": "RWD_APP_GRAPHQL_API_KEY_GYM",
-      "value": "da2-mf3uaes3nncszkdir7t4dfj4ya"
+      "value": "da2-6fg7esay7nck7fgyaj6likgzfy"
     },
     {
       "name": "RWD_APP_CANDID_API_KEY_GYM",
@@ -207,7 +195,7 @@
     },
     {
       "name": "RWD_APP_PAYPAL_STATIC_DOMAIN_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test6.gymboree.com"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_TCP",
@@ -314,23 +302,47 @@
       "value": ".gymboree.com"
     },
     {
+      "name": "RWD_APP_RAYGUN_API_KEY_GYM",
+      "value": "lIDoLeWINLsUuqPKTf4Sw"
+    },
+    {
+      "name": "isErrorReportingActive",
+      "value": "true"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_TCP",
+      "value": "thechildrensplace"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_USERNAME_GYM",
+      "value": "gymboree"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_TCP",
+      "value": "country"
+    },
+    {
+      "name": "RWD_APP_STYLITICS_REGION_GYM",
+      "value": ""
+    },
+    {
       "name": "RWD_WEB_APP_DOMAIN_TCP",
-      "value": "https://test5.childrensplace.com"
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_WEB_APP_DOMAIN_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test6.gymboree.com"
     },
     {
       "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_TCP",
-      "value": "true"
+      "value": "false"
     },
     {
       "name": "RWP_APP_ENABLE_ERROR_BOUNDARY_GYM",
-      "value": "true"
+      "value": "false"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
@@ -344,10 +356,6 @@
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
       "value": "https://test5.gymboree.com/static/bazaarVoice/index.html"
-    },
-    {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -356,36 +364,33 @@
   "toolsets": {
     "buildscripts": {
       "packages/mobileapp/package.json": {
-        "postClone": "packages/mobileapp/appcenter-post-clone.sh",
-        "preBuild": "packages/mobileapp/appcenter-pre-build.sh"
+        "postClone": "packages/mobileapp/appcenter-post-clone.sh"
       }
-    },
-    "android": {
-      "module": "app",
-      "buildVariant": "gymboreeIntRelease",
-      "isRoot": false,
-      "runTests": false,
-      "runLint": false,
-      "keystorePassword": "__protected__",
-      "keyAlias": "__protected__",
-      "keyPassword": "__protected__",
-      "keystoreFilename": "tcp.jks",
-      "automaticSigning": false,
-      "buildBundle": false,
-      "gradleWrapperPath": "packages/mobileapp/android/gradlew"
     },
     "distribution": {
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "e1a1bd2c-bf4e-444f-beb2-40c909b37d7d"
+        "84ca044c-b22a-461a-a624-68ea48377d07"
       ],
       "isSilent": false
     },
     "javascript": {
-      "nodeVersion": "10.x",
+      "nodeVersion": "12.x",
       "packageJsonPath": "packages/mobileapp/package.json",
       "runTests": false
+    },
+    "xcode": {
+      "certificatePassword": "__protected__",
+      "certificateFilename": "Dist-Certificates.p12",
+      "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
+      "certificateFileId": "f965e2b2-4101-411a-a4dd-ff1388a8389d",
+      "provisioningProfileFileId": "9a4a586a-b087-492c-a12d-b83e94536c30",
+      "appExtensionProvisioningProfileFiles": [],
+      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
+      "scheme": "gymboree_qa",
+      "xcodeVersion": "10.2.1",
+      "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },
   "artifactVersioning": {
