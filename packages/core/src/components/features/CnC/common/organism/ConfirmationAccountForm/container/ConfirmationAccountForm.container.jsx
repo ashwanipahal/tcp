@@ -46,7 +46,10 @@ const mapStateToProps = state => {
       ...userInformation,
     },
     userInformation,
-    labels: confirmationAccountSelectors.getCreateAccountLabels(state),
+    labels: {
+      ...confirmationAccountSelectors.getCreateAccountLabels(state),
+      ...confirmationAccountSelectors.getAccessibilityLabels(state),
+    },
     passwordLabels: confirmationAccountSelectors.getPasswordLabels(state),
     createAccountSuccess: confirmationAccountSelectors.getCreateAccountSuccess(state),
     createAccountError: getErrorMessage(state),

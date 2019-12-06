@@ -9,10 +9,10 @@ describe('Facebook login', () => {
     elem: {
       isConnected: true,
       socialAccount: 'Facebook',
-      urlParams: {
-        socialAccount: 'facebook',
-        id: 'my-preference',
-      },
+    },
+    urlParams: {
+      socialAccount: 'facebook',
+      id: 'my-preference',
     },
     saveAccountInfo: {},
   };
@@ -25,5 +25,10 @@ describe('Facebook login', () => {
   it('should render the FaceBook component correctly ', () => {
     const wrapper = shallow(<FacebookLogin {...props} />);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('fromEarnExtraPoints should return true if urlParams are present', () => {
+    const wrapper = shallow(<FacebookLogin {...props} />);
+    expect(wrapper.instance().fromEarnExtraPoints()).toBeTruthy();
   });
 });

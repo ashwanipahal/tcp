@@ -29,8 +29,8 @@ exports[`CouponList component should renders applied list 1`] = `
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 8,
+          "small": 6,
         }
       }
     >
@@ -215,8 +215,8 @@ exports[`CouponList component should renders available list 1`] = `
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 8,
+          "small": 6,
         }
       }
     >

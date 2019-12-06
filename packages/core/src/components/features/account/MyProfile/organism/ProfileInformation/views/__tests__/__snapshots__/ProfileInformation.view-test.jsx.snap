@@ -210,6 +210,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         anchorVariation="primary"
         asPath={true}
         fontSizeVariation="medium"
+        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
         to="/#"
         underline={true}
       >
@@ -229,6 +230,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         anchorVariation="primary"
         asPath={true}
         fontSizeVariation="medium"
+        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
         to="/#"
         underline={true}
       >

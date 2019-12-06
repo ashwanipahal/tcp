@@ -604,7 +604,10 @@ function mapStateToProps(state, ownProps) {
   const defaultStore = userDefaultStore || geoDefaultStore || null;
 
   return {
-    labels: PickupSelectors.getLabels(state),
+    labels: {
+      ...PickupSelectors.getLabels(state),
+      ...PickupSelectors.getAccessibilityLabels(state),
+    },
     itemValues: updateItemValueObj(selector(state, 'color', 'Fit', 'Size', 'Quantity')),
     pickupModalState: getIsPickupModalOpen(state),
     isBopisEnabled: getIsBopisEnabled(state),

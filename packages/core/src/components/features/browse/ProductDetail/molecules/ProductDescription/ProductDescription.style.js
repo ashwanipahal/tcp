@@ -5,6 +5,14 @@ const downArrowIcon = getIconPath('down_arrow_icon');
 const upArrowIcon = getIconPath('up_arrow_icon');
 
 export default css`
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    border: ${props => props.theme.spacing.ELEM_SPACING.XS} solid
+      ${props => props.theme.colorPalette.gray[300]};
+    border-left: 0;
+    border-right: 0;
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+
   .button-wrapper {
     cursor: pointer;
     margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;

@@ -192,7 +192,8 @@ class ModuleQ extends React.PureComponent {
           >
             {headerText && (
               <LinkText
-                component="div"
+                component="h2"
+                type="heading"
                 headerText={headerText}
                 className="moduleQ-header"
                 headingClass="moduleQ-promo-header"

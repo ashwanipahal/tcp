@@ -62,3 +62,10 @@ export const setAddToFavorite = payload => {
     payload,
   };
 };
+
+export const unsetPLPBreadCrumb = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.UNSET_PLP_BREADCRUMB,
+    payload,
+  };
+};

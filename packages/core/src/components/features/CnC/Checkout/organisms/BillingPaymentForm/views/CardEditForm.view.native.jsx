@@ -16,7 +16,7 @@ import { withCardEditReduxForm } from './CardEditReduxForm';
 class CardEditFormView extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const { toastMessage, error } = this.props;
-    if (error !== prevProps.error) {
+    if (error && error !== prevProps.error) {
       toastMessage(error.message);
     }
   }

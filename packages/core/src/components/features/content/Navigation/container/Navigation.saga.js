@@ -4,7 +4,7 @@ import { loadNavigationData } from './Navigation.actions';
 import { FETCH_NAVIGATION_DATA } from './Navigation.constants';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 
-function* fetchNavigationData() {
+export function* fetchNavigationData() {
   const result = yield call(NavigationAbstractor.getData, 'navigation');
   yield put(loadNavigationData(result));
 }

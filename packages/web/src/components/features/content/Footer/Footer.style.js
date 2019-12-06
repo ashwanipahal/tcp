@@ -68,11 +68,16 @@ export default css`
     font-size: 12px;
     line-height: 2.08;
   }
-  .footer_top_candidate_a .divider {
+  .footer_top_candidate_a .divider{
     height: 1px;
     background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     margin-top: 24px;
     margin-bottom: 24px;
+    width: 100%;
+  }
+  .footer-candidate-wrapper .divider{
+    height: 1px;
+    background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     width: 100%;
   }
 
@@ -156,7 +161,13 @@ export default css`
 
     .footer-top, .footer_top_candidate_a {
       > div {
-        border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+        ${props =>
+          !props.isNavigationFooter
+            ? `
+            border: 1px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
+
+          `
+            : ''};
         padding-top: 32px;
       }
 

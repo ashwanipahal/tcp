@@ -13,6 +13,7 @@ import SearchBarStyle from '../SearchBar.style';
 import { routerPush } from '../../../../../utils/index';
 import OutOfStockWaterMark from '../../../../features/browse/ProductDetail/molecules/OutOfStockWaterMark';
 import { getLabelsOutOfStock } from '../../../../features/browse/ProductListing/container/ProductListing.selectors';
+import { unsetPLPBreadCrumb } from '../../../../features/browse/ProductListing/container/ProductListing.actions';
 
 /**
  * This component produces a Search Bar component for Header
@@ -27,13 +28,13 @@ import { getLabelsOutOfStock } from '../../../../features/browse/ProductListing/
 class LookingForProductDetail extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this.generateDamUrl = this.generateDamUrl.bind(this);
   }
 
   redirectToProductUrl = productUrl => {
-    const { closeSearchLayover } = this.props;
+    const { closeSearchLayover, unsetPLPBreadCrumbAction } = this.props;
     closeSearchLayover();
+    unsetPLPBreadCrumbAction({ breadCrumbTrail: null });
     routerPush(`/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, {
       shallow: false,
     });
@@ -101,6 +102,7 @@ class LookingForProductDetail extends React.PureComponent {
 
 LookingForProductDetail.propTypes = {
   closeSearchLayover: PropTypes.func.isRequired,
+  unsetPLPBreadCrumbAction: PropTypes.func.isRequired,
   searchResults: PropTypes.shape({
     trends: PropTypes.shape({}),
     categories: PropTypes.shape({}),
@@ -129,4 +131,15 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(withStyles(LookingForProductDetail, SearchBarStyle));
+const mapDispatchToProps = dispatch => {
+  return {
+    unsetPLPBreadCrumbAction: payload => {
+      dispatch(unsetPLPBreadCrumb(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(LookingForProductDetail, SearchBarStyle));

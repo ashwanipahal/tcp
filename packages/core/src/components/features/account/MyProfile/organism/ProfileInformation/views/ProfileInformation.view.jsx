@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
+import externalEndpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Row from '../../../../../../common/atoms/Row';
@@ -221,7 +222,14 @@ class ProfileInformation extends React.PureComponent {
               small: 1,
             }}
           >
-            <Anchor fontSizeVariation="medium" underline anchorVariation="primary" to="/#" asPath>
+            <Anchor
+              href={externalEndpoints.myPlaceRewardsPage}
+              fontSizeVariation="medium"
+              underline
+              anchorVariation="primary"
+              to="/#"
+              asPath
+            >
               {getLabelValue(labels, 'lbl_profile_program_details')}
             </Anchor>
           </Col>
@@ -232,7 +240,14 @@ class ProfileInformation extends React.PureComponent {
               small: 2,
             }}
           >
-            <Anchor fontSizeVariation="medium" underline anchorVariation="primary" to="/#" asPath>
+            <Anchor
+              href={externalEndpoints.termsAndConditionsPage}
+              fontSizeVariation="medium"
+              underline
+              anchorVariation="primary"
+              to="/#"
+              asPath
+            >
               {getLabelValue(labels, 'lbl_profile_terms_condition')}
             </Anchor>
           </Col>
