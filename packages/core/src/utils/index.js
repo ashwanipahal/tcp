@@ -96,5 +96,6 @@ export {
   getProductUrlForDAM,
   plpRoutingHandling,
   convertNumToBool,
+  cropVideoUrl,
   isIE11,
 } from './utils';
