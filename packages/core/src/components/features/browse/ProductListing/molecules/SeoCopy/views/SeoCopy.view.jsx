@@ -36,7 +36,7 @@ class SeoCopy extends React.PureComponent {
           <BodyCopy
             className="title"
             fontSize="fs22"
-            component="div"
+            component="h1"
             color="text.primary"
             fontFamily="secondary"
             fontWeight="black"
