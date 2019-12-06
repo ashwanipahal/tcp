@@ -19,11 +19,19 @@ import React from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import { PropTypes } from 'prop-types';
 
-export const NetworkContext = React.createContext({ isConnected: true });
+export const NetworkContext = React.createContext({ isConnected: false });
+
+export function useNetworkState() {
+  const context = React.useContext(NetworkContext);
+  if (context === undefined) {
+    throw new Error('NetworkContext must be used within a NetworkProvider');
+  }
+  return context;
+}
 
 export default class NetworkProvider extends React.PureComponent {
   // eslint-disable-next-line react/no-unused-state
-  state = { isConnected: true };
+  state = { isConnected: false };
 
   componentDidMount() {
     // Subscribe to net information status

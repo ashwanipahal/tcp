@@ -17,6 +17,11 @@ exports[`ApplyNowWrapper should render correctly 1`] = `
       applyCard={true}
       closePLCCModal={[Function]}
       isRtpsFlow={false}
+      navigation={
+        Object {
+          "goBack": [MockFunction],
+        }
+      }
     />
   </View>
 </SafeAreaView>

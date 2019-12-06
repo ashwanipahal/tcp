@@ -16,21 +16,6 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
     isGuest={true}
     labels={Object {}}
   />
-  <Styled(View)>
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontSize="fs16"
-      fontWeight="extrabold"
-      margin={null}
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      spacingStyles="margin-top-LRG margin-bottom-LRG"
-      text="Place Cash Banner"
-      textAlign="center"
-      textDecoration={null}
-    />
-  </Styled(View)>
   <Styled(View) />
   <Styled(Styled(BodyCopy))
     accessibilityText=""
@@ -103,21 +88,6 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
     isGuest={true}
     labels={Object {}}
   />
-  <Styled(View)>
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontSize="fs16"
-      fontWeight="extrabold"
-      margin={null}
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      spacingStyles="margin-top-LRG margin-bottom-LRG"
-      text="Place Cash Banner"
-      textAlign="center"
-      textDecoration={null}
-    />
-  </Styled(View)>
   <Styled(View) />
   <Styled(Styled(BodyCopy))
     accessibilityText=""
@@ -190,21 +160,6 @@ exports[`ThankYouComponentVanilla should render correctly with venmo payment 1`]
     isGuest={true}
     labels={Object {}}
   />
-  <Styled(View)>
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontSize="fs16"
-      fontWeight="extrabold"
-      margin={null}
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      spacingStyles="margin-top-LRG margin-bottom-LRG"
-      text="Place Cash Banner"
-      textAlign="center"
-      textDecoration={null}
-    />
-  </Styled(View)>
   <Styled(View) />
   <Styled(Styled(BodyCopy))
     accessibilityText=""
