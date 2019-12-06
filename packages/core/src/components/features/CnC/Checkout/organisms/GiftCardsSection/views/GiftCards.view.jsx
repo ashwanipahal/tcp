@@ -35,7 +35,7 @@ const renderAddGiftCardError = getAddGiftCardError => {
   if (getAddGiftCardError) {
     return (
       <Row fullBleed>
-        <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 10, large: 6 }}>
+        <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 6 }}>
           <ErrorMessage error={getAddGiftCardError} fontSize="fs12" fontWeight="extrabold" />
         </Col>
       </Row>

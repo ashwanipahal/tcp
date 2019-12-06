@@ -9,11 +9,7 @@ export default css`
     align-items: center;
     overflow: auto;
     position: relative;
-    width: 100%;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      padding: 0 15px;
-    }
+    width: calc(100% - 30px);
 
     @media ${props => props.theme.mediaQuery.large} {
       padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0 15px;
