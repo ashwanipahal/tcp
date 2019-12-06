@@ -90,8 +90,8 @@ class CouponListSection extends React.Component<Props> {
         <Row fullBleed>
           <Col
             colSize={{
-              small: 12,
-              medium: 12,
+              small: 6,
+              medium: 8,
               large: 12,
             }}
           >

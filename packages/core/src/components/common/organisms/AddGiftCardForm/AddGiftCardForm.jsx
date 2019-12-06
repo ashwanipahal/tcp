@@ -200,7 +200,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
       return {
         cardNoWithIsRow: { colSize: { small: 6, medium: isRow ? 10 : 4, large: isRow ? 6 : 4 } },
         cardNoWithoutRow: { colSize: { small: 6, medium: 2, large: 3 } },
-        cardPin: { colSize: { small: 6, medium: 10, large: 6 } },
+        cardPin: { colSize: { small: 6, medium: 8, large: 6 } },
       };
     }
     return {

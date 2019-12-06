@@ -73,8 +73,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                   "type": "@@redux-form/CHANGE",
                 },
               ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "creditCardId",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": 82596,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -201,8 +217,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "creditCardId",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": 82596,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -302,8 +334,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                   "type": "@@redux-form/CHANGE",
                 },
               ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "creditCardId",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": 82596,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -455,8 +503,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "creditCardId",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": 82596,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -574,8 +638,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "creditCardId",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": 82596,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -702,6 +782,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
               Array [
                 Object {
                   "meta": Object {
+                    "field": "creditCardId",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
                     "field": "cardType",
                     "form": "checkoutBillingPayment",
                     "persistentSubmitErrors": undefined,
@@ -723,8 +815,28 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
                   "type": "@@redux-form/CHANGE",
                 },
               ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "creditCardId",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -841,6 +953,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "creditCardId",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -862,8 +986,28 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "creditCardId",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -946,6 +1090,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "creditCardId",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -967,8 +1123,28 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "creditCardId",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -1946,6 +2122,18 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
               Array [
                 Object {
                   "meta": Object {
+                    "field": "creditCardId",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": 82596,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
                     "field": "cardType",
                     "form": "checkoutBillingPayment",
                     "persistentSubmitErrors": undefined,
@@ -1981,6 +2169,10 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
               ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -2138,6 +2330,18 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
                 Array [
                   Object {
                     "meta": Object {
+                      "field": "creditCardId",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": 82596,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
                       "field": "cardType",
                       "form": "checkoutBillingPayment",
                       "persistentSubmitErrors": undefined,
@@ -2173,6 +2377,10 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
                 ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -2304,6 +2512,18 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
               Array [
                 Object {
                   "meta": Object {
+                    "field": "creditCardId",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": 82596,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
                     "field": "cardType",
                     "form": "checkoutBillingPayment",
                     "persistentSubmitErrors": undefined,
@@ -2339,6 +2559,10 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
               ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,

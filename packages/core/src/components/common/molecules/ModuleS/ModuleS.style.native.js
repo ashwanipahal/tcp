@@ -27,6 +27,7 @@ export const ButtonContainer = styled.View`
 
 export const ModuleContainer = styled.View`
   padding: 32px 0;
+  height: ${props => (props.theme.isGymboree ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT)}px;
 `;
 
 export const TCPOverlayTextContainer = styled.View`
