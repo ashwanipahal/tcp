@@ -190,7 +190,9 @@ class ProductDetailView extends PureComponent {
         <button type="button" onClick={this.onGoBack} className="button-go-back">
           <Image src={getIconPath('medium-left-arrow')} alt="" />
           <BodyCopy className="back-button" fontFamily="secondary" fontSize="fs16">
-            {pdpLabels.back}
+            {breadCrumbs && breadCrumbs[0] && breadCrumbs[0].displayName === 'Home'
+              ? 'Home'
+              : pdpLabels.back}
           </BodyCopy>
         </button>
       </div>
