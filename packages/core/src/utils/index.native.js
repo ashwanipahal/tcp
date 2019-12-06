@@ -26,7 +26,6 @@ export {
   createGoogleMapUrl,
   mapHandler,
   formatPhnNumber,
-  cropVideoUrl,
   scrollToViewBottom,
 } from './utils.app';
 
@@ -75,6 +74,7 @@ export {
   formatDate,
   isValidDate,
   convertNumToBool,
+  cropVideoUrl,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

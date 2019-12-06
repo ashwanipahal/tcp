@@ -95,4 +95,5 @@ export {
   getProductUrlForDAM,
   plpRoutingHandling,
   convertNumToBool,
+  cropVideoUrl,
 } from './utils';
