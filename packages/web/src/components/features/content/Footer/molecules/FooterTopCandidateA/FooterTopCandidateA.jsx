@@ -66,193 +66,199 @@ class FooterTopCandidateA extends React.PureComponent {
       <Grid className="footer_top_candidate_a content-wrapper">
         <Row>
           {/* ------------ Email Sign Up starts here ----------------- */}
-          <Col
-            className="col-md-half-width"
-            colSize={{
-              large: 4,
-              medium: 4,
-              small: 6,
-            }}
-            ignoreGutter={{
-              small: true,
-            }}
-          >
-            <BodyCopy
-              component="h2"
-              fontWeight="black"
-              fontSize="fs15"
-              className="heading_text email-sign-up"
-              dataLocator="email_promo_text"
-            >
-              <TextItems textItems={emailSignup.textItems} />
-            </BodyCopy>
-            <FooterTopEmailSignUpForm
-              labels={emailSignupLabels}
-              validateForm={validateSignupEmail}
-              onFormSubmit={submitEmailSubscription}
-              subscription={emailSubscription}
-              openSuccessModal={openEmailSignUpModal}
-              dataLocators={{
-                submitButton: 'email_submit_btn',
-                inputField: 'enter_email_text_field',
-                errorDataLocator: 'email_error_message',
-                checkBox_gym: 'check_box_gym_opt_in',
-                checkBox_tcp: 'check_box_tcp_opt_in',
+          {!isNavigationFooter && (
+            <Col
+              className="col-md-half-width"
+              colSize={{
+                large: 4,
+                medium: 4,
+                small: 6,
               }}
-              fieldName={emailSignupFieldName}
-              secondFieldName={emailSignupSecondBrand}
-              isNavigationFooter={isNavigationFooter}
-            />
+              ignoreGutter={{
+                small: true,
+              }}
+            >
+              <BodyCopy
+                component="h2"
+                fontWeight="black"
+                fontSize="fs15"
+                className="heading_text email-sign-up"
+                dataLocator="email_promo_text"
+              >
+                <TextItems textItems={emailSignup.textItems} />
+              </BodyCopy>
+              <FooterTopEmailSignUpForm
+                labels={emailSignupLabels}
+                validateForm={validateSignupEmail}
+                onFormSubmit={submitEmailSubscription}
+                subscription={emailSubscription}
+                openSuccessModal={openEmailSignUpModal}
+                dataLocators={{
+                  submitButton: 'email_submit_btn',
+                  inputField: 'enter_email_text_field',
+                  errorDataLocator: 'email_error_message',
+                  checkBox_gym: 'check_box_gym_opt_in',
+                  checkBox_tcp: 'check_box_tcp_opt_in',
+                }}
+                fieldName={emailSignupFieldName}
+                secondFieldName={emailSignupSecondBrand}
+                isNavigationFooter={isNavigationFooter}
+              />
 
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs10']}>
-              <RichText richTextHtml={emailSignupLabels.lbl_SignUp_termsTextLabel} />
-            </BodyCopy>
-            <div>
-              <div className="divider hide-in-medium-up" />
-            </div>
-          </Col>
+              <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs10']}>
+                <RichText richTextHtml={emailSignupLabels.lbl_SignUp_termsTextLabel} />
+              </BodyCopy>
+              <div>
+                <div className="divider hide-in-medium-up" />
+              </div>
+            </Col>
+          )}
 
           {/* ---------- Email Signup ends here ---------- */}
 
           {/* ---------- SMS Sign Up starts here ---------- */}
-          <Col
-            className="col-md-half-width"
-            colSize={{
-              large: 4,
-              medium: 4,
-              small: 6,
-            }}
-            ignoreGutter={{
-              small: true,
-            }}
-          >
-            <BodyCopy
-              component="h2"
-              fontWeight="black"
-              fontSize="fs15"
-              className="heading_text sms_sign_up"
-              dataLocator="sms_promo_text"
+          {!isNavigationFooter && (
+            <Col
+              className="col-md-half-width"
+              colSize={{
+                large: 4,
+                medium: 4,
+                small: 6,
+              }}
+              ignoreGutter={{
+                small: true,
+              }}
             >
-              <TextItems textItems={smsSignup.textItems} />
-            </BodyCopy>
-            <FooterTopSmsSignUpForm
-              labels={smsSignupLabels}
-              fieldName={smsSignupFieldName}
-              fieldProps={{
-                normalize: formatPhoneNumber,
-              }}
-              validateForm={validateSignupSmsPhoneNumber}
-              onFormSubmit={submitSmsSubscription}
-              subscription={smsSubscription}
-              openSuccessModal={openSmsSignUpModal}
-              dataLocators={{
-                submitButton: 'sms_submit_btn',
-                inputField: 'sms_field',
-                errorDataLocator: 'sms_error_message',
-                checkBox_gym: 'sms_gym_opt_in',
-                checkBox_tcp: 'sms_tcp_opt_in',
-              }}
-              secondFieldName={textSignupSecondBrand}
-              isNavigationFooter={isNavigationFooter}
-            />
+              <BodyCopy
+                component="h2"
+                fontWeight="black"
+                fontSize="fs15"
+                className="heading_text sms_sign_up"
+                dataLocator="sms_promo_text"
+              >
+                <TextItems textItems={smsSignup.textItems} />
+              </BodyCopy>
+              <FooterTopSmsSignUpForm
+                labels={smsSignupLabels}
+                fieldName={smsSignupFieldName}
+                fieldProps={{
+                  normalize: formatPhoneNumber,
+                }}
+                validateForm={validateSignupSmsPhoneNumber}
+                onFormSubmit={submitSmsSubscription}
+                subscription={smsSubscription}
+                openSuccessModal={openSmsSignUpModal}
+                dataLocators={{
+                  submitButton: 'sms_submit_btn',
+                  inputField: 'sms_field',
+                  errorDataLocator: 'sms_error_message',
+                  checkBox_gym: 'sms_gym_opt_in',
+                  checkBox_tcp: 'sms_tcp_opt_in',
+                }}
+                secondFieldName={textSignupSecondBrand}
+                isNavigationFooter={isNavigationFooter}
+              />
 
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs10']}>
-              <RichText richTextHtml={smsSignupLabels.lbl_SignUp_termsTextLabel} />
-            </BodyCopy>
-          </Col>
-          <div className="divider hide-in-large-up" />
+              <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs10']}>
+                <RichText richTextHtml={smsSignupLabels.lbl_SignUp_termsTextLabel} />
+              </BodyCopy>
+            </Col>
+          )}
+          {!isNavigationFooter && <div className="divider hide-in-large-up" />}
           {/* ---------- SMS Signup ends here ------------ */}
 
           {/* ---------- Refer a friend start here-------- */}
 
-          <Col
-            className="refer_a_friend_desktop col-md-half-width"
-            colSize={{
-              large: 4,
-              medium: 4,
-              small: 6,
-            }}
-            ignoreGutter={{
-              small: true,
-            }}
-          >
-            <Grid>
-              <Row fullBleed className="flex-align-center">
-                <Col
-                  className="col-md-half-width"
-                  colSize={{
-                    large: 6,
-                    medium: 4,
-                    small: 7,
-                  }}
-                  ignoreGutter={{
-                    small: true,
-                  }}
-                >
-                  <BodyCopy
-                    component="h2"
-                    fontWeight="black"
-                    fontSize="fs15"
-                    className="heading_text refer-a-friend"
-                  >
-                    <TextItems textItems={referAFriend.textItems} />
-                  </BodyCopy>
-                </Col>
-                <Col
-                  colSize={{
-                    large: 6,
-                    medium: 4,
-                    small: 6,
-                  }}
-                  ignoreGutter={{
-                    small: false,
-                  }}
-                  className="candidate_a_inline_container_button col-md-half-width"
-                >
-                  <ClickTracker
-                    as={Button}
-                    id={
-                      isNavigationFooter
-                        ? 'extole_zone_global_navigation_footer'
-                        : 'extole_zone_global_footer'
-                    }
-                    buttonVariation="variable-width"
-                    data-locator={getLocator('refer_friend')}
-                    className="refer_a_friend_button"
-                    clickData={{
-                      customEvents: ['event22', 'event80'],
-                      pageShortName: 'content:referafriend  confirmation',
-                      pageName: 'content:email confirmation',
+          {!isNavigationFooter && (
+            <Col
+              className="refer_a_friend_desktop col-md-half-width"
+              colSize={{
+                large: 4,
+                medium: 4,
+                small: 6,
+              }}
+              ignoreGutter={{
+                small: true,
+              }}
+            >
+              <Grid>
+                <Row fullBleed className="flex-align-center">
+                  <Col
+                    className="col-md-half-width"
+                    colSize={{
+                      large: 6,
+                      medium: 4,
+                      small: 7,
+                    }}
+                    ignoreGutter={{
+                      small: true,
                     }}
                   >
-                    {referAFriendButtonLabels.text}
-                  </ClickTracker>
-                </Col>
-              </Row>
-              <div className="divider hide-in-medium-down" />
-              <Row fullBleed className="hide-in-medium-down">
-                <Col
-                  className=""
-                  colSize={{
-                    large: 12,
-                    medium: 12,
-                    small: 12,
-                  }}
-                  ignoreGutter={{
-                    small: true,
-                  }}
-                >
-                  <div className="divider hide-in-medium-up" />
-                  <SocialMediaLinks
-                    {...socialMediaLinks}
-                    className="footer_top_candidate_a_social_links"
-                  />
-                </Col>
-              </Row>
-            </Grid>
-          </Col>
+                    <BodyCopy
+                      component="h2"
+                      fontWeight="black"
+                      fontSize="fs15"
+                      className="heading_text refer-a-friend"
+                    >
+                      <TextItems textItems={referAFriend.textItems} />
+                    </BodyCopy>
+                  </Col>
+                  <Col
+                    colSize={{
+                      large: 6,
+                      medium: 4,
+                      small: 6,
+                    }}
+                    ignoreGutter={{
+                      small: false,
+                    }}
+                    className="candidate_a_inline_container_button col-md-half-width"
+                  >
+                    <ClickTracker
+                      as={Button}
+                      id={
+                        isNavigationFooter
+                          ? 'extole_zone_global_navigation_footer'
+                          : 'extole_zone_global_footer'
+                      }
+                      buttonVariation="variable-width"
+                      data-locator={getLocator('refer_friend')}
+                      className="refer_a_friend_button"
+                      clickData={{
+                        customEvents: ['event22', 'event80'],
+                        pageShortName: 'content:referafriend  confirmation',
+                        pageName: 'content:email confirmation',
+                      }}
+                    >
+                      {referAFriendButtonLabels.text}
+                    </ClickTracker>
+                  </Col>
+                </Row>
+                <div className="divider hide-in-medium-down" />
+                <Row fullBleed className="hide-in-medium-down">
+                  <Col
+                    className=""
+                    colSize={{
+                      large: 12,
+                      medium: 12,
+                      small: 12,
+                    }}
+                    ignoreGutter={{
+                      small: true,
+                    }}
+                  >
+                    <div className="divider hide-in-medium-up" />
+                    <SocialMediaLinks
+                      {...socialMediaLinks}
+                      className="footer_top_candidate_a_social_links"
+                    />
+                  </Col>
+                </Row>
+              </Grid>
+            </Col>
+          )}
           {/* ---------- Refer a friend ends here-------- */}
-          <div className="divider hide-in-medium-up" />
+          {!isNavigationFooter && <div className="divider hide-in-medium-up" />}
           <Col
             className="hide-in-large-up refer_a_frient_last_colm col-md-half-width"
             colSize={{
