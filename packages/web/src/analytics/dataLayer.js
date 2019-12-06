@@ -1,4 +1,4 @@
-import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
+import { readCookie } from '@tcp/core/src/utils/cookie.util';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
@@ -31,6 +31,16 @@ export default function create(store) {
   const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
   const { pageCountCookieKey } = API_CONFIG;
+  const getStatePropValue = propName => {
+    const { pageData, AnalyticsDataKey } = store.getState();
+    const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+    const propValue = clickActionAnalyticsData[propName]
+      ? clickActionAnalyticsData[propName]
+      : pageData[propName];
+
+    return propValue || '';
+  };
+
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
@@ -248,15 +258,15 @@ export default function create(store) {
       },
     },
 
+    productId: {
+      get() {
+        return getStatePropValue('productId');
+      },
+    },
+
     pageNavigationText: {
       get() {
-        const { pageData, AnalyticsDataKey } = store.getState();
-        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
-        const pageNavigationText = clickActionAnalyticsData.pageNavigationText
-          ? clickActionAnalyticsData.pageNavigationText
-          : pageData.pageNavigationText;
-
-        return pageNavigationText || '';
+        return getStatePropValue('pageNavigationText');
       },
     },
 
@@ -315,14 +325,7 @@ export default function create(store) {
     landingSiteBrandId: {
       get() {
         const { landingSite } = API_CONFIG;
-        if (!readCookie(landingSite) && readCookie(pageCountCookieKey) === '1') {
-          const { brandId = '' } = store.getState().APIConfig;
-          setCookie({
-            key: landingSite,
-            value: brandId.toUpperCase(),
-          });
-        }
-        return readCookie(landingSite);
+        return readCookie(landingSite) || '';
       },
     },
   });

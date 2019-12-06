@@ -47,7 +47,8 @@ class ProductDetailView extends PureComponent {
     const { productInfo, trackPageLoad } = this.props;
     const { name, ratingsProductId } = productInfo;
     const productsFormatted = this.formatProductsData(productInfo);
-    const pageName = `product:${ratingsProductId}:${name.toLowerCase()}`;
+    const nameParam = name && name.toLowerCase();
+    const pageName = `product:${ratingsProductId}:${nameParam}`;
 
     if (productsFormatted) {
       trackPageLoad({
@@ -269,6 +270,7 @@ class ProductDetailView extends PureComponent {
       ...otherProps
     } = this.props;
 
+    const { ratingsProductId } = otherProps;
     const { currentProduct, currentProductDynamicData } = productDetails;
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -346,6 +348,7 @@ class ProductDetailView extends PureComponent {
               initialValues={this.formValues}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              ratingsProductId={ratingsProductId}
             />
           </Col>
           <Col
