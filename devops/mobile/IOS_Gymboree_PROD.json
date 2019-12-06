@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
@@ -44,10 +44,6 @@
     {
       "name": "RWD_APP_MELISSA_KEY_TCP",
       "value": "63987687"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_TCP",
@@ -342,12 +338,12 @@
       "value": "https://test6.gymboree.com"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "name": "RWD_APP_BV_API_KEY_TCP",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_URL",
@@ -358,8 +354,8 @@
       "value": "https://gymboree.com/static/bazaarVoice/index.html"
     },
     {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
+      "name": "RWD_APP_BV_ENV",
+      "value": "production"
     }
   ],
   "signed": true,
@@ -375,7 +371,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "7394b6b8-192f-4cca-8015-26d5aa3db12d"
+        "08a45615-d636-494f-a253-83a6b2663748"
       ],
       "isSilent": false
     },
@@ -388,11 +384,11 @@
       "certificatePassword": "__protected__",
       "certificateFilename": "Dist-Certificates.p12",
       "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
-      "certificateFileId": "4a99762d-6cfa-49c4-bbb2-4ae66abf5ed8",
-      "provisioningProfileFileId": "e880b7bf-3a12-455e-98cf-d8226f597d48",
+      "certificateFileId": "ee6008de-5256-4366-8ec4-86084606ee62",
+      "provisioningProfileFileId": "5d650252-eada-4a6b-a973-e5da14307a0e",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
-      "scheme": "gymboree_uat",
+      "scheme": "gymboree_prod",
       "xcodeVersion": "10.2.1",
       "podfilePath": "packages/mobileapp/ios/Podfile"
     }

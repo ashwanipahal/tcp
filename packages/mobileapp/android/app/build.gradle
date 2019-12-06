@@ -206,8 +206,26 @@ android {
 
         gymboree {
             dimension "version"
-            applicationIdSuffix ".gymboree.dev"
+            applicationIdSuffix ".gym.dev"
             versionNameSuffix "-gymboreeDEV"
+            versionName = '1.0.0'
+            buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
+        }
+
+        tcpPreview {
+            dimension "version"
+            applicationIdSuffix ".tcp.int"
+            versionNameSuffix "-PREVIEW"
+            versionName = '1.0.0'
+            buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+            buildConfigField "String", "CODEPUSH_KEY", '""'
+        }
+
+        gymboreePreview {
+            dimension "version"
+            applicationIdSuffix ".gym.int"
+            versionNameSuffix "-PREVIEW"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
             buildConfigField "String", "CODEPUSH_KEY", '""'
@@ -225,31 +243,10 @@ android {
 
         }
 
-        tcpIntPreview {
-            // Assigns this product flavor to the "version" flavor dimension.
-            // This property is optional if you are using only one dimension.
-            dimension "version"
-            applicationIdSuffix ".tcp.int"
-            versionNameSuffix "-tcpINTPreview"
-            versionName = '1.0.0'
-            buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", '""'
-
-        }
-
         gymboreeInt {
             dimension "version"
             applicationIdSuffix ".gym.int"
             versionNameSuffix "-gymboreeINT"
-            versionName = '1.0.0'
-            buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", '""'
-        }
-
-        gymboreeIntPreview {
-            dimension "version"
-            applicationIdSuffix ".gym.int"
-            versionNameSuffix "-gymboreeINTPreview"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
             buildConfigField "String", "CODEPUSH_KEY", '""'
@@ -397,11 +394,11 @@ android {
             res.srcDirs = ['src/gymboree/res']
         }
 
-        gymboreeInt {
+        gymboreePreview {
             res.srcDirs = ['src/gymboree/res']
         }
 
-        gymboreeIntPreview {
+        gymboreeInt {
             res.srcDirs = ['src/gymboree/res']
         }
 
@@ -476,40 +473,40 @@ project.ext.envConfigFiles = [
     gymboreeintdebug: "src/env/.env.int",
     gymboreeintrelease: "src/env/.env.int",
 
-    tcpintpreviewdebug: "src/env/.env.int",
-    tcpintpreviewrelease: "src/env/.env.int",
-    gymboreeintpreviewdebug: "src/env/.env.int",
-    gymboreeintpreviewrelease: "src/env/.env.int",
+    tcppreviewdebug: "src/env/.env.preview",
+    tcppreviewrelease: "src/env/.env.preview",
+    gymboreepreviewdebug: "src/env/.env.preview",
+    gymboreepreviewrelease: "src/env/.env.preview",
 
-    tcpqadebug: "src/env/.env.int",
-    tcpqarelease: "src/env/.env.int",
-    gymboreeqadebug: "src/env/.env.int",
-    gymboreeqarelease: "src/env/.env.int",
+    tcpqadebug: "src/env/.env.qa",
+    tcpqarelease: "src/env/.env.qa",
+    gymboreeqadebug: "src/env/.env.qa",
+    gymboreeqarelease: "src/env/.env.qa",
 
-    tcpqapreviewdebug: "src/env/.env.int",
-    tcpqapreviewrelease: "src/env/.env.int",
-    gymboreeqapreviewdebug: "src/env/.env.int",
-    gymboreeqapreviewrelease: "src/env/.env.int",
+    tcpqapreviewdebug: "src/env/.env.qa-preview",
+    tcpqapreviewrelease: "src/env/.env.qa-preview",
+    gymboreeqapreviewdebug: "src/env/.env.qa-preview",
+    gymboreeqapreviewrelease: "src/env/.env.qa-preview",
 
     tcpuatdebug: "src/env/.env.uat",
     tcpuatrelease: "src/env/.env.uat",
     gymboreeuatdebug: "src/env/.env.uat",
     gymboreeuatrelease: "src/env/.env.uat",
 
-    tcpuatpreviewdebug: "src/env/.env.uat",
-    tcpuatpreviewrelease: "src/env/.env.uat",
-    gymboreeuatpreviewdebug: "src/env/.env.uat",
-    gymboreeuatpreviewrelease: "src/env/.env.uat",
+    tcpuatpreviewdebug: "src/env/.env.uat-preview",
+    tcpuatpreviewrelease: "src/env/.env.uat-preview",
+    gymboreeuatpreviewdebug: "src/env/.env.uat-preview",
+    gymboreeuatpreviewrelease: "src/env/.env.uat-preview",
 
     tcpproddebug: "src/env/.env.prod",
     tcpprodrelease: "src/env/.env.prod",
     gymboreeproddebug: "src/env/.env.prod",
     gymboreeprodrelease: "src/env/.env.prod",
 
-    tcpprodpreviewdebug: "src/env/.env.preview",
-    tcpprodpreviewrelease: "src/env/.env.preview",
-    gymboreeprodpreviewdebug: "src/env/.env.preview",
-    gymboreeprodpreviewrelease: "src/env/.env.preview",
+    tcpprodpreviewdebug: "src/env/.env.prod-preview",
+    tcpprodpreviewrelease: "src/env/.env.prod-preview",
+    gymboreeprodpreviewdebug: "src/env/.env.prod-preview",
+    gymboreeprodpreviewrelease: "src/env/.env.prod-preview",
 
 ]
 

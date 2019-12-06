@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
-import { getLabelValue, getAPIConfig } from '@tcp/core/src/utils';
+import { getLabelValue, getAPIConfig, getLocator } from '@tcp/core/src/utils';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import { Row, Col, BodyCopy, InputCheckBox, FavoriteSkeleton } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -19,6 +19,7 @@ import ShareList from '../molecules/ShareList/views';
 import CopyLink from '../molecules/CopyLink/views';
 import ModalWrapper from '../molecules/ModalWrapper';
 import { openWindow } from '../../../../../utils/utils.web';
+import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
 
 class FavoritesView extends React.PureComponent {
   currentPopupName;
@@ -165,6 +166,7 @@ class FavoritesView extends React.PureComponent {
       activeWishList,
       addToBagEcom,
       errorMessages,
+      currencyAttributes,
     } = this.props;
 
     const { seeSuggestedDictionary } = this.state;
@@ -193,6 +195,7 @@ class FavoritesView extends React.PureComponent {
             seeSuggestedDictionary={seeSuggestedDictionary}
             addToBagEcom={addToBagEcom}
             favoriteErrorMessages={errorMessages}
+            currencyAttributes={currencyAttributes}
           />
         </>
       )
@@ -460,6 +463,13 @@ class FavoritesView extends React.PureComponent {
     return null;
   };
 
+  getFavoriteItemCount = filteredList => {
+    if (filteredList && filteredList.length) {
+      return filteredList.length;
+    }
+    return 0;
+  };
+
   render() {
     const {
       className,
@@ -508,6 +518,7 @@ class FavoritesView extends React.PureComponent {
     };
 
     const filteredItemsList = this.getFilteredItemsList();
+    const itemCount = this.getFavoriteItemCount(filteredItemsList);
     const myFavLabel = labels.lbl_fav_myFavorites;
     if (isDataLoading)
       return (
@@ -523,7 +534,12 @@ class FavoritesView extends React.PureComponent {
             colSize={{ small: 6, medium: 8, large: 12 }}
             ignoreGutter={{ small: true, medium: true, large: true }}
           >
-            <BodyCopy fontWeight="extrabold" fontSize="fs16" className="favorite-title">
+            <BodyCopy
+              fontWeight="extrabold"
+              fontSize="fs16"
+              className="favorite-title"
+              dataLocator={getLocator('fav_heading')}
+            >
               {guestAccessKey ? activeDisplayName : myFavLabel}
             </BodyCopy>
           </Col>
@@ -581,7 +597,7 @@ class FavoritesView extends React.PureComponent {
                       display_group_uFilter: filters.length && filters[0].displayName,
                     },
                   }}
-                  totalProductsCount={filteredItemsList.length}
+                  totalProductsCount={itemCount}
                   initialValues={{}}
                   filtersLength={{}}
                   labels={labels}
@@ -592,6 +608,13 @@ class FavoritesView extends React.PureComponent {
                   onSortSelection={onSortSelection}
                   defaultPlaceholder={getSortsList(labels)[0].displayName}
                   appliedFilterLength={appliedFilterLength}
+                />
+              </Col>
+              <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
+                <LoadedProductsCount
+                  totalProductsCount={itemCount}
+                  showingItemsLabel={slpLabels}
+                  isFavoriteView
                 />
               </Col>
             </Row>
@@ -668,6 +691,7 @@ FavoritesView.propTypes = {
   onReplaceWishlistItem: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
   errorMessages: PropTypes.shape({}).isRequired,
+  currencyAttributes: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -689,6 +713,7 @@ FavoritesView.defaultProps = {
   activeWishListId: '',
   labelsPlpTiles: {},
   navigation: {},
+  currencyAttributes: {},
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);
