@@ -22,11 +22,14 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
     const payloadObject = {
       emailaddr: payload.signup,
       URL: 'email-confirmation',
-      response: `${status}:::false:false`,
-      registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
+      response: payload.isCheckoutFow ? status : `${status}:::false:false`,
       brandTCP,
       brandGYM,
     };
+
+    if (!payload.isCheckoutFow) {
+      payloadObject.registrationType = constants.EMAIL_REGISTRATION_TYPE_CONSTANT;
+    }
 
     if (field1) {
       payloadObject.field1 = field1;
@@ -41,7 +44,7 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
 
 export function* validateAndSubmitEmailSignup(emailAddress, field1, brandTCP, brandGYM) {
   if (emailAddress) {
-    const statusCode = call(briteVerifyStatusExtraction, emailAddress);
+    const statusCode = yield call(briteVerifyStatusExtraction, emailAddress);
     yield subscribeEmailAddress(
       { payload: { signup: emailAddress, isCheckoutFow: true, brandGYM, brandTCP } },
       statusCode,

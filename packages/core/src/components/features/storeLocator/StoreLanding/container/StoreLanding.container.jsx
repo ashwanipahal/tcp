@@ -130,9 +130,8 @@ export class StoreLanding extends PureComponent {
 
 StoreLanding.getInitActions = () => initActions;
 
-StoreLanding.getInitialProps = (reduxProps, pageProps) => {
+StoreLanding.getInitialProps = () => {
   return {
-    ...pageProps,
     pageData: {
       pageName: 'storelocator',
       pageType: 'companyinfo',

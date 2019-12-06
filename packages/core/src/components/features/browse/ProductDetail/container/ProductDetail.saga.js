@@ -2,7 +2,11 @@ import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/action
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { isMobileApp } from '@tcp/core/src/utils';
 import PRODUCTLISTING_CONSTANTS from './ProductDetail.constants';
-import { setProductDetails, setPDPLoadingState } from './ProductDetail.actions';
+import {
+  setProductDetails,
+  setPDPLoadingState,
+  setProductDetailsDynamicData,
+} from './ProductDetail.actions';
 import getProductInfoById, {
   layoutResolver,
   getProductBVReviewStats,
@@ -13,11 +17,15 @@ import {
 } from '../../../account/User/container/User.selectors';
 import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
 
-function* fetchProductDetail({ payload: { productColorId } }) {
+const checkSSR = () => typeof window !== 'undefined' || isMobileApp;
+
+function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }) {
   try {
     const pageName = 'pdp';
     yield put(loadLayoutData({}, pageName));
-    yield put(setProductDetails({ product: {} }));
+    if (!escapeEmptyProduct) {
+      yield put(setProductDetails({ product: {} }));
+    }
     const state = yield select();
     yield put(setPDPLoadingState({ isLoading: true }));
     const productDetail = yield call(getProductInfoById, productColorId, state);
@@ -25,8 +33,10 @@ function* fetchProductDetail({ payload: { productColorId } }) {
       product: { category },
     } = productDetail;
     const { layout, modules } = yield call(layoutResolver, { category, pageName });
-    yield put(loadLayoutData(layout, pageName));
-    yield put(loadModulesData(modules));
+    if (checkSSR()) {
+      yield put(loadLayoutData(layout, pageName));
+      yield put(loadModulesData(modules));
+    }
     // fetch review/rating summary from Bazar Voice only for App
     if (isMobileApp) {
       const productId = productDetail.product.ratingsProductId || 0;
@@ -47,6 +57,9 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     }
 
     yield put(setProductDetails({ ...productDetail }));
+    if (typeof window !== 'undefined' && !isMobileApp) {
+      yield put(setProductDetailsDynamicData({ ...productDetail }));
+    }
     yield put(setPDPLoadingState({ isLoading: false }));
   } catch (err) {
     yield put(setPDPLoadingState({ isLoading: false }));

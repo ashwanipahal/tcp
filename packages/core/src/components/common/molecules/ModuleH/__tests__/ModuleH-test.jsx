@@ -7,6 +7,9 @@ import mock from '../../../../../services/abstractors/common/moduleH/mock';
 
 describe('ModuleH component', () => {
   let moduleHComp;
+  const mockMath = Object.create(global.Math);
+  mockMath.random = () => 0.5;
+  global.Math = mockMath;
 
   beforeEach(() => {
     const wrapper = shallow(

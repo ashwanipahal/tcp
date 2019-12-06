@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'react-native';
 // import { LazyloadImage } from 'react-native-lazyload-deux';
 import PropTypes from 'prop-types';
-import VideoPlayer from '../../VideoPlayer';
+// import VideoPlayer from '../../VideoPlayer';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
 import { cropImageUrl, getAPIConfig, getVideoUrl } from '../../../../../utils/index.native';
@@ -71,35 +71,35 @@ const DamImage = props => {
   const ImageComponent = Image;
 
   if (videoData) {
-    return <VideoPlayer {...videoData} />;
+    return null; // <VideoPlayer {...videoData} />;
   }
 
-  const RenderVideo = videoProps => {
-    const { video, image } = videoProps;
-    const { autoplay, controls, url: videoUri } = video;
+  // const RenderVideo = videoProps => {
+  // const { video, image } = videoProps;
+  // const { autoplay, controls, url: videoUri } = video;
 
-    const options = {
-      autoplay,
-      controls,
-      url: videoUri,
-      image,
-    };
+  // const options = {
+  //   autoplay,
+  //   controls,
+  //   url: videoUri,
+  //   image,
+  // };
 
-    return <VideoPlayer {...options} />;
-  };
+  // return null; //<VideoPlayer {...options} />;
+  // };
 
   const uri = createURI(props);
 
   const uriParam = getVideoUrl(uri.uri);
 
   if (uriParam) {
-    const { uri: videoUri } = uri;
-    const VideoUri = videoUri.replace('/image/', '/video/');
-    const videoDataOptions = {
-      url: VideoUri,
-    };
+    // const { uri: videoUri } = uri;
+    // const VideoUri = videoUri.replace('/image/', '/video/');
+    // const videoDataOptions = {
+    //   url: VideoUri,
+    // };
 
-    return <RenderVideo video={videoDataOptions} />;
+    return null; // <RenderVideo video={videoDataOptions} />;
   }
 
   return (
