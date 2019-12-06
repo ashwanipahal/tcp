@@ -379,14 +379,7 @@ function mapDispatchToProps(dispatch) {
     },
     trackPageLoad: payload => {
       const { products, customEvents, pageSearchType, pageSearchText } = payload;
-      dispatch(
-        setClickAnalyticsData({
-          products,
-          customEvents,
-          pageSearchType,
-          pageSearchText,
-        })
-      );
+      dispatch(setClickAnalyticsData(payload));
       setTimeout(() => {
         dispatch(
           trackPageView({
