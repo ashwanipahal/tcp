@@ -147,6 +147,7 @@ exports[`ProductImages component should renders correctly 1`] = `
           isFacebookEnabled={true}
           isPinterestEnabled={true}
           isTwitterEnabled={true}
+          ratingsProductId=""
         />
       </div>
     </div>

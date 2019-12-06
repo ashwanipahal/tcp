@@ -22,6 +22,7 @@ const FullSizeImageWithQuickViewModal = props => {
     images,
     colorChipSelector,
     accessibilityLabels,
+    ratingsProductId,
   } = props;
   const { selectColor } = colorChipSelector;
 
@@ -74,6 +75,7 @@ const FullSizeImageWithQuickViewModal = props => {
           isZoomEnabled={false}
           isThumbnailListVisible={isThumbnailListVisible}
           accessibilityLabels={accessibilityLabels}
+          ratingsProductId={ratingsProductId}
         />
       </div>
     </Modal>
@@ -97,6 +99,7 @@ FullSizeImageWithQuickViewModal.propTypes = {
   isThumbnailListVisible: PropTypes.bool,
   isMobile: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  ratingsProductId: PropTypes.string.isRequired,
   colorChipSelector: PropTypes.objectOf(
     PropTypes.shape({
       colorList: PropTypes.array,

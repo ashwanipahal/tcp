@@ -43,6 +43,7 @@ class ProductImageWrapper extends React.Component {
       keepAlive,
       outOfStockLabels,
       accessibilityLabels,
+      ratingsProductId,
     } = this.props;
     const { isFullSizeModalOpen } = this.state;
     const { colorFitsSizesMap } = currentProduct;
@@ -74,6 +75,7 @@ class ProductImageWrapper extends React.Component {
             keepAlive={keepAlive}
             outOfStockLabels={outOfStockLabels}
             accessibilityLabels={accessibilityLabels}
+            ratingsProductId={ratingsProductId}
           />
         ) : null}
         {isFullSizeModalOpen &&
@@ -88,6 +90,7 @@ class ProductImageWrapper extends React.Component {
               colorChipSelector={colorChipSelector}
               initialValues={initialValuesForm}
               accessibilityLabels={accessibilityLabels}
+              ratingsProductId={ratingsProductId}
             />
           ))}
       </React.Fragment>
@@ -142,6 +145,7 @@ ProductImageWrapper.propTypes = {
     outOfStockCaps: PropTypes.string,
   }),
   accessibilityLabels: PropTypes.shape({}),
+  ratingsProductId: PropTypes.string.isRequired,
 };
 
 export default ProductImageWrapper;

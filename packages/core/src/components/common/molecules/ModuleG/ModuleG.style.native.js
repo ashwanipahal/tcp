@@ -36,6 +36,8 @@ export const ButtonContainer = styled.View`
 
 export const Wrapper = styled.View`
   width: 100%;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const PromoContainer = styled.View`

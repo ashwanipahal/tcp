@@ -423,12 +423,12 @@ const getRegion = (configVal, country) => {
   return configVal && country;
 };
 
-const getBvSharedKey = (envConfig, apiSiteInfo) => {
-  return envConfig.RWD_APP_BV_SHARED_KEY || apiSiteInfo.BV_SHARED_KEY;
-};
-
 const getWebViewBvUrl = (envConfig, apiSiteInfo) => {
   return envConfig.RWD_APP_BV_WEB_VIEW_URL || apiSiteInfo.BV_WEB_VIEW_URL;
+};
+
+const getBvEnvironment = (envConfig, apiSiteInfo) => {
+  return envConfig.RWD_APP_BV_ENV || apiSiteInfo.BV_ENV;
 };
 
 /**
@@ -461,7 +461,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`],
     BV_API_URL: envConfig.RWD_APP_BV_API_URL || apiSiteInfo.BV_URL,
     BV_WEB_VIEW_URL: getWebViewBvUrl(envConfig, apiSiteInfo),
-    BV_SHARED_KEY: getBvSharedKey(envConfig, apiSiteInfo),
+    BV_ENVIRONMENT: getBvEnvironment(envConfig, apiSiteInfo),
+    BV_SUBMISSION_URL: apiSiteInfo.BV_SUBMISSION_URL,
+    BV_INSTANCE: apiSiteInfo[`BV_${appTypeSuffix}_INSTANCE`],
     assetHostTCP: envConfig.RWD_APP_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: envConfig.RWD_APP_DAM_HOST_GYM || apiSiteInfo.assetHost,
@@ -805,3 +807,23 @@ export const formatPhnNumber = phnNumber =>
     .replace(/\n /g, '')
     .replace(/ /g, '')
     .replace(')', ') ');
+
+/**
+ * @method scrollToViewBottom
+ * @desc scroll to view full content
+ * @param {object}
+ */
+export const scrollToViewBottom = ({ height, pageY, callBack, currentScrollValue }) => {
+  const headerHeight = 100;
+  const footerHeight = 100;
+  const windowHeight = getScreenHeight() - (headerHeight + footerHeight);
+  const availableSpaceInBottom = windowHeight - (pageY - footerHeight);
+  const scrollToBottom = height > availableSpaceInBottom;
+  if (scrollToBottom) {
+    callBack.scrollTo({
+      x: 0,
+      y: currentScrollValue + (height - availableSpaceInBottom),
+      animated: true,
+    });
+  }
+};

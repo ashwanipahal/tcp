@@ -21,6 +21,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
     handleAddToBag={[Function]}
     isKeepAliveEnabled={false}
     isLoggedIn={false}
+    isMatchingFamily={true}
     isPickupModalOpen={false}
     isPlcc={false}
     itemPartNumber=""

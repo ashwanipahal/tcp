@@ -394,6 +394,11 @@ exports[`AddressFields component should render correctly 1`] = `
         id="address.addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
+        types={
+          Array [
+            "address",
+          ]
+        }
       />
     </Styled(Col)>
     <Styled(Col)
@@ -2244,6 +2249,11 @@ exports[`AddressFields component should render correctly without phoneNumber and
         id="address.addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
+        types={
+          Array [
+            "address",
+          ]
+        }
       />
     </Styled(Col)>
     <Styled(Col)
@@ -3757,6 +3767,11 @@ exports[`AddressFields component should render correctly without phoneNumber and
         id="address.addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
+        types={
+          Array [
+            "address",
+          ]
+        }
       />
     </Styled(Col)>
     <Styled(Col)
@@ -5270,6 +5285,11 @@ exports[`AddressFields component should render correctly without phoneNumber and
         id="address.addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
+        types={
+          Array [
+            "address",
+          ]
+        }
       />
     </Styled(Col)>
     <Styled(Col)

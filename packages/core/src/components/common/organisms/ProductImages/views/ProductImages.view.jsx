@@ -69,6 +69,7 @@ class ProductImages extends React.Component {
     }),
     keepAlive: PropTypes.bool,
     accessibilityLabels: PropTypes.shape({}),
+    ratingsProductId: PropTypes.string,
   };
 
   state = {
@@ -110,6 +111,7 @@ class ProductImages extends React.Component {
       keepAlive,
       outOfStockLabels,
       accessibilityLabels,
+      ratingsProductId,
     } = this.props;
     const { currentImageIndex } = this.state;
     const thumbnailImagesPaths = images.map(image => ({
@@ -196,6 +198,7 @@ class ProductImages extends React.Component {
                   isPinterestEnabled
                   isTwitterEnabled
                   accessibilityLabels={accessibilityLabels}
+                  ratingsProductId={ratingsProductId}
                 />
               )}
             </div>
@@ -232,6 +235,7 @@ ProductImages.defaultProps = {
   },
   keepAlive: false,
   accessibilityLabels: {},
+  ratingsProductId: '',
 };
 
 export default withStyles(ProductImages, styles);
