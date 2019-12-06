@@ -14,7 +14,7 @@ import {
 OrdersTile component is used in AccountOverview screen on mobile app
 */
 export const OrdersTile = ({ labels, ordersList, navigation, handleComponentChange }) => {
-  const selectedOrders = ordersList && ordersList.orders.slice(0, 2);
+  const selectedOrders = ordersList && ordersList.orders && ordersList.orders.slice(0, 2);
   let ordersItemList;
   if (selectedOrders && selectedOrders.length) {
     ordersItemList = selectedOrders.map(orderItem => (
