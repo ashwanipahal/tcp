@@ -1,3 +1,7 @@
+/*
+  @Important
+  If any changes specific to add to bag from collection or outfit container then make sure that the same changes should be done in the both outfitDetail.container and BundleProduct.container file. The Outfit and collection designs are same so we are using outfit view on the both container.
+*/
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
@@ -23,7 +27,10 @@ import {
   getLoadingState,
 } from './BundleProduct.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
-import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
+import {
+  PRODUCT_ADD_TO_BAG,
+  OUTFIT_LISTING_FORM,
+} from '../../../../../constants/reducer.constants';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import {
   addToCartEcom,
@@ -91,10 +98,10 @@ export class ProductBundleContainer extends React.PureComponent {
   };
 
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
-    const formValues = getAddedToBagFormValues(
-      currentState,
-      `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
-    );
+    const formName = !isMobileApp()
+      ? `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
+      : `${OUTFIT_LISTING_FORM}-${generalProductId}`;
+    const formValues = getAddedToBagFormValues(currentState, formName);
     let cartItemInfo = getCartItemInfo(productInfo, formValues);
     cartItemInfo = { ...cartItemInfo };
     addToBagEcom(cartItemInfo);
