@@ -68,6 +68,7 @@ class ProductImages extends React.Component {
       outOfStockCaps: PropTypes.string,
     }),
     keepAlive: PropTypes.bool,
+    ratingsProductId: PropTypes.string,
   };
 
   state = {
@@ -108,6 +109,7 @@ class ProductImages extends React.Component {
       isGiftCard,
       keepAlive,
       outOfStockLabels,
+      ratingsProductId,
     } = this.props;
     const { currentImageIndex } = this.state;
     const thumbnailImagesPaths = images.map(image => ({
@@ -189,7 +191,12 @@ class ProductImages extends React.Component {
                 </span>
               )}
               {isFullSizeVisible && (
-                <SocialConnect isFacebookEnabled isPinterestEnabled isTwitterEnabled />
+                <SocialConnect
+                  ratingsProductId={ratingsProductId}
+                  isFacebookEnabled
+                  isPinterestEnabled
+                  isTwitterEnabled
+                />
               )}
             </div>
           </div>
@@ -203,6 +210,7 @@ class ProductImages extends React.Component {
           (isMobile ? (
             <FullSizeImageModal
               name={productName}
+              modalLabel={pdpLabels.fullSize}
               image={images[currentImageIndex] && images[currentImageIndex][imageSizePropertyName]}
               onCloseClick={onCloseClick}
             />
@@ -224,6 +232,7 @@ ProductImages.defaultProps = {
     outOfStockCaps: '',
   },
   keepAlive: false,
+  ratingsProductId: '',
 };
 
 export default withStyles(ProductImages, styles);

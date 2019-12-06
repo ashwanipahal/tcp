@@ -2,7 +2,7 @@ import React from 'react';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, getLocator, getBrand } from '@tcp/core/src/utils';
+import { getIconPath, getLocator, getBrand, isCanada } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
@@ -18,7 +18,17 @@ type Props = {
   inheritedStyles: Object,
   isDoubleAddedToBag: Boolean,
   bagLoading: Boolean,
+  isInternationalShipping: Boolean,
 };
+
+const showPoints = isInternationalShipping => {
+  return !isCanada() && !isInternationalShipping;
+};
+
+const showItemPoints = (bagLoading, data) => {
+  return !bagLoading ? data.itemPoints : <LoaderSkelton width="50px" />;
+};
+
 const ProductInformation = ({
   data,
   labels,
@@ -26,6 +36,7 @@ const ProductInformation = ({
   quantity,
   isDoubleAddedToBag,
   bagLoading,
+  isInternationalShipping,
 }: Props) => {
   return (
     <ProductInformationStyle inheritedStyles={inheritedStyles}>
@@ -203,37 +214,39 @@ const ProductInformation = ({
                   </BodyCopy>
                 </Col>
               </Row>
-              <Row tagName="ul" className="product-description">
-                <Col
-                  tagName="li"
-                  key="product-title"
-                  className="itemList"
-                  colSize={{ small: 2, medium: 3, large: 4 }}
-                >
-                  <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                    {labels.points}
-                    {':'}
-                  </BodyCopy>
-                </Col>
-                <Col
-                  tagName="li"
-                  key="product-title"
-                  className="itemList"
-                  colSize={{ small: 4, medium: 5, large: 8 }}
-                >
-                  <BodyCopy
-                    tag="span"
-                    fontSize="fs13"
-                    textAlign="left"
-                    className="itemDesc"
-                    dataLocator="addedtobag-productprice"
-                    color="orange.800"
-                    fontWeight={['semibold']}
+              {showPoints(isInternationalShipping) && (
+                <Row tagName="ul" className="product-description">
+                  <Col
+                    tagName="li"
+                    key="product-title"
+                    className="itemList"
+                    colSize={{ small: 2, medium: 3, large: 4 }}
                   >
-                    {!bagLoading ? data.itemPoints : <LoaderSkelton width="50px" />}
-                  </BodyCopy>
-                </Col>
-              </Row>
+                    <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
+                      {labels.points}
+                      {':'}
+                    </BodyCopy>
+                  </Col>
+                  <Col
+                    tagName="li"
+                    key="product-title"
+                    className="itemList"
+                    colSize={{ small: 4, medium: 5, large: 8 }}
+                  >
+                    <BodyCopy
+                      tag="span"
+                      fontSize="fs13"
+                      textAlign="left"
+                      className="itemDesc"
+                      dataLocator="addedtobag-productprice"
+                      color="orange.800"
+                      fontWeight={['semibold']}
+                    >
+                      {showItemPoints(bagLoading, data)}
+                    </BodyCopy>
+                  </Col>
+                </Row>
+              )}
             </>
           )}
         </Col>

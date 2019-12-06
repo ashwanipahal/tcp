@@ -235,8 +235,9 @@ export class AddChildBirthdayForm extends React.PureComponent {
                   className="elem-ml-XXL"
                 >
                   <Anchor underline noLink to={endpoints.policiesPage} data-locator="privacyLnk">
-                    {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_privacy')}
+                    {`${getLabelValue(addChildBirthdayLabels, 'lbl_add_child_privacy')}`}
                   </Anchor>
+                  {` | `}
                   <Anchor underline noLink to={endpoints.faqPage} data-locator="faqLnk">
                     {getLabelValue(addChildBirthdayLabels, 'lbl_add_child_faq')}
                   </Anchor>

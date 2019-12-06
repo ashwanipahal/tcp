@@ -61,6 +61,16 @@ const styles = css`
     }
   }
 
+  .elem-ml-XXL {
+    margin-left: 38px;
+  }
+
+  .Checkbox__error {
+    margin-top: 10px;
+    margin-left: 23px;
+    margin-bottom: 10px;
+  }
+
   .timestamp {
     height: 60px;
     display: flex;
@@ -71,6 +81,10 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.large} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
+  }
+
+  #checkbox__error__acceptAddChildAgreement {
+    margin-top: 5px;
   }
 
   .addChildBirthdayTip {
