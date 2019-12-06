@@ -263,7 +263,11 @@
       "**/react-native-qrcode-scanner",
       "**/react-native-qrcode-scanner/**",
       "**/node-fetch",
-      "**/node-fetch/**"
+      "**/node-fetch/**",
+      "**/urbanairship-react-native",
+      "**/urbanairship-react-native/**",
+      "**/react-native-firebase",
+      "**/react-native-firebase/**"
     ]
   }
 }
