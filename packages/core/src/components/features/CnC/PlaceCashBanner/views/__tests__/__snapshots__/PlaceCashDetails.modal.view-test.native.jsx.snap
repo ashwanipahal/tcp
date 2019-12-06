@@ -17,6 +17,7 @@ exports[`PlaceCashBannerModal should render correctly should match snapshot 1`] 
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
+      onMessage={[Function]}
       source={
         Object {
           "html": "<h2>test data</h2>",
