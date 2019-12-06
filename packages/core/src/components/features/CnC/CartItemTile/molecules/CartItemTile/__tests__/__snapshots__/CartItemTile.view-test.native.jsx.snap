@@ -130,7 +130,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -529,7 +528,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -911,7 +909,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -1308,7 +1305,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -1701,7 +1697,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -2078,7 +2073,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -2456,7 +2450,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -2834,7 +2827,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -3166,7 +3158,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -3544,7 +3535,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -3876,7 +3866,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -4254,7 +4243,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -4652,7 +4640,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -5065,7 +5052,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -5478,7 +5464,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}
@@ -5871,7 +5856,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               showOnReviewPage={true}
               source=""
               swatchConfig=""
-              updateVideoUrl={true}
               url=""
               videoData={null}
               width={100}

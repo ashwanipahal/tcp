@@ -16,7 +16,6 @@ exports[`Order Items component should renders correctly 1`] = `
           resizeMode="contain"
           source=""
           swatchConfig=""
-          updateVideoUrl={true}
           url=""
           videoData={null}
         />

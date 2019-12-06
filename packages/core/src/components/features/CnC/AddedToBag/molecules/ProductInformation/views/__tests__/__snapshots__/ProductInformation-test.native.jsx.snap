@@ -14,7 +14,6 @@ exports[`GiftCardList Component renders correctly 1`] = `
       itemBrand=""
       source=""
       swatchConfig=""
-      updateVideoUrl={true}
       url=""
       videoData={null}
       width={100}

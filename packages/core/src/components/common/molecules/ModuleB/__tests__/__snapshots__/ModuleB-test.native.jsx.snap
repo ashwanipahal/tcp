@@ -27,7 +27,6 @@ exports[`ModuleBVanilla should match snapshot 1`] = `
         itemBrand=""
         source=""
         swatchConfig=""
-        updateVideoUrl={true}
         url="https://test5.childrensplace.com/image/upload/c_fill,g_face:center,q_auto:best,w_1410/ecom/assets/content/gym/us/home/modA/gym_hp_090519_us_hwlhjb.png"
         videoData={null}
         width={726}

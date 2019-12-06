@@ -28,7 +28,6 @@ exports[`LinkImageIconVanilla component should renders LinkImageIconVanilla corr
     selected={false}
     source=""
     swatchConfig="w_50,h_50,c_thumb,g_auto:0"
-    updateVideoUrl={true}
     url=""
     videoData={null}
     width={10}

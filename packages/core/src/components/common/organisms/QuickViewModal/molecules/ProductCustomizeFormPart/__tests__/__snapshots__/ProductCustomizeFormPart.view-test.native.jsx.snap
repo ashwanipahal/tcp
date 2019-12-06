@@ -22,7 +22,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           resizeMode="contain"
           source=""
           swatchConfig=""
-          updateVideoUrl={true}
           url=""
           videoData={null}
           width="161px"
