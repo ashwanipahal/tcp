@@ -442,7 +442,8 @@ class PickupStoreListItem extends PureComponent {
   }) {
     const { FAVORITE_STORE } = STORE_DETAILS_LABELS;
     return (
-      <div className="elem-mt-XXS storeListItemWrapper">
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+      <div className="elem-mt-XXS storeListItemWrapper" tabIndex="0">
         <div className="storeInfoWrapper">
           {displayFavoriteStore(basicInfo, FAVORITE_STORE)}
           <div className="storeAddressWrapper">

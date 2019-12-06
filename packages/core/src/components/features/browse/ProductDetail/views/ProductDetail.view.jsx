@@ -47,7 +47,8 @@ class ProductDetailView extends PureComponent {
     const { productInfo, trackPageLoad } = this.props;
     const { name, ratingsProductId } = productInfo;
     const productsFormatted = this.formatProductsData(productInfo);
-    const pageName = `product:${ratingsProductId}:${name.toLowerCase()}`;
+    const nameParam = name && name.toLowerCase();
+    const pageName = `product:${ratingsProductId}:${nameParam}`;
 
     if (productsFormatted) {
       trackPageLoad({
