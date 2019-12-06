@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
@@ -44,10 +44,6 @@
     {
       "name": "RWD_APP_MELISSA_KEY_TCP",
       "value": "63987687"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_TCP",
@@ -136,10 +132,6 @@
     {
       "name": "RWD_APP_ACQUISITION_ID_GYM",
       "value": "ikhNl0Te"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
@@ -342,12 +334,12 @@
       "value": "https://test6.gymboree.com"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "name": "RWD_APP_BV_API_KEY_TCP",
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "huf0yvc1po48wng2wumt1zav3"
+      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     },
     {
       "name": "RWD_APP_BV_API_URL",
@@ -358,8 +350,8 @@
       "value": "https://childrensplace.com/static/bazaarVoice/index.html"
     },
     {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
+      "name": "RWD_APP_BV_ENV",
+      "value": "production"
     }
   ],
   "signed": true,
@@ -376,7 +368,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "064fbaa4-11d8-431d-bdb6-97b8738ae0e3"
+        "d6315edf-feeb-4fac-a035-3fbd1af7f81b"
       ],
       "isSilent": false
     },
@@ -388,12 +380,12 @@
     "xcode": {
       "certificatePassword": "__protected__",
       "certificateFilename": "Dev-Certificates.p12",
-      "provisioningProfileFilename": "ProvisioningProfileDevelopment_TcpAppUATStage.mobileprovision",
-      "certificateFileId": "b5771e8c-c74e-4eba-b6ff-f098a41fd68f",
-      "provisioningProfileFileId": "86c75568-d841-44a5-a73c-a419306b47cd",
+      "provisioningProfileFilename": "ProvisioningProfileDevelopment_TcpAppUATProd.mobileprovision",
+      "certificateFileId": "d83c966a-cf7a-46cb-91a1-9bca11196d42",
+      "provisioningProfileFileId": "b2dd0c1c-0d28-4ff5-a4bf-2ebfe5bd6faf",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
-      "scheme": "mobileapp_uat",
+      "scheme": "mobileapp_prod",
       "xcodeVersion": "10.2.1",
       "podfilePath": "packages/mobileapp/ios/Podfile"
     }

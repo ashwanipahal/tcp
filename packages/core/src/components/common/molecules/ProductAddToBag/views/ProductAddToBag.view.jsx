@@ -1,4 +1,5 @@
 import React from 'react';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { fromJS } from 'immutable';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -56,6 +57,14 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
   );
 };
 
+const ProductDetailSectionSkeleton = () => {
+  return (
+    <div className="product-property-section">
+      <LoaderSkelton height="40px" />
+    </div>
+  );
+};
+
 class ProductAddToBag extends React.PureComponent<Props> {
   getButtonLabel = () => {
     const { fromBagPage, plpLabels, keepAlive, outOfStockLabels = {}, isFavoriteEdit } = this.props;
@@ -99,11 +108,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
       showColorChips,
       quickViewColorSwatchesCss,
       isPDP,
+      isLoading,
     } = this.props;
-    return (
-      showColorChips &&
-      colorList &&
-      colorList.size > 0 && (
+    return isLoading ? (
+      <ProductDetailSectionSkeleton />
+    ) : (
+      showColorChips && colorList && colorList.size > 0 && (
         <div className="color-selector">
           <Field
             width={87}
@@ -123,10 +133,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderFitList = (fitList, fitTitle) => {
-    const { selectFit, keepAlive } = this.props;
-    return (
-      fitList &&
-      fitList.size > 0 && (
+    const { selectFit, keepAlive, isLoading } = this.props;
+    return isLoading ? (
+      <ProductDetailSectionSkeleton />
+    ) : (
+      fitList && fitList.size > 0 && (
         <div className="fit-selector">
           <Field
             width={69}
@@ -145,11 +156,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderAlternateSizes = alternateSizes => {
-    const { className, plpLabels, hideAlternateSizes } = this.props;
+    const { className, plpLabels, hideAlternateSizes, isLoading } = this.props;
     const sizeAvailable = plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
     const visibleAlternateSizes =
       !hideAlternateSizes && alternateSizes && Object.keys(alternateSizes).length > 0;
-    return (
+    return isLoading ? (
+      <ProductDetailSectionSkeleton />
+    ) : (
       visibleAlternateSizes && (
         <AlternateSizes
           title={`${sizeAvailable}:`}
@@ -197,11 +210,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isDisableZeroInventoryEntries,
       keepAlive,
       sizeChartDetails,
+      isLoading,
     } = this.props;
 
-    return (
-      sizeList &&
-      sizeList.size > 0 && (
+    return isLoading ? (
+      <ProductDetailSectionSkeleton />
+    ) : (
+      sizeList && sizeList.size > 0 && (
         <div className="size-selector">
           {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && (
             <SizeChart sizeChartDetails={sizeChartDetails} />
@@ -245,18 +260,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   getPageShortName = currentProduct => {
-    let pageShortName = '';
-    let outfitPageShortName = '';
     const productId = currentProduct && currentProduct.generalProductId.split('_')[0];
     const productName = currentProduct && currentProduct.name && currentProduct.name.toLowerCase();
-    if (productId) {
-      pageShortName = `product:${productId}:${productName}`;
-      outfitPageShortName = `outfit:${productId}:${productName}`;
-    }
     return {
-      pageShortName,
+      pageShortName: productId ? `product:${productId}:${productName}` : '',
       productId,
-      outfitPageShortName,
+      outfitPageShortName: productId ? `outfit:${productId}:${productName}` : '',
     };
   };
 

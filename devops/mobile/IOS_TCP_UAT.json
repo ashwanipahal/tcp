@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "<BRANCH_NAME>"
+    "name": "RELEASE-1-RWD"
   },
   "id": 1,
   "trigger": "manual",
@@ -44,10 +44,6 @@
     {
       "name": "RWD_APP_MELISSA_KEY_TCP",
       "value": "63987687"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_TCP",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_TCP",
@@ -136,10 +132,6 @@
     {
       "name": "RWD_APP_ACQUISITION_ID_GYM",
       "value": "ikhNl0Te"
-    },
-    {
-      "name": "RWD_APP_BV_API_KEY_GYM",
-      "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
@@ -350,7 +342,7 @@
       "value": "false"
     },
     {
-      "name": " RWD_APP_BV_API_KEY_TCP",
+      "name": "RWD_APP_BV_API_KEY_TCP",
       "value": "huf0yvc1po48wng2wumt1zav3"
     },
     {
@@ -364,10 +356,6 @@
     {
       "name": "RWD_APP_BV_WEB_VIEW_URL",
       "value": "https://test6.childrensplace.com/static/bazaarVoice/index.html"
-    },
-    {
-      "name": "RWD_APP_BV_SHARED_KEY",
-      "value": "Fca3yih00AVeVDFvmaDwnwlWM"
     }
   ],
   "signed": true,
@@ -384,7 +372,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "064fbaa4-11d8-431d-bdb6-97b8738ae0e3"
+        "830b88e6-82bd-4173-960c-50077d32d8b8"
       ],
       "isSilent": false
     },
@@ -397,8 +385,8 @@
       "certificatePassword": "__protected__",
       "certificateFilename": "Dev-Certificates.p12",
       "provisioningProfileFilename": "ProvisioningProfileDevelopment_TcpAppUATStage.mobileprovision",
-      "certificateFileId": "b5771e8c-c74e-4eba-b6ff-f098a41fd68f",
-      "provisioningProfileFileId": "86c75568-d841-44a5-a73c-a419306b47cd",
+      "certificateFileId": "4b4ed36d-d979-4118-95ac-f59a0719d768",
+      "provisioningProfileFileId": "e682d56d-204d-4fbc-a683-fc374ebe77b9",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_uat",

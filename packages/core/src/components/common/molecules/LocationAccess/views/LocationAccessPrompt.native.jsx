@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable react-native/split-platform-components */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Linking, PermissionsAndroid } from 'react-native';
+import Geolocation from 'react-native-geolocation-service';
 import {
   getScreenWidth,
   getScreenHeight,
@@ -84,7 +86,7 @@ class LocationAccessPrompt extends React.PureComponent {
   };
 
   /**
-   * @toggleModal : To manage the modal state .
+   * @androidPermissions : To manage the android permissions .
    */
   androidPermissions = async () => {
     try {
@@ -114,14 +116,34 @@ class LocationAccessPrompt extends React.PureComponent {
   };
 
   /**
+   * @iosPermissions : To manage the ios permissions .
+   */
+  iosPermissions = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        this.close();
+      },
+      error => {
+        Linking.openURL('app-settings:');
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 10000,
+      }
+    );
+  };
+
+  /**
    * @requestPermission : To manage location permission in android and ios .
    */
   requestPermission = () => {
-    Linking.openURL('app-settings:');
     if (isAndroid()) {
       this.androidPermissions();
+      this.close();
+    } else {
+      this.iosPermissions();
     }
-    setValueInAsyncStorage(LOCATION_ACCESS_KEY, LOCATION_ACCESS_VALUE);
   };
 
   /**
@@ -142,7 +164,7 @@ class LocationAccessPrompt extends React.PureComponent {
           <Container>
             <Wrapper width={PROPMT_WIDTH}>
               <StyledImage source={locationImage} width="35px" height="35px" marginTop="15px" />
-              <Touchable accessibilityRole="button" onPress={this.close}>
+              <Touchable accessibilityRole="button" onPress={this.toggleModal}>
                 <StyledImage source={closeImage} width="15px" height="15px" />
               </Touchable>
               <MessageContainer>

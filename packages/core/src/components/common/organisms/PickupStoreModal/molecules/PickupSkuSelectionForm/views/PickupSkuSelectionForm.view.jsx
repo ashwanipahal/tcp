@@ -6,8 +6,10 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 import { Row, BodyCopy, Anchor, DamImage } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
+import { getSiteId, getAPIConfig, getBrand } from '../../../../../../../utils';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, {
   customPriceStyles,
@@ -50,7 +52,18 @@ const PickupSkuSelectionForm = props => {
 
   const currentColorPdpUrl = currentColorEntry && currentColorEntry.pdpUrl;
 
-  const pdpToPath = currentColorPdpUrl && getProductListToPath(currentColorPdpUrl);
+  const apiConfigObj = getAPIConfig();
+  const { crossDomain } = apiConfigObj;
+  const currentSiteBrand = getBrand();
+  const isProductBrandOfSameDomain = !isEmpty(initialValues)
+    ? currentSiteBrand.toUpperCase() === initialValues.itemBrand.toUpperCase()
+    : true;
+  const toPath = isProductBrandOfSameDomain
+    ? `/${getSiteId()}${currentColorPdpUrl}`
+    : `${crossDomain}/${getSiteId()}${currentColorPdpUrl}`;
+  const pdpToPath = isProductBrandOfSameDomain
+    ? getProductListToPath(currentColorPdpUrl)
+    : `${crossDomain}/${getSiteId()}${currentColorPdpUrl}`;
 
   const getProductDetailContainer = () => {
     return (
@@ -58,10 +71,12 @@ const PickupSkuSelectionForm = props => {
         <ProductPrice {...productPriceProps} />
 
         <Anchor
-          onClick={navigateToPDP}
           className="link-redirect"
-          to={pdpToPath}
-          asPath={currentColorPdpUrl}
+          to={toPath}
+          noLink
+          onClick={e =>
+            navigateToPDP(e, pdpToPath, isProductBrandOfSameDomain ? currentColorPdpUrl : pdpToPath)
+          }
         >
           <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
             {PICKUP_LABELS.VIEW_DETAILS}
