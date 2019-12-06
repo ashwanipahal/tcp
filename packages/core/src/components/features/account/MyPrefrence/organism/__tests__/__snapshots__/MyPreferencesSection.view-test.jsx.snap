@@ -99,9 +99,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
           className="favtPageLink"
           data-locator="myprefernce-progdetaillink"
           fontSizeVariation="large"
+          href="https://www.childrensplace.com/us/content/myplace-rewards-page"
           target="_blank"
           underline={true}
-          url="learn_more_link"
         >
           lbl_prefrence_program_details
         </Styled(Anchor)>
@@ -110,9 +110,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
           className="favtPageLink"
           data-locator="mypreference-tandclink"
           fontSizeVariation="large"
+          href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
           target="_blank"
           underline={true}
-          url="learn_more_link"
         >
           lbl_prefrence_term_codition
         </Styled(Anchor)>

@@ -173,3 +173,26 @@ export const getAddedToBagErrorCatId = state => {
 export const getLoadingState = state => {
   return state.BundleProduct && state.BundleProduct.isLoading;
 };
+
+export const getAccessibilityLabels = state => {
+  return {
+    lbl_social_twitter: getLabelValue(
+      state.Labels,
+      'lbl_social_twitter',
+      'accessibility',
+      'global'
+    ),
+    lbl_social_facebook: getLabelValue(
+      state.Labels,
+      'lbl_social_facebook',
+      'accessibility',
+      'global'
+    ),
+    lbl_social_pinterest: getLabelValue(
+      state.Labels,
+      'lbl_social_pinterest',
+      'accessibility',
+      'global'
+    ),
+  };
+};

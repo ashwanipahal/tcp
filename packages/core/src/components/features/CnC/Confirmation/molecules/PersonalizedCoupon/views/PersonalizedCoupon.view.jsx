@@ -109,7 +109,7 @@ export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupo
           <Image
             className="print-icon-img"
             src={printIcon}
-            alt=""
+            alt={labels.printIconAltText}
             onClick={() => {
               printCoupon(coupon);
             }}
@@ -131,7 +131,7 @@ export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupo
             <Image
               className={showDetail ? 'up-arrow' : 'down-arrow'}
               src={carrotIcon}
-              alt=""
+              alt={showDetail ? labels.upArrowAltText : labels.downArrowAltText}
               width="7px"
               height="10px"
             />
@@ -161,6 +161,9 @@ PersonalizedCoupon.propTypes = {
     validTill: PropTypes.string,
     nowThrough: PropTypes.string,
     detailsLink: PropTypes.string,
+    upArrowAltText: PropTypes.string,
+    downArrowAltText: PropTypes.string,
+    printIconAltText: PropTypes.string,
   }),
 };
 
@@ -173,6 +176,9 @@ PersonalizedCoupon.defaultProps = {
     validTill: '',
     nowThrough: '',
     detailsLink: '',
+    upArrowAltText: '',
+    downArrowAltText: '',
+    printIconAltText: '',
   },
 };
 

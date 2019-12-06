@@ -302,7 +302,7 @@ android {
             versionNameSuffix "-tcpUAT"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"Ma4vZhh6IG1dyvr1mVOG_mcvY_9dKqgXdfO2y\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"fULDzkZ7Vp4qh7il0l6gDmBkeB5oc2xq4Yu6n\""
         }
 
         tcpUatPreview {
@@ -313,7 +313,7 @@ android {
             versionNameSuffix "-tcpUATPreview"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"Ma4vZhh6IG1dyvr1mVOG_mcvY_9dKqgXdfO2y\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"fULDzkZ7Vp4qh7il0l6gDmBkeB5oc2xq4Yu6n\""
         }
 
         gymboreeUat {
@@ -322,7 +322,7 @@ android {
             versionNameSuffix "-gymboreeUAT"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"IuwYFq2BgvHOFvTDnvBDLeLUVxeTwEFmhlCSX\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"5Hhp7UZaDy_bXCDWcKuQO8niNG8liG9pTpI2U\""
         }
 
         gymboreeUatPreview {
@@ -331,7 +331,7 @@ android {
             versionNameSuffix "-gymboreeUATPreview"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"IuwYFq2BgvHOFvTDnvBDLeLUVxeTwEFmhlCSX\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"5Hhp7UZaDy_bXCDWcKuQO8niNG8liG9pTpI2U\""
         }
 
         tcpProd {
@@ -434,11 +434,13 @@ dependencies {
     implementation project(':react-native-gesture-handler')
     implementation project(':@react-native-community_datetimepicker')
     implementation project(':react-native-webview')
+    implementation project(':react-native-firebase')
     compile project(':react-native-code-push')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'com.braintreepayments.api:braintree:2.22.0'
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation project(':urbanairship-react-native')
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -446,6 +448,9 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    implementation "com.google.firebase:firebase-core:16.0.9"
+    implementation "com.google.firebase:firebase-messaging:18.0.0"
+    implementation "com.urbanairship.android:urbanairship-fcm:11.0.1"
 }
 
 // Run this once to be able to run the application with BUCK
@@ -513,3 +518,5 @@ project.ext.envConfigFiles = [
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
 applyNativeModulesAppBuildGradle(project)
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply plugin: 'com.google.gms.google-services'
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

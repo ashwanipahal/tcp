@@ -476,6 +476,14 @@ const getLedgerSummaryDataConfirmation = state => {
   };
 };
 
+const getAccessibilityLabels = state => {
+  return {
+    upArrowAltText: getLabelValue(state.Labels, 'lbl_up_arrow_icon', 'accessibility', 'global'),
+    downArrowAltText: getLabelValue(state.Labels, 'lbl_down_arrow_icon', 'accessibility', 'global'),
+    printIconAltText: getLabelValue(state.Labels, 'lbl_print_icon', 'accessibility', 'global'),
+  };
+};
+
 export default {
   getOdmLoading,
   getOrderConfirmation,
@@ -522,4 +530,5 @@ export default {
   isGymboreeCanadaSite,
   getVenmoOrderConfirmationContentId,
   getVenmoOrderConfirmationContent,
+  getAccessibilityLabels,
 };

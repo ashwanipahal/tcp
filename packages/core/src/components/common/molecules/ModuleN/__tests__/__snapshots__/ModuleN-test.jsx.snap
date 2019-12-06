@@ -28,7 +28,7 @@ exports[`N component renders correctly 1`] = `
       <Styled(LinkText)
         className="ModuleN-heading"
         color="white"
-        component="h3"
+        component="h2"
         dataLocator="moduleN_header_text"
         headerText={
           Array [

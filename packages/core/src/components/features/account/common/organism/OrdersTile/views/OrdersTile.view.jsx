@@ -7,7 +7,7 @@ import { OrdersTileItem } from '../molecules/OrderTileItem/views/OrdersTileItem.
 import internalEndpoints from '../../../internalEndpoints';
 
 export const OrdersTile = ({ labels, ordersList }) => {
-  const selectedOrders = ordersList && ordersList.orders.slice(0, 2);
+  const selectedOrders = ordersList && ordersList.orders && ordersList.orders.slice(0, 2);
   let ordersItemList;
   if (selectedOrders && selectedOrders.length) {
     ordersItemList = selectedOrders.map(orderItem => (

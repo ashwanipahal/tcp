@@ -38,7 +38,6 @@ export default function create() {
         default:
           break;
       }
-
       // By default, track w/ just the name and payload
       return track(event.eventName, transformEvent(event));
     });

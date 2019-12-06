@@ -36,7 +36,7 @@ exports[`ModuleK native component Should renders correctly 1`] = `
       textAlign="center"
     />
   </Styled(View)>
-  <WithTheme(SnapCarousel)
+  <Connect(WithTheme(SnapCarousel))
     autoplayInterval={2000}
     carouselConfig={
       Object {

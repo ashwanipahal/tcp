@@ -18,6 +18,7 @@ const styles = css`
     width: 13px;
   }
   .content {
+    display: -ms-grid;
     display: grid;
     min-height: 302px;
   }
@@ -63,6 +64,19 @@ const styles = css`
 
   .bottom-content {
     align-self: flex-end;
+  }
+
+  .IE_bottom-content {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 24px);
+  }
+
+  .IE_my-rewards {
+    -ms-grid-row: ${props => Math.floor(props.index / 5) + 1};
+    -ms-grid-column: ${props => (props.index % 5) + 1};
+    margin-right: 24px;
+    width: calc(100% - 24px);
   }
 
   .coupon-desc {

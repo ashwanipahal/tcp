@@ -22,7 +22,7 @@ class SizeChart extends React.Component {
 
   render() {
     const { isOpen } = this.state;
-    const { sizeChartDetails } = this.props;
+    const { sizeChartDetails, labels } = this.props;
     const dataObj = {};
     if (sizeChartDetails && sizeChartDetails.length) {
       const values = sizeChartDetails.split('|');
@@ -34,7 +34,7 @@ class SizeChart extends React.Component {
     return (
       <>
         <Anchor href="" className="size-chart" {...dataObj} onClick={this.toggleModal}>
-          Size Chart
+          {labels.sizeChart}
         </Anchor>
         <Modal
           isOpen={isOpen}
@@ -47,11 +47,10 @@ class SizeChart extends React.Component {
           heightConfig={{ minHeight: '534px', height: '620px', maxHeight: '650px' }}
           headingAlign="center"
           stickyHeader
-          heading="Size Chart"
+          heading={labels.sizeChart}
           stickyCloseIcon
           horizontalBar={false}
           inheritedStyles={modalstyles}
-          contentLabel="Size chart modal"
         >
           This is size chart modal
         </Modal>
@@ -62,10 +61,14 @@ class SizeChart extends React.Component {
 
 SizeChart.propTypes = {
   sizeChartDetails: PropTypes.string,
+  labels: PropTypes.shape({}),
 };
 
 SizeChart.defaultProps = {
   sizeChartDetails: '',
+  labels: {
+    sizeChart: 'Size Chart',
+  },
 };
 
 export default SizeChart;
