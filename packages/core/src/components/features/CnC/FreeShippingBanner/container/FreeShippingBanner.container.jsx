@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FreeShippingBannerView from '../views/FreeShippingBannerView';
-import getLabels from './FreeShippingBanner.selectors';
+import { getLabels, getAccessibilityLabels } from './FreeShippingBanner.selectors';
 
 export const FreeShippingBannerContainer = ({ labels }) => {
   return <FreeShippingBannerView labels={labels} />;
@@ -14,7 +14,10 @@ FreeShippingBannerContainer.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    labels: getLabels(state),
+    labels: {
+      ...getLabels(state),
+      ...getAccessibilityLabels(state),
+    },
   };
 };
 
