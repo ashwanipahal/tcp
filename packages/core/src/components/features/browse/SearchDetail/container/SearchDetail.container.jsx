@@ -100,7 +100,7 @@ class SearchDetailContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
       router: {
-        query: { searchQuery },
+        query: { searchQuery, searchType },
         asPath,
       },
       getProducts,
@@ -169,7 +169,7 @@ class SearchDetailContainer extends React.PureComponent {
       sortLabels,
       isSearchResultsAvailable,
       router: {
-        query: { searchQuery },
+        query: { searchQuery, searchType },
         asPath: asPathVal,
       },
       currency,
@@ -220,6 +220,7 @@ class SearchDetailContainer extends React.PureComponent {
                 pageSectionProp={pageSectionProp}
                 pageSubSectionProp={pageSubSectionProp}
                 trackPageLoad={trackPageLoad}
+                searchType={searchType}
                 {...otherProps}
               />
             ) : (
@@ -231,6 +232,8 @@ class SearchDetailContainer extends React.PureComponent {
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
                 pdpLabels={pdpLabels}
+                trackPageLoad={trackPageLoad}
+                searchType={searchType}
                 {...otherProps}
               />
             )}
@@ -266,6 +269,7 @@ class SearchDetailContainer extends React.PureComponent {
               pageSectionProp={pageSectionProp}
               pageSubSectionProp={pageSubSectionProp}
               trackPageLoad={trackPageLoad}
+              searchType={searchType}
               {...otherProps}
             />
           </div>
@@ -374,13 +378,8 @@ function mapDispatchToProps(dispatch) {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
     trackPageLoad: payload => {
-      const { products, customEvents } = payload;
-      dispatch(
-        setClickAnalyticsData({
-          products,
-          customEvents,
-        })
-      );
+      const { products, customEvents, pageSearchType, pageSearchText } = payload;
+      dispatch(setClickAnalyticsData(payload));
       setTimeout(() => {
         dispatch(
           trackPageView({

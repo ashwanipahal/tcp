@@ -273,7 +273,12 @@ export default function create(store) {
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {
-        return store.getState().ProductListing.get('totalProductsCount');
+        const { AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return (
+          clickActionAnalyticsData.listingCount ||
+          store.getState().ProductListing.get('totalProductsCount')
+        );
       },
     },
     cartType: {
