@@ -366,12 +366,12 @@ const getCategoryValue = baseProduct => {
   const {
     categoryPath3_catMap: categoryPath3CatMap,
     categoryPath2_catMap: categoryPath2CatMap,
-    primaryKey,
+    primaryCategory,
   } = baseProduct;
   try {
-    // @TODO name of primaryKey may change in future, so this might need updation
-    if (primaryKey) {
-      categoryId = primaryKey;
+    // @TODO name of primaryCategory may change in future, so this might need updation
+    if (primaryCategory) {
+      categoryId = primaryCategory;
     } else if (categoryPath3CatMap) {
       const [, , catPath3] = categoryPath3CatMap[0].split('|')[0].split('>');
       categoryId = catPath3;
