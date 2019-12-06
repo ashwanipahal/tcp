@@ -32,7 +32,7 @@ exports[`AddEditPersonalInformation.view component should renders correctly 1`] 
   <Styled(FormPageHeading)
     className="margin-none myAccountRightView"
     dataLocator="pi-profileinformationheading"
-    heading="update Profile"
+    heading="lbl_profile_personal_information"
   />
   <ReduxForm
     birthMonthOptionsMap={Array []}

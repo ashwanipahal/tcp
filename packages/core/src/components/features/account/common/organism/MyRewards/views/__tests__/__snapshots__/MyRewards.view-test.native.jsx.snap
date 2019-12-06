@@ -33,7 +33,7 @@ exports[`MyRewards should render carousel if coupons are avalable 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <WithTheme(SnapCarousel)
+    <Connect(WithTheme(SnapCarousel))
       autoplay={false}
       darkArrow={true}
       data={

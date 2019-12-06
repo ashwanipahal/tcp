@@ -56,6 +56,7 @@ export const getPlpLabels = state => {
       sizeUnavalaible: '',
       sizeAvailable: '',
       saveProduct: '',
+      sizeChart: '',
     };
 
   const {
@@ -71,6 +72,7 @@ export const getPlpLabels = state => {
         lbl_size_unavailable_online: sizeUnavalaible,
         lbl_other_sizes_available: sizeAvailable,
         lbl_fav_save_product: saveProduct,
+        lbl_size_chart: sizeChart,
       },
     },
   } = state.Labels;
@@ -86,6 +88,7 @@ export const getPlpLabels = state => {
     sizeUnavalaible,
     sizeAvailable,
     saveProduct,
+    sizeChart,
   };
 };
 

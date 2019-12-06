@@ -290,7 +290,13 @@ const getColorfitsSizesMap = ({
         isBossEligible: isBossProduct(bossDisabledFlags) && !isGiftCardItem(itemColor),
         badge1: isBundleProduct
           ? extractPrioritizedBadge(itemColor, productAttributes, '', excludeBage)
-          : extractPrioritizedBadge(getFirstVariant(itemColor), productAttributes, '', excludeBage),
+          : extractPrioritizedBadge(
+              getFirstVariant(itemColor),
+              productAttributes,
+              '',
+              excludeBage,
+              true
+            ),
         badge2: extractAttributeValue(itemColor, productAttributes.merchant),
         isClearance: extractAttributeValue(
           itemColor,
