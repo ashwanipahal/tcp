@@ -21,6 +21,7 @@ import {
 import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
+import { UrbanAirship } from 'urbanairship-react-native';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
@@ -75,6 +76,7 @@ export class App extends React.PureComponent {
   }
 
   componentDidMount() {
+    UrbanAirship.setUserNotificationsEnabled(true);
     const { apiConfig } = this.state;
     const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
     codePush.sync({ installMode: codePush.InstallMode.ON_NEXT_RESUME });
