@@ -328,5 +328,24 @@ export const getSizeChartDetails = state => {
 };
 
 export const getAccessibilityLabels = state => {
-  return state.Labels.global && state.Labels.global.accessibility;
+  return {
+    lbl_social_twitter: getLabelValue(
+      state.Labels,
+      'lbl_social_twitter',
+      'accessibility',
+      'global'
+    ),
+    lbl_social_facebook: getLabelValue(
+      state.Labels,
+      'lbl_social_facebook',
+      'accessibility',
+      'global'
+    ),
+    lbl_social_pinterest: getLabelValue(
+      state.Labels,
+      'lbl_social_pinterest',
+      'accessibility',
+      'global'
+    ),
+  };
 };
