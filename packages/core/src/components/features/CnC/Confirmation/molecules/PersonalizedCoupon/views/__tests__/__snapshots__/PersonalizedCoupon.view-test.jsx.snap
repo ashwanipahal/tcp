@@ -73,7 +73,7 @@ exports[`PersonalizedCoupon View should render correctly for empty state with on
       textAlign="left"
     >
       <Styled(Image)
-        alt=""
+        alt="Print icon"
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
@@ -170,7 +170,7 @@ exports[`PersonalizedCoupon View should render correctly for empty state with on
       textAlign="left"
     >
       <Styled(Image)
-        alt=""
+        alt="Print icon"
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
@@ -376,7 +376,7 @@ exports[`PersonalizedCoupon View should render correctly for full filled state 1
       textAlign="left"
     >
       <Styled(Image)
-        alt=""
+        alt="Print icon"
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
@@ -403,7 +403,7 @@ exports[`PersonalizedCoupon View should render correctly for full filled state 1
       noLink={true}
     >
       <Styled(Image)
-        alt=""
+        alt="Down arrow icon"
         className="down-arrow"
         height="10px"
         src="/static/version-not-available/images/carrot-left.png"
@@ -596,7 +596,7 @@ exports[`PersonalizedCoupon View should render correctly for full filled state f
       textAlign="left"
     >
       <Styled(Image)
-        alt=""
+        alt="Print icon"
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
@@ -623,7 +623,7 @@ exports[`PersonalizedCoupon View should render correctly for full filled state f
       noLink={true}
     >
       <Styled(Image)
-        alt=""
+        alt="Down arrow icon"
         className="down-arrow"
         height="10px"
         src="/static/version-not-available/images/carrot-left.png"
@@ -728,7 +728,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       textAlign="left"
     >
       <Styled(Image)
-        alt=""
+        alt="Print icon"
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
@@ -755,7 +755,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       noLink={true}
     >
       <Styled(Image)
-        alt=""
+        alt="Down arrow icon"
         className="down-arrow"
         height="10px"
         src="/static/version-not-available/images/carrot-left.png"
@@ -860,7 +860,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       textAlign="left"
     >
       <Styled(Image)
-        alt=""
+        alt="Print icon"
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
@@ -887,7 +887,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       noLink={true}
     >
       <Styled(Image)
-        alt=""
+        alt="Down arrow icon"
         className="down-arrow"
         height="10px"
         src="/static/version-not-available/images/carrot-left.png"
@@ -992,7 +992,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       textAlign="left"
     >
       <Styled(Image)
-        alt=""
+        alt="Print icon"
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
@@ -1019,7 +1019,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       noLink={true}
     >
       <Styled(Image)
-        alt=""
+        alt="Down arrow icon"
         className="down-arrow"
         height="10px"
         src="/static/version-not-available/images/carrot-left.png"
@@ -1124,7 +1124,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       textAlign="left"
     >
       <Styled(Image)
-        alt=""
+        alt="Print icon"
         className="print-icon-img"
         height="20px"
         onClick={[Function]}
@@ -1151,7 +1151,7 @@ exports[`PersonalizedCoupon View should render correctly for partial state with 
       noLink={true}
     >
       <Styled(Image)
-        alt=""
+        alt="Down arrow icon"
         className="down-arrow"
         height="10px"
         src="/static/version-not-available/images/carrot-left.png"
