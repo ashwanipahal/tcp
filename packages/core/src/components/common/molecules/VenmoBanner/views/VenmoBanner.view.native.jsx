@@ -10,11 +10,11 @@ import {
 const venmoIconBlue = require('../../../../../assets/venmo_logo_blue.png');
 
 const VenmoBanner = ({ labels }) => {
-  const { venmoBannerText } = labels;
+  const { venmoBannerText, venmoIconAltText } = labels;
   return (
     <VenmoBannerContainer>
       <ImageWrapper>
-        <Image source={venmoIconBlue} alt="" width="80px" height="15px" />
+        <Image source={venmoIconBlue} alt={venmoIconAltText} width="80px" height="15px" />
       </ImageWrapper>
       <VenmoBannerTextContainer>
         <BodyCopy
@@ -32,12 +32,14 @@ const VenmoBanner = ({ labels }) => {
 VenmoBanner.propTypes = {
   labels: shape({
     venmoBannerText: string,
+    venmoIconAltText: string,
   }),
 };
 
 VenmoBanner.defaultProps = {
   labels: {
     venmoBannerText: '',
+    venmoIconAltText: '',
   },
 };
 

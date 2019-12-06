@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
@@ -361,6 +362,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       inactiveSlideOpacity,
       isUseLeftArrowIcon,
       isUseRightArrowIcon,
+      labels,
     } = this.props;
 
     if (!data) {
@@ -383,7 +385,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           <Container>
             <TouchableView
               accessibilityRole="button"
-              accessibilityLabel="Previous"
+              accessibilityLabel={labels.accessibility.ariaPrevious}
               testID={getLocator('global_promobanner_right_arrow')}
               onPress={() => this.manageSlide('next')}
             >
@@ -409,7 +411,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
             />
             <TouchableView
               accessibilityRole="button"
-              accessibilityLabel="next"
+              accessibilityLabel={labels.accessibility.ariaNext}
               testID={getLocator('global_promobanner_left_arrowRight')}
               onPress={() => this.manageSlide('prev')}
             >
@@ -487,6 +489,12 @@ SnapCarousel.defaultProps = {
   inactiveSlideOpacity: 0.7,
   isUseLeftArrowIcon: false,
   isUseRightArrowIcon: false,
+  labels: {
+    accessibility: {
+      ariaPrevious: 'Previous',
+      ariaNext: 'Next',
+    },
+  },
 };
 
 SnapCarousel.propTypes = {
@@ -518,6 +526,7 @@ SnapCarousel.propTypes = {
   inactiveSlideOpacity: PropTypes.number,
   isUseLeftArrowIcon: PropTypes.bool,
   isUseRightArrowIcon: PropTypes.bool,
+  labels: PropTypes.shape({}),
 };
 
 export default withTheme(SnapCarousel);

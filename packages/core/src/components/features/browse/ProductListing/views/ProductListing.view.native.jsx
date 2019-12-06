@@ -235,13 +235,12 @@ const ProductListView = ({
               {...otherProps}
             />
           </DisplayPlp>
-
-          <DisplaySkeleton renderskeleton={isLoadingMore} renderplp={!isLoadingMore}>
-            <PLPSkeleton col={20} />
-          </DisplaySkeleton>
         </>
         {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       </PageContainer>
+      <DisplaySkeleton renderskeleton={isLoadingMore} renderplp={!isLoadingMore}>
+        <PLPSkeleton col={20} />
+      </DisplaySkeleton>
     </ScrollView>
   );
 };

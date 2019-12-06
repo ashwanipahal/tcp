@@ -396,6 +396,7 @@ class CartItemTile extends PureComponent {
             }}
             noLink
             className="sflActions"
+            aria-label={`Save for later ${productDetail.itemInfo.name}`}
           >
             <BodyCopy
               fontFamily="secondary"
@@ -423,6 +424,7 @@ class CartItemTile extends PureComponent {
             }}
             noLink
             className="sflActions"
+            aria-label={`Move to bag ${productDetail.itemInfo.name}`}
           >
             <BodyCopy
               fontFamily="secondary"
@@ -474,6 +476,7 @@ class CartItemTile extends PureComponent {
       showOnReviewPage,
       isBagPageSflSection,
       isEditAllowed,
+      productDetail,
       productDetail: {
         miscInfo: { orderItemType, availability },
         itemInfo: { itemBrand },
@@ -503,6 +506,7 @@ class CartItemTile extends PureComponent {
               role="button"
               dataLocator={getLocator('cart_item_edit_link')}
               className="padding-left-10 responsive-edit-css"
+              aria-label={`Edit ${productDetail.itemInfo.name}`}
               onClick={e => {
                 e.preventDefault();
                 this.callEditMethod(e);
@@ -714,10 +718,10 @@ class CartItemTile extends PureComponent {
   };
 
   getProductPointsList = (productDetail, isBagPageSflSection, showOnReviewPage) => {
-    const { labels } = this.props;
+    const { labels, isInternationalShipping } = this.props;
     return (
       <>
-        {!isCanada() && !isBagPageSflSection && showOnReviewPage && (
+        {!isCanada() && !isInternationalShipping && !isBagPageSflSection && showOnReviewPage && (
           <Row className="product-detail-row label-responsive-wrapper">
             <Col
               className="label-responsive label-responsive-price"
@@ -1197,7 +1201,7 @@ class CartItemTile extends PureComponent {
                 <Row className="product-detail-row padding-top-10 color-map-size-fit">
                   <Col
                     className={!isBagPage ? this.getProductDetailClass() : 'product-detail-bag'}
-                    colSize={{ small: 12, medium: 12, large: 12 }}
+                    colSize={{ medium: 12, large: 12 }}
                   >
                     <div className="product-detail-section">
                       <div className="color-size-fit-label">
@@ -1353,6 +1357,7 @@ CartItemTile.propTypes = {
   closeMiniBag: PropTypes.func,
   isMiniBagOpen: PropTypes.bool.isRequired,
   handleAddToWishlist: PropTypes.func.isRequired,
+  isInternationalShipping: PropTypes.bool.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);

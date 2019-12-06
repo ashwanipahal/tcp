@@ -31,6 +31,7 @@ class ShippingContainer extends React.Component {
     setAsDefaultShipping: PropTypes.bool,
     saveToAddressBook: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
+    userAddresses: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -40,6 +41,7 @@ class ShippingContainer extends React.Component {
     onFileAddressKey: null,
     setAsDefaultShipping: false,
     saveToAddressBook: false,
+    userAddresses: null,
   };
 
   componentDidMount() {
@@ -51,6 +53,27 @@ class ShippingContainer extends React.Component {
     const { isSubmitting } = this.props;
     return !isSubmitting;
   }
+
+  componentDidUpdate(prevProps) {
+    const { onFileAddressKey } = this.props;
+    const { onFileAddressKey: prevFileAddressKey } = prevProps;
+    if (onFileAddressKey !== prevFileAddressKey) {
+      this.getShipmentMethods(prevProps);
+    }
+  }
+
+  /**
+   * @description - get shipment methods with the updated address state
+   */
+  getShipmentMethods = () => {
+    const { loadShipmentMethods, onFileAddressKey, userAddresses } = this.props;
+    if (userAddresses && userAddresses.size > 0) {
+      const address = userAddresses.find(add => add.addressId === onFileAddressKey);
+      if (address && address.state) {
+        loadShipmentMethods({ state: address.state, formName: 'checkoutShipping' });
+      }
+    }
+  };
 
   submitVerifiedShippingAddress = scopeValue => shippingAddress => {
     const scope = scopeValue;

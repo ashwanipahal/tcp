@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, getLabelValue } from '@tcp/core/src/utils';
 import { Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../hoc/withStyles';
@@ -13,6 +13,7 @@ class SocialConnect extends React.PureComponent {
     isFacebookEnabled: PropTypes.bool,
     isPinterestEnabled: PropTypes.bool,
     isTwitterEnabled: PropTypes.bool,
+    accessibilityLabels: PropTypes.shape({}),
     ratingsProductId: PropTypes.string.isRequired,
   };
 
@@ -51,6 +52,7 @@ class SocialConnect extends React.PureComponent {
       isPinterestEnabled,
       isTwitterEnabled,
       className,
+      accessibilityLabels,
       ratingsProductId,
     } = this.props;
 
@@ -73,7 +75,7 @@ class SocialConnect extends React.PureComponent {
               rel="noopener"
             >
               <Image
-                alt="twitter"
+                alt={getLabelValue(accessibilityLabels, 'lbl_social_twitter')}
                 className="twitter"
                 src={getIconPath('twitter-icon')}
                 data-locator="twitter-icon"
@@ -98,7 +100,7 @@ class SocialConnect extends React.PureComponent {
               title="Facebook"
             >
               <Image
-                alt="Facebook"
+                alt={getLabelValue(accessibilityLabels, 'lbl_social_facebook')}
                 className="facebook"
                 src={getIconPath('facebook-icon')}
                 data-locator="facebook-icon"
@@ -122,7 +124,7 @@ class SocialConnect extends React.PureComponent {
               title="Pinterest"
             >
               <Image
-                alt="pinterest"
+                alt={getLabelValue(accessibilityLabels, 'lbl_social_pinterest')}
                 className="pinterest"
                 src={getIconPath('pinterest-icon')}
                 data-locator="pinterest-icon"
@@ -140,6 +142,7 @@ SocialConnect.defaultProps = {
   isTwitterEnabled: true,
   isFacebookEnabled: true,
   isPinterestEnabled: true,
+  accessibilityLabels: {},
 };
 
 export default withStyles(SocialConnect, styles);

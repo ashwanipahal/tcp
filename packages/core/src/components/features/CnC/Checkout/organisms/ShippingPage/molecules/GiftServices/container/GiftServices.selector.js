@@ -4,6 +4,7 @@ export const getGiftServicesLabels = state => {
   const {
     checkout: {
       shipping: {
+        lbl_giftServices_help: giftServicesAriaLabel,
         lbl_giftServices_header: giftServices,
         lbl_giftServices_details: details,
         lbl_giftServices_add: addAGift,
@@ -33,6 +34,7 @@ export const getGiftServicesLabels = state => {
   } = state.Labels;
 
   return {
+    giftServicesAriaLabel,
     giftServices,
     details,
     addAGift,
