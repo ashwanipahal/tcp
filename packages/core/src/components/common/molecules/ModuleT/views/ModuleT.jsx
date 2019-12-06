@@ -24,7 +24,8 @@ class ModuleT extends React.PureComponent {
     return (
       headerText && (
         <LinkText
-          component="div"
+          component="h2"
+          type="heading"
           headerText={headerText}
           className="header"
           headingClass="moduleT-header"

@@ -67,7 +67,7 @@ export class EarnPoints extends React.PureComponent {
    * toggle modal to open and closed
    */
 
-  renderPromoList = (isPromoListFetching, promoListData) => {
+  renderPromoList = (isPromoListFetching, promoListData, navigation, toggleModal) => {
     if (isPromoListFetching) {
       return (
         <FirstInnerTileWrapper>
@@ -83,7 +83,11 @@ export class EarnPoints extends React.PureComponent {
             return (
               <>
                 <PromoTileWrapper>
-                  <PromoListTile tileData={item} />
+                  <PromoListTile
+                    tileData={item}
+                    navigation={navigation}
+                    toggleModal={toggleModal}
+                  />
                 </PromoTileWrapper>
                 {item && (index === 0 || index === 2) && <LineBorder />}
               </>
@@ -151,6 +155,11 @@ export class EarnPoints extends React.PureComponent {
       )
     );
   };
+
+  ctaHandler = (navigation, toggleModal) => {
+    navigation.navigate('ApplyNow');
+    toggleModal({ isModalOpen: true });
+  };
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -167,6 +176,8 @@ export class EarnPoints extends React.PureComponent {
       promoListData,
       isEarnExtraPointsFetching,
       isPromoListFetching,
+      navigation,
+      toggleModal,
     } = this.props;
     const { waysToEarnRow, showModal } = this.state;
     let infoMessage = '';
@@ -230,13 +241,13 @@ export class EarnPoints extends React.PureComponent {
               noLink
               anchorVariation="primary"
               onPress={() => {
-                UrlHandler(endpoints.myPlaceRewardsPage);
+                this.ctaHandler(navigation, toggleModal);
               }}
               text={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_learnMore')}
             />
           </ViewWithSpacing>
         </ExtraEarningHeader>
-        {this.renderPromoList(isPromoListFetching, promoListData)}
+        {this.renderPromoList(isPromoListFetching, promoListData, navigation, toggleModal)}
         {this.renderEarnExtraPointsTile(waysToEarn, labels, isEarnExtraPointsFetching)}
         <MprTermsWrapper>
           <Anchor
@@ -294,6 +305,8 @@ EarnPoints.propTypes = {
   handleComponentChange: PropTypes.func,
   isEarnExtraPointsFetching: PropTypes.bool,
   isPromoListFetching: PropTypes.bool,
+  navigation: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };
 
 EarnPoints.defaultProps = {

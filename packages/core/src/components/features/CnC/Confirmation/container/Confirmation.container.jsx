@@ -209,7 +209,10 @@ export const mapStateToProps = state => {
     //     hideConfirmationEspot: selectors.shouldHideConfirmationEspot(state),
 
     orderNumbersByFullfillmentCenter: selectors.getOrderNumbersByFullfillmentCenter(state),
-    labels: selectors.getConfirmationLabels(state),
+    labels: {
+      ...selectors.getConfirmationLabels(state),
+      ...selectors.getAccessibilityLabels(state),
+    },
     updateOrderDetailsBopisId: selectors.getUpdateOrderDetailsId(
       state,
       'Update_Order_Details_BOPIS'

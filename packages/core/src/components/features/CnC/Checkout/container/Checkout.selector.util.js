@@ -1,4 +1,5 @@
 import { getFormSyncErrors, formValueSelector } from 'redux-form';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 
 const getPickUpContactFormLabels = state => {
   const {
@@ -75,6 +76,7 @@ const getPickUpContactFormLabels = state => {
     childrenPlaceCheckoutTxt,
     emailSignUpDisclaimer,
     gymboreePlaceCheckoutTxt,
+    venmoIconAltText: getLabelValue(state.Labels, 'lbl_venmo_icon', 'accessibility', 'global'),
   };
 };
 

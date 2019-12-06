@@ -18,7 +18,7 @@ exports[`ModuleQ component renders correctly 1`] = `
     >
       <Styled(LinkText)
         className="moduleQ-header"
-        component="div"
+        component="h2"
         dataLocator="moduleQ_header_text"
         headerText={
           Array [
@@ -42,6 +42,7 @@ exports[`ModuleQ component renders correctly 1`] = `
           ]
         }
         headingClass="moduleQ-promo-header"
+        type="heading"
       />
       <Styled(PromoBanner)
         className="moduleQ-promo"

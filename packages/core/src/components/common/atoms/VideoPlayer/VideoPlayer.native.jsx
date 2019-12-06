@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Video from 'react-native-video';
-import { getScreenWidth, convertNumToBool } from '@tcp/core/src/utils';
+import { getScreenWidth, convertNumToBool, cropVideoUrl } from '@tcp/core/src/utils';
 
 class VideoPlayer extends React.Component {
   render() {
@@ -21,7 +21,7 @@ class VideoPlayer extends React.Component {
     const loopOption = loop ? convertNumToBool(loop) : false;
     return (
       <Video
-        source={{ uri: url }}
+        source={{ uri: cropVideoUrl(url) }}
         ref={ref => {
           this.player = ref;
         }}

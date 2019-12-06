@@ -41,7 +41,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
         </Styled(Anchor)>
       </div>
       <Styled(Row)
-        className="elem-mb-XL"
+        className="elem-mb-MED"
         fullBleed={true}
       >
         <Styled(Col)

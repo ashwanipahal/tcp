@@ -20,6 +20,19 @@ import { trackPageView, setClickAnalyticsData } from '../../../../../analytics/a
  */
 
 const excludeRouteMapping = ['/TrackOrder'];
+const accountPagesMapping = [
+  'account-overview',
+  'place-rewards',
+  'wallet',
+  'extra-points',
+  'orders',
+  'profile',
+  'address-book',
+  'payment',
+  'my-preference',
+  'rewardsCreditCard',
+  'favorites',
+];
 
 const DEFAULT_ACTIVE_COMPONENT = 'account-overview';
 export class Account extends React.PureComponent {
@@ -53,10 +66,17 @@ export class Account extends React.PureComponent {
     }
 
     if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
-      this.activePageRef.blur();
-      setTimeout(() => {
-        this.activePageRef.focus({ preventScroll: true });
-      }, 100);
+      const focusUpdate =
+        (accountPagesMapping.includes(prevState.componentToLoad) &&
+          accountPagesMapping.includes(componentToLoad)) ||
+        (accountPagesMapping.includes(prevState.componentToLoad) &&
+          !accountPagesMapping.includes(componentToLoad));
+      if (focusUpdate) {
+        this.activePageRef.blur();
+        setTimeout(() => {
+          this.activePageRef.focus({ preventScroll: true });
+        }, 100);
+      }
     }
 
     if (prevState.componentToLoad !== componentToLoad) {

@@ -63,7 +63,8 @@ export class ModuleM extends React.PureComponent {
     return (
       <div className="promo-header-wrapper">
         <LinkText
-          component="div"
+          component="h2"
+          type="heading"
           headerText={headerText}
           className="promo-header"
           dataLocator={getLocator('moduleM_header_text')}

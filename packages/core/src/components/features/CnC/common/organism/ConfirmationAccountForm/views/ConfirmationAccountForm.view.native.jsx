@@ -163,6 +163,7 @@ export class CreateAccountForm extends React.Component {
 
         lbl_createAccount_heading: lblHeading,
         lbl_createAccount_succcessMsg: lblSucccessMsg,
+        lbl_info_icon: lblInfoIcon,
       },
       passwordLabels,
     } = this.props;
@@ -232,7 +233,7 @@ export class CreateAccountForm extends React.Component {
                 width={300}
                 textAlign="left"
               >
-                <Image source={IconInfoLogo} alt="" height={12} width={12} />
+                <Image source={IconInfoLogo} alt={lblInfoIcon} height={12} width={12} />
               </ReactTooltip>
             </IconContainer>
 
@@ -342,6 +343,7 @@ CreateAccountForm.propTypes = {
     lbl_createAccount_show: PropTypes.string,
     lbl_createAccount_hide: PropTypes.string,
     lbl_createAccount_heading: PropTypes.string,
+    lbl_info_icon: PropTypes.string,
   }),
   passwordLabels: PropTypes.shape({}),
   toastMessage: PropTypes.func.isRequired,
@@ -366,6 +368,7 @@ CreateAccountForm.defaultProps = {
     lbl_createAccount_show: '',
     lbl_createAccount_hide: '',
     lbl_createAccount_heading: '',
+    lbl_info_icon: '',
   },
   passwordLabels: {},
 };

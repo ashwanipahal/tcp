@@ -155,6 +155,20 @@ export const generateBrowseDataLayer = store => {
         return getPageType(store) || '';
       },
     },
+    searchType: {
+      get() {
+        const { AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageSearchType || '';
+      },
+    },
+    searchText: {
+      get() {
+        const { AnalyticsDataKey } = store.getState();
+        const clickActionAnalyticsData = AnalyticsDataKey.get('clickActionAnalyticsData', {}) || {};
+        return clickActionAnalyticsData.pageSearchText || '';
+      },
+    },
   };
 };
 

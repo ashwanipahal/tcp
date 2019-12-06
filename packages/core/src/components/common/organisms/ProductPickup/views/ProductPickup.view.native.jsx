@@ -462,16 +462,8 @@ class ProductPickup extends React.PureComponent {
           noLink
           onPress={this.handlePickupModalClick}
           accessibilityRole="link"
-          accessibilityLabel={
-            showPickupInfo
-              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-              : labels.lbl_Product_pickup_FIND_STORE
-          }
-          text={
-            showPickupInfo
-              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-              : labels.lbl_Product_pickup_FIND_STORE
-          }
+          accessibilityLabel={labels.lbl_Product_pickup_FIND_STORE}
+          text={labels.lbl_Product_pickup_FIND_STORE}
           anchorVariation="custom"
           colorName="gray.900"
           fontSizeVariation="medium"

@@ -144,6 +144,7 @@ exports[`ModuleE component Should render component 1`] = `
     </Styled(Row)>
     <Styled(LinkText)
       className="module-e-header-text"
+      component="h2"
       dataLocator="moduleE_header_text"
       headerText={
         Array [
@@ -168,6 +169,7 @@ exports[`ModuleE component Should render component 1`] = `
           },
         ]
       }
+      type="heading"
     />
     <Styled(PromoBanner)
       dataLocator="moduleE_promo_text"
@@ -236,7 +238,7 @@ exports[`ModuleE component Should render component 1`] = `
           }
         }
       >
-        <Styled(Styled(Carousel))
+        <Styled(Connect(Styled(Carousel)))
           carouselConfig={
             Object {
               "autoplay": true,
@@ -341,7 +343,7 @@ exports[`ModuleE component Should render component 1`] = `
               }
             />
           </div>
-        </Styled(Styled(Carousel))>
+        </Styled(Connect(Styled(Carousel)))>
         <Styled(Row)
           fullBleed={
             Object {
@@ -502,6 +504,7 @@ exports[`ModuleE component Should render component 1`] = `
               />
               <Styled(LinkText)
                 className="small-composite-image-header"
+                component="h3"
                 dataLocator="moduleE_small_img_header_text_1"
                 headerText={
                   Array [
@@ -522,6 +525,7 @@ exports[`ModuleE component Should render component 1`] = `
                     },
                   ]
                 }
+                type="heading"
               />
               <Styled(Button)
                 buttonVariation="variable-width"
@@ -591,6 +595,7 @@ exports[`ModuleE component Should render component 1`] = `
               />
               <Styled(LinkText)
                 className="small-composite-image-header"
+                component="h3"
                 dataLocator="moduleE_small_img_header_text_2"
                 headerText={
                   Array [
@@ -611,6 +616,7 @@ exports[`ModuleE component Should render component 1`] = `
                     },
                   ]
                 }
+                type="heading"
               />
               <Styled(Button)
                 buttonVariation="variable-width"

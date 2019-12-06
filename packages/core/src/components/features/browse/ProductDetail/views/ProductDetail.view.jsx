@@ -5,6 +5,7 @@ import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelt
 import { isClient } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle, { customSubmitButtonStyle } from '../ProductDetail.style';
@@ -190,7 +191,9 @@ class ProductDetailView extends PureComponent {
         <button type="button" onClick={this.onGoBack} className="button-go-back">
           <Image src={getIconPath('medium-left-arrow')} alt="" />
           <BodyCopy className="back-button" fontFamily="secondary" fontSize="fs16">
-            {pdpLabels.back}
+            {breadCrumbs && breadCrumbs[0] && breadCrumbs[0].displayName === 'Home'
+              ? 'Home'
+              : pdpLabels.back}
           </BodyCopy>
         </button>
       </div>
@@ -266,6 +269,7 @@ class ProductDetailView extends PureComponent {
       middlePromos,
       bottomPromos,
       sizeChartDetails,
+      accessibilityLabels,
       isLoading,
       ...otherProps
     } = this.props;
@@ -348,6 +352,7 @@ class ProductDetailView extends PureComponent {
               initialValues={this.formValues}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              accessibilityLabels={accessibilityLabels}
               ratingsProductId={ratingsProductId}
             />
           </Col>
@@ -411,7 +416,7 @@ class ProductDetailView extends PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row fullBleed={{ small: true, medium: false, large: false }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="product-detail-section">
               <ProductDescription
@@ -452,6 +457,13 @@ class ProductDetailView extends PureComponent {
           </Col>
         </Row>
         <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="product-detail-section">
+              <GetCandid />
+            </div>
+          </Col>
+        </Row>
+        <Row fullBleed={{ small: true, medium: false, large: false }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductReviewsContainer
               expanded={false}
@@ -499,6 +511,7 @@ ProductDetailView.propTypes = {
   middlePromos: PropTypes.string,
   bottomPromos: PropTypes.string,
   trackPageLoad: PropTypes.func,
+  accessibilityLabels: PropTypes.shape({}),
   isLoading: PropTypes.bool.isRequired,
 };
 
@@ -527,6 +540,7 @@ ProductDetailView.defaultProps = {
   topPromos: '',
   middlePromos: '',
   bottomPromos: '',
+  accessibilityLabels: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

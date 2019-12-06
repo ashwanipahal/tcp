@@ -228,6 +228,8 @@ const ModuleE = props => {
         <LinkText
           className="module-e-header-text"
           headerText={headerText}
+          component="h2"
+          type="heading"
           dataLocator={getLocator('moduleE_header_text')}
         />
         {/* ---------- Header Text End ----------- */}
@@ -368,6 +370,8 @@ const ModuleE = props => {
                       <LinkText
                         className="small-composite-image-header"
                         headerText={divCtaLinkHeaderText}
+                        component="h3"
+                        type="heading"
                         dataLocator={`${getLocator('moduleE_small_img_header_text')}${index + 1}`}
                       />
 

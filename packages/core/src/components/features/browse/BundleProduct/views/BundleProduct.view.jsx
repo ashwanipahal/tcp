@@ -62,12 +62,14 @@ class BundleProduct extends React.PureComponent {
   };
 
   getSocialConnectWidget = () => {
+    const { accessibilityLabels } = this.props;
     return (
       <SocialConnect
         className="bundle-social-wrapper"
         isFacebookEnabled
         isPinterestEnabled
         isTwitterEnabled
+        accessibilityLabels={accessibilityLabels}
       />
     );
   };
@@ -151,17 +153,26 @@ class BundleProduct extends React.PureComponent {
     );
   };
 
-  getProductDescription = () => {
-    const { itemPartNumber, pdpLabels, shortDescription, longDescription } = this.props;
+  getProductDescription = currentColorEntry => {
+    const {
+      itemPartNumber,
+      pdpLabels,
+      shortDescription,
+      longDescription,
+      currentProduct,
+    } = this.props;
+    const itemColor = currentColorEntry && currentColorEntry.color && currentColorEntry.color.name;
     return (
       <Row fullBleed>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ProductDescription
+            productInfo={currentProduct}
             productId={itemPartNumber}
             isShowMore={false}
             pdpLabels={pdpLabels}
             shortDescription={shortDescription}
             longDescription={longDescription}
+            color={itemColor}
           />
         </Col>
         <Col colSize={{ small: 2, medium: 2, large: 3 }}>{this.getSocialConnectWidget()}</Col>
@@ -252,7 +263,7 @@ class BundleProduct extends React.PureComponent {
                   colSize={{ small: 6, medium: 8, large: 12 }}
                 >
                   {this.getProductSummary(currentColorEntry)}
-                  {this.getProductDescription()}
+                  {this.getProductDescription(currentColorEntry)}
                 </Col>
               </Row>
               {this.getBundleProductsList()}
@@ -292,6 +303,7 @@ BundleProduct.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   topPromos: PropTypes.shape({}),
+  accessibilityLabels: PropTypes.shape({}),
 };
 
 BundleProduct.defaultProps = {
@@ -312,6 +324,7 @@ BundleProduct.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   topPromos: null,
+  accessibilityLabels: {},
 };
 
 export default withStyles(BundleProduct, styles);

@@ -86,6 +86,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const formName = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
     dispatch(change(formName, 'cardType', formCardType));
     dispatch(change(formName, 'isPLCCEnabled', isPLCCEnabled));
+    dispatch(change(formName, 'creditCardId', onFileCardKey));
     const creditCardList = getCreditCardList({ cardList });
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     return (

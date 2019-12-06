@@ -159,6 +159,11 @@ exports[`ProductDetailView component should renders correctly 1`] = `
           variation="moduleO"
         />
       </Styled(View)>
+      <Connect(GetCandid)
+        apiConfig={Object {}}
+        navigation={Object {}}
+        openedFromStack="PlpStack"
+      />
       <View
         collapsable={false}
       >

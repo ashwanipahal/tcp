@@ -74,6 +74,7 @@ export {
   formatDate,
   isValidDate,
   convertNumToBool,
+  cropVideoUrl,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

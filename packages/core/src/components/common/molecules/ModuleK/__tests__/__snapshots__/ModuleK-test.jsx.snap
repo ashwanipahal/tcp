@@ -433,7 +433,7 @@ exports[`ModuleK component renders correctly 1`] = `
         }
       }
     >
-      <Styled(Styled(Carousel))
+      <Styled(Connect(Styled(Carousel)))
         carouselConfig={
           Object {
             "autoplay": true,
@@ -448,6 +448,290 @@ exports[`ModuleK component renders correctly 1`] = `
         inheritedStyles={
           Object {
             "$$typeof": Symbol(react.forward_ref),
+            "WrappedComponent": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-jKJlTe",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  .slick-slider {
+    position: relative;
+    padding: 0px ",
+                  [Function],
+                  ";
+    line-height: 14px;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  .slick-list:focus {
+    outline: none;
+  }
+  .slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+  .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .slick-slider .slick-track,
+  .slick-slider .slick-list {
+    transform: translate3d(0, 0, 0);
+  }
+  .slick-track:before,
+  .slick-track:after {
+    display: table;
+    content: '';
+  }
+  .slick-track:after {
+    clear: both;
+  }
+  .slick-loading .slick-track {
+    visibility: hidden;
+  }
+  .slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+  }
+  [dir='rtl'] .slick-slide {
+    float: right;
+  }
+  .slick-slide img {
+    display: block;
+  }
+  .slick-slide.slick-loading img {
+    display: none;
+  }
+  .slick-slide.dragging img {
+    pointer-events: none;
+  }
+  .slick-initialized .slick-slide {
+    display: block;
+  }
+  .slick-loading .slick-slide {
+    visibility: hidden;
+  }
+  .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
+  .slick-arrow.slick-hidden {
+    display: none;
+  }
+
+  /************************
+  * @@@ Carousel Theme
+  ************************/
+  .slick-prev,
+  .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: ",
+                  [Function],
+                  ";
+    height: ",
+                  [Function],
+                  ";
+    padding: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background-size: auto auto;
+  }
+  @media only screen and (max-width: 767px) {
+    .slick-prev {
+      background: url(",
+                  [Function],
+                  ")
+        no-repeat center center;
+    }
+    .slick-next {
+      background: url(",
+                  [Function],
+                  ")
+        no-repeat center center;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .slick-prev {
+      background: url(",
+                  [Function],
+                  ")
+        no-repeat center center;
+    }
+    .slick-next {
+      background: url(",
+                  [Function],
+                  ")
+        no-repeat center center;
+    }
+  }
+
+  .slick-prev {
+    left: 0;
+    transform: rotateY(180deg) translate(0, -50%);
+  }
+  [dir='rtl'] .slick-prev {
+    right: -20px;
+    left: auto;
+  }
+  .slick-next {
+    right: 0;
+  }
+  [dir='rtl'] .slick-next {
+    right: auto;
+    left: -20px;
+  }
+
+  /* Dots */
+  .slick-dotted.slick-slider {
+    margin-bottom: 30px;
+  }
+
+  .slick-dots {
+    position: absolute;
+    bottom: 16px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slick-dots ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slick-dots li {
+    position: relative;
+    display: inline-block;
+    margin: 0 2px;
+    width: 6px;
+    height: 6px;
+    button {
+      font-size: 0;
+      line-height: 0;
+      width: 6px;
+      height: 6px;
+      display: block;
+      cursor: pointer;
+      color: transparent;
+      border: 0;
+      outline: none;
+      background: transparent;
+      padding: 0;
+
+      &:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: ",
+                  [Function],
+                  ";
+      }
+    }
+  }
+
+  li.slick-active {
+    margin: 0;
+    width: 10px;
+    height: 10px;
+    button {
+      width: 10px;
+      height: 10px;
+      &:before {
+        width: 10px;
+        height: 10px;
+        background: ",
+                  [Function],
+                  ";
+        border: 1px solid ",
+                  [Function],
+                  ";
+      }
+    }
+  }
+
+  .tcp_carousel__play_pause_button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    bottom: 12px;
+    cursor: pointer;
+  }
+
+  .tcp_carousel__play_pause_button + ul {
+    margin-left: ",
+                  [Function],
+                  ";
+  }
+
+  .tcp_carousel__play_pause_button_icon {
+    background-color: ",
+                  [Function],
+                  ";
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+
+  ",
+                  [Function],
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(Carousel)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-jKJlTe",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
             "attrs": Array [],
             "componentStyle": ComponentStyle {
               "componentId": "sc-ksYbfQ",
@@ -739,7 +1023,7 @@ exports[`ModuleK component renders correctly 1`] = `
 ",
               ],
             },
-            "displayName": "Styled(Styled(Carousel))",
+            "displayName": "Styled(Connect(Styled(Carousel)))",
             "foldedComponentIds": Array [
               "sc-jKJlTe",
             ],
@@ -1065,7 +1349,7 @@ exports[`ModuleK component renders correctly 1`] = `
             SHOP ALL
           </Styled(Button)>
         </Styled(Col)>
-      </Styled(Styled(Carousel))>
+      </Styled(Connect(Styled(Carousel)))>
     </Styled(Col)>
   </Styled(Row)>
 </StyledComponent>
