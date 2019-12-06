@@ -23,7 +23,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { router, initCheckout, markBagPageRoutingDone } = this.props;
+    const { router, initCheckout, markBagPageRoutingDone, resetAnalyticsData } = this.props;
+    resetAnalyticsData();
     markBagPageRoutingDone();
     const {
       isRegisteredUserCallDone,
@@ -68,8 +69,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    const { clearIsBillingVisitedState } = this.props;
+    const { clearIsBillingVisitedState, resetAnalyticsData } = this.props;
     clearIsBillingVisitedState();
+    resetAnalyticsData();
   }
 
   /**

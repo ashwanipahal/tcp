@@ -5,6 +5,13 @@ const downArrowIcon = getIconPath('down_arrow_icon');
 const upArrowIcon = getIconPath('up_arrow_icon');
 
 export default css`
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    border: ${props => props.theme.spacing.ELEM_SPACING.XS} solid
+      ${props => props.theme.colorPalette.gray[300]};
+    border-left: 0;
+    border-right: 0;
+  }
+
   .ratings-and-reviews-container {
     display: none;
   }
@@ -12,6 +19,10 @@ export default css`
   .accordion-button-toggle {
     background: url(${downArrowIcon}) no-repeat right 0 bottom 7px;
     margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
 
   .accordion-expanded {

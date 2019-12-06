@@ -414,6 +414,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
     BV_SHARED_KEY: getBvSharedKey(processEnv, apiSiteInfo),
     assetHostTCP: processEnv.RWD_WEB_DAM_HOST_TCP || apiSiteInfo.assetHost,
+    fontsAssetPath: processEnv.RWD_WEB_FONTS_HOST,
     productAssetPathTCP: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
     productAssetPathGYM: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_GYM,
@@ -789,6 +790,16 @@ export const getProductListingPageTrackData = (breadCrumbTrail, extras = {}) => 
   };
 };
 
+/**
+ * @description - Get fonts URL from web server
+ * @param {string} filePath - fonts name and path
+ */
+export const getFontsURL = filePath => {
+  // Added fallback in case fonts url is not updated
+  const fonstHostUrl = process.env.RWD_WEB_FONTS_HOST || 'https://test1.theplace.com/rwd/';
+  return `${fonstHostUrl}${filePath}`;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -823,4 +834,5 @@ export default {
   internalCampaignProductAnalyticsList,
   getQueryParamsFromUrl,
   getProductListingPageTrackData,
+  getFontsURL,
 };

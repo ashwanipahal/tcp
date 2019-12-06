@@ -34,7 +34,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
   </Styled(View)>
   <Styled(View)>
     <View>
-      <WithTheme(SnapCarousel)
+      <Connect(WithTheme(SnapCarousel))
         autoplay={false}
         darkArrow={true}
         data={
@@ -70,7 +70,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
 <View>
   <Styled(View)>
     <View>
-      <WithTheme(SnapCarousel)
+      <Connect(WithTheme(SnapCarousel))
         autoplay={false}
         darkArrow={true}
         data={

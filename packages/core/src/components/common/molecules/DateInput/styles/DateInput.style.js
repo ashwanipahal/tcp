@@ -9,6 +9,10 @@ const DateInput = css`
     color: ${props => props.theme.colorPalette.black};
     display: inline-block;
     position: relative;
+    bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      bottom: 0px;
+    }
     box-shadow: 0 0 4px 3px ${shadowColor};
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.typography.fontSizes.fs16};

@@ -14,10 +14,15 @@ import { getIconPath, getLocator } from '@tcp/core/src/utils';
 
 import headerPromoStyles from '../HeaderPromo.style';
 
+const config = {
+  ...carouselConfig,
+  maxLoopCount: 1,
+};
+
 const renderMobileMarkup = (dataPromo, className) => {
   return (
     <Carousel
-      options={carouselConfig}
+      options={config}
       carouselConfig={{ type: 'light', arrow: 'small' }}
       carouselTheme="dark"
       className={className}

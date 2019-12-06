@@ -12,7 +12,6 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       onClick={[Function]}
     >
       <Styled(Image)
-        alt=""
         className="collapsible-icon"
         src="/static/version-not-available/images/carrot-large-left.png"
       />
@@ -143,7 +142,6 @@ exports[`CheckoutHeaderVanilla should render checkout header section 2`] = `
       onClick={[Function]}
     >
       <Styled(Image)
-        alt=""
         className="collapsible-icon"
         src="/static/version-not-available/images/carrot-large-left.png"
       />

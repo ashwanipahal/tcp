@@ -130,7 +130,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -571,7 +570,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -1008,7 +1006,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -1161,6 +1158,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             </div>
           </div>
           <Styled(Anchor)
+            aria-label="Edit Boys Basic Skinny Jeans"
             className="padding-left-10 responsive-edit-css"
             dataLocator="cartItemEditLink"
             noLink={true}
@@ -1470,7 +1468,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -1907,7 +1904,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -2344,7 +2340,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -2807,7 +2802,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -3258,7 +3252,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -3721,7 +3714,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -4172,7 +4164,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -4623,7 +4614,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -5060,7 +5050,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -5213,6 +5202,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             </div>
           </div>
           <Styled(Anchor)
+            aria-label="Edit Boys Basic Skinny Jeans"
             className="padding-left-10 responsive-edit-css"
             dataLocator="cartItemEditLink"
             noLink={true}
@@ -5522,7 +5512,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -5675,6 +5664,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             </div>
           </div>
           <Styled(Anchor)
+            aria-label="Edit Boys Basic Skinny Jeans"
             className="padding-left-10 responsive-edit-css"
             dataLocator="cartItemEditLink"
             noLink={true}
@@ -5984,7 +5974,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -6137,6 +6126,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             </div>
           </div>
           <Styled(Anchor)
+            aria-label="Edit Boys Basic Skinny Jeans"
             className="padding-left-10 responsive-edit-css"
             dataLocator="cartItemEditLink"
             noLink={true}
@@ -6472,7 +6462,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -6625,6 +6614,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             </div>
           </div>
           <Styled(Anchor)
+            aria-label="Edit Boys Basic Skinny Jeans"
             className="padding-left-10 responsive-edit-css"
             dataLocator="cartItemEditLink"
             noLink={true}
