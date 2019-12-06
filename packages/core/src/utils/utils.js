@@ -1178,7 +1178,7 @@ export const triggerPostMessage = url => {
     if (updatedUrl.includes('/us')) {
       updatedUrl = updatedUrl.replace('/us', '');
     }
-    window.ReactNativeWebView.postMessage(updatedUrl, 'App');
+    window.ReactNativeWebView.postMessage(updatedUrl, '*');
   }
 };
 

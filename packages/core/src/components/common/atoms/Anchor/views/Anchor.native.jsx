@@ -19,9 +19,20 @@ type Props = {
   colorName?: string,
   margins?: string,
   justifyContent?: string,
+  openWebView?: boolean,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
+
+/**
+ * Open The Web View Screen when user openWebView props is passed as true
+ * @param {*} url
+ */
+const redirectToInAppView = (url, navigation) => {
+  navigation.navigate('InAppView', {
+    url,
+  });
+};
 
 /**
  * @param {object} props : Props for Anchor
@@ -37,11 +48,14 @@ const Anchor = ({
   onPress,
   accessibilityLabel,
   justifyContent,
+  openWebView,
   ...otherProps
 }: Props) => {
   const { url, navigation } = otherProps;
   const openUrl = () => {
-    if (validateExternalUrl(url)) {
+    if (openWebView && navigation) {
+      redirectToInAppView(url, navigation);
+    } else if (validateExternalUrl(url)) {
       UrlHandler(url);
     } else if (navigation) {
       const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
@@ -95,6 +109,7 @@ Anchor.defaultProps = {
   colorName: null,
   margins: null,
   justifyContent: '',
+  openWebView: false,
 };
 
 export default withStyles(Anchor, AnchorStyles);

@@ -119,7 +119,7 @@ class AccountOverview extends PureComponent<Props> {
         ) : null}
         <UnderlineStyle />
         <View style={LegalStyleLinkStyles}>
-          <LegalLinks links={legalLinks} />
+          <LegalLinks links={legalLinks} navigation={navigation} />
         </View>
         <CopyrightText>{getLabelValue(labels, 'lbl_overview_copyrightTxt')}</CopyrightText>
       </View>

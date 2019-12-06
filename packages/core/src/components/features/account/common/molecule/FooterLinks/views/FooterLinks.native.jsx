@@ -18,7 +18,6 @@ import { LogoutWrapper } from '@tcp/core/src/components/features/account/Logout/
 import CreateAccount from '@tcp/core/src/components/features/account/CreateAccount';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import LogOutPageContainer from '@tcp/core/src/components/features/account/Logout/container/LogOut.container';
-import WebViewModal from '@tcp/core/src/components/common/molecules/WebViewModal';
 import {
   UnderlineStyle,
   TextWrapper,
@@ -49,8 +48,6 @@ class FooterLinks extends PureComponent {
       horizontalBar: true,
       modalHeaderLbl: ' ',
       changePassword: false,
-      toggleViewModal: false,
-      webUrl: '',
     };
   }
 
@@ -213,22 +210,8 @@ class FooterLinks extends PureComponent {
     });
   };
 
-  openWebViewModal = (webUri = '') => {
-    this.setState(state => ({
-      toggleViewModal: !state.toggleViewModal,
-      webUrl: webUri,
-    }));
-  };
-
-  redirectToInAppView = url => {
-    const { navigation } = this.props;
-    navigation.navigate('InAppView', {
-      url,
-    });
-  };
-
   renderLinks = () => {
-    const { getComponentId, toggleViewModal, webUrl } = this.state;
+    const { getComponentId } = this.state;
     const {
       isUserLoggedIn,
       labels,
@@ -363,34 +346,11 @@ class FooterLinks extends PureComponent {
         linkMarkup = (
           <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         );
-      } else if (leafLink.url.includes('help-center') || leafLink.url.includes('content')) {
-        linkMarkup = (
-          <Anchor
-            {...(leafLink.target === '_self'
-              ? {
-                  onPress: () => this.redirectToInAppView(leafLink.url),
-                }
-              : { url: leafLink.url })}
-            customStyle={AnchorStyles}
-          >
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs13"
-              fontWeight="regular"
-              text={leafLink.text}
-              color="gray.900"
-            />
-            <RightArrowImageContainer>
-              <ImageComp source={rightIcon} width={6} height={10} />
-            </RightArrowImageContainer>
-          </Anchor>
-        );
       } else if (!leafLink.url.includes('track-order')) {
         linkMarkup = (
           <Anchor
-            {...(leafLink.target === '_self'
-              ? { onPress: () => this.openWebViewModal(leafLink.url) }
-              : { url: leafLink.url })}
+            {...(leafLink.target === '_self' ? { openWebView: true, navigation } : '')}
+            url={leafLink.url}
             customStyle={AnchorStyles}
           >
             <BodyCopy
@@ -411,17 +371,6 @@ class FooterLinks extends PureComponent {
         <>
           {linkMarkup}
           {(index === 0 || index === 2 || index === 5) && showDivider ? <UnderlineStyle /> : null}
-          {toggleViewModal && (
-            <WebViewModal
-              openState={toggleViewModal}
-              toggleModalHandler={this.openWebViewModal}
-              webViewProps={{
-                source: {
-                  uri: webUrl,
-                },
-              }}
-            />
-          )}
         </>
       );
     });
