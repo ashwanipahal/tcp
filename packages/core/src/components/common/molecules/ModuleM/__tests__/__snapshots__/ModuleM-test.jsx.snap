@@ -28,7 +28,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
       >
         <Styled(LinkText)
           className="promo-header"
-          component="div"
+          component="h2"
           dataLocator="moduleM_header_text"
           headerText={
             Array [
@@ -80,6 +80,7 @@ exports[`ModuleM component ModuleM component renders correctly as flex 1`] = `
               },
             ]
           }
+          type="heading"
         />
       </div>
       <Styled(PromoBanner)
@@ -650,7 +651,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(LinkText)
           className="promo-header"
-          component="div"
+          component="h2"
           dataLocator="moduleM_header_text"
           headerText={
             Array [
@@ -702,6 +703,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               },
             ]
           }
+          type="heading"
         />
       </div>
       <Styled(PromoBanner)

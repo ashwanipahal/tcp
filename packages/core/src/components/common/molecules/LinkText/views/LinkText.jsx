@@ -22,6 +22,7 @@ const LinkText = props => {
     className,
     type,
     component,
+    variant,
     headerText,
     headingClass,
     color,
@@ -34,7 +35,8 @@ const LinkText = props => {
 
   if (type === 'heading') {
     Component = Heading;
-    compProps.variant = component;
+    compProps.component = component || variant;
+    compProps.variant = variant || component;
     compProps.color = color;
     compProps.dataLocator = dataLocator;
     compProps.color = color;
@@ -81,6 +83,7 @@ LinkText.defaultProps = {
   dataLocator: '',
   headingClass: '',
   color: '',
+  variant: '',
 };
 
 LinkText.propTypes = {
@@ -91,6 +94,7 @@ LinkText.propTypes = {
   dataLocator: PropTypes.string,
   headingClass: PropTypes.string,
   color: PropTypes.string,
+  variant: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(LinkText), LinkTextStyle);

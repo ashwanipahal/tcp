@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "620744955393",
+    "firebase_url": "https://gymboree-prod-android.firebaseio.com",
+    "project_id": "gymboree-prod-android",
+    "storage_bucket": "gymboree-prod-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620744955393:android:a7cbb7fc6428b261bb1200",
+        "android_client_info": {
+          "package_name": "com.childrensplace.gym.prod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620744955393-o0atrbpugp3dqgvec539vbl1s91oig9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh3HHJ3sR3lJHq6CZ0ZdcPIeiYmyVx7qA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "620744955393-o0atrbpugp3dqgvec539vbl1s91oig9r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

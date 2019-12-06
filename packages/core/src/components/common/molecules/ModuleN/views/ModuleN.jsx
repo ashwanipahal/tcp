@@ -62,7 +62,7 @@ const ModuleN = props => {
           {headerText && (
             <LinkText
               headerText={headerText}
-              component="h3"
+              component="h2"
               textAlign="center"
               type="heading"
               color="white"
