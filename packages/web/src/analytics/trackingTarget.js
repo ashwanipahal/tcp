@@ -3,7 +3,6 @@
  * Tracking target for the Redux-Beacon middleware
  * @see https://rangle.gitbook.io/redux-beacon/examples-and-recipes#how-to-create-your-own-target
  */
-import { setProp } from '@tcp/core/src/analytics/utils';
 
 // This would come from Launch
 // This would be used for hotfixing
@@ -15,13 +14,6 @@ const passthru = event => event;
 
 function transformEvent(event) {
   return (global._trackingMutation || passthru)(event);
-}
-
-function setCommonProps() {
-  const { _dataLayer } = global;
-  if (_dataLayer && _dataLayer.favStoreId) {
-    setProp('prop29', _dataLayer.favStoreId);
-  }
 }
 
 function track(...args) {
@@ -46,7 +38,6 @@ export default function create() {
         default:
           break;
       }
-      setCommonProps();
       // By default, track w/ just the name and payload
       return track(event.eventName, transformEvent(event));
     });

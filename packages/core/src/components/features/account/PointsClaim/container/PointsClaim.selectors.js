@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { getErrorSelector } from '@tcp/core/src/utils/utils';
+import { getLabelValue } from '@tcp/core/src/utils';
 import { POINTS_CLAIM_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
 const getState = state => state[POINTS_CLAIM_REDUCER_KEY];
@@ -56,3 +57,9 @@ export const getPointsClaimErrorMessage = createSelector(
     return getErrorSelector(state, labels, 'lbl_points_claim_error');
   }
 );
+
+export const getAccessibilityLabels = state => {
+  return {
+    sampleReceiptLbl: getLabelValue(state.Labels, 'lbl_sample_receipt', 'accessibility', 'global'),
+  };
+};

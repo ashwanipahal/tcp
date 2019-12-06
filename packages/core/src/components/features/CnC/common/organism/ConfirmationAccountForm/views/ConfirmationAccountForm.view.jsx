@@ -125,6 +125,7 @@ const ConfirmationCreateAccountForm = ({
     lbl_createAccount_hide: lblHide,
     lbl_createAccount_heading: lblHeading,
     lbl_createAccount_succcessMsg: lblSucccessMsg,
+    lbl_info_icon: lblInfoIcon,
   },
   passwordLabels,
 }) => {
@@ -202,7 +203,7 @@ const ConfirmationCreateAccountForm = ({
                   <Image
                     className="tcp_carousel__play tooltip"
                     src={getIconPath('info-icon')}
-                    alt=""
+                    alt={lblInfoIcon}
                   />
                 </ReactTooltip>
               </div>
@@ -344,6 +345,7 @@ ConfirmationCreateAccountForm.propTypes = {
     lbl_createAccount_show: PropTypes.string,
     lbl_createAccount_hide: PropTypes.string,
     lbl_createAccount_heading: PropTypes.string,
+    lbl_info_icon: PropTypes.string,
   }),
   passwordLabels: PropTypes.shape({}),
 };
@@ -368,6 +370,7 @@ ConfirmationCreateAccountForm.defaultProps = {
     lbl_createAccount_show: '',
     lbl_createAccount_hide: '',
     lbl_createAccount_heading: '',
+    lbl_info_icon: '',
   },
   passwordLabels: {},
 };

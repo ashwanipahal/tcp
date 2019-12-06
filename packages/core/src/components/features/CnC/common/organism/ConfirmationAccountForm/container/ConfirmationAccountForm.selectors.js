@@ -73,8 +73,15 @@ const getCreateAccountLabels = createSelector(
   }
 );
 
+const getAccessibilityLabels = state => {
+  return {
+    lbl_info_icon: getLabelValue(state.Labels, 'lbl_info_icon', 'accessibility', 'global'),
+  };
+};
+
 export default {
   getCreateAccountLabels,
   getCreateAccountSuccess,
   getPasswordLabels,
+  getAccessibilityLabels,
 };

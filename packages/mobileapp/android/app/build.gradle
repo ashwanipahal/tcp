@@ -302,7 +302,7 @@ android {
             versionNameSuffix "-tcpUAT"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"Ma4vZhh6IG1dyvr1mVOG_mcvY_9dKqgXdfO2y\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"fULDzkZ7Vp4qh7il0l6gDmBkeB5oc2xq4Yu6n\""
         }
 
         tcpUatPreview {
@@ -313,7 +313,7 @@ android {
             versionNameSuffix "-tcpUATPreview"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"Ma4vZhh6IG1dyvr1mVOG_mcvY_9dKqgXdfO2y\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"fULDzkZ7Vp4qh7il0l6gDmBkeB5oc2xq4Yu6n\""
         }
 
         gymboreeUat {
@@ -322,7 +322,7 @@ android {
             versionNameSuffix "-gymboreeUAT"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"IuwYFq2BgvHOFvTDnvBDLeLUVxeTwEFmhlCSX\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"5Hhp7UZaDy_bXCDWcKuQO8niNG8liG9pTpI2U\""
         }
 
         gymboreeUatPreview {
@@ -331,7 +331,7 @@ android {
             versionNameSuffix "-gymboreeUATPreview"
             versionName = '1.0.0'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
-            buildConfigField "String", "CODEPUSH_KEY", "\"IuwYFq2BgvHOFvTDnvBDLeLUVxeTwEFmhlCSX\""
+            buildConfigField "String", "CODEPUSH_KEY", "\"5Hhp7UZaDy_bXCDWcKuQO8niNG8liG9pTpI2U\""
         }
 
         tcpProd {
