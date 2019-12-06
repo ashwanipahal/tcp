@@ -67,7 +67,7 @@ const dropDownlist = css`
   .ulBorderWithLastRow li:last-child div {
     position: absolute;
     bottom: 0;
-    width: 94%;
+    width: calc(100% - 32px);
     border-bottom: none;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       width: 93%;
@@ -89,14 +89,14 @@ const dropDownlist = css`
   .dropDownTop {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
     position: absolute;
-    width: 100%;
+    width: calc(100% - 17px);
     height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     z-index: 1;
   }
   .dropDownBottom {
     background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
     position: absolute;
-    width: 100%;
+    width: calc(100% - 17px);
     height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     bottom: 57px;
     z-index: 1;
