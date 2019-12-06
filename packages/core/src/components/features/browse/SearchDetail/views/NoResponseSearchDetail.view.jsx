@@ -19,6 +19,7 @@ import { routerPush } from '../../../../../utils/index';
 import SuggestionBox from '../../../../common/molecules/SearchBar/views/SuggestionBox.view';
 import CategoryMatches from './CategoryMatches.view';
 import { getLatestSearchResultsExists } from '../container/SearchDetail.util';
+import CONSTANTS from '../../../../common/molecules/SearchBar/SearchBar.constants';
 
 class NoResponseSearchDetailView extends React.PureComponent {
   constructor(props) {
@@ -115,7 +116,11 @@ class NoResponseSearchDetailView extends React.PureComponent {
     if (searchText) {
       this.setDataInLocalStorage(searchText, url);
       if (url) {
-        routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+        routerPush(
+          `/c?searchType=${CONSTANTS.ANALYTICS_TYPEAHEAD_CATEGORY}&cid=${url.split('/c/')[1]}`,
+          `${url}`,
+          { shallow: false }
+        );
       } else {
         routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
       }

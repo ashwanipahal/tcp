@@ -394,6 +394,9 @@ function mapDispatchToProps(dispatch) {
             },
           })
         );
+        setTimeout(() => {
+          dispatch(setClickAnalyticsData({}));
+        }, 200);
       }, 100);
     },
   };

@@ -112,9 +112,7 @@ class SearchBar extends React.PureComponent {
     this.clearModalParams();
     if (url) {
       routerPush(
-        `/c?searchQuery=${searchText}&searchType=${CONSTANTS.ANALYTICS_TYPEAHEAD_CATEGORY}&cid=${
-          url.split('/c/')[1]
-        }`,
+        `/c?searchType=${CONSTANTS.ANALYTICS_TYPEAHEAD_CATEGORY}&cid=${url.split('/c/')[1]}`,
         `${url}`,
         { shallow: false }
       );
