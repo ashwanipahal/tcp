@@ -130,7 +130,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -571,7 +570,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -1008,7 +1006,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -1470,7 +1467,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -1907,7 +1903,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -2344,7 +2339,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -2807,7 +2801,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -3258,7 +3251,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -3721,7 +3713,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -4172,7 +4163,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -4623,7 +4613,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -5060,7 +5049,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -5522,7 +5510,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -5984,7 +5971,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >
@@ -6472,7 +6458,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             Object {
               "large": 12,
               "medium": 12,
-              "small": 12,
             }
           }
         >

@@ -18,6 +18,17 @@ const styles = css`
     flex-grow: 1;
   }
 
+  .default-shipping-heading {
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      text-align: right;
+    }
+  }
+  .default-billing-heading {
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      text-align: right;
+    }
+  }
+
   .heading {
     margin: 0;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

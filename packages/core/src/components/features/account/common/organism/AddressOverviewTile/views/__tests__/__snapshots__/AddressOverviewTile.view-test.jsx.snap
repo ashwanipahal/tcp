@@ -55,28 +55,32 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           }
         }
       >
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
+        <div
+          className="default-shipping-heading"
         >
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/account/address-book/edit-address/undefined"
-            fontSizeVariation="large"
-            to="/account?id=edit-address&addressId=undefined"
-            underline={true}
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
           >
-            Edit
-          </Styled(Anchor)>
-        </Styled(BodyCopy)>
+            <Styled(Anchor)
+              anchorVariation="primary"
+              asPath="/account/address-book/edit-address/undefined"
+              fontSizeVariation="large"
+              to="/account?id=edit-address&addressId=undefined"
+              underline={true}
+            >
+              Edit
+            </Styled(Anchor)>
+          </Styled(BodyCopy)>
+        </div>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -163,15 +167,19 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           }
         }
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          asPath="/account/payment"
-          fontSizeVariation="large"
-          to="/account?id=payment"
-          underline={true}
+        <div
+          className="default-billing-heading"
         >
-          Edit
-        </Styled(Anchor)>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/payment"
+            fontSizeVariation="large"
+            to="/account?id=payment"
+            underline={true}
+          >
+            Edit
+          </Styled(Anchor)>
+        </div>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -268,28 +276,32 @@ exports[`AddressOverviewTile render empty address component should render correc
           }
         }
       >
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
+        <div
+          className="default-shipping-heading"
         >
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/account/address-book/add-new-address"
-            fontSizeVariation="large"
-            to="/account?id=address-book&subSection=add-new-address"
-            underline={true}
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
           >
-            lbl_overview_addressBookAdd
-          </Styled(Anchor)>
-        </Styled(BodyCopy)>
+            <Styled(Anchor)
+              anchorVariation="primary"
+              asPath="/account/address-book/add-new-address"
+              fontSizeVariation="large"
+              to="/account?id=address-book&subSection=add-new-address"
+              underline={true}
+            >
+              lbl_overview_addressBookAdd
+            </Styled(Anchor)>
+          </Styled(BodyCopy)>
+        </div>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -370,15 +382,19 @@ exports[`AddressOverviewTile render empty address component should render correc
           }
         }
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          asPath="/account/payment/add-credit-card"
-          fontSizeVariation="large"
-          to="/account?id=add-credit-card"
-          underline={true}
+        <div
+          className="default-billing-heading"
         >
-          lbl_overview_addressBookAdd
-        </Styled(Anchor)>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/payment/add-credit-card"
+            fontSizeVariation="large"
+            to="/account?id=add-credit-card"
+            underline={true}
+          >
+            lbl_overview_addressBookAdd
+          </Styled(Anchor)>
+        </div>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -469,28 +485,32 @@ exports[`AddressOverviewTile render empty address should render empty address co
           }
         }
       >
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
+        <div
+          className="default-shipping-heading"
         >
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/account/address-book/add-new-address"
-            fontSizeVariation="large"
-            to="/account?id=address-book&subSection=add-new-address"
-            underline={true}
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
           >
-            lbl_overview_addressBookAdd
-          </Styled(Anchor)>
-        </Styled(BodyCopy)>
+            <Styled(Anchor)
+              anchorVariation="primary"
+              asPath="/account/address-book/add-new-address"
+              fontSizeVariation="large"
+              to="/account?id=address-book&subSection=add-new-address"
+              underline={true}
+            >
+              lbl_overview_addressBookAdd
+            </Styled(Anchor)>
+          </Styled(BodyCopy)>
+        </div>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -571,15 +591,19 @@ exports[`AddressOverviewTile render empty address should render empty address co
           }
         }
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          asPath="/account/payment/add-credit-card"
-          fontSizeVariation="large"
-          to="/account?id=add-credit-card"
-          underline={true}
+        <div
+          className="default-billing-heading"
         >
-          lbl_overview_addressBookAdd
-        </Styled(Anchor)>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/payment/add-credit-card"
+            fontSizeVariation="large"
+            to="/account?id=add-credit-card"
+            underline={true}
+          >
+            lbl_overview_addressBookAdd
+          </Styled(Anchor)>
+        </div>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)

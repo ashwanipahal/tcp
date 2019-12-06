@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import Slider from 'react-slick';
+import PropTypes from 'prop-types';
 import config from '../Carousel.config';
 import { Image } from '../../../atoms';
 import { getIconPath } from '../../../../../utils';
@@ -10,34 +11,18 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
-type Props = {
-  options: Object,
-  nextProps: Object,
-  children: any,
-  carouselConfig: Object,
-  className: String,
-  playIconButtonLabel: String,
-  pauseIconButtonLabel: String,
-  sliderImageIndex: number,
-};
-
-type State = {
-  autoplay: boolean,
-  uniqueId: number,
-};
-
 /**
  * @function Carousel component that creates carousel using
  * third party 'react-slick'
  */
-class Carousel extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
+class Carousel extends React.PureComponent {
+  constructor(props) {
     super(props);
-    (this: any).slider = null;
-    (this: any).getSlider = this.getSlider.bind(this);
-    (this: any).getPlayButton = this.getPlayButton.bind(this);
-    (this: any).play = this.play.bind(this);
-    (this: any).pause = this.pause.bind(this);
+    this.slider = null;
+    this.getSlider = this.getSlider.bind(this);
+    this.getPlayButton = this.getPlayButton.bind(this);
+    this.play = this.play.bind(this);
+    this.pause = this.pause.bind(this);
     this.state = {
       autoplay: true,
       uniqueId: Math.random(),
@@ -46,11 +31,11 @@ class Carousel extends React.PureComponent<Props, State> {
   }
 
   /* eslint-disable-next-line */
-  UNSAFE_componentWillReceiveProps = (nextProps: Object) => {
+  UNSAFE_componentWillReceiveProps = nextProps => {
     const { sliderImageIndex } = nextProps;
     const { sliderImageIndex: sliderImage } = this.props;
     if (sliderImageIndex !== sliderImage) {
-      (this: any).slider.slickGoTo(sliderImageIndex);
+      this.slider.slickGoTo(sliderImageIndex);
     }
   };
 
@@ -59,9 +44,9 @@ class Carousel extends React.PureComponent<Props, State> {
    * @param {[Object]} element [Event object of click].
    * @return {node} function returns slider element.
    */
-  getSlider(element: SyntheticKeyboardEvent<*>) {
-    (this: any).slider = element;
-    return (this: any).slider;
+  getSlider(element) {
+    this.slider = element;
+    return this.slider;
   }
 
   /**
@@ -69,7 +54,7 @@ class Carousel extends React.PureComponent<Props, State> {
    * @param {[Object]} element [Event object of click].
    * @return {node} function returns slider element.
    */
-  getPlayButton(wrapperConfig: Object) {
+  getPlayButton(wrapperConfig) {
     const { autoplay } = this.state;
     const {
       playIconButtonLabel,
@@ -127,7 +112,7 @@ class Carousel extends React.PureComponent<Props, State> {
    * also update component state.
    */
   play() {
-    (this: any).slider.slickPlay();
+    this.slider.slickPlay();
     this.togglePlay();
   }
 
@@ -136,7 +121,7 @@ class Carousel extends React.PureComponent<Props, State> {
    * also update component state.
    */
   pause() {
-    (this: any).slider.slickPause();
+    this.slider.slickPause();
     this.togglePlay();
   }
 
@@ -150,6 +135,32 @@ class Carousel extends React.PureComponent<Props, State> {
   }
 
   /**
+   * @function afterChange pause autoplay after max loop count completed
+   */
+  afterChange = i => {
+    const {
+      options: { maxLoopCount },
+    } = this.props;
+    const { autoplay } = this.state;
+    let { loopCompleted } = this.state;
+    if (maxLoopCount && autoplay) {
+      if (loopCompleted >= maxLoopCount) {
+        this.pause();
+        this.setState({
+          autoplay: false,
+        });
+        return;
+      }
+      if (i === this.slider.props.children.length - 1) {
+        loopCompleted += 1;
+        this.setState({
+          loopCompleted,
+        });
+      }
+    }
+  };
+
+  /**
    * @function render  Used to render the JSX of the component
    * @param {object} options Customized caroused configs from parent wrapper
    * @param {node} children address object
@@ -157,31 +168,15 @@ class Carousel extends React.PureComponent<Props, State> {
    * of functionalities like play pause, change carousel theme etc.
    */
   render() {
-    const { options, children, carouselConfig, className } = this.props;
+    const { options, children, carouselConfig, className, labels } = this.props;
     const { maxLoopCount, ...otherOptions } = options;
-    let { loopCompleted } = this.state;
-    const { autoplay } = this.state;
 
-    if (maxLoopCount && autoplay) {
-      otherOptions.afterChange = i => {
-        if (loopCompleted === maxLoopCount) {
-          this.pause();
-          this.setState({
-            autoplay: false,
-          });
-        }
-        if (i === this.slider.props.children.length - 1) {
-          loopCompleted += 1;
-          this.setState({
-            loopCompleted,
-          });
-        }
-      };
-    }
     const settings = {
       appendDots: this.appendDots,
       ...defaults,
       ...otherOptions,
+      prevArrow: <button aria-label={labels && labels.accessibility.ariaPrevious} />,
+      nextArrow: <button aria-label={labels && labels.accessibility.ariaNext} />,
       /*
          The dots will be created on both cases. we need this as we are putting custom play/pause
          inside the slick-dots container. So, if some cases if dots not required and we will be able
@@ -198,13 +193,31 @@ class Carousel extends React.PureComponent<Props, State> {
         carouselConfig={carouselConfig}
         data-locator={carouselConfig.dataLocatorCarousel}
       >
-        <Slider className="tcp_carousel" ref={this.getSlider} key={uniqueId} {...settings}>
+        <Slider
+          className="tcp_carousel"
+          ref={this.getSlider}
+          key={uniqueId}
+          {...settings}
+          afterChange={this.afterChange}
+        >
           {!children ? null : children}
         </Slider>
       </div>
     );
   }
 }
+
+Carousel.propTypes = {
+  options: PropTypes.shape({}).isRequired,
+  nextProps: PropTypes.shape({}).isRequired,
+  children: PropTypes.shape({}).isRequired,
+  carouselConfig: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  playIconButtonLabel: PropTypes.string.isRequired,
+  pauseIconButtonLabel: PropTypes.string.isRequired,
+  sliderImageIndex: PropTypes.number.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+};
 
 export default withStyles(errorBoundary(Carousel), CarouselStyle);
 export { Carousel as CarouselVanilla };
