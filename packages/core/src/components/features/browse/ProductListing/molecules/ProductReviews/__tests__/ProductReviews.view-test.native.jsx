@@ -11,7 +11,11 @@ describe('ProductReviews component as guest', () => {
     userId: '',
     mprId: '',
     reviewsCount: 231,
-    ratingsAndReviewsLabel: 'RATINGS & REVIEWS',
+    ratingsAndReviewsLabel: {
+      lbl_ratings_and_reviews: 'RATINGS & REVIEWS',
+      lbl_login_modal_title: 'Login',
+      lbl_rating_form_title: 'Write A Review',
+    },
     getSecurityToken: () => {},
   };
 
@@ -37,7 +41,11 @@ describe('ProductReviews component as logged in user', () => {
     userId: 'sdsd',
     mprId: '312321',
     reviewsCount: 231,
-    ratingsAndReviewsLabel: 'RATINGS & REVIEWS',
+    ratingsAndReviewsLabel: {
+      lbl_ratings_and_reviews: 'RATINGS & REVIEWS',
+      lbl_login_modal_title: 'Login',
+      lbl_rating_form_title: 'Write A Review',
+    },
     getSecurityToken: () => {},
   };
   beforeEach(() => {
