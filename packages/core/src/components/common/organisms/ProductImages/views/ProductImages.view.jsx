@@ -210,6 +210,7 @@ class ProductImages extends React.Component {
           (isMobile ? (
             <FullSizeImageModal
               name={productName}
+              modalLabel={pdpLabels.fullSize}
               image={images[currentImageIndex] && images[currentImageIndex][imageSizePropertyName]}
               onCloseClick={onCloseClick}
             />

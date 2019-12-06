@@ -211,6 +211,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       keepAlive,
       sizeChartDetails,
       isLoading,
+      plpLabels,
     } = this.props;
 
     return isLoading ? (
@@ -219,7 +220,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
       sizeList && sizeList.size > 0 && (
         <div className="size-selector">
           {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && (
-            <SizeChart sizeChartDetails={sizeChartDetails} />
+            <SizeChart
+              sizeChartDetails={sizeChartDetails}
+              labels={{ sizeChart: plpLabels.sizeChart }}
+            />
           )}
           <Field
             width={49}
