@@ -6,6 +6,7 @@ import {
   getSuccess,
   getShowNotificationState,
   getPointsClaimErrorMessage,
+  getAccessibilityLabels,
 } from './PointsClaim.selectors';
 import { routerPush, getSiteId, isMobileApp, getLabelValue } from '../../../../../utils';
 import { getMyPlaceNumber, getProfileInfoTileData } from '../../User/container/User.selectors';
@@ -117,7 +118,10 @@ export const mapStateToProps = state => ({
   successMessage: getSuccess(state),
   errorMessage: getError(state),
   showNotification: getShowNotificationState(state),
-  labels: getLabels(state),
+  labels: {
+    ...getLabels(state),
+    ...getAccessibilityLabels(state),
+  },
   myPlaceNumber: getMyPlaceNumber(state),
   userInfoData: getProfileInfoTileData(state),
   claimPointsErrorMessage: getPointsClaimErrorMessage(state),
