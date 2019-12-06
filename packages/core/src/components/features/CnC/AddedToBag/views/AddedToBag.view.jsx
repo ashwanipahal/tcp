@@ -33,7 +33,14 @@ class AddedToBag extends React.PureComponent {
   }
 
   renderProductInfo() {
-    const { addedToBagData, labels, quantity, pointsSummary, bagLoading } = this.props;
+    const {
+      addedToBagData,
+      labels,
+      quantity,
+      pointsSummary,
+      bagLoading,
+      isInternationalShipping,
+    } = this.props;
     if (Array.isArray(addedToBagData)) {
       return addedToBagData.map(item => {
         return (
@@ -44,6 +51,7 @@ class AddedToBag extends React.PureComponent {
               inheritedStyles={productInfoStyles}
               isDoubleAddedToBag
               bagLoading={bagLoading}
+              isInternationalShipping={isInternationalShipping}
             />
           </div>
         );
