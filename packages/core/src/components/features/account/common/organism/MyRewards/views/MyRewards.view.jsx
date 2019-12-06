@@ -75,10 +75,11 @@ const MyRewards = ({
             {!isFetching &&
               (coupons.size > 0 ? (
                 <BodyCopy component="div" className="rewards-container elem-mb-XXL">
-                  {coupons.map(coupon => {
+                  {coupons.map((coupon, index) => {
                     return (
                       <DetailedCouponTile
                         key={coupon.id}
+                        index={index}
                         labels={commonLabels}
                         coupon={coupon}
                         onViewCouponDetails={onViewCouponDetails}

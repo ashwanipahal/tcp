@@ -96,4 +96,5 @@ export {
   getProductUrlForDAM,
   plpRoutingHandling,
   convertNumToBool,
+  isIE11,
 } from './utils';
