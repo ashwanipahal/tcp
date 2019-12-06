@@ -1178,7 +1178,8 @@ export const triggerPostMessage = url => {
     if (updatedUrl.includes('/us')) {
       updatedUrl = updatedUrl.replace('/us', '');
     }
-    window.ReactNativeWebView.postMessage(updatedUrl, '*');
+    const postMessageFn = window.ReactNativeWebView;
+    postMessageFn.postMessage(updatedUrl);
   }
 };
 /*
