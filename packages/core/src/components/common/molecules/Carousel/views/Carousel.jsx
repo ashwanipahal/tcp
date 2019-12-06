@@ -25,7 +25,9 @@ class Carousel extends React.PureComponent {
     this.pause = this.pause.bind(this);
     this.state = {
       autoplay: true,
-      uniqueId: Math.random(),
+      uniqueId: Math.random() * 1000,
+      // uniqueId is generated when a new carousel is instantiated and is passed to slider to keep them unique
+      // key could also be passed from the module from the component(like in moduleH) which will overwrite this key
       loopCompleted: 0,
     };
   }
