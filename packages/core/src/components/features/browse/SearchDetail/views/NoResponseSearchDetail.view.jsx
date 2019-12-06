@@ -122,7 +122,11 @@ class NoResponseSearchDetailView extends React.PureComponent {
           { shallow: false }
         );
       } else {
-        routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+        routerPush(
+          `/search?searchQuery=${searchText}&searchType=typeahead:keyword`,
+          `/search/${searchText}`,
+          { shallow: true }
+        );
       }
     }
   };
