@@ -34,7 +34,7 @@ describe('Carousel component', () => {
     expect(dotsWrapper.find(playButton)).toHaveLength(1);
   });
 
-  it('hide play button if autoplay: tasdrue prop is passed', () => {
+  it('loopCompleted Count should increase on loop completion', () => {
     const props = {
       options: {
         accessibility: true,
