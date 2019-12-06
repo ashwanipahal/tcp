@@ -33,7 +33,7 @@ exports[`ProductImages component should renders correctly 1`] = `
       <div
         className="carousel-container"
       >
-        <Styled(Carousel)
+        <Connect(Styled(Carousel))
           carouselConfig={
             Object {
               "autoplay": false,
@@ -110,7 +110,7 @@ exports[`ProductImages component should renders correctly 1`] = `
             isZoomEnabled={true}
             zoomImageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2082931_IV-1.jpg"
           />
-        </Styled(Carousel)>
+        </Connect(Styled(Carousel))>
       </div>
       <div
         className="social-connect-wrapper"
@@ -143,6 +143,7 @@ exports[`ProductImages component should renders correctly 1`] = `
           </Styled(Anchor)>
         </span>
         <Styled(SocialConnect)
+          accessibilityLabels={Object {}}
           isFacebookEnabled={true}
           isPinterestEnabled={true}
           isTwitterEnabled={true}

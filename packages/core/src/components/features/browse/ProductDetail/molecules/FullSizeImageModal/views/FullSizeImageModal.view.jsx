@@ -19,6 +19,7 @@ class FullSizeImageModal extends React.Component {
     onCloseClick: PropTypes.func.isRequired,
     isZoomIn: PropTypes.bool,
     className: PropTypes.string,
+    modalLabel: PropTypes.string,
   };
 
   handleTouchStart = onDoubleTap(() => {
@@ -33,7 +34,7 @@ class FullSizeImageModal extends React.Component {
   }
 
   render() {
-    const { onCloseClick, className, name, image } = this.props;
+    const { onCloseClick, className, name, image, modalLabel } = this.props;
     const { isZoomIn } = this.state;
     const imgData = {
       alt: name,
@@ -48,7 +49,7 @@ class FullSizeImageModal extends React.Component {
         dataLocator={getLocator('pdp_full_size_image_modal')}
         closeIconDataLocator={getLocator('pdp_zoomed_image_closed_btn')}
         fixedWidth
-        contentLabel="Image preview"
+        contentLabel={`${name} ${modalLabel}`}
       >
         <div className="overlay-content">
           <figure
@@ -67,6 +68,7 @@ FullSizeImageModal.defaultProps = {
   name: '',
   isZoomIn: false,
   className: '',
+  modalLabel: '',
 };
 
 export default withStyles(FullSizeImageModal, styles);

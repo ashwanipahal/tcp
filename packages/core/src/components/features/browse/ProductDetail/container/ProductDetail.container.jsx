@@ -41,6 +41,7 @@ import {
   getPLPPromos,
   getSizeChartDetails,
   getPDPLoadingState,
+  getAccessibilityLabels,
 } from './ProductDetail.selectors';
 
 import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
@@ -156,6 +157,7 @@ class ProductDetailContainer extends React.PureComponent {
       router: { asPath: asPathVal },
       trackPageLoad,
       sizeChartDetails,
+      accessibilityLabels,
       ...otherProps
     } = this.props;
 
@@ -197,6 +199,7 @@ class ProductDetailContainer extends React.PureComponent {
               bottomPromos={bottomPromos}
               trackPageLoad={trackPageLoad}
               sizeChartDetails={sizeChartDetails}
+              accessibilityLabels={accessibilityLabels}
               isLoading={typeof window === 'undefined' || isLoading}
               isMatchingFamily // TODO: Need to add kill switch for this
             />
@@ -249,6 +252,7 @@ function mapStateToProps(state) {
     bottomPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_BOTTOM),
     sizeChartDetails: getSizeChartDetails(state),
     store: state,
+    accessibilityLabels: getAccessibilityLabels(state),
   };
 }
 
@@ -379,6 +383,7 @@ ProductDetailContainer.propTypes = {
   bottomPromos: PropTypes.string,
   isLoading: PropTypes.bool,
   trackPageLoad: PropTypes.func,
+  accessibilityLabels: PropTypes.shape({}),
   resetProductDetailsDynamicData: PropTypes.func.isRequired,
 };
 
@@ -410,6 +415,7 @@ ProductDetailContainer.defaultProps = {
   bottomPromos: '',
   isLoading: false,
   trackPageLoad: () => {},
+  accessibilityLabels: {},
 };
 
 export default withRouter(

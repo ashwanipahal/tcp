@@ -1,3 +1,7 @@
+/*
+  @Important
+  If any changes specific to add to bag from collection or outfit container then make sure that the same changes should be done in the both outfitDetail.container and BundleProduct.container file. The Outfit and collection designs are same so we are using outfit view on the both container.
+*/
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
@@ -21,9 +25,13 @@ import {
   prodDetails,
   getOutfitLabels,
   getLoadingState,
+  getAccessibilityLabels,
 } from './BundleProduct.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
-import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
+import {
+  PRODUCT_ADD_TO_BAG,
+  OUTFIT_LISTING_FORM,
+} from '../../../../../constants/reducer.constants';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import {
   addToCartEcom,
@@ -91,10 +99,10 @@ export class ProductBundleContainer extends React.PureComponent {
   };
 
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
-    const formValues = getAddedToBagFormValues(
-      currentState,
-      `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
-    );
+    const formName = !isMobileApp()
+      ? `${PRODUCT_ADD_TO_BAG}-${generalProductId}`
+      : `${OUTFIT_LISTING_FORM}-${generalProductId}`;
+    const formValues = getAddedToBagFormValues(currentState, formName);
     let cartItemInfo = getCartItemInfo(productInfo, formValues);
     cartItemInfo = { ...cartItemInfo };
     addToBagEcom(cartItemInfo);
@@ -130,6 +138,7 @@ export class ProductBundleContainer extends React.PureComponent {
       toastMessage,
       isLoading,
       topPromos,
+      accessibilityLabels,
     } = this.props;
     return (
       <>
@@ -164,6 +173,7 @@ export class ProductBundleContainer extends React.PureComponent {
             outOfStockLabels={outOfStockLabels}
             toastMessage={toastMessage}
             topPromos={topPromos}
+            accessibilityLabels={accessibilityLabels}
             isMatchingFamily // TODO: Need to add kill switch for this
           />
         ) : (
@@ -205,6 +215,7 @@ function mapStateToProps(state) {
       : getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
     topPromos: getPLPPromos(state, PRODUCTDETAIL_CONSTANTS.PROMO_TOP),
+    accessibilityLabels: getAccessibilityLabels(state),
   };
 }
 
@@ -267,6 +278,7 @@ ProductBundleContainer.propTypes = {
   toastMessage: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
   topPromos: PropTypes.shape({}),
+  accessibilityLabels: PropTypes.shape({}),
 };
 
 ProductBundleContainer.defaultProps = {
@@ -297,6 +309,7 @@ ProductBundleContainer.defaultProps = {
   outOfStockLabels: {},
   isLoading: false,
   topPromos: null,
+  accessibilityLabels: {},
 };
 
 export default connect(

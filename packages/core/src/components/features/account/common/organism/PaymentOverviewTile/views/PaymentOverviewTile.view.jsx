@@ -61,7 +61,7 @@ export const PaymentOverviewTile = ({
             )}
           </div>
           {/* Credit card list */}
-          <Row fullBleed className="elem-mb-XL">
+          <Row fullBleed className="elem-mb-MED">
             <Col
               colSize={{
                 small: 6,

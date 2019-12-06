@@ -42,6 +42,7 @@ class ProductImageWrapper extends React.Component {
       isGiftCard,
       keepAlive,
       outOfStockLabels,
+      accessibilityLabels,
       ratingsProductId,
     } = this.props;
     const { isFullSizeModalOpen } = this.state;
@@ -73,6 +74,7 @@ class ProductImageWrapper extends React.Component {
             pdpLabels={pdpLabels}
             keepAlive={keepAlive}
             outOfStockLabels={outOfStockLabels}
+            accessibilityLabels={accessibilityLabels}
             ratingsProductId={ratingsProductId}
           />
         ) : null}
@@ -87,6 +89,7 @@ class ProductImageWrapper extends React.Component {
               isFullSizeModalOpen={isFullSizeModalOpen}
               colorChipSelector={colorChipSelector}
               initialValues={initialValuesForm}
+              accessibilityLabels={accessibilityLabels}
               ratingsProductId={ratingsProductId}
             />
           ))}
@@ -104,6 +107,7 @@ ProductImageWrapper.defaultProps = {
   outOfStockLabels: {
     outOfStockCaps: '',
   },
+  accessibilityLabels: {},
 };
 
 ProductImageWrapper.propTypes = {
@@ -140,6 +144,7 @@ ProductImageWrapper.propTypes = {
   outOfStockLabels: PropTypes.shape({
     outOfStockCaps: PropTypes.string,
   }),
+  accessibilityLabels: PropTypes.shape({}),
   ratingsProductId: PropTypes.string.isRequired,
 };
 

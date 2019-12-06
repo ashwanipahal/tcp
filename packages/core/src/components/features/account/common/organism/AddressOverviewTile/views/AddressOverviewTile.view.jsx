@@ -53,31 +53,33 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
               medium: 1,
             }}
           >
-            <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-              {defaultShippingAddress && defaultShippingAddress.length ? (
-                <Anchor
-                  fontSizeVariation="large"
-                  underline
-                  anchorVariation="primary"
-                  to={`/account?id=edit-address&addressId=${defaultShippingAddress[0].addressId}`}
-                  asPath={`/account/address-book/edit-address/${
-                    defaultShippingAddress[0].addressId
-                  }`}
-                >
-                  {getLabelValue(labels, 'lbl_overview_addressBookEdit')}
-                </Anchor>
-              ) : (
-                <Anchor
-                  fontSizeVariation="large"
-                  underline
-                  anchorVariation="primary"
-                  to="/account?id=address-book&subSection=add-new-address"
-                  asPath="/account/address-book/add-new-address"
-                >
-                  {getLabelValue(labels, 'lbl_overview_addressBookAdd')}
-                </Anchor>
-              )}
-            </BodyCopy>
+            <div className="default-shipping-heading">
+              <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
+                {defaultShippingAddress && defaultShippingAddress.length ? (
+                  <Anchor
+                    fontSizeVariation="large"
+                    underline
+                    anchorVariation="primary"
+                    to={`/account?id=edit-address&addressId=${defaultShippingAddress[0].addressId}`}
+                    asPath={`/account/address-book/edit-address/${
+                      defaultShippingAddress[0].addressId
+                    }`}
+                  >
+                    {getLabelValue(labels, 'lbl_overview_addressBookEdit')}
+                  </Anchor>
+                ) : (
+                  <Anchor
+                    fontSizeVariation="large"
+                    underline
+                    anchorVariation="primary"
+                    to="/account?id=address-book&subSection=add-new-address"
+                    asPath="/account/address-book/add-new-address"
+                  >
+                    {getLabelValue(labels, 'lbl_overview_addressBookAdd')}
+                  </Anchor>
+                )}
+              </BodyCopy>
+            </div>
           </Col>
         </Row>
         <Row fullBleed className="elem-mb-MED">
@@ -124,27 +126,29 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
               medium: 1,
             }}
           >
-            {defaultBillingAddress && defaultBillingAddress.length ? (
-              <Anchor
-                fontSizeVariation="large"
-                underline
-                anchorVariation="primary"
-                to="/account?id=payment"
-                asPath="/account/payment"
-              >
-                {getLabelValue(labels, 'lbl_overview_addressBookEdit')}
-              </Anchor>
-            ) : (
-              <Anchor
-                fontSizeVariation="large"
-                underline
-                anchorVariation="primary"
-                to="/account?id=add-credit-card"
-                asPath="/account/payment/add-credit-card"
-              >
-                {getLabelValue(labels, 'lbl_overview_addressBookAdd')}
-              </Anchor>
-            )}
+            <div className="default-billing-heading">
+              {defaultBillingAddress && defaultBillingAddress.length ? (
+                <Anchor
+                  fontSizeVariation="large"
+                  underline
+                  anchorVariation="primary"
+                  to="/account?id=payment"
+                  asPath="/account/payment"
+                >
+                  {getLabelValue(labels, 'lbl_overview_addressBookEdit')}
+                </Anchor>
+              ) : (
+                <Anchor
+                  fontSizeVariation="large"
+                  underline
+                  anchorVariation="primary"
+                  to="/account?id=add-credit-card"
+                  asPath="/account/payment/add-credit-card"
+                >
+                  {getLabelValue(labels, 'lbl_overview_addressBookAdd')}
+                </Anchor>
+              )}
+            </div>
           </Col>
         </Row>
         <Row fullBleed className="elem-mb-XXL">

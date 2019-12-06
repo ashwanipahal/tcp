@@ -34,6 +34,32 @@ describe('Carousel component', () => {
     expect(dotsWrapper.find(playButton)).toHaveLength(1);
   });
 
+  it('loopCompleted Count should increase on loop completion', () => {
+    const props = {
+      options: {
+        accessibility: true,
+        autoplaySpeed: 3000,
+        dots: false,
+        autoplay: true,
+        maxLoopCount: 1,
+      },
+      carouselConfig: {
+        autoplay: true,
+      },
+    };
+    const wrapper = shallow(
+      <CarouselVanilla {...props}>
+        <div />
+        <div />
+      </CarouselVanilla>
+    );
+    const slider = wrapper.find(Slider);
+    wrapper.instance().slider = slider;
+    wrapper.instance().slider.props = slider.props();
+    slider.props.afterChange(1);
+    expect(wrapper.state('loopCompleted')).toBe(1);
+  });
+
   it('hide play button if autoplay: true prop is passed', () => {
     const props = {
       options: {
