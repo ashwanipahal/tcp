@@ -12,7 +12,6 @@ import {
   resetWalletAppState,
   resetCouponReducer,
 } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
-import { setFavStoreToLocalStorage } from '../../../storeLocator/StoreLanding/container/utils/userFavStore';
 import { setCheckoutModalMountedState } from '../../LoginPage/container/LoginPage.actions';
 import { resetAirmilesReducer } from '../../../CnC/common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import CHECKOUT_ACTIONS from '../../../CnC/Checkout/container/Checkout.action';
@@ -44,7 +43,6 @@ export function* logoutSaga() {
       yield put(BAG_PAGE_ACTIONS.resetCartReducer());
       yield put(getUserInfo({ ignoreCache: true }));
       if (!isMobileApp()) {
-        setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());
         yield put(setCheckoutModalMountedState({ state: false }));
         if (

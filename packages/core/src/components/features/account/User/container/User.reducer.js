@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { GET_DEFAULT_STORE_TTL } from '@tcp/core/src/config/site.config';
 import USER_CONSTANTS from '../User.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
@@ -109,7 +110,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
     case USER_CONSTANTS.SET_DEFAULT_STORE:
       return state
         .set('defaultStore', payload)
-        .set(DEFAULT_REDUCER_KEY, setCacheTTL(USER_CONSTANTS.GET_DEFAULT_STORE_TTL));
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL(GET_DEFAULT_STORE_TTL));
     case USER_CONSTANTS.RESPONSE_PLCC_CARD_ID_INFORMATION:
       return state.setIn(['personalData', 'plccCardId'], payload);
     case USER_CONSTANTS.RESPONSE_SET_PLCC_INFORMATION:
