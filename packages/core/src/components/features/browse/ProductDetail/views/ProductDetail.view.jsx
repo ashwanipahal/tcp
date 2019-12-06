@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import ExecutionEnvironment from 'exenv';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import { isClient } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
@@ -9,7 +9,6 @@ import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle, { customSubmitButtonStyle } from '../ProductDetail.style';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
-import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
@@ -48,7 +47,8 @@ class ProductDetailView extends PureComponent {
     const { productInfo, trackPageLoad } = this.props;
     const { name, ratingsProductId } = productInfo;
     const productsFormatted = this.formatProductsData(productInfo);
-    const pageName = `product:${ratingsProductId}:${name.toLowerCase()}`;
+    const nameParam = name && name.toLowerCase();
+    const pageName = `product:${ratingsProductId}:${nameParam}`;
 
     if (productsFormatted) {
       trackPageLoad({
@@ -133,6 +133,7 @@ class ProductDetailView extends PureComponent {
       outOfStockLabels,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      isLoading,
       ...otherProps
     } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
@@ -154,16 +155,21 @@ class ProductDetailView extends PureComponent {
           className="hide-on-mobile"
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+          isLoading={isLoading}
         />
         {isGiftCard ? (
           <div className="product-price-desktop-view">
-            <ProductPrice
-              offerPrice={parseInt(currentGiftCardValue, 10)}
-              listPrice={parseInt(currentGiftCardValue, 10)}
-              currencySymbol={currency}
-              currencyAttributes={currencyAttributes}
-              isGiftCard={isGiftCard}
-            />
+            {isLoading ? (
+              <LoaderSkelton />
+            ) : (
+              <ProductPrice
+                offerPrice={parseInt(currentGiftCardValue, 10)}
+                listPrice={parseInt(currentGiftCardValue, 10)}
+                currencySymbol={currency}
+                currencyAttributes={currencyAttributes}
+                isGiftCard={isGiftCard}
+              />
+            )}
           </div>
         ) : null}
         {isGiftCard ? (
@@ -175,10 +181,6 @@ class ProductDetailView extends PureComponent {
         ) : null}
       </div>
     );
-  };
-
-  isWebEnvironment = () => {
-    return ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
   };
 
   getBreadCrumb = () => {
@@ -203,16 +205,20 @@ class ProductDetailView extends PureComponent {
   };
 
   getProductPriceForGiftCard = () => {
-    const { productInfo, currency, currencyAttributes } = this.props;
+    const { productInfo, currency, currencyAttributes, isLoading } = this.props;
     const { currentGiftCardValue } = this.state;
     return productInfo.isGiftCard ? (
       <div className="product-price-mobile-view">
-        <ProductPrice
-          listPrice={parseInt(currentGiftCardValue, 10)}
-          offerPrice={parseInt(currentGiftCardValue, 10)}
-          currencyAttributes={currencyAttributes}
-          currencySymbol={currency}
-        />
+        {isLoading ? (
+          <LoaderSkelton />
+        ) : (
+          <ProductPrice
+            listPrice={parseInt(currentGiftCardValue, 10)}
+            offerPrice={parseInt(currentGiftCardValue, 10)}
+            currencyAttributes={currencyAttributes}
+            currencySymbol={currency}
+          />
+        )}
       </div>
     ) : null;
   };
@@ -260,11 +266,12 @@ class ProductDetailView extends PureComponent {
       middlePromos,
       bottomPromos,
       sizeChartDetails,
+      isLoading,
       ...otherProps
     } = this.props;
 
-    const { currentProduct } = productDetails;
-    const isWeb = this.isWebEnvironment();
+    const { ratingsProductId } = otherProps;
+    const { currentProduct, currentProductDynamicData } = productDetails;
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry, renderReceiveProps } = this.state;
@@ -310,7 +317,7 @@ class ProductDetailView extends PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row itemscope itemtype="https://schema.org/Product">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             {isGiftCard ? (
               <div className="product-summary-mobile-view">{this.getProductSummary(keepAlive)}</div>
@@ -331,7 +338,7 @@ class ProductDetailView extends PureComponent {
             <ProductImagesWrapper
               productName={productInfo.name}
               isGiftCard={isGiftCard}
-              isThumbnailListVisible={isWeb}
+              isThumbnailListVisible
               images={imagesToDisplay}
               pdpLabels={pdpLabels}
               isZoomEnabled
@@ -341,6 +348,7 @@ class ProductDetailView extends PureComponent {
               initialValues={this.formValues}
               keepAlive={keepAlive}
               outOfStockLabels={outOfStockLabels}
+              ratingsProductId={ratingsProductId}
             />
           </Col>
           <Col
@@ -359,7 +367,7 @@ class ProductDetailView extends PureComponent {
               <ProductAddToBagContainer
                 handleFormSubmit={handleAddToBag}
                 errorOnHandleSubmit={addToBagError}
-                currentProduct={currentProduct}
+                currentProduct={currentProductDynamicData || currentProduct}
                 plpLabels={plpLabels}
                 onChangeColor={this.onChangeColor}
                 customSubmitButtonStyle={customSubmitButtonStyle}
@@ -373,9 +381,9 @@ class ProductDetailView extends PureComponent {
                 isKeepAliveEnabled={isKeepAliveEnabled}
                 outOfStockLabels={outOfStockLabels}
                 sizeChartDetails={sizeChartDetails}
+                isLoading={isLoading}
               />
             )}
-
             {productInfo && currentColorEntry && (
               <ProductPickupContainer
                 productInfo={productInfo}
@@ -386,7 +394,13 @@ class ProductDetailView extends PureComponent {
                 // onPickUpOpenClick={onPickUpOpenClick}
               />
             )}
-            {<LoyaltyBanner pageCategory="isProductDetailView" />}
+            {!isLoading ? (
+              <LoyaltyBanner pageCategory="isProductDetailView" />
+            ) : (
+              <div className="product-property-section">
+                <LoaderSkelton height="40px" />
+              </div>
+            )}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
@@ -485,6 +499,7 @@ ProductDetailView.propTypes = {
   middlePromos: PropTypes.string,
   bottomPromos: PropTypes.string,
   trackPageLoad: PropTypes.func,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 ProductDetailView.defaultProps = {

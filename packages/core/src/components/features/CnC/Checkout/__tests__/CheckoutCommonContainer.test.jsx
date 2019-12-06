@@ -20,6 +20,7 @@ describe('Bag page Container', () => {
     router: { query: {} },
     checkoutServerError: true,
     currentStage: 'shipping',
+    resetAnalyticsData: jest.fn(),
   };
   it('should render Added to Bag view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);
@@ -95,6 +96,7 @@ describe('Bag page Container', () => {
       initCheckoutSectionPage: jest.fn(),
       router: { query: {} },
       checkoutServerError: true,
+      resetAnalyticsData: jest.fn(),
     };
     it('getAnalyticsEvents function for pickup', () => {
       const tree = shallow(<CheckoutContainer currentStage="pickup" {...newprops} />);

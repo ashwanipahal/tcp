@@ -16,6 +16,8 @@ describe('Thumbnail component', () => {
       totalCount: 2,
       className: '',
       onClick: jest.fn(),
+      itemscope: '',
+      itemtype: 'http://schema.org/ImageObject',
     };
     const component = shallow(<ThumbnailVanilla {...props} />);
     expect(component).toMatchSnapshot();

@@ -1,4 +1,8 @@
-import bootstrap, { retrieveCachedData, shouldInitiateSSRCall } from '../bootstrap';
+import bootstrap, {
+  retrieveCachedData,
+  shouldInitiateSSRCall,
+  checkAndLogErrors,
+} from '../bootstrap';
 import labelsMock from '../labels/mock';
 import headerMock from '../header/mock';
 import footerMock from '../footer/mock';
@@ -58,5 +62,30 @@ describe('retrieveCachedData', () => {
 describe('shouldInitiateSSRCall', () => {
   it('shouldInitiateSSRCall - default', () => {
     expect(shouldInitiateSSRCall('/us/c/boys-outfits', 'bot')).toBeFalsy();
+  });
+});
+
+describe('checkAndLogErrors', () => {
+  it('checkAndLogErrors - default', () => {
+    const bootstrapData = {
+      labels: [{ errorMessage: 'error' }],
+      header: { errorMessage: 'error' },
+      footer: { errorMessage: 'error' },
+      home: { errorMessage: 'error' },
+      navigation: [{ errorMessage: 'error' }],
+    };
+    const returnValue = {
+      footer_error: 1,
+      footer_error_message: 'error',
+      header_error: 1,
+      header_error_message: 'error',
+      labels_error: 1,
+      labels_error_message: 'error',
+      layout_error: 1,
+      layout_error_message: 'error',
+      navigation_error: 1,
+      navigation_error_message: 'error',
+    };
+    expect(checkAndLogErrors(bootstrapData, 'home')).toEqual(returnValue);
   });
 });

@@ -207,7 +207,13 @@ const getCatMapL1Params = catMapL1 => {
   Object.keys(mainObj).forEach(key => {
     menuItems.push(mainObj[key].items);
   });
-  return menuItems.flat(2);
+  let returnValue;
+  try {
+    returnValue = menuItems.flat(2);
+  } catch (err) {
+    returnValue = [];
+  }
+  return returnValue;
 };
 
 const getCatMapL2 = (catMapL2Id, catMapL1Params) => {

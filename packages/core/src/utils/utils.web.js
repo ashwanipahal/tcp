@@ -300,6 +300,12 @@ export const scrollTopElement = elem => {
   }
 };
 
+export const refreshPage = () => {
+  if (isClient() && window) {
+    window.location.reload();
+  }
+};
+
 /**
  * 2019-11-05: Hotfix PR needed to address issue with this
  * array of countries increasing in size with each call
@@ -328,13 +334,26 @@ export const getCurrenciesMap = data => {
   );
 };
 
-export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
-  if ((newCountry && newCountry !== oldCountry) || (newSiteId && newSiteId !== oldSiteId)) {
-    routerPush(window.location.href, ROUTE_PATH.home, null, newSiteId);
-  }
+export const onlyCurrencyChanged = (
+  newCountry,
+  oldCountry,
+  newLanguage,
+  oldLanguage,
+  newCurrency,
+  oldCurrency
+) => {
+  return newCountry === oldCountry && newLanguage === oldLanguage && newCurrency !== oldCurrency;
 };
 
-export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage, oldLanguage) => {
+export const languageRedirect = (
+  newCountry,
+  oldCountry,
+  newSiteId,
+  newLanguage,
+  oldLanguage,
+  newCurrency,
+  oldCurrency
+) => {
   const { protocol, host } = window.location;
   const baseDomain = host.replace(`${oldLanguage}.`, '');
   let hostURL = '';
@@ -355,6 +374,12 @@ export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage,
       ROUTE_PATH.home,
       newSiteId || getSiteId()
     )}`;
+  }
+
+  if (
+    onlyCurrencyChanged(newCountry, oldCountry, newLanguage, oldLanguage, newCurrency, oldCurrency)
+  ) {
+    refreshPage();
   }
 };
 
@@ -389,6 +414,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
     BV_SHARED_KEY: getBvSharedKey(processEnv, apiSiteInfo),
     assetHostTCP: processEnv.RWD_WEB_DAM_HOST_TCP || apiSiteInfo.assetHost,
+    fontsAssetPath: processEnv.RWD_WEB_FONTS_HOST,
     productAssetPathTCP: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
     productAssetPathGYM: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_GYM,
@@ -741,6 +767,39 @@ export const internalCampaignProductAnalyticsList = () => {
     });
 };
 
+/**
+ * Returns data object for PLP and Category List page view. Should be called in client is available.
+ * @param {Array} breadCrumbTrail An array of breadCrumbs which reside in ProductListing State
+ */
+export const getProductListingPageTrackData = (breadCrumbTrail, extras = {}) => {
+  const { isDesktop } = getViewportInfo();
+  const breadCrumbNames = breadCrumbTrail.map(breadCrumb => breadCrumb.displayName.toLowerCase());
+  const pageName = `browse:${breadCrumbNames.join(':')}`;
+  let pageNavigationText = isDesktop ? 'topmenu-' : 'hamburger-';
+  pageNavigationText = `${pageNavigationText}${breadCrumbNames.join('-')}`;
+
+  return {
+    pageName,
+    pageType: 'browse',
+    pageSection: `browse:${breadCrumbNames[0]}`,
+    pageSubSection: pageName,
+    internalCampaignIdList: internalCampaignProductAnalyticsList(),
+    customEvents: ['event91', 'event92', 'event82', 'event80'],
+    pageNavigationText,
+    ...extras,
+  };
+};
+
+/**
+ * @description - Get fonts URL from web server
+ * @param {string} filePath - fonts name and path
+ */
+export const getFontsURL = filePath => {
+  // Added fallback in case fonts url is not updated
+  const fonstHostUrl = process.env.RWD_WEB_FONTS_HOST || 'https://test1.theplace.com/rwd/';
+  return `${fonstHostUrl}${filePath}`;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -757,7 +816,6 @@ export default {
   scrollTopElement,
   getCountriesMap,
   getCurrenciesMap,
-  siteRedirect,
   languageRedirect,
   handleGenericKeyDown,
   getLocalStorage,
@@ -775,4 +833,6 @@ export default {
   createLayoutPath,
   internalCampaignProductAnalyticsList,
   getQueryParamsFromUrl,
+  getProductListingPageTrackData,
+  getFontsURL,
 };
