@@ -106,7 +106,7 @@ export const getLoadedProductsCount = createSelector(
   products => {
     const allProducts = products && products.loadedProductsPages;
     const totalProductCount =
-      (allProducts && allProducts.reduce((sum, item) => item.length + sum, 0)) || 0;
+      (allProducts && allProducts.reduce((sum, item) => item && item.length + sum, 0)) || 0;
     return totalProductCount || 0;
   }
 );

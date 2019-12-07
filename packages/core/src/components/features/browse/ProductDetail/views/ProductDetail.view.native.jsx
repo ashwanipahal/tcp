@@ -1,8 +1,9 @@
 import React from 'react';
-import { LAZYLOAD_HOST_NAME, scrollToViewBottom } from '@tcp/core/src/utils';
+import { LAZYLOAD_HOST_NAME, scrollToViewBottom, getAPIConfig } from '@tcp/core/src/utils';
 import { ScrollView as LazyloadScrollView, View } from 'react-native';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
+import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
 import {
@@ -263,7 +264,7 @@ class ProductDetailView extends React.PureComponent {
       false,
       bazaarVoice
     );
-
+    const candidConfig = getAPIConfig();
     return (
       <LazyloadScrollView
         onScroll={this.handleScroll}
@@ -372,6 +373,11 @@ class ProductDetailView extends React.PureComponent {
                 portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
               />
             </RecommendationWrapper>
+            <GetCandid
+              apiConfig={candidConfig}
+              navigation={navigation}
+              openedFromStack="PlpStack"
+            />
             {this.renderProductReview({
               renderRatingReview,
               productId: currentProduct.ratingsProductId,

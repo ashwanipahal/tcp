@@ -25,6 +25,12 @@ exports[`Credit DropdownList component should renders correctly 1`] = `
     link={null}
     textAlign="left"
   >
+    <span
+      className="dropDownTop"
+    />
+    <span
+      className="dropDownBottom"
+    />
     <Styled(BodyCopy)
       className="dropdownDivOverFlow"
       color="text.primary"
@@ -37,12 +43,6 @@ exports[`Credit DropdownList component should renders correctly 1`] = `
       link={null}
       textAlign="left"
     >
-      <span
-        className="dropDownTop"
-      />
-      <span
-        className="dropDownBottom"
-      />
       <ul
         className="dropdownUlBorder"
       >
@@ -117,6 +117,12 @@ exports[`Credit DropdownList component should renders correctly when optional fi
     link={null}
     textAlign="left"
   >
+    <span
+      className="dropDownTop"
+    />
+    <span
+      className="dropDownBottom"
+    />
     <Styled(BodyCopy)
       className="dropdownDivOverFlow"
       color="text.primary"
@@ -129,12 +135,6 @@ exports[`Credit DropdownList component should renders correctly when optional fi
       link={null}
       textAlign="left"
     >
-      <span
-        className="dropDownTop"
-      />
-      <span
-        className="dropDownBottom"
-      />
       <ul
         className="ulBorderWithLastRow"
       >

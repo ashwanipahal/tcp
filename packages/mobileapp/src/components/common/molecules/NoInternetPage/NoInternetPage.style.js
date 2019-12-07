@@ -12,17 +12,7 @@ const getAdditionalStyle = props => {
   };
 };
 
-const getSafeAreaStyle = props => {
-  const { theme } = props;
-  return `
-  background: ${theme.colorPalette.white};
-  border-bottom-color: ${theme.colorPalette.gray[500]};
-  border-bottom-width: 1;
-  `;
-};
-
 export const SafeAreaViewStyle = styled.SafeAreaView`
-  ${getSafeAreaStyle}
   ${getAdditionalStyle}
 `;
 

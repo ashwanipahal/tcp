@@ -21,6 +21,8 @@ import {
 } from '../../common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.actions';
 import ExtraPointsDetailModal from '../organism/ExtraPointsDetailModal.view';
 import { fetchPromoList } from './ExtraPoints.actions';
+import { toggleApplyNowModal } from '../../../../common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+
 /**
  * This Class component use for return the Extra Points details
  * can be passed in the component.
@@ -62,6 +64,18 @@ export class ExtraPointsContainer extends PureComponent {
    * @return   {[Object]} JSX of the component
    */
 
+  openModal = e => {
+    e.preventDefault();
+    const { toggleModal } = this.props;
+    toggleModal({ isModalOpen: true });
+  };
+
+  openPLCCModal = e => {
+    e.preventDefault();
+    const { toggleModal } = this.props;
+    toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
+  };
+
   render() {
     const {
       waysToEarn,
@@ -72,12 +86,16 @@ export class ExtraPointsContainer extends PureComponent {
       promoListData,
       isEarnExtraPointsFetching,
       isPromoListFetching,
+      navigation,
+      toggleModal,
     } = this.props;
     const { selectedActivity } = this.state;
     return (
       <>
         <EarnPoints
           labels={labels}
+          openModal={this.openModal}
+          openPLCCModal={this.openPLCCModal}
           earnExtraPointsLabels={earnExtraPointsLabels}
           waysToEarn={waysToEarn}
           earnedPointsNotification={earnedPointsNotification}
@@ -86,6 +104,8 @@ export class ExtraPointsContainer extends PureComponent {
           promoListData={promoListData}
           isEarnExtraPointsFetching={isEarnExtraPointsFetching}
           isPromoListFetching={isPromoListFetching}
+          navigation={navigation}
+          toggleModal={toggleModal}
         />
         {selectedActivity && (
           <ExtraPointsDetailModal
@@ -109,6 +129,9 @@ export const mapDispatchToProps = dispatch => {
     },
     fetchExtraPointsModuleContent: contentIds => {
       dispatch(fetchPromoList(contentIds));
+    },
+    toggleModal: payload => {
+      dispatch(toggleApplyNowModal(payload));
     },
   };
 };
@@ -139,6 +162,8 @@ ExtraPointsContainer.propTypes = {
   promoListData: PropTypes.shape([]),
   isEarnExtraPointsFetching: PropTypes.bool,
   isPromoListFetching: PropTypes.bool,
+  toggleModal: PropTypes.func.isRequired,
+  navigation: PropTypes.func.isRequired,
 };
 
 ExtraPointsContainer.defaultProps = {

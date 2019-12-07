@@ -67,6 +67,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
             ],
           }
         }
+        toggleModal={[MockFunction]}
       />
     </Styled(View)>
     <Styled(View) />
@@ -87,6 +88,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
             ],
           }
         }
+        toggleModal={[MockFunction]}
       />
     </Styled(View)>
     <Styled(View)>
@@ -106,6 +108,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
             ],
           }
         }
+        toggleModal={[MockFunction]}
       />
     </Styled(View)>
     <Styled(View) />
@@ -126,6 +129,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
             ],
           }
         }
+        toggleModal={[MockFunction]}
       />
     </Styled(View)>
   </Styled(View)>

@@ -12,7 +12,7 @@ import { getRecentStoreFromLocalStorage, updateLocalStorageData } from '../userR
 import SearchBarPropTypes from '../SearchBar.PropTypes';
 import SearchImageWrapper from './SearchImageWrapper.view';
 import { getLatestSearchResultsExists } from '../../../../features/browse/SearchDetail/container/SearchDetail.util';
-
+import CONSTANTS from '../SearchBar.constants';
 /**
  * This component produces a Search Bar component for Header
  * Expects textItems array consisting of objects in below format
@@ -91,7 +91,9 @@ class SearchBar extends React.PureComponent {
   redirectToSearchPage = searchText => {
     const { toggleSearchResults } = this.props;
     toggleSearchResults(false);
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    routerPush(`/search?searchQuery=${searchText}&searchType=keyword`, `/search/${searchText}`, {
+      shallow: true,
+    });
   };
 
   clearModalParams = () => {
@@ -109,9 +111,17 @@ class SearchBar extends React.PureComponent {
     }
     this.clearModalParams();
     if (url) {
-      routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+      routerPush(
+        `/c?searchType=${CONSTANTS.ANALYTICS_TYPEAHEAD_CATEGORY}&cid=${url.split('/c/')[1]}`,
+        `${url}`,
+        { shallow: false }
+      );
     } else {
-      routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+      routerPush(
+        `/search?searchQuery=${searchText}&searchType=typeahead:keyword`,
+        `/search/${searchText}`,
+        { shallow: true }
+      );
     }
   };
 

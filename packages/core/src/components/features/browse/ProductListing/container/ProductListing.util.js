@@ -281,90 +281,93 @@ export function getProductsAndTitleBlocks(
   let numberOfItemsInCurrentL2 = 0;
   // eslint-disable-next-line
   productBlocks.forEach((block, productBlocksIndex) => {
-    const productsAndTitleBlock = [];
-    let promoAddedInCurrentBlock = 0;
-    block.forEach((product, index) => {
-      const { categoryName } = product.miscInfo;
+    if (block) {
+      const productsAndTitleBlock = [];
+      let promoAddedInCurrentBlock = 0;
+      block.forEach((product, index) => {
+        const { categoryName } = product.miscInfo;
 
-      // indexOfProduct is all the items added already in the previous iteration
-      // plus the promos added in the current iteration
-      // plus index which would give the current iteration products added
-      const currentSlot = totalItemsAdded + promoAddedInCurrentBlock + index;
+        // indexOfProduct is all the items added already in the previous iteration
+        // plus the promos added in the current iteration
+        // plus index which would give the current iteration products added
+        const currentSlot = totalItemsAdded + promoAddedInCurrentBlock + index;
 
-      // First add the horizontal/mobile promos as they don't add up to the count
-      // For horizontal / mobile only promo
-      // Also, if slot_6 needs to be added, the slot number has to be 6 since it gets added after 6th product
-      const horizontalSlotIndex = horizontalSlots.indexOf(currentSlot);
-      if (horizontalSlotIndex !== -1) {
-        productsAndTitleBlock.push({
-          itemType: 'gridPromo',
-          gridStyle: 'horizontal',
-          itemVal: horizontalPromo[horizontalSlotIndex],
-        });
-      }
+        // First add the horizontal/mobile promos as they don't add up to the count
+        // For horizontal / mobile only promo
+        // Also, if slot_6 needs to be added, the slot number has to be 6 since it gets added after 6th product
+        const horizontalSlotIndex = horizontalSlots.indexOf(currentSlot);
+        if (horizontalSlotIndex !== -1) {
+          productsAndTitleBlock.push({
+            itemType: 'gridPromo',
+            gridStyle: 'horizontal',
+            itemVal: horizontalPromo[horizontalSlotIndex],
+          });
+        }
 
-      // If Vertical promo slot_8 needs to be added, the slot number has to be 7
-      // since it occupies space of the 8th product, which is actually slot 7
-      const slotIndex = slots.indexOf(currentSlot + 1);
-      if (slotIndex !== -1) {
-        productsAndTitleBlock.push({
-          itemType: 'gridPromo',
-          gridStyle: 'vertical',
-          itemVal: gridPromo[slotIndex],
-        });
-        promoAddedInCurrentBlock += 1;
-      }
-
-      // push: If we should group and we hit a new category name push on array
-      const shouldGroup = state.ProductListing.breadCrumbTrail && getIsShowCategoryGrouping(state);
-      if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
-        isL2WithBucket = true;
-        numberOfItemsInCurrentL2 = 0;
-        productsAndTitleBlock.push(categoryName);
-        lastCategoryName = categoryName;
-      }
-      // push: product onto block
-      productsAndTitleBlock.push(product);
-    });
-
-    const productsAdded = block.length;
-    totalItemsAdded += productsAdded + promoAddedInCurrentBlock;
-    numberOfItemsInCurrentL2 += productsAdded + promoAddedInCurrentBlock;
-    // Check if the number of products and the promos count sum
-    // to understand the number of slots blank at the end of the block
-    const numberOfItemsInLastRow = numberOfItemsInCurrentL2 % rowSize;
-
-    // For L2 with buckets only
-    // If there is some empty space in the last row of the block
-    // and the next block starts with a new L3 category,
-    // or if this is the last block of the entire productsBlock that is loaded yet
-    // ie. this is the last row to appear, irrespective of the fact if it is followed by a new L3 or not
-    // check if some slots were supposed to be added in those empty space
-    if (
-      isL2WithBucket &&
-      ((numberOfItemsInLastRow !== 0 &&
-        (productBlocks[productBlocksIndex + 1] &&
-          productBlocks[productBlocksIndex + 1][0].miscInfo.categoryName !== lastCategoryName)) || // TODO - add null check
-        productBlocksIndex + 1 === productBlocks.length)
-    ) {
-      const emptySpaces = rowSize - numberOfItemsInLastRow;
-      if (emptySpaces < rowSize) {
-        totalItemsAdded += emptySpaces;
-        const indexOfEmptySlot = slots.indexOf(totalItemsAdded);
-        if (indexOfEmptySlot !== -1) {
-          // See if the empty spaces are omitting any promo
+        // If Vertical promo slot_8 needs to be added, the slot number has to be 7
+        // since it occupies space of the 8th product, which is actually slot 7
+        const slotIndex = slots.indexOf(currentSlot + 1);
+        if (slotIndex !== -1) {
           productsAndTitleBlock.push({
             itemType: 'gridPromo',
             gridStyle: 'vertical',
-            itemVal: gridPromo[indexOfEmptySlot],
+            itemVal: gridPromo[slotIndex],
           });
+          promoAddedInCurrentBlock += 1;
         }
-      }
-      // If this is the last block
-    }
 
-    // push: product block onto matrix
-    productsAndTitleBlocks.push(productsAndTitleBlock);
+        // push: If we should group and we hit a new category name push on array
+        const shouldGroup =
+          state.ProductListing.breadCrumbTrail && getIsShowCategoryGrouping(state);
+        if (shouldGroup && (categoryName && categoryName !== lastCategoryName)) {
+          isL2WithBucket = true;
+          numberOfItemsInCurrentL2 = 0;
+          productsAndTitleBlock.push(categoryName);
+          lastCategoryName = categoryName;
+        }
+        // push: product onto block
+        productsAndTitleBlock.push(product);
+      });
+
+      const productsAdded = block.length;
+      totalItemsAdded += productsAdded + promoAddedInCurrentBlock;
+      numberOfItemsInCurrentL2 += productsAdded + promoAddedInCurrentBlock;
+      // Check if the number of products and the promos count sum
+      // to understand the number of slots blank at the end of the block
+      const numberOfItemsInLastRow = numberOfItemsInCurrentL2 % rowSize;
+
+      // For L2 with buckets only
+      // If there is some empty space in the last row of the block
+      // and the next block starts with a new L3 category,
+      // or if this is the last block of the entire productsBlock that is loaded yet
+      // ie. this is the last row to appear, irrespective of the fact if it is followed by a new L3 or not
+      // check if some slots were supposed to be added in those empty space
+      if (
+        isL2WithBucket &&
+        ((numberOfItemsInLastRow !== 0 &&
+          (productBlocks[productBlocksIndex + 1] &&
+            productBlocks[productBlocksIndex + 1][0].miscInfo.categoryName !== lastCategoryName)) || // TODO - add null check
+          productBlocksIndex + 1 === productBlocks.length)
+      ) {
+        const emptySpaces = rowSize - numberOfItemsInLastRow;
+        if (emptySpaces < rowSize) {
+          totalItemsAdded += emptySpaces;
+          const indexOfEmptySlot = slots.indexOf(totalItemsAdded);
+          if (indexOfEmptySlot !== -1) {
+            // See if the empty spaces are omitting any promo
+            productsAndTitleBlock.push({
+              itemType: 'gridPromo',
+              gridStyle: 'vertical',
+              itemVal: gridPromo[indexOfEmptySlot],
+            });
+          }
+        }
+        // If this is the last block
+      }
+
+      // push: product block onto matrix
+      productsAndTitleBlocks.push(productsAndTitleBlock);
+    }
   });
 
   return productsAndTitleBlocks;
