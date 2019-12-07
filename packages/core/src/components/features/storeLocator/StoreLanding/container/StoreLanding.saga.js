@@ -37,7 +37,7 @@ export function* getFavoriteStoreSaga({ payload }) {
     const { geoLatLang: { lat = null, long = null } = {} } = payload;
     const isGuest = yield select(getIsGuest);
     const isUserLoggedIn = yield select(getPersonalDataState);
-    const isGenericGuest = !(isGuest && isUserLoggedIn);
+    const isGenericGuest = !(isGuest || isUserLoggedIn);
     if (isGenericGuest && lat === null && long === null) {
       return yield put(setDefaultStoreUserAction(null));
     }
