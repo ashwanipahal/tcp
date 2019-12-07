@@ -354,8 +354,6 @@ class PickupStoreListItem extends PureComponent {
       isBopisSelected,
       storeSearchCriteria,
       storeSearchDistance,
-      setFavoriteStore,
-      getDefaultStore,
     } = this.props;
 
     const isBoss = this.isBossSelected;
@@ -371,11 +369,6 @@ class PickupStoreListItem extends PureComponent {
     }
     if (isBossSelected) {
       customEventsVal = 'event133';
-    }
-
-    if (store && store.basicInfo) {
-      setFavoriteStore(store);
-      getDefaultStore(store);
     }
 
     // setting values and dispatching Click tracker based on the requirement on BOSS/BOPIS add to bag call

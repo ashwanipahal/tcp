@@ -331,12 +331,8 @@ class PickupStoreListItem extends React.Component {
    * @memberof PickupStoreListItem
    */
   handleStoreUpdate() {
-    const { onStoreUpdate, store, setFavoriteStore, getDefaultStore } = this.props;
+    const { onStoreUpdate, store } = this.props;
     const isBoss = this.isBossSelected;
-    if (store && store.basicInfo) {
-      setFavoriteStore(store);
-      getDefaultStore(store);
-    }
     return onStoreUpdate(store.basicInfo.id, isBoss);
   }
 

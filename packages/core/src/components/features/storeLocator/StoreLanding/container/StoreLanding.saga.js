@@ -6,6 +6,10 @@ import {
   setFavoriteStore,
 } from '@tcp/core/src/services/abstractors/common/storeLocator';
 import { setDefaultStore as setDefaultStoreUserAction } from '@tcp/core/src/components/features/account/User/container/User.actions';
+import {
+  getIsGuest,
+  getPersonalDataState,
+} from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
 import { setStoresByCoordinates } from './StoreLanding.actions';
 import { isMobileApp } from '../../../../../utils';
@@ -30,15 +34,24 @@ export function* fetchLocationStoresSaga({ payload }) {
 
 export function* getFavoriteStoreSaga({ payload }) {
   try {
+    const { geoLatLang: { lat = null, long = null } = {} } = payload;
+    const isGuest = yield select(getIsGuest);
+    const isUserLoggedIn = yield select(getPersonalDataState);
+    const isGenericGuest = !(isGuest && isUserLoggedIn);
+    if (isGenericGuest && lat === null && long === null) {
+      return yield put(setDefaultStoreUserAction(null));
+    }
     const res = yield call(getFavoriteStore, payload);
     if (res && res.basicInfo) {
-      yield put(setDefaultStoreUserAction(res));
-    } else {
-      throw res;
+      return yield put(setDefaultStoreUserAction(res));
     }
+    yield put(setDefaultStoreUserAction(null));
+    throw res;
   } catch (err) {
-    if (isMobileApp() && err)
-      yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
+    if (isMobileApp() && err) {
+      return yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
+    }
+    return yield put(setDefaultStoreUserAction(null));
   }
 }
 
