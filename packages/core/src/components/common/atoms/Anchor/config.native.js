@@ -9,4 +9,10 @@ const config = {
   },
 };
 
+/**
+ * Web view url list to open
+ */
+
+export const webViewUrlList = ['help-center', 'content'];
+
 export default config;

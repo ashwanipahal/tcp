@@ -215,7 +215,9 @@ class TCPWebApp extends App {
       apiConfig.previewDate = req.query.preview_date || '';
       // To identify when the page is loaded in app's web view.
       apiConfig.isAppChannel =
-        req.headers && req.headers.channel ? req.headers.channel === MobileChannel : false;
+        req.headers && req.headers['x-tcp-device']
+          ? req.headers['x-tcp-device'] === MobileChannel
+          : false;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);

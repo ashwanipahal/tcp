@@ -7,6 +7,7 @@ import {
   getAsPathWithSlug,
   getMappedPageHref,
   triggerPostMessage,
+  getAPIConfig,
 } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
@@ -51,6 +52,8 @@ const Anchor = ({
   }
   const hrefUrl = asLinkPath || buildUrl(incomingUrl);
 
+  const apiConfigObj = getAPIConfig();
+
   let AnchorComponent = null;
   if (children || text) {
     AnchorComponent = noLink ? (
@@ -72,7 +75,9 @@ const Anchor = ({
           href={hrefUrl}
           title={title}
           target={targetVal}
-          onClick={() => triggerPostMessage(to || asLinkPath)}
+          {...(apiConfigObj.isAppChannel
+            ? { onClick: () => triggerPostMessage(to || asLinkPath) }
+            : '')}
           data-locator={dataLocator}
           {...other}
         >

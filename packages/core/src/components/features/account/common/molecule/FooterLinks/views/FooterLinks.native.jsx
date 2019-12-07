@@ -348,11 +348,7 @@ class FooterLinks extends PureComponent {
         );
       } else if (!leafLink.url.includes('track-order')) {
         linkMarkup = (
-          <Anchor
-            {...(leafLink.target === '_self' ? { openWebView: true, navigation } : '')}
-            url={leafLink.url}
-            customStyle={AnchorStyles}
-          >
+          <Anchor url={leafLink.url} customStyle={AnchorStyles} navigation={navigation}>
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs13"

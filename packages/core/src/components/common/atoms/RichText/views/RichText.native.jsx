@@ -3,7 +3,6 @@ import { WebView } from 'react-native-webview';
 import { Dimensions, View } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
 import { PropTypes } from 'prop-types';
-import { MobileChannel } from '@tcp/core/src/services/api.constants';
 import generateComponentMap from '../ComponentMap.native';
 
 /**
@@ -20,18 +19,11 @@ class RichText extends PureComponent {
       domStorageEnabled,
       thirdPartyCookiesEnabled,
       isApplyDeviceHeight,
-      source,
-      onMessage,
-      ...others
     } = this.props;
     const screenHeight = Math.round(Dimensions.get('window').height);
     const style = { backgroundColor: 'transparent' };
     const styleWithHeight = { backgroundColor: 'transparent', height: screenHeight };
-    const { html, uri } = source;
-    let webViewSource = { html };
-    if (uri) {
-      webViewSource = { uri, headers: { channel: MobileChannel } };
-    }
+
     return (
       <WebView
         style={isApplyDeviceHeight ? styleWithHeight : style}
@@ -39,9 +31,7 @@ class RichText extends PureComponent {
         javaScriptEnabled={javaScriptEnabled}
         domStorageEnabled={domStorageEnabled}
         thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
-        source={webViewSource}
-        onMessage={onMessage}
-        {...others}
+        {...this.props}
       />
     );
   };
@@ -83,7 +73,6 @@ RichText.propTypes = {
   thirdPartyCookiesEnabled: PropTypes.bool,
   isApplyDeviceHeight: PropTypes.bool,
   actionHandler: PropTypes.func,
-  onMessage: PropTypes.func,
   navigation: PropTypes.shape({}).isRequired,
 };
 
@@ -95,7 +84,6 @@ RichText.defaultProps = {
   thirdPartyCookiesEnabled: false,
   isApplyDeviceHeight: false,
   actionHandler: () => {},
-  onMessage: () => {},
 };
 
 export default RichText;

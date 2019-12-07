@@ -14,7 +14,7 @@ class LegalLinks extends PureComponent {
         {links.length > 0 &&
           links.map(link => {
             const {
-              leafLink: { text, url: webUri, target },
+              leafLink: { text, url: webUri },
             } = link;
             return (
               <AnchorView
@@ -22,7 +22,7 @@ class LegalLinks extends PureComponent {
                 anchorVariation="grayed"
                 fontSizeVariation="medium"
                 url={webUri}
-                {...(target === '_self' ? { openWebView: true, navigation } : '')}
+                navigation={navigation}
               />
             );
           })}
