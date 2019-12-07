@@ -572,15 +572,9 @@ class ProductPickup extends React.PureComponent {
                 <Anchor
                   noLink
                   handleLinkClick={this.handlePickupModalClick}
-                  title={
-                    showPickupInfo
-                      ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-                      : labels.lbl_Product_pickup_FIND_STORE
-                  }
+                  title={labels.lbl_Product_pickup_FIND_STORE}
                 >
-                  {showPickupInfo
-                    ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-                    : labels.lbl_Product_pickup_FIND_STORE}
+                  {labels.lbl_Product_pickup_FIND_STORE}
                 </Anchor>
               </span>
             </p>

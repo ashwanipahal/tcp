@@ -24,7 +24,7 @@ exports[`GetCandidVanilla component should renders correctly 1`] = `
         <Styled(BodyCopy)
           className="get-candid-main-heading"
           color="text.primary"
-          component="p"
+          component="h2"
           data-locator="get_candid_module_header_textImages_1"
           fontFamily="primary"
           fontSize={
@@ -139,7 +139,7 @@ exports[`GetCandidVanilla component should renders correctly considering selecti
         <Styled(BodyCopy)
           className="get-candid-main-heading"
           color="text.primary"
-          component="p"
+          component="h2"
           data-locator="get_candid_module_header_textImages_1"
           fontFamily="primary"
           fontSize={

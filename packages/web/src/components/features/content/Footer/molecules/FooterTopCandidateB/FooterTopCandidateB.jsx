@@ -24,89 +24,100 @@ const FooterTopCandidateB = props => {
   return (
     <div className="footer-top content-wrapper">
       <Row>
-        <Col
-          className="footer-top__slots col-md-half-width"
-          colSize={{
-            large: 3,
-            medium: 4,
-            small: 6,
-          }}
-          ignoreGutter={{
-            small: true,
-          }}
-        >
-          <Button
-            customStyle="shadow-button"
-            title={emailSignup.title}
-            onClick={openEmailSignUpModal}
-            dataLocator="footer_email_signup_btn"
-            className="candidate-b_buttons"
+        {!isNavigationFooter && (
+          <Col
+            className="footer-top__slots col-md-half-width"
+            colSize={{
+              large: 3,
+              medium: 4,
+              small: 6,
+            }}
+            ignoreGutter={{
+              small: true,
+            }}
           >
-            <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
-              <TextItems textItems={emailSignup.textItems} />
-            </BodyCopy>
-          </Button>
-        </Col>
-        <Col
-          className="footer-top__slots col-md-half-width"
-          colSize={{
-            large: 3,
-            medium: 4,
-            small: 6,
-          }}
-          ignoreGutter={{
-            small: true,
-            medium: true,
-          }}
-        >
-          <Button
-            dataLocator="footer_sms_signup_btn"
-            customStyle="shadow-button"
-            title={smsSignup.title}
-            onClick={openSmsSignUpModal}
-            className="candidate-b_buttons"
-          >
-            <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
-              <TextItems textItems={smsSignup.textItems} />
-            </BodyCopy>
-          </Button>
-        </Col>
-        <Col
-          className="footer-top__slots col-md-half-width"
-          colSize={{
-            large: 3,
-            medium: 4,
-            small: 6,
-          }}
-          ignoreGutter={{
-            small: true,
-          }}
-        >
-          <span
-            id={
-              isNavigationFooter
-                ? 'extole_zone_global_navigation_footer'
-                : 'extole_zone_global_footer'
-            }
-            title={referAFriend.title}
-          >
-            <ClickTracker
-              as={Button}
+            <Button
               customStyle="shadow-button"
-              data-locator={getLocator('refer_friend')}
+              title={emailSignup.title}
+              onClick={openEmailSignUpModal}
+              dataLocator="footer_email_signup_btn"
               className="candidate-b_buttons"
-              clickData={{
-                customEvents: ['event22', 'event80'],
-                pageShortName: 'content:referafriend  confirmation',
-                pageName: 'content:email confirmation',
-              }}
             >
               <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
-                <TextItems textItems={referAFriend.textItems} />
+                <TextItems textItems={emailSignup.textItems} />
               </BodyCopy>
-            </ClickTracker>
-          </span>
-        </Col>
+            </Button>
+          </Col>
+        )}
+        {!isNavigationFooter && (
+          <Col
+            className="footer-top__slots col-md-half-width"
+            colSize={{
+              large: 3,
+              medium: 4,
+              small: 6,
+            }}
+            ignoreGutter={{
+              small: true,
+              medium: true,
+            }}
+          >
+            <Button
+              dataLocator="footer_sms_signup_btn"
+              customStyle="shadow-button"
+              title={smsSignup.title}
+              onClick={openSmsSignUpModal}
+              className="candidate-b_buttons"
+            >
+              <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
+                <TextItems textItems={smsSignup.textItems} />
+              </BodyCopy>
+            </Button>
+          </Col>
+        )}
+        {!isNavigationFooter && (
+          <Col
+            className="footer-top__slots col-md-half-width"
+            colSize={{
+              large: 3,
+              medium: 4,
+              small: 6,
+            }}
+            ignoreGutter={{
+              small: true,
+            }}
+          >
+            <span
+              id={
+                isNavigationFooter
+                  ? 'extole_zone_global_navigation_footer'
+                  : 'extole_zone_global_footer'
+              }
+              title={referAFriend.title}
+            >
+              <ClickTracker
+                as={Button}
+                customStyle="shadow-button"
+                data-locator={getLocator('refer_friend')}
+                className="candidate-b_buttons"
+                clickData={{
+                  customEvents: ['event22', 'event80'],
+                  pageShortName: 'content:referafriend  confirmation',
+                  pageName: 'content:email confirmation',
+                }}
+              >
+                <BodyCopy
+                  component="div"
+                  fontWeight="black"
+                  fontSize="fs15"
+                  className="heading_text"
+                >
+                  <TextItems textItems={referAFriend.textItems} />
+                </BodyCopy>
+              </ClickTracker>
+            </span>
+          </Col>
+        )}
         <Col
           className="footer-top__slot--2 col-md-half-width"
           colSize={{

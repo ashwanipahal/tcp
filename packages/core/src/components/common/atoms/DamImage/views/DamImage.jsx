@@ -72,7 +72,7 @@ const getBreakpointImgUrl = (type, props) => {
 };
 
 const RenderVideo = videoProps => {
-  const { video, image } = videoProps;
+  const { video, image, dataLocator } = videoProps;
   const { autoplay, controls, url, muted, loop } = video;
 
   const options = {
@@ -82,6 +82,7 @@ const RenderVideo = videoProps => {
     muted,
     loop,
     image,
+    dataLocator,
   };
 
   return <VideoPlayer {...options} />;

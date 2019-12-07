@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { fromJS } from 'immutable';
 import { SET_CLICK_PAYLOAD, RESET_CLICK_PAYLOAD } from './actions';
 

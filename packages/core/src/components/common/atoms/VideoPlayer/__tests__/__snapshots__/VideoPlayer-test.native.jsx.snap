@@ -12,7 +12,7 @@ exports[`testing block for VideoPlayer VideoPlayer should be rendered correclty 
   resizeMode="cover"
   source={
     Object {
-      "uri": undefined,
+      "uri": "https://test1.theplace.com/video/upload/undefined",
     }
   }
   style={

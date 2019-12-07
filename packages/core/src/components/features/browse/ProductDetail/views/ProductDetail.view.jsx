@@ -5,6 +5,7 @@ import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelt
 import { isClient } from '@tcp/core/src/utils';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle, { customSubmitButtonStyle } from '../ProductDetail.style';
@@ -190,7 +191,9 @@ class ProductDetailView extends PureComponent {
         <button type="button" onClick={this.onGoBack} className="button-go-back">
           <Image src={getIconPath('medium-left-arrow')} alt="" />
           <BodyCopy className="back-button" fontFamily="secondary" fontSize="fs16">
-            {pdpLabels.back}
+            {breadCrumbs && breadCrumbs[0] && breadCrumbs[0].displayName === 'Home'
+              ? 'Home'
+              : pdpLabels.back}
           </BodyCopy>
         </button>
       </div>
@@ -450,6 +453,13 @@ class ProductDetailView extends PureComponent {
                 portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
                 {...recommendationAttributes}
               />
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="product-detail-section">
+              <GetCandid />
             </div>
           </Col>
         </Row>

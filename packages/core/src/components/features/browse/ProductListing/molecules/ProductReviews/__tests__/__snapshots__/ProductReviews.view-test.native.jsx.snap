@@ -58,7 +58,7 @@ exports[`ProductReviews component as guest should render correctly 1`] = `
       scrollEnabled={true}
       source={
         Object {
-          "uri": "undefined?productId=2323&env=undefined&instance=undefined",
+          "uri": "undefined?bvproductId=2323&env=undefined&instance=undefined&token=tcprwd",
         }
       }
       startInLoadingState={true}
@@ -128,7 +128,7 @@ exports[`ProductReviews component as logged in user should render correctly 1`] 
       scrollEnabled={true}
       source={
         Object {
-          "uri": "undefined?productId=42323&env=undefined&instance=undefined",
+          "uri": "undefined?bvproductId=42323&env=undefined&instance=undefined&token=tcprwd",
         }
       }
       startInLoadingState={true}

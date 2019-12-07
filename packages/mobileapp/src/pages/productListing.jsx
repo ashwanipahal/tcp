@@ -9,6 +9,7 @@ import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetai
 import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
 import Confirmation from '@tcp/core/src/components/features/CnC/Confirmation';
 import ProductBundleContainer from '@tcp/core/src/components/features/browse/BundleProduct';
+import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
 
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
@@ -84,6 +85,12 @@ const PlpStack = createStackNavigator(
     },
     [ROUTE_NAMES.BUNDLE_DETAIL]: {
       screen: ProductBundleContainer,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation, false);
+      },
+    },
+    GetCandidGallery: {
+      screen: GetCandidGallery,
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation, false);
       },
