@@ -70,7 +70,7 @@ class ProductSummary extends React.PureComponent {
   renderBazaarVoiceComponent = bazaarVoice => {
     const { pdpLabels } = this.props;
     const { completeTheLook, writeAReview } = pdpLabels;
-    const totalRating = `(${bazaarVoice.totalReviewCount})`;
+    const totalRating = `( ${bazaarVoice.totalReviewCount} )`;
 
     return (
       <BazaarVoiceContainer>

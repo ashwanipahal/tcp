@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Platform, Image, SafeAreaView } from 'react-native';
-import { getBrand, getAPIConfig, getScreenHeight } from '@tcp/core/src/utils';
+import { getBrand, getAPIConfig, getScreenHeight } from '@tcp/core/src/utils/index.native';
 import { WebView } from 'react-native-webview';
 
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
@@ -180,7 +180,7 @@ class ProductReviews extends React.PureComponent {
             fontSize="fs16"
           >
             <SafeAreaView>
-              <SubmissionFormWrapper height={getScreenHeight()}>
+              <SubmissionFormWrapper height={getScreenHeight() - 150}>
                 <WebView
                   originWhitelist={['*']}
                   source={{
