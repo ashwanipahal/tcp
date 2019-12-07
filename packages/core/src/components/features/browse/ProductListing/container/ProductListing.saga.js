@@ -9,12 +9,7 @@ import {
 } from './ProductListing.actions';
 import ProductAbstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
-import {
-  getUserLoggedInState,
-  isRememberedUser,
-} from '../../../account/User/container/User.selectors';
 import { getDefaultWishList } from '../../Favorites/container/Favorites.saga';
-import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
 
 const instanceProductListing = new ProductAbstractor();
 const operatorInstance = new ProductsOperator();
@@ -42,6 +37,7 @@ export function* fetchPlpProducts({ payload }) {
       })
     );
     let state = yield select();
+    yield call(getDefaultWishList);
     let reqObj = operatorInstance.getProductListingBucketedData(
       { ...state },
       location,
@@ -85,16 +81,6 @@ export function* fetchPlpProducts({ payload }) {
           yield put(loadModulesData(modules));
         }
         operatorInstance.updateBucketingConfig(plpProducts);
-        const products = plpProducts.loadedProductsPages[0];
-        const isGuest = !getUserLoggedInState({ ...state });
-        const isRemembered = isRememberedUser({ ...state });
-        if (!isGuest && !isRemembered) {
-          const defaultWishList = yield call(getDefaultWishList, products);
-          plpProducts.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
-            defaultWishList,
-            products
-          );
-        }
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }
@@ -118,6 +104,7 @@ export function* fetchMoreProducts({ payload = {} }) {
     const reqObj = operatorInstance.getMoreBucketedProducts(state, location);
     if (reqObj && reqObj.categoryId) {
       state = yield select();
+      yield call(getDefaultWishList);
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (
         plpProducts &&
@@ -126,16 +113,6 @@ export function* fetchMoreProducts({ payload = {} }) {
         plpProducts.loadedProductsPages[0].length
       ) {
         operatorInstance.updateBucketingConfig(plpProducts);
-        const products = plpProducts.loadedProductsPages[0];
-        const isGuest = !getUserLoggedInState(state);
-        const isRemembered = isRememberedUser(state);
-        if (!isGuest && !isRemembered) {
-          const defaultWishList = yield call(getDefaultWishList, products);
-          plpProducts.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
-            defaultWishList,
-            products
-          );
-        }
         yield putResolve(setPlpProducts({ ...plpProducts }));
       }
     }

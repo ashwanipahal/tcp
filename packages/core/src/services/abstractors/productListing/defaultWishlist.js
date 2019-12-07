@@ -1,7 +1,7 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
-const getProductsUserCustomInfo = (products = [], isPDP = false) => {
+const getProductsUserCustomInfo = (isPDP = false) => {
   const payload = {
     webService: endpoints.getListofDefaultWishlist,
   };
@@ -12,12 +12,6 @@ const getProductsUserCustomInfo = (products = [], isPDP = false) => {
       // TODO - fix error handling - throw new ServiceResponseError(res);
       // }
       const favProductsMap = {};
-
-      if (!res.body) {
-        // In case of no response from the default wishlist, return products as is
-        return products;
-      }
-
       const productKey = Object.keys(res.body);
 
       productKey.forEach(key => {

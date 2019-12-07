@@ -8,8 +8,7 @@ import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
-import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
-import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
+import { getDefaultWishList } from '../../Favorites/container/Favorites.saga';
 
 const instanceProductListing = new ProductAbstractor();
 const operatorInstance = new ProductsOperator();
@@ -69,6 +68,9 @@ export const fetchPlpProductsInfo = async ({
       isBucketing = true;
     }
     if (reqObj.categoryId) {
+      if (isCustomInfo({ ...state, Navigation: { navigationData } })) {
+        await getDefaultWishList();
+      }
       const plpProducts = await instanceProductListing.getProducts(
         { ...reqObj, location, filterMaps: res.filterMaps },
         { ...state, Navigation: { navigationData } }
@@ -80,14 +82,6 @@ export const fetchPlpProductsInfo = async ({
           ));
         }
         operatorInstance.updateBucketingConfig(plpProducts);
-        const products = plpProducts.loadedProductsPages[0];
-        if (isCustomInfo({ ...state, Navigation: { navigationData } })) {
-          const defaultWishList = await getProductsUserCustomInfo(products);
-          plpProducts.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
-            defaultWishList,
-            products
-          );
-        }
         return {
           reqObj,
           res: plpProducts,

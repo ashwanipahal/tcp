@@ -11,12 +11,7 @@ import getProductInfoById, {
   layoutResolver,
   getProductBVReviewStats,
 } from '../../../../../services/abstractors/productListing/productDetail';
-import {
-  getUserLoggedInState,
-  isRememberedUser,
-} from '../../../account/User/container/User.selectors';
 import { getDefaultWishList } from '../../Favorites/container/Favorites.saga';
-import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
 
 const checkSSR = () => typeof window !== 'undefined' || isMobileApp;
 
@@ -28,6 +23,7 @@ function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }
       yield put(setProductDetails({ product: {} }));
     }
     const state = yield select();
+    yield call(getDefaultWishList);
     yield put(setPDPLoadingState({ isLoading: true }));
     const productDetail = yield call(getProductInfoById, productColorId, state);
     const {
@@ -42,20 +38,6 @@ function* fetchProductDetail({ payload: { productColorId, escapeEmptyProduct } }
     if (isMobileApp) {
       const productId = productDetail.product.ratingsProductId || 0;
       productDetail.product.bazaarVoice = yield call(getProductBVReviewStats, productId);
-    }
-    const isGuest = !getUserLoggedInState({ ...state });
-    const isRemembered = isRememberedUser({ ...state });
-
-    if (!isGuest && !isRemembered) {
-      const defaultWishList = yield call(
-        getDefaultWishList,
-        productDetail.product.colorFitsSizesMap
-      );
-      productDetail.product.colorFitsSizesMap = processHelpers.addingExtraProductInfo(
-        defaultWishList,
-        productDetail.product.colorFitsSizesMap,
-        true
-      );
     }
 
     yield put(setProductDetails({ ...productDetail }));

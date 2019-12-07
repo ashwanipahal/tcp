@@ -35,6 +35,7 @@ import addItemsToWishlistAbstractor, {
 import {
   getUserLoggedInState,
   getUserContactInfo,
+  isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import { setLoginModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 
@@ -67,6 +68,26 @@ export function* loadActiveWishlistByGuestKey({ payload }) {
   } catch (err) {
     yield put(setLoadingState({ isDataLoading: false }));
     return [];
+  }
+}
+
+export function* getDefaultWishList(isIgnoreCache = false) {
+  try {
+    const state = yield select();
+    const isGuest = !getUserLoggedInState({ ...state });
+    const isRemembered = isRememberedUser({ ...state });
+    if (!isGuest && !isRemembered) {
+      let defaultWishListItems = yield select(defaultWishListFromState);
+      defaultWishListItems =
+        (defaultWishListItems && defaultWishListItems.size === 0) ||
+        isEmpty(defaultWishListItems) ||
+        isIgnoreCache
+          ? yield call(getProductsUserCustomInfo)
+          : defaultWishListItems;
+      yield put(getSetDefaultWishListActn({ ...defaultWishListItems }));
+    }
+  } catch (err) {
+    yield null;
   }
 }
 
@@ -114,7 +135,7 @@ export function* addItemsToWishlist({ payload }) {
         errorMapping,
       });
 
-      yield call(getProductsUserCustomInfo); // calling this method directly as we need to update default favorite list in redux state, need not to check whether its already in state or not.
+      yield call(getDefaultWishList, true);
 
       if (res && res.errorMessage) {
         yield put(setAddToFavoriteErrorState(res));
@@ -319,7 +340,7 @@ export function* deleteWishListItemById({ payload }, isByPallLoadSummary = false
     if (!deleteItemResponse.success) {
       throw deleteItemResponse;
     }
-    yield call(getProductsUserCustomInfo); // calling this method directly as we need to update default favorite list in redux state, need not to check whether its already in state or not.
+    yield call(getDefaultWishList, true);
     yield put(setDeletedItemAction(payload.itemId));
     if (!isByPallLoadSummary) {
       yield* loadWishlistsSummaries(activeWishlistId);
@@ -397,21 +418,6 @@ export function* replaceWishlistItem(payload) {
     yield* loadWishlistsSummaries(activeWishListId);
   } catch (err) {
     yield null;
-  }
-}
-
-export function* getDefaultWishList(payload) {
-  try {
-    let defaultWishListItems = yield select(defaultWishListFromState);
-    defaultWishListItems =
-      (defaultWishListItems && defaultWishListItems.size === 0) || isEmpty(defaultWishListItems)
-        ? yield call(getProductsUserCustomInfo, payload.products)
-        : defaultWishListItems;
-    yield put(getSetDefaultWishListActn({ ...defaultWishListItems }));
-    return defaultWishListItems;
-  } catch (err) {
-    yield null;
-    return [];
   }
 }
 

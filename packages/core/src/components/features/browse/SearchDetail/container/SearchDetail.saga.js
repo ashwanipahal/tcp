@@ -15,12 +15,7 @@ import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
 import { setSearchResult } from '../../../../common/molecules/SearchBar/SearchBar.actions';
 import { getLastLoadedPageNumber } from './SearchDetail.selectors';
-import {
-  getUserLoggedInState,
-  isRememberedUser,
-} from '../../../account/User/container/User.selectors';
 import { getDefaultWishList } from '../../Favorites/container/Favorites.saga';
-import processHelpers from '../../../../../services/abstractors/productListing/processHelpers';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
@@ -47,6 +42,7 @@ export function* fetchSlpProducts({ payload }) {
         isSearchResultsAvailable: false,
       })
     );
+    yield call(getDefaultWishList);
 
     yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
 
@@ -58,16 +54,6 @@ export function* fetchSlpProducts({ payload }) {
       location,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
-    const isGuest = !getUserLoggedInState({ ...state });
-    const isRemembered = isRememberedUser({ ...state });
-    if (!isGuest && !isRemembered) {
-      const defaultWishList = yield call(getDefaultWishList, res.loadedProductsPages[0]);
-      res.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
-        defaultWishList,
-        res.loadedProductsPages[0],
-        true
-      );
-    }
     const { layout, modules } = yield call(instanceProductListing.parsedModuleData, res.bannerInfo);
     yield put(loadLayoutData(layout, 'productListingPage'));
     yield put(loadModulesData(modules));
@@ -100,6 +86,7 @@ export function* fetchMoreProducts({ payload = {} }) {
     const state = yield select();
     const location = getUrl(url);
     yield put(setSlpLoadingState({ isLoadingMore: true }));
+    yield call(getDefaultWishList);
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
     const { appliedFiltersIds } = state[SLP_PAGE_REDUCER_KEY];
@@ -116,16 +103,6 @@ export function* fetchMoreProducts({ payload = {} }) {
       isLazyLoading: true,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
-    const isGuest = !getUserLoggedInState({ ...state });
-    const isRemembered = isRememberedUser({ ...state });
-    if (!isGuest && !isRemembered) {
-      const defaultWishList = yield call(getDefaultWishList, res.loadedProductsPages[0]);
-      res.loadedProductsPages[0] = processHelpers.addingExtraProductInfo(
-        defaultWishList,
-        res.loadedProductsPages[0],
-        true
-      );
-    }
     if (res) {
       yield put(setSlpProducts({ ...res }));
     }

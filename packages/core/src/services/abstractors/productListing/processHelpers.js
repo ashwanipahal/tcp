@@ -1,5 +1,6 @@
 import { FACETS_FIELD_KEY, FACETS_OPTIONS } from './productListing.utils';
 import utils, { isCanada } from '../../../utils';
+import { defaultWishListFromState } from '../../../components/features/browse/Favorites/container/Favorites.selectors';
 
 const apiHelper = {
   configOptions: {
@@ -384,20 +385,12 @@ const getOfferPriceResponse = product => {
   return product.min_offer_price || { value: null }.value || 0;
 };
 
-const addingExtraProductInfo = (favProductsMap, products, isPDP = false) => {
+const addingExtraProductInfo = (product, state = {}, isPDP = false) => {
   try {
-    return products.map(product => {
-      const { miscInfo, ...otherAttributes } = product;
-      const extraProductInfo =
-        favProductsMap[isPDP ? product.colorDisplayId : product.productInfo.generalProductId];
-      return {
-        ...otherAttributes,
-        miscInfo: {
-          ...miscInfo,
-          isInDefaultWishlist: !!extraProductInfo && extraProductInfo.isInDefaultWishlist,
-        },
-      };
-    });
+    const favProductsMap = defaultWishListFromState(state);
+    const extraProductInfo =
+      favProductsMap[isPDP ? product.uniqueId : product.prodpartno || product.generalProductId];
+    return !!extraProductInfo && extraProductInfo.isInDefaultWishlist;
   } catch (err) {
     return err;
   }
