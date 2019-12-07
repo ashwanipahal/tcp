@@ -49,7 +49,6 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
         locator=""
         margins={null}
         onPress={null}
-        openWebView={false}
         text="lbl_freeShippingBanner_details"
         underline={true}
         url="lbl_freeShippingBanner_url_app"

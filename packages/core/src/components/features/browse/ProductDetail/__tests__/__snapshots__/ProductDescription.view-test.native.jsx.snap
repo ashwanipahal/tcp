@@ -29,7 +29,6 @@ exports[`ProductDetailDescriptionView component should renders correctly 1`] = `
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text=""
         visible={false}
       >
@@ -76,7 +75,6 @@ exports[`ProductDetailDescriptionView native should render correctly should matc
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text=""
         visible={false}
       >

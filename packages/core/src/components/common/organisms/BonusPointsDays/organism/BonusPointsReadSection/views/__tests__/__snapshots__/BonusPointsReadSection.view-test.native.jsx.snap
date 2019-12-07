@@ -28,7 +28,6 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text="details"
         visible={false}
       />

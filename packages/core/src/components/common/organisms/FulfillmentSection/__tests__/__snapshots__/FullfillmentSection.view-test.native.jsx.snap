@@ -15,7 +15,6 @@ exports[`testing block for FulfillmentSection FulfillmentSection should be rende
     margins={null}
     noLink={true}
     onPress={[Function]}
-    openWebView={false}
     text="Click"
     underline={true}
     visible={false}

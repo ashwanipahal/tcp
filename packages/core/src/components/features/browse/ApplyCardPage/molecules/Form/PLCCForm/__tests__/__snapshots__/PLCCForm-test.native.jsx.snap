@@ -24,7 +24,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
-        onMessage={[Function]}
         source={
           Object {
             "html": undefined,
@@ -1005,7 +1004,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -1693,7 +1691,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -1711,7 +1708,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -1745,7 +1741,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
@@ -1802,7 +1797,6 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
       locator=""
       margins={null}
       onPress={[Function]}
-      openWebView={false}
       paddingBottom="60px"
       paddingTop="40px"
       text="lbl_PLCCForm_noThanks"
@@ -1838,7 +1832,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
-        onMessage={[Function]}
         source={
           Object {
             "html": undefined,
@@ -1873,7 +1866,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
       locator=""
       margins={null}
       onPress={[Function]}
-      openWebView={false}
       paddingRight="16px"
       paddingTop="22px"
       text="lbl_PLCCForm_clickHere"
@@ -2798,7 +2790,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -3486,7 +3477,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -3504,7 +3494,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -3538,7 +3527,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
@@ -3595,7 +3583,6 @@ exports[`PLCCFormVanilla it should render correctly 1`] = `
       locator=""
       margins={null}
       onPress={[Function]}
-      openWebView={false}
       paddingBottom="60px"
       paddingTop="40px"
       text="lbl_PLCCForm_noThanks"
@@ -3631,7 +3618,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
-        onMessage={[Function]}
         source={
           Object {
             "html": undefined,
@@ -4612,7 +4598,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -5300,7 +5285,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -5318,7 +5302,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -5352,7 +5335,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
@@ -5409,7 +5391,6 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
       locator=""
       margins={null}
       onPress={[Function]}
-      openWebView={false}
       paddingBottom="60px"
       paddingTop="40px"
       text="lbl_PLCCForm_noThanks"
@@ -5445,7 +5426,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
-        onMessage={[Function]}
         source={
           Object {
             "html": undefined,
@@ -6455,7 +6435,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -7143,7 +7122,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -7161,7 +7139,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -7195,7 +7172,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
@@ -7252,7 +7228,6 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
       locator=""
       margins={null}
       onPress={[Function]}
-      openWebView={false}
       paddingBottom="60px"
       paddingTop="40px"
       text="lbl_PLCCForm_noThanks"

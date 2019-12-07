@@ -25,7 +25,6 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
     locator=""
     margins={null}
     onPress={[Function]}
-    openWebView={false}
     text=""
     visible={false}
   >

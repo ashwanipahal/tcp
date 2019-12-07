@@ -72,7 +72,6 @@ exports[`GetCandidVanilla component should renders correctly considering selecti
     margins={null}
     noLink={true}
     onPress={[Function]}
-    openWebView={false}
     text=""
     visible={true}
   />

@@ -76,7 +76,6 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
                 margins={null}
                 noLink={true}
                 onPress={[Function]}
-                openWebView={false}
                 text=""
                 to="/#"
                 underline={true}

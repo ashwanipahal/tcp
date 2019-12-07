@@ -26,7 +26,6 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     locator=""
     margins={null}
     onPress={[Function]}
-    openWebView={false}
     text="Apply Now"
     underline={true}
     visible={false}

@@ -50,7 +50,6 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -66,7 +65,6 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -149,7 +147,6 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -166,7 +163,6 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": "abc",
@@ -225,7 +221,6 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       locator=""
       margins={null}
       onPress={null}
-      openWebView={false}
       paddingRight="28px"
       text="lbl_PLCCForm_details"
       underline={true}
@@ -286,7 +281,6 @@ exports[`ApplicationInProgress component should renders correctly while having n
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": undefined,
@@ -302,7 +296,6 @@ exports[`ApplicationInProgress component should renders correctly while having n
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": "xyz",
@@ -361,7 +354,6 @@ exports[`ApplicationInProgress component should renders correctly while having n
       locator=""
       margins={null}
       onPress={null}
-      openWebView={false}
       paddingRight="28px"
       text="lbl_PLCCForm_details"
       underline={true}

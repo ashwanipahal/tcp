@@ -8,7 +8,6 @@ exports[`Espot component should renders correctly 1`] = `
     isApplyDeviceHeight={false}
     isNativeView={true}
     javaScriptEnabled={false}
-    onMessage={[Function]}
     source="<b>test</b>"
     thirdPartyCookiesEnabled={false}
   />

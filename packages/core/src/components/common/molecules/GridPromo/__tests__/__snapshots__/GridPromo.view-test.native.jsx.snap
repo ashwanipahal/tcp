@@ -89,7 +89,6 @@ exports[`GridPromo component renders correctly 1`] = `
         margins={null}
         navigation={null}
         onPress={null}
-        openWebView={false}
         text=""
         url=""
         visible={false}

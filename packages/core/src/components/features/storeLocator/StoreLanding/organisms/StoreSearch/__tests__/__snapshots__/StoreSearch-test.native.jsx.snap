@@ -25,7 +25,6 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
     locator=""
     margins={null}
     onPress={null}
-    openWebView={false}
     text=""
     visible={false}
   >
@@ -69,7 +68,6 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text=""
         visible={false}
       >
@@ -149,7 +147,6 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       locator=""
       margins={null}
       onPress={null}
-      openWebView={false}
       text="View Map"
       underline={true}
       visible={false}
@@ -183,7 +180,6 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
     locator=""
     margins={null}
     onPress={null}
-    openWebView={false}
     text=""
     visible={false}
   >
@@ -227,7 +223,6 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text=""
         visible={false}
       >
@@ -307,7 +302,6 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       locator=""
       margins={null}
       onPress={null}
-      openWebView={false}
       text="View List"
       underline={true}
       visible={false}
@@ -341,7 +335,6 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
     locator=""
     margins={null}
     onPress={null}
-    openWebView={false}
     text=""
     visible={false}
   >
@@ -385,7 +378,6 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text=""
         visible={false}
       >
@@ -465,7 +457,6 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
       locator=""
       margins={null}
       onPress={null}
-      openWebView={false}
       text="View Map"
       underline={true}
       visible={false}
@@ -499,7 +490,6 @@ exports[`StoreSearch component component renders correctly with proper elements 
     locator=""
     margins={null}
     onPress={null}
-    openWebView={false}
     text=""
     visible={false}
   >
@@ -543,7 +533,6 @@ exports[`StoreSearch component component renders correctly with proper elements 
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text=""
         visible={false}
       >
@@ -623,7 +612,6 @@ exports[`StoreSearch component component renders correctly with proper elements 
       locator=""
       margins={null}
       onPress={null}
-      openWebView={false}
       text="View Map"
       underline={true}
       visible={false}

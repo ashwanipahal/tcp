@@ -99,7 +99,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
       margins={null}
       noLink={true}
       onPress={[Function]}
-      openWebView={false}
       text="Points History"
       underline={true}
       visible={false}

@@ -83,7 +83,6 @@ exports[`FavoritesViewVanilla should render correctly 1`] = `
       locator="pdp_write_review_icon"
       margins={null}
       onPress={[Function]}
-      openWebView={false}
       text="lbl_fav_editListSettings"
       underline={true}
       visible={false}

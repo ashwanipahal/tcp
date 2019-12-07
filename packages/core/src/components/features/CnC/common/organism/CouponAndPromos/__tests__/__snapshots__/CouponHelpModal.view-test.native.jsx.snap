@@ -23,7 +23,6 @@ exports[`Help Coupon Modal should call correctly 1`] = `
     isApplyDeviceHeight={true}
     isNativeView={false}
     javaScriptEnabled={false}
-    onMessage={[Function]}
     source={
       Object {
         "html": undefined,

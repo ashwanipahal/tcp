@@ -138,7 +138,6 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
             isApplyDeviceHeight={false}
             isNativeView={true}
             javaScriptEnabled={false}
-            onMessage={[Function]}
             source=""
             thirdPartyCookiesEnabled={false}
           />

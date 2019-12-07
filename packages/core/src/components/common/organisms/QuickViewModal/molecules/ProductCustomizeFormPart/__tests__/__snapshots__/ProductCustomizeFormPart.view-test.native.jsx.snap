@@ -36,7 +36,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           margins={null}
           noLink={true}
           onPress={[Function]}
-          openWebView={false}
           text=""
           visible={false}
         >

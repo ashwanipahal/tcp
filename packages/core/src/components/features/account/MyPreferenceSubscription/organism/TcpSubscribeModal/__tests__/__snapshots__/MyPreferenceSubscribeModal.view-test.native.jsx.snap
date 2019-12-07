@@ -121,7 +121,6 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
       isApplyDeviceHeight={false}
       isNativeView={false}
       javaScriptEnabled={false}
-      onMessage={[Function]}
       source={
         Object {
           "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\"><div style=\\"font-size:14px; text-align:center; font-family: Nunito; font-weight: normal;\\">test1test2test3test4 </div>",

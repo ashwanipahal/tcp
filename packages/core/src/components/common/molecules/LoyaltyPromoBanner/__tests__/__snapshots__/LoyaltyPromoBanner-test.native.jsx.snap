@@ -12,7 +12,6 @@ exports[`LoyaltyPromoBanner should render correctly 1`] = `
     margins={null}
     navigation={Object {}}
     onPress={null}
-    openWebView={false}
     text=""
     visible={false}
   >
@@ -23,7 +22,6 @@ exports[`LoyaltyPromoBanner should render correctly 1`] = `
         isApplyDeviceHeight={false}
         isNativeView={false}
         javaScriptEnabled={false}
-        onMessage={[Function]}
         source={
           Object {
             "html": "",

@@ -28,7 +28,6 @@ exports[`ProductReviews component as guest should render correctly 1`] = `
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text=""
         visible={false}
       >
@@ -99,7 +98,6 @@ exports[`ProductReviews component as logged in user should render correctly 1`] 
         locator=""
         margins={null}
         onPress={[Function]}
-        openWebView={false}
         text=""
         visible={false}
       >

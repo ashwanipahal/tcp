@@ -137,7 +137,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
         locator=""
         margins={null}
         onPress={null}
-        openWebView={false}
         paddingTop="23px"
         text="lbl_PLCCModal_learnMoreText"
         underlineBlue={true}
@@ -182,7 +181,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
-            onMessage={[Function]}
             source={
               Object {
                 "html": Object {},
@@ -214,7 +212,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
           locator=""
           margins={null}
           onPress={null}
-          openWebView={false}
           paddingRight="28px"
           text="lbl_PLCCForm_details"
           underline={true}
@@ -231,7 +228,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
           locator="plcc_faq"
           margins={null}
           onPress={null}
-          openWebView={false}
           paddingRight="28px"
           target="_blank"
           text="lbl_PLCCModal_faqText"
@@ -250,7 +246,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
           locator=""
           margins={null}
           onPress={null}
-          openWebView={false}
           target="_blank"
           text="lbl_PLCCModal_rewardsProgramText"
           underline={true}
@@ -336,7 +331,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
-            onMessage={[Function]}
             source={
               Object {
                 "html": "congrats msg",
@@ -385,7 +379,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
         margins={null}
         noLink={true}
         onPress={[Function]}
-        openWebView={false}
         paddingTop="23px"
         text="lbl_PLCC_noThanks"
         underlineBlue={true}
@@ -399,7 +392,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
-            onMessage={[Function]}
             source={
               Object {
                 "html": "opt out msg",
@@ -447,7 +439,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
-            onMessage={[Function]}
             source={
               Object {
                 "html": Object {},
@@ -479,7 +470,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
           locator=""
           margins={null}
           onPress={null}
-          openWebView={false}
           paddingRight="28px"
           text="lbl_PLCCForm_details"
           underline={true}
@@ -496,7 +486,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
           locator="plcc_faq"
           margins={null}
           onPress={null}
-          openWebView={false}
           paddingRight="28px"
           target="_blank"
           text="lbl_PLCCModal_faqText"
@@ -515,7 +504,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
           locator=""
           margins={null}
           onPress={null}
-          openWebView={false}
           target="_blank"
           text="lbl_PLCCModal_rewardsProgramText"
           underline={true}
@@ -531,7 +519,6 @@ exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is tr
             isApplyDeviceHeight={false}
             isNativeView={false}
             javaScriptEnabled={false}
-            onMessage={[Function]}
             source={
               Object {
                 "html": undefined,

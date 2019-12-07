@@ -145,7 +145,6 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
       locator=""
       margins={null}
       onPress={[Function]}
-      openWebView={false}
       text="lbl_login_Description_clickhere"
       underline={true}
       visible={false}

@@ -27,7 +27,6 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
           locator=""
           margins={null}
           onPress={[Function]}
-          openWebView={false}
           text="pickup"
           visible={false}
         />
@@ -57,7 +56,6 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
           locator=""
           margins={null}
           onPress={[Function]}
-          openWebView={false}
           text="shipping"
           visible={false}
         />

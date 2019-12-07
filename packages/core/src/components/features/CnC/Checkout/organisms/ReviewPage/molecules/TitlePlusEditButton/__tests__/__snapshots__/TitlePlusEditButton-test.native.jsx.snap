@@ -28,7 +28,6 @@ exports[`TitlePlusEditButton component should renders correctly props are presen
       margins={null}
       mobileFontFamily="secondary"
       onPress={[Function]}
-      openWebView={false}
       text=""
       underline={true}
       visible={false}
@@ -65,7 +64,6 @@ exports[`TitlePlusEditButton component should renders correctly props not presen
       margins={null}
       mobileFontFamily="secondary"
       onPress={[Function]}
-      openWebView={false}
       text=""
       underline={true}
       visible={false}
