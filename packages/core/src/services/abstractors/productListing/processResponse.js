@@ -318,7 +318,7 @@ const processResponse = (
   if (res.body.response) {
     const isUSStore = !isCanada();
     res.body.response.products.forEach(product =>
-      parseProductInfo(product, {
+      parseProductInfo(product, state, {
         isUSStore,
         getImgPath,
         hasShortImage,

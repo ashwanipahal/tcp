@@ -17,7 +17,9 @@ import {
   setWishListShareSuccess,
   setMaximumProductAddedErrorState,
   resetMaximumProductAddedErrorState,
+  getSetDefaultWishListActn,
 } from './Favorites.actions';
+import { defaultWishListFromState } from './Favorites.selectors';
 import addItemsToWishlistAbstractor, {
   getUserWishLists,
   getWishListbyId,
@@ -32,6 +34,7 @@ import addItemsToWishlistAbstractor, {
 import {
   getUserLoggedInState,
   getUserContactInfo,
+  isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import { setLoginModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 
@@ -40,6 +43,7 @@ import { setAddToFavoritePDP } from '../../ProductDetail/container/ProductDetail
 import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.actions';
 import { setAddToFavoriteOUTFIT } from '../../OutfitDetails/container/OutfitDetails.actions';
 import { setAddToFavoriteBUNDLE } from '../../BundleProduct/container/BundleProduct.actions';
+import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
 
 export function* loadActiveWishlistByGuestKey({ payload }) {
   const { wishListId, guestAccessKey } = payload;
@@ -63,6 +67,23 @@ export function* loadActiveWishlistByGuestKey({ payload }) {
   } catch (err) {
     yield put(setLoadingState({ isDataLoading: false }));
     return [];
+  }
+}
+
+export function* getDefaultWishList(makeApiCall = false) {
+  try {
+    const state = yield select();
+    const isGuest = !getUserLoggedInState({ ...state });
+    const isRemembered = isRememberedUser({ ...state });
+    if (!isGuest && !isRemembered) {
+      let defaultWishListItems = yield select(defaultWishListFromState);
+      if (defaultWishListItems === null || makeApiCall) {
+        defaultWishListItems = yield call(getProductsUserCustomInfo);
+        yield put(getSetDefaultWishListActn({ ...defaultWishListItems }));
+      }
+    }
+  } catch (err) {
+    yield null;
   }
 }
 
@@ -109,6 +130,8 @@ export function* addItemsToWishlist({ payload }) {
         uniqueId: colorProductId,
         errorMapping,
       });
+
+      yield call(getDefaultWishList, true);
 
       if (res && res.errorMessage) {
         yield put(setAddToFavoriteErrorState(res));
@@ -313,6 +336,7 @@ export function* deleteWishListItemById({ payload }, isByPallLoadSummary = false
     if (!deleteItemResponse.success) {
       throw deleteItemResponse;
     }
+    yield call(getDefaultWishList, true);
     yield put(setDeletedItemAction(payload.itemId));
     if (!isByPallLoadSummary) {
       yield* loadWishlistsSummaries(activeWishlistId);

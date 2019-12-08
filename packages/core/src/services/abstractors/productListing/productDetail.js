@@ -16,7 +16,8 @@ export const parseProductFromAPI = (
   breadCrumbs,
   excludeBage,
   isBundleProduct,
-  getImgPath
+  getImgPath,
+  state
   // eslint-disable-next-line
 ) => {
   const baseProduct = processHelperUtil.getBaseProduct(product); // Getting multiple products as color variants
@@ -127,6 +128,7 @@ export const parseProductFromAPI = (
     colorsFitsMap,
     excludeBage,
     productAttributes,
+    state,
   });
 
   const { itemColorMap: colorFitsSizesMap, imagesByColor: imagesByColorRes } = colorObj;
@@ -305,7 +307,8 @@ const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
         breadCrumb,
         excludeBage,
         isBundleProduct,
-        processHelperUtil.getImgPath
+        processHelperUtil.getImgPath,
+        state
       );
     })
     .catch(err => {

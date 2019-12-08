@@ -1,7 +1,7 @@
 /* getTopBadge  */
 export const getTopBadge = (isMatchingFamily, badge1) => {
   return isMatchingFamily && badge1 && badge1.matchBadge
-    ? badge1.matchBadge
+    ? badge1 && badge1.matchBadge
     : badge1 && badge1.defaultBadge;
 };
 

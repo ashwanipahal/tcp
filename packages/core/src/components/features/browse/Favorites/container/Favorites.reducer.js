@@ -11,6 +11,7 @@ const initialState = fromJS({
   isAddToFavError: '',
   isWishListShared: false,
   errorMessages: {},
+  defaultWishList: null,
 });
 
 const getDefaultState = state => {
@@ -55,6 +56,8 @@ const FavoritesReducer = (state = initialState, action) => {
       return mergedErrorMessages(state, payload);
     case FAVORITES_CONSTANTS.RESET_MAXIMUM_PRODUCT_ADDED_ERROR:
       return state.set('errorMessages', payload);
+    case FAVORITES_CONSTANTS.FAVORITES_SET_DEFAULT_WISHLIST:
+      return state.set('defaultWishList', payload);
     default:
       return getDefaultState(state);
   }

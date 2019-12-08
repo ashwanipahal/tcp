@@ -1,7 +1,7 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
-const getProductsUserCustomInfo = (generalProductIdsList, products, isPDP) => {
+const getProductsUserCustomInfo = (isPDP = false) => {
   const payload = {
     webService: endpoints.getListofDefaultWishlist,
   };
@@ -12,12 +12,6 @@ const getProductsUserCustomInfo = (generalProductIdsList, products, isPDP) => {
       // TODO - fix error handling - throw new ServiceResponseError(res);
       // }
       const favProductsMap = {};
-
-      if (!res.body) {
-        // In case of no response from the default wishlist, return products as is
-        return products;
-      }
-
       const productKey = Object.keys(res.body);
 
       productKey.forEach(key => {
@@ -32,19 +26,7 @@ const getProductsUserCustomInfo = (generalProductIdsList, products, isPDP) => {
           };
         }
       });
-
-      return products.map(product => {
-        const { miscInfo, ...otherAttributes } = product;
-        const extraProductInfo =
-          favProductsMap[isPDP ? product.colorProductId : product.productInfo.generalProductId];
-        return {
-          ...otherAttributes,
-          miscInfo: {
-            ...miscInfo,
-            isInDefaultWishlist: !!extraProductInfo && extraProductInfo.isInDefaultWishlist,
-          },
-        };
-      });
+      return favProductsMap;
     })
     .catch(err => {
       console.log('err', err);

@@ -243,6 +243,7 @@ const getColorfitsSizesMap = ({
   colorsFitsMap,
   excludeBage,
   productAttributes,
+  state,
 }) => {
   let imagesByColor = images;
   const itemColorMap = productVariants.map(itemColor => {
@@ -308,6 +309,7 @@ const getColorfitsSizesMap = ({
         ),
         videoUrl: extractAttributeValue(itemColor, productAttributes.videoUrl),
         keepAlive: parseBoolean(itemColor[productAttributes.keepAlive]),
+        isInDefaultWishlist: processHelpers.addingExtraProductInfo(itemColor, state, true),
       },
       fits: colorsFitsMap[colorName],
       listPrice:

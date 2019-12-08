@@ -321,6 +321,7 @@ const getL3Category = (shouldApplyUnbxdLogic, bucketingSeqConfig, product, catMa
 
 export const parseProductInfo = (
   productArr,
+  state,
   {
     isUSStore,
     getImgPath,
@@ -447,6 +448,7 @@ export const parseProductInfo = (
       rating: getMiscInfoRating(product),
       // yet again, we need to dig from multiple sources just to get a simple string value
       categoryName,
+      isInDefaultWishlist: processHelpers.addingExtraProductInfo(product, state),
     },
     colorsMap,
     imagesByColor,

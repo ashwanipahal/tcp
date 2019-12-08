@@ -42,6 +42,13 @@ export const setActiveWishlistAction = payload => {
   };
 };
 
+export function getSetDefaultWishListActn(wishList) {
+  return {
+    payload: wishList,
+    type: FAVORITES_CONSTANTS.FAVORITES_SET_DEFAULT_WISHLIST,
+  };
+}
+
 export const getActiveWishlistAction = wishListId => {
   return {
     type: FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST,
@@ -136,7 +143,7 @@ export const getSetIsWishlistReadOnlyAction = isReadOnly => {
 export const getSetActiveWishlistAction = activeWishlist => {
   return {
     activeWishlist,
-    type: 'FAVORITES_SET_ACTIVE_WISHLIST',
+    type: FAVORITES_CONSTANTS.FAVORITES_SET_ACTIVE_WISHLIST,
   };
 };
 

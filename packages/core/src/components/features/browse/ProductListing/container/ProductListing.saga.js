@@ -9,11 +9,7 @@ import {
 } from './ProductListing.actions';
 import ProductAbstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
-import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
-import {
-  getUserLoggedInState,
-  isRememberedUser,
-} from '../../../account/User/container/User.selectors';
+import { getDefaultWishList } from '../../Favorites/container/Favorites.saga';
 
 const instanceProductListing = new ProductAbstractor();
 const operatorInstance = new ProductsOperator();
@@ -41,6 +37,7 @@ export function* fetchPlpProducts({ payload }) {
       })
     );
     let state = yield select();
+    yield call(getDefaultWishList);
     let reqObj = operatorInstance.getProductListingBucketedData(
       { ...state },
       location,
@@ -84,19 +81,6 @@ export function* fetchPlpProducts({ payload }) {
           yield put(loadModulesData(modules));
         }
         operatorInstance.updateBucketingConfig(plpProducts);
-        const products = plpProducts.loadedProductsPages[0];
-        const isGuest = !getUserLoggedInState({ ...state });
-        const isRemembered = isRememberedUser({ ...state });
-        if (!isGuest && !isRemembered) {
-          const generalProductIdsList = products.map(
-            product => product.productInfo.generalProductId
-          );
-          plpProducts.loadedProductsPages[0] = yield call(
-            getProductsUserCustomInfo,
-            generalProductIdsList,
-            products
-          );
-        }
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }
@@ -128,19 +112,6 @@ export function* fetchMoreProducts({ payload = {} }) {
         plpProducts.loadedProductsPages[0].length
       ) {
         operatorInstance.updateBucketingConfig(plpProducts);
-        const products = plpProducts.loadedProductsPages[0];
-        const isGuest = !getUserLoggedInState(state);
-        const isRemembered = isRememberedUser(state);
-        if (!isGuest && !isRemembered) {
-          const generalProductIdsList = products.map(
-            product => product.productInfo.generalProductId
-          );
-          plpProducts.loadedProductsPages[0] = yield call(
-            getProductsUserCustomInfo,
-            generalProductIdsList,
-            products
-          );
-        }
         yield putResolve(setPlpProducts({ ...plpProducts }));
       }
     }
