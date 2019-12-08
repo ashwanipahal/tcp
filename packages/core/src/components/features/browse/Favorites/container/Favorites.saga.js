@@ -1,6 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import isEmpty from 'lodash/isEmpty';
 import processHelperUtil from '@tcp/core/src/services/abstractors/productListing/ProductDetail.util';
 import { FAVORITES_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import getErrorList from '@tcp/core/src/components/features/CnC/BagPage/container/Errors.selector';
@@ -71,20 +70,17 @@ export function* loadActiveWishlistByGuestKey({ payload }) {
   }
 }
 
-export function* getDefaultWishList(isIgnoreCache = false) {
+export function* getDefaultWishList(makeApiCall = false) {
   try {
     const state = yield select();
     const isGuest = !getUserLoggedInState({ ...state });
     const isRemembered = isRememberedUser({ ...state });
     if (!isGuest && !isRemembered) {
       let defaultWishListItems = yield select(defaultWishListFromState);
-      defaultWishListItems =
-        (defaultWishListItems && defaultWishListItems.size === 0) ||
-        isEmpty(defaultWishListItems) ||
-        isIgnoreCache
-          ? yield call(getProductsUserCustomInfo)
-          : defaultWishListItems;
-      yield put(getSetDefaultWishListActn({ ...defaultWishListItems }));
+      if (defaultWishListItems === null || makeApiCall) {
+        defaultWishListItems = yield call(getProductsUserCustomInfo);
+        yield put(getSetDefaultWishListActn({ ...defaultWishListItems }));
+      }
     }
   } catch (err) {
     yield null;

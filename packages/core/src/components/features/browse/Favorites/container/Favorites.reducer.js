@@ -11,7 +11,7 @@ const initialState = fromJS({
   isAddToFavError: '',
   isWishListShared: false,
   errorMessages: {},
-  defaultWishList: {},
+  defaultWishList: null,
 });
 
 const getDefaultState = state => {

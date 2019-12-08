@@ -104,7 +104,6 @@ export function* fetchMoreProducts({ payload = {} }) {
     const reqObj = operatorInstance.getMoreBucketedProducts(state, location);
     if (reqObj && reqObj.categoryId) {
       state = yield select();
-      yield call(getDefaultWishList);
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (
         plpProducts &&

@@ -86,7 +86,6 @@ export function* fetchMoreProducts({ payload = {} }) {
     const state = yield select();
     const location = getUrl(url);
     yield put(setSlpLoadingState({ isLoadingMore: true }));
-    yield call(getDefaultWishList);
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
     const { appliedFiltersIds } = state[SLP_PAGE_REDUCER_KEY];
