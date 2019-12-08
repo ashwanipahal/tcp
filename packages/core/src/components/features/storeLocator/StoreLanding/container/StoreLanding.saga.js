@@ -45,10 +45,10 @@ export function* getFavoriteStoreSaga({ payload }) {
     if (res && res.basicInfo) {
       return yield put(setDefaultStoreUserAction(res));
     }
-    yield put(setDefaultStoreUserAction(null));
-    throw res;
+    return yield put(setDefaultStoreUserAction(null));
   } catch (err) {
     if (isMobileApp() && err) {
+      console.log(err);
       return yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
     }
     return yield put(setDefaultStoreUserAction(null));
