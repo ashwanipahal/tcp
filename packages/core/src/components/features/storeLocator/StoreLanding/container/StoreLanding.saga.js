@@ -8,7 +8,7 @@ import {
 import { setDefaultStore as setDefaultStoreUserAction } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import {
   getIsGuest,
-  getPersonalDataState,
+  getUserLoggedInState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
 import { setStoresByCoordinates } from './StoreLanding.actions';
@@ -36,7 +36,7 @@ export function* getFavoriteStoreSaga({ payload }) {
   try {
     const { geoLatLang: { lat = null, long = null } = {} } = payload;
     const isGuest = yield select(getIsGuest);
-    const isUserLoggedIn = yield select(getPersonalDataState);
+    const isUserLoggedIn = yield select(getUserLoggedInState);
     const isGenericGuest = !(isGuest || isUserLoggedIn);
     if (isGenericGuest && lat === null && long === null) {
       return yield put(setDefaultStoreUserAction(null));

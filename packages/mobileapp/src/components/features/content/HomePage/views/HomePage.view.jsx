@@ -83,14 +83,22 @@ class HomePageView extends React.PureComponent {
   componentDidMount() {
     this.loadBootstrapData();
 
-    const { loadNavigationData, loadFavoriteStore } = this.props;
+    const { loadNavigationData } = this.props;
     loadNavigationData();
-    loadFavoriteStore({});
     const { handeOpenURLRegister } = this.state;
 
     if (!handeOpenURLRegister) {
       this.setState({ handeOpenURLRegister: true });
       Linking.addEventListener('url', this.handleOpenURL);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isUserLoggedIn, loadFavoriteStore } = this.props;
+    if (isUserLoggedIn !== prevProps.isUserLoggedIn) {
+      loadFavoriteStore({
+        ignoreCache: true,
+      });
     }
   }
 
