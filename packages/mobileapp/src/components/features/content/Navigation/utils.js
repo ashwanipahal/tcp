@@ -24,7 +24,6 @@ export const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibili
       outfitPath: (categoryIds && categoryIds.length > 1 && categoryIds[1]) || '',
     });
   }
-
   return navigate('ProductListing', {
     title: name,
     url,

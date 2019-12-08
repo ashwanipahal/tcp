@@ -4,7 +4,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/Dropdown.style';
 import withStyles from '../../../hoc/withStyles';
 import Anchor from '../../../atoms/Anchor';
-import { routerPush } from '../../../../../utils';
+import { routerPush, triggerPostMessage, getAPIConfig } from '../../../../../utils';
 
 class Dropdown extends React.PureComponent {
   constructor(props) {
@@ -86,6 +86,10 @@ class Dropdown extends React.PureComponent {
     this.updateState(nav);
     this.toggleHandler();
     routerPush(nav.href, nav.url);
+    const apiConfigObj = getAPIConfig();
+    if (apiConfigObj.isAppChannel) {
+      triggerPostMessage(nav.url || nav.href);
+    }
   };
 
   // Validating and returning if displayname needs to be on caps

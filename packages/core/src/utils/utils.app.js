@@ -568,7 +568,6 @@ const getCurrentAPIConfig = (envConfig, isTCPBrand) => {
     gymAPIConfig = gymAPIConfig || createAPIConfigForApp(envConfig, 'GYM');
     currentAppAPIConfig = gymAPIConfig;
   }
-
   return currentAppAPIConfig;
 };
 

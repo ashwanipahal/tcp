@@ -6,6 +6,7 @@ import { StyledText } from '../../../../../../styles/globalStyles/StyledText.sty
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
+import { webViewUrlList } from '../config.native';
 
 type Props = {
   anchorVariation?: string,
@@ -22,6 +23,32 @@ type Props = {
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
+
+/**
+ * Open The Web View Screen when user openWebView props is passed as true
+ * @param {*} url
+ */
+const redirectToInAppView = (url, navigation) => {
+  navigation.navigate('InAppView', {
+    url,
+  });
+};
+
+/**
+ * To find that url has to open in web view or not.
+ * @param {*} url
+ */
+
+const isWebViewPage = url => {
+  let isWebView = false;
+  for (let i = 0; i < webViewUrlList.length; i += 1) {
+    if (url.includes(i)) {
+      isWebView = true;
+      break;
+    }
+  }
+  return isWebView;
+};
 
 /**
  * @param {object} props : Props for Anchor
@@ -41,7 +68,9 @@ const Anchor = ({
 }: Props) => {
   const { url, navigation } = otherProps;
   const openUrl = () => {
-    if (validateExternalUrl(url)) {
+    if (isWebViewPage(url) !== -1 && navigation) {
+      redirectToInAppView(url, navigation);
+    } else if (validateExternalUrl(url)) {
       UrlHandler(url);
     } else if (navigation) {
       const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);

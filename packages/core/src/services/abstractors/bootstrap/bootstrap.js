@@ -97,7 +97,8 @@ const fetchBootstrapData = async (
  * Generate base bootstrap parameters
  */
 const createBootstrapParams = (apiConfig, language) => {
-  const channelName = isMobileApp() ? MobileChannel : defaultChannel;
+  const isMobileChannel = isMobileApp() || apiConfig.isAppChannel;
+  const channelName = isMobileChannel ? MobileChannel : defaultChannel;
   return {
     labels: {
       // TODO - GLOBAL-LABEL-CHANGE - STEP 1.2 -  Uncomment this line for only global data
@@ -138,9 +139,10 @@ export const shouldInitiateSSRCall = (originalUrl, deviceType) =>
  * @param {*} bootstrapData Response from API call
  * @param {*} pageName Page Name
  */
+// eslint-disable-next-line complexity
 export const checkAndLogErrors = (bootstrapData, pageName) => {
   const { labels, header, footer, navigation } = bootstrapData;
-  const { errorMessage: headerErrorMessage } = header;
+  const { errorMessage: headerErrorMessage } = header || {};
   const errorObject = {
     header_error: 0,
     footer_error: 0,
@@ -155,19 +157,19 @@ export const checkAndLogErrors = (bootstrapData, pageName) => {
       errorObject.header_error_message = headerErrorMessage;
       logger.error(`Error occurred in header query ${headerErrorMessage}`);
     }
-    const { errorMessage: footerErrorMessage } = footer;
+    const { errorMessage: footerErrorMessage } = footer || {};
     if (footerErrorMessage) {
       errorObject.footer_error = 1;
       errorObject.footer_error_message = footerErrorMessage;
       logger.error(`Error occurred in footer query ${footerErrorMessage}`);
     }
-    const [{ errorMessage: navigationErrorMessage }] = navigation;
+    const [{ errorMessage: navigationErrorMessage }] = navigation || [];
     if (navigationErrorMessage) {
       errorObject.navigation_error = 1;
       errorObject.navigation_error_message = navigationErrorMessage;
       logger.error(`Error occurred in navigation query ${navigationErrorMessage}`);
     }
-    const [{ errorMessage: labelsErrorMessage }] = labels;
+    const [{ errorMessage: labelsErrorMessage }] = labels || [];
     if (labelsErrorMessage) {
       errorObject.labels_error = 1;
       errorObject.labels_error_message = labelsErrorMessage;
@@ -248,6 +250,18 @@ const parsedResponse = async (
 };
 
 /**
+ * This function will be used to get the module list for web and for app.
+ * for the web view in app, we don't need header,footer and navigation.
+ * @param {*} apiConfig
+ * @param {*} modules
+ */
+const getBootstrapModules = (apiConfig, modules) => {
+  const webBootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
+  const appWebViewBootstrapModules = ['labels'];
+  return apiConfig.isAppChannel ? appWebViewBootstrapModules : webBootstrapModules;
+};
+
+/**
  * Responsible for making all the http requests that need to be resolved before loading the application
  *  -   Layout
  *  -   Header
@@ -270,7 +284,8 @@ const bootstrap = async (pageNameStr, modules, cachedData, state, originalUrl, d
    *  -   Labels
    *  -   Navigation
    */
-  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
+
+  const bootstrapModules = getBootstrapModules(apiConfig, modules);
 
   try {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);

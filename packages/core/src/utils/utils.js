@@ -1168,6 +1168,21 @@ export const convertNumToBool = val => {
 };
 
 /**
+ * To Trigger the webview post message when any anchor is clicked.
+ * this will work for internal routes only.
+ */
+export const triggerPostMessage = url => {
+  const { isAppChannel } = getAPIConfig();
+  if (url && window && window.ReactNativeWebView && isAppChannel) {
+    let updatedUrl = url;
+    if (updatedUrl.includes('/us')) {
+      updatedUrl = updatedUrl.replace('/us', '');
+    }
+    const postMessageFn = window.ReactNativeWebView;
+    postMessageFn.postMessage(updatedUrl);
+  }
+};
+/*
  * @function cropVideoUrl function appends or replaces the cropping value in the URL
  * @param {string} url the image url
  * @return {string} function returns new Url with the crop value
@@ -1246,6 +1261,7 @@ export default {
   calculatePriceValue,
   getProductUrlForDAM,
   convertNumToBool,
+  triggerPostMessage,
   cropVideoUrl,
   isIE11,
 };

@@ -18,7 +18,6 @@ import { LogoutWrapper } from '@tcp/core/src/components/features/account/Logout/
 import CreateAccount from '@tcp/core/src/components/features/account/CreateAccount';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import LogOutPageContainer from '@tcp/core/src/components/features/account/Logout/container/LogOut.container';
-import WebViewModal from '@tcp/core/src/components/common/molecules/WebViewModal';
 import {
   UnderlineStyle,
   TextWrapper,
@@ -49,8 +48,6 @@ class FooterLinks extends PureComponent {
       horizontalBar: true,
       modalHeaderLbl: ' ',
       changePassword: false,
-      toggleViewModal: false,
-      webUrl: '',
     };
   }
 
@@ -213,15 +210,8 @@ class FooterLinks extends PureComponent {
     });
   };
 
-  openWebViewModal = (webUri = '') => {
-    this.setState(state => ({
-      toggleViewModal: !state.toggleViewModal,
-      webUrl: webUri,
-    }));
-  };
-
   renderLinks = () => {
-    const { getComponentId, toggleViewModal, webUrl } = this.state;
+    const { getComponentId } = this.state;
     const {
       isUserLoggedIn,
       labels,
@@ -358,12 +348,7 @@ class FooterLinks extends PureComponent {
         );
       } else if (!leafLink.url.includes('track-order')) {
         linkMarkup = (
-          <Anchor
-            {...(leafLink.target === '_self'
-              ? { onPress: () => this.openWebViewModal(leafLink.url) }
-              : { url: leafLink.url })}
-            customStyle={AnchorStyles}
-          >
+          <Anchor url={leafLink.url} customStyle={AnchorStyles} navigation={navigation}>
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs13"
@@ -377,21 +362,11 @@ class FooterLinks extends PureComponent {
           </Anchor>
         );
       }
+
       return (
         <>
           {linkMarkup}
           {(index === 0 || index === 2 || index === 5) && showDivider ? <UnderlineStyle /> : null}
-          {toggleViewModal && (
-            <WebViewModal
-              openState={toggleViewModal}
-              toggleModalHandler={this.openWebViewModal}
-              webViewProps={{
-                source: {
-                  uri: webUrl,
-                },
-              }}
-            />
-          )}
         </>
       );
     });
