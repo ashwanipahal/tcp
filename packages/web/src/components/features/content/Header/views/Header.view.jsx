@@ -9,7 +9,7 @@ import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import { getViewportInfo } from '@tcp/core/src/utils';
+import { getViewportInfo, getAPIConfig } from '@tcp/core/src/utils';
 import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
@@ -20,6 +20,7 @@ class Header extends React.PureComponent {
     super(props);
     this.state = {
       showCondensedHeader: false,
+      isAppWebView: getAPIConfig().isAppChannel,
     };
   }
 
@@ -59,16 +60,19 @@ class Header extends React.PureComponent {
      * and scrolling direction is down
      * 2. Condensed header is 'unstuck' when scrolling up till Navigation bar get visible
      */
-    if (
-      (getViewportInfo().isDesktop && window.pageYOffset > sticky + 64) ||
-      (!getViewportInfo().isDesktop && window.pageYOffset > sticky)
-    ) {
-      this.setState({ showCondensedHeader: true }, () => {
-        const condensedHeader = document.getElementsByClassName('condensed-header')[0];
-        condensedHeader.classList.add('show-condensed-header');
-      });
-    } else {
-      this.setState({ showCondensedHeader: false });
+    const { isAppWebView } = this.state;
+    if (!isAppWebView) {
+      if (
+        (getViewportInfo().isDesktop && window.pageYOffset > sticky + 64) ||
+        (!getViewportInfo().isDesktop && window.pageYOffset > sticky)
+      ) {
+        this.setState({ showCondensedHeader: true }, () => {
+          const condensedHeader = document.getElementsByClassName('condensed-header')[0];
+          condensedHeader.classList.add('show-condensed-header');
+        });
+      } else {
+        this.setState({ showCondensedHeader: false });
+      }
     }
   };
 
@@ -102,9 +106,9 @@ class Header extends React.PureComponent {
       setClickAnalyticsData,
       isQVModalOpen,
     } = this.props;
-    const { showCondensedHeader } = this.state;
+    const { showCondensedHeader, isAppWebView } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
-    return (
+    return !isAppWebView ? (
       <header className={`${className} header-global`}>
         {topPromoBanner ? (
           <LoyaltyPromoBanner
@@ -186,7 +190,7 @@ class Header extends React.PureComponent {
         {isQVModalOpen ? <QuickViewModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
       </header>
-    );
+    ) : null;
   }
 }
 

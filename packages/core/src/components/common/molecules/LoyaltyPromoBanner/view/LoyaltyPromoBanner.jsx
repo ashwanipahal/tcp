@@ -46,50 +46,52 @@ const LoyaltyPromoBanner = props => {
   return bannerClosed ? null : (
     <div className={`${className} content-wrapper`}>
       <Row>
-        <Col
-          colSize={{
-            small: 6,
-            medium: 8,
-            large: 12,
-          }}
-        >
-          {link ? (
-            <ClickTracker
-              as={Anchor}
-              to={link.url}
-              asPath={link.url}
-              target={link.target}
-              title={link.title}
-              dataLocator={dataLocator || `loyalty-promo-banner`}
-              clickData={{
-                customEvents: ['event80', 'event81'],
-                internalCampaignId: loyalityAnalyticsValue,
-              }}
-            >
-              <RichText richTextHtml={richText.text} />
-            </ClickTracker>
-          ) : (
-            <RichText richTextHtml={richText.text} />
-          )}
-          <button
-            aria-label="close"
-            className="loyalty-promo-close-btn"
-            onClick={closeButtonHandler}
+        {richText ? (
+          <Col
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: 12,
+            }}
           >
-            <svg
-              className="loyalty-promo-close-btn-icon"
-              viewBox="0 0 25 25"
-              aria-hidden="true"
-              role="img"
+            {link ? (
+              <ClickTracker
+                as={Anchor}
+                to={link.url}
+                asPath={link.url}
+                target={link.target}
+                title={link.title}
+                dataLocator={dataLocator || `loyalty-promo-banner`}
+                clickData={{
+                  customEvents: ['event80', 'event81'],
+                  internalCampaignId: loyalityAnalyticsValue,
+                }}
+              >
+                <RichText richTextHtml={richText.text} />
+              </ClickTracker>
+            ) : (
+              <RichText richTextHtml={richText.text} />
+            )}
+            <button
+              aria-label="close"
+              className="loyalty-promo-close-btn"
+              onClick={closeButtonHandler}
             >
-              <path
-                fill="#a0a0a0"
-                fillRule="nonzero"
-                d="M14.107 12.5l10.56-10.56A1.136 1.136 0 1 0 23.06.333L12.5 10.893 1.94.333A1.136 1.136 0 1 0 .333 1.94l10.56 10.56L.333 23.06a1.136 1.136 0 1 0 1.607 1.607l10.56-10.56 10.56 10.56c.222.222.513.333.804.333a1.136 1.136 0 0 0 .803-1.94L14.107 12.5z"
-              />
-            </svg>
-          </button>
-        </Col>
+              <svg
+                className="loyalty-promo-close-btn-icon"
+                viewBox="0 0 25 25"
+                aria-hidden="true"
+                role="img"
+              >
+                <path
+                  fill="#a0a0a0"
+                  fillRule="nonzero"
+                  d="M14.107 12.5l10.56-10.56A1.136 1.136 0 1 0 23.06.333L12.5 10.893 1.94.333A1.136 1.136 0 1 0 .333 1.94l10.56 10.56L.333 23.06a1.136 1.136 0 1 0 1.607 1.607l10.56-10.56 10.56 10.56c.222.222.513.333.804.333a1.136 1.136 0 0 0 .803-1.94L14.107 12.5z"
+                />
+              </svg>
+            </button>
+          </Col>
+        ) : null}
       </Row>
     </div>
   );

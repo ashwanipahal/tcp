@@ -5,7 +5,7 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { setSessionStorage, getSessionStorage } from '@tcp/core/src/utils/utils.web';
-import { isTCP } from '@tcp/core/src/utils/utils';
+import { isTCP, getAPIConfig } from '@tcp/core/src/utils/utils';
 import CountrySelector from '../../Header/molecules/CountrySelector';
 import {
   FooterMiddleMobile,
@@ -25,6 +25,7 @@ class Footer extends React.Component {
 
     this.state = {
       showFooterTopCandidateB: false,
+      isAppWebView: getAPIConfig().isAppChannel,
     };
   }
 
@@ -140,9 +141,9 @@ class Footer extends React.Component {
       footerActionCreator,
       isNavigationFooter,
     } = props;
-    const { showFooterTopCandidateB } = this.state;
+    const { showFooterTopCandidateB, isAppWebView } = this.state;
 
-    return (
+    return !isAppWebView ? (
       <footer className={`${className} footer-global`}>
         <Row className="footer-candidate-wrapper" fullBleed={!isNavigationFooter}>
           {isNavigationFooter && (
@@ -240,7 +241,7 @@ class Footer extends React.Component {
           </Row>
         </div>
       </footer>
-    );
+    ) : null;
   }
 }
 

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React, { Component } from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { PropTypes } from 'prop-types';

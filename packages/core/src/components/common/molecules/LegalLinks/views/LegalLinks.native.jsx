@@ -1,62 +1,31 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '../../../atoms/Anchor';
-import WebViewModal from '../../WebViewModal';
 import LegalLinksContainer, { AnchorStyles } from '../styles/LegalLinks.style.native';
 import withStyles from '../../../hoc/withStyles';
 
 const AnchorView = withStyles(Anchor, AnchorStyles);
 
 class LegalLinks extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      toggleModal: false,
-      webUrl: '',
-    };
-  }
-
-  toggleWebViewModal = webUri => {
-    this.setState(state => ({
-      toggleModal: !state.toggleModal,
-      webUrl: webUri,
-    }));
-  };
-
   render() {
-    const { links } = this.props;
-    const { toggleModal, webUrl } = this.state;
-
+    const { links, navigation } = this.props;
     return (
       <LegalLinksContainer>
         {links.length > 0 &&
           links.map(link => {
             const {
-              leafLink: { text, url: webUri, target },
+              leafLink: { text, url: webUri },
             } = link;
-            const onClickProps = {
-              onPress: () => this.toggleWebViewModal(webUri),
-            };
             return (
               <AnchorView
                 text={text}
                 anchorVariation="grayed"
                 fontSizeVariation="medium"
-                {...(target === '_self' ? onClickProps : { url: webUri })}
+                url={webUri}
+                navigation={navigation}
               />
             );
           })}
-        {toggleModal && (
-          <WebViewModal
-            openState={toggleModal}
-            toggleModalHandler={this.toggleWebViewModal}
-            webViewProps={{
-              source: {
-                uri: webUrl,
-              },
-            }}
-          />
-        )}
       </LegalLinksContainer>
     );
   }
@@ -64,6 +33,7 @@ class LegalLinks extends PureComponent {
 
 LegalLinks.propTypes = {
   links: PropTypes.shape([]),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 LegalLinks.defaultProps = {

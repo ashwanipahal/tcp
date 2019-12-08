@@ -2,7 +2,13 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
-import { buildUrl, getAsPathWithSlug, getMappedPageHref } from '../../../../../utils';
+import {
+  buildUrl,
+  getAsPathWithSlug,
+  getMappedPageHref,
+  triggerPostMessage,
+  getAPIConfig,
+} from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
@@ -45,6 +51,9 @@ const Anchor = ({
     incomingUrl = getMappedPageHref(incomingUrl);
   }
   const hrefUrl = asLinkPath || buildUrl(incomingUrl);
+
+  const apiConfigObj = getAPIConfig();
+
   let AnchorComponent = null;
   if (children || text) {
     AnchorComponent = noLink ? (
@@ -66,6 +75,9 @@ const Anchor = ({
           href={hrefUrl}
           title={title}
           target={targetVal}
+          {...(apiConfigObj.isAppChannel
+            ? { onClick: () => triggerPostMessage(to || asLinkPath) }
+            : '')}
           data-locator={dataLocator}
           {...other}
         >

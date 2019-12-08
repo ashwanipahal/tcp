@@ -22,6 +22,7 @@ import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { HotfixBrowserContext } from '@tcp/core/src/components/common/context/HotfixContext';
+import { MobileChannel } from '@tcp/core/src/services/api.constants';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -212,6 +213,11 @@ class TCPWebApp extends App {
       apiConfig.isPreviewEnv = req.headers.preview || req.query.preview || '';
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date || '';
+      // To identify when the page is loaded in app's web view.
+      apiConfig.isAppChannel =
+        req.headers && req.headers['x-tcp-device']
+          ? req.headers['x-tcp-device'] === MobileChannel
+          : false;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
