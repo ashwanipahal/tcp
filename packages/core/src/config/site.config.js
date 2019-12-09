@@ -16,6 +16,8 @@ export const DEFAULT_TOAST_ERROR_MESSAGE_TTL = 5000;
 
 export const SCROLL_TOP_POS = 200;
 
+export const GET_DEFAULT_STORE_TTL = 2 * 60 * 1000;
+
 export default {
   DEFAULT_REDUX_TTL_TIME,
   DEFAULT_XAPP_CONFIG_TTL,

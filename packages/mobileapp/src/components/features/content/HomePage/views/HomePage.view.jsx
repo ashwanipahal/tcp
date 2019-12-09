@@ -93,6 +93,15 @@ class HomePageView extends React.PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { isUserLoggedIn, loadFavoriteStore } = this.props;
+    if (isUserLoggedIn !== prevProps.isUserLoggedIn) {
+      loadFavoriteStore({
+        ignoreCache: true,
+      });
+    }
+  }
+
   componentWillUnmount() {
     Linking.removeEventListener('url', this.handleOpenURL);
     this.setState({ handeOpenURLRegister: false });
@@ -244,6 +253,7 @@ HomePageView.propTypes = {
   headerPromo: PropTypes.shape({}),
   promoHtmlBannerCarousel: PropTypes.shape([]),
   isQVModalOpen: PropTypes.bool,
+  loadFavoriteStore: PropTypes.func,
 };
 
 HomePageView.defaultProps = {
@@ -255,6 +265,7 @@ HomePageView.defaultProps = {
   headerPromo: {},
   promoHtmlBannerCarousel: [],
   isQVModalOpen: false,
+  loadFavoriteStore: () => {},
 };
 
 export { HomePageView };

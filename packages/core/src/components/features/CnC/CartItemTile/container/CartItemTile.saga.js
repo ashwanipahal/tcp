@@ -14,6 +14,7 @@ import {
 } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 import fetchData from '../../../../../service/API';
@@ -199,6 +200,11 @@ export function* updateCartItemSaga({ payload }) {
     });
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     yield put(setLoaderState(false));
+    yield put(
+      getFavoriteStoreActn({
+        ignoreCache: true,
+      })
+    );
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {

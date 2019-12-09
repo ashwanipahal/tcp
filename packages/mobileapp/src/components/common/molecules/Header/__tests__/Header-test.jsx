@@ -84,13 +84,6 @@ describe('Header Component', () => {
   });
 
   describe('#mapDispatchToProps', () => {
-    it('should return an action loadFavoriteStore which will call dispatch function on execution', () => {
-      const dispatch = jest.fn();
-      const dispatchProps = mapDispatchToProps(dispatch);
-      dispatchProps.loadFavoriteStore();
-      expect(dispatch.mock.calls).toHaveLength(1);
-    });
-
     it('should return an action updateCartCountAction which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);

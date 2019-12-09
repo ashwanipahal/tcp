@@ -11,10 +11,7 @@ import {
   getLabelValue,
 } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
-import {
-  getFavoriteStoreActn,
-  setStoresByCoordinates,
-} from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
+import { setStoresByCoordinates } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import {
   updateCartCount,
@@ -100,12 +97,11 @@ class Header extends React.PureComponent {
   }
 
   getInitialProps() {
-    const { updateCartCountAction, loadFavoriteStore } = this.props;
+    const { updateCartCountAction } = this.props;
     const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
     cartValuePromise.then(res => {
       updateCartCountAction(parseInt(res || 0, 10));
     });
-    loadFavoriteStore({});
   }
 
   /**
@@ -361,7 +357,6 @@ class Header extends React.PureComponent {
 Header.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   favStore: PropTypes.shape({}),
-  loadFavoriteStore: PropTypes.func,
   cartVal: PropTypes.number.isRequired,
   showSearch: PropTypes.bool,
   title: PropTypes.string,
@@ -380,7 +375,6 @@ Header.propTypes = {
 
 Header.defaultProps = {
   favStore: {},
-  loadFavoriteStore: () => null,
   showSearch: false,
   title: '',
   isUpdateCartCount: false,
@@ -410,7 +404,6 @@ const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
     updateCartCountAction: payload => {
       dispatch(updateCartCount(payload));
     },
