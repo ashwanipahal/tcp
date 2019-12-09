@@ -146,6 +146,30 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
 
+  .gymboree_description {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    display: block;
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+
   /* this style is for Module N \\"ALL CLEARANCE\\" header text */
   .spaced_text {
     color: ",
