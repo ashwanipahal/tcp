@@ -112,7 +112,7 @@ export default class LabeledRadioButton extends React.Component {
     const id = `${name}_${this.labeledRadioButtonCounter}`;
 
     return (
-      <label htmlFor={id} className={containingClassName} style={style}>
+      <label htmlFor={id} className={containingClassName} style={style} tabIndex="0">
         <div className={inputContainerClassName}>
           <input
             {...input}
