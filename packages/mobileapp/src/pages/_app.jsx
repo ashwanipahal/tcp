@@ -21,6 +21,7 @@ import {
 import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
+// eslint-disable-next-line import/no-unresolved
 import { UrbanAirship } from 'urbanairship-react-native';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../../../../Modal';
-import { BodyCopy } from '../../../../../../../../styles/themes/TCP/typotheme';
+import Anchor from '../../../../../atoms/Anchor';
 import modalstyles from '../styles/SizeChart.style';
 
 class SizeChart extends React.Component {
@@ -33,9 +33,9 @@ class SizeChart extends React.Component {
 
     return (
       <>
-        <BodyCopy className="size-chart" {...dataObj} onClick={this.toggleModal}>
+        <Anchor href="" className="size-chart" {...dataObj} onClick={this.toggleModal}>
           {labels.sizeChart}
-        </BodyCopy>
+        </Anchor>
         <Modal
           isOpen={isOpen}
           overlayClassName="TCPModal__Overlay"
