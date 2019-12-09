@@ -41,8 +41,9 @@ const redirectToInAppView = (url, navigation) => {
 
 const isWebViewPage = url => {
   let isWebView = false;
-  for (let i = 0; i < webViewUrlList.length; i += 1) {
-    if (url.includes(i)) {
+  const urlList = webViewUrlList;
+  for (let i = 0; i < urlList.length; i += 1) {
+    if (url.includes(urlList[i])) {
       isWebView = true;
       break;
     }
@@ -68,7 +69,7 @@ const Anchor = ({
 }: Props) => {
   const { url, navigation } = otherProps;
   const openUrl = () => {
-    if (isWebViewPage(url) !== -1 && navigation) {
+    if (isWebViewPage(url) && navigation) {
       redirectToInAppView(url, navigation);
     } else if (validateExternalUrl(url)) {
       UrlHandler(url);
