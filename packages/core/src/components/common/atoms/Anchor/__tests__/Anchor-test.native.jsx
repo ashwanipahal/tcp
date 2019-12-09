@@ -59,12 +59,12 @@ describe('Anchor Native', () => {
   it('should return null', () => {
     component.setProps({ url: '/test' });
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(5);
+    expect(navigate).toHaveBeenCalledTimes(4);
   });
 
   it('should return navigation to default browser', () => {
     component.setProps({ onPress: null });
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(6);
+    expect(navigate).toHaveBeenCalledTimes(5);
   });
 });
