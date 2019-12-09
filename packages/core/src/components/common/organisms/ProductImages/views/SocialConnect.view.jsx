@@ -57,82 +57,89 @@ class SocialConnect extends React.PureComponent {
     } = this.props;
 
     return (
-      <span className={`${className} social-connect-sub-wrapper`}>
-        {isTwitterEnabled && (
-          <ClickTracker
-            clickData={{
-              customEvents: ['event84'],
-              productId: ratingsProductId,
-              socialNetwork: 'twitter',
-            }}
-          >
-            <Anchor
-              url="http://twitter.com/childrensplace"
-              target="_blank"
-              onClick={this.handleTwitterShare}
-              className="icon-twitter"
-              title="Twitter"
-              rel="noopener"
+      <ul className={`${className} social-connect-sub-wrapper`}>
+        <li>
+          {isTwitterEnabled && (
+            <ClickTracker
+              clickData={{
+                customEvents: ['event84'],
+                productId: ratingsProductId,
+                socialNetwork: 'twitter',
+              }}
             >
-              <Image
-                alt={getLabelValue(accessibilityLabels, 'lbl_social_twitter')}
-                className="twitter"
-                src={getIconPath('twitter-icon')}
-                data-locator="twitter-icon"
-              />
-            </Anchor>
-          </ClickTracker>
-        )}
+              <Anchor
+                url="http://twitter.com/childrensplace"
+                target="_blank"
+                onClick={this.handleTwitterShare}
+                className="icon-twitter"
+                title="Twitter"
+                rel="noopener"
+              >
+                <Image
+                  alt={getLabelValue(accessibilityLabels, 'lbl_social_twitter')}
+                  className="twitter"
+                  src={getIconPath('twitter-icon')}
+                  data-locator="twitter-icon"
+                />
+              </Anchor>
+            </ClickTracker>
+          )}
+        </li>
 
-        {isFacebookEnabled && (
-          <ClickTracker
-            clickData={{
-              customEvents: ['event84'],
-              productId: ratingsProductId,
-              socialNetwork: 'facebook',
-            }}
-          >
-            <Anchor
-              url="https://www.facebook.com/childrensplace"
-              target="_blank"
-              onClick={this.handleFacebookShare}
-              className="icon-facebook"
-              title="Facebook"
+        <li>
+          {isFacebookEnabled && (
+            <ClickTracker
+              clickData={{
+                customEvents: ['event84'],
+                productId: ratingsProductId,
+                socialNetwork: 'facebook',
+              }}
             >
-              <Image
-                alt={getLabelValue(accessibilityLabels, 'lbl_social_facebook')}
-                className="facebook"
-                src={getIconPath('facebook-icon')}
-                data-locator="facebook-icon"
-              />
-            </Anchor>
-          </ClickTracker>
-        )}
-        {isPinterestEnabled && (
-          <ClickTracker
-            clickData={{
-              customEvents: ['event84'],
-              productId: ratingsProductId,
-              socialNetwork: 'pinterest',
-            }}
-          >
-            <Anchor
-              url="http://www.pinterest.com/childrensplace"
-              target="_blank"
-              onClick={this.handlePinterestShare}
-              className="icon-pinterest"
-              title="Pinterest"
+              <Anchor
+                url="https://www.facebook.com/childrensplace"
+                target="_blank"
+                onClick={this.handleFacebookShare}
+                className="icon-facebook"
+                title="Facebook"
+              >
+                <Image
+                  alt={getLabelValue(accessibilityLabels, 'lbl_social_facebook')}
+                  className="facebook"
+                  src={getIconPath('facebook-icon')}
+                  data-locator="facebook-icon"
+                />
+              </Anchor>
+            </ClickTracker>
+          )}
+        </li>
+
+        <li>
+          {isPinterestEnabled && (
+            <ClickTracker
+              clickData={{
+                customEvents: ['event84'],
+                productId: ratingsProductId,
+                socialNetwork: 'pinterest',
+              }}
             >
-              <Image
-                alt={getLabelValue(accessibilityLabels, 'lbl_social_pinterest')}
-                className="pinterest"
-                src={getIconPath('pinterest-icon')}
-                data-locator="pinterest-icon"
-              />
-            </Anchor>
-          </ClickTracker>
-        )}
-      </span>
+              <Anchor
+                url="http://www.pinterest.com/childrensplace"
+                target="_blank"
+                onClick={this.handlePinterestShare}
+                className="icon-pinterest"
+                title="Pinterest"
+              >
+                <Image
+                  alt={getLabelValue(accessibilityLabels, 'lbl_social_pinterest')}
+                  className="pinterest"
+                  src={getIconPath('pinterest-icon')}
+                  data-locator="pinterest-icon"
+                />
+              </Anchor>
+            </ClickTracker>
+          )}
+        </li>
+      </ul>
     );
   }
 }
