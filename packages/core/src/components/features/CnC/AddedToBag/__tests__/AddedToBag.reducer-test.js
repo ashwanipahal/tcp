@@ -20,7 +20,7 @@ const payload = {
       imagePath: '/wcsstore/GlobalSAS/images/tcp/products/swatches/3003773_32CV.jpg',
       family: 'PINK',
     },
-    variantId: '00193511156691',
+    variantId: '00193511156691'
     unbxdProdId: '3003773_32CV',
     productId: '3003773_32CV',
     fit: '',

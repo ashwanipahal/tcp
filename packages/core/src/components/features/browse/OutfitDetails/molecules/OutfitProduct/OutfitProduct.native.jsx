@@ -94,11 +94,11 @@ const renderImageContainer = ({
       )}
       <ImageWrapper>
         <ImageCarousel
-          imageUrls={imageUrls}
+          imageUrls={[...imageUrls, ...imageUrls]}
           keepAlive={keepAlive}
           outOfStockLabels={outOfStockLabels}
           onImageClick={() => navigateToPdp(navigation, outfitProduct)}
-          imageWidth="134"
+         // imageWidth="134"
           imageHeight="165"
           formName={OUTFIT_LISTING_FORM}
         />

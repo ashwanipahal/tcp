@@ -5,14 +5,14 @@ import Anchor from '../../Anchor';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../BodyCopy.style';
 
-const renderComponent = compProps => {
-  const { Component, className, dataLocator, children, ...others } = compProps;
-  return (
-    <Component className={className} data-locator={dataLocator} {...others}>
-      {children}
-    </Component>
-  );
-};
+  const renderComponent = compProps => {
+    const { Component, className, dataLocator, children, ...others } = compProps;
+    return (
+      <Component className={className} data-locator={dataLocator} {...others}>
+        {children}
+      </Component>
+    );
+  };
 
 const BodyCopy = props => {
   const {

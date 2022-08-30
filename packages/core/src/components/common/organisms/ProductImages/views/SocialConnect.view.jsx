@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, getLabelValue } from '@tcp/core/src/utils';
-import { Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { openWindow } from '../../../../../utils/utils.web';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/ProductImages.style';
-import { openWindow } from '../../../../../utils/utils.web';
 
 class SocialConnect extends React.PureComponent {
   static propTypes = {
